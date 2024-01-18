@@ -29,7 +29,7 @@ class BackUser extends Authenticatable
         'backuser_birthdate',
         'backuser_image_url',
         'backuser_forgot_password',
-        'backuser_email_verified_at',
+        'user_email_verified_at',
         'backuser_register_date',
         'backuser_notification_token',
         'backuser_language',
