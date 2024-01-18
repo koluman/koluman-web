@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function test(Request $request)
     {
-        $credentials = $request->only('user_phone');
+        $credentials = $request->only('user_phone','user_password');
     
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
