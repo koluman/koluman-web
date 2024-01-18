@@ -37,12 +37,12 @@ function orderslist(data) {
         s += '    </div>';
         s += '</th>';
         s += '<td class="id"><a href="apps-ecommerce-order-details" class="fw-medium link-primary">#' + j + '</a></td>';
-        s += '<td hidden class="user">' + data[i].user_id + '</td>';
-        s += '<td class="username">' + data[i].user_name + '</td>';
-        s += '<td class="usermail">' + data[i].user_mail + '</td>';
-        s += '<td class="userphone">' + data[i].user_phone + '</td>';
-        s += '<td class="userrole">' + data[i].user_role + '</td>';
-        s += '<td class="userrole">' + data[i].user_register_date + '</td>';
+        s += '<td hidden class="user">' + data[i].backuser_id + '</td>';
+        s += '<td class="username">' + data[i].backuser_name + '</td>';
+        s += '<td class="usermail">' + data[i].backuser_mail + '</td>';
+        s += '<td class="userphone">' + data[i].backuser_phone + '</td>';
+        s += '<td class="userrole">' + data[i].backuser_role + '</td>';
+        s += '<td class="userrole">' + data[i].backuser_register_date + '</td>';
         s += '<td>';
         s += '    <ul class="list-inline hstack gap-2 mb-0">';
         s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">';
