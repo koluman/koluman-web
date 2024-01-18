@@ -38,11 +38,11 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'busers',
+            'provider' => 'users',
         ],
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'users', // JWT guard için kullanılacak provider'ı belirtin
+            'provider' => 'busers', // JWT guard için kullanılacak provider'ı belirtin
         ],
     ],
 
@@ -64,11 +64,11 @@ return [
     */
 
     'providers' => [
-        'busers' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\BackUser::class,
         ],
-        'users' => [
+        'busers' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class, 
         ],
