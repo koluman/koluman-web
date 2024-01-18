@@ -35,7 +35,8 @@ class LoginController extends Controller
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
-                return redirect()->route($redirectRoute);
+                dd($user);
+                //return redirect()->route($redirectRoute);
             } else {
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
