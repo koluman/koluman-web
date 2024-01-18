@@ -355,8 +355,8 @@ $(document).on("input", '.search', function () {
     var filteredData = userdata.filter(function (user) {
         return (
             user.backuser_name.toLowerCase().includes(searchText) ||
-            user.bakuser_mail.toLowerCase().includes(searchText) ||
-            user.bakuser_phone.toLowerCase().includes(searchText) ||
+            user.backuser_mail.toLowerCase().includes(searchText) ||
+            user.backuser_phone.toLowerCase().includes(searchText) ||
             user.backuser_role.toLowerCase().includes(searchText)
         );
     });
