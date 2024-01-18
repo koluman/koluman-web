@@ -12,8 +12,7 @@ class LoginController extends Controller
     public function test(Request $request)
     {
         $credentials = $request->only('user_phone');
-        dd( $credentials);
-        /*try {
+        try {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
@@ -23,7 +22,7 @@ class LoginController extends Controller
 
         $user = JWTAuth::user();
 
-        return $this->respondWithToken($token, $user);*/
+        return $this->respondWithToken($token, $user);
     }
 
 
