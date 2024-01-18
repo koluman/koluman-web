@@ -354,10 +354,10 @@ $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
     var filteredData = userdata.filter(function (user) {
         return (
-            user.user_name.toLowerCase().includes(searchText) ||
-            user.user_mail.toLowerCase().includes(searchText) ||
-            user.user_phone.toLowerCase().includes(searchText) ||
-            user.user_role.toLowerCase().includes(searchText)
+            user.backuser_name.toLowerCase().includes(searchText) ||
+            user.bakuser_mail.toLowerCase().includes(searchText) ||
+            user.bakuser_phone.toLowerCase().includes(searchText) ||
+            user.backuser_role.toLowerCase().includes(searchText)
         );
     });
     var son = orderslist(filteredData);
