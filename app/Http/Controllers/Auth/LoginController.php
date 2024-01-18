@@ -25,7 +25,6 @@ class LoginController extends Controller
                 $user->role = $user->backuser_role;
                 $token = $user->createToken('api-token', ['role:' . $user->role]);
                 $user['token'] = $token->plainTextToken;
-
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
                 App::setLocale($preferredLanguage);
