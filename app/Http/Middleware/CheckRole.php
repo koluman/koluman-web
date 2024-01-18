@@ -13,7 +13,7 @@ class CheckRole
         if (Auth::check()) {
             $user = Auth::user();
             foreach ($roles as $role) {
-                if ($user->user_role === $role) {
+                if ($user->backuser_role === $role) {
                     return $next($request);
                 }
             }
