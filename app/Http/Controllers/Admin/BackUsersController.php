@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BackUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class BackUsersController extends Controller
 {
     public function getallusers(Request $request)
     {
         try {
-            $usersall = User::orderBy('id', 'desc')->get();
+            $usersall = BackUser::orderBy('id', 'desc')->get();
 
             if ($usersall->isEmpty()) {
                 $responseData = [
@@ -46,14 +47,14 @@ class UsersController extends Controller
             $user_mail = $request->userMail;
             $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
 
-            $user = User::create([
-                'user_id' => $user_id,
-                'user_name' => $user_name,
-                'user_phone' => $user_phone,
-                'user_role' => $user_role,
-                'user_password' => Hash::make(mt_rand(100000, 999999)),
-                'user_register_date' => Carbon::now('Europe/Istanbul'),
-                'user_mail' => $user_mail,
+            $user = BackUser::create([
+                'backuser_id' => $user_id,
+                'backuser_name' => $user_name,
+                'backuser_phone' => $user_phone,
+                'backuser_role' => $user_role,
+                'backuser_password' => Hash::make(mt_rand(100000, 999999)),
+                'backuser_register_date' => Carbon::now('Europe/Istanbul'),
+                'backuser_mail' => $user_mail,
             ]);
             if ($user) {
                 $responseData = [
@@ -82,12 +83,12 @@ class UsersController extends Controller
             $user_role = $request->userRole;
             $user_mail = $request->userMail;
             $user_id = $request->userId;
-            $affectedRows = User::where('user_id', $user_id)
+            $affectedRows = BackUser::where('backuser_id', $user_id)
                 ->update([
-                    'user_name' => $user_name,
-                    'user_phone' => $user_phone,
-                    'user_role' => $user_role,
-                    'user_mail' => $user_mail
+                    'backuser_name' => $user_name,
+                    'backuser_phone' => $user_phone,
+                    'backuser_role' => $user_role,
+                    'backuser_mail' => $user_mail
                 ]);
             if ($affectedRows) {
                 $responseData = [
@@ -112,11 +113,11 @@ class UsersController extends Controller
     {
         try {
             $user_id = $request->userId;
-            $existingUser = User::where([
-                'user_id' => $user_id,
+            $existingUser = BackUser::where([
+                'backuser_id' => $user_id,
             ])->first();
             if ($existingUser) {
-                User::where('user_id', $user_id)->delete();
+                BackUser::where('backuser_id', $user_id)->delete();
                 $responseData = [
                     "success" => 1,
                     "message" => "Kullanıcı başarılı bir şekilde silindi",
@@ -140,7 +141,7 @@ class UsersController extends Controller
         try {
             $user_ids = $request->userIds;
 
-            $deleteusers = User::whereIn('user_id', $user_ids)->delete();
+            $deleteusers = BackUser::whereIn('backuser_id', $user_ids)->delete();
             if ($deleteusers) {
                 $responseData = [
                     "success" => 1,

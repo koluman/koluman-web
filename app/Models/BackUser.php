@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class BackUser extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,23 +17,23 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'users'; // Modelin "users" tablosuna bağlı olduğunu belirtir
+    protected $table = 'backofficeusers'; // Modelin "users" tablosuna bağlı olduğunu belirtir
     protected $primaryKey = 'id'; // user_id alanını primary key olarak belirtin
     protected $fillable = [
         'id',
-        'user_id',
-        'user_mail',
-        'user_name',
-        'user_password',
-        'user_phone',
-        'user_birthdate',
-        'user_image_url',
-        'user_forgot_password',
-        'user_email_verified_at',
-        'user_register_date',
-        'user_notification_token',
-        'user_language',
-        'user_role',
+        'backuser_id',
+        'backuser_mail',
+        'backuser_name',
+        'backuser_password',
+        'backuser_phone',
+        'backuser_birthdate',
+        'backuser_image_url',
+        'backuser_forgot_password',
+        'backuser_email_verified_at',
+        'backuser_register_date',
+        'backuser_notification_token',
+        'backuser_language',
+        'backuser_role',
         'remember_token'
     ];
     public function hasRole($role)
