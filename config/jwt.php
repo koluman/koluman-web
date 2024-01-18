@@ -11,6 +11,13 @@
 
 return [
 
+    'guards' => [
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users', // 'users' provider'ınızın ismi
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | JWT Authentication Secret
@@ -262,6 +269,10 @@ return [
     */
 
     'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
 
         /*
         |--------------------------------------------------------------------------
