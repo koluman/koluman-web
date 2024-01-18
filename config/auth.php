@@ -42,7 +42,7 @@ return [
         ],
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'users', // Doğru provider'ı belirtin (backusers yerine busers)
+            'provider' => 'users',
         ],
     ],
 
