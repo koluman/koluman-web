@@ -14,7 +14,7 @@ class JwtVerify
             $user = JWTAuth::parseToken()->authenticate();
         } catch (\Exception $e) {
             Log::error('JWT Exception: ' . $e->getMessage()); // Log tipini doğru şekilde kullanın
-            return response()->json(['error' =>$e], 401);
+            return response()->json(['error' =>$request], 401);
         }
 
         return $next($request);
