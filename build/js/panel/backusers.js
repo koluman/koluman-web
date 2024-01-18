@@ -307,7 +307,7 @@ function deleteMultiple() {
 }
 
 function filterUsersByRole(role) {
-    return userdata.filter(user => user.user_role === role);
+    return userdata.filter(user => user.backuser_role === role);
 }
 
 var selectedTab = "All";
