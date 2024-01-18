@@ -10,13 +10,13 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('userphone_number');
+        $credentials = $request->only('user_phone'); // doğru alanı kullanın
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
+    
         $user = Auth::user(); // Yetkilendirilmiş kullanıcıyı al
-
+    
         return $this->respondWithToken($token, $user);
     }
 
