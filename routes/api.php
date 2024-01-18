@@ -20,8 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Diğer rotalarınız...
-Route::middleware(['auth:api'])->group(function () {
+
+Route::middleware(['auth:api', 'jwt.verify'])->group(function () {
     Route::post('/test', [LoginController::class, 'test'])->name('test');
     Route::post('/addtestdrive', [TestDriveController::class, 'addtestdrive'])->name('addtestdrive');
+
 });
