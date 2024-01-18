@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addUser(userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: '/adduser',
+            url: 'koluman/web/adduser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateUser(userId, userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: '/updateuser',
+            url: 'koluman/web/updateuser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userId) {
             $.ajax({
                 type: 'POST',
-                url: '/deleteuser',
+                url: 'koluman/web/deleteuser',
                 data: {
                     userId: userId,
                     _token: csrfToken,
@@ -263,7 +263,7 @@ function deleteMultiple() {
             if (result.value) {
                 $.ajax({
                     type: 'POST',
-                    url: '/deleteusers',
+                    url: 'koluman/web/deleteusers',
                     data: {
                         userIds: ids_array,
                         _token: csrfToken,
