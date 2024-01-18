@@ -43,7 +43,6 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            @dump(Auth::user());
             <h6 class="dropdown-header">Hoşgeldin {{ Auth::user()->backuser_name }}!</h6>
             <a class="dropdown-item" href="pages-profile"><i
                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
