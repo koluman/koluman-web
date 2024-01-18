@@ -41,8 +41,8 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'session',
-            'provider' => 'backusers',
+            'driver' => 'jwt',
+            'provider' => 'backusers', // JWT guard için kullanılacak provider'ı belirtin
         ],
     ],
 
