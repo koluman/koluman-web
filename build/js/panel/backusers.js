@@ -14,13 +14,12 @@ function users() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            /*if(data.success==1){
+            if(data.success==1){
                 userdata = data.usersall;
                 let son = orderslist(userdata);
                 $("#userlist").html('');
                 $("#userlist").html(son);
-            }*/
+            }
          
         }
     });
@@ -130,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addUser(userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: 'koluman/web/adduser',
+            url: 'https://mobiloby.app/koluman/web/adduser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -156,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateUser(userId, userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: 'koluman/web/updateuser',
+            url: 'https://mobiloby.app/koluman/web/updateuser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -185,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userId) {
             $.ajax({
                 type: 'POST',
-                url: 'koluman/web/deleteuser',
+                url: 'https://mobiloby.app/koluman/web/deleteuser',
                 data: {
                     userId: userId,
                     _token: csrfToken,
@@ -264,7 +263,7 @@ function deleteMultiple() {
             if (result.value) {
                 $.ajax({
                     type: 'POST',
-                    url: 'koluman/web/deleteusers',
+                    url: 'https://mobiloby.app/koluman/web/deleteusers',
                     data: {
                         userIds: ids_array,
                         _token: csrfToken,
