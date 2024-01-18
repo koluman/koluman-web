@@ -22,6 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Diğer rotalarınız...
 Route::middleware(['auth:api'])->group(function () {
-    Route::post('/log', [LoginController::class, 'login'])->name('login');
+    Route::get('/log', [LoginController::class, 'login'])->name('login');
     Route::post('/addtestdrive', [TestDriveController::class, 'addtestdrive'])->name('addtestdrive');
 });
