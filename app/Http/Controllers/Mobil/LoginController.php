@@ -13,15 +13,15 @@ class LoginController extends Controller
     {
         $credentials = $request->only('user_phone');
     
-        try {
-            $user = JWTAuth::user();
-            $token = JWTAuth::fromUser($user);
-        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
-            return response()->json(['error' => 'Could not create token'], 500);
+        if (!$token = JWTAuth::attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
+    
+        $user = JWTAuth::user();
     
         return $this->respondWithToken($token, $user);
     }
+    
     
 
 
