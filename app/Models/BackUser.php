@@ -38,7 +38,7 @@ class BackUser extends Authenticatable
     ];
     public function hasRole($role)
     {
-        return $this->role === $role;
+        return $this->backuser_role === $role;
     }
     /**
      * The attributes that should be hidden for serialization.
