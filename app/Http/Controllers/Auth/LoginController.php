@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\BackUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +18,9 @@ class LoginController extends Controller
             $email = $request->input('email');
             $password = $request->input('password');
 
-            $user = User::where('user_mail', $email)->first();
+            $user = BackUser::where('backuser_mail', $email)->first();
 
-            if ($user && Hash::check($password, $user->user_password)) {
+            if ($user && Hash::check($password, $user->backuser_password)) {
                 Auth::login($user, true);
                 $user->role = $user->user_role;
                 $token = $user->createToken('api-token', ['role:' . $user->role]);
