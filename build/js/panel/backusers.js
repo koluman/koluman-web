@@ -382,10 +382,10 @@ function filterAndSearch() {
     // Arama yap
     filteredData = filteredData.filter(function (user) {
         return (
-            user.user_name.toLowerCase().includes(searchText) ||
-            user.user_mail.toLowerCase().includes(searchText) ||
-            user.user_phone.toLowerCase().includes(searchText) ||
-            user.user_role.toLowerCase().includes(searchText)
+            user.backuser_name.toLowerCase().includes(searchText) ||
+            user.backuser_mail.toLowerCase().includes(searchText) ||
+            user.backuser_phone.toLowerCase().includes(searchText) ||
+            user.backuser_role.toLowerCase().includes(searchText)
         );
     });
 
@@ -406,7 +406,7 @@ function SearchData() {
     // Tarih filtresi
     if (selectedDateRange) {
         filteredData = filteredData.filter(function (user) {
-            var userDate = new Date(user.user_register_date);
+            var userDate = new Date(user.backuser_register_date);
             return userDate >= new Date(selectedDateRange[0]) && userDate <= new Date(selectedDateRange[1]);
         });
     }
@@ -414,7 +414,7 @@ function SearchData() {
     // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (user) {
-            return user.user_role === selectedStatus;
+            return user.backuser_role === selectedStatus;
         });
     }
 
@@ -422,10 +422,10 @@ function SearchData() {
     if (searchText) {
         filteredData = filteredData.filter(function (user) {
             return (
-                user.user_name.toLowerCase().includes(searchText) ||
-                user.user_mail.toLowerCase().includes(searchText) ||
-                user.user_phone.toLowerCase().includes(searchText) ||
-                user.user_role.toLowerCase().includes(searchText)
+                user.backuser_name.toLowerCase().includes(searchText) ||
+                user.backuser_mail.toLowerCase().includes(searchText) ||
+                user.backuser_phone.toLowerCase().includes(searchText) ||
+                user.backuser_role.toLowerCase().includes(searchText)
             );
         });
     }
