@@ -42,7 +42,7 @@ return [
         ],
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'busers', // JWT guard için kullanılacak provider'ı belirtin
+            'provider' => 'busers', // Doğru provider'ı belirtin (backusers yerine busers)
         ],
     ],
 
