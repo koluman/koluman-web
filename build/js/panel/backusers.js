@@ -14,12 +14,13 @@ function users() {
         },
         dataType: 'json',
         success: function (data) {
-            if(data.success==1){
+            console.log(data);
+            /*if(data.success==1){
                 userdata = data.usersall;
                 let son = orderslist(userdata);
                 $("#userlist").html('');
                 $("#userlist").html(son);
-            }
+            }*/
          
         }
     });
