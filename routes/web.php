@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BackUsersController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\AdminController;
@@ -28,11 +29,11 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::middleware(['checkRole:admin'])->group(function () {
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
-    Route::post('/getallusers', [UsersController::class, 'getallusers'])->name('getallusers');
-    Route::post('/adduser', [UsersController::class, 'adduser'])->name('adduser');
-    Route::post('/updateuser', [UsersController::class, 'updateuser'])->name('updateuser');
-    Route::post('/deleteuser', [UsersController::class, 'deleteuser'])->name('deleteuser');
-    Route::post('/deleteusers', [UsersController::class, 'deleteusers'])->name('deleteusers');
+    Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
+    Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
+    Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
+    Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
+    Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
 
     
 });
