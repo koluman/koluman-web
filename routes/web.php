@@ -7,7 +7,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Ajans\AjansHomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Mobil\LoginController as MobilLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -20,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth:api'])->group(function () {
-    Route::post('/test', [MobilLoginController::class, 'test'])->name('test');
-});
+
 
 Route::get('/', [AuthController::class, 'signin'])->name('signin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
