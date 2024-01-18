@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function test(Request $request)
     {
         $credentials = $request->only('user_phone'); // doğru alanı kullanın
         if (!$token = JWTAuth::attempt($credentials)) {
