@@ -8,7 +8,7 @@ function users() {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
-        url: '/getallusers',
+        url: 'https://mobiloby.app/koluman/web/getallusers',
         data: {
             _token: csrfToken, // CSRF token'ını gönder
         },
