@@ -27,7 +27,7 @@ class LoginController extends Controller
                 $user['token'] = $token->plainTextToken;
 
                 // Kullanıcının dil tercihini kontrol et
-                $preferredLanguage = Session::put('lang', $user->user_language);                ; 
+                $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
                 App::setLocale($preferredLanguage);
 
                 $redirectRoute = match ($user->role) {
