@@ -20,7 +20,7 @@ class LoginController extends Controller
         return $this->respondWithToken($token, $user);
     }
 
-    protected function respondWithToken($token, $user)
+    public function respondWithToken($token, $user)
     {
         $expiration = JWTAuth::factory()->getTTL() * 60;
 
