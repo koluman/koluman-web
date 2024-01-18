@@ -22,7 +22,7 @@ class LoginController extends Controller
 
             if ($user && Hash::check($password, $user->backuser_password)) {
                 Auth::login($user, true);
-                $user->role = $user->user_role;
+                $user->role = $user->backuser_role;
                 $token = $user->createToken('api-token', ['role:' . $user->role]);
                 $user['token'] = $token->plainTextToken;
 
