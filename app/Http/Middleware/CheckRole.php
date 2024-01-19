@@ -14,9 +14,9 @@ class CheckRole
         try {
             // Gelen token'ı al
             $token = JWTAuth::getToken();
-
+            dd($token);
             // Token geçerli mi kontrol et
-            $user = JWTAuth::setToken($token)->authenticate();
+           /* $user = JWTAuth::setToken($token)->authenticate();
 
             if (!$user) {
                 // Geçerli bir kullanıcı yoksa, 401 hatası döndür
@@ -25,7 +25,7 @@ class CheckRole
 
             // Diğer kontrolleri yapabilirsiniz...
 
-            return $next($request);
+            return $next($request);*/
         } catch (\Exception $e) {
             // İstisna durumları için
             return response()->json(['error' => $e->getMessage()], 500);
