@@ -33,20 +33,20 @@ class LoginController extends Controller
                 ], 401);
             }
 
-            $token = Auth::guard('web')->login($user);
-
+            $token = JWTAuth::fromUser($user);
             $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
-            $redirectRoute = match ($userRole) {
+            /*$redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            return redirect()->route($redirectRoute);
+            return redirect()->route($redirectRoute);*/
+            dd($token);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
