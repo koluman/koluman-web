@@ -46,6 +46,7 @@ class LoginController extends Controller
                 ], 500);
             }
             
+            $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
          
