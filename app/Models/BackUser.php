@@ -40,7 +40,6 @@ class BackUser extends Authenticatable implements JWTSubject
     ];
     public function hasRole($role)
     {
-        
         return $this->backuser_role === $role;
     }
     /**
