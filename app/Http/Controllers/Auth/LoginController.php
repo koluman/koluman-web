@@ -39,12 +39,13 @@ class LoginController extends Controller
 
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
-            $redirectRoute = match ($userRole) {
+            dd($user);
+            /*$redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            return redirect()->route($redirectRoute);
+            return redirect()->route($redirectRoute);*/
           
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
