@@ -14,8 +14,9 @@ class LoginController extends Controller
         {
             $credentials = $request->only('user_phone', 'user_password');
     
-            if (Auth::guard('users')->attempt($credentials)) {
+            if (Auth::guard('api')->attempt($credentials)) {
                 // Başarılı giriş
+                $user = Auth::guard('api')->user();
                 return response()->json(['success' => 'Giriş başarılı'], 200);
             } else {
                 $error = 'Giriş başarısız: ' . $credentials['user_phone'];
