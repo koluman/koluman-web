@@ -18,7 +18,7 @@ class LoginController extends Controller
             Auth::guard('api')->login($user);
             $token = JWTAuth::fromUser($user);
             $u = JWTAuth::setToken($token)->authenticate();
-            return response()->json(['token' => $token, 'user' => $user,'u'=>$u, 'success' => 'Giriş başarılı'], 200);
+            return response()->json(['token' => $token, 'user' => $user, 'u' => $u, 'success' => 'Giriş başarılı'], 200);
         } else {
             $error = 'Giriş başarısız: ' . $userPhone;
             return response()->json(['error' => $error], 401);
@@ -27,8 +27,14 @@ class LoginController extends Controller
 
     public function testsurus(Request $request)
     {
-        $token = $request->token;
-        $u = JWTAuth::setToken($token)->authenticate();
-        return response()->json(['u'=>$u, 'success' => 'başarılı'], 200);
+        $token = $request->header('Authorization');
+
+        // Gelen Authorization başlığını parçala, sadece token'ı al
+        $token = str_replace('Bearer ', '', $token);
+
+        // Token'ı kullanarak kullanıcıyı çöz
+        $user = JWTAuth::setToken($token)->authenticate();
+
+        return response()->json(['user' => $user, 'success' => 'Başarılı'], 200);
     }
 }
