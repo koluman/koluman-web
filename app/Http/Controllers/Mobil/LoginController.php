@@ -18,10 +18,7 @@ class LoginController extends Controller
             Auth::guard('api')->login($user);
             $token = JWTAuth::fromUser($user);
             $u = JWTAuth::setToken($token)->authenticate();
-            $responseData = [
-                "success" => 1,
-                "message" => "Login İşlemi başarılı",
-            ];
+            
             return response()->json(['token' => $token, 'user' => $user, 'u' => $u, 'success' => 'Giriş başarılı'], 200);
         } else {
             $error = 'Giriş başarısız: ' . $userPhone;
