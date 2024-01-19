@@ -10,8 +10,9 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-       if (Auth::check()) {
-            $user = Auth::user();
+        $user = Auth::user();
+        
+        if ($user) {
             foreach ($roles as $role) {
                 if ($user->backuser_role === $role) {
                     return $next($request);
