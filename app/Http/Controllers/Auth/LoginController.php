@@ -55,6 +55,7 @@ class LoginController extends Controller
                 default => 'user.dashboard',
             };
             return redirect()->route($redirectRoute);*/
+            dd($token);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
