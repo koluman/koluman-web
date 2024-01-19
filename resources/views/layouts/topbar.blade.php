@@ -652,7 +652,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user ">
                     <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="@if (Auth::user()->backuser_image_url != ''){{ URL::asset('images/' . Auth::user()->user_image_url) }}@else{{ URL::asset('build/images/users/avatar-1.jpg') }}@endif" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="{{URL::asset('build/images/users/avatar-1.jpg')}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::user()->name}}</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Hesabım</span>
