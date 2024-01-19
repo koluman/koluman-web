@@ -10,19 +10,38 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-    public function test(Request $request)
+    public function login(Request $request)
     {
-        $userPhone = $request->user_phone;
-        $user = User::where('user_phone', $userPhone)->first();
-        if ($user) {
-            Auth::guard('api')->login($user);
-            $token = JWTAuth::fromUser($user);
-            $u = JWTAuth::setToken($token)->authenticate();
-            return response()->json(['token' => $token, 'user' => $user, 'u' => $u, 'success' => 'Giriş başarılı'], 200);
-        } else {
-            $error = 'Giriş başarısız: ' . $userPhone;
-            return response()->json(['error' => $error], 401);
+        try {
+            $userPhone = $request->user_phone;
+            $user = User::where('user_phone', $userPhone)->first();
+            if ($user) {
+                Auth::guard('api')->login($user);
+                $token = JWTAuth::fromUser($user);
+                $u = JWTAuth::setToken($token)->authenticate();
+                $responseData = [
+                    "success" => 1,
+                    "token" => $token,
+                    'user' => $user,
+                    "message" => "Login İşlemi başarılı",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "token" => "",
+                    'user' => "",
+                    "message" => "Login İşlemi başarısız",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "token" => "",
+                'user' => "",
+                "message" => $e->getMessage(),
+            ];
         }
+        return response()->json($responseData);
     }
 
     public function testsurus(Request $request)
