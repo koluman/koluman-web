@@ -28,7 +28,7 @@ class LoginController extends Controller
                 $user->role = $user->backuser_role;
     
                 // Giriş işlemini gerçekleştir
-                if (Auth::attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
+                if (Auth::guard('web')->attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
                     // Giriş başarılıysa
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
@@ -59,6 +59,7 @@ class LoginController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+    
     
     public function logout()
     {
