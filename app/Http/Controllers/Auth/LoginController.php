@@ -20,9 +20,9 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
 
             if ($user && Hash::check($password, $user->backuser_password)) {
-                // SanctumGuard kullanımı
+                // Sanctum kullanımı
                 $token = $user->createToken('api-token', ['role:' . $user->backuser_role])->plainTextToken;
-                Auth::login($user,true);
+
                 $user['token'] = $token;
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);
