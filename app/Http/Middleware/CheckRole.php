@@ -14,13 +14,13 @@ class CheckRole
        if (Auth::check()) {
             $user = Auth::user();
             dd($user);
-            foreach ($roles as $role) {
+           /* foreach ($roles as $role) {
                 if ($user->backuser_role === $role) {
                     return $next($request);
                 }
             }
             // Yetkisi yoksa HTTP 403 hatası döndür
-            abort(403, 'Unauthorized action.');
+            abort(403, 'Unauthorized action.');*/
         }
         
         // Giriş yapmamışsa ana sayfaya yönlendir
