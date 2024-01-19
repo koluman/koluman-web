@@ -25,6 +25,7 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
 
             $user = BackUser::where('backuser_mail', $credentials['email'])->first();
+            dd($user);  // Kullanıcı nesnesini kontrol etmek için bu satırı ekleyin
 
             if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 return response()->json([
@@ -46,7 +47,6 @@ class LoginController extends Controller
                 default => 'user.dashboard',
             };
             return redirect()->route($redirectRoute);*/
-            dd($token);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
