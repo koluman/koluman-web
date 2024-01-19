@@ -15,7 +15,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function getJWTCustomClaims()
     {
-        return [];
+        return [
+            'user_id' => $this->user_id,
+        ];
     }
     protected $table = 'users'; // Modelin "users" tablosuna bağlı olduğunu belirtir
     protected $primaryKey = 'id'; // user_id alanını primary key olarak belirtin
