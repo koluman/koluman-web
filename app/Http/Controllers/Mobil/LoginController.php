@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -10,22 +11,26 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class LoginController extends Controller
 {
 
-
     public function test(Request $request)
     {
-        $credentials = $request->only('user_phone','user_password');
+        $userPhone = $request->user_phone;
+        
+        // Telefon numarasına sahip kullanıcıyı bul
+        $user = User::where('user_phone', $userPhone)->first();
     
-        if (Auth::guard('api')->attempt($credentials)) {
-            $user = Auth::guard('api')->user();
+        if ($user) {
+            // Kullanıcıyı giriş yap
+            Auth::guard('api')->login($user);
+    
+            // JWT token oluştur
             $token = JWTAuth::fromUser($user);
     
             return response()->json(['token' => $token, 'success' => 'Giriş başarılı'], 200);
         } else {
-            $error = 'Giriş başarısız: ' . $credentials['user_phone'];
+            $error = 'Giriş başarısız: ' . $userPhone;
             return response()->json(['error' => $error], 401);
         }
     }
-    
 
 
 
