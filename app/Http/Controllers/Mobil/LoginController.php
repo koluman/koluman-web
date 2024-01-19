@@ -23,14 +23,6 @@ class LoginController extends Controller
                 return response()->json(['error' => $error], 401);
             }
         
-            /*
-        if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-    
-        $user = JWTAuth::user();
-    
-        return $this->respondWithToken($token, $user);*/
     }
     
     
