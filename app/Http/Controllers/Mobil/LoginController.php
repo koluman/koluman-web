@@ -12,8 +12,13 @@ class LoginController extends Controller
     public function test(Request $request)
     {
         $credentials = $request->only('user_phone','user_password');
-        dd(Auth::attempt($credentials));
-    /*
+        if (Auth::attempt($credentials)) {
+            // Başarılı giriş
+        } else {
+            $error = 'Giriş başarısız: ' . $credentials['email'];
+            return response()->json(['error' => $error], 401);
+        }
+            /*
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
