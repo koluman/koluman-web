@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -21,19 +20,20 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
 
             if ($user && Hash::check($password, $user->backuser_password)) {
-                Auth::login($user, true);
-                $user->role = $user->backuser_role;
-                $token = $user->createToken('api-token', ['role:' . $user->role]);
-                $user['token'] = $token->plainTextToken;
+                // SanctumGuard kullanımı
+                $token = $user->createToken('api-token', ['role:' . $user->backuser_role])->plainTextToken;
+
+                $user['token'] = $token;
                 // Kullanıcının dil tercihini kontrol et
-                $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
+                $preferredLanguage = Session::put('lang', $user->backuser_language);
                 App::setLocale($preferredLanguage);
 
-                $redirectRoute = match ($user->role) {
+                $redirectRoute = match ($user->backuser_role) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
+
                 return redirect()->route($redirectRoute);
             } else {
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
@@ -42,6 +42,7 @@ class LoginController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+    
     public function logout()
     {
         Auth::logout();
