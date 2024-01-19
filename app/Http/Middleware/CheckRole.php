@@ -11,8 +11,8 @@ class CheckRole
 {
     public function handle($request, Closure $next, ...$roles)
     {
-        $user = JWTAuth::parseToken()->authenticate();
-        dd($user);
+        $userRole = auth()->user()->role;
+        dd($userRole);
         /*if ($user) {
             foreach ($roles as $role) {
                 if ($user->backuser_role === $role) {
