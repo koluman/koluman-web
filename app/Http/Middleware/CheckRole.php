@@ -10,8 +10,8 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-
-       if (Auth::check()) {
+        dd($roles);
+       /*if (Auth::check()) {
             $user = Auth::user();
             foreach ($roles as $role) {
                 if ($user->backuser_role === $role) {
@@ -23,7 +23,7 @@ class CheckRole
         }
         
         // Giriş yapmamışsa ana sayfaya yönlendir
-        return redirect('/');
+        return redirect('/');*/
         
     }
 }
