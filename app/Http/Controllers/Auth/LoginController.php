@@ -41,9 +41,8 @@ class LoginController extends Controller
             // Kullanıcının dil tercihini kontrol et
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
-            Auth::guard('api')->login($user);
-         
-                        // Yönlendirme
+            Auth::guard('web')->login($user);
+        s
             if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
