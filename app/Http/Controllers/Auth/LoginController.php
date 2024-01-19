@@ -23,7 +23,7 @@ class LoginController extends Controller
             if ($user && Hash::check($password, $user->backuser_password)) {
                 $user->role = $user->backuser_role;
 
-                Auth::guard('web')->login($user);
+                Auth::guard('web')->login($user,true);
                 $token = JWTAuth::fromUser($user);
                 $u = JWTAuth::setToken($token)->authenticate();
 

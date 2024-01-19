@@ -26,7 +26,7 @@ class CheckRole
         
         // Giriş yapmamışsa ana sayfaya yönlendir
         return redirect('/'); */
-        dd(Auth::guard('web')->check());
+        dd(Auth::check());
         
     }
 }
