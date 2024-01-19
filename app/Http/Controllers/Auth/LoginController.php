@@ -42,10 +42,7 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('api')->login($user);
-            if (!Auth::guard('api')->login($user)) {
-                // Oturum açma başarısız.
-                throw new \Exception('Oturum açma başarısız.');
-            }
+         
                         // Yönlendirme
             /*if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
@@ -56,6 +53,7 @@ class LoginController extends Controller
                 return redirect()->route($redirectRoute);
             }
             return back()->with('error', 'Giriş yapılamadı.');*/
+            dd(            Auth::guard('api')->login($user)        );
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
