@@ -58,7 +58,7 @@ class BackUser extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'backuser_password' => 'hashed',
     ];
     public function getJWTIdentifier()
     {
