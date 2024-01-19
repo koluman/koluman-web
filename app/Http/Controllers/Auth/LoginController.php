@@ -39,7 +39,8 @@ class LoginController extends Controller
 
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
-
+            $preferredLanguage = Session::put('lang', $user->backuser_language);
+            App::setLocale($preferredLanguage);
             $redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
                 'ajans' => 'ajans.dashboard',
