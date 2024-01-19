@@ -12,7 +12,7 @@ class LoginController extends Controller
    
         public function test(Request $request)
         {
-            $credentials = $request->only('user_phone', 'user_password');
+            $credentials = $request->only('user_phone', 'password');
     
             if (Auth::guard('api')->attempt($credentials)) {
                 // Başarılı giriş
