@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
@@ -21,9 +22,15 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
 
             if ($user && Hash::check($password, $user->backuser_password)) {
-                Auth::login($user, true);
+                //Auth::login($user, true);
                 $user->role = $user->backuser_role;
-                $token = $user->createToken('api-token', ['role:' . $user->role]);
+
+                Auth::guard('web')->login($user);
+                $token = JWTAuth::fromUser($user);
+                $u = JWTAuth::setToken($token)->authenticate();
+              
+
+                //$token = $user->createToken('api-token', ['role:' . $user->role]);
                 $user['token'] = $token->plainTextToken;
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
