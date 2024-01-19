@@ -116,7 +116,7 @@
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu -->
-                @if(auth()->user()->backuser_role=='admin')
+               {{-- @if(auth()->user()->backuser_role=='admin')--}}
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarUsers">
@@ -130,7 +130,7 @@
                         </ul>
                     </div>
                 </li> <!-- end Kullanıcı Menu -->
-                @endif
+                {{--@endif--}}
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarApps">
