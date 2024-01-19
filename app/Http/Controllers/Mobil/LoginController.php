@@ -50,13 +50,13 @@ class LoginController extends Controller
     {
         $token = $request->header('Authorization');
         $token = str_replace('Bearer ', '', $token);
-        $user = JWTAuth::setToken($token)->authenticate();
+        $u = JWTAuth::setToken($token)->authenticate();
         try {
-            if ($user) {
+            if ($u) {
                 
                 $car_id=$request->car_id;
                 $drive_time=$request->drive_time;
-                $user_id=$user->user_id;
+                $user_id=$u->user_id;
 
                 $affectedRows = TestDrive::insert([
                     'user_id' => $user_id,
@@ -87,6 +87,6 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($user);
+        return response()->json($u);
     }
 }
