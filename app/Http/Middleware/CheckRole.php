@@ -5,32 +5,23 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
+        try {
+            $token = JWTAuth::getToken();
+            $user = JWTAuth::toUser($token);
+            dd($user);
+            // Diğer middleware işlemleri...
     
-        // Kullanıcıyı al
-       // $user = auth('web')->user();
-    dd(Auth::guard('web')->check());
-       /* if (!$user) {
-            // Kullanıcı oturumu açık değilse, 401 hatası döndür
-            abort(401, 'Unauthorized');
+            //return $next($request);
+        } catch (\Exception $e) {
+            return abort(401, 'Unauthorized');
         }
-    
-        // Kullanıcının yetkilerini kontrol et
-        foreach ($roles as $role) {
-            // Kullanıcının rolü, verilen rollerden birine eşitse, middleware'ı geç
-            if (isset($user['role']) && $user['role'] === $role) {
-                return $next($request);
-            }
-        }
-    
-        // Kullanıcının yetkisi yoksa 403 hatası döndür
-        return abort(403, 'Unauthorized action.');*/
     }
     
-    // CheckRole middleware içinde kullanım örneği
   
 }
