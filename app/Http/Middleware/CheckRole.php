@@ -10,12 +10,11 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        $this->authenticate($request);
     
         // Kullanıcıyı al
         $user = auth('web')->user();
-    
-        if (!$user) {
+    dd($user);
+       /* if (!$user) {
             // Kullanıcı oturumu açık değilse, 401 hatası döndür
             abort(401, 'Unauthorized');
         }
@@ -29,15 +28,9 @@ class CheckRole
         }
     
         // Kullanıcının yetkisi yoksa 403 hatası döndür
-        return abort(403, 'Unauthorized action.');
+        return abort(403, 'Unauthorized action.');*/
     }
     
     // CheckRole middleware içinde kullanım örneği
-    public function authenticate($request)
-    {
-      
-        if (!auth('web')->check()) {
-            abort(401, 'Unauthorized');
-        }
-    }
+  
 }
