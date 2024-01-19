@@ -13,6 +13,10 @@ return [
     |
     */
 
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'backusers',
+    ],
     
 
     /*
