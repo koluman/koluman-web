@@ -17,41 +17,30 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-            $email = $request->input('email');
-            $password = $request->input('password');
-
-            $user = BackUser::where('backuser_mail', $email)->first();
-
-            if (!$user || !Hash::check($password, $user->backuser_password)) {
-                return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
+  
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string',
+            ]);
+            $credentials = $request->only('email', 'password');
+    
+            $token = Auth::attempt($credentials);
+            if (!$token) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Unauthorized',
+                ], 401);
             }
-
-            // Kullanıcının rol bilgisini al
-            $userRole = $user->backuser_role;
-            $token = JWTAuth::fromUser($user);
-            Session::put('role', $userRole);
-
-            // Token bilgilerini kullanıcıya ekle
-            $user['token'] = $token;
-            $user['role'] = $userRole;
-            // Kullanıcıyı web guard ile oturum aç
-
-            // JWT token oluştur
-
-            // Kullanıcının dil tercihini kontrol et
-            $preferredLanguage = Session::put('lang', $user->backuser_language);
-            App::setLocale($preferredLanguage);
-            Auth::guard('web')->login($user);
-        
-            if (Auth::check()) {
-                $redirectRoute = match ($userRole) {
-                    'admin' => 'admin.dashboard',
-                    'ajans' => 'ajans.dashboard',
-                    default => 'user.dashboard',
-                };
-                return redirect()->route($redirectRoute);
-            }
-            return back()->with('error', 'Giriş yapılamadı.');
+    
+            $user = Auth::user();
+            return response()->json([
+                    'status' => 'success',
+                    'user' => $user,
+                    'authorisation' => [
+                        'token' => $token,
+                        'type' => 'bearer',
+                    ]
+                ]);
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
