@@ -34,7 +34,8 @@ class LoginController extends Controller
             }
 
             $userRole = $user->backuser_role;
-
+            $preferredLanguage = Session::put('lang', $user->backuser_language);
+            App::setLocale($preferredLanguage);
             // JWT token oluştur
             $token = JWTAuth::fromUser($user);
             
@@ -45,11 +46,9 @@ class LoginController extends Controller
                 ], 500);
             }
             
-            $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
-            $preferredLanguage = Session::put('lang', $user->backuser_language);
-            App::setLocale($preferredLanguage);
+         
             /*$redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
                 'ajans' => 'ajans.dashboard',
