@@ -28,13 +28,8 @@ class LoginController extends Controller
     public function testsurus(Request $request)
     {
         $token = $request->header('Authorization');
-
-        // Gelen Authorization başlığını parçala, sadece token'ı al
         $token = str_replace('Bearer ', '', $token);
-
-        // Token'ı kullanarak kullanıcıyı çöz
         $user = JWTAuth::setToken($token)->authenticate();
-
         return response()->json(['user' => $user, 'success' => 'Başarılı'], 200);
     }
 }

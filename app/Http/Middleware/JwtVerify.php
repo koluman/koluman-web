@@ -10,13 +10,19 @@ class JwtVerify
 {
     public function handle($request, Closure $next)
     {
-        try {
-            $user = JWTAuth::parseToken()->authenticate();
-        } catch (\Exception $e) {
-            Log::error('JWT Exception: ' . $e->getMessage()); // Log tipini doğru şekilde kullanın
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $token = $request->header('Authorization');
+        if (!$token) {
+            return response()->json(['error' => 'Unauthorized. Token not provided.'], 401);
         }
 
-        return $next($request);
+        $token = str_replace('Bearer ', '', $token);
+
+        try {
+            $user = JWTAuth::setToken($token)->authenticate();
+            return $next($request);
+        } catch (\Exception $e) {
+            // Token geçerli değilse
+            return response()->json(['error' => 'Unauthorized. Invalid token.'], 401);
+        }
     }
 }
