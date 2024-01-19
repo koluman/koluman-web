@@ -23,13 +23,13 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
             // Kullanıcı var mı ve şifre doğru mu?
             if ($user && Hash::check($password, $user->backuser_password)) {
-                dd("dfgndkf");
                 // Kullanıcı rolünü ayarla
-                /*$user->role = $user->backuser_role;
+                $user->role = $user->backuser_role;
     
                 // Giriş işlemini gerçekleştir
-                if (Auth::guard('web')->attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
+               // if (Auth::guard('web')->attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
                     // Giriş başarılıysa
+                    Auth::guard('web')->login($user);
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
     
@@ -46,7 +46,7 @@ class LoginController extends Controller
                         default => 'user.dashboard',
                     };
                     return redirect()->route($redirectRoute);
-                } else {
+                /*} else {
                     // Giriş başarısızsa
                     return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
                 }*/
