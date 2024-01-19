@@ -21,7 +21,6 @@ class LoginController extends Controller
     
             // Kullanıcıyı bul
             $user = BackUser::where('backuser_mail', $email)->first();
-            dd($user);
             // Kullanıcı var mı ve şifre doğru mu?
             if ($user && Hash::check($password, $user->backuser_password)) {
                 dd("dfgndkf");
