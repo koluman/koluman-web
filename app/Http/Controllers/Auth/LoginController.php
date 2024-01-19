@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
@@ -18,41 +17,31 @@ class LoginController extends Controller
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-    
+
             $user = BackUser::where('backuser_mail', $email)->first();
+
             if ($user && Hash::check($password, $user->backuser_password)) {
-                // Kullanıcının rol bilgisini al
-                $userRole = $user->backuser_role;
                 Auth::login($user, true);
-                //$token = JWTAuth::fromUser($user);
-                //$u = JWTAuth::setToken($token)->authenticate();
-                //$user['token'] = $token;
-                //$user['role'] = $userRole;
-    
+                $user->role = $user->backuser_role;
+                $token = $user->createToken('api-token', ['role:' . $user->role]);
+                $user['token'] = $token->plainTextToken;
                 // Kullanıcının dil tercihini kontrol et
-                $preferredLanguage = Session::put('lang', $user->backuser_language);
+                $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
                 App::setLocale($preferredLanguage);
-    
-                $redirectRoute = match ($userRole) {
+
+                $redirectRoute = match ($user->role) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
-    
-                return redirect()->route($redirectRoute);;
+                return redirect()->route($redirectRoute);
             } else {
-                // Giriş başarısızsa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
         } catch (\Exception $e) {
-            // İstisna durumları için
             return back()->with('error', $e->getMessage());
         }
     }
-    
-
-
-
     public function logout()
     {
         Auth::logout();

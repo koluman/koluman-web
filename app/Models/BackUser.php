@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 
-class BackUser extends Authenticatable implements JWTSubject 
+class BackUser extends Authenticatable
 
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -60,14 +60,6 @@ class BackUser extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'backuser_password' => 'hashed',
     ];
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
+  
     
 }
