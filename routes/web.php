@@ -25,9 +25,10 @@ Route::get('/', [AuthController::class, 'signin'])->name('signin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
 
 Route::middleware(['checkRole:admin'])->group(function () {
-    Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
     Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
     Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
@@ -39,7 +40,6 @@ Route::middleware(['checkRole:admin'])->group(function () {
 });
 
 Route::middleware(['checkRole:ajans'])->group(function () {
-    Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
 });
 
 

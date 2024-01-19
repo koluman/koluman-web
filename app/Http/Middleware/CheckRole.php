@@ -5,31 +5,25 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        try {
-            // Gelen token'ı al
-            dd($request->headers->all());            // Token geçerli mi kontrol et
-           /* $user = JWTAuth::setToken($token)->authenticate();
 
-            if (!$user) {
-                // Geçerli bir kullanıcı yoksa, 401 hatası döndür
-                return response()->json(['error' => 'Unauthorized'], 401);
+       if (Auth::check()) {
+            $user = Auth::user();
+            foreach ($roles as $role) {
+                if ($user->backuser_role === $role) {
+                    return $next($request);
+                }
             }
-
-            // Diğer kontrolleri yapabilirsiniz...
-
-            return $next($request);*/
-        } catch (\Exception $e) {
-            // İstisna durumları için
-            return response()->json(['error' => $e->getMessage()], 500);
+            // Yetkisi yoksa HTTP 403 hatası döndür
+            abort(403, 'Unauthorized action.');
         }
-    
+        
+        // Giriş yapmamışsa ana sayfaya yönlendir
+        return redirect('/');
+        
     }
-    
-  
 }
