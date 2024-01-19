@@ -42,10 +42,7 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('web')->login($user, true);
-            if (!Auth::guard('web')->login($user, true)) {
-                throw new \Exception('Oturum açma başarısız.');
-            }
-            Log::info('Middleware: Oturum Açma İşlemi Başarılı');
+           dd(Auth::guard('web')->login($user));
             // Yönlendirme
             /*if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
