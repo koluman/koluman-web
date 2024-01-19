@@ -772,7 +772,9 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Hoşgeldin {{ Auth::user()->user_name }}!</h6>
+                        @if (Auth::check())
+                            <h6 class="dropdown-header">Hoşgeldin {{ Auth::user()->user_name }}!</h6>
+                        @endif
                         <a class="dropdown-item" href="pages-profile"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profilim</span></a>
