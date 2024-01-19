@@ -33,7 +33,7 @@ class LoginController extends Controller
                 ], 401);
             }
 
-            $token = Auth::guard('web')->login($user);
+            $token = JWTAuth::fromUser($user);
 
             $user = Auth::guard('web')->user();
 
