@@ -12,20 +12,18 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         // Check if the user is authenticated
-        /*if (!Auth::check()) {
+        if (!Auth::guard('web')->user()) {
             return redirect()->route('signin');
         }
 
         // Retrieve the user's role from the session
-        $userRole = session('role');
-
+        $userRole = Auth::guard('web')->user()->backuser_role;
         // Check if the user has the required role
         if (!in_array($userRole, $roles)) {
             // Redirect or handle unauthorized access as needed
             return redirect()->route('signin')->with('error', 'Unauthorized access.');
         }
 
-        return $next($request);*/
-        dd(Auth::guard('web')->user());
+        return $next($request);
     }
 }
