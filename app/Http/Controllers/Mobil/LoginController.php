@@ -27,12 +27,8 @@ class LoginController extends Controller
     public function getUserIDFromToken(Request $request)
     {
         $token = $request->header('Authorization');
-        try {
-            $user = JWTAuth::setToken($token)->toUser();
-            return response()->json(['user_id' => $user->user_id], 200);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Geçersiz token'], 401);
-        }
+        $decodedToken = base64_decode($token);
+echo $decodedToken;
     
     }
 }
