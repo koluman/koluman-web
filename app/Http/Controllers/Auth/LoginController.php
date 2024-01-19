@@ -41,8 +41,8 @@ class LoginController extends Controller
             // Kullanıcının dil tercihini kontrol et
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
-            Auth::guard('web')->login($user, true);
-            if (!Auth::guard('web')->login($user)) {
+            Auth::guard('api')->login($user);
+            if (!Auth::guard('api')->login($user)) {
                 // Oturum açma başarısız.
                 throw new \Exception('Oturum açma başarısız.');
             }
