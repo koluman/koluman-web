@@ -24,4 +24,14 @@ class LoginController extends Controller
             return response()->json(['error' => $error], 401);
         }
     }
+    public function getUserIDFromToken(Request $request)
+    {
+        $token = $request->header('Authorization');
+        try {
+            $user = JWTAuth::authenticate($token);
+            return response()->json(['user_id' => $user->user_id], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Geçersiz token'], 401);
+        }
+    }
 }
