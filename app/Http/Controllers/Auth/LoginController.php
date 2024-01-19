@@ -22,7 +22,7 @@ class LoginController extends Controller
                 'password' => 'required|string',
             ]);
 
-            $credentials = $request->only('backuser_mail', 'password');
+            $credentials = $request->only('email', 'password');
 
             $user = BackUser::where('backuser_mail', $credentials['backuser_mail'])->first();
 
