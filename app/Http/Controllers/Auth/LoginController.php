@@ -18,8 +18,9 @@ class LoginController extends Controller
             $password = $request->input('password');
 
             $user = BackUser::where('backuser_mail', $email)->first();
+            dd($user);
 
-            if ($user && Hash::check($password, $user->backuser_password)) {
+            /*if ($user && Hash::check($password, $user->backuser_password)) {
                 // SanctumGuard kullanımı
                 $token = $user->createToken('api-token', ['role:' . $user->backuser_role])->plainTextToken;
 
@@ -37,7 +38,7 @@ class LoginController extends Controller
                 return redirect()->route($redirectRoute);
             } else {
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
-            }
+            }*/
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
