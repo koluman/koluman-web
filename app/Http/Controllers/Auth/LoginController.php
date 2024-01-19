@@ -33,7 +33,7 @@ class LoginController extends Controller
             $user['token'] = $token;
             $user['role'] = $userRole;
             // Kullanıcıyı web guard ile oturum aç
-            auth()->login($user, true);
+            Auth::login($user, true);
 
             // JWT token oluştur
 
@@ -47,7 +47,7 @@ class LoginController extends Controller
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            dd( auth()->user());
+            dd( Auth::user());
             //return redirect()->route($redirectRoute);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
