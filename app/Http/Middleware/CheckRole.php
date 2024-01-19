@@ -11,11 +11,11 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             abort(403, 'Unauthorized');
         }
     
-        $user = auth()->user();
+        $user = Auth::user();
         dd($user, $roles);
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
     }
