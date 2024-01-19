@@ -40,15 +40,12 @@ class LoginController extends Controller
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
 
-            return response()->json([
-                'status' => 'success',
-                'user' => $user,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ],
-                'role' => $userRole,  // Rol bilgisini response'a ekleyebilirsiniz
-            ]);
+            $redirectRoute = match ($userRole) {
+                'admin' => 'admin.dashboard',
+                'ajans' => 'ajans.dashboard',
+                default => 'user.dashboard',
+            };
+            return redirect()->route($redirectRoute);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
