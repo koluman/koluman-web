@@ -21,22 +21,25 @@ class LoginController extends Controller
                 'email' => 'required|string|email',
                 'password' => 'required|string',
             ]);
-    
-            $credentials = $request->only('backuser_email', 'password'); // 'backuser_email' kullanılmalıdır
-                
-            // Custom guard kullanarak ve BackUser modelini belirterek oturumu aç
-            if (!$token = Auth::guard('web')->attempt($credentials)) {
+
+            $credentials = $request->only('backuser_email', 'password');
+
+            $user = BackUser::where('backuser_email', $credentials['backuser_email'])->first();
+
+            if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Unauthorized',
+                    'message' => 'Invalid credentials',
                 ], 401);
             }
-    
+
+            $token = Auth::guard('web')->login($user);
+
             $user = Auth::guard('web')->user();
-    
+
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
-    
+
             return response()->json([
                 'status' => 'success',
                 'user' => $user,
@@ -46,7 +49,6 @@ class LoginController extends Controller
                 ],
                 'role' => $userRole,  // Rol bilgisini response'a ekleyebilirsiniz
             ]);
-    
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
