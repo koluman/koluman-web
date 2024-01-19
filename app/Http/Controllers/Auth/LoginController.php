@@ -25,7 +25,7 @@ class LoginController extends Controller
                 //Auth::login($user, true);
                 $user->role = $user->backuser_role;
 
-                Auth::guard('web')->login($user,true);
+                Auth::login($user,true);
                 $token = JWTAuth::fromUser($user);
                 $u = JWTAuth::setToken($token)->authenticate();
               
