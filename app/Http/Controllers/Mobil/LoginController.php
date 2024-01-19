@@ -24,11 +24,15 @@ class LoginController extends Controller
             return response()->json(['error' => $error], 401);
         }
     }
-    public function getUserIDFromToken(Request $request)
+    public function decodeToken(Request $request)
     {
         $token = $request->header('Authorization');
-        $decodedToken = base64_decode($token);
-echo $decodedToken;
-    
+
+        try {
+            $decodedToken = JWTAuth::setToken($token)->getPayload();
+            return response()->json(['decoded_token' => $decodedToken], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Geçersiz token'], 401);
+        }
     }
 }
