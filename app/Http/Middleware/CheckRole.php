@@ -34,5 +34,6 @@ class CheckRole
         if (!isset($user->backuser_role) || is_null($user->backuser_role)) {
             abort(403, 'Unauthorized');
         }
+        dd($user);
     }
 }
