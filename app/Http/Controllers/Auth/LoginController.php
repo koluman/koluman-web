@@ -17,34 +17,42 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-  
             $request->validate([
                 'email' => 'required|string|email',
                 'password' => 'required|string',
             ]);
+    
             $credentials = $request->only('email', 'password');
     
-            $token = Auth::attempt($credentials);
-            if (!$token) {
+            // Custom guard kullanarak ve BackUser modelini belirterek oturumu aç
+            if (!$token = Auth::guard('web')->attempt($credentials)) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Unauthorized',
                 ], 401);
             }
     
-            $user = Auth::user();
+            $user = Auth::guard('web')->user();
+    
+            // Kullanıcının rol bilgisini al
+            $userRole = $user->backuser_role;
+    
             return response()->json([
-                    'status' => 'success',
-                    'user' => $user,
-                    'authorisation' => [
-                        'token' => $token,
-                        'type' => 'bearer',
-                    ]
-                ]);
-
+                'status' => 'success',
+                'user' => $user,
+                'authorisation' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                ],
+                'role' => $userRole,  // Rol bilgisini response'a ekleyebilirsiniz
+            ]);
+    
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
-            return back()->with('error', $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 
