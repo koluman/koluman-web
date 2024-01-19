@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Diğer rotalarınız...
 //Route::middleware(['auth:api'])->group(function () {
-    Route::get('/test', [LoginController::class, 'test'])->name('test');
+    Route::post('/test', [LoginController::class, 'test'])->name('test');
    // Route::put('/addtestdrive', [TestDriveController::class, 'addtestdrive'])->name('addtestdrive');
 //});
 
