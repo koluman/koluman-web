@@ -53,7 +53,7 @@ class LoginController extends Controller
                 return redirect()->route($redirectRoute);
             }
             return back()->with('error', 'Giriş yapılamadı.');*/
-            dd(            Auth::guard('api')->login($user)        );
+            dd(            Auth::guard('api')->check()       );
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
