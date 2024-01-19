@@ -11,7 +11,12 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-      
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('signin');
+        }
+
+        // Retrieve the user's role from the session
         $userRole = session('role');
 
         // Check if the user has the required role
