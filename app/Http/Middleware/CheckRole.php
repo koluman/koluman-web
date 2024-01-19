@@ -29,7 +29,7 @@ class CheckRole
         abort(403, 'Unauthorized');*/
         $user = Auth::user();
 
-        dd($role);
+        dd($roles);
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
     }
 }
