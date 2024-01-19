@@ -32,7 +32,9 @@ class LoginController extends Controller
 
                 //$token = $user->createToken('api-token', ['role:' . $user->role]);
                 $user['token'] = $token;
-                // Kullanıcının dil tercihini kontrol et
+                $user['role'] = $user->role;
+
+                // Kullanıcnın dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
                 App::setLocale($preferredLanguage);
 
@@ -41,8 +43,7 @@ class LoginController extends Controller
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
-                dd($redirectRoute);
-               // return redirect()->route($redirectRoute);
+                return redirect()->route($redirectRoute);
             } else {
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
