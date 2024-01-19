@@ -42,8 +42,11 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('web')->login($user, true);
-           dd(Auth::guard('web')->login($user));
-            // Yönlendirme
+            if (!Auth::guard('web')->login($user)) {
+                // Oturum açma başarısız.
+                throw new \Exception('Oturum açma başarısız.');
+            }
+                        // Yönlendirme
             /*if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
