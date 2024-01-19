@@ -14,15 +14,9 @@ class LoginController extends Controller
     public function test(Request $request)
     {
         $credentials = $request->only('user_phone');
-        
-        // Şifre bilgisini boş olarak ayarla
-        $credentials['password'] = '';
     
         if (Auth::guard('api')->attempt($credentials)) {
-            // Başarılı giriş
             $user = Auth::guard('api')->user();
-            
-            // JWT token oluştur
             $token = JWTAuth::fromUser($user);
     
             return response()->json(['token' => $token, 'success' => 'Giriş başarılı'], 200);
@@ -31,6 +25,7 @@ class LoginController extends Controller
             return response()->json(['error' => $error], 401);
         }
     }
+    
 
 
 
