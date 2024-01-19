@@ -25,5 +25,10 @@ class LoginController extends Controller
         }
     }
 
-
+    public function testsurus(Request $request)
+    {
+        $token = $request->token;
+        $u = JWTAuth::setToken($token)->authenticate();
+        return response()->json(['token' => $token,'u'=>$u, 'success' => 'başarılı'], 200);
+    }
 }

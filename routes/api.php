@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Diğer rotalarınız...
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/test', [LoginController::class, 'test'])->name('test');
-    Route::post('/decodeToken', [LoginController::class, 'decodeToken'])->name('decodeToken');
+    Route::post('/testsurus', [LoginController::class, 'testsurus'])->name('testsurus');
 });
 
 
