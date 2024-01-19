@@ -762,9 +762,9 @@
                             <img class="rounded-circle header-profile-user"
                                 src="{{ URL::asset('build/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                @if (Auth::check())
+                                @if (Auth::guard('web')->user())
                                     <span
-                                        class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->user_name }}</span>
+                                        class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::guard('web')->user()->user_name }}</span>
                                 @endif <span
                                     class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Hesabım</span>
                             </span>
@@ -772,7 +772,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        @if (Auth::check())
+                        @if (Auth::guard('web')->user())
                             <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->user_name }}!</h6>
                         @endif
                         <a class="dropdown-item" href="pages-profile"><i
