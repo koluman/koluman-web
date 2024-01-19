@@ -42,7 +42,7 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('web')->login($user);
-        s
+        
             if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
