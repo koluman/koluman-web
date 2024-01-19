@@ -18,39 +18,48 @@ class LoginController extends Controller
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-
+    
+            // Kullanıcıyı bul
             $user = BackUser::where('backuser_mail', $email)->first();
-
+    
+            // Kullanıcı var mı ve şifre doğru mu?
             if ($user && Hash::check($password, $user->backuser_password)) {
-                //Auth::login($user, true);
+                // Kullanıcı rolünü ayarla
                 $user->role = $user->backuser_role;
-
-                Auth::login($user,true);
-                $token = JWTAuth::fromUser($user);
-                $u = JWTAuth::setToken($token)->authenticate();
-              
-
-                //$token = $user->createToken('api-token', ['role:' . $user->role]);
-                $user['token'] = $token;
-                $user['role'] = $user->role;
-
-                // Kullanıcnın dil tercihini kontrol et
-                $preferredLanguage = Session::put('lang', $user->backuser_language);                ; 
-                App::setLocale($preferredLanguage);
-
-                $redirectRoute = match ($user->role) {
-                    'admin' => 'admin.dashboard',
-                    'ajans' => 'ajans.dashboard',
-                    default => 'user.dashboard',
-                };
-                return redirect()->route($redirectRoute);
+    
+                // Giriş işlemini gerçekleştir
+                if (Auth::attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
+                    // Giriş başarılıysa
+                    $token = JWTAuth::fromUser($user);
+                    $u = JWTAuth::setToken($token)->authenticate();
+    
+                    $user['token'] = $token;
+                    $user['role'] = $user->role;
+    
+                    // Kullanıcının dil tercihini kontrol et
+                    $preferredLanguage = Session::put('lang', $user->backuser_language);               
+                    App::setLocale($preferredLanguage);
+    
+                    $redirectRoute = match ($user->role) {
+                        'admin' => 'admin.dashboard',
+                        'ajans' => 'ajans.dashboard',
+                        default => 'user.dashboard',
+                    };
+                    return redirect()->route($redirectRoute);
+                } else {
+                    // Giriş başarısızsa
+                    return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
+                }
             } else {
+                // Kullanıcı bulunamadı veya şifre hatalıysa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
         } catch (\Exception $e) {
+            // İstisna durumları için
             return back()->with('error', $e->getMessage());
         }
     }
+    
     public function logout()
     {
         Auth::logout();
