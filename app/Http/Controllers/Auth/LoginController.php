@@ -24,10 +24,10 @@ class LoginController extends Controller
                 // Kullanıcının rol bilgisini al
                 $userRole = $user->backuser_role;
                 Auth::login($user, true);
-                $token = JWTAuth::fromUser($user);
-                $u = JWTAuth::setToken($token)->authenticate();
-                $user['token'] = $token;
-                $user['role'] = $userRole;
+                //$token = JWTAuth::fromUser($user);
+                //$u = JWTAuth::setToken($token)->authenticate();
+                //$user['token'] = $token;
+                //$user['role'] = $userRole;
     
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);
