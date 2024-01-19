@@ -13,9 +13,7 @@ class CheckRole
     {
         try {
             // Gelen token'ı al
-            $token = $request->header('Authorization');
-            dd($token);
-            // Token geçerli mi kontrol et
+            dd($request->headers->all());            // Token geçerli mi kontrol et
            /* $user = JWTAuth::setToken($token)->authenticate();
 
             if (!$user) {
