@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function userlogin(Request $request)
     {
         try {
             $userPhone = $request->user_phone;
