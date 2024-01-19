@@ -31,10 +31,10 @@
             aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center gap-2">
                 <img class="rounded header-profile-user"
-                    src="@if (Auth::user()->avatar != '') {{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('build/images/users/avatar-1.jpg') }} @endif"
+                    src="{{ URL::asset('build/images/users/avatar-1.jpg') }}"
                     alt="Header Avatar">
                 <span class="text-start">
-                    <span class="d-block fw-medium sidebar-user-name-text">{{ Auth::user()->name }}</span>
+                    <span class="d-block fw-medium sidebar-user-name-text">fddsfsdf</span>
                     <span class="d-block fs-14 sidebar-user-name-sub-text"><i
                             class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
                             class="align-middle">Online</span></span>
@@ -43,7 +43,7 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <h6 class="dropdown-header">Hoşgeldin {{ Auth::user()->backuser_name }}!</h6>
+            <h6 class="dropdown-header">Hoşgeldin hgjjghj!</h6>
             <a class="dropdown-item" href="pages-profile"><i
                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Profile</span></a>
