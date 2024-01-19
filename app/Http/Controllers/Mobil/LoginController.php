@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
@@ -28,13 +29,15 @@ class LoginController extends Controller
     public function decodeToken(Request $request)
     {
         $token = $request->header('Authorization');
-    
+
         try {
             $user = JWTAuth::setToken($token)->authenticate();
             return response()->json(['user_id' => $user->user_id], 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Geçersiz token'], 401);
+            // Hatanın detayını loglamak için
+            Log::error('Token çözme hatası: ' . $e->getMessage());
+            // Hata mesajını ekrana yazdırmak için
+            return response()->json(['error' => 'Geçersiz token: ' . $e->getMessage()], 401);
         }
     }
-    
 }
