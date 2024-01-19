@@ -43,7 +43,7 @@ class LoginController extends Controller
                     default => 'user.dashboard',
                 };
     
-                return redirect()->route($redirectRoute);
+                return redirect()->route($redirectRoute)->header('Authorization', 'Bearer ' . $token);
             } else {
                 // Giriş başarısızsa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));

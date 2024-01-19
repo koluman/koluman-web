@@ -12,15 +12,25 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         try {
+            // Gelen token'ı al
             $token = JWTAuth::getToken();
-            $user = JWTAuth::toUser($token);
-            dd($user);
-            // Diğer middleware işlemleri...
-    
-            //return $next($request);
+
+            // Token geçerli mi kontrol et
+            $user = JWTAuth::setToken($token)->authenticate();
+
+            if (!$user) {
+                // Geçerli bir kullanıcı yoksa, 401 hatası döndür
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+
+            // Diğer kontrolleri yapabilirsiniz...
+
+            return $next($request);
         } catch (\Exception $e) {
-            return abort(401, 'Unauthorized');
+            // İstisna durumları için
+            return response()->json(['error' => $e->getMessage()], 500);
         }
+    
     }
     
   
