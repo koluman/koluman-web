@@ -33,7 +33,7 @@ class LoginController extends Controller
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
     
-                    $user['token'] = $token;
+                    /*$user['token'] = $token;
                     $user['role'] = $user->role;
     
                     // Kullanıcının dil tercihini kontrol et
@@ -45,7 +45,8 @@ class LoginController extends Controller
                         'ajans' => 'ajans.dashboard',
                         default => 'user.dashboard',
                     };
-                    return redirect()->route($redirectRoute);
+                    return redirect()->route($redirectRoute);*/
+                    dd($u);
                 } else {
                     // Giriş başarısızsa
                     return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
