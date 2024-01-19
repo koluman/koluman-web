@@ -10,7 +10,7 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        dd($roles);
+        dd(Auth::check());
        /*if (Auth::check()) {
             $user = Auth::user();
             foreach ($roles as $role) {
