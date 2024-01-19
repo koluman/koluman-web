@@ -654,14 +654,14 @@
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user" src="{{URL::asset('build/images/users/avatar-1.jpg')}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::user()->name}}</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">sfsdf</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Hesabım</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Hoşgeldin {{Auth::user()->backuser_name}}!</h6>
+                        <h6 class="dropdown-header">Hoşgeldin !</h6>
                         <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profilim</span></a>
                         <a class="dropdown-item" href="apps-chat"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Mesajlar</span></a>
                         <a class="dropdown-item" href="apps-tasks-kanban"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Takvim</span></a>
