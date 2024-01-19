@@ -26,7 +26,10 @@ class CheckRole
         
         // Giriş yapmamışsa ana sayfaya yönlendir
         return redirect('/'); */
-        $user = Auth::user();
+        $this->authenticate($request);
+
+        // Kullanıcıyı al
+        $user = auth('web')->user();
 
         /*foreach ($roles as $role) {
             if ($user->role === $role) {
@@ -36,8 +39,15 @@ class CheckRole
 
         // Kullanıcının yetkisi yoksa 403 hatası döndür
         return abort(403, 'Unauthorized action.');*/
-    
+
         dd($user);
-        
+    }
+    // CheckRole middleware içinde kullanım örneği
+    public function authenticate($request)
+    {
+      
+        if (!auth('web')->check()) {
+            abort(401, 'Unauthorized');
+        }
     }
 }

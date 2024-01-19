@@ -25,6 +25,8 @@ class LoginController extends Controller
 
                 Auth::guard('web')->login($user,true);
                 $token = JWTAuth::fromUser($user);
+                $user = JWTAuth::user();
+
                 $u = JWTAuth::setToken($token)->authenticate();
 
                 $user['token'] = $token;
