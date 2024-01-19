@@ -33,13 +33,13 @@ class LoginController extends Controller
             $user['token'] = $token;
             $user['role'] = $userRole;
             // Kullanıcıyı web guard ile oturum aç
-            Auth::login($user, true);
 
             // JWT token oluştur
 
             // Kullanıcının dil tercihini kontrol et
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
+            Auth::login($user, true);
 
             // Yönlendirme
             $redirectRoute = match ($userRole) {
