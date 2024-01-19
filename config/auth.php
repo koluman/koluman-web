@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'users',
+        'guard' => 'web',
+        'passwords' => 'backusers',
     ],
     
 
@@ -70,7 +70,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\BackUser::class,
         ],
-     
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
