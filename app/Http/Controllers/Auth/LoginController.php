@@ -44,7 +44,7 @@ class LoginController extends Controller
             Auth::guard('api')->login($user);
          
                         // Yönlendirme
-            /*if (Auth::check()) {
+            if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
@@ -52,8 +52,7 @@ class LoginController extends Controller
                 };
                 return redirect()->route($redirectRoute);
             }
-            return back()->with('error', 'Giriş yapılamadı.');*/
-            dd(            Auth::guard('api')->check()       );
+            return back()->with('error', 'Giriş yapılamadı.');
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
