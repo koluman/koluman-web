@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
@@ -20,15 +22,24 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
 
             if ($user && Hash::check($password, $user->backuser_password)) {
-                // Sanctum kullanımı
+                // Kullanıcının rol bilgisini al
+                $userRole = $user->backuser_role;
+
+                // Kullanıcıyı web guard ile oturum aç
                 Auth::guard('web')->login($user, true);
-                $token = $user->createToken('api-token', ['role:' . $user->backuser_role])->plainTextToken;
-            
+
+                // JWT token oluştur
+                $token = JWTAuth::fromUser($user);
+
+                // Token bilgilerini kullanıcıya ekle
                 $user['token'] = $token;
+                $user['role'] = $userRole;
+
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);
                 App::setLocale($preferredLanguage);
-                $redirectRoute = match ($user->backuser_role) {
+
+                $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
@@ -36,16 +47,18 @@ class LoginController extends Controller
 
                 return redirect()->route($redirectRoute);
             } else {
+                // Giriş başarısızsa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
         } catch (\Exception $e) {
+            // İstisna durumları için
             return back()->with('error', $e->getMessage());
         }
     }
-    
+
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         Session::flush();
         return redirect()->route('signin');
     }
