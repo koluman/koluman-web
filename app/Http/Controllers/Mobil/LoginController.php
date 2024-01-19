@@ -33,14 +33,15 @@ class LoginController extends Controller
         try {
             // Token'ı çöz
             $decodedToken = JWTAuth::setToken($token)->getPayload();
+            return response()->json($decodedToken);
 
             // Payload'dan user_id'yi al
-            $userId = $decodedToken->get('user_id');
+            //$userId = $decodedToken->get('user_id');
 
-            return response()->json(['user_id' => $userId], 200);
+            //return response()->json(['user_id' => $userId], 200);
         } catch (\Exception $e) {
             // Hata durumunda
-            return response()->json(['error' => 'Geçersiz token: ' . $e->getMessage()], 401);
+            //return response()->json(['error' => 'Geçersiz token: ' . $e->getMessage()], 401);
         }
     }
 }
