@@ -29,6 +29,6 @@ class LoginController extends Controller
     {
         $token = $request->token;
         $u = JWTAuth::setToken($token)->authenticate();
-        return response()->json(['token' => $token,'u'=>$u, 'success' => 'başarılı'], 200);
+        return response()->json(['u'=>$u, 'success' => 'başarılı'], 200);
     }
 }
