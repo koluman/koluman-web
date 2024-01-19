@@ -12,7 +12,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         // Kullanıcının oturum açtığını kontrol et
-        if (!auth()->check()) {
+        /*if (!auth()->check()) {
             abort(403, 'Unauthorized');
         }
     
@@ -28,7 +28,8 @@ class CheckRole
         }
     
         // Yetki yoksa isteği reddet
-        abort(403, 'Unauthorized');
+        abort(403, 'Unauthorized');*/
+        dd(auth()->user());
     }
     
     
