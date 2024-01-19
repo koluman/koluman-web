@@ -41,9 +41,9 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('web')->login($user, true);
-
+            dd(Auth::guard('web')->login($user, true));
             // Yönlendirme
-            if (Auth::check()) {
+            /*if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
@@ -51,7 +51,7 @@ class LoginController extends Controller
                 };
                 return redirect()->route($redirectRoute);
             }
-            return back()->with('error', 'Giriş yapılamadı.');
+            return back()->with('error', 'Giriş yapılamadı.');*/
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
