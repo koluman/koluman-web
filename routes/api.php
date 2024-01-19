@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Diğer rotalarınız...
 //Route::middleware(['auth:api'])->group(function () {
-    Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 //});
 
 Route::middleware(['jwt.verify'])->group(function () {
