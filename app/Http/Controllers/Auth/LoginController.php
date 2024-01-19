@@ -38,7 +38,7 @@ class LoginController extends Controller
             $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
-            $userRole = $user->backuser_role;
+            //$userRole = $user->backuser_role;
             dd($user);
             /*$redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
