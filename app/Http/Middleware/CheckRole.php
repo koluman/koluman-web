@@ -31,9 +31,7 @@ class CheckRole
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
         $user = auth()->user();
 
-        if (!isset($user->backuser_role) || is_null($user->backuser_role)) {
-            abort(403, 'Unauthorized');
-        }
+        
         dd($user);
     }
 }
