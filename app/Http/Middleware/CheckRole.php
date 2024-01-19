@@ -12,8 +12,8 @@ class CheckRole
     {
     
         // Kullanıcıyı al
-        $user = auth('web')->user();
-    dd($user);
+       // $user = auth('web')->user();
+    dd(Auth::guard('web')->check());
        /* if (!$user) {
             // Kullanıcı oturumu açık değilse, 401 hatası döndür
             abort(401, 'Unauthorized');
