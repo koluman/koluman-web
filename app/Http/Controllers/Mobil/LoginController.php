@@ -17,7 +17,8 @@ class LoginController extends Controller
         if ($user) {
             Auth::guard('api')->login($user);
             $token = JWTAuth::fromUser($user);
-            return response()->json(['token' => $token, 'user' => $user, 'success' => 'Giriş başarılı'], 200);
+            $u = JWTAuth::setToken($token)->authenticate();
+            return response()->json(['token' => $token, 'user' => $user,'u'=>$u, 'success' => 'Giriş başarılı'], 200);
         } else {
             $error = 'Giriş başarısız: ' . $userPhone;
             return response()->json(['error' => $error], 401);
@@ -25,16 +26,4 @@ class LoginController extends Controller
     }
 
 
-
-    public function respondWithToken($token, $user)
-    {
-        $expiration = JWTAuth::factory()->getTTL() * 60;
-
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $expiration,
-            'user' => $user,
-        ]);
-    }
 }
