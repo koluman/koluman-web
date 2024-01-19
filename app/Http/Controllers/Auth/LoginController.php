@@ -23,7 +23,7 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
     
             // Kullanıcı var mı ve şifre doğru mu?
-            if ($user && Hash::check($password, $user->backuser_password)) {
+            //if ($user && Hash::check($password, $user->backuser_password)) {
                 // Kullanıcı rolünü ayarla
                 $user->role = $user->backuser_role;
     
@@ -51,10 +51,10 @@ class LoginController extends Controller
                     // Giriş başarısızsa
                     return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
                 }
-            } else {
+            /*} else {
                 // Kullanıcı bulunamadı veya şifre hatalıysa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
-            }
+            }*/
         } catch (\Exception $e) {
             // İstisna durumları için
             return back()->with('error', $e->getMessage());
