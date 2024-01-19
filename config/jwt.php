@@ -300,5 +300,5 @@ return [
     ],
     'driver' => 'jwt',
     'user' => App\Models\User::class,
-    
+
 ];
