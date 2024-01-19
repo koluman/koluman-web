@@ -23,9 +23,10 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $email)->first();
             dd($user);
             // Kullanıcı var mı ve şifre doğru mu?
-            /*if ($user && Hash::check($password, $user->backuser_password)) {
+            if ($user && Hash::check($password, $user->backuser_password)) {
+                dd("dfgndkf");
                 // Kullanıcı rolünü ayarla
-                $user->role = $user->backuser_role;
+                /*$user->role = $user->backuser_role;
     
                 // Giriş işlemini gerçekleştir
                 if (Auth::guard('web')->attempt(['backuser_mail' => $email, 'backuser_password' => $password])) {
@@ -49,11 +50,11 @@ class LoginController extends Controller
                 } else {
                     // Giriş başarısızsa
                     return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
-                }
+                }*/
             } else {
                 // Kullanıcı bulunamadı veya şifre hatalıysa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
-            }*/
+            }
         } catch (\Exception $e) {
             // İstisna durumları için
             return back()->with('error', $e->getMessage());
