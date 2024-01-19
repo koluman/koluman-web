@@ -29,7 +29,7 @@ class CheckRole
         // Yetki yoksa isteği reddet
         abort(403, 'Unauthorized');*/
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
-        $user = auth()->user();
+        $user = Auth::user();
         dd($user); // Kullanıcıyı ekrana yazdırarak kontrol et
     }
 }
