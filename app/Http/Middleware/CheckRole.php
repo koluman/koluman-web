@@ -26,6 +26,6 @@ class CheckRole
         }
 
         return $next($request);*/
-        dd( Auth::guard('api')->check() );
+        dd(Auth::guard('web')->user());
     }
 }
