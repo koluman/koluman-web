@@ -11,25 +11,12 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        // Kullanıcının oturum açtığını kontrol et
-        /*if (!auth()->check()) {
-            abort(403, 'Unauthorized');
-        }
-        // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
-        if (!$user || !property_exists($user, 'backuser_role') || is_null($user->backuser_role)) {
+        if (!auth()->check()) {
             abort(403, 'Unauthorized');
         }
     
-        // Verilen roller arasında kullanıcının rolü var mı kontrol et
-        if (in_array($user->backuser_role, $roles)) {
-            return $next($request);
-        }
-    
-        // Yetki yoksa isteği reddet
-        abort(403, 'Unauthorized');*/
-        $user = Auth::user();
-
-        dd($roles);
+        $user = auth()->user();
+        dd($user, $roles);
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
     }
 }
