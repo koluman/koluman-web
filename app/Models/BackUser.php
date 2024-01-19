@@ -10,7 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 
 class BackUser extends Authenticatable implements JWTSubject 
-
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -69,5 +68,4 @@ class BackUser extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    
 }
