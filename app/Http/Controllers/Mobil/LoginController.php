@@ -24,7 +24,7 @@ class LoginController extends Controller
                 $responseData = [
                     "success" => 1,
                     "token" => $token,
-                    'user' => $user,
+                    'user' => $u,
                     "message" => "Login İşlemi başarılı",
                 ];
             } else {
