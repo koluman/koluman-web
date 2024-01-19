@@ -39,7 +39,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'backusers',
+            'provider' => 'backusers', // Değişiklik
         ],
         'api' => [
             'driver' => 'jwt',
