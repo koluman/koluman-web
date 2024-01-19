@@ -21,9 +21,9 @@ class LoginController extends Controller
     
             // Kullanıcıyı bul
             $user = BackUser::where('backuser_mail', $email)->first();
-    
+            dd($user);
             // Kullanıcı var mı ve şifre doğru mu?
-            //if ($user && Hash::check($password, $user->backuser_password)) {
+            /*if ($user && Hash::check($password, $user->backuser_password)) {
                 // Kullanıcı rolünü ayarla
                 $user->role = $user->backuser_role;
     
@@ -33,7 +33,7 @@ class LoginController extends Controller
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
     
-                    /*$user['token'] = $token;
+                    $user['token'] = $token;
                     $user['role'] = $user->role;
     
                     // Kullanıcının dil tercihini kontrol et
@@ -45,13 +45,12 @@ class LoginController extends Controller
                         'ajans' => 'ajans.dashboard',
                         default => 'user.dashboard',
                     };
-                    return redirect()->route($redirectRoute);*/
-                    dd($u);
+                    return redirect()->route($redirectRoute);
                 } else {
                     // Giriş başarısızsa
                     return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
                 }
-            /*} else {
+            } else {
                 // Kullanıcı bulunamadı veya şifre hatalıysa
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }*/
