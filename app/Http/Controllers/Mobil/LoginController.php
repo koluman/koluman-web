@@ -9,23 +9,21 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-   
-        public function test(Request $request)
-        {
-            $credentials = $request->only('user_phone', 'password');
-    
-            if (Auth::guard('api')->attempt($credentials)) {
-                // Başarılı giriş
-                $user = Auth::guard('api')->user();
-                return response()->json(['success' => 'Giriş başarılı'], 200);
-            } else {
-                $error = 'Giriş başarısız: ' . $credentials['user_phone'];
-                return response()->json(['error' => $error], 401);
-            }
-        
+
+    public function test(Request $request)
+    {
+        $credentials = $request->only('user_phone', 'user_password');
+
+        if (!$token = JWTAuth::attempt($credentials)) {
+            // Giriş başarısız
+            return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        // Başarılı giriş
+        return response()->json(['success' => 'Giriş başarılı', 'token' => $token], 200);
     }
-    
-    
+
+
 
 
 

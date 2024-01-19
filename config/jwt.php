@@ -298,5 +298,7 @@ return [
         'storage' => Tymon\JWTAuth\Providers\Storage\Illuminate::class,
 
     ],
-
+    'driver' => 'jwt',
+    'user' => App\Models\User::class,
+    
 ];
