@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -41,7 +42,10 @@ class LoginController extends Controller
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             Auth::guard('web')->login($user, true);
-            dd(Auth::guard('web')->login($user, true));
+            if (!Auth::guard('web')->login($user, true)) {
+                throw new \Exception('Oturum açma başarısız.');
+            }
+            Log::info('Middleware: Oturum Açma İşlemi Başarılı');
             // Yönlendirme
             /*if (Auth::check()) {
                 $redirectRoute = match ($userRole) {
