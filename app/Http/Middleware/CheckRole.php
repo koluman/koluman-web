@@ -23,7 +23,7 @@ class CheckRole
         if (!in_array($userRole, $roles)) {
             // Redirect or handle unauthorized access as needed
             return redirect()->route('signin')->with('error', 'Unauthorized access.');
-        }*/s
+        }*/
 
         return $next($request);
     }
