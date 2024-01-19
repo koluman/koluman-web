@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckRole
 {
@@ -14,7 +13,7 @@ class CheckRole
       
     
         $user = Auth::user();
-        dd($user, $roles);
+        dd($request,$next, $roles);
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
     }
 }
