@@ -53,6 +53,8 @@ class LoginController extends Controller
                 return redirect()->route($redirectRoute);
 
             }
+            return back()->with('error', 'Giriş yapılamadı.');
+
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return back()->with('error', $e->getMessage());
