@@ -20,7 +20,7 @@ class LoginController extends Controller
             if ($user) {
                 Auth::guard('api')->login($user);
                 $token = JWTAuth::fromUser($user);
-                $u = JWTAuth::setToken($token)->guard('api')->authenticate();
+                $u = JWTAuth::setToken($token)->authenticate();
                 $responseData = [
                     "success" => 1,
                     "token" => $token,
