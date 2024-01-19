@@ -29,7 +29,7 @@ class LoginController extends Controller
     public function decodeToken(Request $request)
     {
         $token = $request->header('Authorization');
-        return response()->json(JWTAuth::setToken($token)->authenticate());
+        return response(JWTAuth::setToken($token)->authenticate());
 
         /*try {
             $user = JWTAuth::setToken($token)->authenticate();
