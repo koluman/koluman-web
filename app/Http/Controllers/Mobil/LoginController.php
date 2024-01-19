@@ -29,9 +29,7 @@ class LoginController extends Controller
     public function decodeToken(Request $request)
     {
         $token = $request->header('Authorization');
-        return response(JWTAuth::setToken($token)->authenticate());
-
-        /*try {
+        try {
             $user = JWTAuth::setToken($token)->authenticate();
             return response()->json(['user_id' => $user->user_id], 200);
         } catch (\Exception $e) {
@@ -39,6 +37,6 @@ class LoginController extends Controller
             Log::error('Token çözme hatası: ' . $e->getMessage());
             // Hata mesajını ekrana yazdırmak için
             return response()->json(['error' => 'Geçersiz token: ' . $e->getMessage()], 401);
-        }*/
+        }
     }
 }
