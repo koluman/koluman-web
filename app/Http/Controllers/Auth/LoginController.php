@@ -24,7 +24,7 @@ class LoginController extends Controller
 
             $credentials = $request->only('email', 'password');
 
-            $user = BackUser::where('backuser_mail', $credentials['backuser_mail'])->first();
+            $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
             if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 return response()->json([
