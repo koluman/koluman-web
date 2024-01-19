@@ -18,29 +18,31 @@ class LoginController extends Controller
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-
+    
             $user = BackUser::where('backuser_mail', $email)->first();
             if ($user && Hash::check($password, $user->backuser_password)) {
-                $user->role = $user->backuser_role;
-
-                Auth::guard('web')->login($user,true);
+                // Kullanıcının rol bilgisini al
+                $userRole = $user->backuser_role;
+    
+                Auth::guard('web')->login($user, true);
                 $token = JWTAuth::fromUser($user);
-                $user = JWTAuth::user();
-
+    
                 $u = JWTAuth::setToken($token)->authenticate();
-
+    
+                // Token bilgilerini kullanıcıya ekle
                 $user['token'] = $token;
-                $user['role'] = $user->role;
-
+                $user['role'] = $userRole;
+    
                 // Kullanıcının dil tercihini kontrol et
                 $preferredLanguage = Session::put('lang', $user->backuser_language);
                 App::setLocale($preferredLanguage);
-
-                $redirectRoute = match ($user->role) {
+    
+                $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
+    
                 return redirect()->route($redirectRoute);
             } else {
                 // Giriş başarısızsa
@@ -51,6 +53,7 @@ class LoginController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+    
 
 
 
