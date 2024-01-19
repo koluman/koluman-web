@@ -18,7 +18,6 @@ class LoginController extends Controller
             $password = $request->input('password');
 
             $user = BackUser::where('backuser_mail', $email)->first();
-            dd($user);
 
             if ($user && Hash::check($password, $user->backuser_password)) {
                 // SanctumGuard kullanımı
