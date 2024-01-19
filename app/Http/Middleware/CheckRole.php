@@ -26,7 +26,18 @@ class CheckRole
         
         // Giriş yapmamışsa ana sayfaya yönlendir
         return redirect('/'); */
-        dd(Auth::check());
+        $user = Auth::user();
+
+        /*foreach ($roles as $role) {
+            if ($user->role === $role) {
+                return $next($request);
+            }
+        }
+
+        // Kullanıcının yetkisi yoksa 403 hatası döndür
+        return abort(403, 'Unauthorized action.');*/
+    
+        dd($user);
         
     }
 }
