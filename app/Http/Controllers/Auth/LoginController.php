@@ -22,9 +22,9 @@ class LoginController extends Controller
                 'password' => 'required|string',
             ]);
 
-            $credentials = $request->only('backuser_email', 'password');
+            $credentials = $request->only('backuser_mail', 'password');
 
-            $user = BackUser::where('backuser_email', $credentials['backuser_email'])->first();
+            $user = BackUser::where('backuser_mail', $credentials['backuser_mail'])->first();
 
             if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 return response()->json([
