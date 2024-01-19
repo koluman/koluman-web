@@ -10,29 +10,20 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-        public function test(Request $request)
-        {
-            $userPhone = $request->user_phone;
-            $user = User::where('user_phone', $userPhone)->first();
-    
-            if ($user) {
-                Auth::guard('api')->login($user);
-
-                // Kullanıcıya dayalı olarak JWT token oluştur
-                if (!$token = JWTAuth::attempt($userPhone)) {
-                    return response()->json(['error' => 'Unauthorized'], 401);
-                }
-            
-                $user = JWTAuth::user();
-            
-                return $this->respondWithToken($token, $user);    
-                // Oluşturulan token ile birlikte yanıtı döndür
-            } else {
-                $error = 'Giriş başarısız: ' . $userPhone;
-                return response()->json(['error' => $error], 401);
-            }
+    public function test(Request $request)
+    {
+        $userPhone = $request->user_phone;
+        $user = User::where('user_phone', $userPhone)->first();
+        if ($user) {
+            Auth::guard('api')->login($user);
+            $token = JWTAuth::fromUser($user);
+            return response()->json(['token' => $token, 'user' => $user, 'success' => 'Giriş başarılı'], 200);
+        } else {
+            $error = 'Giriş başarısız: ' . $userPhone;
+            return response()->json(['error' => $error], 401);
         }
-    
+    }
+
 
 
     public function respondWithToken($token, $user)
