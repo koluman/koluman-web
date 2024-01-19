@@ -50,10 +50,11 @@ class LoginController extends Controller
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
-                return redirect()->route($redirectRoute);
+                //return redirect()->route($redirectRoute);
 
             }
-            return back()->with('error', 'Giriş yapılamadı.');
+            dd(Auth::check());
+           // return back()->with('error', 'Giriş yapılamadı.');
 
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
