@@ -1,49 +1,53 @@
 <?php
 
 namespace App\Http\Controllers\Mobil;
-
-use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
 
-    public function test(Request $request)
+   
+    public function __construct()
     {
-        $userPhone = $request->user_phone;
-        $user = User::where('user_phone', $userPhone)->first();
-        if ($user) {
-            Auth::guard('api')->login($user);
-            $token = JWTAuth::fromUser($user);
-            return response()->json(['token' => $token, 'user' => $user, 'success' => 'Giriş başarılı'], 200);
-        } else {
-            $error = 'Giriş başarısız: ' . $userPhone;
-            return response()->json(['error' => $error], 401);
-        }
+        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    public function decodeToken(Request $request)
+    public function login()
     {
-        $token = $request->header('Authorization');
+        $credentials = request(['email', 'password']);
 
-        try {
-            // Token'ı çöz
-            $decodedToken = JWTAuth::setToken($token)->getPayload();
-    
-            // Token'ın doğruluğunu kontrol et
-            $isValid = JWTAuth::checkOrFail();
-    
-            // Payload'dan user_id'yi al
-            $userId = $decodedToken->get('user_id');
-    
-            return response()->json(['user_id' => $userId], 200);
-        } catch (\Exception $e) {
-            // Hata durumunda
-            return response()->json(['error' => 'Geçersiz token: ' . $e->getMessage()], 401);
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        return $this->respondWithToken($token);
+    }
+
+  
+    public function me()
+    {
+        return response()->json(auth()->user());
+    }
+
+   
+    public function logout()
+    {
+        auth()->logout();
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+
+  
+
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => JWTAuth::factory()->getTTL() * 60
+        ]);
     }
 }
