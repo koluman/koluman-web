@@ -33,17 +33,21 @@ class LoginController extends Controller
                 ], 401);
             }
 
+            $userRole = $user->backuser_role;
+
+            // JWT token oluştur
             $token = JWTAuth::fromUser($user);
+            
             if (!$token) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'JWT token could not be generated',
                 ], 500);
             }
+            
             $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
-            $userRole = $user->backuser_role;
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
             /*$redirectRoute = match ($userRole) {
