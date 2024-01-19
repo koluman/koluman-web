@@ -48,7 +48,7 @@ class LoginController extends Controller
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            dd(auth()->login($user, true));
+            dd(auth()->user());
             //return redirect()->route($redirectRoute);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
