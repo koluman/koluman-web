@@ -18,17 +18,18 @@ class CheckRole
     
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
         $user = auth()->user();
-        if (!$user || !property_exists($user, 'role') || is_null($user->role)) {
+        if (!$user || !property_exists($user, 'backuser_role') || is_null($user->backuser_role)) {
             abort(403, 'Unauthorized');
         }
     
         // Verilen roller arasında kullanıcının rolü var mı kontrol et
-        if (in_array($user->role, $roles)) {
+        if (in_array($user->backuser_role, $roles)) {
             return $next($request);
         }
     
         // Yetki yoksa isteği reddet
         abort(403, 'Unauthorized');
     }
+    
     
 }
