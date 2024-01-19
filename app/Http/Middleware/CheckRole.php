@@ -12,7 +12,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         // Check if the user is authenticated
-        if (!Auth::check()) {
+        /*if (!Auth::check()) {
             return redirect()->route('signin');
         }
 
@@ -25,6 +25,7 @@ class CheckRole
             return redirect()->route('signin')->with('error', 'Unauthorized access.');
         }
 
-        return $next($request);
+        return $next($request);*/
+        dd(Auth::check());
     }
 }

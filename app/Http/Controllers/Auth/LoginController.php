@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\CheckRole;
 use App\Models\BackUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -44,19 +43,16 @@ class LoginController extends Controller
             Auth::login($user, true);
 
             // Yönlendirme
-           
-            // Kullanıcı rol bilgisini kontrol et
-            $checkRoleMiddleware = new CheckRole();
-            $checkRoleMiddleware->handle($request, function ($request) use ($userRole) {
-                // Middleware başarılı, rol bilgisine göre yönlendirme yap
+            if (Auth::check()) {
+
                 $redirectRoute = match ($userRole) {
                     'admin' => 'admin.dashboard',
                     'ajans' => 'ajans.dashboard',
                     default => 'user.dashboard',
                 };
                 return redirect()->route($redirectRoute);
-            }, 'admin', 'ajans');
 
+            }
             return back()->with('error', 'Giriş yapılamadı.');
 
         } catch (\Exception $e) {
