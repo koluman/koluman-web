@@ -22,8 +22,8 @@ class LoginController extends Controller
                 'password' => 'required|string',
             ]);
     
-            $credentials = $request->only('email', 'password');
-    
+            $credentials = $request->only('backuser_email', 'password'); // 'backuser_email' kullanılmalıdır
+                
             // Custom guard kullanarak ve BackUser modelini belirterek oturumu aç
             if (!$token = Auth::guard('web')->attempt($credentials)) {
                 return response()->json([
