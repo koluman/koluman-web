@@ -14,13 +14,18 @@ class LoginController extends Controller
     {
         $credentials = $request->only('user_phone', 'user_password');
 
-        if (!$token = JWTAuth::attempt($credentials)) {
-            // Giriş başarısız
-            return response()->json(['error' => 'Invalid credentials'], 401);
+        if (Auth::guard('api')->attempt($credentials)) {
+            // Başarılı giriş
+            $user = Auth::guard('api')->user();
+            
+            // JWT token oluştur
+            $token = JWTAuth::fromUser($user);
+    
+            return response()->json(['token' => $token, 'success' => 'Giriş başarılı'], 200);
+        } else {
+            $error = 'Giriş başarısız: ' . $credentials['email'];
+            return response()->json(['error' => $error], 401);
         }
-
-        // Başarılı giriş
-        return response()->json(['success' => 'Giriş başarılı', 'token' => $token], 200);
     }
 
 
