@@ -33,7 +33,7 @@ class LoginController extends Controller
                 ], 401);
             }
 
-            /*$token = Auth::guard('web')->login($user);
+            $token = Auth::guard('web')->login($user);
 
             $user = Auth::guard('web')->user();
 
@@ -48,7 +48,7 @@ class LoginController extends Controller
                     'type' => 'bearer',
                 ],
                 'role' => $userRole,  // Rol bilgisini response'a ekleyebilirsiniz
-            ]);*/
+            ]);
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
