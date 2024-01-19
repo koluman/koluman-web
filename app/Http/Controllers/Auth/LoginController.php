@@ -29,7 +29,7 @@ class LoginController extends Controller
             $userRole = $user->backuser_role;
     
             // Kullanıcıyı web guard ile oturum aç
-            Auth::guard('web')->login($user, true);
+            auth()->login($user, true);
     
             // JWT token oluştur
             $token = JWTAuth::fromUser($user);

@@ -11,7 +11,7 @@ class CheckRole
 {
     public function handle($request, Closure $next, ...$roles)
     {
-        $userRole = Auth::user()->role;
+        $userRole = auth()->user()->role;
         dd($userRole);
         /*if ($user) {
             foreach ($roles as $role) {
