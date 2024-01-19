@@ -26,7 +26,7 @@ Route::middleware(['auth:api'])->group(function () {
 });
 
 Route::middleware(['jwt.verify'])->group(function () {
-    Route::post('/testsurus', [LoginController::class, 'testsurus'])->name('testsurus');
+    Route::post('/testdriveadd', [LoginController::class, 'testdriveadd'])->name('testdriveadd');
 });
 
 
