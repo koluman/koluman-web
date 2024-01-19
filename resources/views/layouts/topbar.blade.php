@@ -762,19 +762,16 @@
                             <img class="rounded-circle header-profile-user"
                                 src="{{ URL::asset('build/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                @if (Auth::guard('web')->user())
-                                    <span
+                                <span
                                         class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::guard('web')->user()->user_name }}</span>
-                                @endif <span
+                               <span
                                     class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Hesabım</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        @if (Auth::guard('web')->user())
-                            <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->user_name }}!</h6>
-                        @endif
+                        <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->user_name }}!</h6>
                         <a class="dropdown-item" href="pages-profile"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profilim</span></a>
