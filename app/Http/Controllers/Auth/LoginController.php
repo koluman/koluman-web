@@ -43,13 +43,16 @@ class LoginController extends Controller
             Auth::login($user, true);
 
             // Yönlendirme
-            $redirectRoute = match ($userRole) {
-                'admin' => 'admin.dashboard',
-                'ajans' => 'ajans.dashboard',
-                default => 'user.dashboard',
-            };
-            dd(  Auth::login($user));
-           // return redirect()->route($redirectRoute);
+            if (Auth::check()) {
+
+                $redirectRoute = match ($userRole) {
+                    'admin' => 'admin.dashboard',
+                    'ajans' => 'ajans.dashboard',
+                    default => 'user.dashboard',
+                };
+                return redirect()->route($redirectRoute);
+
+            }
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return back()->with('error', $e->getMessage());
