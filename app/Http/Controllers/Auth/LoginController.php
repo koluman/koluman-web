@@ -18,30 +18,29 @@ class LoginController extends Controller
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-    
+
             $user = BackUser::where('backuser_mail', $email)->first();
-    
+
             if (!$user || !Hash::check($password, $user->backuser_password)) {
                 return back()->with('error', __('Kullanıcı adı veya şifre hatalı.'));
             }
-    
+
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
-    
-            // Kullanıcıyı web guard ile oturum aç
-            auth()->login($user, true);
-    
-            // JWT token oluştur
             $token = JWTAuth::fromUser($user);
-    
+
             // Token bilgilerini kullanıcıya ekle
             $user['token'] = $token;
             $user['role'] = $userRole;
-    
+            // Kullanıcıyı web guard ile oturum aç
+            auth()->login($user, true);
+
+            // JWT token oluştur
+
             // Kullanıcının dil tercihini kontrol et
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
-    
+
             // Yönlendirme
             $redirectRoute = match ($userRole) {
                 'admin' => 'admin.dashboard',
@@ -54,7 +53,7 @@ class LoginController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
-    
+
 
     public function logout()
     {
