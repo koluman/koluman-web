@@ -5,12 +5,13 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckRole
 {
     public function handle($request, Closure $next, ...$roles)
     {
-        $user = Auth::user();
+        $user = JWTAuth::parseToken()->authenticate();
         dd($user);
         /*if ($user) {
             foreach ($roles as $role) {
