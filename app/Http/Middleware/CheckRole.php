@@ -17,7 +17,6 @@ class CheckRole
         }
     
         // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
-        $user = auth()->user();
         if (!$user || !property_exists($user, 'backuser_role') || is_null($user->backuser_role)) {
             abort(403, 'Unauthorized');
         }
@@ -29,8 +28,11 @@ class CheckRole
     
         // Yetki yoksa isteği reddet
         abort(403, 'Unauthorized');*/
-        dd(auth()->user());
+        // Kullanıcı modelinde role alanının olup olmadığını ve dolu mu kontrol et
+        $user = auth()->user();
+
+        if (!isset($user->backuser_role) || is_null($user->backuser_role)) {
+            abort(403, 'Unauthorized');
+        }
     }
-    
-    
 }
