@@ -45,7 +45,7 @@ class LoginController extends Controller
                 default => 'user.dashboard',
             };
             $responseData = [
-                'status' => '1',
+                'success' => 1,
                 'message' => 'Giriş İşlemi başalarılı.',
                 'token' => $token,
                 'user' => $user,
@@ -53,7 +53,7 @@ class LoginController extends Controller
             ];
         } catch (\Exception $e) {
             $responseData = [
-                'status' => '0',
+                'success' => 0,
                 'message' => $e->getMessage(),
                 'token' => "",
                 'user' => "",
