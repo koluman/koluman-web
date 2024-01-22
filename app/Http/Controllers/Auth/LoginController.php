@@ -19,8 +19,8 @@ class LoginController extends Controller
         try {
             $email = $request->input('email');
             $password = $request->input('password');
-            //$credentials = $request->only('email', 'password');
-           // $user = BackUser::where('backuser_mail', $credentials['email'])->first();
+            $credentials = $request->only('email', 'password');
+            $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
             /*if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 $responseData = [
@@ -60,7 +60,7 @@ class LoginController extends Controller
                 'redirectRoute' => "",
             ];
         }
-        return response()->json($email);
+        return response()->json($user);
     }
 
 
