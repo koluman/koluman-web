@@ -99,7 +99,7 @@ class TestDriveController extends Controller
         }*/
         if ($request->attributes->has('errorData')) {
             $errorData = $request->attributes->get('errorData');
-            return response()->json($errorData['message']);
+            return response()->json($errorData);
         }
     }
 
