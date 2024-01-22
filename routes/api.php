@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Mobil\LoginController;
+use App\Http\Controllers\Mobil\ShoowroomController;
 use App\Http\Controllers\Mobil\TestDriveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,8 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/testdriveget', [TestDriveController::class, 'testdriveget'])->name('testdriveget');
     Route::post('/deleteTestDrive', [TestDriveController::class, 'deleteTestDrive'])->name('deleteTestDrive');
     Route::post('/updateTestDrive', [TestDriveController::class, 'updateTestDrive'])->name('updateTestDrive');
+    Route::post('/getshoowroom', [ShoowroomController::class, 'getshoowroom'])->name('getshoowroom');
+
 });
 
 

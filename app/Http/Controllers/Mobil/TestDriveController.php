@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
+use App\Models\Showroom;
 use App\Models\TestDrive;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class TestDriveController extends Controller
                     'user_id' => $user_id,
                     'car_id' => $car_id,
                     'drive_time' => $drive_time,
+                    'state' => 0,
                     'auto_date' => Carbon::now('Europe/Istanbul')
                 ]);
                 if ($affectedRows > 0) {
@@ -60,7 +62,9 @@ class TestDriveController extends Controller
         try {
             if ($u) {
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
-                $testDrives = TestDrive::where('auto_date', '>=', $lastWeek)->get();
+                $testDrives = TestDrive::where('user_id', $u->user_id)
+                    ->where('auto_date', '>=', $lastWeek)
+                    ->get();
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
@@ -134,8 +138,8 @@ class TestDriveController extends Controller
                 $drive_id = $request->drive_id;
                 $testDrive = TestDrive::where('drive_id', $drive_id)->first();
                 if ($testDrive) {
-                    $testDrive->drive_time = $request->input('drive_time'); 
-                    $testDrive->car_id = $request->input('car_id'); 
+                    $testDrive->drive_time = $request->input('drive_time');
+                    $testDrive->car_id = $request->input('car_id');
                     $testDrive->save();
                     $responseData = [
                         "success" => 1,
@@ -161,5 +165,5 @@ class TestDriveController extends Controller
         }
 
         return response()->json($responseData);
-    }
+    } 
 }
