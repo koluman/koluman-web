@@ -61,7 +61,7 @@ class LoginController extends Controller
                 'redirectRoute' => "",
             ];
         }
-        return response()->json($responseData);
+        //return response()->json($responseData);
     }
 
 
