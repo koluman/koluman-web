@@ -61,7 +61,6 @@ class TestDriveController extends Controller
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
                 $u = JWTAuth::setToken($token)->authenticate();
-
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('user_id', $u->user_id)
                     ->where('auto_date', '>=', $lastWeek)
@@ -202,7 +201,7 @@ class TestDriveController extends Controller
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
-                "message" =>$u,
+                "message" =>$e->getMessage(),
             ];
         }
         return response()->json($responseData);
