@@ -789,14 +789,9 @@
                                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Ayarlar</span></a>
-                        <a class="dropdown-item " href="javascript:void();"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                        <a class="dropdown-item " href="#" id="logoutbutton"><i
                                 class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
                                 key="t-logout">@lang('translation.logout')</span></a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                            style="display: none;">
-                            @csrf
-                        </form>
                     </div>
                 </div>
             </div>
