@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+class TestDriveDeleteRequest extends FormRequest
+{
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => 0,
+            'message' => $validator->errors(),
+        ], 422));
+    }
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'drive_id' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'drive_id.required' => 'Test sürüş numarası girişi zorunludur.',
+        ];
+    }
+}
