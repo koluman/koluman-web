@@ -173,8 +173,7 @@ class TestDriveController extends Controller
         $u = JWTAuth::setToken($token)->authenticate();
         try {
             if ($u) {
-                $testDrivescar = TestDrive::where('car_id', $request->car_id)
-                    ->get();
+                $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
                 if (!$testDrivescar->isEmpty()) {
                     $responseData = [
                         "success" => 1,

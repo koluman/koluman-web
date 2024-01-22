@@ -11,7 +11,7 @@ class AnnouncementController extends Controller
     public function getannouncement(Request $request)
     {
         $token = $request->header('Authorization');
-        $token = str_replace('Bearer ', '', $token);
+        $token = str_replace('Basic ', '', $token);
         try {
             if ($token) {
                 $announcement = Announcement::get();
