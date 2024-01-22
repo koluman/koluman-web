@@ -34,7 +34,8 @@ class LoginController extends Controller
             }
 
             $token = JWTAuth::fromUser($user);
-            $user = Auth::guard('web')->user();
+            dd($token);
+            /*$user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
@@ -45,7 +46,7 @@ class LoginController extends Controller
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            return redirect()->route($redirectRoute);
+            return redirect()->route($redirectRoute);*/
         } catch (\Exception $e) {
             // Laravel'in doğal hata mekanizmasını kullan
             return response()->json([
