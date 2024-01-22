@@ -13,7 +13,7 @@ class JwtVerify
     {
         $token = $request->header('Authorization');
         if (!$token) {
-            return response()->json(['error' => 'Unauthorized. Token not provided.'], 401);
+            return response()->json(['messages' => 'Unauthorized. Token not provided.'], 401);
         }
 
         $token = str_replace('Bearer ', '', $token);
@@ -23,14 +23,14 @@ class JwtVerify
             return $next($request);
         } catch (\Exception $e) {
             // Token geçerli değilse
-            return response()->json(['error' => 'Unauthorized. Invalid token.'], 401);
+            return response()->json(['messages' => 'Unauthorized. Invalid token.'], 401);
         }
     }*/
     public function handle($request, Closure $next)
     {
         $token = $request->header('Authorization');
         if (!$token) {
-            return response()->json(['success'=>401,'error' => 'Unauthorized. Token not provided.'] );
+            return response()->json(['success'=>401,'messages' => 'Geçersiz. Token bulunamadı.'] );
         }
 
         try {
@@ -39,20 +39,23 @@ class JwtVerify
                 // Bearer token için işlemler
                 $token = $this->extractToken($token);
                 $user = JWTAuth::setToken($token)->authenticate();
+                if (!$user) {
+                    return response()->json(['success'=>401,'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
+                }
             } elseif ($this->isBasicAuthToken($token)) {
                 // Basic Auth token için işlemler
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid Basic Auth credentials.']);
+                    return response()->json(['success'=>401,'messages' => 'Geçersiz. Basic Auth kimlik doğrulama yapılamadı.']);
                 }
             } else {
                 // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
-                return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid token type.']);
+                return response()->json(['success'=>401,'messages' => 'Geçersiz. Token tipi yanlış.']);
             }
 
             return $next($request);
         } catch (\Exception $e) {
-            return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid token.'], 401);
+            return response()->json(['success'=>401,'messages' =>$e->getMessage()]);
         }
     }
 
