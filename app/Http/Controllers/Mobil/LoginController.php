@@ -62,7 +62,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($user);
 
     }
     public function userlogout(Request $request)
