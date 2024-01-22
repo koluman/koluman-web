@@ -129,7 +129,20 @@
                             </li>
                         </ul>
                     </div>
-                </li> <!-- end Kullanıcı Menu -->
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarTestDrive" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarTestDrive">
+                        <i class="ri-dashboard-2-line"></i> <span>@lang('translation.testdrive')</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarTestDrive">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="admintestdrive" class="nav-link">@lang('translation.testdrivelist')</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> 
                 @endif
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"

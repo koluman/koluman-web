@@ -6,6 +6,10 @@ return [
 "crm" => "Müşteri İlişkileri Yönetimi",
 "ecommerce" => "E-Ticaret",
 "crypto" => "Kripto",
+"user" => "Kullanıcı İşlemleri",
+"userlist" => "Kullanıcı Listesi",
+"testdrive" => "Test Sürüş İşlemleri",
+"testdrivelist" => "Test Sürüş Listesi",
 "projects" => "Projeler",
 "apps" => "Uygulamalar",
 "calendar" => "Takvim",
@@ -222,4 +226,3 @@ return [
 "privacy-policy"=> "Gizlilik Politikası",
 "hot"=> "Popüler"
 ];
-?>
