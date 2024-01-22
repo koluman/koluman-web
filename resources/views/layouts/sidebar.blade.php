@@ -68,13 +68,9 @@
                     class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
                     screen</span></a>
 
-            <a class="dropdown-item " href="javascript:void();"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+            <a class="dropdown-item " href="javascript:logout();" ><i
                     class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                     key="t-logout">@lang('translation.logout')</span></a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
         </div>
     </div>
 

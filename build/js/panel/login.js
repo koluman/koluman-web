@@ -15,8 +15,26 @@ $( "#loginbutton" ).click(function() {
             if (data.success == 1) {
               window.location.href = "https://mobiloby.app/koluman/web/"+data.redirectRoute; 
             } else {
-                alert(data.message); // SMS gönderimi başarısızsa kullanıcıya bir uyarı göster
+                alert(data.message); 
             }
           }
       });
   });
+  function logout() {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/logout',
+        data: {
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.success == 1) {
+            window.location.href = "https://mobiloby.app/koluman/web/signin"; 
+          } else {
+              alert(data.message); 
+          }
+        }
+    });
+  }
