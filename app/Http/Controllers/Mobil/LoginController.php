@@ -61,10 +61,6 @@ class LoginController extends Controller
         }
         return response()->json($responseData);
 
-        if ($request->attributes->has('errorData')) {
-            $errorData = $request->attributes->get('errorData');
-            return response()->json(['error' => $errorData['message']], $errorData['status']);
-        }
     }
     public function userlogout(Request $request)
     {
