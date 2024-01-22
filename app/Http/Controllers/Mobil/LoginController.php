@@ -21,9 +21,11 @@ class LoginController extends Controller
                 Auth::guard('api')->login($user);
                 $token = JWTAuth::fromUser($user);
                 $u = JWTAuth::setToken($token)->authenticate();
+                $reftoken = JWTAuth::parseToken()->refresh();
                 $responseData = [
                     "success" => 1,
                     "token" => $token,
+                    "refreshtoken" => $reftoken,
                     'user' => $u,
                     "message" => "Login İşlemi başarılı",
                 ];
@@ -31,6 +33,7 @@ class LoginController extends Controller
                 $responseData = [
                     "success" => 0,
                     "token" => "",
+                    "refreshtoken" => "",
                     'user' => "",
                     "message" => "Login İşlemi başarısız",
                 ];
@@ -39,6 +42,7 @@ class LoginController extends Controller
             $responseData = [
                 "success" => 0,
                 "token" => "",
+                "refreshtoken" => "",
                 'user' => "",
                 "message" => $e->getMessage(),
             ];
@@ -83,7 +87,9 @@ class LoginController extends Controller
                 $responseData = [
                     "success" => 0,
                     "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
-                    "user" => ""
+                    "user" => "",
+                    "token" => "",
+                    "refreshtoken" =>"",
                 ];
             } else {
                 $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
@@ -96,11 +102,13 @@ class LoginController extends Controller
                 ]);
                 $token = JWTAuth::fromUser($user);
                 $u = JWTAuth::setToken($token)->authenticate();
+                $reftoken = JWTAuth::parseToken()->refresh();
                 $responseData = [
                     "success" => 1,
                     "message" => "Kullanıcı Kayıt edildi",
                     "user" => $user,
-                    "token" => $token
+                    "token" => $token,
+                    "refreshtoken" => $reftoken,
                 ];
             }
         } catch (\Exception $e) {
@@ -108,8 +116,8 @@ class LoginController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
                 "user" => "",
-                "token" => ""
-
+                "token" => "",
+                "refreshtoken" =>""
             ];
         }
         return response()->json($responseData);
