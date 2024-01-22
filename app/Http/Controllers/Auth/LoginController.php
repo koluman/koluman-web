@@ -22,7 +22,7 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
             $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
-            /*if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
+            if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 $responseData = [
                     "success" => 0,
                     "message" => "Kullanıcı bilgileri yanlış, giriş işlemi başarısız.",
@@ -50,7 +50,7 @@ class LoginController extends Controller
                 'token' => $token,
                 'user' => $user,
                 'redirectRoute' => $redirectRoute,
-            ];*/
+            ];
         } catch (\Exception $e) {
             $responseData = [
                 'status' => '0',
@@ -60,7 +60,7 @@ class LoginController extends Controller
                 'redirectRoute' => "",
             ];
         }
-        return response()->json($user);
+        return response()->json($responseData);
     }
 
 
