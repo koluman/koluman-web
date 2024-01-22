@@ -32,10 +32,13 @@ class JwtVerify
         try {
             $token = $request->header('Authorization');
             if (!$token) {
-                $responseData = [
-                    "success" => 401,
+                $errorData = [
+                    "status" => 401,
                     "message" => "Unauthorized. Token not provided.",
                 ];
+                $request->attributes->add(['errorData' => $errorData]);
+                return $next($request);
+                
             }
     
             // Token türünü kontrol et ve uygun işlemi yap
@@ -47,26 +50,31 @@ class JwtVerify
                 // Basic Auth token için işlemler
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    $responseData = [
-                        "success" => 401,
+                    $errorData = [
+                        "status" => 401,
                         "message" => "Unauthorized. Invalid Basic Auth credentials.",
                     ];
+                    $request->attributes->add(['errorData' => $errorData]);
+                    return $next($request);
                 }
             } else {
-                $responseData = [
-                    "success" => 401,
+
+                $errorData = [
+                    "status" => 401,
                     "message" => "Unauthorized. Invalid token type.",
                 ];
+                $request->attributes->add(['errorData' => $errorData]);
+                return $next($request);
             }
 
-            return $next($request);
         } catch (\Exception $e) {
-            $responseData = [
-                "success" => 401,
+            $errorData = [
+                "status" => 401,
                 "message" => "Unauthorized. Invalid token.",
             ];
+            $request->attributes->add(['errorData' => $errorData]);
+            return $next($request);
         }
-        return response()->json($responseData);
 
     }
 

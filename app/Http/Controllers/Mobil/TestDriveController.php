@@ -129,7 +129,10 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-
+        if ($request->attributes->has('errorData')) {
+            $errorData = $request->attributes->get('errorData');
+            return response()->json(['error' => $errorData['message']], $errorData['status']);
+        }
         return response()->json($responseData);
     }
     public function updateTestDrive(Request $request)
