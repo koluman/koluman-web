@@ -27,10 +27,13 @@ class LoginController extends Controller
             $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
             if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Invalid credentials',
-                ], 401);
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Kullanıcı bilgileri yanlış, giriş işlemi başarısız.",
+                    'token' => "",
+                    'user' => "",
+                    'redirectRoute' => "",
+                ];
             }
 
             $token = JWTAuth::fromUser($user);
@@ -45,14 +48,23 @@ class LoginController extends Controller
                 'ajans' => 'ajans.dashboard',
                 default => 'user.dashboard',
             };
-            return redirect()->route($redirectRoute);
+            $responseData = [
+                'status' => '1',
+                'message' => 'Giriş İşlemi başalarılı.',
+                'token' => $token,
+                'user' => $user,
+                'redirectRoute' => $redirectRoute,
+            ];
         } catch (\Exception $e) {
-            // Laravel'in doğal hata mekanizmasını kullan
-            return response()->json([
-                'status' => 'error',
+            $responseData = [
+                'status' => '0',
                 'message' => $e->getMessage(),
-            ], 500);
+                'token' => "",
+                'user' => "",
+                'redirectRoute' => "",
+            ];
         }
+        return response()->json($responseData);
     }
 
 
@@ -60,18 +72,20 @@ class LoginController extends Controller
     {
         try {
             $token = JWTAuth::getToken();
-           /* if ($token) {
+            if ($token) {
                 JWTAuth::invalidate($token);
                 Auth::guard('web')->logout();
                 Session::flush();
-                return redirect()->route('signin');
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Logout işlemi başarılı",
+                ];
             } else {
                 $responseData = [
                     "success" => 0,
                     "message" => "Token bulunamadı, Logout işlemi başarısız",
                 ];
-            }*/
-            dd($token);
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,

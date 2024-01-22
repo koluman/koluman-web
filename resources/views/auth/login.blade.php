@@ -48,7 +48,7 @@
                                     <p class="text-muted">Sign in to continue to Velzon.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="{{ route('login') }}" method="POST">
+                                    <form action="#" method="POST">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username <span
@@ -93,7 +93,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <button class="btn btn-success w-100" type="button" id="loginbutton">Giriş Yap</button>
                                         </div>
 
                                         <div class="mt-4 text-center">
@@ -159,4 +159,5 @@
     <script src="{{ URL::asset('build/libs/particles.js/particles.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/particles.app.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/password-addon.init.js') }}"></script>
+    <script src="{{ URL::asset('build/js/panel/login.js') }}"></script>
 @endsection
