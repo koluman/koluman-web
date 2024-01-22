@@ -11,7 +11,7 @@ $( "#loginbutton" ).click(function() {
             password: password,
               _token: csrfToken, // CSRF token'ını gönder
           },
-          dataType: 'json',
+          //dataType: 'json',
           success: function (data) {
             conole.log(data);
             /*if (data.success == 1) {
