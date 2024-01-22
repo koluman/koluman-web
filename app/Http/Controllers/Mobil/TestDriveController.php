@@ -168,10 +168,11 @@ class TestDriveController extends Controller
     } 
     public function testdrivegetcar(Request $request)
     {
-        $token = $request->header('Authorization');
-        $token = str_replace('Bearer ', '', $token);
-        $u = JWTAuth::setToken($token)->authenticate();
+
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
                 if (!$testDrivescar->isEmpty()) {
