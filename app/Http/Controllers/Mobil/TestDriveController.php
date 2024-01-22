@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
-use App\Models\Showroom;
 use App\Models\TestDrive;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Validator;
 
 class TestDriveController extends Controller
 {
@@ -56,7 +56,7 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-         try {
+        try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
@@ -78,7 +78,6 @@ class TestDriveController extends Controller
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
-                
             } else {
                 $responseData = [
                     "success" => 0,
@@ -86,7 +85,6 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
-
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -94,7 +92,6 @@ class TestDriveController extends Controller
             ];
         }
         return response()->json($responseData);
-
     }
 
     public function deleteTestDrive(Request $request)
@@ -173,43 +170,50 @@ class TestDriveController extends Controller
     {
 
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            if ($token) {
-                $u = JWTAuth::setToken($token)->authenticate();
-                if (empty($request->car_id)) {
-                    $responseData = [
-                        "success" => 0,
-                        "testDrivescar" => "",
-                        "message" => "Arabaya numarası zorunludur",
-                    ];
-                }else{
-                $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
-                if (!$testDrivescar->isEmpty()) {
-                    $responseData = [
-                        "success" => 1,
-                        "testDrivescar" => $testDrivescar,
-                        "message" => "Arabaya ait randevu listesi getirildi",
-                    ];
+            $validator = Validator::make($request->all(), [
+                'car_id' => 'required',
+            ]);
+
+            // Doğrulama başarısız olursa
+            if ($validator->fails()) {
+                $responseData = [
+                    "success" => 0,
+                    "testDrivescar" => "",
+                    "message" => $validator->errors()->first(), // İlk hatayı al
+                ];
+            } else {
+
+                $token = $request->header('Authorization');
+                $token = str_replace('Bearer ', '', $token);
+                if ($token) {
+                    $u = JWTAuth::setToken($token)->authenticate();
+
+                    $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
+                    if (!$testDrivescar->isEmpty()) {
+                        $responseData = [
+                            "success" => 1,
+                            "testDrivescar" => $testDrivescar,
+                            "message" => "Arabaya ait randevu listesi getirildi",
+                        ];
+                    } else {
+                        $responseData = [
+                            "success" => 0,
+                            "testDrivescar" => "",
+                            "message" => "Arabaya ait randevu listesi getirelemedi",
+                        ];
+                    }
                 } else {
                     $responseData = [
                         "success" => 0,
                         "testDrivescar" => "",
-                        "message" => "Arabaya ait randevu listesi getirelemedi",
+                        "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                     ];
                 }
-            }
-            } else {
-                $responseData = [
-                    "success" => 0,
-                    "testDrivescar" => "",
-                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
-                ];
             }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
-                "message" =>$e->getMessage(),
+                "message" => $e->getMessage(),
             ];
         }
         return response()->json($responseData);
