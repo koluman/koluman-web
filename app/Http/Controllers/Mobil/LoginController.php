@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\TestDrive;
 use App\Models\User;
 use Carbon\Carbon;
@@ -13,23 +15,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-    public function userlogin(Request $request)
+    public function userlogin(LoginRequest $request)
     {
         try {
-            $messages = [
-                'user_phone.required' => 'Kullanıcı telefon numarası girişi zorunludur.',
-            ];
-
-            // İsteği doğrula
-            $validator = Validator::make($request->all(), [
-                'user_phone' => 'required',
-            ], $messages);
-            if ($validator->fails()) {
-                $responseData = [
-                    "success" => 0,
-                    "message" => $validator->errors(), // İlk hatayı al
-                ];
-            } else {
                 $token = $request->header('Authorization');
                 $token = str_replace('Basic ', '', $token);
 
@@ -70,7 +58,6 @@ class LoginController extends Controller
                         ];
                     }
                 }
-            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -109,7 +96,7 @@ class LoginController extends Controller
 
         return response()->json($responseData);
     }
-    public function userregister(Request $request)
+    public function userregister(RegisterRequest $request)
     {
         try {
             $messages = [
