@@ -30,11 +30,12 @@ $( "#loginbutton" ).click(function() {
         },
         dataType: 'json',
         success: function (data) {
-          if (data.success == 1) {
+          /*if (data.success == 1) {
             window.location.href = "https://mobiloby.app/koluman/web/signin"; 
           } else {
               alert(data.message); 
-          }
+          }*/
+          console.log(data);
         }
     });
   }
