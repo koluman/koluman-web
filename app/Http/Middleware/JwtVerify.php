@@ -55,7 +55,7 @@ class JwtVerify
 
             return $next($request);
         } catch (\Exception $e) {
-            return response()->json(['success'=>401,'messages' =>$e->getMessage()]);
+            return response()->json(['success'=>401,'messages' =>$token]);
         }
     }
 
