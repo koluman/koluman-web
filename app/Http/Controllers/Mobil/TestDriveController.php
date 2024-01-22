@@ -17,8 +17,7 @@ class TestDriveController extends Controller
         $u = JWTAuth::setToken($token)->authenticate();
         try {
             if ($u) {
-
-                $car_id = $request->car_id;
+                /*$car_id = $request->car_id;
                 $drive_time = $request->drive_time;
                 $user_id = $u->user_id;
 
@@ -38,7 +37,7 @@ class TestDriveController extends Controller
                         "success" => 0,
                         "message" => "Test sürüş randevusu oluşturulamadı , lütfen tekrar deneyiniz",
                     ];
-                }
+                }*/
             } else {
                 $responseData = [
                     "success" => 0,
@@ -51,7 +50,7 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($u);
     }
     public function testdriveget(Request $request)
     {
