@@ -62,7 +62,7 @@ class TestDriveController extends Controller
             if ($u) {
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('auto_date', '>=', $lastWeek)->get();
-                if ($testDrives > 0) {
+                if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
                         "testDrives"=>$testDrives,

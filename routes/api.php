@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
+Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
+
 Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/testdriveadd', [TestDriveController::class, 'testdriveadd'])->name('testdriveadd');
     Route::post('/testdriveget', [TestDriveController::class, 'testdriveget'])->name('testdriveget');
