@@ -30,7 +30,7 @@ class JwtVerify
     {
         $token = $request->header('Authorization');
         if (!$token) {
-            return response()->json(['error' => 'Unauthorized. Token not provided.'], 401);
+            return response()->json(['success'=>401,'error' => 'Unauthorized. Token not provided.'] );
         }
 
         try {
@@ -43,16 +43,16 @@ class JwtVerify
                 // Basic Auth token için işlemler
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    return response()->json(['error' => 'Unauthorized. Invalid Basic Auth credentials.'], 401);
+                    return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid Basic Auth credentials.']);
                 }
             } else {
                 // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
-                return response()->json(['error' => 'Unauthorized. Invalid token type.'], 401);
+                return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid token type.']);
             }
 
             return $next($request);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Unauthorized. Invalid token.'], 401);
+            return response()->json(['success'=>401,'error' => 'Unauthorized. Invalid token.'], 401);
         }
     }
 
