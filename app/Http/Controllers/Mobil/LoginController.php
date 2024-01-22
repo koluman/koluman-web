@@ -57,7 +57,6 @@ class LoginController extends Controller
                 }
             }
         } catch (\Exception $e) {
-            Log::error('Login Error: ' . $e->getMessage());
             $responseData = [
                 "success" => 0,
                 "token" => "",

@@ -177,8 +177,8 @@ class TestDriveController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if (JWTAuth::setToken($token)->check()) {
-                $u = JWTAuth::setToken($token)->authenticate();
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
                 $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
                 if (!$testDrivescar->isEmpty()) {
                     $responseData = [
@@ -206,10 +206,6 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        if ($request->attributes->has('errorData')) {
-            $responseData = $request->attributes->get('errorData');
-        }
-
         return response()->json($responseData);
     }
 }
