@@ -21,21 +21,3 @@ $( "#loginbutton" ).click(function() {
       });
   });
   
-function logout() {
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/logout',
-        data: {
-            _token: csrfToken, // CSRF token'ını gönder
-        },
-        dataType: 'json',
-        success: function (data) {
-          if (data.success == 1) {
-            window.location.href = "https://mobiloby.app/koluman/web/"; 
-          } else {
-              alert(data.message); 
-          }
-        }
-    });
-  }

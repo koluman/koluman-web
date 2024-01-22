@@ -64,16 +64,9 @@ class LoginController extends Controller
         try {
             Auth::guard('web')->logout();
             Session::flush();
-            $responseData = [
-                "success" => 1,
-                "message" => "Logout işlemi başarılı",
-            ];
+            return redirect()->route("signin");
         } catch (\Exception $e) {
-            $responseData = [
-                "success" => 0,
-                "message" => $e->getMessage(),
-            ];
+            return redirect()->back();
         }
-        return response()->json($responseData);
     }
 }
