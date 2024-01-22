@@ -56,7 +56,7 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-        /* try {
+         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -96,7 +96,7 @@ class TestDriveController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
-        }*/
+        }
         if ($request->attributes->has('errorData')) {
             $errorData = $request->attributes->get('errorData');
             return response()->json($errorData);

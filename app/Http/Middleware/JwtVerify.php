@@ -33,8 +33,8 @@ class JwtVerify
             $token = $request->header('Authorization');
             if (!$token) {
                 $errorData = [
-                    "status" => 401,
-                    "message" => "Unauthorized. Token not provided.",
+                    "success" => 401,
+                    "message" => "Token bilgisi bulunamadı!!",
                 ];
                 $request->attributes->add(['errorData' => $errorData]);
                 return $next($request);
@@ -51,8 +51,8 @@ class JwtVerify
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
                     $errorData = [
-                        "status" => 401,
-                        "message" => "Unauthorized. Invalid Basic Auth credentials.",
+                        "success" => 401,
+                        "message" => "Geçersiz Temel Kimlik Doğrulama kimlik bilgileri.",
                     ];
                     $request->attributes->add(['errorData' => $errorData]);
                     return $next($request);
@@ -60,8 +60,8 @@ class JwtVerify
             } else {
 
                 $errorData = [
-                    "status" => 401,
-                    "message" => "Unauthorized. Invalid token type.",
+                    "success" => 401,
+                    "message" => "Geçersiz token tipi!!",
                 ];
                 $request->attributes->add(['errorData' => $errorData]);
                 return $next($request);
@@ -69,8 +69,8 @@ class JwtVerify
 
         } catch (\Exception $e) {
             $errorData = [
-                "status" => 401,
-                "message" => "Unauthorized. Invalid token.",
+                "success" => 401,
+                "message" => $e->getMessage(),
             ];
             $request->attributes->add(['errorData' => $errorData]);
             return $next($request);
