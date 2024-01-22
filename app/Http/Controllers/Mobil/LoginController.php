@@ -26,11 +26,11 @@ class LoginController extends Controller
                     Auth::guard('api')->login($user);
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
-                    //$reftoken = JWTAuth::parseToken()->refresh();
+                    $reftoken = JWTAuth::parseToken()->refresh();
                     $responseData = [
                         "success" => 1,
                         "token" => $token,
-                        //"refreshtoken" => $reftoken,
+                        "refreshtoken" => $reftoken,
                         'user' => $u,
                         "message" => "Login İşlemi başarılı",
                     ];
