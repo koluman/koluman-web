@@ -19,10 +19,10 @@ class LoginController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
 
-            /*if ($token) {
+            if ($token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
-                if ($user) {
+                /*if ($user) {
                     Auth::guard('api')->login($user);
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
@@ -42,7 +42,7 @@ class LoginController extends Controller
                         'user' => "",
                         "message" => "Login İşlemi başarısız",
                     ];
-                }
+                }*/
             } else {
                 $responseData = [
                     "success" => 0,
@@ -51,7 +51,7 @@ class LoginController extends Controller
                     'user' => "",
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             Log::error('Login Error: ' . $e->getMessage());
             $responseData = [
@@ -62,7 +62,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($token);
+        return response()->json($responseData);
 
     }
     public function userlogout(Request $request)
