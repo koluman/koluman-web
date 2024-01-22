@@ -16,4 +16,8 @@ class HomeController extends Controller
     {
         return view('admin.users');
     }
+    public function testdrive(Request $request)
+    {
+        return view('admin.testdrive');
+    }
 }

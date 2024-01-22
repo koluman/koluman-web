@@ -34,6 +34,7 @@ Route::middleware(['prevent-back-history','checkRole:admin'])->group(function ()
     Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
     Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
     Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
+    Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
 
     
 });
