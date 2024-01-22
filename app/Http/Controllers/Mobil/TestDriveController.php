@@ -86,7 +86,10 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
-         
+            if ($request->attributes->has('errorData')) {
+                $errorData = $request->attributes->get('errorData');
+                return response()->json(['error' => $errorData['message']], $errorData['status']);
+            }
     
         } catch (\Exception $e) {
             $responseData = [
@@ -99,7 +102,7 @@ class TestDriveController extends Controller
 
     public function deleteTestDrive(Request $request)
     {
-        /*try {
+        try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
@@ -128,12 +131,9 @@ class TestDriveController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
-        }*/
-        if ($request->attributes->has('errorData')) {
-            $errorData = $request->attributes->get('errorData');
-            return response()->json(['error' => $errorData['message']], $errorData['status']);
         }
-        return response()->json($request->attributes->has('errorData'));
+
+        return response()->json($responseData);
     }
     public function updateTestDrive(Request $request)
     {
