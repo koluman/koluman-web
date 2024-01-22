@@ -22,8 +22,8 @@ $( "#loginbutton" ).click(function() {
   });
   
 function logout() {
-
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+console.log("sdfdfdsfsdf");
+    /*var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/logout',
@@ -38,5 +38,5 @@ function logout() {
               alert(data.message); 
           }
         }
-    });
+    });*/
   }
