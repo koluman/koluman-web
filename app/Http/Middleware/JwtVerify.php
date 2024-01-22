@@ -71,8 +71,12 @@ class JwtVerify
 
             return $next($request);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Unauthorized. Invalid token.'], 401);
-        }
+            $errorData = [
+                "success" => 401,
+                "message" => $e->getMessage(),
+            ];
+            $request->attributes->add(['errorData' => $errorData]);
+            return $next($request);        }
     }
 
     private function extractToken($token)
