@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Mobil\AnnouncementController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
 use App\Http\Controllers\Mobil\TestDriveController;
@@ -31,7 +32,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/deleteTestDrive', [TestDriveController::class, 'deleteTestDrive'])->name('deleteTestDrive');
     Route::post('/updateTestDrive', [TestDriveController::class, 'updateTestDrive'])->name('updateTestDrive');
     Route::post('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
-
+    Route::post('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
 });
 
 
