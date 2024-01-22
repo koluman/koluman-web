@@ -71,4 +71,47 @@ class LoginController extends Controller
 
         return response()->json($responseData);
     }
+    public function userregister(Request $request)
+    {
+        try {
+            $user_identitiy = $request->user_identitiy;
+            $user_phone = $request->user_phone;
+            $user_name = $request->user_name;
+
+            $existingUser = User::where('user_phone', $user_phone)->first();
+            if ($existingUser) {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
+                    "user" => ""
+                ];
+            } else {
+                $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
+                $user = User::create([
+                    'user_id' => $user_id,
+                    'user_name' => $user_name,
+                    'user_phone' => $user_phone,
+                    'user_identitiy' => $user_identitiy,
+                    'user_register_date' => Carbon::now('Europe/Istanbul'),
+                ]);
+                $token = JWTAuth::fromUser($user);
+                $u = JWTAuth::setToken($token)->authenticate();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Kullanıcı Kayıt edildi",
+                    "user" => $user,
+                    "token" => $token
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+                "user" => "",
+                "token" => ""
+
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
