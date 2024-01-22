@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TestDriveAddRequest;
 use App\Models\TestDrive;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,27 +12,10 @@ use Illuminate\Support\Facades\Validator;
 
 class TestDriveController extends Controller
 {
-    public function testdriveadd(Request $request)
+    public function testdriveadd(TestDriveAddRequest $request)
     {
         try {
-            $messages = [
-                'car_id.required' => 'Araba numarası girişi zorunludur.',
-                'drive_time.required' => 'Randevu zamanı girişi zorunludur.',
-            ];
-        
-            // İsteği doğrula
-            $validator = Validator::make($request->all(), [
-                'car_id' => 'required',
-                'drive_time' => 'required',
-            ], $messages);
-
-            if ($validator->fails()) {
-                $responseData = [
-                    "success" => 0,
-                    "message" => $validator->errors(), // İlk hatayı al
-                ];
-            }
-            else{
+           
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -63,7 +47,7 @@ class TestDriveController extends Controller
                     "success" => 0,
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
-            }
+            
         }
         } catch (\Exception $e) {
             $responseData = [
