@@ -33,8 +33,7 @@ class LoginController extends Controller
                 ], 401);
             }
 
-            $token = Auth::guard('web')->login($user);
-
+            $token = JWTAuth::fromUser($user);
             $user = Auth::guard('web')->user();
 
             // Kullanıcının rol bilgisini al
@@ -61,8 +60,7 @@ class LoginController extends Controller
     {
         try {
             $token = JWTAuth::getToken();
-            dd($token);
-            /*if ($token) {
+            if ($token) {
                 JWTAuth::invalidate($token);
                 Auth::guard('web')->logout();
                 Session::flush();
@@ -72,7 +70,7 @@ class LoginController extends Controller
                     "success" => 0,
                     "message" => "Token bulunamadı, Logout işlemi başarısız",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
