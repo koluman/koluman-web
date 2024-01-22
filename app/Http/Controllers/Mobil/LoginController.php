@@ -74,7 +74,7 @@ class LoginController extends Controller
     public function userregister(Request $request)
     {
         try {
-            $user_identitiy = $request->user_identitiy;
+            $user_identity = $request->user_identity;
             $user_phone = $request->user_phone;
             $user_name = $request->user_name;
 
@@ -91,7 +91,7 @@ class LoginController extends Controller
                     'user_id' => $user_id,
                     'user_name' => $user_name,
                     'user_phone' => $user_phone,
-                    'user_identitiy' => $user_identitiy,
+                    'user_identity' => $user_identity,
                     'user_register_date' => Carbon::now('Europe/Istanbul'),
                 ]);
                 $token = JWTAuth::fromUser($user);
