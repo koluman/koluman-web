@@ -10,4 +10,12 @@ class TestDrive extends Model
     use HasFactory;
     protected $table = 'test_drive'; // Modelin "users" tablosuna bağlı olduğunu belirtir
     protected $primaryKey = 'drive_id';
+
+    protected $fillable = [
+        'drive_id',
+        'car_id',
+        'drive_time',
+        'user_id',
+        'auto_date',
+    ];
 }
