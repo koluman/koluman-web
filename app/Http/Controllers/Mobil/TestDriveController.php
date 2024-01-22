@@ -170,9 +170,14 @@ class TestDriveController extends Controller
     {
 
         try {
+            $messages = [
+                'car_id.required' => 'Araba numarası zorunludur.',
+            ];
+        
+            // İsteği doğrula
             $validator = Validator::make($request->all(), [
                 'car_id' => 'required',
-            ]);
+            ], $messages);
 
             // Doğrulama başarısız olursa
             if ($validator->fails()) {
