@@ -10,9 +10,9 @@ class AnnouncementController extends Controller
 {
     public function getannouncement(Request $request)
     {
-        $token = $request->header('Authorization');
-        $token = str_replace('Basic ', '', $token);
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
             if ($token) {
                 $announcement = Announcement::get();
                 if (!$announcement->isEmpty()) {

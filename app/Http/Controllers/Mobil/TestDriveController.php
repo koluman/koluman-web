@@ -13,10 +13,10 @@ class TestDriveController extends Controller
 {
     public function testdriveadd(Request $request)
     {
-        $token = $request->header('Authorization');
-        $token = str_replace('Bearer ', '', $token);
-        $u = JWTAuth::setToken($token)->authenticate();
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $car_id = $request->car_id;
                 $drive_time = $request->drive_time;
@@ -56,10 +56,10 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-        $token = $request->header('Authorization');
-        $token = str_replace('Bearer ', '', $token);
-        $u = JWTAuth::setToken($token)->authenticate();
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('user_id', $u->user_id)
@@ -165,7 +165,7 @@ class TestDriveController extends Controller
         }
 
         return response()->json($responseData);
-    } 
+    }
     public function testdrivegetcar(Request $request)
     {
 

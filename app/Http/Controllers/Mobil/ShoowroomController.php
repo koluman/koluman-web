@@ -10,9 +10,9 @@ class ShoowroomController extends Controller
 {
     public function getshowroom(Request $request)
     {
-        $token = $request->header('Authorization');
-        $token = str_replace('Basic ', '', $token);
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
             if ($token) {
                 $shoowroom = Showroom::get();
                 if (!$shoowroom->isEmpty()) {
