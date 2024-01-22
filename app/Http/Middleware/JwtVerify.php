@@ -28,12 +28,16 @@ class JwtVerify
     }*/
     public function handle($request, Closure $next)
     {
-        $token = $request->header('Authorization');
-        if (!$token) {
-            return response()->json(['error' => 'Unauthorized. Token not provided.'], 401);
-        }
-
+       
         try {
+            $token = $request->header('Authorization');
+            if (!$token) {
+                $responseData = [
+                    "success" => 401,
+                    "message" => "Unauthorized. Token not provided.",
+                ];
+            }
+    
             // Token türünü kontrol et ve uygun işlemi yap
             if ($this->isBearerToken($token)) {
                 // Bearer token için işlemler
@@ -43,17 +47,27 @@ class JwtVerify
                 // Basic Auth token için işlemler
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    return response()->json(['error' => 'Unauthorized. Invalid Basic Auth credentials.'], 401);
+                    $responseData = [
+                        "success" => 401,
+                        "message" => "Unauthorized. Invalid Basic Auth credentials.",
+                    ];
                 }
             } else {
-                // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
-                return response()->json(['error' => 'Unauthorized. Invalid token type.'], 401);
+                $responseData = [
+                    "success" => 401,
+                    "message" => "Unauthorized. Invalid token type.",
+                ];
             }
 
             return $next($request);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Unauthorized. Invalid token.'], 401);
+            $responseData = [
+                "success" => 401,
+                "message" => "Unauthorized. Invalid token.",
+            ];
         }
+        return response()->json($responseData);
+
     }
 
     private function extractToken($token)
