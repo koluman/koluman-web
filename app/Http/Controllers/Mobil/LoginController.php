@@ -18,7 +18,8 @@ class LoginController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
-            if ($token) {
+
+            /*if ($token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
                 if ($user) {
@@ -50,7 +51,7 @@ class LoginController extends Controller
                     'user' => "",
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
-            }
+            }*/
         } catch (\Exception $e) {
             Log::error('Login Error: ' . $e->getMessage());
             $responseData = [
@@ -61,7 +62,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($token);
 
     }
     public function userlogout(Request $request)
