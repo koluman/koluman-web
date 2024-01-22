@@ -166,4 +166,41 @@ class TestDriveController extends Controller
 
         return response()->json($responseData);
     } 
+    public function testdrivegetcar(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $token = str_replace('Bearer ', '', $token);
+        $u = JWTAuth::setToken($token)->authenticate();
+        try {
+            if ($u) {
+                $testDrivescar = TestDrive::where('car_id', $request->car_id)
+                    ->get();
+                if (!$testDrivescar->isEmpty()) {
+                    $responseData = [
+                        "success" => 1,
+                        "testDrivescar" => $testDrivescar,
+                        "message" => "Arabaya ait randevu listesi getirildi",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "testDrivescar" => "",
+                        "message" => "Arabaya ait randevu listesi getirelemedi",
+                    ];
+                }
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "testDrivescar" => "",
+                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }

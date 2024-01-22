@@ -33,6 +33,8 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/updateTestDrive', [TestDriveController::class, 'updateTestDrive'])->name('updateTestDrive');
     Route::post('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
     Route::post('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
+    Route::post('/testdrivegetcar', [TestDriveController::class, 'testdrivegetcar'])->name('testdrivegetcar');
+
 });
 
 
