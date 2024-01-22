@@ -17,7 +17,9 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-             dd($request->email);
+            $email = $request->input('email');
+            $password = $request->input('password');
+            dd($email);
             //$credentials = $request->only('email', 'password');
            // $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
