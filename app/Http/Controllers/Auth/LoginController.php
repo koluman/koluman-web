@@ -67,22 +67,12 @@ class LoginController extends Controller
     public function logout()
     {
         try {
-            $token = JWTAuth::getToken();
-            dd($token);
-            /*if ($token) {
-                JWTAuth::invalidate($token);
-                Auth::guard('web')->logout();
-                Session::flush();
-                $responseData = [
-                    "success" => 1,
-                    "message" => "Logout işlemi başarılı",
-                ];
-            } else {
-                $responseData = [
-                    "success" => 0,
-                    "message" => "Token bulunamadı, Logout işlemi başarısız",
-                ];
-            }*/
+            Auth::guard('web')->logout();
+            Session::flush();
+            $responseData = [
+                "success" => 1,
+                "message" => "Logout işlemi başarılı",
+            ];
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
