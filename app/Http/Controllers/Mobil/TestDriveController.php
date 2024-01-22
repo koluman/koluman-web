@@ -201,7 +201,7 @@ class TestDriveController extends Controller
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
-                "message" => $e->getMessage(),
+                "message" =>$token,
             ];
         }
         return response()->json($responseData);
