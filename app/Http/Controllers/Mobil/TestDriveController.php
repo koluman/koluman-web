@@ -126,4 +126,41 @@ class TestDriveController extends Controller
 
         return response()->json($responseData);
     }
+    public function updateTestDrive(Request $request)
+    {
+        try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            if ($token) {
+                $drive_id = $request->drive_id;
+                $testDrive = TestDrive::where('drive_id', $drive_id)->first();
+                if ($testDrive) {
+                    $testDrive->drive_time = $request->input('drive_time'); 
+                    $testDrive->drive_id = $request->input('drive_id'); 
+                    $testDrive->save();
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Test sürüşü başarıyla güncellendi",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Belirtilen drive_id ile eşleşen test sürüşü bulunamadı",
+                    ];
+                }
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }
