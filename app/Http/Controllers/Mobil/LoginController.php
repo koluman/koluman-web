@@ -8,7 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
@@ -16,44 +16,59 @@ class LoginController extends Controller
     public function userlogin(Request $request)
     {
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
+            $messages = [
+                'user_phone.required' => 'Kullanıcı telefon numarası girişi zorunludur.',
+            ];
 
-            if ($token) {
-                $userPhone = $request->user_phone;
-                $user = User::where('user_phone', $userPhone)->first();
-                if ($user) {
-                    Auth::guard('api')->login($user);
-                    $token = JWTAuth::fromUser($user);
-                    $u = JWTAuth::setToken($token)->authenticate();
-                    $authenticatedUser = JWTAuth::setToken($token)->authenticate();
+            // İsteği doğrula
+            $validator = Validator::make($request->all(), [
+                'user_phone' => 'required',
+            ], $messages);
+            if ($validator->fails()) {
+                $responseData = [
+                    "success" => 0,
+                    "message" => $validator->errors()->first(), // İlk hatayı al
+                ];
+            } else {
+                $token = $request->header('Authorization');
+                $token = str_replace('Basic ', '', $token);
 
-                    if ($authenticatedUser) {
-                        $refreshToken = JWTAuth::refresh($token);
-                        $responseData = [
-                            "success" => 1,
-                            "token" => $token,
-                            "refreshtoken" => $refreshToken,
-                            'user' => $authenticatedUser,
-                            "message" => "Login İşlemi başarılı",
-                        ];
+                if ($token) {
+                    $userPhone = $request->user_phone;
+                    $user = User::where('user_phone', $userPhone)->first();
+                    if ($user) {
+                        Auth::guard('api')->login($user);
+                        $token = JWTAuth::fromUser($user);
+                        $u = JWTAuth::setToken($token)->authenticate();
+                        $authenticatedUser = JWTAuth::setToken($token)->authenticate();
+
+                        if ($authenticatedUser) {
+                            $refreshToken = JWTAuth::refresh($token);
+                            $responseData = [
+                                "success" => 1,
+                                "token" => $token,
+                                "refreshtoken" => $refreshToken,
+                                'user' => $authenticatedUser,
+                                "message" => "Login İşlemi başarılı",
+                            ];
+                        } else {
+                            $responseData = [
+                                "success" => 0,
+                                "token" => "",
+                                "refreshtoken" => "",
+                                'user' => "",
+                                "message" => "Login İşlemi başarısız",
+                            ];
+                        }
                     } else {
                         $responseData = [
                             "success" => 0,
                             "token" => "",
                             "refreshtoken" => "",
                             'user' => "",
-                            "message" => "Login İşlemi başarısız",
+                            "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                         ];
                     }
-                } else {
-                    $responseData = [
-                        "success" => 0,
-                        "token" => "",
-                        "refreshtoken" => "",
-                        'user' => "",
-                        "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
-                    ];
                 }
             }
         } catch (\Exception $e) {
@@ -97,6 +112,25 @@ class LoginController extends Controller
     public function userregister(Request $request)
     {
         try {
+            $messages = [
+                'user_phone.required' => 'Kullanıcı telefon numarası girişi zorunludur.',
+                'user_identity.required' => 'Kullanıcı tc numarası girişi zorunludur.',
+                'user_name.required' => 'Kullanıcı adsoyad girişi zorunludur.',
+
+            ];
+
+            // İsteği doğrula
+            $validator = Validator::make($request->all(), [
+                'user_phone' => 'required',
+                'user_identity' => 'required',
+                'user_name' => 'required',
+            ], $messages);
+            if ($validator->fails()) {
+                $responseData = [
+                    "success" => 0,
+                    "message" => $validator->errors()->first(), // İlk hatayı al
+                ];
+            } else {
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
             if ($token) {
@@ -142,6 +176,7 @@ class LoginController extends Controller
                     "refreshtoken" => ""
                 ];
             }
+        }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
