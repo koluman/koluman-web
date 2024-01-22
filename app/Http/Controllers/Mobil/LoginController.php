@@ -15,27 +15,39 @@ class LoginController extends Controller
     public function userlogin(Request $request)
     {
         try {
-            $userPhone = $request->user_phone;
-            $user = User::where('user_phone', $userPhone)->first();
-            if ($user) {
-                Auth::guard('api')->login($user);
-                $token = JWTAuth::fromUser($user);
-                $u = JWTAuth::setToken($token)->authenticate();
-                $reftoken = JWTAuth::parseToken()->refresh();
-                $responseData = [
-                    "success" => 1,
-                    "token" => $token,
-                    "refreshtoken" => $reftoken,
-                    'user' => $u,
-                    "message" => "Login İşlemi başarılı",
-                ];
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
+            if ($token) {
+                $userPhone = $request->user_phone;
+                $user = User::where('user_phone', $userPhone)->first();
+                if ($user) {
+                    Auth::guard('api')->login($user);
+                    $token = JWTAuth::fromUser($user);
+                    $u = JWTAuth::setToken($token)->authenticate();
+                    $reftoken = JWTAuth::parseToken()->refresh();
+                    $responseData = [
+                        "success" => 1,
+                        "token" => $token,
+                        "refreshtoken" => $reftoken,
+                        'user' => $u,
+                        "message" => "Login İşlemi başarılı",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "token" => "",
+                        "refreshtoken" => "",
+                        'user' => "",
+                        "message" => "Login İşlemi başarısız",
+                    ];
+                }
             } else {
                 $responseData = [
                     "success" => 0,
                     "token" => "",
                     "refreshtoken" => "",
                     'user' => "",
-                    "message" => "Login İşlemi başarısız",
+                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
         } catch (\Exception $e) {
@@ -49,10 +61,11 @@ class LoginController extends Controller
         }
         return response()->json($responseData);
     }
-    public function userlogout()
+    public function userlogout(Request $request)
     {
         try {
-            $token = JWTAuth::getToken();
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
             if ($token) {
                 JWTAuth::invalidate($token);
                 Auth::guard('api')->logout();
@@ -78,6 +91,9 @@ class LoginController extends Controller
     public function userregister(Request $request)
     {
         try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
+            if ($token) {
             $user_identity = $request->user_identity;
             $user_phone = $request->user_phone;
             $user_name = $request->user_name;
@@ -89,7 +105,7 @@ class LoginController extends Controller
                     "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
                     "user" => "",
                     "token" => "",
-                    "refreshtoken" =>"",
+                    "refreshtoken" => "",
                 ];
             } else {
                 $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
@@ -111,13 +127,22 @@ class LoginController extends Controller
                     "refreshtoken" => $reftoken,
                 ];
             }
+        } else {
+            $responseData = [
+                "success" => 0,
+                "message" => "Token bulunamadı, Logout işlemi başarısız",
+                "user" => "",
+                "token" => "",
+                "refreshtoken" => ""
+            ];
+        }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
                 "user" => "",
                 "token" => "",
-                "refreshtoken" =>""
+                "refreshtoken" => ""
             ];
         }
         return response()->json($responseData);
