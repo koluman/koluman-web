@@ -789,9 +789,10 @@
                                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Ayarlar</span></a>
-                        <a class="dropdown-item " href="#" id="logoutbutton"><i
+                        <a class="dropdown-item " href="javascript:logout();"><i
                                 class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
                                 key="t-logout">@lang('translation.logout')</span></a>
+                       
                     </div>
                 </div>
             </div>

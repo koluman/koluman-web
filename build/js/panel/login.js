@@ -21,7 +21,7 @@ $( "#loginbutton" ).click(function() {
       });
   });
   
-  $( "#logoutbutton" ).click(function() {
+function logout() {
 
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
@@ -39,4 +39,4 @@ $( "#loginbutton" ).click(function() {
           }
         }
     });
-  })
+  }
