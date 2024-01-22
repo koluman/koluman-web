@@ -26,7 +26,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-Route::middleware(['checkRole:admin'])->group(function () {
+Route::middleware(['prevent-back-history','checkRole:admin'])->group(function () {
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
     Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
