@@ -56,7 +56,7 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-         try {
+        try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -78,7 +78,6 @@ class TestDriveController extends Controller
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
-                
             } else {
                 $responseData = [
                     "success" => 0,
@@ -86,7 +85,6 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
-
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -94,7 +92,6 @@ class TestDriveController extends Controller
             ];
         }
         return response()->json($responseData);
-
     }
 
     public function deleteTestDrive(Request $request)
@@ -176,20 +173,30 @@ class TestDriveController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
-                $u = JWTAuth::setToken($token)->authenticate();
-                $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
-                if (!$testDrivescar->isEmpty()) {
-                    $responseData = [
-                        "success" => 1,
-                        "testDrivescar" => $testDrivescar,
-                        "message" => "Arabaya ait randevu listesi getirildi",
-                    ];
-                } else {
+                if (!$this->isBearerToken($token)) {
                     $responseData = [
                         "success" => 0,
                         "testDrivescar" => "",
-                        "message" => "Arabaya ait randevu listesi getirelemedi",
+                        "message" => "Geçersiz token tipi. Sadece Bearer token kabul edilmektedir.",
                     ];
+
+                    return response()->json($responseData);
+                } else {
+                    $u = JWTAuth::setToken($token)->authenticate();
+                    $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
+                    if (!$testDrivescar->isEmpty()) {
+                        $responseData = [
+                            "success" => 1,
+                            "testDrivescar" => $testDrivescar,
+                            "message" => "Arabaya ait randevu listesi getirildi",
+                        ];
+                    } else {
+                        $responseData = [
+                            "success" => 0,
+                            "testDrivescar" => "",
+                            "message" => "Arabaya ait randevu listesi getirelemedi",
+                        ];
+                    }
                 }
             } else {
                 $responseData = [
