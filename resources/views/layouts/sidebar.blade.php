@@ -117,6 +117,8 @@
                     </div>
                 </li> <!-- end Dashboard Menu -->
                @if(Auth::guard('web')->user()->backuser_role=='admin')
+               @dump(@lang)
+               @dump(Session::get('lang'));
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarUsers">
