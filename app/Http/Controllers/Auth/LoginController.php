@@ -17,11 +17,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-         
-            $credentials = $request->only('email', 'password');
-            $user = BackUser::where('backuser_mail', $credentials['email'])->first();
+             dd($request->email);
+            //$credentials = $request->only('email', 'password');
+           // $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
-            if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
+            /*if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
                 $responseData = [
                     "success" => 0,
                     "message" => "Kullanıcı bilgileri yanlış, giriş işlemi başarısız.",
@@ -49,7 +49,7 @@ class LoginController extends Controller
                 'token' => $token,
                 'user' => $user,
                 'redirectRoute' => $redirectRoute,
-            ];
+            ];*/
         } catch (\Exception $e) {
             $responseData = [
                 'status' => '0',

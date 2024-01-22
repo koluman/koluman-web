@@ -13,11 +13,12 @@ $( "#loginbutton" ).click(function() {
           },
           dataType: 'json',
           success: function (data) {
-            if (data.success == 1) {
+            conole.log(data);
+            /*if (data.success == 1) {
               window.location.href = "https://mobiloby.app/koluman/web/"+data.redirectRoute; 
             } else {
                 alert(data.message); // SMS gönderimi başarısızsa kullanıcıya bir uyarı göster
-            }
+            }*/
           }
       });
   });
