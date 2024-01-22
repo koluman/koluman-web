@@ -59,8 +59,9 @@ class TestDriveController extends Controller
          try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            $u = JWTAuth::setToken($token)->authenticate();
-            if ($u) {
+            if ($token) {
+                $u = JWTAuth::setToken($token)->authenticate();
+
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('user_id', $u->user_id)
                     ->where('auto_date', '>=', $lastWeek)
