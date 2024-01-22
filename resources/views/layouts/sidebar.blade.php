@@ -68,7 +68,7 @@
                     class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
                     screen</span></a>
 
-            <a class="dropdown-item " href="javascript:logout();" ><i
+            <a class="dropdown-item " href="#" id="logoutbutton"><i
                     class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                     key="t-logout">@lang('translation.logout')</span></a>
         </div>
