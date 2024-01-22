@@ -29,10 +29,8 @@ class LoginController extends Controller
                 ];
             }
 
+            Auth::guard('web')->login($user);
             $token = JWTAuth::fromUser($user);
-            $user = Auth::guard('web')->user();
-
-            // Kullanıcının rol bilgisini al
             $userRole = $user->backuser_role;
             $preferredLanguage = Session::put('lang', $user->backuser_language);
             App::setLocale($preferredLanguage);
