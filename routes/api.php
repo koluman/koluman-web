@@ -29,7 +29,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/testdriveget', [TestDriveController::class, 'testdriveget'])->name('testdriveget');
     Route::post('/deleteTestDrive', [TestDriveController::class, 'deleteTestDrive'])->name('deleteTestDrive');
     Route::post('/updateTestDrive', [TestDriveController::class, 'updateTestDrive'])->name('updateTestDrive');
-    Route::post('/getshoowroom', [ShoowroomController::class, 'getshoowroom'])->name('getshoowroom');
+    Route::post('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
 
 });
 
