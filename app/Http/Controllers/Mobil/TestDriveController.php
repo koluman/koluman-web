@@ -136,7 +136,7 @@ class TestDriveController extends Controller
                 $testDrive = TestDrive::where('drive_id', $drive_id)->first();
                 if ($testDrive) {
                     $testDrive->drive_time = $request->input('drive_time'); 
-                    $testDrive->drive_id = $request->input('drive_id'); 
+                    $testDrive->car_id = $request->input('car_id'); 
                     $testDrive->save();
                     $responseData = [
                         "success" => 1,
