@@ -93,10 +93,8 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        if ($request->attributes->has('errorData')) {
-            $errorData = $request->attributes->get('errorData');
-            return response()->json($errorData);
-        }
+        return response()->json($responseData);
+
     }
 
     public function deleteTestDrive(Request $request)
