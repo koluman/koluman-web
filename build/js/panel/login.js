@@ -1,8 +1,4 @@
 $( "#loginbutton" ).click(function() {
-    var gelen=false;
-    var gelen=validation();
-
-    if(gelen==true){
        var csrfToken = $('meta[name="csrf-token"]').attr('content');
         var email = $("#email").val();
         var password = $("#password").val();
@@ -23,6 +19,4 @@ $( "#loginbutton" ).click(function() {
             }
           }
       });
-    
-    }
   });
