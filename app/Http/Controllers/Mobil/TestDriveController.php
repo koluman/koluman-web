@@ -28,7 +28,7 @@ class TestDriveController extends Controller
             if ($validator->fails()) {
                 $responseData = [
                     "success" => 0,
-                    "message" => $validator->errors()->first(), // İlk hatayı al
+                    "message" => $validator->errors(), // İlk hatayı al
                 ];
             }
             else{
@@ -130,7 +130,7 @@ class TestDriveController extends Controller
             if ($validator->fails()) {
                 $responseData = [
                     "success" => 0,
-                    "message" => $validator->errors()->first(), // İlk hatayı al
+                    "message" => $validator->errors(), // İlk hatayı al
                 ];
             }
             else{
@@ -186,7 +186,7 @@ class TestDriveController extends Controller
                 $responseData = [
                     "success" => 0,
                     "testDrivescar" => "",
-                    "message" => $validator->errors()->first(), // İlk hatayı al
+                    "message" => $validator->errors(), // İlk hatayı al
                 ];
             } else {
 

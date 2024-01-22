@@ -27,7 +27,7 @@ class LoginController extends Controller
             if ($validator->fails()) {
                 $responseData = [
                     "success" => 0,
-                    "message" => $validator->errors()->first(), // İlk hatayı al
+                    "message" => $validator->errors(), // İlk hatayı al
                 ];
             } else {
                 $token = $request->header('Authorization');
