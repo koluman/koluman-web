@@ -2,6 +2,7 @@ $( "#loginbutton" ).click(function() {
        var csrfToken = $('meta[name="csrf-token"]').attr('content');
         var email = $("#email").val();
         var password = $("#password").val();
+
         $.ajax({
           type: 'POST',
           url: 'https://mobiloby.app/koluman/web/login',

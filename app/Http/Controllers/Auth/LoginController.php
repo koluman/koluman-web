@@ -17,13 +17,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-            $request->validate([
-                'email' => 'required|string|email',
-                'password' => 'required|string',
-            ]);
-
+         
             $credentials = $request->only('email', 'password');
-
             $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
             if (!$user || !Hash::check($credentials['password'], $user->backuser_password)) {
