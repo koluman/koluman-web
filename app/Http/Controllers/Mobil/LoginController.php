@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function userlogin(Request $request)
     {
-        try {
+        /*try {
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
             if ($token) {
@@ -58,8 +58,8 @@ class LoginController extends Controller
                 'user' => "",
                 "message" => $e->getMessage(),
             ];
-        }
-        return response()->json($responseData);
+        }*/
+        return response()->json($request);
 
     }
     public function userlogout(Request $request)

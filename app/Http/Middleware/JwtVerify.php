@@ -31,8 +31,7 @@ class JwtVerify
        
         try {
             $token = $request->header('Authorization');
-            dd($token);
-           /* if (!$token) {
+            if (!$token) {
                 $errorData = [
                     "success" => 401,
                     "message" => "Token bilgisi bulunamadı!!",
@@ -66,7 +65,7 @@ class JwtVerify
                 ];
                 $request->attributes->add(['errorData' => $errorData]);
                 return $next($request);
-            }*/
+            }
 
         } catch (\Exception $e) {
             $errorData = [
