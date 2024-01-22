@@ -51,11 +51,22 @@ class JwtVerify
                 // Basic Auth token için işlemler
                 $credentials = $this->extractBasicCredentials($token);
                 if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    return response()->json(['error' => 'Unauthorized. Invalid Basic Auth credentials.'], 401);
+                    $errorData = [
+                        "success" => 401,
+                        "message" => "Geçersiz Temel Kimlik Doğrulama kimlik bilgileri.",
+                    ];
+                    $request->attributes->add(['errorData' => $errorData]);
+                    return $next($request);
                 }
             } else {
-                // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
-                return response()->json(['error' => 'Unauthorized. Invalid token type.'], 401);
+                // Eğer Basic Authentication tipinde bir token geldiyse burada uygun bir işlem yapabilirsiniz
+                // Örneğin, bir hata mesajı dönebilir veya uygun bir HTTP durum koduyla yanıt verebilirsiniz
+                $errorData = [
+                    "success" => 401,
+                    "message" => "Geçersiz token tipi!!",
+                ];
+                $request->attributes->add(['errorData' => $errorData]);
+                return $next($request);
             }
 
             return $next($request);
