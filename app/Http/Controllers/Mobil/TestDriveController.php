@@ -78,6 +78,7 @@ class TestDriveController extends Controller
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
+                
             } else {
                 $responseData = [
                     "success" => 0,
@@ -85,6 +86,11 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
+            if ($request->json('error') === 'Unauthorized. Token not provided.') {
+                // Token not provided hatasıyla ilgili özel işlemleri yapabilirsiniz
+                return response()->json(['message' => 'Token not provided. Please provide a valid token.'], 401);
+            }
+    
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
