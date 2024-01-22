@@ -17,9 +17,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         try {
-           /* $email = $request->input('email');
-            $password = $request->input('password');*/
-            dd($request);
+            $email = $request->input('email');
+            $password = $request->input('password');
             //$credentials = $request->only('email', 'password');
            // $user = BackUser::where('backuser_mail', $credentials['email'])->first();
 
@@ -61,7 +60,7 @@ class LoginController extends Controller
                 'redirectRoute' => "",
             ];
         }
-        //return response()->json($responseData);
+        return response()->json($email);
     }
 
 

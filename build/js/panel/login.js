@@ -2,8 +2,7 @@ $( "#loginbutton" ).click(function() {
        var csrfToken = $('meta[name="csrf-token"]').attr('content');
         var email = $("#username").val();
         var password = $("#password-input").val();
-        console.log(email+"--"+password);
-       /* $.ajax({
+        $.ajax({
           type: 'POST',
           url: 'https://mobiloby.app/koluman/web/login',
           data: {
@@ -11,14 +10,14 @@ $( "#loginbutton" ).click(function() {
             password: password,
               _token: csrfToken, // CSRF token'ını gönder
           },
-          //dataType: 'json',
+          dataType: 'json',
           success: function (data) {
             console.log(data);
-            if (data.success == 1) {
+            /*if (data.success == 1) {
               window.location.href = "https://mobiloby.app/koluman/web/"+data.redirectRoute; 
             } else {
                 alert(data.message); // SMS gönderimi başarısızsa kullanıcıya bir uyarı göster
-            }
+            }*/
           }
-      });*/
+      });
   });
