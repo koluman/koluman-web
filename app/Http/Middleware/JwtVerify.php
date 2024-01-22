@@ -29,44 +29,36 @@ class JwtVerify
     public function handle($request, Closure $next)
     {
         $token = $request->header('Authorization');
-        $error = null;
-    
         if (!$token) {
-            $error = ['success' => 401, 'messages' => 'Geçersiz. Token bulunamadı.'];
-        } else {
-            // Token tipini kontrol et
-            if ($this->isBearerToken($token)) {
-                // Bearer token için işlemler
-                try {
-                    $token = $this->extractToken($token);
-                    $user = JWTAuth::setToken($token)->authenticate();
+            return response()->json(['success' => 401, 'messages' => 'Geçersiz. Token bulunamadı.']);
+        }
     
-                    if (!$user) {
-                        $error = ['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.'];
-                    }
-                } catch (\Exception $e) {
-                    $error = ['success' => 401, 'messages' => $e->getMessage()];
+        // Token tipini kontrol et
+        if ($this->isBearerToken($token)) {
+            // Bearer token için işlemler
+            try {
+                $token = $this->extractToken($token);
+                $user = JWTAuth::setToken($token)->authenticate();
+    
+                if (!$user) {
+                    return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
                 }
-            } elseif ($this->isBasicAuthToken($token)) {
-                // Basic Auth token için işlemler
-                $credentials = $this->extractBasicCredentials($token);
-                if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
-                    $error = ['success' => 401, 'messages' => 'Geçersiz. Basic Auth kimlik doğrulama yapılamadı.'];
-                }
-            } else {
-                // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
-                $error = ['success' => 401, 'messages' => 'Geçersiz. Token tipi yanlış.'];
+            } catch (\Exception $e) {
+                return response()->json(['success' => 401, 'messages' => $e->getMessage()]);
             }
+        } elseif ($this->isBasicAuthToken($token)) {
+            // Basic Auth token için işlemler
+            $credentials = $this->extractBasicCredentials($token);
+            if (!$this->authenticateBasicToken($credentials['username'], $credentials['password'])) {
+                return response()->json(['success' => 401, 'messages' => 'Geçersiz. Basic Auth kimlik doğrulama yapılamadı.']);
+            }
+        } else {
+            // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
+            return response()->json(['success' => 401, 'messages' => 'Geçersiz. Token tipi yanlış.']);
         }
     
-        if ($error) {
-            return response()->json($error);
-        }
-    
-        // Hata yoksa devam et
         return $next($request);
     }
-    
     
 
     private function extractToken($token)
