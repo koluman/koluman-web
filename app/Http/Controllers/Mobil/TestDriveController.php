@@ -56,7 +56,7 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-        try {
+       // try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -91,12 +91,12 @@ class TestDriveController extends Controller
                 return response()->json(['message' => 'Token not provided. Please provide a valid token.'], 401);
             }
     
-        } catch (\Exception $e) {
+        /*} catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
-        }
+        }*/
         return response()->json($responseData);
     }
 
