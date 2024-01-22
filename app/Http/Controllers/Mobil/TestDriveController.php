@@ -177,6 +177,13 @@ class TestDriveController extends Controller
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
                 $u = JWTAuth::setToken($token)->authenticate();
+                if($request->car_id->isEmpty()){
+                    $responseData = [
+                        "success" => 0,
+                        "testDrivescar" => "",
+                        "message" => "Arabaya numarası zorunludur",
+                    ];
+                }else{
                 $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
                 if (!$testDrivescar->isEmpty()) {
                     $responseData = [
@@ -191,6 +198,7 @@ class TestDriveController extends Controller
                         "message" => "Arabaya ait randevu listesi getirelemedi",
                     ];
                 }
+            }
             } else {
                 $responseData = [
                     "success" => 0,
