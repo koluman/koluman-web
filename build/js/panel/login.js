@@ -13,7 +13,7 @@ $( "#loginbutton" ).click(function() {
           },
           //dataType: 'json',
           success: function (data) {
-            conole.log(data);
+            console.log(data);
             /*if (data.success == 1) {
               window.location.href = "https://mobiloby.app/koluman/web/"+data.redirectRoute; 
             } else {
