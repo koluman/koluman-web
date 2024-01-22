@@ -28,15 +28,16 @@ class JwtVerify
     }*/
     public function handle($request, Closure $next)
     {
-        $token = $request->header('Authorization');
-        if (!$token) {
-            $responseData = [
-                "success" => 401,
-                "message" => "Unauthorized. Token not provided.",
-            ];
-        }
+       
 
         try {
+            $token = $request->header('Authorization');
+            if (!$token) {
+                $responseData = [
+                    "success" => 401,
+                    "message" => "Unauthorized. Token not provided.",
+                ];
+            }
             // Token türünü kontrol et ve uygun işlemi yap
             if ($this->isBearerToken($token)) {
                 // Bearer token için işlemler
