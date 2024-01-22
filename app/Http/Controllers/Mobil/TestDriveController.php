@@ -56,11 +56,11 @@ class TestDriveController extends Controller
     }
     public function testdriveget(Request $request)
     {
-        try {
+         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if ($token) {
-                $u = JWTAuth::setToken($token)->authenticate();
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('user_id', $u->user_id)
                     ->where('auto_date', '>=', $lastWeek)
@@ -78,6 +78,7 @@ class TestDriveController extends Controller
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
+                
             } else {
                 $responseData = [
                     "success" => 0,
@@ -85,6 +86,7 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
+
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
