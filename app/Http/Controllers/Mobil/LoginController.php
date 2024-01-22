@@ -30,7 +30,6 @@ class LoginController extends Controller
 
                     if ($authenticatedUser) {
                         $refreshToken = JWTAuth::refresh($token);
-
                         $responseData = [
                             "success" => 1,
                             "token" => $token,
