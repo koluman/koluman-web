@@ -23,14 +23,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::middleware(['jwt.verify'])->group(function () {
-    Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
-    Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
-    Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');
     Route::post('/testdriveadd', [TestDriveController::class, 'testdriveadd'])->name('testdriveadd');
     Route::get('/testdriveget', [TestDriveController::class, 'testdriveget'])->name('testdriveget');
     Route::post('/deleteTestDrive', [TestDriveController::class, 'deleteTestDrive'])->name('deleteTestDrive');
     Route::post('/updateTestDrive', [TestDriveController::class, 'updateTestDrive'])->name('updateTestDrive');
+    Route::get('/testdrivegetcar', [TestDriveController::class, 'testdrivegetcar'])->name('testdrivegetcar');
+});
+Route::middleware(['basic.verify'])->group(function () {
+    Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
+    Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
+    Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');
     Route::get('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
-    Route::get('/testdrivegetcar', [TestDriveController::class, 'testdrivegetcar'])->name('testdrivegetcar');
 });
