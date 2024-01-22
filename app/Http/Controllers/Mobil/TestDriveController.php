@@ -17,15 +17,15 @@ class TestDriveController extends Controller
         $u = JWTAuth::setToken($token)->authenticate();
         try {
             if ($u) {
-                
-                $car_id=$request->car_id;
-                $drive_time=$request->drive_time;
-                $user_id=$u->user_id;
+
+                $car_id = $request->car_id;
+                $drive_time = $request->drive_time;
+                $user_id = $u->user_id;
 
                 $affectedRows = TestDrive::insert([
                     'user_id' => $user_id,
                     'car_id' => $car_id,
-                    'drive_time'=>$drive_time,
+                    'drive_time' => $drive_time,
                     'auto_date' => Carbon::now('Europe/Istanbul')
                 ]);
                 if ($affectedRows > 0) {
@@ -65,20 +65,20 @@ class TestDriveController extends Controller
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
-                        "testDrives"=>$testDrives,
+                        "testDrives" => $testDrives,
                         "message" => "Test sürüş randevu listesi getirildi",
                     ];
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "testDrives"=>"",
+                        "testDrives" => "",
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
             } else {
                 $responseData = [
                     "success" => 0,
-                    "testDrives"=>"",
+                    "testDrives" => "",
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
@@ -90,5 +90,40 @@ class TestDriveController extends Controller
         }
         return response()->json($responseData);
     }
-  
+
+    public function deleteTestDrive(Request $request)
+    {
+        try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            if ($token) {
+                $drive_id = $request->drive_id;
+                $testDrive = TestDrive::where('drive_id', $drive_id)->first();
+                if ($testDrive) {
+                    $testDrive->delete();
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Test sürüşü başarıyla silindi",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Belirtilen drive_id ile eşleşen test sürüşü bulunamadı",
+                    ];
+                }
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }
