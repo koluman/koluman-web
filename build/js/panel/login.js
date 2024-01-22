@@ -30,8 +30,9 @@ $( "#loginbutton" ).click(function() {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data.success);
           if (data.success == 1) {
-            window.location.href = "https://mobiloby.app/koluman/web/signin"; 
+            window.location.href = "https://mobiloby.app/koluman/web/"; 
           } else {
               alert(data.message); 
           }
