@@ -14,6 +14,24 @@ class TestDriveController extends Controller
     public function testdriveadd(Request $request)
     {
         try {
+            $messages = [
+                'car_id.required' => 'Araba numarası girişi zorunludur.',
+                'drive_time.required' => 'Randevu zamanı girişi zorunludur.',
+            ];
+        
+            // İsteği doğrula
+            $validator = Validator::make($request->all(), [
+                'car_id' => 'required',
+                'drive_time' => 'required',
+            ], $messages);
+
+            if ($validator->fails()) {
+                $responseData = [
+                    "success" => 0,
+                    "message" => $validator->errors()->first(), // İlk hatayı al
+                ];
+            }
+            else{
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -46,6 +64,7 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
+        }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -57,6 +76,7 @@ class TestDriveController extends Controller
     public function testdriveget(Request $request)
     {
         try {
+           
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
@@ -85,6 +105,7 @@ class TestDriveController extends Controller
                     "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
+        
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -97,6 +118,22 @@ class TestDriveController extends Controller
     public function deleteTestDrive(Request $request)
     {
         try {
+            $messages = [
+                'drive_id.required' => 'Test sürüş numarası girişi zorunludur.',
+            ];
+
+            // İsteği doğrula
+            $validator = Validator::make($request->all(), [
+                'drive_id' => 'required',
+            ], $messages);
+
+            if ($validator->fails()) {
+                $responseData = [
+                    "success" => 0,
+                    "message" => $validator->errors()->first(), // İlk hatayı al
+                ];
+            }
+            else{
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
@@ -120,6 +157,7 @@ class TestDriveController extends Controller
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
+        }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -129,49 +167,13 @@ class TestDriveController extends Controller
 
         return response()->json($responseData);
     }
-    public function updateTestDrive(Request $request)
-    {
-        try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            if ($token) {
-                $drive_id = $request->drive_id;
-                $testDrive = TestDrive::where('drive_id', $drive_id)->first();
-                if ($testDrive) {
-                    $testDrive->drive_time = $request->input('drive_time');
-                    $testDrive->car_id = $request->input('car_id');
-                    $testDrive->save();
-                    $responseData = [
-                        "success" => 1,
-                        "message" => "Test sürüşü başarıyla güncellendi",
-                    ];
-                } else {
-                    $responseData = [
-                        "success" => 0,
-                        "message" => "Belirtilen drive_id ile eşleşen test sürüşü bulunamadı",
-                    ];
-                }
-            } else {
-                $responseData = [
-                    "success" => 0,
-                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
-                ];
-            }
-        } catch (\Exception $e) {
-            $responseData = [
-                "success" => 0,
-                "message" => $e->getMessage(),
-            ];
-        }
-
-        return response()->json($responseData);
-    }
+  
     public function testdrivegetcar(Request $request)
     {
 
         try {
             $messages = [
-                'car_id.required' => 'Araba numarası zorunludur.',
+                'car_id.required' => 'Araba numarası girişi zorunludur.',
             ];
         
             // İsteği doğrula
