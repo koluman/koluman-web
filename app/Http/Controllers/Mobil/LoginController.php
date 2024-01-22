@@ -116,7 +116,6 @@ class LoginController extends Controller
                 'user_phone.required' => 'Kullanıcı telefon numarası girişi zorunludur.',
                 'user_identity.required' => 'Kullanıcı tc numarası girişi zorunludur.',
                 'user_name.required' => 'Kullanıcı adsoyad girişi zorunludur.',
-
             ];
 
             // İsteği doğrula
@@ -128,7 +127,7 @@ class LoginController extends Controller
             if ($validator->fails()) {
                 $responseData = [
                     "success" => 0,
-                    "message" => $validator->errors()->first(), // İlk hatayı al
+                    "message" => $validator->errors(), // İlk hatayı al
                 ];
             } else {
             $token = $request->header('Authorization');
