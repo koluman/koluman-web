@@ -21,9 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-
 Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
     Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
