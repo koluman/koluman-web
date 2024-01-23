@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use Tymon\JWTAuth\Facades\JWTFactory;
 
 class LoginController extends Controller
 {
@@ -21,24 +21,31 @@ class LoginController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
-    
+
             if ($token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
-    
+
                 if ($user) {
                     Auth::guard('api')->login($user);
-    
-                    $accessToken = JWTAuth::fromUser($user);
 
+                    $accessToken = JWTAuth::fromUser($user);
+                    // Refresh token
                     $customExpiration = now()->addDays(30); // 30 gün süre ekleyin veya kendi gereksinimlerinize göre ayarlayın
-                    $refreshTokenPayload = [
+
+                    // Create JWTFactory instance
+                    $factory = JWTFactory::customClaims([
                         'sub' => $user->user_id,
-                        'iat' => time(),
-                        'exp' => $customExpiration->timestamp,
-                    ];
-                    $refreshToken = JWTAuth::encode($refreshTokenPayload);
-    
+                    ]);
+
+                    // Set expiration for refresh token
+                    $refreshToken = JWTAuth::encode(
+                        $factory->make(array_merge(
+                            $factory->buildPayload()->toArray(),
+                            ['exp' => $customExpiration->timestamp]
+                        ))
+                    );
+
                     $responseData = [
                         "success" => 1,
                         "token" => [
@@ -89,7 +96,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-    
+
         return response()->json($responseData);
     }
 
