@@ -27,13 +27,15 @@ class LoginController extends Controller
 
                 if ($user) {
                     //$originalToken = JWTAuth::fromUser($user);
-                    $originalToken = JWTAuth::fromUser($user);
+                    $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
                     $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     if ($authenticatedUser) {
+                        $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(30)->timestamp]);
                         $responseData = [
                             "success" => 1,
                             "token" => [
+                                "refreshtoken" => $refreshToken,
                                 "originaltoken" => $originalToken,
                                 "expires_in" => Auth::factory()->getTTL() * 60,
                             ],
@@ -50,6 +52,7 @@ class LoginController extends Controller
                             "success" => 0,
                             "token" => [
                                 "originaltoken" => "",
+                                "refreshtoken" => "",
                                 "expires_in" =>0,
                             ],
                             "user" => [
@@ -66,6 +69,7 @@ class LoginController extends Controller
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
+                            "refreshtoken" => "",
                             "expires_in" =>0,
                         ],
                         "user" => [
@@ -82,7 +86,7 @@ class LoginController extends Controller
             $responseData = [
                 "success" => 0,
                 "token" => [
-                    "originaltoken" => "",
+                    "value" => "",
                     "expires_in" =>0,
                 ],
                 "user" => [

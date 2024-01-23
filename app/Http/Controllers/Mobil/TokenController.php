@@ -10,19 +10,18 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TokenController extends Controller
 {
-    /*public function refresh(Request $request)
+    public function refresh(Request $request)
     {
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
-                $u = JWTAuth::setToken($token)->authenticate();
-                $user = User::where('user_id', $u->user_id)->first();
-                $originalToken = JWTAuth::fromUser($user);
+                $refreshedToken = JWTAuth::refresh($token);
+               
                 $responseData = [
                     "success" => 1,
                     "token" => [
-                        "value" => $originalToken,
+                        "value" => $refreshedToken,
                         "expires_in" => Auth::factory()->getTTL() * 60,
                     ],
                     "message" => "Refresh token oluşturuldu",
@@ -48,17 +47,8 @@ class TokenController extends Controller
             ];
         }
         return response()->json($token);
-    }*/
+    }
 
 
-    public function refresh(Request $request)
-    {
-        $token = $request->header('Authorization');
-        $token = str_replace('Basic ', '', $token);
-
-        if ($token) {
-        return response()->json("sffsdf");
-        }
-
-    } 
+    
 }
