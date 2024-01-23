@@ -33,7 +33,7 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($newToken);
     }
 
 
