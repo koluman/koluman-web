@@ -30,7 +30,8 @@ class LoginController extends Controller
                     //$originalToken = JWTAuth::fromUser($user);
                     //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
-                    $originalToken = Auth::guard('api')->attempt($user);
+                    $credentials = $request->only('user_phone');
+                    $originalToken = Auth::attempt($credentials);
 
                     //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     //if ($authenticatedUser) {
