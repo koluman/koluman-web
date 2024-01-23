@@ -25,21 +25,18 @@ class LoginController extends Controller
                 $user = User::where('user_phone', $userPhone)->first();
 
                 if ($user) {
-
                     //$originalToken = JWTAuth::fromUser($user);
-                    //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
-
                     //$originalToken = JWTAuth::fromUser($user,['ttl' => 2]);
                     //$refreshToken = JWTAuth::fromUser($user,['custom_ttl' => 10]);
+                    //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
+                    //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
+                    $originalToken = JWTAuth::fromUser($user);
+                    $refreshToken = JWTAuth::fromUser($user, ['refresh' => true]);
 
-                    //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
-                    //if ($authenticatedUser) {
-                    $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
-                    $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
                     // Decode işlemi
-$decodedOriginalToken = JWTAuth::setToken($originalToken)->toUser();
-$decodedRefreshToken = JWTAuth::setToken($refreshToken)->toUser();
+                    $decodedOriginalToken = JWTAuth::setToken($originalToken)->toUser();
+                    $decodedRefreshToken = JWTAuth::setToken($refreshToken)->toUser();
                     $responseData = [
                         "success" => 1,
                         "token" => [
