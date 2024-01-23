@@ -50,32 +50,36 @@ class TokenController extends Controller
         return response()->json($token);
     }*/
 
-   
-public function refreshToken(Request $request)
-{
-    try {
-        // Mevcut token'ı al
-        $token = JWTAuth::getToken();
 
-        // Eğer token varsa refresh işlemi yap
-        if ($token) {
-            $refreshedToken = JWTAuth::refresh($token);
+    public function refreshToken(Request $request)
+    {
+        try {
+            // Mevcut token'ı al
+            $token = JWTAuth::getToken();
 
+            // Eğer token varsa refresh işlemi yap
+            /*if ($token) {
+                $refreshedToken = JWTAuth::refresh($token);
+
+                return response()->json([
+                    'success' => true,
+                    'token' => $refreshedToken,
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Token not provided',
+                ], 401);
+            }*/
             return response()->json([
-                'success' => true,
-                'token' => $refreshedToken,
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Token not provided',
+                'success' => 1,
+                'message' => $token,
             ], 401);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => 0,
+                'message' => $e->getMessage(),
+            ], 500);
         }
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage(),
-        ], 500);
     }
-}
 }
