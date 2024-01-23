@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -32,6 +33,8 @@ class LoginController extends Controller
                     $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     if ($authenticatedUser) {
                         $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(30)->timestamp]);
+                        Log::info('Token oluşturuldu: ' . now()->addMinutes(30)->timestamp);
+
                         $responseData = [
                             "success" => 1,
                             "token" => [
