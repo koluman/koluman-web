@@ -16,8 +16,7 @@ class TokenController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
-                $newToken = JWTAuth::refresh($token);
-               
+                $newToken = Auth::refresh();
                 $responseData = [
                     "success" => 1,
                     "token" => [

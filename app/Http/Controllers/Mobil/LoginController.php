@@ -28,28 +28,30 @@ class LoginController extends Controller
 
                 if ($user) {
                     //$originalToken = JWTAuth::fromUser($user);
-                    $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
+                    //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
-                    $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
-                    if ($authenticatedUser) {
-                        $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
+                    $originalToken = Auth::guard('api')->attempt($user);
+
+                    //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
+                    //if ($authenticatedUser) {
+                        //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
 
                         $responseData = [
                             "success" => 1,
                             "token" => [
-                                "refreshtoken" => $refreshToken,
+                                //"refreshtoken" => $refreshToken,
                                 "originaltoken" => $originalToken,
                                 "expires_in" => Auth::factory()->getTTL() * 60,
                             ],
                             "user" => [
-                                "user_mail" => $authenticatedUser->user_mail,
-                                "user_name" => $authenticatedUser->user_name,
-                                "user_phone" => $authenticatedUser->user_phone,
-                                "user_image_url" => $authenticatedUser->user_image_url,
+                                "user_mail" => $user->user_mail,
+                                "user_name" => $user->user_name,
+                                "user_phone" => $user->user_phone,
+                                "user_image_url" => $user->user_image_url,
                             ],
                             "message" => "Login İşlemi başarılı",
                         ];
-                    } else {
+                    /*} else {
                         $responseData = [
                             "success" => 0,
                             "token" => [
@@ -65,13 +67,13 @@ class LoginController extends Controller
                             ],
                             "message" => "Login İşlemi başarısız",
                         ];
-                    }
+                    }*/
                 } else {
                     $responseData = [
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
-                            "refreshtoken" => "",
+                            //"refreshtoken" => "",
                             "expires_in" =>0,
                         ],
                         "user" => [
@@ -88,7 +90,7 @@ class LoginController extends Controller
             $responseData = [
                 "success" => 0,
                 "token" => [
-                    "value" => "",
+                    "originaltoken" => "",
                     "expires_in" =>0,
                 ],
                 "user" => [
