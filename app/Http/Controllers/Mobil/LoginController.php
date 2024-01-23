@@ -25,7 +25,7 @@ class LoginController extends Controller
                 $user = User::where('user_phone', $userPhone)->first();
 
                 if ($user) {
-                    
+
                     //$originalToken = JWTAuth::fromUser($user);
                     //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
@@ -35,36 +35,39 @@ class LoginController extends Controller
 
                     //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     //if ($authenticatedUser) {
-                        $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
-                        $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
-                        
-                        $responseData = [
-                            "success" => 1,
-                            "token" => [
-                                "refreshtoken" => $refreshToken,
-                                "originaltoken" => $originalToken,
-                                "expires_in" => Auth::factory()->getTTL() * 60,
-                            ],
-                            "user" => [
-                                "user_mail" => $user->user_mail,
-                                "user_name" => $user->user_name,
-                                "user_phone" => $user->user_phone,
-                                "user_image_url" => $user->user_image_url,
-                            ],
-                            "message" => "Login İşlemi başarılı",
-                        ];
-                    
+                    $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
+                    $decodedOriginalToken = JWTAuth::decode($originalToken);
+                    $decodedRefreshToken = JWTAuth::decode($refreshToken);
+                    $responseData = [
+                        "success" => 1,
+                        "token" => [
+                            "decodedOriginalToken" => $decodedOriginalToken,
+                            "decodedRefreshToken" => $decodedRefreshToken,
+
+                            "refreshtoken" => $refreshToken,
+                            "originaltoken" => $originalToken,
+                            "expires_in" => Auth::factory()->getTTL() * 60,
+                        ],
+                        "user" => [
+                            "user_mail" => $user->user_mail,
+                            "user_name" => $user->user_name,
+                            "user_phone" => $user->user_phone,
+                            "user_image_url" => $user->user_image_url,
+                        ],
+                        "message" => "Login İşlemi başarılı",
+                    ];
                 } else {
                     $responseData = [
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
                             //"refreshtoken" => "",
-                            "expires_in" =>0,
+                            "expires_in" => 0,
                         ],
                         "user" => [
-                            "user_mail" =>"",
-                            "user_name" =>"",
+                            "user_mail" => "",
+                            "user_name" => "",
                             "user_phone" => "",
                             "user_image_url" => "",
                         ],
@@ -77,11 +80,11 @@ class LoginController extends Controller
                 "success" => 0,
                 "token" => [
                     "originaltoken" => "",
-                    "expires_in" =>0,
+                    "expires_in" => 0,
                 ],
                 "user" => [
-                    "user_mail" =>"",
-                    "user_name" =>"",
+                    "user_mail" => "",
+                    "user_name" => "",
                     "user_phone" => "",
                     "user_image_url" => "",
                 ],
@@ -91,7 +94,7 @@ class LoginController extends Controller
         return response()->json($responseData);
     }
 
- 
+
     public function userlogout(Request $request)
     {
         try {
@@ -123,49 +126,48 @@ class LoginController extends Controller
     {
         try {
 
-                $token = $request->header('Authorization');
-                $token = str_replace('Basic ', '', $token);
-                if ($token) {
-                    $user_identity = $request->user_identity;
-                    $user_phone = $request->user_phone;
-                    $user_name = $request->user_name;
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
+            if ($token) {
+                $user_identity = $request->user_identity;
+                $user_phone = $request->user_phone;
+                $user_name = $request->user_name;
 
-                    $existingUser = User::where('user_phone', $user_phone)->first();
-                    if ($existingUser) {
-                        $responseData = [
-                            "success" => 0,
-                            "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
-                            "user" => "",
-                            "token" => "",
-                            "refreshtoken" => "",
-                        ];
-                    } else {
-                        $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
-                        $user = User::create([
-                            'user_id' => $user_id,
-                            'user_name' => $user_name,
-                            'user_phone' => $user_phone,
-                            'user_identity' => $user_identity,
-                            'user_register_date' => Carbon::now('Europe/Istanbul'),
-                        ]);
-                        $token = JWTAuth::fromUser($user);
-                        $u = JWTAuth::setToken($token)->authenticate();
-                        $responseData = [
-                            "success" => 1,
-                            "message" => "Kullanıcı Kayıt edildi",
-                            "user" => $user,
-                            "token" => $token,
-                        ];
-                    }
-                } else {
+                $existingUser = User::where('user_phone', $user_phone)->first();
+                if ($existingUser) {
                     $responseData = [
                         "success" => 0,
-                        "message" => "Token bulunamadı, Logout işlemi başarısız",
+                        "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
                         "user" => "",
                         "token" => "",
+                        "refreshtoken" => "",
+                    ];
+                } else {
+                    $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
+                    $user = User::create([
+                        'user_id' => $user_id,
+                        'user_name' => $user_name,
+                        'user_phone' => $user_phone,
+                        'user_identity' => $user_identity,
+                        'user_register_date' => Carbon::now('Europe/Istanbul'),
+                    ]);
+                    $token = JWTAuth::fromUser($user);
+                    $u = JWTAuth::setToken($token)->authenticate();
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Kullanıcı Kayıt edildi",
+                        "user" => $user,
+                        "token" => $token,
                     ];
                 }
-            
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Token bulunamadı, Logout işlemi başarısız",
+                    "user" => "",
+                    "token" => "",
+                ];
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
