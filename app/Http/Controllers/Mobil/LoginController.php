@@ -30,12 +30,14 @@ class LoginController extends Controller
                     //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
 
-                    $originalToken = JWTAuth::fromUser($user,['ttl' => 2]);
-                    $refreshToken = JWTAuth::fromUser($user,['custom_ttl' => 10]);
+                    //$originalToken = JWTAuth::fromUser($user,['ttl' => 2]);
+                    //$refreshToken = JWTAuth::fromUser($user,['custom_ttl' => 10]);
 
                     //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     //if ($authenticatedUser) {
-                        //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
+                        $originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
+
+                        $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
 
                         $responseData = [
                             "success" => 1,
