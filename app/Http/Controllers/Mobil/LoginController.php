@@ -39,6 +39,7 @@ class LoginController extends Controller
                             "success" => 1,
                             "token" => [
                                 "refreshtoken" => $refreshToken,
+                                "decoderefresh" =>JWTAuth::parseToken($refreshToken)->authenticate()                                ,
                                 "originaltoken" => $originalToken,
                                 "expires_in" => Auth::factory()->getTTL() * 60,
                             ],
