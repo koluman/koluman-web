@@ -44,7 +44,7 @@ class JwtVerify
                     return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
                 }
             } catch (\Exception $e) {
-                return response()->json(['success' => 401, 'messages' => $e->getMessage()]);
+                return response()->json(['messages' => $e->getMessage()],401);
             }
         }  else {
             // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
