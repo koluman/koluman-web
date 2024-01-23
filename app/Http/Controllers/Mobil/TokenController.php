@@ -53,7 +53,12 @@ class TokenController extends Controller
 
     public function refresh(Request $request)
     {
+        $token = $request->header('Authorization');
+        $token = str_replace('Basic ', '', $token);
+
+        if ($token) {
         return response()->json("sffsdf");
+        }
 
     } 
 }
