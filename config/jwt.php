@@ -10,7 +10,7 @@
  */
 
 return [
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -300,5 +300,8 @@ return [
     'driver' => 'jwt',
     'user' => App\Models\User::class,
     'backuser' => App\Models\BackUser::class,
+    'identifier' => 'user_phone',
+    'require_claim' => true,
+
 
 ];
