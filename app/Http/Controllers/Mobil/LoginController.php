@@ -87,7 +87,7 @@ class LoginController extends Controller
         }
         return response()->json($responseData);
     }*/
-    public function login(LoginRequest $request)
+    public function userlogin(LoginRequest $request)
     {
        
 
