@@ -31,7 +31,7 @@ class LoginController extends Controller
 
                     $originalToken = JWTAuth::fromUser($user,Carbon::now()->addSeconds(120)->format('Y-m-d H:i:s'));
                     $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
-                    $decodedRefreshToken = JWTAuth::parseToken($refreshToken)->authenticate();
+                    $decodedRefreshToken = JWTAuth::parseToken($refreshToken);
 
                     //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     //if ($authenticatedUser) {
