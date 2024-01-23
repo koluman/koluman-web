@@ -27,7 +27,7 @@ class LoginController extends Controller
     
                 if ($user) {
                     // Orijinal token'ı oluştururken süreyi 2 dakika olarak belirle
-                    $originalToken = JWTAuth::fromUser($user, ['ttl' => 2]);
+                    $originalToken = JWTAuth::fromUser($user);
                     Auth::guard('api')->login($user);
     
                     // Orijinal token'ı kullanarak kullanıcıyı authenticate et
@@ -35,7 +35,7 @@ class LoginController extends Controller
     
                     if ($authenticatedUser) {
                         // Refresh token'ı oluştururken süreyi 14 gün olarak belirle
-                        $refreshToken = $refreshToken = JWTAuth::refresh(['ttl' => 1440 * 14]);
+                        $refreshToken = $refreshToken = JWTAuth::refresh();
 
                         $responseData = [
                             "success" => 1,
