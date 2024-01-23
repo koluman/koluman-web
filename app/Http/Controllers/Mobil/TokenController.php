@@ -52,10 +52,8 @@ class TokenController extends Controller
 
     public function refresh(Request $request)
     {
-        $refreshToken = JWTAuth::refresh();
-
-
-        if ($refreshToken) {
+        return response()->json(JWTAuth::refresh());
+        /*if ($refreshToken) {
             try {
               
                 return response()->json(['token' => $refreshToken, 'expires_in' => Auth::factory()->getTTL() * 60]);
@@ -65,6 +63,6 @@ class TokenController extends Controller
             }
         } else {
             return response()->json(['error' => 'Refresh token not provided'], 400);
-        }
+        }*/
     }
 }
