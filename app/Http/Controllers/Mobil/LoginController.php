@@ -29,19 +29,12 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
     
-                    // Access token
-                    $customClaims = [
-                        'foo' => 'bar',
-                        'baz' => 'qux',
-                    ];
-    
-                    // Access token
-                    $accessToken = JWTAuth::fromUser($user, $customClaims);
-    
-                    // Refresh token
-                    $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addDays(30)->timestamp]);
-    
-                    // Refresh token
+                    $accessTokenExp = now()->addDays(1)->timestamp;
+                    $refreshTokenExp = now()->addDays(30)->timestamp;
+                    
+                    $accessToken = JWTAuth::fromUser($user, ['exp' => $accessTokenExp]);
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => $refreshTokenExp]);
+                    
     
                     $responseData = [
                         "success" => 1,
