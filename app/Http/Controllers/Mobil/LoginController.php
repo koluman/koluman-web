@@ -20,7 +20,7 @@ class LoginController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
 
-            if (!$token) {
+            if ($token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
 
