@@ -17,17 +17,28 @@ class TokenController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
         
-            $user = null; // $user değişkenini önce tanımlayın
+            $user = Auth::user(); // veya kullanıcıyı başka bir şekilde alın
             
             // Token süresi dolmuşsa
             if (JWTAuth::check($token)) {
-                $user = JWTAuth::setToken($token)->authenticate();
-                $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
-                $responseData = [
-                    "success" => 1,
-                    "message" => "Token süresi doldu, yeni token oluşturuldu",
-                    "token" => $refreshToken,
-                ];
+                if ($user instanceof \Tymon\JWTAuth\Contracts\JWTSubject) {
+                    $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Token süresi doldu, yeni token oluşturuldu",
+                        "token" => $refreshToken,
+                    ];
+                } else {
+                    // Kullanıcı nesnesi geçerli değilse
+                    $responseData = [
+                        "success" => 0,
+                        "token" => [
+                            "value" => "",
+                            "expires_in" => 0,
+                        ],
+                        "message" => "Geçerli bir kullanıcı nesnesi alınamadı",
+                    ];
+                }
             } else {
                 // Token süresi dolmadıysa mevcut token'ı döndür
                 $originalToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(120)->format('Y-m-d H:i:s'));
@@ -39,13 +50,24 @@ class TokenController extends Controller
             }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
             // Token süresi dolduğunda TokenExpiredException yakalanır
-            $user = JWTAuth::setToken($token)->authenticate();
-            $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
-            $responseData = [
-                "success" => 1,
-                "message" => "Token süresi doldu, yeni token oluşturuldu",
-                "token" => $refreshToken,
-            ];
+            if ($user instanceof \Tymon\JWTAuth\Contracts\JWTSubject) {
+                $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Token süresi doldu, yeni token oluşturuldu",
+                    "token" => $refreshToken,
+                ];
+            } else {
+                // Kullanıcı nesnesi geçerli değilse
+                $responseData = [
+                    "success" => 0,
+                    "token" => [
+                        "value" => "",
+                        "expires_in" => 0,
+                    ],
+                    "message" => "Geçerli bir kullanıcı nesnesi alınamadı",
+                ];
+            }
         } catch (\Exception $e) {
             // Diğer hataları kontrol et
             $responseData = [
@@ -59,9 +81,6 @@ class TokenController extends Controller
         }
         
         return response()->json($responseData);
-        
-        
-        return response()->json($responseData);
-        
     }
+    
 }
