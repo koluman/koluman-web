@@ -21,24 +21,25 @@ class LoginController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
-
+    
             if ($token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
-
+    
                 if ($user) {
-                    //$originalToken = JWTAuth::fromUser($user);
                     Auth::guard('api')->login($user);
-                    //$originalToken = JWTAuth::fromUser($user,['ttl' => 2]);
-                    //$refreshToken = JWTAuth::fromUser($user,['custom_ttl' => 10]);
-                    //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
-                    //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
-                    $originalToken = JWTAuth::fromUser($user);
-
+    
+                    // Access token
+                    $accessToken = JWTAuth::fromUser($user);
+    
+                    // Refresh token
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addDays(30)->timestamp]);
+    
                     $responseData = [
                         "success" => 1,
                         "token" => [
-                            "originaltoken" => $originalToken,
+                            "originaltoken" => $accessToken,
+                            "refreshtoken" => $refreshToken,
                             "expires_in" => Auth::factory()->getTTL() * 60,
                         ],
                         "user" => [
@@ -54,6 +55,7 @@ class LoginController extends Controller
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
+                            "refreshtoken" => "",
                             "expires_in" => 0,
                         ],
                         "user" => [
@@ -71,6 +73,7 @@ class LoginController extends Controller
                 "success" => 0,
                 "token" => [
                     "originaltoken" => "",
+                    "refreshtoken" => "",
                     "expires_in" => 0,
                 ],
                 "user" => [
@@ -82,9 +85,9 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
+    
         return response()->json($responseData);
     }
-
 
     public function userlogout(Request $request)
     {
