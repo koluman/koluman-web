@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -13,14 +14,17 @@ class TokenController extends Controller
     {
         try {
             $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
+            $token = str_replace('Basic ', '', $token);
+
             if ($token) {
-                
-                $newToken = JWTAuth::refresh(JWTAuth::setToken($token));
+                $userId = $request->user_id;
+                $user = User::where('user_id', $userId)->first();
+                $originalToken = JWTAuth::fromUser($user);
+
                 $responseData = [
                     "success" => 1,
                     "token" => [
-                        "value" => $newToken,
+                        "value" => $originalToken,
                         "expires_in" => Auth::factory()->getTTL() * 60,
                     ],
                     "message" => "Refresh token oluşturuldu",
