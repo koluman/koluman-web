@@ -27,11 +27,12 @@ class LoginController extends Controller
                 $user = User::where('user_phone', $userPhone)->first();
 
                 if ($user) {
-                    $originalToken = JWTAuth::fromUser($user);
+                    //$originalToken = JWTAuth::fromUser($user);
                     //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(2)->timestamp]);
                     Auth::guard('api')->login($user);
 
-
+                    $originalToken = JWTAuth::fromUser($user,Carbon::now()->addSeconds(120)->toDateTimeFormat());
+                    $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->toDateTimeFormat());
                     //$authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     //if ($authenticatedUser) {
                         //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp]); // Örneğin, 60 dakika olarak ayarlandı
@@ -39,7 +40,7 @@ class LoginController extends Controller
                         $responseData = [
                             "success" => 1,
                             "token" => [
-                                //"refreshtoken" => $refreshToken,
+                                "refreshtoken" => $refreshToken,
                                 "originaltoken" => $originalToken,
                                 "expires_in" => Auth::factory()->getTTL() * 60,
                             ],
