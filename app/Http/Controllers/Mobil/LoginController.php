@@ -31,11 +31,8 @@ class LoginController extends Controller
     
                     $accessToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp]);
 
-                    // RefreshToken'ı oluştur
-                    $refreshToken = JWTAuth::encode(
-                        JWTAuth::getPayload($accessToken)->toArray() +
-                        ['exp' => now()->addDays(30)->timestamp]
-                    )->get()   ;             
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addDays(60)->timestamp]);
+            
     
                     $responseData = [
                         "success" => 1,
