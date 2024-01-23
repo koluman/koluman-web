@@ -53,33 +53,7 @@ class TokenController extends Controller
 
     public function refresh(Request $request)
     {
-        try {
-            // Mevcut token'ı al
-            $token = JWTAuth::getToken();
+        return response()->json("sffsdf");
 
-            // Eğer token varsa refresh işlemi yap
-            /*if ($token) {
-                $refreshedToken = JWTAuth::refresh($token);
-
-                return response()->json([
-                    'success' => true,
-                    'token' => $refreshedToken,
-                ]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Token not provided',
-                ], 401);
-            }*/
-            return response()->json([
-                'success' => 1,
-                'message' => $token,
-            ], 401);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => 0,
-                'message' => $e->getMessage(),
-            ], 500);
-        }
-    }
+    } 
 }
