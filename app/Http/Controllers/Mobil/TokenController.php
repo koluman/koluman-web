@@ -15,7 +15,7 @@ class TokenController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if ($token) {
+            /*if ($token) {
                 $u = JWTAuth::setToken($token)->authenticate();
                 $user = User::where('user_id', $u->user_id)->first();
                 $originalToken = JWTAuth::fromUser($user);
@@ -36,7 +36,7 @@ class TokenController extends Controller
                     ],
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
-            }
+            }*/
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -47,6 +47,6 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($token);
     }
 }
