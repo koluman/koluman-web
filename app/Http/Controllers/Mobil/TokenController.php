@@ -13,16 +13,20 @@ class TokenController extends Controller
     public function refresh(Request $request)
     {
         try {
-           
-                $newToken = Auth::refresh();
-                $responseData = [
-                    "success" => 1,
-                    "token" => [
-                        "value" => $newToken,
-                        "expires_in" => Auth::factory()->getTTL() * 60,
-                    ],
-                    "message" => "Refresh token oluşturuldu",
-                ];
+
+            $user = auth()->user();
+
+            // Yeni bir refresh token ve JWT token oluştur
+            $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(30)->timestamp]);
+            $newToken = JWTAuth::refresh($request->bearerToken());
+            $responseData = [
+                "success" => 1,
+                "token" => [
+                    "value" => $newToken,
+                    "expires_in" => Auth::factory()->getTTL() * 60,
+                ],
+                "message" => "Refresh token oluşturuldu",
+            ];
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -33,9 +37,6 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json(Auth::refresh());
+        return response()->json($responseData);
     }
-
-
-    
 }
