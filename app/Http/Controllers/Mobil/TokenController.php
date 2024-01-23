@@ -13,20 +13,25 @@ class TokenController extends Controller
     public function refresh(Request $request)
     {
         try {
-
-            $user = Auth::guard('api')->user();
-
-            // Yeni bir refresh token ve JWT token oluştur
-           /* $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(30)->timestamp]);
-            $newToken = JWTAuth::refresh($request->bearerToken());
-            $responseData = [
-                "success" => 1,
-                "token" => [
-                    "value" => $newToken,
-                    "expires_in" => Auth::factory()->getTTL() * 60,
-                ],
-                "message" => "Refresh token oluşturuldu",
-            ];*/
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            if (JWTAuth::check($token)) {
+                // Token süresi dolmadıysa mevcut token'ı döndür
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Token süresi dolmadığı için mevcut token kullanıldı",
+                    "token" => $token,
+                ];
+            } else {
+                // Token süresi dolmuşsa, mevcut kullanıcıyı al ve yeni token oluştur
+                $user = JWTAuth::setToken($token)->authenticate();
+                $newToken = JWTAuth::fromUser($user);
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Token süresi doldu, yeni token oluşturuldu",
+                    "token" => $newToken,
+                ];
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -37,6 +42,6 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json(Auth::guard('api'));
+        return response()->json($responseData);
     }
 }
