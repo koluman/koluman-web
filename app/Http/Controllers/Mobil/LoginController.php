@@ -29,9 +29,14 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
 
-                    $accessToken = JWTAuth::fromUser($user, ['exp' => Carbon::now()->addMinutes(2)->timestamp]);
+                    // Access Token
+                    $accessTokenExp = Carbon::now()->addMinutes(2)->timestamp;
+                    $accessToken = JWTAuth::fromUser($user, ['exp' => $accessTokenExp]);
 
-                    $refreshToken = JWTAuth::fromUser($user, ['exp' => Carbon::now()->addMinutes(10)->timestamp]);
+                    // Refresh Token
+                    $refreshTokenExp = Carbon::now()->addMinutes(10)->timestamp;
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => $refreshTokenExp]);
+
 
 
                     $responseData = [
