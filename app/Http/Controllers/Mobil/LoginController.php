@@ -29,9 +29,13 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
     
-                    
-                    $accessToken = JWTAuth::fromUser($user);
-                    $refreshToken = JWTAuth::refresh($accessToken);                    
+                    $accessToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp]);
+
+                    // RefreshToken'ı oluştur
+                    $refreshToken = JWTAuth::encode(
+                        JWTAuth::getPayload($accessToken)->toArray() +
+                        ['exp' => now()->addDays(30)->timestamp]
+                    )->get()   ;             
     
                     $responseData = [
                         "success" => 1,
