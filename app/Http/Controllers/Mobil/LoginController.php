@@ -186,9 +186,13 @@ class LoginController extends Controller
             $user = User::where('user_phone', $credentials['user_phone'])->firstOrFail();
     
             // verify the credentials and create a token for the user
-            if (!$token = JWTAuth::fromUser($user)) {
+            if (!$token = $user->createToken('Access Token')->accessToken) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
+    
+            // create refresh token
+            $refreshToken = $user->createToken('Refresh Token', ['*'])->refreshToken;
+    
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'user_not_found'], 404);
         } catch (JWTException $e) {
@@ -196,6 +200,6 @@ class LoginController extends Controller
         }
     
         $currentUser = Auth::user();
-        return response()->json(['token' => $token, 'currentUser' => $currentUser], 200);
+        return response()->json(['token' => $token, 'refresh_token' => $refreshToken, 'currentUser' => $currentUser], 200);
     }
 }
