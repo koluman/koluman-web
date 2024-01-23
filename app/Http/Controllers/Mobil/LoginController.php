@@ -27,11 +27,10 @@ class LoginController extends Controller
                     if ($user) {
                         Auth::guard('api')->login($user);
                         $t = JWTAuth::fromUser($user);
-                        $u = JWTAuth::setToken($t)->authenticate();
-                       /* $authenticatedUser = JWTAuth::setToken($token)->authenticate();
+                        $authenticatedUser = JWTAuth::setToken($t)->authenticate();
 
                         if ($authenticatedUser) {
-                            $refreshToken = JWTAuth::refresh($token);
+                            $refreshToken = JWTAuth::refresh($t);
                             $responseData = [
                                 "success" => 1,
                                 "token" => $token,
@@ -47,7 +46,7 @@ class LoginController extends Controller
                                 'user' => "",
                                 "message" => "Login İşlemi başarısız",
                             ];
-                        }*/
+                        }
                     } else {
                         $responseData = [
                             "success" => 0,
@@ -67,7 +66,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($u);
+        return response()->json($responseData);
     }
     public function userlogout(Request $request)
     {
