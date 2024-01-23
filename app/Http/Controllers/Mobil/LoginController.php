@@ -92,30 +92,6 @@ class LoginController extends Controller
         return response()->json($responseData);
     }
 
-    public function logintest(Request $request)
-    {
-       
-        $credentials = $request->only('user_phone','user_password');
-
-        $token = Auth::guard('api')->attempt($credentials);
-        if (!$token) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-
-        $user = Auth::guard('api')->user();
-        return response()->json([
-                'status' => 'success',
-                'user' => $user,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ]
-            ]);
-
-    }
  
     public function userlogout(Request $request)
     {
