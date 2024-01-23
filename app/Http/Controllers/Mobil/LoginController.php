@@ -30,10 +30,12 @@ class LoginController extends Controller
                     Auth::guard('api')->login($user);
                     $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     if ($authenticatedUser) {
+                        $responseData["token"]= $originalToken;
+                        $responseData["user"]= $authenticatedUser;
+
                         $responseData = [
                             "success" => 1,
-                            "token" => $originalToken,
-                            'user' => $authenticatedUser,
+
                             "message" => "Login İşlemi başarılı",
                             'expires_in' => Auth::factory()->getTTL() * 60,
                         ];
