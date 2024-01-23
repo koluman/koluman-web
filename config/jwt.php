@@ -102,8 +102,8 @@ return [
     |
     */
 
-    'ttl' => env('JWT_TTL', 2),  
-    'custom_ttl'=>env('CUSTOMJWT_TTL', 10),
+    //'ttl' => env('JWT_TTL', 2),  
+    //'custom_ttl'=>env('CUSTOMJWT_TTL', 10),
     /*
     |--------------------------------------------------------------------------
     | Refresh time to live
