@@ -29,22 +29,10 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
 
-                    $accessToken = JWTAuth::fromUser($user);
-                    // Refresh token
-                    $customExpiration = now()->addDays(30); // 30 gün süre ekleyin veya kendi gereksinimlerinize göre ayarlayın
+                    $accessToken = JWTAuth::fromUser($user, ['exp' => Carbon::now()->addMinutes(2)->timestamp]);
 
-                    // Create JWTFactory instance
-                    $factory = JWTFactory::customClaims([
-                        'sub' => $user->user_id,
-                    ]);
+                    $refreshToken = JWTAuth::fromUser($user, ['exp' => Carbon::now()->addMinutes(10)->timestamp]);
 
-                    // Set expiration for refresh token
-                    $refreshToken = JWTAuth::encode(
-                        $factory->make(array_merge(
-                            $factory->buildPayload()->toArray(),
-                            ['exp' => $customExpiration->timestamp]
-                        ))
-                    );
 
                     $responseData = [
                         "success" => 1,
