@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -179,20 +180,22 @@ class LoginController extends Controller
     }
     function dene(Request $request)
     {
-
         $credentials = $request->only('user_phone');
+    
         try {
+            $user = User::where('user_phone', $credentials['user_phone'])->firstOrFail();
+    
             // verify the credentials and create a token for the user
-            if (!$token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::fromUser($user)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'user_not_found'], 404);
         } catch (JWTException $e) {
-            // something went wrong
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
+    
         $currentUser = Auth::user();
-        return response()->json(['token' => $token,'currentUser'=>$currentUser], 200);
-
+        return response()->json(['token' => $token, 'currentUser' => $currentUser], 200);
     }
 }
