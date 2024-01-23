@@ -30,7 +30,6 @@ class LoginController extends Controller
                     Auth::guard('api')->login($user);
                     $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
                     if ($authenticatedUser) {
-
                         $responseData = [
                             "success" => 1,
                             "token" => [
@@ -48,30 +47,50 @@ class LoginController extends Controller
                     } else {
                         $responseData = [
                             "success" => 0,
-                            "token" => "",
-                            'user' => "",
+                            "token" => [
+                                "value" => "",
+                                "expires_in" =>0,
+                            ],
+                            "user" => [
+                                "user_mail" =>"",
+                                "user_name" =>"",
+                                "user_phone" => "",
+                                "user_image_url" => "",
+                            ],
                             "message" => "Login İşlemi başarısız",
-                            'expires_in' => "",
                         ];
                     }
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "token" => "",
-                        'user' => "",
+                        "token" => [
+                            "value" => "",
+                            "expires_in" =>0,
+                        ],
+                        "user" => [
+                            "user_mail" =>"",
+                            "user_name" =>"",
+                            "user_phone" => "",
+                            "user_image_url" => "",
+                        ],
                         "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
-                        'expires_in' => "",
                     ];
                 }
             }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
-                "token" => "",
-                "refreshtoken" => "",
-                'user' => "",
+                "token" => [
+                    "value" => "",
+                    "expires_in" =>0,
+                ],
+                "user" => [
+                    "user_mail" =>"",
+                    "user_name" =>"",
+                    "user_phone" => "",
+                    "user_image_url" => "",
+                ],
                 "message" => $e->getMessage(),
-                'expires_in' => "",
             ];
         }
         return response()->json($responseData);
@@ -106,24 +125,7 @@ class LoginController extends Controller
     public function userregister(RegisterRequest $request)
     {
         try {
-            $messages = [
-                'user_phone.required' => 'Kullanıcı telefon numarası girişi zorunludur.',
-                'user_identity.required' => 'Kullanıcı tc numarası girişi zorunludur.',
-                'user_name.required' => 'Kullanıcı adsoyad girişi zorunludur.',
-            ];
 
-            // İsteği doğrula
-            $validator = Validator::make($request->all(), [
-                'user_phone' => 'required',
-                'user_identity' => 'required',
-                'user_name' => 'required',
-            ], $messages);
-            if ($validator->fails()) {
-                $responseData = [
-                    "success" => 0,
-                    "message" => $validator->errors(), // İlk hatayı al
-                ];
-            } else {
                 $token = $request->header('Authorization');
                 $token = str_replace('Basic ', '', $token);
                 if ($token) {
@@ -151,13 +153,11 @@ class LoginController extends Controller
                         ]);
                         $token = JWTAuth::fromUser($user);
                         $u = JWTAuth::setToken($token)->authenticate();
-                        $reftoken = JWTAuth::parseToken()->refresh();
                         $responseData = [
                             "success" => 1,
                             "message" => "Kullanıcı Kayıt edildi",
                             "user" => $user,
                             "token" => $token,
-                            "refreshtoken" => $reftoken,
                         ];
                     }
                 } else {
@@ -166,17 +166,15 @@ class LoginController extends Controller
                         "message" => "Token bulunamadı, Logout işlemi başarısız",
                         "user" => "",
                         "token" => "",
-                        "refreshtoken" => ""
                     ];
                 }
-            }
+            
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
                 "user" => "",
                 "token" => "",
-                "refreshtoken" => ""
             ];
         }
         return response()->json($responseData);
