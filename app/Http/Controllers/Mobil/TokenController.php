@@ -52,25 +52,13 @@ class TokenController extends Controller
 
     public function refresh(Request $request)
     {
-        // Kullanıcının refresh token'ını al
-        $refreshToken = $request->input('refresh_token');
+        $refreshToken = JWTAuth::refresh();
+
 
         if ($refreshToken) {
             try {
-                // Refresh token'ın süresini kontrol et
-                $payload = JWTAuth::setToken($refreshToken)->getPayload();
-                $expiresAt = $payload['exp'];
-
-                // Eğer refresh token'ın süresi geçmişse veya hala geçerli değilse
-                if (time() >= $expiresAt) {
-                    return response()->json(['error' => 'Refresh token has expired'], 401);
-                }
-
-                // Refresh token kullanılarak yeni bir token oluşturuluyor
-                $newToken = JWTAuth::setToken($refreshToken)->refresh();
-
-                // Yeni token kullanıcıya veriliyor
-                return response()->json(['token' => $newToken, 'expires_in' => Auth::factory()->getTTL() * 60]);
+              
+                return response()->json(['token' => $refreshToken, 'expires_in' => Auth::factory()->getTTL() * 60]);
             } catch (\Exception $e) {
                 // Refresh token geçersizse veya hata oluşursa
                 return response()->json(['error' => 'Invalid refresh token'], 401);
