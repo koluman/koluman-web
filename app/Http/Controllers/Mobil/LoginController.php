@@ -14,7 +14,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller
 {
-    /*public function userlogin(LoginRequest $request)
+    public function userlogin(LoginRequest $request)
     {
         try {
             $token = $request->header('Authorization');
@@ -86,34 +86,9 @@ class LoginController extends Controller
             ];
         }
         return response()->json($responseData);
-    }*/
-    public function userlogin(LoginRequest $request)
-    {
-       
-
-        $user_phone = $request->input('user_phone');
-
-        // Kullanıcıyı bul
-        $user = User::where('user_phone', $user_phone)->first();
-    
-        if (!$user) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-    
-        // JWT tokeni oluştur ve kullanıcıya döndür
-        $token = JWTAuth::fromUser($user);
-    
-        return response()->json(['token' => $token]);
     }
-    protected function jsonResponse($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type'   => 'bearer',
-            'user'         => auth()->user(),
-            //'expires_in'   => auth('api')->factory()->getTTL() * 60 // Use getTTL() directly
-        ]);
-    }
+
+ 
     public function userlogout(Request $request)
     {
         try {
