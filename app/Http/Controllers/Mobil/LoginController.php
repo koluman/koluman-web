@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 
@@ -175,5 +176,23 @@ class LoginController extends Controller
             ];
         }
         return response()->json($responseData);
+    }
+    function dene(Request $request)
+    {
+
+        $credentials = $request->only('user_phone');
+        try {
+            // verify the credentials and create a token for the user
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            // something went wrong
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        $currentUser = Auth::user();
+        return response()->json(['token' => $token,'currentUser'=>$currentUser], 200);
+
     }
 }
