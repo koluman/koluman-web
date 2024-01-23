@@ -89,16 +89,16 @@ class LoginController extends Controller
     }*/
     public function userlogin(LoginRequest $request)
     {
-       
-
+        // Kullanıcının kimlik bilgilerini al
         $credentials = $request->only(['user_phone']);
-
-        if (! $token = JWTAuth::attempt($credentials)) {
+    
+        // Kullanıcının kimlik bilgilerini kontrol et
+        if (! $token = Auth::attempt($credentials)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
-        
-
-        return $this->jsonResponse($token);
+    
+        // Başarılı ise token'i kullanıcıya döndür
+        return response()->json(['token' => $token]);
     }
     protected function jsonResponse($token)
     {
