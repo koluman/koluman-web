@@ -95,7 +95,7 @@ class LoginController extends Controller
     public function logintest(Request $request)
     {
        
-        $credentials = $request->only('user_phone');
+        $credentials = $request->only('user_phone','user_password');
 
         $token = Auth::guard('api')->attempt($credentials);
         if (!$token) {
