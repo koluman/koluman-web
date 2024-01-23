@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -33,13 +34,14 @@ class TokenController extends Controller
                 ];
            // }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            // Token süresi dolduğunda TokenExpiredException yakalanır
-            
-            $responseData = [
-                "success" => 1,
-                "message" => "Token süresi doldu",
-                "token" => "",
-            ];
+             // Token süresi dolduğunda TokenExpiredException yakalanır
+    $user = JWTAuth::setToken($token)->authenticate();
+    $refreshToken = JWTAuth::fromUser($user, Carbon::now()->addSeconds(3600)->format('Y-m-d H:i:s'));
+    $responseData = [
+        "success" => 1,
+        "message" => "Token süresi doldu, yeni token oluşturuldu",
+        "token" => $refreshToken,
+    ];
         } catch (\Exception $e) {
             // Diğer hataları kontrol et
             $responseData = [
