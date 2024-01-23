@@ -33,7 +33,7 @@ class LoginController extends Controller
 
                     $customExpiration = now()->addDays(30); // 30 gün süre ekleyin veya kendi gereksinimlerinize göre ayarlayın
                     $refreshTokenPayload = [
-                        'sub' => $user->id,
+                        'sub' => $user->user_id,
                         'iat' => time(),
                         'exp' => $customExpiration->timestamp,
                     ];
