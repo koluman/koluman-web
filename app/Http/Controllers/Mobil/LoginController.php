@@ -18,45 +18,51 @@ class LoginController extends Controller
     public function userlogin(LoginRequest $request)
     {
         try {
-                $token = $request->header('Authorization');
-                $token = str_replace('Basic ', '', $token);
-
-                if ($token) {
-                    $userPhone = $request->user_phone;
-                    $user = User::where('user_phone', $userPhone)->first();
-                    if ($user) {
-                        Auth::guard('api')->login($user);
-                        $t = JWTAuth::fromUser($user);
-                        $authenticatedUser = JWTAuth::setToken($t)->authenticate();
-
-                        if ($authenticatedUser) {
-                            $refreshToken = JWTAuth::refresh($t);
-                            $responseData = [
-                                "success" => 1,
-                                "token" => $t,
-                                "refreshtoken" => $refreshToken,
-                                'user' => $authenticatedUser,
-                                "message" => "Login İşlemi başarılı",
-                            ];
-                        } else {
-                            $responseData = [
-                                "success" => 0,
-                                "token" => "",
-                                "refreshtoken" => "",
-                                'user' => "",
-                                "message" => "Login İşlemi başarısız",
-                            ];
-                        }
+            $token = $request->header('Authorization');
+            $token = str_replace('Basic ', '', $token);
+    
+            if ($token) {
+                $userPhone = $request->user_phone;
+                $user = User::where('user_phone', $userPhone)->first();
+    
+                if ($user) {
+                    // Orijinal token'ı oluştururken süreyi 2 dakika olarak belirle
+                    $originalToken = JWTAuth::fromUser($user, ['ttl' => 2]);
+                    Auth::guard('api')->login($user);
+    
+                    // Orijinal token'ı kullanarak kullanıcıyı authenticate et
+                    $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
+    
+                    if ($authenticatedUser) {
+                        // Refresh token'ı oluştururken süreyi 14 gün olarak belirle
+                        $refreshToken = JWTAuth::refresh($originalToken, ['ttl' => 20160]);
+    
+                        $responseData = [
+                            "success" => 1,
+                            "token" => $originalToken,
+                            "refreshtoken" => $refreshToken,
+                            'user' => $authenticatedUser,
+                            "message" => "Login İşlemi başarılı",
+                        ];
                     } else {
                         $responseData = [
                             "success" => 0,
                             "token" => "",
                             "refreshtoken" => "",
                             'user' => "",
-                            "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                            "message" => "Login İşlemi başarısız",
                         ];
                     }
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "token" => "",
+                        "refreshtoken" => "",
+                        'user' => "",
+                        "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                    ];
                 }
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
