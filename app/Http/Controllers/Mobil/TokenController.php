@@ -14,13 +14,11 @@ class TokenController extends Controller
     {
         try {
             $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
-
+            $token = str_replace('Bearer ', '', $token);
             if ($token) {
-                $userId = $request->user_id;
-                $user = User::where('user_id', $userId)->first();
+                $u = JWTAuth::setToken($token)->authenticate();
+                $user = User::where('user_id', $u->user_id)->first();
                 $originalToken = JWTAuth::fromUser($user);
-
                 $responseData = [
                     "success" => 1,
                     "token" => [
