@@ -13,9 +13,7 @@ class TokenController extends Controller
     public function refresh(Request $request)
     {
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            if ($token) {
+           
                 $newToken = Auth::refresh();
                 $responseData = [
                     "success" => 1,
@@ -25,16 +23,6 @@ class TokenController extends Controller
                     ],
                     "message" => "Refresh token oluşturuldu",
                 ];
-            } else {
-                $responseData = [
-                    "success" => 0,
-                    "token" => [
-                        "value" => "",
-                        "expires_in" => 0,
-                    ],
-                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
-                ];
-            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -45,7 +33,7 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($token);
+        return response()->json($responseData);
     }
 
 
