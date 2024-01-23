@@ -85,7 +85,7 @@ class LoginController extends Controller
             ];
         }
     
-        return response()->json($responseData);
+        return response()->json( JWTAuth::getToken());
     }
 
     public function userlogout(Request $request)
