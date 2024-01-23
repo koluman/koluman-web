@@ -91,7 +91,7 @@ class LoginController extends Controller
     {
        
 
-        $credentials = $request->only(['user_phone','user_password']);
+        $credentials = $request->only(['user_phone','password']);
 
         if (! $token = Auth::attempt($credentials)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
