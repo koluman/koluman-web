@@ -33,7 +33,7 @@ class LoginController extends Controller
                             $refreshToken = JWTAuth::refresh($t);
                             $responseData = [
                                 "success" => 1,
-                                "token" => $token,
+                                "token" => $t,
                                 "refreshtoken" => $refreshToken,
                                 'user' => $authenticatedUser,
                                 "message" => "Login İşlemi başarılı",
