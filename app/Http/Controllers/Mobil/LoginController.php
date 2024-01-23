@@ -35,7 +35,7 @@ class LoginController extends Controller
     
                     if ($authenticatedUser) {
                         // Refresh token'ı oluştururken süreyi 14 gün olarak belirle
-                        $refreshToken = JWTAuth::getToken();
+                        $refreshToken = JWTAuth::refresh($originalToken, 602414);
 
                         $responseData = [
                             "success" => 1,
