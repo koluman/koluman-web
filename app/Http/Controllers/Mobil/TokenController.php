@@ -13,13 +13,13 @@ class TokenController extends Controller
     {
         try {
             $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
+            $token = str_replace('Bearer ', '', $token);
             if ($token) {
-                //$newToken = JWTAuth::setToken($token)->refresh();
+                $newToken = JWTAuth::refresh(JWTAuth::setToken($token));
                 $responseData = [
                     "success" => 1,
                     "token" => [
-                        "value" => JWTAuth::getToken(),
+                        "value" => $newToken,
                         "expires_in" => Auth::factory()->getTTL() * 60,
                     ],
                     "message" => "Refresh token oluşturuldu",
