@@ -28,7 +28,6 @@ class LoginController extends Controller
                     //$originalTokenTTL = 2;
                     //$refreshTokenTTL = 10;x
                     Auth::guard('api')->login($user);
-
                     $originalToken = JWTAuth::fromUser($user, ['ttl' => 2]);
                     $refreshToken = JWTAuth::refresh($originalToken);
 
