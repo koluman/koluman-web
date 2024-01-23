@@ -39,15 +39,13 @@ class JwtVerify
             try {
                 $token = $this->extractToken($token);
                 $user = JWTAuth::setToken($token)->authenticate();
-    /*
+    
                 if (!$user) {
                     return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
-                }*/
+                }
             } catch (\Exception $e) {
                 return response()->json(['messages' => $e->getMessage()],401);
             }
-            return response()->json(['success' => 401, 'messages' => $user]);
-
         }  else {
             // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
             return response()->json(['success' => 401, 'messages' => 'Geçersiz. Token tipi yanlış.']);
