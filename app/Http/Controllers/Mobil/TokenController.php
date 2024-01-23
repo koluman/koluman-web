@@ -34,14 +34,12 @@ class TokenController extends Controller
             }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
             // Token süresi dolduğunda TokenExpiredException yakalanır
-            // Burada gerekirse yeni bir token oluşturabilir veya başka bir işlem yapabilirsiniz
+            $user = JWTAuth::setToken($token)->authenticate();
+            $newToken = JWTAuth::fromUser($user);
             $responseData = [
-                "success" => 0,
-                "token" => [
-                    "value" => "",
-                    "expires_in" => 0,
-                ],
-                "message" => "Token süresi doldu",
+                "success" => 1,
+                "message" => "Token süresi doldu, yeni token oluşturuldu",
+                "token" => $newToken,
             ];
         } catch (\Exception $e) {
             // Diğer hataları kontrol et
