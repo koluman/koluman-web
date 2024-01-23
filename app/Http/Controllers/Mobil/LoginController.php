@@ -91,13 +91,19 @@ class LoginController extends Controller
     {
        
 
-        $credentials = $request->only(['user_phone']);
+        $user_phone = $request->input('user_phone');
 
-        if (!  $token = auth('api')->attempt($credentials)) {
+        // Kullanıcıyı bul
+        $user = User::where('user_phone', $user_phone)->first();
+    
+        if (!$user) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
-
-        return $this->jsonResponse($token);
+    
+        // JWT tokeni oluştur ve kullanıcıya döndür
+        $token = JWTAuth::fromUser($user);
+    
+        return response()->json(['token' => $token]);
     }
     protected function jsonResponse($token)
     {
