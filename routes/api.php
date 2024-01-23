@@ -4,6 +4,7 @@ use App\Http\Controllers\Mobil\AnnouncementController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
 use App\Http\Controllers\Mobil\TestDriveController;
+use App\Http\Controllers\Mobil\TokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
@@ -34,4 +35,6 @@ Route::middleware(['basic.verify'])->group(function () {
     Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');
     Route::get('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
+    Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
+
 });
