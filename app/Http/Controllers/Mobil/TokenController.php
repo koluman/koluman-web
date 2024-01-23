@@ -32,7 +32,19 @@ class TokenController extends Controller
                     "token" => $newToken,
                 ];
             }
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            // Token süresi dolduğunda TokenExpiredException yakalanır
+            // Burada gerekirse yeni bir token oluşturabilir veya başka bir işlem yapabilirsiniz
+            $responseData = [
+                "success" => 0,
+                "token" => [
+                    "value" => "",
+                    "expires_in" => 0,
+                ],
+                "message" => "Token süresi doldu",
+            ];
         } catch (\Exception $e) {
+            // Diğer hataları kontrol et
             $responseData = [
                 "success" => 0,
                 "token" => [
