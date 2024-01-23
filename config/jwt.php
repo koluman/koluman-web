@@ -102,7 +102,7 @@ return [
     |
     */
 
-    'ttl' => env('JWT_TTL', 60),  // Token süresi 60 dakika
+    'ttl' => env('JWT_TTL', 2),  // Token süresi 60 dakika
     /*
     |--------------------------------------------------------------------------
     | Refresh time to live
