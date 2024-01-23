@@ -20,14 +20,14 @@ class LoginController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Basic ', '', $token);
 
-            if ($token) {
+            if (!$token) {
                 $userPhone = $request->user_phone;
                 $user = User::where('user_phone', $userPhone)->first();
 
                 if ($user) {
                     //$originalTokenTTL = 2;
                     //$refreshTokenTTL = 10;x
-                    Auth::guard('api')->login($user);
+                    //Auth::guard('api')->login($user);
                     $originalToken = JWTAuth::fromUser($user, ['ttl' => 2]);
                     $refreshToken = JWTAuth::refresh($originalToken);
 
