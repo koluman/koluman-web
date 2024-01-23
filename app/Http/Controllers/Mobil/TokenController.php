@@ -37,6 +37,6 @@ class TokenController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($user);
+        return response()->json(Auth::guard('api'));
     }
 }
