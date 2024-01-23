@@ -26,28 +26,28 @@ class LoginController extends Controller
                     $user = User::where('user_phone', $userPhone)->first();
                     if ($user) {
                         Auth::guard('api')->login($user);
-                        $token = JWTAuth::fromUser($user);
-                        $u = JWTAuth::setToken($token)->authenticate();
-                        //$authenticatedUser = JWTAuth::setToken($token)->authenticate();
+                        $t = JWTAuth::fromUser($user);
+                        $u = JWTAuth::setToken($t)->authenticate();
+                       /* $authenticatedUser = JWTAuth::setToken($token)->authenticate();
 
-                        //if ($authenticatedUser) {
+                        if ($authenticatedUser) {
                             $refreshToken = JWTAuth::refresh($token);
                             $responseData = [
                                 "success" => 1,
                                 "token" => $token,
                                 "refreshtoken" => $refreshToken,
-                                'user' => $u,
+                                'user' => $authenticatedUser,
                                 "message" => "Login İşlemi başarılı",
                             ];
-                        //} else {
-                            /*$responseData = [
+                        } else {
+                            $responseData = [
                                 "success" => 0,
                                 "token" => "",
                                 "refreshtoken" => "",
                                 'user' => "",
                                 "message" => "Login İşlemi başarısız",
-                            ];*/
-                       // }
+                            ];
+                        }*/
                     } else {
                         $responseData = [
                             "success" => 0,
@@ -67,7 +67,7 @@ class LoginController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($u);
     }
     public function userlogout(Request $request)
     {
