@@ -36,17 +36,17 @@ class JwtVerify
         // Token tipini kontrol et
         if ($this->isBearerToken($token)) {
             // Bearer token için işlemler
-            /*try {
-                $token = $this->extractToken($token);
+            try {
+                /*$token = $this->extractToken($token);
                 $user = JWTAuth::setToken($token)->authenticate();
     
                 if (!$user) {
                     return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
-                }
+                }*/
             } catch (\Exception $e) {
                 return response()->json(['messages' => $e->getMessage()],401);
-            }*/
-            return response()->json(['success' => 401, 'messages' => $token]);
+            }
+            return response()->json(['success' => 401, 'messages' => $this->extractToken($token)]);
 
         }  else {
             // Diğer durumlar için gerekli işlemleri ekleyebilirsiniz.
