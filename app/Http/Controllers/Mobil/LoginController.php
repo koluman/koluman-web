@@ -34,18 +34,10 @@ class LoginController extends Controller
                     //$originalToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(10)->timestamp, 'custom_payload' => 'original']);
                     //$refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(60)->timestamp, 'custom_payload' => 'refresh']);
                     $originalToken = JWTAuth::fromUser($user);
-                    $refreshToken = JWTAuth::fromUser($user, ['refresh' => true]);
 
-                    // Decode işlemi
-                    $decodedOriginalToken = JWTAuth::setToken($originalToken)->toUser();
-                    $decodedRefreshToken = JWTAuth::setToken($refreshToken)->toUser();
                     $responseData = [
                         "success" => 1,
                         "token" => [
-                            "decodedOriginalToken" => $decodedOriginalToken,
-                            "decodedRefreshToken" => $decodedRefreshToken,
-
-                            "refreshtoken" => $refreshToken,
                             "originaltoken" => $originalToken,
                             "expires_in" => Auth::factory()->getTTL() * 60,
                         ],
@@ -62,7 +54,6 @@ class LoginController extends Controller
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
-                            //"refreshtoken" => "",
                             "expires_in" => 0,
                         ],
                         "user" => [
@@ -177,29 +168,5 @@ class LoginController extends Controller
             ];
         }
         return response()->json($responseData);
-    }
-    function dene(Request $request)
-    {
-        $credentials = $request->only('user_phone');
-    
-        try {
-            $user = User::where('user_phone', $credentials['user_phone'])->firstOrFail();
-    
-            // verify the credentials and create a token for the user
-            if (!$token = $user->createToken('Access Token')->accessToken) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
-            }
-    
-            // create refresh token
-            $refreshToken = $user->createToken('Refresh Token', ['*'])->refreshToken;
-    
-        } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'user_not_found'], 404);
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
-        }
-    
-        $currentUser = Auth::user();
-        return response()->json(['token' => $token, 'refresh_token' => $refreshToken, 'currentUser' => $currentUser], 200);
     }
 }

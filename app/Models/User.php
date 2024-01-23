@@ -46,13 +46,5 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'user_password' => 'hashed',
     ];
-    public function createAuthToken()
-    {
-        return $this->createToken('Access Token')->accessToken;
-    }
-
-    public function createRefreshToken()
-    {
-        return $this->createToken('Refresh Token', ['*'])->refreshToken;
-    }
+    
 }
