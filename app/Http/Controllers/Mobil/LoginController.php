@@ -38,10 +38,9 @@ class LoginController extends Controller
                                 "expires_in" => Auth::factory()->getTTL() * 60,
                             ],
                             "user" => [
-                                "data" => $authenticatedUser,
+                               $authenticatedUser,
                             ],
                             "message" => "Login İşlemi başarılı",
-                            'expires_in' => Auth::factory()->getTTL() * 60,
                         ];
                     } else {
                         $responseData = [
