@@ -26,40 +26,33 @@ class LoginController extends Controller
                 $user = User::where('user_phone', $userPhone)->first();
     
                 if ($user) {
-                    // Orijinal token'ı oluştururken süreyi 2 dakika olarak belirle
                     $originalToken = JWTAuth::fromUser($user);
                     Auth::guard('api')->login($user);
-    
-                    // Orijinal token'ı kullanarak kullanıcıyı authenticate et
                     $authenticatedUser = JWTAuth::setToken($originalToken)->authenticate();
-    
                     if ($authenticatedUser) {
-                        // Refresh token'ı oluştururken süreyi 14 gün olarak belirle
-                        $refreshToken = JWTAuth::refresh($originalToken, 602414);
-
                         $responseData = [
                             "success" => 1,
                             "token" => $originalToken,
-                            "refreshtoken" => $refreshToken,
                             'user' => $authenticatedUser,
                             "message" => "Login İşlemi başarılı",
+                            'expires_in' => Auth::factory()->getTTL() * 60,
                         ];
                     } else {
                         $responseData = [
                             "success" => 0,
                             "token" => "",
-                            "refreshtoken" => "",
                             'user' => "",
                             "message" => "Login İşlemi başarısız",
+                            'expires_in' => "",
                         ];
                     }
                 } else {
                     $responseData = [
                         "success" => 0,
                         "token" => "",
-                        "refreshtoken" => "",
                         'user' => "",
                         "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                        'expires_in' => "",
                     ];
                 }
             }
@@ -70,6 +63,7 @@ class LoginController extends Controller
                 "refreshtoken" => "",
                 'user' => "",
                 "message" => $e->getMessage(),
+                'expires_in' => "",
             ];
         }
         return response()->json($responseData);
