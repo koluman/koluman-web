@@ -31,8 +31,7 @@ class LoginController extends Controller
     
                     
                     $accessToken = JWTAuth::fromUser($user);
-                    $t = JWTAuth::getToken();
-                    $refreshToken = JWTAuth::refresh($t);                    
+                    $refreshToken = JWTAuth::refresh($user);                    
     
                     $responseData = [
                         "success" => 1,
@@ -85,7 +84,7 @@ class LoginController extends Controller
             ];
         }
     
-        return response()->json( JWTAuth::getToken());
+        return response()->json($responseData);
     }
 
     public function userlogout(Request $request)
