@@ -89,11 +89,10 @@ class LoginController extends Controller
     }*/
     public function userlogin(LoginRequest $request)
     {
-        // Kullanıcının kimlik bilgilerini al
-        $credentials = $request->only(['user_phone']);
-    
-        // Kullanıcının kimlik bilgilerini kontrol et
-        if (! $token = Auth::attempt($credentials)) {
+        $user_phone = $request->input('user_phone');
+
+        // Kullanıcının kimlik bilgilerini kontrol et ve token oluştur
+        if (! $token = JWTAuth::attempt(['user_phone' => $user_phone])) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
     
