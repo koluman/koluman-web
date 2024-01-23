@@ -36,5 +36,4 @@ Route::middleware(['basic.verify'])->group(function () {
     Route::get('/getshoowroom', [ShoowroomController::class, 'getshowroom'])->name('getshoowroom');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
     Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
-
 });
