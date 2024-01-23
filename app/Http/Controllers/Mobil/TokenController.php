@@ -51,7 +51,7 @@ class TokenController extends Controller
     }*/
 
 
-    public function refreshToken(Request $request)
+    public function refresh(Request $request)
     {
         try {
             // Mevcut token'ı al
