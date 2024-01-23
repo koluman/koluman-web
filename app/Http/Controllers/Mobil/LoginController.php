@@ -33,7 +33,7 @@ class LoginController extends Controller
 
                     // Refresh token
                     $customExpiration = now()->addDays(30); // 30 gün süre ekleyin veya kendi gereksinimlerinize göre ayarlayın
-                    $refreshToken = JWTAuth::attempt(['user_id' => $user->id], null, [], ['exp' => $customExpiration]);
+                    $refreshToken = JWTAuth::attempt(['user_id' => $user->user_id], null, [], ['exp' => $customExpiration]);
         
     
                     $responseData = [
