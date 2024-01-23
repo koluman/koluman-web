@@ -14,7 +14,7 @@ class TokenController extends Controller
     {
         try {
 
-            $user = auth()->user();
+            $user = Auth::guard('api')->user();
 
             // Yeni bir refresh token ve JWT token oluştur
             $refreshToken = JWTAuth::fromUser($user, ['exp' => now()->addMinutes(30)->timestamp]);
