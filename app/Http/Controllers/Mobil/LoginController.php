@@ -5,18 +5,16 @@ namespace App\Http\Controllers\Mobil;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\TestDrive;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class LoginController extends Controller
 {
-    public function userlogin(LoginRequest $request)
+    /*public function userlogin(LoginRequest $request)
     {
         try {
             $token = $request->header('Authorization');
@@ -52,23 +50,7 @@ class LoginController extends Controller
                             ],
                             "message" => "Login İşlemi başarılı",
                         ];
-                    /*} else {
-                        $responseData = [
-                            "success" => 0,
-                            "token" => [
-                                "originaltoken" => "",
-                                "refreshtoken" => "",
-                                "expires_in" =>0,
-                            ],
-                            "user" => [
-                                "user_mail" =>"",
-                                "user_name" =>"",
-                                "user_phone" => "",
-                                "user_image_url" => "",
-                            ],
-                            "message" => "Login İşlemi başarısız",
-                        ];
-                    }*/
+                    
                 } else {
                     $responseData = [
                         "success" => 0,
@@ -104,6 +86,27 @@ class LoginController extends Controller
             ];
         }
         return response()->json($responseData);
+    }*/
+    public function login(LoginRequest $request)
+    {
+       
+
+        $credentials = $request->only(['user_phne']);
+
+        if (! $token = Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        return $this->jsonResponse($token);
+    }
+    protected function jsonResponse($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type'   => 'bearer',
+            'user'         => auth()->user(),
+            //'expires_in'   => auth('api')->factory()->getTTL() * 60 // Use getTTL() directly
+        ]);
     }
     public function userlogout(Request $request)
     {

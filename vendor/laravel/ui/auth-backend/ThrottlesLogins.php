@@ -50,9 +50,7 @@ trait ThrottlesLogins
         $seconds = $this->limiter()->availableIn(
             $this->throttleKey($request)
         );
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
+
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.throttle', [
                 'seconds' => $seconds,
