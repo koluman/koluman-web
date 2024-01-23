@@ -15,14 +15,14 @@ class TokenController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if (JWTAuth::check($token)) {
+           /* if (JWTAuth::check($token)) {
                 // Token süresi dolmadıysa mevcut token'ı döndür
                 $responseData = [
                     "success" => 1,
                     "message" => "Token süresi dolmadığı için mevcut token kullanıldı",
                     "token" => $token,
                 ];
-            } else {
+            } else {*/
                 // Token süresi dolmuşsa, mevcut kullanıcıyı al ve yeni token oluştur
                 $user = JWTAuth::setToken($token)->authenticate();
                 $newToken = JWTAuth::fromUser($user);
@@ -31,15 +31,14 @@ class TokenController extends Controller
                     "message" => "Token süresi doldu, yeni token oluşturuldu",
                     "token" => $newToken,
                 ];
-            }
+           // }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
             // Token süresi dolduğunda TokenExpiredException yakalanır
-            $user = JWTAuth::setToken($token)->authenticate();
-            $newToken = JWTAuth::fromUser($user);
+            
             $responseData = [
                 "success" => 1,
-                "message" => "Token süresi doldu, yeni token oluşturuldu",
-                "token" => $newToken,
+                "message" => "Token süresi doldu",
+                "token" => "",
             ];
         } catch (\Exception $e) {
             // Diğer hataları kontrol et
