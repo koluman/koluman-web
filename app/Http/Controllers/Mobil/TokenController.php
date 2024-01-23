@@ -15,14 +15,15 @@ class TokenController extends Controller
     {
 
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            $token = JWTAuth::getToken();
-
-            $newToken = JWTAuth::refresh($token);
-            return response()->json(['token' => $newToken]);
-        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['message' => 'Invalid token'], 401);
+            // Mevcut kullanıcıyı al
+            $user = JWTAuth::parseToken()->authenticate();
+    
+            // Token'ı yenile
+            $refreshedToken = JWTAuth::refresh();
+    
+            return response()->json(['token' => $refreshedToken]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Token yenileme hatası'], 500);
         }
 
     }
