@@ -91,11 +91,12 @@ class LoginController extends Controller
     {
        
 
-        $credentials = $request->only(['user_phne']);
+        $credentials = $request->only(['user_phone']);
 
         if (! $token = Auth::guard('api')->attempt($credentials)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
+        
 
         return $this->jsonResponse($token);
     }
