@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         calendar.changeView(newView);
                                     },
                                     eventResize: function (info) {
+                                        console.log(info);
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                             return x.drive_id == info.event.id;
                                         });
