@@ -396,7 +396,7 @@ function upcomingEvent(a) {
     });
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
-        var title = element.title;
+        var title = element.drive_time;
         if (element.auto_date) {
             endUpdatedDay = new Date(element.auto_date);
             var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
