@@ -28,11 +28,10 @@
                                     <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanan Randevular
                                 </div>
                                
-                                <div class="external-event fc-event bg-warning-subtle text-warning"
-                                    data-class="bg-warning-subtle">
+                                <div class="external-event fc-event bg-danger-subtle text-danger"
+                                    data-class="bg-danger-subtle">
                                     <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanmayan Randevular
                                 </div>
-                            
                             </div>
 
                         </div>
