@@ -377,17 +377,44 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
-                                        for (var i = 0; i < defaultEvents.length; i++) {
-                                            if (defaultEvents[i].id == selectedEvent.id) {
-                                                defaultEvents.splice(i, 1);
-                                                i--;
+                                        $.ajax({
+                                            url: 'https://mobiloby.app/koluman/web/getAuthToken',
+                                            type: 'GET',
+                                            success: function (response) {
+                                                if (response.success == 1) {
+                                    
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: 'https://mobiloby.app/koluman/web/api/deleteTestDrive',
+                                                        headers: {
+                                                            'Authorization': 'Bearer ' + response.token
+                                                        },
+                                                        dataType: 'json',
+                                                        success: function (data) {
+                                                            if (data.success == 1) {
+                                                                for (var i = 0; i < defaultEvents.length; i++) {
+                                                                    if (defaultEvents[i].id == selectedEvent.id) {
+                                                                        defaultEvents.splice(i, 1);
+                                                                        i--;
+                                                                    }
+                                                                }
+                                                                upcomingEvent(defaultEvents);
+                                                                selectedEvent.remove();
+                                                                selectedEvent = null;
+                                                                addEvent.hide();
+                                                            }
+                                    
+                                                        }
+                                                    });
+                                                } else {
+                                                    alert(response.message);
+                                                }
+                                            },
+                                            error: function (error) {
+                                                console.error(error);
                                             }
-                                        }
-                                        console.log(selectedEvent.id);
-                                        upcomingEvent(defaultEvents);
-                                        selectedEvent.remove();
-                                        selectedEvent = null;
-                                        addEvent.hide();
+                                        });
+                                      
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
