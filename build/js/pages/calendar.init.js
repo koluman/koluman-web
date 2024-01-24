@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       .join(" ");
                 }
         
-                var end_dt = (e_dt) ? " to " + e_dt : '';
+                var end_dt = e_dt;
                 var category = (element.className).split("-");
                 var description = (element.description) ? element.description : "";
                 var e_time_s = tConvert(getTime(element.start));
@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 u_event = "<div class='card mb-3'>\
                                 <div class='card-body'>\
                                     <div class='d-flex mb-3'>\
-                                        <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + end_dt + " </span></div>\
+                                        <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate+ " </span></div>\
                                         <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
                                     </div>\
                                     <h6 class='card-title fs-16'> " + title + "</h6>\
