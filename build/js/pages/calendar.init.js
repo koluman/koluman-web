@@ -274,7 +274,7 @@ console.log(info);
                 if (e_dt == "Invalid Date" || e_dt == undefined) {
                     e_dt = null;
                 } else {
-                    const newDate = new Date(e_dt).toLocaleDateString('tr', {
+                    const newDate = new Date(e_dt).toLocaleDateString('tr-TR', {
                         year: 'numeric',
                         month: 'numeric',
                         day: 'numeric'
@@ -297,7 +297,7 @@ console.log(info);
                 if (startDate === "Invalid Date" || startDate === undefined) {
                     startDate = null;
                 } else {
-                    const newDate = new Date(startDate).toLocaleDateString('en', {
+                    const newDate = new Date(startDate).toLocaleDateString('tr-TR', {
                         year: 'numeric',
                         month: 'numeric',
                         day: 'numeric'
