@@ -31,7 +31,6 @@ Route::middleware(['jwt.verify'])->group(function () {
 
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
-Route::post('/dene', [LoginController::class, 'dene'])->name('dene');
 
 Route::middleware(['basic.verify'])->group(function () {
     Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');

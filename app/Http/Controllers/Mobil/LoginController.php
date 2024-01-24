@@ -28,22 +28,11 @@ class LoginController extends Controller
 
                 if ($user) {
                     Auth::guard('api')->login($user);
-
-                    // Access Token
-                    $accessTokenExp = Carbon::now()->addMinutes(2)->timestamp;
-                    $accessToken = JWTAuth::fromUser($user, ['exp' => $accessTokenExp]);
-
-                    // Refresh Token
-                    $refreshTokenExp = Carbon::now()->addMinutes(10)->timestamp;
-                    $refreshToken = JWTAuth::fromUser($user, ['exp' => $refreshTokenExp]);
-
-
-
+                    $accessToken = JWTAuth::fromUser($user);
                     $responseData = [
                         "success" => 1,
                         "token" => [
                             "originaltoken" => $accessToken,
-                            "refreshtoken" => $refreshToken,
                             "expires_in" => Auth::factory()->getTTL() * 60,
                         ],
                         "user" => [
@@ -59,7 +48,6 @@ class LoginController extends Controller
                         "success" => 0,
                         "token" => [
                             "originaltoken" => "",
-                            "refreshtoken" => "",
                             "expires_in" => 0,
                         ],
                         "user" => [
@@ -78,7 +66,6 @@ class LoginController extends Controller
                 "success" => 0,
                 "token" => [
                     "originaltoken" => "",
-                    "refreshtoken" => "",
                     "expires_in" => 0,
                 ],
                 "user" => [
@@ -134,6 +121,8 @@ class LoginController extends Controller
 
                 $existingUser = User::where('user_phone', $user_phone)->first();
                 if ($existingUser) {
+                    $accessToken = JWTAuth::fromUser($existingUser);
+
                     $responseData = [
                         "success" => 0,
                         "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
