@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                     timeZone: 'local',
                                     editable: true,
+                                    timeZone: 'Europe/Istanbul',
                                     locale: 'tr', // Bu satırı ekleyin
                                     droppable: true,
                                     selectable: true,
