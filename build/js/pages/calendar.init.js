@@ -411,7 +411,7 @@ function upcomingEvent(a) {
                 day: 'numeric'
             });
             e_dt = new Date(newDate)
-                .toLocaleDateString("en-GB", {
+                .toLocaleDateString("tr-TR", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
