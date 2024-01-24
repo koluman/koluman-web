@@ -386,6 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     $.ajax({
                                                         type: 'POST',
                                                         url: 'https://mobiloby.app/koluman/web/api/deleteTestDrive',
+                                                        data:{drive_id:selectedEvent.id},
                                                         headers: {
                                                             'Authorization': 'Bearer ' + response.token
                                                         },
