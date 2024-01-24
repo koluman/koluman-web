@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: 'bg-danger-subtle',
-                                        location: '',
+                                        location: event.user_name,
                                         extendedProps: {
                                             department: ''
                                         },
