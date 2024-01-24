@@ -18,6 +18,12 @@ function getshowroom() {
                     success: function (data) {
                         if (data.success == 1) {
                            console.log(data);
+                           var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
+                           for (i = 0; i < data.shoowroom.length; ++i) {
+                               option += "<option value='" + data.shoowroom[i]["car_id"] + "'>" + data.shoowroom[i]["car_id"] + "</option>";
+                           }
+                           $('#event-category').html('');
+                           $('#event-category').html(option);
                         }
 
                     }

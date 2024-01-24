@@ -128,12 +128,12 @@
                                         <div class="mb-3">
                                             <label class="form-label">Type</label>
                                             <select class="form-select d-none" name="category" id="event-category" required>
-                                                <option value="bg-danger-subtle">Danger</option>
+                                                {{--<option value="bg-danger-subtle">Danger</option>
                                                 <option value="bg-success-subtle">Success</option>
                                                 <option value="bg-primary-subtle">Primary</option>
                                                 <option value="bg-info-subtle">Info</option>
                                                 <option value="bg-dark-subtle">Dark</option>
-                                                <option value="bg-warning-subtle">Warning</option>
+                                                <option value="bg-warning-subtle">Warning</option>--}}
                                             </select>
                                             <div class="invalid-feedback">Please select a valid event category</div>
                                         </div>
