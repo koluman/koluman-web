@@ -41,6 +41,7 @@ class LoginController extends Controller
             $expiresInSeconds = Auth::factory()->getTTL() * 60;
             $now = Carbon::now();
             $expirationDate = $now->addSeconds($expiresInSeconds);
+            session(['api_token' => $token,'expirationDate'=>$expirationDate,'expiresInSeconds'=>$expiresInSeconds]);
 
             App::setLocale($preferredLanguage);
             $redirectRoute = match ($userRole) {
@@ -53,21 +54,11 @@ class LoginController extends Controller
                 'message' => 'Giriş İşlemi başalarılı.',
                 'user' => $user,
                 'redirectRoute' => $redirectRoute,
-                "token" => [
-                    "originaltoken" => $token,
-                    "expires_in" => $expiresInSeconds,
-                    "expires_time" => $expirationDate->toDateTimeString()
-                ],
             ];
         } catch (\Exception $e) {
             $responseData = [
                 'success' => 0,
                 'message' => $e->getMessage(),
-                "token" => [
-                    "originaltoken" => $token,
-                    "expires_in" => $expiresInSeconds,
-                    "expires_time" => $expirationDate->toDateTimeString()
-                ],
                 'user' => "",
                 'redirectRoute' => "",
             ];

@@ -25,6 +25,7 @@ Route::get('/', [AuthController::class, 'signin'])->name('signin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+Route::get('/getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
 
 Route::middleware(['prevent-back-history','checkRole:admin'])->group(function () {
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
@@ -34,7 +35,8 @@ Route::middleware(['prevent-back-history','checkRole:admin'])->group(function ()
     Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
     Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
     Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
-    Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive'); 
+    Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
+ 
 });
 
 Route::middleware(['prevent-back-history','checkRole:ajans'])->group(function () {
