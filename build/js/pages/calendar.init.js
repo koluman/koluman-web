@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     $.ajax({
                         type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/testdriveget',
+                        url: 'https://mobiloby.app/koluman/web/testdrivegetall',
                         headers: {
                             'Authorization': 'Bearer ' + response.token
                         },

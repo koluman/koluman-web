@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Ajans\AjansHomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestDriveController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -36,7 +37,8 @@ Route::middleware(['prevent-back-history','checkRole:admin'])->group(function ()
     Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
     Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
     Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
- 
+    Route::get('/testdrivegetall', [TestDriveController::class, 'testdrivegetall'])->name('testdrivegetall');
+
 });
 
 Route::middleware(['prevent-back-history','checkRole:ajans'])->group(function () {
