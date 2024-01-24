@@ -29,8 +29,9 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
                     $accessToken = JWTAuth::fromUser($user);
-                    $expiresInSeconds = 630720000;
-                    $expirationDate = Carbon::now()->addSeconds($expiresInSeconds);
+                    $expiresInSeconds = Auth::factory()->getTTL() * 60;
+                    $now = Carbon::now();
+                    $expirationDate = $now->addSeconds($expiresInSeconds + (2 * 365 * 24 * 60 * 60));
 
                     $responseData = [
                         "success" => 1,
