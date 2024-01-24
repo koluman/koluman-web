@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var y = date.getFullYear();
     var Draggable = FullCalendar.Draggable;
     var externalEventContainerEl = document.getElementById('external-events');
-    testdrive();
     var defaultEvents = [];
+    testdrive();
     function testdrive() {
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/getApiToken',
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         dataType: 'json',
                         success: function (data) {
                             if (data.success == 1) {
+                                console.log(data.testDrives);
                                 defaultEvents=data.testDrives;
                             }
     
