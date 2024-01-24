@@ -64,7 +64,7 @@ class LoginController extends Controller
                             "user_phone" => "",
                             "user_image_url" => "",
                         ],
-                        "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                        "message" => "Kullanıcı bilgisi bulunamadı",
                     ];
                 }
             }
