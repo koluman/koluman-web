@@ -128,15 +128,15 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Type</label>
-                                            <select class="form-select d-none" name="category" id="event-category" required>
-                                                <option value="bg-danger-subtle">Danger</option>
+                                           <select class="form-select d-none" name="category" id="event-category" required>
+                                                 {{-- <option value="bg-danger-subtle">Danger</option>
                                                 <option value="bg-success-subtle">Success</option>
                                                 <option value="bg-primary-subtle">Primary</option>
                                                 <option value="bg-info-subtle">Info</option>
                                                 <option value="bg-dark-subtle">Dark</option>
-                                                <option value="bg-warning-subtle">Warning</option>
+                                                <option value="bg-warning-subtle">Warning</option> --}}
                                             </select>
-
+                                      
                                             <div class="invalid-feedback">Please select a valid event category</div>
                                         </div>
                                     </div>
@@ -144,8 +144,9 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Event Name</label>
-                                            <input class="form-control d-none" placeholder="Enter event name" type="text"
-                                                name="title" id="event-title" required value="" />
+                                            <input class="form-control d-none" placeholder="Enter event name"
+                                                type="text" name="title" id="event-title" required
+                                                value="" />
                                             <div class="invalid-feedback">Please provide a valid event name</div>
                                         </div>
                                     </div>
