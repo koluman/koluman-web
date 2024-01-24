@@ -29,11 +29,15 @@ class LoginController extends Controller
                 if ($user) {
                     Auth::guard('api')->login($user);
                     $accessToken = JWTAuth::fromUser($user);
+                    $expiresInSeconds = 630720000;
+                    $expirationDate = Carbon::now()->addSeconds($expiresInSeconds);
+
                     $responseData = [
                         "success" => 1,
                         "token" => [
                             "originaltoken" => $accessToken,
                             "expires_in" => Auth::factory()->getTTL() * 60,
+                            "expires_time" => $expirationDate->toDateTimeString()
                         ],
                         "user" => [
                             "user_mail" => $user->user_mail,
@@ -49,6 +53,7 @@ class LoginController extends Controller
                         "token" => [
                             "originaltoken" => "",
                             "expires_in" => 0,
+                            "expires_time" => ""
                         ],
                         "user" => [
                             "user_mail" => "",
@@ -67,6 +72,8 @@ class LoginController extends Controller
                 "token" => [
                     "originaltoken" => "",
                     "expires_in" => 0,
+                    "expires_time" => ""
+
                 ],
                 "user" => [
                     "user_mail" => "",
