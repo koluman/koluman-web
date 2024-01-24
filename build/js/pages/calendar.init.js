@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
             description: 'Tell how to boost website traffic'
         },
     ];*/
-
+    consaole.log(defaultEvents);
     // init draggable
     new Draggable(externalEventContainerEl, {
         itemSelector: '.external-event',
