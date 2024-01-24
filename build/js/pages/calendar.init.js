@@ -133,6 +133,7 @@ console.log(info);
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                             return x.drive_id == info.event.id;
                                         });
+                                        console.log(info);
 
                                         if (indexOfSelectedEvent !== -1) {
                                             defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
@@ -265,6 +266,7 @@ console.log(info);
                 var title = element.drive_time;
                 if (element.auto_date) {
                     endUpdatedDay = new Date(element.auto_date);
+                    console.log(endUpdatedDay);
                     var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
                 }
                 var e_dt = updatedDay ? updatedDay : undefined;
