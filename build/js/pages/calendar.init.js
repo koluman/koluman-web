@@ -384,6 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 i--;
                                             }
                                         }
+                                        console.log(selectedEvent);
                                         upcomingEvent(defaultEvents);
                                         selectedEvent.remove();
                                         selectedEvent = null;
