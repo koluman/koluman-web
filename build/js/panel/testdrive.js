@@ -10,6 +10,8 @@ function testdrive() {
         type: 'GET',
         success: function (response) {
             if (response.success == 1) {
+                console.log(response.token);
+
                 $.ajax({
                     type: 'GET',
                     url: 'https://mobiloby.app/koluman/web/api/testdriveget',
