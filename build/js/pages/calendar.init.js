@@ -115,13 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                     },
                                     eventResize: function (info) {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                            console.log(x);
-                                            return x.drive_id == info.event.id;
+                                            return x.drive_id == info.event.drive_id;
                                         });
 
                                         if (indexOfSelectedEvent !== -1) {
-                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.title;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.start;
+                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
+                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.auto_date;
                                             defaultEvents[indexOfSelectedEvent].className = "bg-info-subtle";
                                         }
                                         upcomingEvent(defaultEvents);
@@ -262,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                         });
 
                                         if (indexOfSelectedEvent !== -1) {
-                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.title;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.start;
+                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
+                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.auto_date;
                                             defaultEvents[indexOfSelectedEvent].className = "bg-info-subtle";
                                         }
                                         upcomingEvent(defaultEvents);
