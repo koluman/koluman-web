@@ -6,7 +6,7 @@ let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function testdrive() {
     $.ajax({
-        url: 'https://example.com/web/getApiToken',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
         type: 'GET',
         success: function(response) {
             
