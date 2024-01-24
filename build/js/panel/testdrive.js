@@ -218,3 +218,12 @@ function testdrive() {
     });
 
 }
+function getInitialView() {
+    if (window.innerWidth >= 768 && window.innerWidth < 1200) {
+        return 'timeGridWeek';
+    } else if (window.innerWidth <= 768) {
+        return 'listMonth';
+    } else {
+        return 'dayGridMonth';
+    }
+}
