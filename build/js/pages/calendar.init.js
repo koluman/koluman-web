@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         });
                                         document.getElementById("event-start-date-tag").innerHTML = r_date;
 
-                                        var gt_time = getTime(selectedEvent.start);
+                                        /*var gt_time = getTime(selectedEvent.start);
                                         var ed_time = getTime(selectedEvent.end);
 
                                         if (gt_time == ed_time) {
@@ -239,9 +239,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 dateFormat: "H:i",
                                                 defaultDate: ed_time
                                             });
-                                            document.getElementById("event-timepicker1-tag").innerHTML =selectedEvent.state;
-                                            //document.getElementById("event-timepicker2-tag").innerHTML = ;
-                                        }
+                                            document.getElementById("event-timepicker1-tag").innerHTML = tConvert(gt_time);
+                                            document.getElementById("event-timepicker2-tag").innerHTML = tConvert(ed_time);
+                                        }*/
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
 
