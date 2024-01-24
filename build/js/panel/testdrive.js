@@ -22,6 +22,7 @@ function getshowroom() {
                            for (i = 0; i < data.shoowroom.length; ++i) {
                                option += "<option value='" + data.shoowroom[i]["car_id"] + "'>" + data.shoowroom[i]["car_id"] + "</option>";
                            }
+                           console.log(option);
                            $('#event-category').html('');
                            $('#event-category').html(option);
                         }
