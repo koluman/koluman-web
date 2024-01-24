@@ -21,6 +21,7 @@ function testdrive() {
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == 1) {
+                            var calendarEl = document.getElementById('calendar');
 
                             var calendar = new FullCalendar.Calendar(calendarEl, {
                                 timeZone: 'local',
