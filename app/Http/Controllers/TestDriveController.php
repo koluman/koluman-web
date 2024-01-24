@@ -18,7 +18,8 @@ class TestDriveController extends Controller
             if ($token) {
                 $u = JWTAuth::setToken($token)->authenticate();
                 $testDrives = TestDrive::join('users', 'test_drive.user_id', '=', 'users.user_id')
-                    ->get(['test_drive.*', 'users.user_name', 'users.user_phone']);
+                ->join('showroom', 'test_drive.car_id', '=', 'showroom.car_id')
+                ->get(['test_drive.*', 'users.user_name', 'users.user_phone','showroom.car_name']);
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
