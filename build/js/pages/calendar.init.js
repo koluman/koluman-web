@@ -30,7 +30,41 @@ document.addEventListener("DOMContentLoaded", function () {
     var y = date.getFullYear();
     var Draggable = FullCalendar.Draggable;
     var externalEventContainerEl = document.getElementById('external-events');
-    var defaultEvents = [{
+    testdrive();
+    var defaultEvents = [];
+    function testdrive() {
+        $.ajax({
+            url: 'https://mobiloby.app/koluman/web/getApiToken',
+            type: 'GET',
+            success: function (response) {
+                if (response.success == 1) {
+    
+                    $.ajax({
+                        type: 'GET',
+                        url: 'https://mobiloby.app/koluman/web/api/testdriveget',
+                        headers: {
+                            'Authorization': 'Bearer ' + response.token
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.success == 1) {
+                                defaultEvents=data.testDrives;
+                            }
+    
+                        }
+                    });
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    
+    }
+    
+    /*var defaultEvents = [{
             id: 1,
             title: "World Braille Day",
             start: "2022-01-04",
@@ -219,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             description: 'Tell how to boost website traffic'
         },
-    ];
+    ];*/
 
     // init draggable
     new Draggable(externalEventContainerEl, {
@@ -235,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    //var calendarEl = document.getElementById('calendar');
+    var calendarEl = document.getElementById('calendar');
 
     function addNewEvent(info) {
         document.getElementById('form-event').reset();
@@ -251,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("edit-event-btn").setAttribute("hidden", true);
     }
 
-    /*function getInitialView() {
+    function getInitialView() {
         if (window.innerWidth >= 768 && window.innerWidth < 1200) {
             return 'timeGridWeek';
         } else if (window.innerWidth <= 768) {
@@ -259,13 +293,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             return 'dayGridMonth';
         }
-    }*/
+    }
 
     var eventCategoryChoice = new Choices("#event-category", {
         searchEnabled: false
     });
 
-    /*var calendar = new FullCalendar.Calendar(calendarEl, {
+    var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: 'local',
         editable: true,
         droppable: true,
@@ -444,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    calendar.render();*/
+    calendar.render();
 
     upcomingEvent(defaultEvents);
     /*Add new event*/
