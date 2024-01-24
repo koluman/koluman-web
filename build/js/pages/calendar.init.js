@@ -398,14 +398,14 @@ function eventTyped() {
 // upcoming Event
 function upcomingEvent(a) {
     console.log(a);
-    /*a.sort(function (o1, o2) {
+    a.sort(function (o1, o2) {
         return (new Date(o1.start)) - (new Date(o2.start));
     });
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
         var title = element.title;
-        if (element.end) {
-            endUpdatedDay = new Date(element.end);
+        if (element.auto_date) {
+            endUpdatedDay = new Date(element.auto_date);
             var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
         }
         var e_dt = updatedDay ? updatedDay : undefined;
@@ -426,12 +426,12 @@ function upcomingEvent(a) {
                 .split(" ")
                 .join(" ");
         }
-        var st_date = element.start ? str_dt(element.start) : null;
+        var st_date = element.auto_date ? str_dt(element.auto_date) : null;
         var ed_date = updatedDay ? str_dt(updatedDay) : null;
         if (st_date === ed_date) {
             e_dt = null;
         }
-        var startDate = element.start;
+        var startDate = element.auto_date;
         if (startDate === "Invalid Date" || startDate === undefined) {
             startDate = null;
         } else {
@@ -449,11 +449,11 @@ function upcomingEvent(a) {
                 .split(" ")
                 .join(" ");
         }
-
+        var s="bg-info-subtle";
         var end_dt = (e_dt) ? " to " + e_dt : '';
-        var category = (element.className).split("-");
-        var description = (element.description) ? element.description : "";
-        var e_time_s = tConvert(getTime(element.start));
+        var category = (s).split("-");
+        var description =  "Deneme";
+        var e_time_s = tConvert(getTime(element.auto_date));
         var e_time_e = tConvert(getTime(updatedDay));
         if (e_time_s == e_time_e) {
             var e_time_s = "Full day event";
@@ -472,7 +472,7 @@ function upcomingEvent(a) {
                         </div>\
                     </div>";
         document.getElementById("upcoming-event-list").innerHTML += u_event;
-    });*/
+    });
 };
 
 function getTime(params) {
