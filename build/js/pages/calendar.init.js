@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var e_time_s = tConvert(getTime(element.start));
                 var e_time_e = tConvert(getTime(updatedDay));
                 if (e_time_s == e_time_e) {
-                    var e_time_s = "Full day event";
+                    var e_time_s = "30 dakika";
                     var e_time_e = null;
                 }
                 var e_time_e = (e_time_e) ? " to " + e_time_e : "";
