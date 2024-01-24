@@ -38,10 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         },
                         dataType: 'json',
                         success: function (data) {
-                            console.log( data);
-
                             if (data.success == 1) {
-                                /*var defaultEvents = data.testDrives.map(function (event) {
+                                var defaultEvents = data.testDrives.map(function (event) {
                                     return {
                                         id: event.drive_id,
                                         title:event.drive_time, // Yeni başlık
@@ -283,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 calendar.render();
 
-                                upcomingEvent(defaultEvents);*/
+                                upcomingEvent(defaultEvents);
                             }
 
                         }
