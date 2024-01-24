@@ -26,9 +26,9 @@ class HomeController extends Controller
         if (Auth::guard('web')->check()) {
             $user = Auth::guard('web')->user();
             $token =session('api_token');;
-            return response()->json(['token' => $token], 200);
+            return response()->json(['success'=>1,'message' => 'Kullanıcı token bilgisi getirildi','token' => $token]);
         } else {
-            return response()->json(['error' => 'Kullanıcı girişi yapılmamış'], 401);
+            return response()->json(['success'=>0,'message' =>'Kullanıcı girişi yapılmamış','token' => '']);
         }
     }
 }
