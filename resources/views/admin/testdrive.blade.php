@@ -17,7 +17,8 @@
                 <div class="col-xl-3">
                     <div class="card card-h-100">
                         <div class="card-body">
-                            <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş Ranvusu Oluştur</button>
+                            <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş
+                                Ranvusu Oluştur</button>
 
                             <div id="external-events">
                                 <br>
@@ -26,7 +27,7 @@
                                     data-class="bg-success-subtle">
                                     <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanan Randevular
                                 </div>
-                               
+
                                 <div class="external-event fc-event bg-danger-subtle text-danger"
                                     data-class="bg-danger-subtle">
                                     <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanmayan Randevular
@@ -97,7 +98,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{--<div class="d-flex align-items-center mb-2">
+                                    {{-- <div class="d-flex align-items-center mb-2">
                                         <div class="flex-shrink-0 me-3">
                                             <i class="ri-time-line text-muted fs-16"></i>
                                         </div>
@@ -105,7 +106,7 @@
                                             <h6 class="d-block fw-semibold mb-0"><span id="event-timepicker1-tag"></span> -
                                                 <span id="event-timepicker2-tag"></span></h6>
                                         </div>
-                                    </div>--}}
+                                    </div> --}}
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="flex-shrink-0 me-3">
                                             <i class="ri-map-pin-line text-muted fs-16"></i>
@@ -127,13 +128,17 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Type</label>
-                                            <select class="form-select d-none" name="category" id="event-category" required>
-                                                {{--<option value="bg-danger-subtle">Danger</option>
+                                           {{-- <select class="form-select d-none" name="category" id="event-category" required>
+                                                 <option value="bg-danger-subtle">Danger</option>
                                                 <option value="bg-success-subtle">Success</option>
                                                 <option value="bg-primary-subtle">Primary</option>
                                                 <option value="bg-info-subtle">Info</option>
                                                 <option value="bg-dark-subtle">Dark</option>
-                                                <option value="bg-warning-subtle">Warning</option>--}}
+                                                <option value="bg-warning-subtle">Warning</option> 
+                                            </select>--}}
+                                            <select class="form-control" data-choices data-choices-search-false
+                                                name="category" id="event-category" required>
+                                                
                                             </select>
                                             <div class="invalid-feedback">Please select a valid event category</div>
                                         </div>
