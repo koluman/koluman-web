@@ -368,7 +368,6 @@ function editEvent(data) {
         eventClicked();
     }
 }
-
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("event-title").classList.replace("d-none", "d-block");
@@ -443,7 +442,7 @@ function upcomingEvent(a) {
                 .join(" ");
         }
         var s="bg-info-subtle";
-        var end_dt = (e_dt) ? " to " + e_dt : '';
+       // var end_dt = (e_dt) ? " to " + e_dt : '';
         var category = (s).split("-");
         var description =  "Deneme";
         var e_time_s = tConvert(getTime(element.auto_date));
@@ -457,8 +456,8 @@ function upcomingEvent(a) {
         u_event = "<div class='card mb-3'>\
                         <div class='card-body'>\
                             <div class='d-flex mb-3'>\
-                                <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + end_dt + " </span></div>\
-                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" +e_time_e + "</small></div>\
+                                <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate+ " </span></div>\
+                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
                             </div>\
                             <h6 class='card-title fs-16'> " + title + "</h6>\
                             <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
@@ -467,7 +466,6 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
-
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
@@ -476,7 +474,6 @@ function getTime(params) {
         return hour + ":" + minute;
     }
 }
-
 function tConvert(time) {
     var t = time.split(":");
     var hours = t[0];
@@ -487,7 +484,6 @@ function tConvert(time) {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     return (hours + ':' + minutes + ' ' + newformat);
 }
-
 var str_dt = function formatDate(date) {
     var monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
     var d = new Date(date),
