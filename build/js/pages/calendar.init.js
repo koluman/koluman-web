@@ -266,14 +266,9 @@ console.log(info);
             Array.from(a).forEach(function (element) {
                 var title = element.drive_time;
                 if (element.auto_date) {
-                    endUpdatedDay = new Date(element.auto_date).toLocaleDateString('tr', {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric'
-                    });
+                    endUpdatedDay = new Date(element.auto_date);
                     console.log(endUpdatedDay);
-                    var updatedDay = new Date(endUpdatedDay);
-                    updatedDay.setDate(updatedDay.getDate() - 1);
+                    var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
                 }
                 var e_dt = updatedDay ? updatedDay : undefined;
                 if (e_dt == "Invalid Date" || e_dt == undefined) {
@@ -302,7 +297,7 @@ console.log(info);
                 if (startDate === "Invalid Date" || startDate === undefined) {
                     startDate = null;
                 } else {
-                    const newDate = new Date(startDate).toLocaleDateString('tr-TR', {
+                    const newDate = new Date(startDate).toLocaleDateString('en', {
                         year: 'numeric',
                         month: 'numeric',
                         day: 'numeric'
