@@ -353,8 +353,8 @@ function eventClicked() {
     document.getElementById("event-location").classList.replace("d-block", "d-none");
     document.getElementById("event-description").classList.replace("d-block", "d-none");
     document.getElementById("event-start-date-tag").classList.replace("d-none", "d-block");
-    document.getElementById("event-timepicker1-tag").classList.replace("d-none", "d-block");
-    document.getElementById("event-timepicker2-tag").classList.replace("d-none", "d-block");
+    //document.getElementById("event-timepicker1-tag").classList.replace("d-none", "d-block");
+    //document.getElementById("event-timepicker2-tag").classList.replace("d-none", "d-block");
     document.getElementById("event-location-tag").classList.replace("d-none", "d-block");
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
@@ -375,8 +375,8 @@ function eventTyped() {
     document.getElementById("event-location").classList.replace("d-none", "d-block");
     document.getElementById("event-description").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date-tag").classList.replace("d-block", "d-none");
-    document.getElementById("event-timepicker1-tag").classList.replace("d-block", "d-none");
-    document.getElementById("event-timepicker2-tag").classList.replace("d-block", "d-none");
+    //document.getElementById("event-timepicker1-tag").classList.replace("d-block", "d-none");
+    //document.getElementById("event-timepicker2-tag").classList.replace("d-block", "d-none");
     document.getElementById("event-location-tag").classList.replace("d-block", "d-none");
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
