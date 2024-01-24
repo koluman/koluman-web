@@ -31,4 +31,13 @@ class HomeController extends Controller
             return response()->json(['success'=>0,'message' =>'Kullanıcı girişi yapılmamış','token' => '']);
         }
     }
+    public function getBasicToken()
+    {
+        if (Auth::guard('web')->check()) {
+            $token ="a29sdW1hbjprb2x1bWFuMjAyNA==";
+            return response()->json(['success'=>1,'message' => 'Token bilgisi getirildi','token' => $token]);
+        } else {
+            return response()->json(['success'=>0,'message' =>'Tokenbilgisi gelmedi','token' => '']);
+        }
+    }
 }

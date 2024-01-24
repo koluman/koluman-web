@@ -1,23 +1,23 @@
 $(document).ready(function () {
-    testdrive();
+    getshowroom();
 });
-function testdrive() {
+function getshowroom() {
     $.ajax({
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'https://mobiloby.app/koluman/web/getBasicToken',
         type: 'GET',
         success: function (response) {
             if (response.success == 1) {
 
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/testdriveget',
+                    url: 'https://mobiloby.app/koluman/web/api/getshoowroom',
                     headers: {
-                        'Authorization': 'Bearer ' + response.token
+                        'Authorization': 'Basic ' + response.token
                     },
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == 1) {
-                           
+                           console.log(data);
                         }
 
                     }
