@@ -388,7 +388,6 @@ function eventTyped() {
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
-
 // upcoming Event
 function upcomingEvent(a) {
     a.sort(function (o1, o2) {
@@ -419,8 +418,8 @@ function upcomingEvent(a) {
                 .split(" ")
                 .join(" ");
         }
-        var st_date = element.auto_date ? str_dt(element.auto_date) : null;
-        var ed_date = updatedDay ? str_dt(updatedDay) : null;
+        var st_date = element.auto_date ? tarihFormatla(element.auto_date) : null;
+        var ed_date = updatedDay ? tarihFormatla(updatedDay) : null;
         if (st_date === ed_date) {
             e_dt = null;
         }
@@ -428,13 +427,13 @@ function upcomingEvent(a) {
         if (startDate === "Invalid Date" || startDate === undefined) {
             startDate = null;
         } else {
-            const newDate = new Date(startDate).toLocaleDateString('en', {
+            const newDate = new Date(startDate).toLocaleDateString('tr', {
                 year: 'numeric',
                 month: 'numeric',
                 day: 'numeric'
             });
             startDate = new Date(newDate)
-                .toLocaleDateString("en-GB", {
+                .toLocaleDateString("tr-TR", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
@@ -446,10 +445,10 @@ function upcomingEvent(a) {
         var end_dt = (e_dt) ? " to " + e_dt : '';
         var category = (s).split("-");
         var description =  "Deneme";
-        var e_time_s = tConvert(getTime(element.auto_date));
-        var e_time_e = tConvert(getTime(updatedDay));
+        var e_time_s = saatFormatla(getTime(element.auto_date));
+        var e_time_e = saatFormatla(getTime(updatedDay));
         if (e_time_s == e_time_e) {
-            var e_time_s = "Full day event";
+            var e_time_s = "Tüm gün süren etkinlik";
             var e_time_e = null;
         }
         var e_time_e = (e_time_e) ? " to " + e_time_e : "";
@@ -477,26 +476,26 @@ function getTime(params) {
     }
 }
 
-function tConvert(time) {
-    var t = time.split(":");
-    var hours = t[0];
-    var minutes = t[1];
-    var newformat = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    return (hours + ':' + minutes + ' ' + newformat);
+function saatFormatla(sa) {
+    var t = sa.split(":");
+    var saatler = t[0];
+    var dakikalar = (t[1]) ? t[1] : 0;
+    var yeniFormat = saatler >= 12 ? 'PM' : 'AM';
+    saatler = saatler % 12;
+    saatler = saatler ? saatler : 12;
+    dakikalar = dakikalar < 10 ? '0' + dakikalar : dakikalar;
+    return saatler + ':' + dakikalar + ' ' + yeniFormat;
 }
 
-var str_dt = function formatDate(date) {
-    var monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
-    var d = new Date(date),
-        month = '' + monthNames[(d.getMonth())],
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-    return [day + " " + month, year].join(',');
-};
+function tarihFormatla(tarih) {
+    var ayIsimleri = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    var d = new Date(tarih),
+        ay = '' + ayIsimleri[(d.getMonth())],
+        gun = '' + d.getDate(),
+        yil = d.getFullYear();
+    if (ay.length < 2)
+        ay = '0' + ay;
+    if (gun.length < 2)
+        gun = '0' + gun;
+    return [gun + " " + ay, yil].join(' ');
+}
