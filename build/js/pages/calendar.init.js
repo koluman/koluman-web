@@ -239,8 +239,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 dateFormat: "H:i",
                                                 defaultDate: ed_time
                                             });
-                                            document.getElementById("event-timepicker1-tag").innerHTML = tConvert(gt_time);
-                                            document.getElementById("event-timepicker2-tag").innerHTML = tConvert(ed_time);
+                                            document.getElementById("event-timepicker1-tag").innerHTML =selectedEvent.state;
+                                            //document.getElementById("event-timepicker2-tag").innerHTML = ;
                                         }
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
