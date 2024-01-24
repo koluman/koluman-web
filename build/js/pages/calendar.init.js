@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     const newDate = new Date(e_dt).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' });
                     e_dt = new Date(newDate)
-                      .toLocaleDateString("en-GB", {
+                      .toLocaleDateString("tr-TR", {
                         day: "numeric",
                         month: "short",
                         year: "numeric",
