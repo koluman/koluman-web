@@ -48,10 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         start: new Date(event.auto_date),
                                         end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
-                                        className: 'bg-danger-subtle',
+                                        className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
                                         location: event.car_name,
                                         extendedProps: {
-                                            department: event.state==0 ? 'Onaylanmadı' :'Onaylandı'
+                                            department:event.drive_time
                                         },
                                         description: event.user_name
                                         // Diğer özellikleri ekleyin
