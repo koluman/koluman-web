@@ -48,6 +48,9 @@ function testdrive() {
                                         data.testDrives[indexOfSelectedEvent].drive_time = info.event.drive_time;
                                         data.testDrives[indexOfSelectedEvent].car_id = info.event.car_id;
                                         data.testDrives[indexOfSelectedEvent].user_id = info.event.user_id;
+                                        
+                                        data.testDrives[indexOfSelectedEvent].start = info.event.auto_date;
+                                        data.testDrives[indexOfSelectedEvent].end = (info.event.auto_date) ? info.event.auto_date : null;
                                         data.testDrives[indexOfSelectedEvent].className = 'bg-primary-subtle';
                                     }
                                     upcomingEvent(data.testDrives);
@@ -189,6 +192,8 @@ function testdrive() {
                                     if (data.testDrives[indexOfSelectedEvent]) {
                                         data.testDrives[indexOfSelectedEvent].drive_time = info.event.drive_time;
                                         data.testDrives[indexOfSelectedEvent].car_id = info.event.car_id;
+                                        data.testDrives[indexOfSelectedEvent].start = info.event.auto_date;
+                                        data.testDrives[indexOfSelectedEvent].end = (info.event.auto_date) ? info.event.auto_date : null;
                                         data.testDrives[indexOfSelectedEvent].user_id = info.event.user_id;
                                         data.testDrives[indexOfSelectedEvent].className = 'bg-primary-subtle';
                                     }
