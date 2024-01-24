@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         dataType: 'json',
                         success: function (data) {
                             if (data.success == 1) {
-                                console.log(data.testDrives);
                                 defaultEvents = data.testDrives;
 
                                 new Draggable(externalEventContainerEl, {
@@ -115,12 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                     },
                                     eventResize: function (info) {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                            return x.id == info.event.drive_id
+                                            return x.id == info.event.id;
                                         });
-                                        if (defaultEvents[indexOfSelectedEvent]) {
-                                            defaultEvents[indexOfSelectedEvent].title = info.event.drive_time;
-                                            defaultEvents[indexOfSelectedEvent].start = info.event.auto_date;
-                                            defaultEvents[indexOfSelectedEvent].end = (info.event.auto_date) ? info.event.auto_date : null;
+                                    
+                                        if (indexOfSelectedEvent !== -1) {
+                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.title;
+                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.start;
                                             defaultEvents[indexOfSelectedEvent].className = "bg-info-subtle";
                                         }
                                         upcomingEvent(defaultEvents);
@@ -390,7 +389,6 @@ function eventTyped() {
 
 // upcoming Event
 function upcomingEvent(a) {
-    console.log(a);
     a.sort(function (o1, o2) {
         return (new Date(o1.start)) - (new Date(o2.start));
     });
