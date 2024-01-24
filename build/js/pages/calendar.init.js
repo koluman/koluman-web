@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         success: function (data) {
                             if (data.success == 1) {
                                 defaultEvents = data.testDrives;
-
+console.log(defaultEvents);
                                 new Draggable(externalEventContainerEl, {
                                     itemSelector: '.external-event',
                                     eventData: function (eventEl) {
