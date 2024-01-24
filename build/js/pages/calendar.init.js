@@ -38,8 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         },
                         dataType: 'json',
                         success: function (data) {
+                            console.log( data);
+
                             if (data.success == 1) {
-                                console.log( data.testDrives);
                                 /*var defaultEvents = data.testDrives.map(function (event) {
                                     return {
                                         id: event.drive_id,
