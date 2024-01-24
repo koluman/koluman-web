@@ -361,7 +361,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 eventClicked();
             }
         }
-
         function eventTyped() {
             document.getElementById('form-event').classList.remove("view-event");
             document.getElementById("event-title").classList.replace("d-none", "d-block");
