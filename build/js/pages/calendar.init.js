@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 var defaultEvents = data.testDrives.map(function (event) {
                                     return {
                                         id: event.drive_id,
-                                        title: "Drive", // Yeni başlık
+                                        title:event.drive_time, // Yeni başlık
                                         start: new Date(event.auto_date),
                                         end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
