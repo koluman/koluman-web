@@ -41,6 +41,7 @@ class LoginController extends Controller
                             "expires_time" => $expirationDate->toDateTimeString()
                         ],
                         "user" => [
+                            "user_id" =>$user->user_id,
                             "user_mail" => $user->user_mail,
                             "user_name" => $user->user_name,
                             "user_phone" => $user->user_phone,
@@ -57,6 +58,7 @@ class LoginController extends Controller
                             "expires_time" => ""
                         ],
                         "user" => [
+                            "user_id" =>"",
                             "user_mail" => "",
                             "user_name" => "",
                             "user_phone" => "",
@@ -76,6 +78,7 @@ class LoginController extends Controller
 
                 ],
                 "user" => [
+                    "user_id" =>"",
                     "user_mail" => "",
                     "user_name" => "",
                     "user_phone" => "",
@@ -138,6 +141,7 @@ class LoginController extends Controller
         
                         ],
                         "user" => [
+                            "user_id" => "",
                             "user_mail" => "",
                             "user_name" => "",
                             "user_phone" => "",
@@ -169,6 +173,7 @@ class LoginController extends Controller
                             "expires_time" => $expirationDate->toDateTimeString()
                         ],
                         "user" => [
+                            "user_id" =>$user->user_id,
                             "user_mail" => $user->user_mail,
                             "user_name" => $user->user_name,
                             "user_phone" => $user->user_phone,
@@ -180,12 +185,25 @@ class LoginController extends Controller
                    
                 }
             } else {
+                
                 $responseData = [
                     "success" => 0,
-                    "message" => "Token bulunamadı, Logout işlemi başarısız",
-                    "user" => "",
-                    "token" => "",
+                    "token" => [
+                        "originaltoken" => "",
+                        "expires_in" => 0,
+                        "expires_time" => ""
+    
+                    ],
+                    "user" => [
+                        "user_id" => "",
+                        "user_mail" => "",
+                        "user_name" => "",
+                        "user_phone" => "",
+                        "user_image_url" => "",
+                    ],
+                    "message" =>  "Token bulunamadı,lütfen tokenı yollayınız",
                 ];
+                
             }
         } catch (\Exception $e) {
          
@@ -198,6 +216,7 @@ class LoginController extends Controller
 
                 ],
                 "user" => [
+                    "user_id" => "",
                     "user_mail" => "",
                     "user_name" => "",
                     "user_phone" => "",
