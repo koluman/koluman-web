@@ -375,7 +375,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         upcomingEvent(defaultEvents);
                                     }
                                 });
-                            
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
                                         for (var i = 0; i < defaultEvents.length; i++) {
@@ -384,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 i--;
                                             }
                                         }
-                                        console.log(selectedEvent);
+                                        console.log(selectedEvent.id);
                                         upcomingEvent(defaultEvents);
                                         selectedEvent.remove();
                                         selectedEvent = null;
