@@ -87,19 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 var calendarEl = document.getElementById('calendar');
 
-                                function addNewEvent(info) {
-                                    document.getElementById('form-event').reset();
-                                    document.getElementById('btn-delete-event').setAttribute('hidden', true);
-                                    addEvent.show();
-                                    formEvent.classList.remove("was-validated");
-                                    formEvent.reset();
-                                    selectedEvent = null;
-                                    modalTitle.innerText = 'Add Event';
-                                    newEventData = info;
-                                    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-                                    document.getElementById('edit-event-btn').click();
-                                    document.getElementById("edit-event-btn").setAttribute("hidden", true);
-                                }
+                              
 
                                 function getInitialView() {
                                     if (window.innerWidth >= 768 && window.innerWidth < 1200) {
@@ -498,7 +486,19 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
-
+function addNewEvent(info) {
+    document.getElementById('form-event').reset();
+    document.getElementById('btn-delete-event').setAttribute('hidden', true);
+    addEvent.show();
+    formEvent.classList.remove("was-validated");
+    formEvent.reset();
+    selectedEvent = null;
+    modalTitle.innerText = 'Add Event';
+    newEventData = info;
+    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+    document.getElementById('edit-event-btn').click();
+    document.getElementById("edit-event-btn").setAttribute("hidden", true);
+}
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
