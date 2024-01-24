@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                             return x.drive_id == info.event.drive_id;
                                         });
-
+console.log(info);
                                         if (indexOfSelectedEvent !== -1) {
                                             defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
                                             defaultEvents[indexOfSelectedEvent].auto_date = info.event.auto_date;
