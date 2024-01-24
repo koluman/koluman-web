@@ -296,9 +296,21 @@ function flatPickrInit() {
     var config = {
         enableTime: true,
         noCalendar: true,
+        locale: {
+            firstDayOfWeek: 1,
+            weekdays: {
+                shorthand: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+                longhand: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+            },
+            months: {
+                shorthand: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+                longhand: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+            },
+        },
     };
     var date_range = flatpickr(
         start_date, {
+            enableTime: false,
             enableTime: false,
             mode: "range",
             minDate: "today",
