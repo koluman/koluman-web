@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    var calendarEl = document.getElementById('calendar');
+    //var calendarEl = document.getElementById('calendar');
 
     function addNewEvent(info) {
         document.getElementById('form-event').reset();
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("edit-event-btn").setAttribute("hidden", true);
     }
 
-    function getInitialView() {
+    /*function getInitialView() {
         if (window.innerWidth >= 768 && window.innerWidth < 1200) {
             return 'timeGridWeek';
         } else if (window.innerWidth <= 768) {
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             return 'dayGridMonth';
         }
-    }
+    }*/
 
     var eventCategoryChoice = new Choices("#event-category", {
         searchEnabled: false

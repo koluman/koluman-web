@@ -53,7 +53,7 @@ function testdrive() {
                                         data.testDrives[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
                                         data.testDrives[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                     }
-                                    upcomingEvent(defaultEvents);
+                                    upcomingEvent( data.testDrives);
                                 },
                                 eventClick: function (info) {
                                     document.getElementById("edit-event-btn").removeAttribute("hidden");
@@ -172,7 +172,7 @@ function testdrive() {
                                 dateClick: function (info) {
                                     addNewEvent(info);
                                 },
-                                events: defaultEvents,
+                                events:  data.testDrives,
                                 eventReceive: function (info) {
                                     var newid = parseInt(info.event.id);
                                     var newEvent = {
@@ -182,23 +182,23 @@ function testdrive() {
                                         allDay: info.event.allDay,
                                         className: info.event.classNames[0]
                                     };
-                                    defaultEvents.push(newEvent);
-                                    upcomingEvent(defaultEvents);
+                                    data.testDrives.push(newEvent);
+                                    upcomingEvent( data.testDrives);
                                 },
                                 eventDrop: function (info) {
-                                    var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
+                                    var indexOfSelectedEvent =  data.testDrives.findIndex(function (x) {
                                         return x.id == info.event.id
                                     });
-                                    if (defaultEvents[indexOfSelectedEvent]) {
-                                        defaultEvents[indexOfSelectedEvent].title = info.event.title;
-                                        defaultEvents[indexOfSelectedEvent].start = info.event.start;
-                                        defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
-                                        defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
-                                        defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
-                                        defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                        defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                    if ( data.testDrives[indexOfSelectedEvent]) {
+                                        data.testDrives[indexOfSelectedEvent].title = info.event.title;
+                                        data.testDrives[indexOfSelectedEvent].start = info.event.start;
+                                        data.testDrives[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
+                                        data.testDrives[indexOfSelectedEvent].allDay = info.event.allDay;
+                                        data.testDrives[indexOfSelectedEvent].className = info.event.classNames[0];
+                                        data.testDrives[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
+                                        data.testDrives[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                     }
-                                    upcomingEvent(defaultEvents);
+                                    upcomingEvent( data.testDrives);
                                 }
                             });
 
