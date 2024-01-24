@@ -272,7 +272,7 @@ console.log(info);
                         day: 'numeric'
                     });
                     console.log(endUpdatedDay);
-                    var updatedDay = new Date(formattedDate);
+                    var updatedDay = new Date(endUpdatedDay);
                     updatedDay.setDate(updatedDay.getDate() - 1);
                 }
                 var e_dt = updatedDay ? updatedDay : undefined;
