@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     initialView: getInitialView(),
                                     themeSystem: 'bootstrap',
                                     headerToolbar: {
-                                        left: 'prev,next today',
+                                        left: 'prev,next Bugün',
                                         center: 'title',
                                         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                                     },
@@ -302,7 +302,7 @@ function flatPickrInit() {
         start_date, {
             enableTime: false,
             mode: "range",
-            minDate: "Bugün",
+            minDate: "today",
             onChange: function (selectedDates, dateStr, instance) {
                 var date_range = dateStr;
                 var dates = date_range.split("to");
