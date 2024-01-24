@@ -398,75 +398,66 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             document.getElementById("upcoming-event-list").innerHTML = null;
             Array.from(a).forEach(function (element) {
-                var title = element.drive_time;
-                if (element.auto_date) {
-                    endUpdatedDay = new Date(element.auto_date);
-                    console.log(endUpdatedDay);
+                var title = element.title;
+                if (element.end) {
+                    endUpdatedDay = new Date(element.end);
                     var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
-                }
+                  }
                 var e_dt = updatedDay ? updatedDay : undefined;
                 if (e_dt == "Invalid Date" || e_dt == undefined) {
                     e_dt = null;
                 } else {
-                    const newDate = new Date(e_dt).toLocaleDateString('tr', {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric'
-                    });
+                    const newDate = new Date(e_dt).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' });
                     e_dt = new Date(newDate)
-                        .toLocaleDateString("tr-TR", {
-                            day: "numeric",
-                            month: "short",
-                            year: "numeric",
-                        })
-                        .split(" ")
-                        .join(" ");
+                      .toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })
+                      .split(" ")
+                      .join(" ");
                 }
-                var st_date = element.auto_date ? str_dt(element.auto_date) : null;
+                var st_date = element.start ? str_dt(element.start) : null;
                 var ed_date = updatedDay ? str_dt(updatedDay) : null;
                 if (st_date === ed_date) {
                     e_dt = null;
                 }
-                var startDate = element.auto_date;
+                var startDate = element.start;
                 if (startDate === "Invalid Date" || startDate === undefined) {
                     startDate = null;
                 } else {
-                    const newDate = new Date(startDate).toLocaleDateString('en', {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric'
-                    });
+                    const newDate = new Date(startDate).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' });
                     startDate = new Date(newDate)
-                        .toLocaleDateString("tr-TR", {
-                            day: "numeric",
-                            month: "short",
-                            year: "numeric",
-                        })
-                        .split(" ")
-                        .join(" ");
+                      .toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })
+                      .split(" ")
+                      .join(" ");
                 }
-                var s = "bg-info-subtle";
-                // var end_dt = (e_dt) ? " to " + e_dt : '';
-                var category = (s).split("-");
-                var description = "Deneme";
-                var e_time_s = tConvert(getTime(element.auto_date));
+        
+                var end_dt = (e_dt) ? " to " + e_dt : '';
+                var category = (element.className).split("-");
+                var description = (element.description) ? element.description : "";
+                var e_time_s = tConvert(getTime(element.start));
                 var e_time_e = tConvert(getTime(updatedDay));
                 if (e_time_s == e_time_e) {
-                    var e_time_s = "30 dakika";
+                    var e_time_s = "Full day event";
                     var e_time_e = null;
                 }
                 var e_time_e = (e_time_e) ? " to " + e_time_e : "";
-
+        
                 u_event = "<div class='card mb-3'>\
-                        <div class='card-body'>\
-                            <div class='d-flex mb-3'>\
-                                <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + " </span></div>\
-                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
-                            </div>\
-                            <h6 class='card-title fs-16'> " + title + "</h6>\
-                            <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
-                        </div>\
-                    </div>";
+                                <div class='card-body'>\
+                                    <div class='d-flex mb-3'>\
+                                        <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + end_dt + " </span></div>\
+                                        <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
+                                    </div>\
+                                    <h6 class='card-title fs-16'> " + title + "</h6>\
+                                    <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
+                                </div>\
+                            </div>";
                 document.getElementById("upcoming-event-list").innerHTML += u_event;
             });
         };
