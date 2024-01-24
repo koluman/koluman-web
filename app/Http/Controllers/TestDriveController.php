@@ -12,12 +12,13 @@ class TestDriveController extends Controller
     public function testdrivegetall(Request $request)
     {
         try {
-           
+
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             if ($token) {
                 $u = JWTAuth::setToken($token)->authenticate();
-                $testDrives = TestDrive::get();
+                $testDrives = TestDrive::join('users', 'test_drives.user_id', '=', 'users.user_id')
+                    ->get(['test_drives.*', 'users.name', 'users.email']);
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
@@ -38,7 +39,6 @@ class TestDriveController extends Controller
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }
-        
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         extendedProps: {
                                             department: ''
                                         },
-                                        description: ''
+                                        description:event.user_name
                                         // Diğer özellikleri ekleyin
                                     };
                                 });
