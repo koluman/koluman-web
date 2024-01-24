@@ -115,16 +115,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                     },
                                     eventResize: function (info) {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                            return x.drive_id == info.event.drive_id
+                                            return x.id == info.event.id
                                         });
                                         if (defaultEvents[indexOfSelectedEvent]) {
-                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.auto_date;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = (info.event.auto_date) ? info.event.auto_date : null;
-                                            //defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
-                                            //defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
-                                           // defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                            //defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                            defaultEvents[indexOfSelectedEvent].title = info.event.title;
+                                            defaultEvents[indexOfSelectedEvent].start = info.event.start;
+                                            defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
+                                            defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
+                                            defaultEvents[indexOfSelectedEvent].className = "bg-info-subtle";
+                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
+                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                         }
                                         upcomingEvent(defaultEvents);
                                     },
@@ -260,16 +260,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                     },
                                     eventDrop: function (info) {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                            return x.drive_id == info.event.drive_id
+                                            return x.id == info.event.id
                                         });
                                         if (defaultEvents[indexOfSelectedEvent]) {
-                                            defaultEvents[indexOfSelectedEvent].drive_time = info.event.drive_time;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = info.event.auto_date;
-                                            defaultEvents[indexOfSelectedEvent].auto_date = (info.event.auto_date) ? info.event.auto_date : null;
-                                           // defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
-                                            //defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
-                                            //defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                           // defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                            defaultEvents[indexOfSelectedEvent].title = info.event.title;
+                                            defaultEvents[indexOfSelectedEvent].start = info.event.start;
+                                            defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
+                                            defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
+                                            defaultEvents[indexOfSelectedEvent].className = "bg-info-subtle";
+                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
+                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                         }
                                         upcomingEvent(defaultEvents);
                                     }
