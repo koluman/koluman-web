@@ -31,7 +31,7 @@ class LoginController extends Controller
                     $accessToken = JWTAuth::fromUser($user);
                     $expiresInSeconds = Auth::factory()->getTTL() * 60;
                     $now = Carbon::now();
-                    $expirationDate = $now->addSeconds($expiresInSeconds + (2 * 365 * 24 * 60 * 60));
+                    $expirationDate = $now->copy()->addSeconds($expiresInSeconds + (2 * 365 * 24 * 60 * 60));
 
                     $responseData = [
                         "success" => 1,
