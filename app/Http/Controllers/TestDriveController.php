@@ -20,16 +20,22 @@ class TestDriveController extends Controller
                 $testDrives = TestDrive::join('users', 'test_drive.user_id', '=', 'users.user_id')
                 ->join('showroom', 'test_drive.car_id', '=', 'showroom.car_id')
                 ->get(['test_drive.*', 'users.user_name', 'users.user_phone','showroom.car_name']);
+
+                $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
+                $testlastDrives = TestDrive::where('auto_date', '>=', $lastWeek)->get();
+
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
                         "testDrives" => $testDrives,
+                        "testlastDrives" => $testlastDrives,
                         "message" => "Test sürüş randevu listesi getirildi",
                     ];
                 } else {
                     $responseData = [
                         "success" => 0,
                         "testDrives" => "",
+                        "testlastDrives" => "",
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
@@ -37,6 +43,7 @@ class TestDriveController extends Controller
                 $responseData = [
                     "success" => 0,
                     "testDrives" => "",
+                    "testlastDrives" =>"",
                     "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
                 ];
             }

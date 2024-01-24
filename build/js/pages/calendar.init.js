@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var y = date.getFullYear();
         var Draggable = FullCalendar.Draggable;
         var externalEventContainerEl = document.getElementById('external-events');
-        var defaultEvents = [];
+        var defaultEvents = [];        var defaultlastEvents = [];
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/getApiToken',
             type: 'GET',
@@ -57,7 +57,22 @@ document.addEventListener("DOMContentLoaded", function () {
                                         // Diğer özellikleri ekleyin
                                     };
                                 });
-                                console.log(defaultEvents);
+                                var defaultlastEvents = data.testlastDrives.map(function (event) {
+                                    return {
+                                        id: event.drive_id,
+                                        title: event.drive_time, // Yeni başlık
+                                        start: new Date(event.auto_date),
+                                        end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
+                                        allDay: true,
+                                        className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
+                                        location: event.car_name,
+                                        extendedProps: {
+                                            department:event.drive_time
+                                        },
+                                        description: event.user_name
+                                        // Diğer özellikleri ekleyin
+                                    };
+                                });
                                 new Draggable(externalEventContainerEl, {
                                     itemSelector: '.external-event',
                                     eventData: function (eventEl) {
@@ -132,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
                                             defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                         }
-                                        upcomingEvent(defaultEvents);
+                                        upcomingEvent(defaultlastEvents);
                                     },
                                     eventClick: function (info) {
                                         document.getElementById("edit-event-btn").removeAttribute("hidden");
@@ -262,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             className: info.event.classNames[0]
                                         };
                                         defaultEvents.push(newEvent);
-                                        upcomingEvent(defaultEvents);
+                                        upcomingEvent(defaultlastEvents);
                                     },
                                     eventDrop: function (info) {
                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
@@ -277,13 +292,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
                                             defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
                                         }
-                                        upcomingEvent(defaultEvents);
+                                        upcomingEvent(defaultlastEvents);
                                     }
                                 });
 
                                 calendar.render();
 
-                                upcomingEvent(defaultEvents);
+                                upcomingEvent(defaultlastEvents);
                             }
 
                         }
