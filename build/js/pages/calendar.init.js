@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else if (window.innerWidth <= 768) {
                                         return 'listMonth';
                                     } else {
-                                        return 'Ay';
+                                        return 'dayGridMonth';
                                     }
                                 }
                         
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     headerToolbar: {
                                         left: 'prev,next today',
                                         center: 'title',
-                                        right: 'Ay,timeGridWeek,timeGridDay,listMonth'
+                                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                                     },
                                     windowResize: function (view) {
                                         var newView = getInitialView();
