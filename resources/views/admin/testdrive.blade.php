@@ -25,19 +25,14 @@
                                 <p class="text-muted">Drag and drop your event or click in the calendar</p>
                                 <div class="external-event fc-event bg-success-subtle text-success"
                                     data-class="bg-success-subtle">
-                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>New Event Planning
+                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanan Randevular
                                 </div>
-                                <div class="external-event fc-event bg-info-subtle text-info" data-class="bg-info-subtle">
-                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Meeting
-                                </div>
+                               
                                 <div class="external-event fc-event bg-warning-subtle text-warning"
                                     data-class="bg-warning-subtle">
-                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Generating Reports
+                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Onaylanmayan Randevular
                                 </div>
-                                <div class="external-event fc-event bg-danger-subtle text-danger"
-                                    data-class="bg-danger-subtle">
-                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Create New theme
-                                </div>
+                            
                             </div>
 
                         </div>
