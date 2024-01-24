@@ -404,6 +404,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 selectedEvent = null;
                                                                 addEvent.hide();
                                                             }
+                                                            else{
+                                                                alert(data.message);
+                                                            }
                                     
                                                         }
                                                     });
