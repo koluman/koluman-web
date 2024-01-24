@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-
+        console.log(defaultEvents);
         // init draggable
         new Draggable(externalEventContainerEl, {
             itemSelector: '.external-event',
