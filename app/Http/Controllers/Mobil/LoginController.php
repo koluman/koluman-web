@@ -67,7 +67,6 @@ class LoginController extends Controller
                 }
             }
         } catch (\Exception $e) {
-            dd($e);
             $responseData = [
                 "success" => 0,
                 "token" => [
@@ -129,15 +128,25 @@ class LoginController extends Controller
 
                 $existingUser = User::where('user_phone', $user_phone)->first();
                 if ($existingUser) {
-                    $accessToken = JWTAuth::fromUser($existingUser);
 
                     $responseData = [
                         "success" => 0,
+                        "token" => [
+                            "originaltoken" => "",
+                            "expires_in" => 0,
+                            "expires_time" => ""
+        
+                        ],
+                        "user" => [
+                            "user_mail" => "",
+                            "user_name" => "",
+                            "user_phone" => "",
+                            "user_image_url" => "",
+                        ],
                         "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
-                        "user" => "",
-                        "token" => "",
-                        "refreshtoken" => "",
                     ];
+
+                   
                 } else {
                     $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
                     $user = User::create([
@@ -149,12 +158,26 @@ class LoginController extends Controller
                     ]);
                     $token = JWTAuth::fromUser($user);
                     $u = JWTAuth::setToken($token)->authenticate();
+                    $expiresInSeconds = Auth::factory()->getTTL() * 60;
+                    $now = Carbon::now();
+                    $expirationDate = $now->addSeconds($expiresInSeconds);
                     $responseData = [
                         "success" => 1,
-                        "message" => "Kullanıcı Kayıt edildi",
-                        "user" => $user,
-                        "token" => $token,
+                        "token" => [
+                            "originaltoken" => $token,
+                            "expires_in" => $expiresInSeconds,
+                            "expires_time" => $expirationDate->toDateTimeString()
+                        ],
+                        "user" => [
+                            "user_mail" => $user->user_mail,
+                            "user_name" => $user->user_name,
+                            "user_phone" => $user->user_phone,
+                            "user_image_url" => $user->user_image_url,
+                        ],
+                        "message" => "Login İşlemi başarılı",
                     ];
+
+                   
                 }
             } else {
                 $responseData = [
@@ -165,11 +188,22 @@ class LoginController extends Controller
                 ];
             }
         } catch (\Exception $e) {
+         
             $responseData = [
                 "success" => 0,
-                "message" => $e->getMessage(),
-                "user" => "",
-                "token" => "",
+                "token" => [
+                    "originaltoken" => "",
+                    "expires_in" => 0,
+                    "expires_time" => ""
+
+                ],
+                "user" => [
+                    "user_mail" => "",
+                    "user_name" => "",
+                    "user_phone" => "",
+                    "user_image_url" => "",
+                ],
+                "message" =>  $e->getMessage(),
             ];
         }
         return response()->json($responseData);
