@@ -312,8 +312,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-
-        // init draggable
+        document.getElementById("btn-delete-event").addEventListener("click", function (e) {
+            if (selectedEvent) {
+                for (var i = 0; i < defaultEvents.length; i++) {
+                    if (defaultEvents[i].id == selectedEvent.id) {
+                        defaultEvents.splice(i, 1);
+                        i--;
+                    }
+                }
+                upcomingEvent(defaultEvents);
+                selectedEvent.remove();
+                selectedEvent = null;
+                addEvent.hide();
+            }
+        });
+        document.getElementById("btn-new-event").addEventListener("click", function (e) {
+            flatpicekrValueClear();
+            flatPickrInit();
+            addNewEvent();
+            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+            document.getElementById('edit-event-btn').click();
+            document.getElementById("edit-event-btn").setAttribute("hidden", true);
+        });
 
     }
 });
