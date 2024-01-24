@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
                                         $.ajax({
-                                            url: 'https://mobiloby.app/koluman/web/getAuthToken',
+                                            url: 'https://mobiloby.app/koluman/web/getApiToken',
                                             type: 'GET',
                                             success: function (response) {
                                                 if (response.success == 1) {
