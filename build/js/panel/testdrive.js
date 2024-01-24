@@ -41,6 +41,7 @@ function testdrive() {
                                     calendar.changeView(newView);
                                 },
                                 eventResize: function (info) {
+                                    console.log(info);
                                     var indexOfSelectedEvent = data.testDrives.findIndex(function (x) {
                                         return x.drive_id == info.event.drive_id
                                     });
