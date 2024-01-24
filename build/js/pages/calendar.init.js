@@ -395,6 +395,86 @@ function eventTyped() {
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
 
+// upcoming Event
+function upcomingEvent(a) {
+    console.log(a);
+    /*a.sort(function (o1, o2) {
+        return (new Date(o1.start)) - (new Date(o2.start));
+    });
+    document.getElementById("upcoming-event-list").innerHTML = null;
+    Array.from(a).forEach(function (element) {
+        var title = element.title;
+        if (element.end) {
+            endUpdatedDay = new Date(element.end);
+            var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
+        }
+        var e_dt = updatedDay ? updatedDay : undefined;
+        if (e_dt == "Invalid Date" || e_dt == undefined) {
+            e_dt = null;
+        } else {
+            const newDate = new Date(e_dt).toLocaleDateString('en', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            });
+            e_dt = new Date(newDate)
+                .toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                })
+                .split(" ")
+                .join(" ");
+        }
+        var st_date = element.start ? str_dt(element.start) : null;
+        var ed_date = updatedDay ? str_dt(updatedDay) : null;
+        if (st_date === ed_date) {
+            e_dt = null;
+        }
+        var startDate = element.start;
+        if (startDate === "Invalid Date" || startDate === undefined) {
+            startDate = null;
+        } else {
+            const newDate = new Date(startDate).toLocaleDateString('en', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            });
+            startDate = new Date(newDate)
+                .toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                })
+                .split(" ")
+                .join(" ");
+        }
+
+        var end_dt = (e_dt) ? " to " + e_dt : '';
+        var category = (element.className).split("-");
+        var description = (element.description) ? element.description : "";
+        var e_time_s = tConvert(getTime(element.start));
+        var e_time_e = tConvert(getTime(updatedDay));
+        if (e_time_s == e_time_e) {
+            var e_time_s = "Full day event";
+            var e_time_e = null;
+        }
+        var e_time_e = (e_time_e) ? " to " + e_time_e : "";
+
+        u_event = "<div class='card mb-3'>\
+                        <div class='card-body'>\
+                            <div class='d-flex mb-3'>\
+                                <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + end_dt + " </span></div>\
+                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
+                            </div>\
+                            <h6 class='card-title fs-16'> " + title + "</h6>\
+                            <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
+                        </div>\
+                    </div>";
+        document.getElementById("upcoming-event-list").innerHTML += u_event;
+    });*/
+};
+
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
