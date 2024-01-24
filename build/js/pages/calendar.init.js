@@ -426,9 +426,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (startDate === "Invalid Date" || startDate === undefined) {
                     startDate = null;
                 } else {
-                    const newDate = new Date(startDate).toLocaleDateString('en', { year: 'numeric', month: 'numeric', day: 'numeric' });
+                    const newDate = new Date(startDate).toLocaleDateString('tr', { year: 'numeric', month: 'numeric', day: 'numeric' });
                     startDate = new Date(newDate)
-                      .toLocaleDateString("en-GB", {
+                      .toLocaleDateString("tr-TR", {
                         day: "numeric",
                         month: "short",
                         year: "numeric",
