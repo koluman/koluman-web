@@ -87,7 +87,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 var calendarEl = document.getElementById('calendar');
 
-                              
+                                function addNewEvent(info) {
+                                    document.getElementById('form-event').reset();
+                                    document.getElementById('btn-delete-event').setAttribute('hidden', true);
+                                    addEvent.show();
+                                    formEvent.classList.remove("was-validated");
+                                    formEvent.reset();
+                                    selectedEvent = null;
+                                    modalTitle.innerText = 'Add Event';
+                                    newEventData = info;
+                                    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+                                    document.getElementById('edit-event-btn').click();
+                                    document.getElementById("edit-event-btn").setAttribute("hidden", true);
+                                }
 
                                 function getInitialView() {
                                     if (window.innerWidth >= 768 && window.innerWidth < 1200) {
@@ -287,6 +299,105 @@ document.addEventListener("DOMContentLoaded", function () {
                                 calendar.render();
 
                                 upcomingEvent(defaultlastEvents);
+                                formEvent.addEventListener('submit', function (ev) {
+                                    ev.preventDefault();
+                                    var updatedTitle = document.getElementById("event-title").value;
+                                    var updatedCategory = document.getElementById('event-category').value;
+                                    var start_date = (document.getElementById("event-start-date").value).split("to");
+                                    var updateStartDate = new Date(start_date[0].trim());
+                            
+                                    var newdate = new Date(start_date[1]);
+                                    newdate.setDate(newdate.getDate() + 1);
+                            
+                                    var updateEndDate = (start_date[1]) ? newdate : '';
+                            
+                                    var end_date = null;
+                                    var event_location = document.getElementById("event-location").value;
+                                    var eventDescription = document.getElementById("event-description").value;
+                                    var eventid = document.getElementById("eventid").value;
+                                    var all_day = false;
+                                    if (start_date.length > 1) {
+                                        var end_date = new Date(start_date[1]);
+                                        end_date.setDate(end_date.getDate() + 1);
+                                        start_date = new Date(start_date[0]);
+                                        all_day = true;
+                                    } else {
+                                        var e_date = start_date;
+                                        var start_time = (document.getElementById("timepicker1").value).trim();
+                                        var end_time = (document.getElementById("timepicker2").value).trim();
+                                        start_date = new Date(start_date + "T" + start_time);
+                                        end_date = new Date(e_date + "T" + end_time);
+                                    }
+                                    var e_id = defaultEvents.length + 1;
+                            
+                                    // validation
+                                    if (forms[0].checkValidity() === false) {
+                                        forms[0].classList.add('was-validated');
+                                    } else {
+                                        if (selectedEvent) {
+                                            selectedEvent.setProp("id", eventid);
+                                            selectedEvent.setProp("title", updatedTitle);
+                                            selectedEvent.setProp("classNames", [updatedCategory]);
+                                            selectedEvent.setStart(updateStartDate);
+                                            selectedEvent.setEnd(updateEndDate);
+                                            selectedEvent.setAllDay(all_day);
+                                            selectedEvent.setExtendedProp("description", eventDescription);
+                                            selectedEvent.setExtendedProp("location", event_location);
+                                            var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
+                                                return x.id == selectedEvent.id
+                                            });
+                                            if (defaultEvents[indexOfSelectedEvent]) {
+                                                defaultEvents[indexOfSelectedEvent].title = updatedTitle;
+                                                defaultEvents[indexOfSelectedEvent].start = updateStartDate;
+                                                defaultEvents[indexOfSelectedEvent].end = updateEndDate;
+                                                defaultEvents[indexOfSelectedEvent].allDay = all_day;
+                                                defaultEvents[indexOfSelectedEvent].className = updatedCategory;
+                                                defaultEvents[indexOfSelectedEvent].description = eventDescription;
+                                                defaultEvents[indexOfSelectedEvent].location = event_location;
+                                            }
+                                            calendar.render();
+                                            // default
+                                        } else {
+                                            var newEvent = {
+                                                id: e_id,
+                                                title: updatedTitle,
+                                                start: start_date,
+                                                end: end_date,
+                                                allDay: all_day,
+                                                className: updatedCategory,
+                                                description: eventDescription,
+                                                location: event_location
+                                            };
+                                            calendar.addEvent(newEvent);
+                                            defaultEvents.push(newEvent);
+                                        }
+                                        addEvent.hide();
+                                        upcomingEvent(defaultEvents);
+                                    }
+                                });
+                            
+                                document.getElementById("btn-delete-event").addEventListener("click", function (e) {
+                                    if (selectedEvent) {
+                                        for (var i = 0; i < defaultEvents.length; i++) {
+                                            if (defaultEvents[i].id == selectedEvent.id) {
+                                                defaultEvents.splice(i, 1);
+                                                i--;
+                                            }
+                                        }
+                                        upcomingEvent(defaultEvents);
+                                        selectedEvent.remove();
+                                        selectedEvent = null;
+                                        addEvent.hide();
+                                    }
+                                });
+                                document.getElementById("btn-new-event").addEventListener("click", function (e) {
+                                    flatpicekrValueClear();
+                                    flatPickrInit();
+                                    addNewEvent();
+                                    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+                                    document.getElementById('edit-event-btn').click();
+                                    document.getElementById("edit-event-btn").setAttribute("hidden", true);
+                                });
                             }
 
                         }
@@ -300,29 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        document.getElementById("btn-delete-event").addEventListener("click", function (e) {
-            if (selectedEvent) {
-                for (var i = 0; i < defaultEvents.length; i++) {
-                    if (defaultEvents[i].id == selectedEvent.id) {
-                        defaultEvents.splice(i, 1);
-                        i--;
-                    }
-                }
-                upcomingEvent(defaultEvents);
-                selectedEvent.remove();
-                selectedEvent = null;
-                addEvent.hide();
-            }
-        });
-        document.getElementById("btn-new-event").addEventListener("click", function (e) {
-            flatpicekrValueClear();
-            flatPickrInit();
-            addNewEvent();
-            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-            document.getElementById('edit-event-btn').click();
-            document.getElementById("edit-event-btn").setAttribute("hidden", true);
-        });
-
+   
     }
 });
 
@@ -486,19 +575,7 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
-function addNewEvent(info) {
-    document.getElementById('form-event').reset();
-    document.getElementById('btn-delete-event').setAttribute('hidden', true);
-    addEvent.show();
-    formEvent.classList.remove("was-validated");
-    formEvent.reset();
-    selectedEvent = null;
-    modalTitle.innerText = 'Add Event';
-    newEventData = info;
-    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-    document.getElementById('edit-event-btn').click();
-    document.getElementById("edit-event-btn").setAttribute("hidden", true);
-}
+
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
