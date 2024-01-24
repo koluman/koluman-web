@@ -20,18 +20,30 @@ function testdrive() {
                     },
                     dataType: 'json',
                     success: function (data) {
-                        console.log(data);
-                        /*if (data.success == 1) {
-                            userdata = data.usersall;
-                            let son = orderslist(userdata);
-                            $("#userlist").html('');
-                            $("#userlist").html(son);
-                        }*/
+                        if (data.success == 1) {
+                            calendar.getEventSources().forEach(function (source) {
+                                source.remove();
+                            });
+
+                            // Add events from the response
+                            data.testDrives.forEach(function (testDrive) {
+                                calendar.addEvent({
+                                    id: testDrive.drive_id,
+                                    title: 'Test Drive',
+                                    start: testDrive.auto_date,
+                                    allDay: false, // Assuming the drive_time includes time information
+                                    className: 'test-drive-event',
+                                    description: 'Test Drive for Car ID ' + testDrive.car_id
+                                });
+                            });
+
+                            // Render the events on the calendar
+                            calendar.render();
+                        }
 
                     }
                 });
-            }
-            else{
+            } else {
                 alert(response.message);
             }
         },
