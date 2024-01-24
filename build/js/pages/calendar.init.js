@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
         searchEnabled: false
     });
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    /*var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: 'local',
         editable: true,
         droppable: true,
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    calendar.render();
+    calendar.render();*/
 
     upcomingEvent(defaultEvents);
     /*Add new event*/
