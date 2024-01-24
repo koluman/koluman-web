@@ -272,7 +272,8 @@ console.log(info);
                         day: 'numeric'
                     });
                     console.log(endUpdatedDay);
-                    var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
+                    var updatedDay = new Date(formattedDate);
+                    updatedDay.setDate(updatedDay.getDate() - 1);
                 }
                 var e_dt = updatedDay ? updatedDay : undefined;
                 if (e_dt == "Invalid Date" || e_dt == undefined) {
