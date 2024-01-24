@@ -40,20 +40,17 @@ function testdrive() {
                                     var newView = getInitialView();
                                     calendar.changeView(newView);
                                 },
-                                eventResize: function(info) {
+                                eventResize: function (info) {
                                     var indexOfSelectedEvent = data.testDrives.findIndex(function (x) {
                                         return x.drive_id == info.event.drive_id
                                     });
                                     if (data.testDrives[indexOfSelectedEvent]) {
-                                        data.testDrives[indexOfSelectedEvent].drive_id = info.event.drive_id;
+                                        data.testDrives[indexOfSelectedEvent].drive_time = info.event.drive_time;
                                         data.testDrives[indexOfSelectedEvent].car_id = info.event.car_id;
-                                        data.testDrives[indexOfSelectedEvent].drive_time = (info.event.end) ? info.event.drive_time : null;
                                         data.testDrives[indexOfSelectedEvent].user_id = info.event.user_id;
-                                        data.testDrives[indexOfSelectedEvent].className = info.event.classNames[0];
-                                        data.testDrives[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                        data.testDrives[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                        data.testDrives[indexOfSelectedEvent].className = 'bg-primary-subtle';
                                     }
-                                    upcomingEvent( data.testDrives);
+                                    upcomingEvent(data.testDrives);
                                 },
                                 eventClick: function (info) {
                                     document.getElementById("edit-event-btn").removeAttribute("hidden");
@@ -100,11 +97,11 @@ function testdrive() {
                                         return [year, month, day].join('-');
                                     };
                                     var updateDay = null
-                                    if(ed_date != null){
+                                    if (ed_date != null) {
                                         var endUpdateDay = new Date(ed_date);
                                         updateDay = endUpdateDay.setDate(endUpdateDay.getDate() - 1);
                                     }
-                                    
+
                                     var r_date = ed_date == null ? (str_dt(st_date)) : (str_dt(st_date)) + ' to ' + (str_dt(updateDay));
                                     var er_date = ed_date == null ? (date_r(st_date)) : (date_r(st_date)) + ' to ' + (date_r(updateDay));
 
@@ -172,7 +169,7 @@ function testdrive() {
                                 dateClick: function (info) {
                                     addNewEvent(info);
                                 },
-                                events:  data.testDrives,
+                                events: data.testDrives,
                                 eventReceive: function (info) {
                                     var newid = parseInt(info.event.id);
                                     var newEvent = {
@@ -183,22 +180,19 @@ function testdrive() {
                                         className: info.event.classNames[0]
                                     };
                                     data.testDrives.push(newEvent);
-                                    upcomingEvent( data.testDrives);
+                                    upcomingEvent(data.testDrives);
                                 },
                                 eventDrop: function (info) {
-                                    var indexOfSelectedEvent =  data.testDrives.findIndex(function (x) {
-                                        return x.id == info.event.id
+                                    var indexOfSelectedEvent = data.testDrives.findIndex(function (x) {
+                                        return x.drive_id == info.event.drive_id
                                     });
-                                    if ( data.testDrives[indexOfSelectedEvent]) {
-                                        data.testDrives[indexOfSelectedEvent].title = info.event.title;
-                                        data.testDrives[indexOfSelectedEvent].start = info.event.start;
-                                        data.testDrives[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
-                                        data.testDrives[indexOfSelectedEvent].allDay = info.event.allDay;
-                                        data.testDrives[indexOfSelectedEvent].className = info.event.classNames[0];
-                                        data.testDrives[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                        data.testDrives[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                    if (data.testDrives[indexOfSelectedEvent]) {
+                                        data.testDrives[indexOfSelectedEvent].drive_time = info.event.drive_time;
+                                        data.testDrives[indexOfSelectedEvent].car_id = info.event.car_id;
+                                        data.testDrives[indexOfSelectedEvent].user_id = info.event.user_id;
+                                        data.testDrives[indexOfSelectedEvent].className = 'bg-primary-subtle';
                                     }
-                                    upcomingEvent( data.testDrives);
+                                    upcomingEvent(data.testDrives);
                                 }
                             });
 
@@ -218,6 +212,7 @@ function testdrive() {
     });
 
 }
+
 function getInitialView() {
     if (window.innerWidth >= 768 && window.innerWidth < 1200) {
         return 'timeGridWeek';
