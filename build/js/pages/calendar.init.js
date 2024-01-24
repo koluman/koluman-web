@@ -39,7 +39,23 @@ document.addEventListener("DOMContentLoaded", function () {
                         dataType: 'json',
                         success: function (data) {
                             if (data.success == 1) {
-                                defaultEvents = data.testDrives;
+                                var defaultEvents = data.testDrives.map(function (event) {
+                                    return {
+                                        id: event.drive_id,
+                                        title: "Drive", // Yeni başlık
+                                        start: new Date(event.auto_date),
+                                        end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
+                                        allDay: true,
+                                        className: 'bg-danger-subtle',
+                                        location: 'California, US',
+                                        extendedProps: {
+                                            department: 'Meeting with Alexis'
+                                        },
+                                        description: 'A meeting is a gathering of two or more people that has been convened for the purpose of achieving a common goal through verbal interaction, such as sharing information or reaching agreement.'
+                                        // Diğer özellikleri ekleyin
+                                    };
+                                });
+                                console.log(defaultEvents);
                                 new Draggable(externalEventContainerEl, {
                                     itemSelector: '.external-event',
                                     eventData: function (eventEl) {
