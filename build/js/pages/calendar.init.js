@@ -405,7 +405,7 @@ function upcomingEvent(a) {
         if (e_dt == "Invalid Date" || e_dt == undefined) {
             e_dt = null;
         } else {
-            const newDate = new Date(e_dt).toLocaleDateString('en', {
+            const newDate = new Date(e_dt).toLocaleDateString('tr', {
                 year: 'numeric',
                 month: 'numeric',
                 day: 'numeric'
