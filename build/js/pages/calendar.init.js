@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: 'bg-danger-subtle',
-                                        location: 'California, US',
+                                        location: '',
                                         extendedProps: {
-                                            department: 'Meeting with Alexis'
+                                            department: ''
                                         },
-                                        description: 'A meeting is a gathering of two or more people that has been convened for the purpose of achieving a common goal through verbal interaction, such as sharing information or reaching agreement.'
+                                        description: ''
                                         // Diğer özellikleri ekleyin
                                     };
                                 });
