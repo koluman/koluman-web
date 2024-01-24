@@ -4,8 +4,27 @@ var timepicker2 = document.getElementById("timepicker2");
 var date_range = null;
 var T_check = null;
 document.addEventListener("DOMContentLoaded", function () {
+    function editEvent(data) {
+        var data_id = data.getAttribute("data-id");
+        if (data_id == 'new-event') {
+            document.getElementById('modal-title').innerHTML = "";
+            document.getElementById('modal-title').innerHTML = "Add Event";
+            document.getElementById("btn-save-event").innerHTML = "Add Event";
+            eventTyped();
+        } else if (data_id == 'edit-event') {
+            data.innerHTML = "Cancel";
+            data.setAttribute("data-id", 'cancel-event');
+            document.getElementById("btn-save-event").innerHTML = "Update Event";
+            data.removeAttribute("hidden");
+            eventTyped();
+        } else {
+            data.innerHTML = "Edit";
+            data.setAttribute("data-id", 'edit-event');
+            eventClicked();
+        }
+    }
     testdrive();
-
+   
     function testdrive() {
         flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -358,25 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('btn-save-event').setAttribute("hidden", true);
     }
 
-    function editEvent(data) {
-        var data_id = data.getAttribute("data-id");
-        if (data_id == 'new-event') {
-            document.getElementById('modal-title').innerHTML = "";
-            document.getElementById('modal-title').innerHTML = "Add Event";
-            document.getElementById("btn-save-event").innerHTML = "Add Event";
-            eventTyped();
-        } else if (data_id == 'edit-event') {
-            data.innerHTML = "Cancel";
-            data.setAttribute("data-id", 'cancel-event');
-            document.getElementById("btn-save-event").innerHTML = "Update Event";
-            data.removeAttribute("hidden");
-            eventTyped();
-        } else {
-            data.innerHTML = "Edit";
-            data.setAttribute("data-id", 'edit-event');
-            eventClicked();
-        }
-    }
+  
 
     function eventTyped() {
         document.getElementById('form-event').classList.remove("view-event");
