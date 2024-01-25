@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TestDriveAddRequest;
 use App\Http\Requests\TestDriveDeleteRequest;
 use App\Http\Requests\TestDriveGetRequest;
-use App\Models\TestDrive;
+use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -26,7 +26,7 @@ class TestDriveController extends Controller
                 $drive_time = $request->drive_time;
                 $user_id = $u->user_id;
 
-                $affectedRows = TestDrive::insert([
+                $affectedRows = Appointment::insert([
                     'user_id' => $user_id,
                     'car_id' => $car_id,
                     'drive_time' => $drive_time,
@@ -58,7 +58,7 @@ class TestDriveController extends Controller
         }
         return response()->json($responseData);
     }
-    public function testdriveget(Request $request)
+    public function getusertestdriveappointment(Request $request)
     {
         try {
 
@@ -66,27 +66,25 @@ class TestDriveController extends Controller
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
-                $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
-                $testDrives = TestDrive::where('user_id', $u->user_id)
-                    ->where('auto_date', '>=', $lastWeek)
+                $today = Carbon::now()->toDateString();
+                $testDrives = Appointment::where('user_id', $u->user_id)
+                    ->whereDate('appointment_date', '>=', $today)
                     ->get();
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
-                        "testDrives" => $testDrives,
+                        "userAppointment" => $testDrives,
                         "message" => "Test sürüş randevu listesi getirildi",
                     ];
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "testDrives" => "",
                         "message" => "Test sürüş randevu listesi bulunamadı",
                     ];
                 }
             } else {
                 $responseData = [
                     "success" => 0,
-                    "testDrives" => "",
                     "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
                 ];
             }
@@ -107,8 +105,8 @@ class TestDriveController extends Controller
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $drive_id = $request->drive_id;
-                $testDrive = TestDrive::where('drive_id', $drive_id)->first();
-                if ($testDrive->user_id==$u->user_id) {
+                $testDrive = Appointment::where('drive_id', $drive_id)->first();
+                if ($testDrive->user_id == $u->user_id) {
                     $testDrive->delete();
                     $responseData = [
                         "success" => 1,
@@ -145,7 +143,9 @@ class TestDriveController extends Controller
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
-                $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
+                $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
+                $testDrivescar = Appointment::where('car_id', $request->car_id)
+                    ->where('auto_date', '>=', $lastWeek)->get();
                 if (!$testDrivescar->isEmpty()) {
                     $responseData = [
                         "success" => 1,
@@ -155,14 +155,12 @@ class TestDriveController extends Controller
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "testDrivescar" => "",
                         "message" => "Arabaya ait randevu listesi getirelemedi",
                     ];
                 }
             } else {
                 $responseData = [
                     "success" => 0,
-                    "testDrivescar" => "",
                     "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
                 ];
             }
