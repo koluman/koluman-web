@@ -51,9 +51,8 @@
                                     <i data-feather="calendar" class="text-info icon-dual-info"></i>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-15">Welcome to your Calendar!</h6>
-                                    <p class="text-muted mb-0">Event that applications book will appear here. Click on an
-                                        event to see the details and manage applicants event.</p>
+                                    <h6 class="fs-15">Hoşgeldiniz!</h6>
+                                    <p class="text-muted mb-0">Tüm test sürüş işlemlerini etkili bir biçimde tamamlayabilirsiniz.</p>
                                 </div>
                             </div>
                         </div>
