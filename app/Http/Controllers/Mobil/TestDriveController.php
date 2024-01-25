@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TestDriveController extends Controller
 {
-    public function testdriveadd(TestDriveAddRequest $request)
+    public function addtestdrive(TestDriveAddRequest $request)
     {
         try {
 
@@ -23,15 +23,16 @@ class TestDriveController extends Controller
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $car_id = $request->car_id;
-                $drive_time = $request->drive_time;
+                $appointment_time = $request->appointment_time;
                 $user_id = $u->user_id;
+                $appointment_date=$request->appointment_date;
 
                 $affectedRows = Appointment::insert([
                     'user_id' => $user_id,
                     'car_id' => $car_id,
-                    'drive_time' => $drive_time,
+                    'appointment_time' => $appointment_time,
                     'state' => 0,
-                    'auto_date' => Carbon::now('Europe/Istanbul')
+                    'appointment_date'=>$appointment_date
                 ]);
                 if ($affectedRows > 0) {
                     $responseData = [
