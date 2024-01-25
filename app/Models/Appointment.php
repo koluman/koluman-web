@@ -21,4 +21,8 @@ class Appointment extends Model
         'created_at',
         'updated_at'
     ];
+    public function car()
+    {
+        return $this->belongsTo(Showroom::class, 'car_id');
+    }
 }
