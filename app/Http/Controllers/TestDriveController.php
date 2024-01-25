@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TestDrive;
+use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TestDriveController extends Controller
 {
     public function testdrivegetall(Request $request)
     {
         try {
-            $testDrives = TestDrive::join('users', 'test_drive.user_id', '=', 'users.user_id')
+            $testDrives = Appointment::join('users', 'test_drive.user_id', '=', 'users.user_id')
                 ->join('showroom', 'test_drive.car_id', '=', 'showroom.car_id')
                 ->get(['test_drive.*', 'users.user_name', 'users.user_phone', 'showroom.car_name']);
 
             $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
-            $testlastDrives = TestDrive::where('auto_date', '>=', $lastWeek)->get();
+            $testlastDrives = Appointment::where('auto_date', '>=', $lastWeek)->get();
 
             if (!$testDrives->isEmpty()) {
                 $responseData = [
