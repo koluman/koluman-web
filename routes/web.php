@@ -30,7 +30,6 @@ Route::get('/getApiToken', [HomeController::class, 'getApiToken'])->name('getApi
 Route::get('/getBasicToken', [HomeController::class, 'getBasicToken'])->name('getBasicToken');
 
 Route::middleware(['prevent-back-history','checkRole:admin'])->group(function () {
-    
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
     Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
