@@ -95,7 +95,7 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($today);
+        return response()->json($responseData);
     }
 
     public function deleteTestDrive(TestDriveDeleteRequest $request)
