@@ -3,6 +3,7 @@ $(document).ready(function () {
 });
 let userdata = [];
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
 function users() {
     $.ajax({
         url: 'https://mobiloby.app/koluman/web/getBasicToken',
@@ -38,6 +39,7 @@ function users() {
         }
     });
 }
+
 function orderslist(data) {
     var s = "";
     let j = 0;
@@ -94,6 +96,7 @@ document.getElementById("showModal").addEventListener("show.bs.modal", function 
 document.getElementById("showModal").addEventListener("hidden.bs.modal", function () {
     clearFields();
 });
+
 function clearFields() {
     $("#username").val("");
     $("#usermail").val("");
@@ -149,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             userMail: userMail,
                             userPhone: userPhone,
                             userRole: userRole,
-                            _token:csrfToken,
+                            _token: csrfToken,
                         },
                         headers: {
                             'Authorization': 'Basic ' + response.token
@@ -176,29 +179,46 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
     function updateUser(userId, userName, userMail, userPhone, userRole) {
         $.ajax({
-            type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/updateuser',
-            data: {
-                userName: userName,
-                userMail: userMail,
-                userPhone: userPhone,
-                userRole: userRole,
-                userId: userId,
-                _token: csrfToken,
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    $('#showModal').modal('hide');
-                    users();
+            url: 'https://mobiloby.app/koluman/web/getBasicToken',
+            type: 'GET',
+            success: function (response) {
+                if (response.success == 1) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'https://mobiloby.app/koluman/web/updateuser',
+                        data: {
+                            userName: userName,
+                            userMail: userMail,
+                            userPhone: userPhone,
+                            userRole: userRole,
+                            userId: userId,
+                            _token: csrfToken,
+                        },
+                        headers: {
+                            'Authorization': 'Basic ' + response.token
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.success == 1) {
+                                $('#showModal').modal('hide');
+                                users();
+                            } else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            alert("AJAX request failed:", status, error);
+                        }
+                    });
                 } else {
-                    alert(data.message);
+                    alert(response.message)
                 }
             },
-            error: function (xhr, status, error) {
-                alert("AJAX request failed:", status, error);
+            error: function (error) {
+                console.error(error);
             }
         });
     }
@@ -258,6 +278,7 @@ $(document).on("change", '.form-check-all input[type="checkbox"]', function () {
 
     $("#remove-actions").css("display", checkedCount > 0 ? 'block' : 'none');
 });
+
 function deleteMultiple() {
     var ids_array = [];
     var items = $('.form-check-all input[type="checkbox"]:checked');
@@ -325,6 +346,7 @@ function deleteMultiple() {
         });
     }
 }
+
 function filterUsersByRole(role) {
     return userdata.filter(user => user.backuser_role === role);
 }
@@ -384,6 +406,7 @@ $(document).on("input", '.search', function () {
 $(document).on("input", '.search', function () {
     filterAndSearch();
 });
+
 function filterAndSearch() {
     var searchText = $('.search').val().toLowerCase();
     var filteredData = userdata;
@@ -431,11 +454,13 @@ function SearchData() {
     }
     updatePageWithFilteredData(filteredData);
 }
+
 function updatePageWithFilteredData(filteredData) {
     var son = orderslist(filteredData);
     $("#userlist").html('');
     $("#userlist").html(son);
 }
+
 function updatePageWithFilteredData(filteredData) {
     var son = orderslist(filteredData);
     $("#userlist").html('');
