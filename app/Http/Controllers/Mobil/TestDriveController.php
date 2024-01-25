@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TestDriveController extends Controller
 {
-    public function addtestdrive(TestDriveAddRequest $request)
+    public function addtestdriveappointment(TestDriveAddRequest $request)
     {
         try {
 
@@ -100,15 +100,15 @@ class TestDriveController extends Controller
         return response()->json($responseData);
     }
 
-    public function deleteTestDrive(TestDriveDeleteRequest $request)
+    public function deletetestdriveappointment(TestDriveDeleteRequest $request)
     {
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
-                $drive_id = $request->drive_id;
-                $testDrive = Appointment::where('drive_id', $drive_id)->first();
+                $appointment_id = $request->appointment_id;
+                $testDrive = Appointment::where('appointment_id', $appointment_id)->first();
                 if ($testDrive->user_id == $u->user_id) {
                     $testDrive->delete();
                     $responseData = [

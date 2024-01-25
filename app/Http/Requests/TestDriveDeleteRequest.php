@@ -22,14 +22,14 @@ class TestDriveDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            'drive_id' => 'required',
+            'appointment_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'drive_id.required' => 'Test sürüş numarası girişi zorunludur.',
+            'appointment_id.required' => 'Test sürüş numarası girişi zorunludur.',
         ];
     }
 }
