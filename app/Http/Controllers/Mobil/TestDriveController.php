@@ -65,8 +65,8 @@ class TestDriveController extends Controller
            
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if ($token) {
-                $u = JWTAuth::setToken($token)->authenticate();
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
                 $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
                 $testDrives = TestDrive::where('user_id', $u->user_id)
                     ->where('auto_date', '>=', $lastWeek)
@@ -145,8 +145,8 @@ class TestDriveController extends Controller
         try {
                 $token = $request->header('Authorization');
                 $token = str_replace('Bearer ', '', $token);
-                if ($token) {
-                    $u = JWTAuth::setToken($token)->authenticate();
+                $u = JWTAuth::setToken($token)->authenticate();
+                if ($u) {
 
                     $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
                     if (!$testDrivescar->isEmpty()) {

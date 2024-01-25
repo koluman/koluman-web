@@ -11,28 +11,19 @@ class AnnouncementController extends Controller
     public function getannouncement(Request $request)
     {
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
-            if ($token) {
-                $announcement = Announcement::get();
-                if (!$announcement->isEmpty()) {
-                    $responseData = [
-                        "success" => 1,
-                        "announcement" => $announcement,
-                        "message" => "Duyuru, haber ve kampanya listesi getirildi",
-                    ];
-                } else {
-                    $responseData = [
-                        "success" => 0,
-                        "announcement" => "",
-                        "message" => "Duyuru, haber ve kampanya listesi bulunamadı",
-                    ];
-                }
+
+            $announcement = Announcement::get();
+            if (!$announcement->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "announcement" => $announcement,
+                    "message" => "Duyuru, haber ve kampanya listesi getirildi",
+                ];
             } else {
                 $responseData = [
                     "success" => 0,
                     "announcement" => "",
-                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                    "message" => "Duyuru, haber ve kampanya listesi bulunamadı",
                 ];
             }
         } catch (\Exception $e) {

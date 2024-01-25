@@ -19,54 +19,49 @@ class LoginController extends Controller
     public function userlogin(LoginRequest $request)
     {
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
+            $userPhone = $request->user_phone;
+            $user = User::where('user_phone', $userPhone)->first();
 
-            if ($token) {
-                $userPhone = $request->user_phone;
-                $user = User::where('user_phone', $userPhone)->first();
+            if ($user) {
+                Auth::guard('api')->login($user);
+                $accessToken = JWTAuth::fromUser($user);
+                $expiresInSeconds = Auth::factory()->getTTL() * 60;
+                $now = Carbon::now();
+                $expirationDate = $now->addSeconds($expiresInSeconds);
 
-                if ($user) {
-                    Auth::guard('api')->login($user);
-                    $accessToken = JWTAuth::fromUser($user);
-                    $expiresInSeconds = Auth::factory()->getTTL() * 60;
-                    $now = Carbon::now();
-                    $expirationDate = $now->addSeconds($expiresInSeconds);
-
-                    $responseData = [
-                        "success" => 1,
-                        "token" => [
-                            "originaltoken" => $accessToken,
-                            "expires_in" => $expiresInSeconds,
-                            "expires_time" => $expirationDate->toDateTimeString()
-                        ],
-                        "user" => [
-                            "user_id" =>$user->user_id,
-                            "user_mail" => $user->user_mail,
-                            "user_name" => $user->user_name,
-                            "user_phone" => $user->user_phone,
-                            "user_image_url" => $user->user_image_url,
-                        ],
-                        "message" => "Login İşlemi başarılı",
-                    ];
-                } else {
-                    $responseData = [
-                        "success" => 0,
-                        "token" => [
-                            "originaltoken" => "",
-                            "expires_in" => 0,
-                            "expires_time" => ""
-                        ],
-                        "user" => [
-                            "user_id" =>"",
-                            "user_mail" => "",
-                            "user_name" => "",
-                            "user_phone" => "",
-                            "user_image_url" => "",
-                        ],
-                        "message" => "Kullanıcı bilgisi bulunamadı",
-                    ];
-                }
+                $responseData = [
+                    "success" => 1,
+                    "token" => [
+                        "originaltoken" => $accessToken,
+                        "expires_in" => $expiresInSeconds,
+                        "expires_time" => $expirationDate->toDateTimeString()
+                    ],
+                    "user" => [
+                        "user_id" => $user->user_id,
+                        "user_mail" => $user->user_mail,
+                        "user_name" => $user->user_name,
+                        "user_phone" => $user->user_phone,
+                        "user_image_url" => $user->user_image_url,
+                    ],
+                    "message" => "Login İşlemi başarılı",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "token" => [
+                        "originaltoken" => "",
+                        "expires_in" => 0,
+                        "expires_time" => ""
+                    ],
+                    "user" => [
+                        "user_id" => "",
+                        "user_mail" => "",
+                        "user_name" => "",
+                        "user_phone" => "",
+                        "user_image_url" => "",
+                    ],
+                    "message" => "Kullanıcı bilgisi bulunamadı",
+                ];
             }
         } catch (\Exception $e) {
             $responseData = [
@@ -78,7 +73,7 @@ class LoginController extends Controller
 
                 ],
                 "user" => [
-                    "user_id" =>"",
+                    "user_id" => "",
                     "user_mail" => "",
                     "user_name" => "",
                     "user_phone" => "",
@@ -95,10 +90,12 @@ class LoginController extends Controller
     {
         try {
             $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
+            $token = str_replace('Bearer ', '', $token);
             if ($token) {
                 JWTAuth::invalidate($token);
                 Auth::guard('api')->logout();
+                $u = JWTAuth::setToken($token)->authenticate();
+                User::where('user_id', $u->user_id)->update(['user_notification_token' => ""]);
                 $responseData = [
                     "success" => 1,
                     "message" => "Logout İşlemi başarılı",
@@ -122,77 +119,21 @@ class LoginController extends Controller
     {
         try {
 
-            $token = $request->header('Authorization');
-            $token = str_replace('Basic ', '', $token);
-            if ($token) {
-                $user_identity = $request->user_identity;
-                $user_phone = $request->user_phone;
-                $user_name = $request->user_name;
 
-                $existingUser = User::where('user_phone', $user_phone)->first();
-                if ($existingUser) {
+            $user_identity = $request->user_identity;
+            $user_phone = $request->user_phone;
+            $user_name = $request->user_name;
 
-                    $responseData = [
-                        "success" => 0,
-                        "token" => [
-                            "originaltoken" => "",
-                            "expires_in" => 0,
-                            "expires_time" => ""
-        
-                        ],
-                        "user" => [
-                            "user_id" => "",
-                            "user_mail" => "",
-                            "user_name" => "",
-                            "user_phone" => "",
-                            "user_image_url" => "",
-                        ],
-                        "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
-                    ];
+            $existingUser = User::where('user_phone', $user_phone)->first();
+            if ($existingUser) {
 
-                   
-                } else {
-                    $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
-                    $user = User::create([
-                        'user_id' => $user_id,
-                        'user_name' => $user_name,
-                        'user_phone' => $user_phone,
-                        'user_identity' => $user_identity,
-                        'user_register_date' => Carbon::now('Europe/Istanbul'),
-                    ]);
-                    $token = JWTAuth::fromUser($user);
-                    $u = JWTAuth::setToken($token)->authenticate();
-                    $expiresInSeconds = Auth::factory()->getTTL() * 60;
-                    $now = Carbon::now();
-                    $expirationDate = $now->addSeconds($expiresInSeconds);
-                    $responseData = [
-                        "success" => 1,
-                        "token" => [
-                            "originaltoken" => $token,
-                            "expires_in" => $expiresInSeconds,
-                            "expires_time" => $expirationDate->toDateTimeString()
-                        ],
-                        "user" => [
-                            "user_id" =>$user->user_id,
-                            "user_mail" => $user->user_mail,
-                            "user_name" => $user->user_name,
-                            "user_phone" => $user->user_phone,
-                            "user_image_url" => $user->user_image_url,
-                        ],
-                        "message" => "Login İşlemi başarılı",
-                    ];
-
-                   
-                }
-            } else {
-                
                 $responseData = [
                     "success" => 0,
                     "token" => [
                         "originaltoken" => "",
                         "expires_in" => 0,
                         "expires_time" => ""
-    
+
                     ],
                     "user" => [
                         "user_id" => "",
@@ -201,12 +142,41 @@ class LoginController extends Controller
                         "user_phone" => "",
                         "user_image_url" => "",
                     ],
-                    "message" =>  "Token bulunamadı,lütfen tokenı yollayınız",
+                    "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
                 ];
-                
+            } else {
+                $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
+                $user = User::create([
+                    'user_id' => $user_id,
+                    'user_name' => $user_name,
+                    'user_phone' => $user_phone,
+                    'user_identity' => $user_identity,
+                    'user_register_date' => Carbon::now('Europe/Istanbul'),
+                ]);
+                $token = JWTAuth::fromUser($user);
+                $u = JWTAuth::setToken($token)->authenticate();
+                $expiresInSeconds = Auth::factory()->getTTL() * 60;
+                $now = Carbon::now();
+                $expirationDate = $now->addSeconds($expiresInSeconds);
+                $responseData = [
+                    "success" => 1,
+                    "token" => [
+                        "originaltoken" => $token,
+                        "expires_in" => $expiresInSeconds,
+                        "expires_time" => $expirationDate->toDateTimeString()
+                    ],
+                    "user" => [
+                        "user_id" => $user->user_id,
+                        "user_mail" => $user->user_mail,
+                        "user_name" => $user->user_name,
+                        "user_phone" => $user->user_phone,
+                        "user_image_url" => $user->user_image_url,
+                    ],
+                    "message" => "Login İşlemi başarılı",
+                ];
             }
         } catch (\Exception $e) {
-         
+
             $responseData = [
                 "success" => 0,
                 "token" => [
