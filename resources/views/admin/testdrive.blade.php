@@ -5,10 +5,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Apps
+            Test Sürüş İşlemleri
         @endslot
         @slot('title')
-            Calendar
+            Test Sürüş Listesi
         @endslot
     @endcomponent
     <div class="row">

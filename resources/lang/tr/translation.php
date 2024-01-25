@@ -12,7 +12,7 @@ return [
     "crypto" => "Crypto",
     "projects" => "Projects",
     "apps" => "Apps",
-    "calendar" => "Calendar",
+    "calendar" => "Test Sürüş Listesi",
     "main-calender" => "Main Calender",
     "month-grid" => "Month Grid",
     "chat" => "Chat",
