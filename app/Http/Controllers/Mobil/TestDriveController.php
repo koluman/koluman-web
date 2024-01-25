@@ -71,9 +71,11 @@ class TestDriveController extends Controller
                     ->join('showroom as c', 'appointment.car_id', '=', 'c.car_id')
                     ->where('appointment.user_id', $u->user_id)
                     ->where('appointment.appointment_date', '>=', $today)
-                    ->get()->toArray();              
-
+                    ->get()->toArray();
                 if (!$testDrives->isEmpty()) {
+                    $testDrives = $testDrives->map(function ($item) {
+                        return (object) $item;
+                    });
                     $responseData = [
                         "success" => 1,
                         "userAppointment" => $testDrives,
