@@ -44,26 +44,33 @@ class BackUsersController extends Controller
             $user_role = $request->userRole;
             $user_mail = $request->userMail;
             $user_id = 'koluman_' . round(microtime(true) * 1000) . '_' . rand(100000, 999999);
-
-            $user = BackUser::create([
-                'backuser_id' => $user_id,
-                'backuser_name' => $user_name,
-                'backuser_phone' => $user_phone,
-                'backuser_role' => $user_role,
-                'backuser_password' => Hash::make(mt_rand(100000, 999999)),
-                'backuser_register_date' => Carbon::now('Europe/Istanbul'),
-                'backuser_mail' => $user_mail,
-            ]);
-            if ($user) {
-                $responseData = [
-                    "success" => 1,
-                    "message" => "Kullanıcı başarılı bir şekilde kayıt edilmiştir.",
-                ];
-            } else {
+            $existingUser = BackUser::where('backuser_phone', $user_phone)->first();
+            if ($existingUser) {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Kullanıcı eklenemedi lütfen tekrar deneyiniz.",
+                    "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
                 ];
+            } else {
+                $user = BackUser::create([
+                    'backuser_id' => $user_id,
+                    'backuser_name' => $user_name,
+                    'backuser_phone' => $user_phone,
+                    'backuser_role' => $user_role,
+                    'backuser_password' => Hash::make(mt_rand(100000, 999999)),
+                    'backuser_register_date' => Carbon::now('Europe/Istanbul'),
+                    'backuser_mail' => $user_mail,
+                ]);
+                if ($user) {
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Kullanıcı başarılı bir şekilde kayıt edilmiştir.",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Kullanıcı eklenemedi lütfen tekrar deneyiniz.",
+                    ];
+                }
             }
         } catch (\Exception $e) {
             $responseData = [
@@ -81,23 +88,31 @@ class BackUsersController extends Controller
             $user_role = $request->userRole;
             $user_mail = $request->userMail;
             $user_id = $request->userId;
-            $affectedRows = BackUser::where('backuser_id', $user_id)
-                ->update([
-                    'backuser_name' => $user_name,
-                    'backuser_phone' => $user_phone,
-                    'backuser_role' => $user_role,
-                    'backuser_mail' => $user_mail
-                ]);
-            if ($affectedRows) {
+            $existingUser = BackUser::where('backuser_phone', $user_phone)->first();
+            if (!$existingUser) {
                 $responseData = [
                     "success" => 1,
-                    "message" => "Kullanıcı başarılı bir şekilde güncellenmiştir.",
+                    "message" => "Kullanıcı bulunamadı,lütfen tekrar deneyiniz",
                 ];
             } else {
-                $responseData = [
-                    "success" => 0,
-                    "message" => "Kullanıcı güncellenmedi lütfen tekrar deneyiniz.",
-                ];
+                $affectedRows = BackUser::where('backuser_id', $user_id)
+                    ->update([
+                        'backuser_name' => $user_name,
+                        'backuser_phone' => $user_phone,
+                        'backuser_role' => $user_role,
+                        'backuser_mail' => $user_mail
+                    ]);
+                if ($affectedRows) {
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Kullanıcı başarılı bir şekilde güncellenmiştir.",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Kullanıcı güncellenmedi lütfen tekrar deneyiniz.",
+                    ];
+                }
             }
         } catch (\Exception $e) {
             $responseData = [
@@ -138,7 +153,6 @@ class BackUsersController extends Controller
     {
         try {
             $user_ids = $request->userIds;
-
             $deleteusers = BackUser::whereIn('backuser_id', $user_ids)->delete();
             if ($deleteusers) {
                 $responseData = [

@@ -2,40 +2,25 @@ $(document).ready(function () {
     users();
 });
 let userdata = [];
-var csrfToken = $('meta[name="csrf-token"]').attr('content');
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function users() {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
-        url: 'https://mobiloby.app/koluman/web/getBasicToken',
-        type: 'GET',
-        success: function (response) {
-            if (response.success == 1) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/getallusers',
-                    dataType: 'json',
-                    headers: {
-                        'Authorization': 'Basic ' + response.token
-                    },
-                    success: function (data) {
-                        if (data.success == 1) {
-                            userdata = data.usersall;
-                            let son = orderslist(userdata);
-                            $("#userlist").html('');
-                            $("#userlist").html(son);
-                        }
-
-                    },
-                    error: function (error) {
-                        console.error(error);
-                    }
-                });
-            } else {
-                alert(response.message);
-            }
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getallusers',
+        data: {
+            _token: csrfToken, // CSRF token'ını gönder
         },
-        error: function (error) {
-            console.error(error);
+        dataType: 'json',
+        success: function (data) {
+            if(data.success==1){
+                userdata = data.usersall;
+                let son = orderslist(userdata);
+                $("#userlist").html('');
+                $("#userlist").html(son);
+            }
+         
         }
     });
 }
@@ -82,6 +67,7 @@ function orderslist(data) {
     return s;
 
 }
+
 document.getElementById("showModal").addEventListener("show.bs.modal", function (e) {
     if (e.relatedTarget.classList.contains("edit-item-btn")) {
         document.getElementById("exampleModalLabel").innerHTML = "Kullanıcı Güncelle";
@@ -104,6 +90,7 @@ function clearFields() {
     $("#userrole").val("0");
     $("#userid").val("");
 }
+
 document.getElementById("userlist").addEventListener("click", function (event) {
     let target = event.target;
     while (target && target.tagName !== "TR") {
@@ -122,6 +109,7 @@ document.getElementById("userlist").addEventListener("click", function (event) {
         $("#userid").val(user_id);
     }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     var form = document.querySelector(".tablelist-form");
     form.addEventListener("submit", function (event) {
@@ -140,88 +128,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addUser(userName, userMail, userPhone, userRole) {
         $.ajax({
-            url: 'https://mobiloby.app/koluman/web/getBasicToken',
-            type: 'GET',
-            success: function (response) {
-                if (response.success == 1) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'https://mobiloby.app/koluman/web/adduser',
-                        data: {
-                            userName: userName,
-                            userMail: userMail,
-                            userPhone: userPhone,
-                            userRole: userRole,
-                            _token: csrfToken,
-                        },
-                        headers: {
-                            'Authorization': 'Basic ' + response.token
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data.success == 1) {
-                                $('#showModal').modal('hide');
-                                users();
-                            } else {
-                                alert(data.message);
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            alert("AJAX request failed:", status, error);
-                        }
-                    });
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/adduser',
+            data: {
+                userName: userName,
+                userMail: userMail,
+                userPhone: userPhone,
+                userRole: userRole,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    $('#showModal').modal('hide');
+                    users();
                 } else {
-                    alert(response.message)
+                    alert(data.message);
                 }
             },
-            error: function (error) {
-                console.error(error);
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
             }
         });
     }
 
     function updateUser(userId, userName, userMail, userPhone, userRole) {
         $.ajax({
-            url: 'https://mobiloby.app/koluman/web/getBasicToken',
-            type: 'GET',
-            success: function (response) {
-                if (response.success == 1) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'https://mobiloby.app/koluman/web/updateuser',
-                        data: {
-                            userName: userName,
-                            userMail: userMail,
-                            userPhone: userPhone,
-                            userRole: userRole,
-                            userId: userId,
-                            _token: csrfToken,
-                        },
-                        headers: {
-                            'Authorization': 'Basic ' + response.token
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data.success == 1) {
-                                $('#showModal').modal('hide');
-                                users();
-                            } else {
-                                alert(data.message);
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            alert("AJAX request failed:", status, error);
-                        }
-                    });
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/updateuser',
+            data: {
+                userName: userName,
+                userMail: userMail,
+                userPhone: userPhone,
+                userRole: userRole,
+                userId: userId,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    $('#showModal').modal('hide');
+                    users();
                 } else {
-                    alert(response.message)
+                    alert(data.message);
                 }
             },
-            error: function (error) {
-                console.error(error);
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
             }
         });
     }
+
     document.getElementById("delete-record").addEventListener("click", function () {
         let userId = document.getElementById("userid").value;
         if (userId) {
@@ -282,11 +239,13 @@ $(document).on("change", '.form-check-all input[type="checkbox"]', function () {
 function deleteMultiple() {
     var ids_array = [];
     var items = $('.form-check-all input[type="checkbox"]:checked');
+
     items.each(function () {
         var trNode = $(this).closest("tr");
         var id = trNode.find(".user").text();
         ids_array.push(id);
     });
+
     if (ids_array.length > 0) {
         Swal.fire({
             title: "Emin misin?",
@@ -350,7 +309,9 @@ function deleteMultiple() {
 function filterUsersByRole(role) {
     return userdata.filter(user => user.backuser_role === role);
 }
+
 var selectedTab = "All";
+
 $("ul.nav-tabs-custom li.nav-item").on("click", function () {
     var clickedId = $(this).find("a").attr("id");
     let sonn = "";
@@ -403,16 +364,22 @@ $(document).on("input", '.search', function () {
     $("#userlist").html('');
     $("#userlist").html(son);
 });
+
 $(document).on("input", '.search', function () {
+    // Arama yapıldığında filtreleme yap
     filterAndSearch();
 });
 
 function filterAndSearch() {
     var searchText = $('.search').val().toLowerCase();
+
+    // Seçilen sekmeye göre kullanıcıları filtrele
     var filteredData = userdata;
     if (selectedTab !== "All") {
         filteredData = filterUsersByRole(selectedTab.toLowerCase());
     }
+
+    // Arama yap
     filteredData = filteredData.filter(function (user) {
         return (
             user.backuser_name.toLowerCase().includes(searchText) ||
@@ -421,6 +388,8 @@ function filterAndSearch() {
             user.backuser_role.toLowerCase().includes(searchText)
         );
     });
+
+    // Listeyi güncelle
     var son = orderslist(filteredData);
     $("#userlist").html('');
     $("#userlist").html(son);
@@ -430,18 +399,26 @@ function SearchData() {
     var selectedDateRange = $("#demo-datepicker").val();
     var selectedStatus = $("#idStatus").val();
     var searchText = $('.search').val().toLowerCase();
+
+    // Filtreleme ve arama işlemleri
     var filteredData = userdata;
+
+    // Tarih filtresi
     if (selectedDateRange) {
         filteredData = filteredData.filter(function (user) {
             var userDate = new Date(user.backuser_register_date);
             return userDate >= new Date(selectedDateRange[0]) && userDate <= new Date(selectedDateRange[1]);
         });
     }
+
+    // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (user) {
             return user.backuser_role === selectedStatus;
         });
     }
+
+    // Arama filtresi
     if (searchText) {
         filteredData = filteredData.filter(function (user) {
             return (
@@ -452,6 +429,8 @@ function SearchData() {
             );
         });
     }
+
+    // Listeyi güncelle
     updatePageWithFilteredData(filteredData);
 }
 
@@ -461,8 +440,11 @@ function updatePageWithFilteredData(filteredData) {
     $("#userlist").html(son);
 }
 
+
 function updatePageWithFilteredData(filteredData) {
     var son = orderslist(filteredData);
     $("#userlist").html('');
     $("#userlist").html(son);
 }
+
+
