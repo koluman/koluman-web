@@ -527,7 +527,6 @@ function eventTyped() {
 
 // upcoming Event
 function upcomingEvent(a) {
-   
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
         var title = element.title;
