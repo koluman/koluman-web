@@ -27,7 +27,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/addtestdriveappointment', [TestDriveController::class, 'addtestdriveappointment'])->name('addtestdriveappointment');
     Route::get('/getusertestdriveappointment', [TestDriveController::class, 'getusertestdriveappointment'])->name('getusertestdriveappointment');
     Route::post('/deletetestdriveappointment', [TestDriveController::class, 'deletetestdriveappointment'])->name('deletetestdriveappointment');
-    Route::get('/testdrivegetcarschedule', [TestDriveController::class, 'testdrivegetcarschedule'])->name('testdrivegetcarschedule');
+    Route::get('/testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
     Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
     Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
     Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');

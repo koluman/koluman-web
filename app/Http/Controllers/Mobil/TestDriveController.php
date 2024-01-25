@@ -9,6 +9,7 @@ use App\Http\Requests\TestDriveGetRequest;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,14 +26,14 @@ class TestDriveController extends Controller
                 $car_id = $request->car_id;
                 $appointment_time = $request->appointment_time;
                 $user_id = $u->user_id;
-                $appointment_date=$request->appointment_date;
+                $appointment_date = $request->appointment_date;
 
                 $affectedRows = Appointment::insert([
                     'user_id' => $user_id,
                     'car_id' => $car_id,
                     'appointment_time' => $appointment_time,
                     'state' => 0,
-                    'appointment_date'=>$appointment_date
+                    'appointment_date' => $appointment_date
                 ]);
                 if ($affectedRows > 0) {
                     $responseData = [
@@ -138,7 +139,7 @@ class TestDriveController extends Controller
         return response()->json($responseData);
     }
 
-    public function testdrivegetcarschedule(TestDriveGetRequest $request)
+    public function testdriveschedules(TestDriveGetRequest $request)
     {
 
         try {
@@ -146,13 +147,19 @@ class TestDriveController extends Controller
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
-                $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
-                $testDrivescar = Appointment::where('car_id', $request->car_id)
-                    ->where('auto_date', '>=', $lastWeek)->get();
-                if (!$testDrivescar->isEmpty()) {
+                $lastWeek = Carbon::now()->subWeek();
+                $schedules = Appointment::select(
+                    DB::raw('DATE(appointment_date) as date'),
+                    DB::raw('GROUP_CONCAT(appointment_time ORDER BY appointment_time) as times')
+                )
+                    ->where('car_id', $request->car_id)
+                    ->where('appointment_date', '>=', $lastWeek)
+                    ->groupBy('date')
+                    ->get();
+                if (!$schedules->isEmpty()) {
                     $responseData = [
                         "success" => 1,
-                        "testDrivescar" => $testDrivescar,
+                        "schedules" => $schedules,
                         "message" => "Arabaya ait randevu listesi getirildi",
                     ];
                 } else {
