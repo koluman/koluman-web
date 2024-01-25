@@ -141,37 +141,26 @@ class TestDriveController extends Controller
 
     public function testdriveschedules(TestDriveGetRequest $request)
     {
-
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            $u = JWTAuth::setToken($token)->authenticate();
-            if ($u) {
-                $lastWeek = Carbon::now()->subWeek();
-                $schedules = Appointment::select(
-                    DB::raw('DATE(appointment_date) as date'),
-                    DB::raw('GROUP_CONCAT(appointment_time ORDER BY appointment_time) as times')
-                )
-                    ->where('car_id', $request->car_id)
-                    ->where('appointment_date', '>=', $lastWeek)
-                    ->groupBy('date')
-                    ->get();
-                if (!$schedules->isEmpty()) {
-                    $responseData = [
-                        "success" => 1,
-                        "schedules" => $schedules,
-                        "message" => "Arabaya ait randevu listesi getirildi",
-                    ];
-                } else {
-                    $responseData = [
-                        "success" => 0,
-                        "message" => "Arabaya ait randevu listesi getirelemedi",
-                    ];
-                }
+            $lastWeek = Carbon::now()->subWeek();
+            $schedules = Appointment::select(
+                DB::raw('DATE(appointment_date) as date'),
+                DB::raw('GROUP_CONCAT(appointment_time ORDER BY appointment_time) as times')
+            )
+                ->where('car_id', $request->car_id)
+                ->where('appointment_date', '>=', $lastWeek)
+                ->groupBy('date')
+                ->get();
+            if (!$schedules->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "schedules" => $schedules,
+                    "message" => "Arabaya ait randevu listesi getirildi",
+                ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
+                    "message" => "Arabaya ait randevu listesi getirelemedi",
                 ];
             }
         } catch (\Exception $e) {
