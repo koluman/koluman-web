@@ -40,7 +40,6 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
     Route::get('/testdrivegetall', [TestDriveController::class, 'testdrivegetall'])->name('testdrivegetall');
 });
-
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
 });
