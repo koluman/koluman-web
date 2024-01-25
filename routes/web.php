@@ -23,9 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [AuthController::class, 'signin'])->name('signin');
-Route::middleware(['jwt.verify'])->group(function () {
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-});
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 Route::get('/getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
