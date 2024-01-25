@@ -151,6 +151,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             userRole: userRole,
                             _token:csrfToken,
                         },
+                        headers: {
+                            'Authorization': 'Basic ' + response.token
+                        },
                         dataType: 'json',
                         success: function (data) {
                             if (data.success == 1) {
