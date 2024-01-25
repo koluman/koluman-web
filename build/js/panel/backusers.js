@@ -2,6 +2,7 @@ $(document).ready(function () {
     users();
 });
 let userdata = [];
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 function users() {
     $.ajax({
         url: 'https://mobiloby.app/koluman/web/getBasicToken',
@@ -148,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             userMail: userMail,
                             userPhone: userPhone,
                             userRole: userRole,
+                            _token:csrfToken,
                         },
                         dataType: 'json',
                         success: function (data) {
