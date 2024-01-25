@@ -2,25 +2,36 @@ $(document).ready(function () {
     users();
 });
 let userdata = [];
-let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function users() {
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getallusers',
-        data: {
-            _token: csrfToken, // CSRF token'ını gönder
-        },
-        dataType: 'json',
-        success: function (data) {
-            if(data.success==1){
-                userdata = data.usersall;
-                let son = orderslist(userdata);
-                $("#userlist").html('');
-                $("#userlist").html(son);
+        url: 'https://mobiloby.app/koluman/web/getBasicToken',
+        type: 'GET',
+        success: function (response) {
+            if (response.success == 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/getallusers',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == 1) {
+                            userdata = data.usersall;
+                            let son = orderslist(userdata);
+                            $("#userlist").html('');
+                            $("#userlist").html(son);
+                        }
+
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                alert(response.message);
             }
-         
+        },
+        error: function (error) {
+            console.error(error);
         }
     });
 }
@@ -446,5 +457,3 @@ function updatePageWithFilteredData(filteredData) {
     $("#userlist").html('');
     $("#userlist").html(son);
 }
-
-

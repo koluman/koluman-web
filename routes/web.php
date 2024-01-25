@@ -24,27 +24,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'signin'])->name('signin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 Route::get('/getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
 Route::get('/getBasicToken', [HomeController::class, 'getBasicToken'])->name('getBasicToken');
 
-Route::middleware(['prevent-back-history','checkRole:admin'])->group(function () {
+Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function () {
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
-    Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
-    Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
-    Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
-    Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
-    Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
     Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
-    Route::get('/testdrivegetall', [TestDriveController::class, 'testdrivegetall'])->name('testdrivegetall');
 
+    Route::middleware(['jwt.verify'])->group(function () {
+        Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
+        Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
+        Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
+        Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
+        Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
+        Route::get('/testdrivegetall', [TestDriveController::class, 'testdrivegetall'])->name('testdrivegetall');
+    });
 });
 
-Route::middleware(['prevent-back-history','checkRole:ajans'])->group(function () {
+Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
 });
-
-
