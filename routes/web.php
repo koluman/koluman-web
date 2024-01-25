@@ -33,7 +33,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/adminusers', [HomeController::class, 'users'])->name('admin.users');
     Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
-    Route::get('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
+    Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
     Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
     Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
     Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
