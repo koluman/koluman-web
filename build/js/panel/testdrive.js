@@ -18,8 +18,8 @@ function getshowroom() {
                     success: function (data) {
                         if (data.success == 1) {
                             var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
-                            for (i = 0; i < data.shoowroom.length; ++i) {
-                                option += "<option value='" + data.shoowroom[i]["car_id"] + "'>" + data.shoowroom[i]["car_name"] + "</option>";
+                            for (i = 0; i < data.showroomcars.length; ++i) {
+                                option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
                             }
                             $('#event-category').html(option);
                         }
