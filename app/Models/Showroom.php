@@ -14,6 +14,8 @@ class Showroom extends Model
         'car_id',
         'car_name',
         'car_image_url',
-        'auto_date',
+        'isTestdrive',
+        'created_at',
+        'updated_at'
     ];
 }
