@@ -13,6 +13,9 @@ function users() {
                     type: 'POST',
                     url: 'https://mobiloby.app/koluman/web/getallusers',
                     dataType: 'json',
+                    headers: {
+                        'Authorization': 'Basic ' + response.token
+                    },
                     success: function (data) {
                         if (data.success == 1) {
                             userdata = data.usersall;
