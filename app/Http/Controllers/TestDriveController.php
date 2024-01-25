@@ -11,9 +11,9 @@ class TestDriveController extends Controller
     public function testdrivegetall(Request $request)
     {
         try {
-            $testDrives = Appointment::join('users', 'appointments.user_id', '=', 'users.user_id')
-                ->join('showroom', 'appointments.car_id', '=', 'showroom.car_id')
-                ->get(['appointments.*', 'users.user_name', 'users.user_phone', 'showroom.car_name']);
+            $testDrives = Appointment::join('users', 'appointment.user_id', '=', 'users.user_id')
+                ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
+                ->get(['appointment.*', 'users.user_name', 'users.user_phone', 'showroom.car_name']);
 
             $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
             $testlastDrives = Appointment::where('auto_date', '>=', $lastWeek)->get();
