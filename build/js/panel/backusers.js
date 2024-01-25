@@ -10,7 +10,7 @@ function users() {
         success: function (response) {
             if (response.success == 1) {
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: 'https://mobiloby.app/koluman/web/getallusers',
                     dataType: 'json',
                     headers: {

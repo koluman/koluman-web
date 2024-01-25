@@ -14,7 +14,6 @@ class BackUsersController extends Controller
     {
         try {
             $usersall = BackUser::orderBy('id', 'desc')->get();
-
             if ($usersall->isEmpty()) {
                 $responseData = [
                     "usersall" => "",

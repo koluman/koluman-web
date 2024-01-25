@@ -35,7 +35,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::get('/admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
 
     Route::middleware(['jwt.verify'])->group(function () {
-        Route::post('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
+        Route::get('/getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
         Route::post('/adduser', [BackUsersController::class, 'adduser'])->name('adduser');
         Route::post('/updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
         Route::post('/deleteuser', [BackUsersController::class, 'deleteuser'])->name('deleteuser');
