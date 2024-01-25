@@ -23,7 +23,9 @@ class TestDriveAddRequest extends FormRequest
     {
         return [
             'car_id' => 'required',
-            'drive_time' => 'required',
+            'appointment_time' => 'required',
+            'appointment_date' => 'required',
+
         ];
     }
 
@@ -31,7 +33,9 @@ class TestDriveAddRequest extends FormRequest
     {
         return [
             'car_id.required' => 'Araba numarası girişi zorunludur.',
-            'drive_time.required' => 'Randevu zamanı girişi zorunludur.',
+            'appointment_time.required' => 'Randevu zamanı girişi zorunludur.',
+            'appointment_date.required' => 'Randevu gün girişi zorunludur.',
+
         ];
     }
 }
