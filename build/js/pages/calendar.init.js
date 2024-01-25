@@ -43,15 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (data.success == 1) {
                                 var defaultEvents = data.testDrives.map(function (event) {
                                     return {
-                                        id: event.drive_id,
-                                        title: event.drive_time, // Yeni başlık
-                                        start: new Date(event.auto_date),
-                                        end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
+                                        id: event.appointment_id,
+                                        title: event.appointment_time, // Yeni başlık
+                                        start: new Date(event.appointment_date),
+                                        end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
                                         location: event.car_name,
                                         extendedProps: {
-                                            department:event.drive_time
+                                            department:event.appointment_time
                                         },
                                         description: event.user_name
                                         // Diğer özellikleri ekleyin
@@ -59,15 +59,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 var defaultlastEvents = data.testlastDrives.map(function (event) {
                                     return {
-                                        id: event.drive_id,
-                                        title: event.drive_time, // Yeni başlık
-                                        start: new Date(event.auto_date),
-                                        end: new Date(event.auto_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
+                                        id: event.appointment_id,
+                                        title: event.appointment_time, // Yeni başlık
+                                        start: new Date(event.appointment_date),
+                                        end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
                                         location: event.car_name,
                                         extendedProps: {
-                                            department:event.drive_time
+                                            department:event.appointment_time
                                         },
                                         description: event.user_name
                                         // Diğer özellikleri ekleyin
@@ -77,9 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                     itemSelector: '.external-event',
                                     eventData: function (eventEl) {
                                         return {
-                                            drive_id: Math.floor(Math.random() * 11000),
-                                            drive_time: eventEl.innerText,
-                                            auto_date: new Date(),
+                                            appointment_id: Math.floor(Math.random() * 11000),
+                                            appointment_time: eventEl.innerText,
+                                            appointment_date: new Date(),
                                             className: eventEl.getAttribute('data-class')
                                         };
                                     }
@@ -386,7 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     $.ajax({
                                                         type: 'POST',
                                                         url: 'https://mobiloby.app/koluman/web/api/deleteTestDrive',
-                                                        data:{drive_id:selectedEvent.id},
+                                                        data:{appointment_id:selectedEvent.id},
                                                         headers: {
                                                             'Authorization': 'Bearer ' + response.token
                                                         },
