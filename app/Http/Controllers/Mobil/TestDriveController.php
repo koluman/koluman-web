@@ -17,7 +17,7 @@ class TestDriveController extends Controller
     public function testdriveadd(TestDriveAddRequest $request)
     {
         try {
-           
+
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -47,10 +47,9 @@ class TestDriveController extends Controller
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
                 ];
-            
-        }
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -62,7 +61,7 @@ class TestDriveController extends Controller
     public function testdriveget(Request $request)
     {
         try {
-           
+
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
@@ -88,10 +87,9 @@ class TestDriveController extends Controller
                 $responseData = [
                     "success" => 0,
                     "testDrives" => "",
-                    "message" => "Kullanıcı bilgisi gelmedi, lütfen tokenı yollayınız",
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
                 ];
             }
-        
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -104,13 +102,13 @@ class TestDriveController extends Controller
     public function deleteTestDrive(TestDriveDeleteRequest $request)
     {
         try {
-          
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if ($token) {
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
                 $drive_id = $request->drive_id;
                 $testDrive = TestDrive::where('drive_id', $drive_id)->first();
-                if ($testDrive) {
+                if ($testDrive->user_id==$u->user_id) {
                     $testDrive->delete();
                     $responseData = [
                         "success" => 1,
@@ -119,16 +117,16 @@ class TestDriveController extends Controller
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "message" => "Belirtilen drive_id ile eşleşen test sürüşü bulunamadı",
+                        "message" => "Silmek istediğiniz randevu size ait değil!",
                     ];
                 }
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                    "testDrives" => "",
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
                 ];
             }
-        
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -138,38 +136,36 @@ class TestDriveController extends Controller
 
         return response()->json($responseData);
     }
-  
-    public function testdrivegetcar(TestDriveGetRequest $request)
+
+    public function testdrivegetcarschedule(TestDriveGetRequest $request)
     {
 
         try {
-                $token = $request->header('Authorization');
-                $token = str_replace('Bearer ', '', $token);
-                $u = JWTAuth::setToken($token)->authenticate();
-                if ($u) {
-
-                    $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
-                    if (!$testDrivescar->isEmpty()) {
-                        $responseData = [
-                            "success" => 1,
-                            "testDrivescar" => $testDrivescar,
-                            "message" => "Arabaya ait randevu listesi getirildi",
-                        ];
-                    } else {
-                        $responseData = [
-                            "success" => 0,
-                            "testDrivescar" => "",
-                            "message" => "Arabaya ait randevu listesi getirelemedi",
-                        ];
-                    }
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
+                $testDrivescar = TestDrive::where('car_id', $request->car_id)->get();
+                if (!$testDrivescar->isEmpty()) {
+                    $responseData = [
+                        "success" => 1,
+                        "testDrivescar" => $testDrivescar,
+                        "message" => "Arabaya ait randevu listesi getirildi",
+                    ];
                 } else {
                     $responseData = [
                         "success" => 0,
                         "testDrivescar" => "",
-                        "message" => "Token bilgisi gelmedi, lütfen tokenı yollayınız",
+                        "message" => "Arabaya ait randevu listesi getirelemedi",
                     ];
                 }
-            
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "testDrivescar" => "",
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
+                ];
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,

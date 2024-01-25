@@ -91,10 +91,10 @@ class LoginController extends Controller
         try {
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
-            if ($token) {
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
                 JWTAuth::invalidate($token);
                 Auth::guard('api')->logout();
-                $u = JWTAuth::setToken($token)->authenticate();
                 User::where('user_id', $u->user_id)->update(['user_notification_token' => ""]);
                 $responseData = [
                     "success" => 1,
