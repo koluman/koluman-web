@@ -67,11 +67,12 @@ class TestDriveController extends Controller
             $u = JWTAuth::setToken($token)->authenticate();
             if ($u) {
                 $today = Carbon::now()->toDateString();
-                $testDrives = Appointment::select('a.appointment_id', 'a.car_id', 'a.appointment_time', 'a.appointment_date', 'a.user_id', 'a.state', 'c.car_name')
-                ->join('showroom as c', 'a.car_id', '=', 'c.id') 
-                ->where('a.user_id', $u->user_id)
-                ->where('a.appointment_date', '>=', $today)
-                ->get();
+                $testDrives = Appointment::select('appointment.appointment_id', 'appointment.car_id', 'appointment.appointment_time', 'appointment.appointment_date', 'appointment.user_id', 'appointment.state', 'c.car_name')
+                    ->join('showroom as c', 'appointment.car_id', '=', 'c.car_id')
+                    ->where('appointment.user_id', $u->user_id)
+                    ->where('appointment.appointment_date', '>=', $today)
+                    ->get();
+
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
                         "success" => 1,
