@@ -1,4 +1,4 @@
-/*$("#loginbutton").click(function () {
+$("#loginbutton").click(function () {
     $.ajax({
         url: 'https://mobiloby.app/koluman/web/getBasicToken',
         type: 'GET',
@@ -26,6 +26,5 @@
                 alert(response.message);
             }
         }
-
     });
-});*/
+});
