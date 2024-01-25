@@ -142,27 +142,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addUser(userName, userMail, userPhone, userRole) {
         $.ajax({
-            type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/adduser',
-            data: {
-                userName: userName,
-                userMail: userMail,
-                userPhone: userPhone,
-                userRole: userRole,
-                _token: csrfToken,
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    $('#showModal').modal('hide');
-                    users();
+            url: 'https://mobiloby.app/koluman/web/getBasicToken',
+            type: 'GET',
+            success: function (response) {
+                if (response.success == 1) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'https://mobiloby.app/koluman/web/adduser',
+                        data: {
+                            userName: userName,
+                            userMail: userMail,
+                            userPhone: userPhone,
+                            userRole: userRole,
+                            _token: csrfToken,
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.success == 1) {
+                                $('#showModal').modal('hide');
+                                users();
+                            } else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            alert("AJAX request failed:", status, error);
+                        }
+                    });
                 } else {
-                    alert(data.message);
+
                 }
             },
-            error: function (xhr, status, error) {
-                alert("AJAX request failed:", status, error);
-            }
         });
     }
 
