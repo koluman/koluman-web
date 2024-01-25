@@ -23,7 +23,6 @@ function getshowroom() {
                             }
                             $('#event-category').html(option);
                         }
-
                     }
                 });
             } else {
