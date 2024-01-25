@@ -72,7 +72,7 @@ class TestDriveController extends Controller
                     ->where('appointment.user_id', $u->user_id)
                     ->where('appointment.appointment_date', '>=', $today)
                     ->first();
-                if (!$testDrives->isEmpty()) {
+                if (!$testDrives) {
                     $responseData = [
                         "success" => 1,
                         "userAppointment" => $testDrives,
