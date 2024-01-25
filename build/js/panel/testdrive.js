@@ -6,9 +6,6 @@ function getshowroom() {
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/api/getshoowroom',
-        headers: {
-            'Authorization': 'Basic ' + response.token
-        },
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
