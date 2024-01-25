@@ -69,6 +69,7 @@ class TestDriveController extends Controller
                 $today = Carbon::now()->toDateString();
                 $testDrives = Appointment::where('user_id', $u->user_id)
                     ->whereDate('appointment_date', '>=', $today)
+                    ->with('car:id,car_name') 
                     ->get();
                 if (!$testDrives->isEmpty()) {
                     $responseData = [
