@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
-    getusers();
+    getallusers();
 });
-getallusers
+
 
 function getshowroom() {
     $.ajax({
@@ -38,8 +38,7 @@ function getshowroom() {
 
 }
 
-function getshowroom() {
-
+function getallusers() {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
