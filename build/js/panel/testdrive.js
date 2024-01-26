@@ -23,9 +23,9 @@ function getshowroom() {
                             for (i = 0; i < data.showroomcars.length; ++i) {
                                 option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
                             }
+
                             $('#car_id').html('');
-                            $('#car_id').html(option);
-                        }
+                            $('#car_id').html(option);                        }
                     }
                 });
             } else {

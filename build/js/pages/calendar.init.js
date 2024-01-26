@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 }
 
-                                var eventCategoryChoice = new Choices("#event-category", {
+                                var eventCategoryChoice = new Choices("#car_id", {
                                     searchEnabled: false
                                 });
 
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                         if (selectedEvent.classNames[0]) {
                                             eventCategoryChoice.destroy();
-                                            eventCategoryChoice = new Choices("#event-category", {
+                                            eventCategoryChoice = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
                                     var updatedTitle = document.getElementById("event-title").value;
-                                    var updatedCategory = document.getElementById('event-category').value;
+                                    var updatedCategory = document.getElementById('car_id').value;
                                     var start_date = (document.getElementById("event-start-date").value).split("to");
                                     var updateStartDate = new Date(start_date[0].trim());
                             
@@ -485,7 +485,7 @@ function flatpicekrValueClear() {
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
     document.getElementById("event-title").classList.replace("d-block", "d-none");
-    document.getElementById("event-category").classList.replace("d-block", "d-none");
+    document.getElementById("car_id").classList.replace("d-block", "d-none");
     document.getElementById("event-start-date").parentNode.classList.add("d-none");
     document.getElementById("event-start-date").classList.replace("d-block", "d-none");
     document.getElementById('event-time').setAttribute("hidden", true);
@@ -508,7 +508,7 @@ function eventClicked() {
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("event-title").classList.replace("d-none", "d-block");
-    document.getElementById("event-category").classList.replace("d-none", "d-block");
+    document.getElementById("car_id").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date").parentNode.classList.remove("d-none");
     document.getElementById("event-start-date").classList.replace("d-none", "d-block");
     document.getElementById("timepicker1").parentNode.classList.remove("d-none");
