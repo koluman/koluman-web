@@ -161,7 +161,7 @@
                                                 <option value="16:30">16:30</option>
                                                 <option value="17:00">17:00</option>
                                             </select>
-                                            <div class="invalid-feedback">Lütfen Araba Modelini Seçiniz</div>
+                                            <div class="invalid-feedback">Lütfen Randevu Zamanını Seçiniz</div>
                                         </div>
                                     </div>
                                     <!--end col-->
