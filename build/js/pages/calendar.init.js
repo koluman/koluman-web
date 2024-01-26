@@ -1,6 +1,4 @@
 var start_date = document.getElementById("appointment_date");
-//var timepicker1 = document.getElementById("timepicker1");
-//var timepicker2 = document.getElementById("timepicker2");
 var date_range = null;
 var T_check = null;
 document.addEventListener("DOMContentLoaded", function () {
@@ -170,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
-
                                         // Edit Modal
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
@@ -185,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
-
                                         var date_r = function formatDate(date) {
                                             var d = new Date(date),
                                                 month = '' + (d.getMonth() + 1),
@@ -202,65 +198,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                             var endUpdateDay = new Date(ed_date);
                                             updateDay = endUpdateDay.setDate(endUpdateDay.getDate() - 1);
                                         }
-
                                         var r_date = ed_date == null ? (str_dt(st_date)) : (str_dt(st_date)) + ' to ' + (str_dt(updateDay));
                                         var er_date = ed_date == null ? (date_r(st_date)) : (date_r(st_date)) + ' to ' + (date_r(updateDay));
-
                                         flatpickr(start_date, {
                                             defaultDate: er_date,
                                             altInput: true,
                                             altFormat: "j F Y",
                                             dateFormat: "Y-m-d",
                                             mode: ed_date !== null ? "range" : "range",
-                                            onChange: function (selectedDates, dateStr, instance) {
-                                                var date_range = dateStr;
-                                                var dates = date_range.split("to");
-                                                if (dates.length > 1) {
-                                                   // document.getElementById('event-time').setAttribute("hidden", true);
-                                                } else {
-                                                    //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-                                                    //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-                                                    //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-                                                    //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
-                                                   // document.getElementById('event-time').removeAttribute("hidden");
-                                                }
-                                            },
                                         });
                                         document.getElementById("event-start-date-tag").innerHTML = r_date;
-
-                                        /*var gt_time = getTime(selectedEvent.start);
-                                        var ed_time = getTime(selectedEvent.end);
-
-                                        if (gt_time == ed_time) {
-                                            document.getElementById('event-time').setAttribute("hidden", true);
-                                            flatpickr(document.getElementById("timepicker1"), {
-                                                enableTime: true,
-                                                noCalendar: true,
-                                                dateFormat: "H:i",
-                                            });
-                                            flatpickr(document.getElementById("timepicker2"), {
-                                                enableTime: true,
-                                                noCalendar: true,
-                                                dateFormat: "H:i",
-                                            });
-                                        } else {
-                                            document.getElementById('event-time').removeAttribute("hidden");
-                                            flatpickr(document.getElementById("timepicker1"), {
-                                                enableTime: true,
-                                                noCalendar: true,
-                                                dateFormat: "H:i",
-                                                defaultDate: gt_time
-                                            });
-
-                                            flatpickr(document.getElementById("timepicker2"), {
-                                                enableTime: true,
-                                                noCalendar: true,
-                                                dateFormat: "H:i",
-                                                defaultDate: ed_time
-                                            });
-                                            document.getElementById("event-timepicker1-tag").innerHTML = tConvert(gt_time);
-                                            document.getElementById("event-timepicker2-tag").innerHTML = tConvert(ed_time);
-                                        }*/
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
 
@@ -308,31 +255,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updatedCategory = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
-
                                     var start_date = document.getElementById("appointment_date").value;
                                     var updateStartDate = new Date(start_date.trim());
-                            
-                                    //var newdate = new Date(start_date[1]);
-                                   // newdate.setDate(newdate.getDate() + 1);
-                            
-                                    //var updateEndDate = (start_date[1]) ? newdate : '';
-                            
-                                    //var end_date = null;
-                                    //var event_location = document.getElementById("event-location").value;
-                                    //var eventDescription = document.getElementById("event-description").value;
                                     var appointment_id = document.getElementById("appointment_id").value;
                                     var all_day = false;
                                     if (start_date.length > 1) {
-                                        //var end_date = new Date(start_date[1]);
-                                        //end_date.setDate(end_date.getDate() + 1);
                                         start_date = new Date(start_date[0]);
                                         all_day = true;
                                     } else {
                                         var e_date = start_date;
-                                        //var start_time = (document.getElementById("timepicker1").value).trim();
-                                        //var end_time = (document.getElementById("timepicker2").value).trim();
-                                        //start_date = new Date(start_date + "T" + start_time);
-                                        //end_date = new Date(e_date + "T" + end_time);
                                     }
                                     var e_id = defaultEvents.length + 1;
                             
@@ -428,9 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
-                                    console.log("Ekleme kısmı");
                                     flatpicekrValueClear();
-                                   // flatPickrInit();
                                     addNewEvent();
                                     document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
                                     document.getElementById('edit-event-btn').click();
@@ -452,28 +381,8 @@ document.addEventListener("DOMContentLoaded", function () {
    
     }
 });
-
-// function flatPickrInit() {
-//     var config = {
-//         enableTime: true,
-//         noCalendar: true,
-//     };
-//     var date_range = flatpickr(
-//         start_date, {
-//             enableTime: false,
-//             mode: "range",
-//             minDate: "today",
-           
-//         });
-//     //flatpickr(timepicker1, config);
-//     //flatpickr(timepicker2, config);
-
-// }
-
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
-   // timepicker1.flatpickr().clear();
-    //timepicker2.flatpickr().clear();
 }
 
 
@@ -484,16 +393,7 @@ function eventClicked() {
     document.getElementById("appointment_time").classList.replace("d-block", "d-none")
     document.getElementById("appointment_date").parentNode.classList.add("d-none");
     document.getElementById("appointment_date").classList.replace("d-block", "d-none");
-   // document.getElementById('event-time').setAttribute("hidden", true);
-    //document.getElementById("timepicker1").parentNode.classList.add("d-none");
-    //document.getElementById("timepicker1").classList.replace("d-block", "d-none");
-    //document.getElementById("timepicker2").parentNode.classList.add("d-none");
-    //document.getElementById("timepicker2").classList.replace("d-block", "d-none");
-    //document.getElementById("event-location").classList.replace("d-block", "d-none");
-    //document.getElementById("event-description").classList.replace("d-block", "d-none");
     document.getElementById("event-start-date-tag").classList.replace("d-none", "d-block");
-    //document.getElementById("event-timepicker1-tag").classList.replace("d-none", "d-block");
-    //document.getElementById("event-timepicker2-tag").classList.replace("d-none", "d-block");
     document.getElementById("event-location-tag").classList.replace("d-none", "d-block");
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
@@ -508,15 +408,7 @@ function eventTyped() {
     document.getElementById("appointment_time").classList.replace("d-none", "d-block");
     document.getElementById("appointment_date").parentNode.classList.remove("d-none");
     document.getElementById("appointment_date").classList.replace("d-none", "d-block");
-    //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-    //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-    //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-    //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
-    //document.getElementById("event-location").classList.replace("d-none", "d-block");
-    //document.getElementById("event-description").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date-tag").classList.replace("d-block", "d-none");
-    //document.getElementById("event-timepicker1-tag").classList.replace("d-block", "d-none");
-    //document.getElementById("event-timepicker2-tag").classList.replace("d-block", "d-none");
     document.getElementById("event-location-tag").classList.replace("d-block", "d-none");
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
@@ -578,15 +470,12 @@ function upcomingEvent(a) {
         var description = (element.description) ? element.description : "";
         var e_time_s = tConvert(getTime(element.start));
         var e_time_e = tConvert(getTime(updatedDay));
-
         var ss = (element.state==0) ? "Onaylanmadı" : "Onaylandı";
-
         if (e_time_s == e_time_e) {
             var e_time_s = "30 dakika";
             var e_time_e = null;
         }
         var e_time_e = (e_time_e) ? " to " + e_time_e : "";
-
         u_event = "<div class='card mb-3'>\
                         <div class='card-body'>\
                             <div class='d-flex mb-3'>\
