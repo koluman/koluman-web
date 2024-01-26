@@ -49,7 +49,12 @@ function getapiusers() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-               console.log(data);
+                var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
+                for (i = 0; i < data.usersall.length; ++i) {
+                    option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.city[i]["user_name"] + "</option>";
+                }
+                $('#event-category').html('');
+                $('#event-category').html(option);
             }
 
         }
