@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         document.getElementById("edit-event-btn").removeAttribute("hidden");
                                         document.getElementById('btn-save-event').setAttribute("hidden", true);
                                         document.getElementById("edit-event-btn").setAttribute("data-id", "edit-event");
-                                        document.getElementById("edit-event-btn").innerHTML = "Edit";
+                                        document.getElementById("edit-event-btn").innerHTML = "Güncelle";
                                         eventClicked();
                                         flatPickrInit();
                                         flatpicekrValueClear();
