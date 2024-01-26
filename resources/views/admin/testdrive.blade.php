@@ -165,17 +165,7 @@
                                             <div class="invalid-feedback">Lütfen Randevu Süresini Seçiniz</div>
                                         </div>
                                     </div>
-                                    <!--end col-->
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Event Name</label>
-                                            <input class="form-control d-none" placeholder="Enter event name"
-                                                type="text" name="title" id="event-title" required
-                                                value="" />
-                                            <div class="invalid-feedback">Please provide a valid event name</div>
-                                        </div>
-                                    </div>
-                                    <!--end col-->
+                                 
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label>Event Date</label>
@@ -215,25 +205,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end col-->
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="event-location">Location</label>
-                                            <div>
-                                                <input type="text" class="form-control d-none" name="event-location"
-                                                    id="event-location" placeholder="Event location">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end col-->
+                              
                                     <input type="hidden" id="eventid" name="eventid" value="" />
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Description</label>
-                                            <textarea class="form-control d-none" id="event-description" placeholder="Enter a description" rows="3"
-                                                spellcheck="false"></textarea>
-                                        </div>
-                                    </div>
+                                  
                                     <!--end col-->
                                 </div>
                                 <!--end row-->

@@ -172,8 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                         document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
 
                                         // Edit Modal
-                                        document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
-                                        document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
+                                        //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
+                                        //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("eventid").value = selectedEvent.id;
 
                                         if (selectedEvent.classNames[0]) {
@@ -318,8 +318,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updateEndDate = (start_date[1]) ? newdate : '';
                             
                                     var end_date = null;
-                                    var event_location = document.getElementById("event-location").value;
-                                    var eventDescription = document.getElementById("event-description").value;
+                                    //var event_location = document.getElementById("event-location").value;
+                                    //var eventDescription = document.getElementById("event-description").value;
                                     var eventid = document.getElementById("eventid").value;
                                     var all_day = false;
                                     if (start_date.length > 1) {
@@ -347,19 +347,19 @@ document.addEventListener("DOMContentLoaded", function () {
                                             selectedEvent.setStart(updateStartDate);
                                             selectedEvent.setEnd(updateEndDate);
                                             selectedEvent.setAllDay(all_day);
-                                            selectedEvent.setExtendedProp("description", eventDescription);
-                                            selectedEvent.setExtendedProp("location", event_location);
+                                            //selectedEvent.setExtendedProp("description", eventDescription);
+                                            /*selectedEvent.setExtendedProp("location", event_location);
                                             var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                                 return x.id == selectedEvent.id
-                                            });
+                                            });*/
                                             if (defaultEvents[indexOfSelectedEvent]) {
                                                 //defaultEvents[indexOfSelectedEvent].title = updatedTitle;
                                                 defaultEvents[indexOfSelectedEvent].start = updateStartDate;
                                                 defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                defaultEvents[indexOfSelectedEvent].description = eventDescription;
-                                                defaultEvents[indexOfSelectedEvent].location = event_location;
+                                               // defaultEvents[indexOfSelectedEvent].description = eventDescription;
+                                                //defaultEvents[indexOfSelectedEvent].location = event_location;
                                             }
                                             calendar.render();
                                             // default
@@ -371,8 +371,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 end: end_date,
                                                 allDay: all_day,
                                                 className: updatedCategory,
-                                                description: eventDescription,
-                                                location: event_location
+                                                //description: eventDescription,
+                                                //location: event_location
                                             };
                                             calendar.addEvent(newEvent);
                                             defaultEvents.push(newEvent);
@@ -500,8 +500,8 @@ function eventClicked() {
     document.getElementById("timepicker1").classList.replace("d-block", "d-none");
     document.getElementById("timepicker2").parentNode.classList.add("d-none");
     document.getElementById("timepicker2").classList.replace("d-block", "d-none");
-    document.getElementById("event-location").classList.replace("d-block", "d-none");
-    document.getElementById("event-description").classList.replace("d-block", "d-none");
+    //document.getElementById("event-location").classList.replace("d-block", "d-none");
+    //document.getElementById("event-description").classList.replace("d-block", "d-none");
     document.getElementById("event-start-date-tag").classList.replace("d-none", "d-block");
     //document.getElementById("event-timepicker1-tag").classList.replace("d-none", "d-block");
     //document.getElementById("event-timepicker2-tag").classList.replace("d-none", "d-block");
@@ -523,8 +523,8 @@ function eventTyped() {
     document.getElementById("timepicker1").classList.replace("d-none", "d-block");
     document.getElementById("timepicker2").parentNode.classList.remove("d-none");
     document.getElementById("timepicker2").classList.replace("d-none", "d-block");
-    document.getElementById("event-location").classList.replace("d-none", "d-block");
-    document.getElementById("event-description").classList.replace("d-none", "d-block");
+    //document.getElementById("event-location").classList.replace("d-none", "d-block");
+    //document.getElementById("event-description").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date-tag").classList.replace("d-block", "d-none");
     //document.getElementById("event-timepicker1-tag").classList.replace("d-block", "d-none");
     //document.getElementById("event-timepicker2-tag").classList.replace("d-block", "d-none");
