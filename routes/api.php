@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DealerShipsController;
 use App\Http\Controllers\Mobil\AnnouncementController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
@@ -33,6 +34,8 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');
     Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
+    Route::get('/getdealerships', [DealerShipsController::class, 'getdealerships'])->name('getdealerships');
+
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
 
