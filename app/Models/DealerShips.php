@@ -10,6 +10,7 @@ class DealerShips extends Model
     use HasFactory;
     protected $table = 'dealerships'; // Modelin "users" tablosuna bağlı olduğunu belirtir
     protected $primaryKey = 'dealership_id';
+    public $timestamps = false;
     protected $fillable = [
         'dealership_id',
         'dealership_name',
