@@ -20,7 +20,5 @@ class DealerShips extends Model
         'dealership_phone', 
         'dealership_description', 
         'dealership_image_url', 
-        'created_at', 
-        'updated_at'
     ];
 }
