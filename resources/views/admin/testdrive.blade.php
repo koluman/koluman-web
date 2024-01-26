@@ -144,8 +144,21 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
+                                            <label>Randevu Tarihi</label>
+                                            <div class="input-group d-none">
+                                                <input type="text" id="appointment_date" name="appointment_date"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Lütfen Randevu Tarihini Seçiniz" readonly required>
+                                                <span class="input-group-text"><i
+                                                        class="ri-calendar-event-line"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
                                             <label class="form-label">Randevu Zamanı</label>
-                                            <select class="form-select d-none" name="appointment_time" id="appointment_time" required>
+                                            <select class="form-select d-none" name="appointment_time"
+                                                id="appointment_time" required>
                                                 <option value="">Lütfen Randevu Süresini Seçiniz</option>
                                                 <option value="09:00">09:00</option>
                                                 <option value="09:30">09:30</option>
@@ -165,22 +178,8 @@
                                             <div class="invalid-feedback">Lütfen Randevu Süresini Seçiniz</div>
                                         </div>
                                     </div>
-                                 
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label>Randevu Tarihi</label>
-                                            <div class="input-group d-none">
-                                                <input type="text" id="appointment_date" name="appointment_date"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Lütfen Randevu Tarihini Seçiniz" readonly required>
-                                                <span class="input-group-text"><i
-                                                        class="ri-calendar-event-line"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                               
-                                    <input type="hidden" id="eventid" name="eventid" value="" />
-                                  
+                                    <input type="hidden" id="appointment_id" name="appointment_id" value="" />
+
                                     <!--end col-->
                                 </div>
                                 <!--end row-->

@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         // Edit Modal
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
-                                        document.getElementById("eventid").value = selectedEvent.id;
+                                        document.getElementById("appointment_id").value = selectedEvent.id;
 
                                         if (selectedEvent.classNames[0]) {
                                             eventCategoryChoice.destroy();
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     //var end_date = null;
                                     //var event_location = document.getElementById("event-location").value;
                                     //var eventDescription = document.getElementById("event-description").value;
-                                    var eventid = document.getElementById("eventid").value;
+                                    var appointment_id = document.getElementById("appointment_id").value;
                                     var all_day = false;
                                     if (start_date.length > 1) {
                                         //var end_date = new Date(start_date[1]);
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         forms[0].classList.add('was-validated');
                                     } else {
                                         if (selectedEvent) {
-                                            selectedEvent.setProp("id", eventid);
+                                            selectedEvent.setProp("id", appointment_id);
                                             //selectedEvent.setProp("title", updatedTitle);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
