@@ -83,9 +83,11 @@
                         </div>
                         <div class="modal-body p-4">
                             <form class="needs-validation" name="event-form" id="form-event" novalidate>
-                                <div class="text-end">
+                                <div class="text-end">,
+                                    <a href="#" class="btn btn-sm btn-soft-primary" id="edit-onay-btn"
+                                        data-id="edit-event"  role="button">Onayla</a>
                                     <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn"
-                                        data-id="edit-event" onclick="editEvent(this)" role="button">Edit</a>
+                                        data-id="edit-event" onclick="editEvent(this)" role="button">Güncelle</a>
                                 </div>
                                 <div class="event-details">
                                     <div class="d-flex mb-2">
@@ -98,7 +100,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="flex-shrink-0 me-3">
                                             <i class="ri-map-pin-line text-muted fs-16"></i>
@@ -178,7 +180,8 @@
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i
                                             class="ri-close-line align-bottom"></i> Randevuyu Sil</button>
-                                    <button type="submit" class="btn btn-success" id="btn-save-event">Randevu Ekle</button>
+                                    <button type="submit" class="btn btn-success" id="btn-save-event">Randevu
+                                        Ekle</button>
                                 </div>
                             </form>
                         </div>
