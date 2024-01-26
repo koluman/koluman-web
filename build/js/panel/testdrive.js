@@ -21,7 +21,7 @@ function getshowroom() {
                         if (data.success == 1) {
                             var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                             for (i = 0; i < data.showroomcars.length; ++i) {
-                                option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
+                                if(data.showroomcars[i]["isTestdrive"]==1)option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
                             }
 
                             $('#car_id').html('');
@@ -55,8 +55,8 @@ function getapiusers() {
                 for (i = 0; i < data.usersall.length; ++i) {
                     option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
                 }
-                $('#event-category').html('');
-                $('#event-category').html(option);
+                $('#user_id').html('');
+                $('#user_id').html(option);
             }
 
         }

@@ -129,8 +129,7 @@
                                             <label class="form-label">Kullanıcılar</label>
                                            <select class="form-select d-none" name="user_id" id="user_id" required>
                                             </select>
-                                      
-                                            <div class="invalid-feedback">Please select a valid event category</div>
+                                            <div class="invalid-feedback">Lütfen Kullanıcıyı Seçiniz</div>
                                         </div>
                                     </div>
 
@@ -139,7 +138,7 @@
                                             <label class="form-label">Arabalar</label>
                                            <select class="form-select d-none" name="car_id" id="car_id" required>
                                             </select>
-                                            <div class="invalid-feedback">Please select a valid event category</div>
+                                            <div class="invalid-feedback">Lütfen Araba Modelini Seçiniz</div>
                                         </div>
                                     </div>
 
