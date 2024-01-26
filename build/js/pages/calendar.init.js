@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     formEvent.classList.remove("was-validated");
                                     formEvent.reset();
                                     selectedEvent = null;
-                                    modalTitle.innerText = 'Add Event';
+                                    modalTitle.innerText = 'Randevu Ekle';
                                     newEventData = info;
                                     document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
                                     document.getElementById('edit-event-btn').click();
@@ -428,6 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
+                                    console.log("Ekleme kısmı");
                                     flatpicekrValueClear();
                                     flatPickrInit();
                                     addNewEvent();
@@ -647,13 +648,13 @@ function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
         document.getElementById('modal-title').innerHTML = "";
-        document.getElementById('modal-title').innerHTML = "Add Event";
-        document.getElementById("btn-save-event").innerHTML = "Add Event";
+        document.getElementById('modal-title').innerHTML = "Randevu Ekle";
+        document.getElementById("btn-save-event").innerHTML = "Randevu Ekle";
         eventTyped();
     } else if (data_id == 'edit-event') {
         data.innerHTML = "Cancel";
         data.setAttribute("data-id", 'cancel-event');
-        document.getElementById("btn-save-event").innerHTML = "Update Event";
+        document.getElementById("btn-save-event").innerHTML = "Randevu Güncelle";
         data.removeAttribute("hidden");
         eventTyped();
     } else {
