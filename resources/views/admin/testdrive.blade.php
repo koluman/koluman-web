@@ -178,8 +178,6 @@
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i
                                             class="ri-close-line align-bottom"></i> Randevuyu Sil</button>
-                                              <button type="button" class="btn btn-soft-danger" id="btn-onay-event"><i
-                                            class="ri-close-line align-bottom"></i> Randevuyu İptal</button>
                                     <button type="submit" class="btn btn-success" id="btn-save-event">Randevu
                                         Ekle</button>
                                 </div>
