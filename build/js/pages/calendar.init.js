@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
 
                                         // Edit Modal
-                                        document.getElementById("event-title").value = selectedEvent.title;
                                         document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("eventid").value = selectedEvent.id;
@@ -306,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
-                                    var updatedTitle = document.getElementById("event-title").value;
                                     var updatedCategory = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
@@ -344,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", eventid);
-                                            selectedEvent.setProp("title", updatedTitle);
+                                            //selectedEvent.setProp("title", updatedTitle);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             selectedEvent.setEnd(updateEndDate);
@@ -355,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 return x.id == selectedEvent.id
                                             });
                                             if (defaultEvents[indexOfSelectedEvent]) {
-                                                defaultEvents[indexOfSelectedEvent].title = updatedTitle;
+                                                //defaultEvents[indexOfSelectedEvent].title = updatedTitle;
                                                 defaultEvents[indexOfSelectedEvent].start = updateStartDate;
                                                 defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
@@ -368,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         } else {
                                             var newEvent = {
                                                 id: e_id,
-                                                title: updatedTitle,
+                                                //title: updatedTitle,
                                                 start: start_date,
                                                 end: end_date,
                                                 allDay: all_day,
@@ -492,7 +490,6 @@ function flatpicekrValueClear() {
 
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
-    document.getElementById("event-title").classList.replace("d-block", "d-none");
     document.getElementById("car_id").classList.replace("d-block", "d-none");
     document.getElementById("user_id").classList.replace("d-block", "d-none");
     document.getElementById("appointment_time").classList.replace("d-block", "d-none")
@@ -517,7 +514,6 @@ function eventClicked() {
 
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
-    document.getElementById("event-title").classList.replace("d-none", "d-block");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
     document.getElementById("user_id").classList.replace("d-none", "d-block");
     document.getElementById("appointment_time").classList.replace("d-none", "d-block");

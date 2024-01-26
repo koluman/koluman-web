@@ -146,6 +146,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Zamanı</label>
                                             <select class="form-select d-none" name="appointment_time" id="appointment_time" required>
+                                                <option value="">Lütfen Randevu Süresini Seçiniz</option>
                                                 <option value="09:00">09:00</option>
                                                 <option value="09:30">09:30</option>
                                                 <option value="10:00">10:00</option>
@@ -161,7 +162,7 @@
                                                 <option value="16:30">16:30</option>
                                                 <option value="17:00">17:00</option>
                                             </select>
-                                            <div class="invalid-feedback">Lütfen Randevu Zamanını Seçiniz</div>
+                                            <div class="invalid-feedback">Lütfen Randevu Süresini Seçiniz</div>
                                         </div>
                                     </div>
                                     <!--end col-->
