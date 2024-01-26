@@ -128,8 +128,6 @@
                                         <div class="mb-3">
                                             <label class="form-label">Kullanıcılar</label>
                                            <select class="form-select d-none" name="user_id" id="user_id" required>
-                                                 {{-- <option value="bg-danger-subtle">Danger</option>
-                                                <option value="bg-success-subtle">Success</option> --}}
                                             </select>
                                       
                                             <div class="invalid-feedback">Please select a valid event category</div>
