@@ -1,4 +1,4 @@
-var start_date = document.getElementById("event-start-date");
+var start_date = document.getElementById("appointment_date");
 //var timepicker1 = document.getElementById("timepicker1");
 //var timepicker2 = document.getElementById("timepicker2");
 var date_range = null;
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
 
-                                    var start_date = (document.getElementById("event-start-date").value).split("to");
+                                    var start_date = (document.getElementById("appointment_date").value).split("to");
                                     var updateStartDate = new Date(start_date[0].trim());
                             
                                     var newdate = new Date(start_date[1]);
@@ -493,8 +493,8 @@ function eventClicked() {
     document.getElementById("car_id").classList.replace("d-block", "d-none");
     document.getElementById("user_id").classList.replace("d-block", "d-none");
     document.getElementById("appointment_time").classList.replace("d-block", "d-none")
-    document.getElementById("event-start-date").parentNode.classList.add("d-none");
-    document.getElementById("event-start-date").classList.replace("d-block", "d-none");
+    document.getElementById("appointment_date").parentNode.classList.add("d-none");
+    document.getElementById("appointment_date").classList.replace("d-block", "d-none");
     document.getElementById('event-time').setAttribute("hidden", true);
     //document.getElementById("timepicker1").parentNode.classList.add("d-none");
     //document.getElementById("timepicker1").classList.replace("d-block", "d-none");
@@ -517,8 +517,8 @@ function eventTyped() {
     document.getElementById("car_id").classList.replace("d-none", "d-block");
     document.getElementById("user_id").classList.replace("d-none", "d-block");
     document.getElementById("appointment_time").classList.replace("d-none", "d-block");
-    document.getElementById("event-start-date").parentNode.classList.remove("d-none");
-    document.getElementById("event-start-date").classList.replace("d-none", "d-block");
+    document.getElementById("appointment_date").parentNode.classList.remove("d-none");
+    document.getElementById("appointment_date").classList.replace("d-none", "d-block");
     //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
     //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
     //document.getElementById("timepicker2").parentNode.classList.remove("d-none");

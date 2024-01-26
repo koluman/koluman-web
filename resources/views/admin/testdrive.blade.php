@@ -170,9 +170,9 @@
                                         <div class="mb-3">
                                             <label>Event Date</label>
                                             <div class="input-group d-none">
-                                                <input type="text" id="event-start-date"
+                                                <input type="text" id="appointment_date" name="appointment_date"
                                                     class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select date" readonly required>
+                                                    placeholder="Lütfen Randevu Tarihini Seçiniz" readonly required>
                                                 <span class="input-group-text"><i
                                                         class="ri-calendar-event-line"></i></span>
                                             </div>
