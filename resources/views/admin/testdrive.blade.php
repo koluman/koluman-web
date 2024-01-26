@@ -52,7 +52,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15">Hoşgeldiniz!</h6>
-                                    <p class="text-muted mb-0">Tüm test sürüş işlemlerini etkili bir biçimde tamamlayabilirsiniz.</p>
+                                    <p class="text-muted mb-0">Tüm test sürüş işlemlerini etkili bir biçimde
+                                        tamamlayabilirsiniz.</p>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +128,7 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Kullanıcılar</label>
-                                           <select class="form-select d-none" name="user_id" id="user_id" required>
+                                            <select class="form-select d-none" name="user_id" id="user_id" required>
                                             </select>
                                             <div class="invalid-feedback">Lütfen Kullanıcıyı Seçiniz</div>
                                         </div>
@@ -136,12 +137,33 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Arabalar</label>
-                                           <select class="form-select d-none" name="car_id" id="car_id" required>
+                                            <select class="form-select d-none" name="car_id" id="car_id" required>
                                             </select>
                                             <div class="invalid-feedback">Lütfen Araba Modelini Seçiniz</div>
                                         </div>
                                     </div>
-
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Randevu Zamanı</label>
+                                            <select class="form-select d-none" name="appointment_time" id="appointment_time" required>
+                                                <option value="09:00">09:00</option>
+                                                <option value="09:30">09:30</option>
+                                                <option value="10:00">10:00</option>
+                                                <option value="10:30">10:30</option>
+                                                <option value="11:00">11:30</option>
+                                                <option value="13:00">13:00</option>
+                                                <option value="13:30">13:30</option>
+                                                <option value="14:00">14:00</option>
+                                                <option value="14:30">14:30</option>
+                                                <option value="15:00">15:00</option>
+                                                <option value="15:30">15:30</option>
+                                                <option value="16:00">16:00</option>
+                                                <option value="16:30">16:30</option>
+                                                <option value="17:00">17:00</option>
+                                            </select>
+                                            <div class="invalid-feedback">Lütfen Araba Modelini Seçiniz</div>
+                                        </div>
+                                    </div>
                                     <!--end col-->
                                     <div class="col-12">
                                         <div class="mb-3">
