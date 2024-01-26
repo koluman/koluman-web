@@ -51,7 +51,7 @@ function getapiusers() {
             if (data.success == 1) {
                 var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                 for (i = 0; i < data.usersall.length; ++i) {
-                    option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.city[i]["user_name"] + "</option>";
+                    option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
                 }
                 $('#event-category').html('');
                 $('#event-category').html(option);
