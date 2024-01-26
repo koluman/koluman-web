@@ -168,7 +168,7 @@
                                  
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label>Event Date</label>
+                                            <label>Randevu Tarihi</label>
                                             <div class="input-group d-none">
                                                 <input type="text" id="appointment_date" name="appointment_date"
                                                     class="form-control flatpickr flatpickr-input"

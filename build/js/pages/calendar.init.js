@@ -309,13 +309,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
 
-                                    var start_date = (document.getElementById("appointment_date").value).split("to");
-                                    var updateStartDate = new Date(start_date[0].trim());
+                                    var start_date = document.getElementById("appointment_date").value;
+                                    var updateStartDate = new Date(start_date.trim());
                             
-                                    var newdate = new Date(start_date[1]);
-                                    newdate.setDate(newdate.getDate() + 1);
+                                    //var newdate = new Date(start_date[1]);
+                                   // newdate.setDate(newdate.getDate() + 1);
                             
-                                    var updateEndDate = (start_date[1]) ? newdate : '';
+                                    //var updateEndDate = (start_date[1]) ? newdate : '';
                             
                                     //var end_date = null;
                                     //var event_location = document.getElementById("event-location").value;
@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             //selectedEvent.setProp("title", updatedTitle);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
-                                            selectedEvent.setEnd(updateEndDate);
+                                            //selectedEvent.setEnd(updateEndDate);
                                             selectedEvent.setAllDay(all_day);
                                             //selectedEvent.setExtendedProp("description", eventDescription);
                                             /*selectedEvent.setExtendedProp("location", event_location);
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             if (defaultEvents[indexOfSelectedEvent]) {
                                                 //defaultEvents[indexOfSelectedEvent].title = updatedTitle;
                                                 defaultEvents[indexOfSelectedEvent].start = updateStartDate;
-                                                defaultEvents[indexOfSelectedEvent].end = updateEndDate;
+                                                //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
                                                // defaultEvents[indexOfSelectedEvent].description = eventDescription;
