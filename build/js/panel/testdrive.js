@@ -25,7 +25,8 @@ function getshowroom() {
                             }
 
                             $('#car_id').html('');
-                            $('#car_id').html(option);                        }
+                            $('#car_id').html(option);
+                        }
                     }
                 });
             } else {
