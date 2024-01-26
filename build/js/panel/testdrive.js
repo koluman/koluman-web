@@ -21,12 +21,9 @@ function getshowroom() {
                         if (data.success == 1) {
                             var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                             for (i = 0; i < data.showroomcars.length; ++i) {
-                                console.log(data.showroomcars[i]["isTestdrive"]);
-                                if (data.showroomcars[i]["isTestdrive"] == "1") {
                                     option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
-                                }
-                            }
 
+                            }
                             $('#car_id').html('');
                             $('#car_id').html(option);
                         }
