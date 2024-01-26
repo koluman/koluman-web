@@ -13,8 +13,6 @@ class DealerShipsController extends Controller
             $columnsToSelect = ['dealership_id','dealership_name','dealership_city','dealership_address','dealership_latitude', 
                 'dealership_longitude','dealership_phone','dealership_description','dealership_image_url'];
             $dealerships = DealerShips::select($columnsToSelect)->get();
-    
-            $dealerships = DealerShips::get();
             if (!$dealerships->isEmpty()) {
                 $responseData = [
                     "success" => 1,
