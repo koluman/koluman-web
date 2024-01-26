@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
-    getallusers();
+    getapiusers();
 });
 
 
@@ -38,11 +38,11 @@ function getshowroom() {
 
 }
 
-function getallusers() {
+function getapiusers() {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getallusers',
+        url: 'https://mobiloby.app/koluman/web/getapiusers',
         data: {
             _token: csrfToken, // CSRF token'ını gönder
         },
