@@ -83,9 +83,7 @@
                         </div>
                         <div class="modal-body p-4">
                             <form class="needs-validation" name="event-form" id="form-event" novalidate>
-                                <div class="text-end">,
-                                    <a href="#" class="btn btn-sm btn-soft-primary" id="edit-onay-btn"
-                                        data-id="edit-event"  role="button">Onayla</a>
+                                <div class="text-end">
                                     <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn"
                                         data-id="edit-event" onclick="editEvent(this)" role="button">Güncelle</a>
                                 </div>
@@ -180,6 +178,8 @@
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i
                                             class="ri-close-line align-bottom"></i> Randevuyu Sil</button>
+                                              <button type="button" class="btn btn-soft-danger" id="btn-onay-event"><i
+                                            class="ri-close-line align-bottom"></i> Randevuyu İptal</button>
                                     <button type="submit" class="btn btn-success" id="btn-save-event">Randevu
                                         Ekle</button>
                                 </div>
