@@ -1,6 +1,8 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
+    getusers();
 });
+getallusers
 
 function getshowroom() {
     $.ajax({
@@ -36,3 +38,22 @@ function getshowroom() {
 
 }
 
+function getshowroom() {
+
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getallusers',
+        data: {
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+               console.log(data);
+            }
+
+        }
+    });
+
+}
