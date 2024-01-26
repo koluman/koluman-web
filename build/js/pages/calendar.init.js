@@ -1,6 +1,6 @@
 var start_date = document.getElementById("event-start-date");
-var timepicker1 = document.getElementById("timepicker1");
-var timepicker2 = document.getElementById("timepicker2");
+//var timepicker1 = document.getElementById("timepicker1");
+//var timepicker2 = document.getElementById("timepicker2");
 var date_range = null;
 var T_check = null;
 document.addEventListener("DOMContentLoaded", function () {
@@ -218,10 +218,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 if (dates.length > 1) {
                                                     document.getElementById('event-time').setAttribute("hidden", true);
                                                 } else {
-                                                    document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-                                                    document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-                                                    document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-                                                    document.getElementById("timepicker2").classList.replace("d-none", "d-block");
+                                                    //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
+                                                    //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
+                                                    //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
+                                                    //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
                                                     document.getElementById('event-time').removeAttribute("hidden");
                                                 }
                                             },
@@ -317,22 +317,22 @@ document.addEventListener("DOMContentLoaded", function () {
                             
                                     var updateEndDate = (start_date[1]) ? newdate : '';
                             
-                                    var end_date = null;
+                                    //var end_date = null;
                                     //var event_location = document.getElementById("event-location").value;
                                     //var eventDescription = document.getElementById("event-description").value;
                                     var eventid = document.getElementById("eventid").value;
                                     var all_day = false;
                                     if (start_date.length > 1) {
-                                        var end_date = new Date(start_date[1]);
-                                        end_date.setDate(end_date.getDate() + 1);
+                                        //var end_date = new Date(start_date[1]);
+                                        //end_date.setDate(end_date.getDate() + 1);
                                         start_date = new Date(start_date[0]);
                                         all_day = true;
                                     } else {
                                         var e_date = start_date;
-                                        var start_time = (document.getElementById("timepicker1").value).trim();
-                                        var end_time = (document.getElementById("timepicker2").value).trim();
-                                        start_date = new Date(start_date + "T" + start_time);
-                                        end_date = new Date(e_date + "T" + end_time);
+                                        //var start_time = (document.getElementById("timepicker1").value).trim();
+                                        //var end_time = (document.getElementById("timepicker2").value).trim();
+                                        //start_date = new Date(start_date + "T" + start_time);
+                                        //end_date = new Date(e_date + "T" + end_time);
                                     }
                                     var e_id = defaultEvents.length + 1;
                             
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 id: e_id,
                                                 //title: updatedTitle,
                                                 start: start_date,
-                                                end: end_date,
+                                                //end: end_date,
                                                 allDay: all_day,
                                                 className: updatedCategory,
                                                 //description: eventDescription,
@@ -468,23 +468,23 @@ function flatPickrInit() {
                 if (dates.length > 1) {
                     document.getElementById('event-time').setAttribute("hidden", true);
                 } else {
-                    document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-                    document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-                    document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-                    document.getElementById("timepicker2").classList.replace("d-none", "d-block");
+                    //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
+                   // document.getElementById("timepicker1").classList.replace("d-none", "d-block");
+                    //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
+                    //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
                     document.getElementById('event-time').removeAttribute("hidden");
                 }
             },
         });
-    flatpickr(timepicker1, config);
-    flatpickr(timepicker2, config);
+    //flatpickr(timepicker1, config);
+    //flatpickr(timepicker2, config);
 
 }
 
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
-    timepicker1.flatpickr().clear();
-    timepicker2.flatpickr().clear();
+   // timepicker1.flatpickr().clear();
+    //timepicker2.flatpickr().clear();
 }
 
 
@@ -496,10 +496,10 @@ function eventClicked() {
     document.getElementById("event-start-date").parentNode.classList.add("d-none");
     document.getElementById("event-start-date").classList.replace("d-block", "d-none");
     document.getElementById('event-time').setAttribute("hidden", true);
-    document.getElementById("timepicker1").parentNode.classList.add("d-none");
-    document.getElementById("timepicker1").classList.replace("d-block", "d-none");
-    document.getElementById("timepicker2").parentNode.classList.add("d-none");
-    document.getElementById("timepicker2").classList.replace("d-block", "d-none");
+    //document.getElementById("timepicker1").parentNode.classList.add("d-none");
+    //document.getElementById("timepicker1").classList.replace("d-block", "d-none");
+    //document.getElementById("timepicker2").parentNode.classList.add("d-none");
+    //document.getElementById("timepicker2").classList.replace("d-block", "d-none");
     //document.getElementById("event-location").classList.replace("d-block", "d-none");
     //document.getElementById("event-description").classList.replace("d-block", "d-none");
     document.getElementById("event-start-date-tag").classList.replace("d-none", "d-block");
@@ -519,10 +519,10 @@ function eventTyped() {
     document.getElementById("appointment_time").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date").parentNode.classList.remove("d-none");
     document.getElementById("event-start-date").classList.replace("d-none", "d-block");
-    document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-    document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-    document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-    document.getElementById("timepicker2").classList.replace("d-none", "d-block");
+    //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
+    //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
+    //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
+    //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
     //document.getElementById("event-location").classList.replace("d-none", "d-block");
     //document.getElementById("event-description").classList.replace("d-none", "d-block");
     document.getElementById("event-start-date-tag").classList.replace("d-block", "d-none");

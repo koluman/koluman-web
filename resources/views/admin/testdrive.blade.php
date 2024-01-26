@@ -178,34 +178,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end col-->
-                                    <div class="col-12" id="event-time">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Start Time</label>
-                                                    <div class="input-group d-none">
-                                                        <input id="timepicker1" type="text"
-                                                            class="form-control flatpickr flatpickr-input"
-                                                            placeholder="Select start time" readonly>
-                                                        <span class="input-group-text"><i class="ri-time-line"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">End Time</label>
-                                                    <div class="input-group d-none">
-                                                        <input id="timepicker2" type="text"
-                                                            class="form-control flatpickr flatpickr-input"
-                                                            placeholder="Select end time" readonly>
-                                                        <span class="input-group-text"><i class="ri-time-line"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                              
+                               
                                     <input type="hidden" id="eventid" name="eventid" value="" />
                                   
                                     <!--end col-->
