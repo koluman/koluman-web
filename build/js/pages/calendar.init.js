@@ -216,13 +216,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 var date_range = dateStr;
                                                 var dates = date_range.split("to");
                                                 if (dates.length > 1) {
-                                                    document.getElementById('event-time').setAttribute("hidden", true);
+                                                   // document.getElementById('event-time').setAttribute("hidden", true);
                                                 } else {
                                                     //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
                                                     //document.getElementById("timepicker1").classList.replace("d-none", "d-block");
                                                     //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
                                                     //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
-                                                    document.getElementById('event-time').removeAttribute("hidden");
+                                                   // document.getElementById('event-time').removeAttribute("hidden");
                                                 }
                                             },
                                         });
@@ -466,13 +466,13 @@ function flatPickrInit() {
                 var date_range = dateStr;
                 var dates = date_range.split("to");
                 if (dates.length > 1) {
-                    document.getElementById('event-time').setAttribute("hidden", true);
+                   // document.getElementById('event-time').setAttribute("hidden", true);
                 } else {
                     //document.getElementById("timepicker1").parentNode.classList.remove("d-none");
                    // document.getElementById("timepicker1").classList.replace("d-none", "d-block");
                     //document.getElementById("timepicker2").parentNode.classList.remove("d-none");
                     //document.getElementById("timepicker2").classList.replace("d-none", "d-block");
-                    document.getElementById('event-time').removeAttribute("hidden");
+                   // document.getElementById('event-time').removeAttribute("hidden");
                 }
             },
         });
@@ -495,7 +495,7 @@ function eventClicked() {
     document.getElementById("appointment_time").classList.replace("d-block", "d-none")
     document.getElementById("appointment_date").parentNode.classList.add("d-none");
     document.getElementById("appointment_date").classList.replace("d-block", "d-none");
-    document.getElementById('event-time').setAttribute("hidden", true);
+   // document.getElementById('event-time').setAttribute("hidden", true);
     //document.getElementById("timepicker1").parentNode.classList.add("d-none");
     //document.getElementById("timepicker1").classList.replace("d-block", "d-none");
     //document.getElementById("timepicker2").parentNode.classList.add("d-none");
