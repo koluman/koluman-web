@@ -515,7 +515,6 @@ var str_dt = function formatDate(date) {
 function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
-        temizle();
         document.getElementById('modal-title').innerHTML = "";
         document.getElementById('modal-title').innerHTML = "Randevu Ekle";
         document.getElementById("btn-save-event").innerHTML = "Randevu Ekle";
@@ -531,12 +530,4 @@ function editEvent(data) {
         data.setAttribute("data-id", 'edit-event');
         eventClicked();
     }
-}
-
-function temizle() {
-    $("#car_id").val("0");
-    $("#user_id").val("0");
-    $("#appointment_time").val("");
-    $("#appointment_date").val("0");
-    $("#appointment_id").val("");
 }
