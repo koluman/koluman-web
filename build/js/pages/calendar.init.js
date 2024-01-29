@@ -2,9 +2,9 @@ var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
 document.addEventListener("DOMContentLoaded", function () {
-   
+
     testdrive();
-   
+
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
         var y = date.getFullYear();
         var Draggable = FullCalendar.Draggable;
         var externalEventContainerEl = document.getElementById('external-events');
-        var defaultEvents = [];        var defaultlastEvents = [];
+        var defaultEvents = [];
+        var defaultlastEvents = [];
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/getApiToken',
             type: 'GET',
@@ -46,10 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         start: new Date(event.appointment_date),
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
-                                        className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
+                                        className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
                                         location: event.car_name,
                                         extendedProps: {
-                                            department:event.appointment_time
+                                            department: event.appointment_time
                                         },
                                         description: event.user_name
                                         // Diğer özellikleri ekleyin
@@ -62,10 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         start: new Date(event.appointment_date),
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
-                                        className: event.state==0 ? 'bg-danger-subtle' :' bg-success-subtle',
+                                        className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
                                         location: event.car_name,
                                         extendedProps: {
-                                            department:event.appointment_time
+                                            department: event.appointment_time
                                         },
                                         description: event.user_name
                                         // Diğer özellikleri ekleyin
@@ -266,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         var e_date = start_date;
                                     }
                                     var e_id = defaultEvents.length + 1;
-                            
+
                                     // validation
                                     if (forms[0].checkValidity() === false) {
                                         forms[0].classList.add('was-validated');
@@ -289,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                               // defaultEvents[indexOfSelectedEvent].description = eventDescription;
+                                                // defaultEvents[indexOfSelectedEvent].description = eventDescription;
                                                 //defaultEvents[indexOfSelectedEvent].location = event_location;
                                             }
                                             calendar.render();
@@ -319,11 +320,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                             type: 'GET',
                                             success: function (response) {
                                                 if (response.success == 1) {
-                                    
+
                                                     $.ajax({
                                                         type: 'POST',
                                                         url: 'https://mobiloby.app/koluman/web/api/deleteTestDrive',
-                                                        data:{appointment_id:selectedEvent.id},
+                                                        data: {
+                                                            appointment_id: selectedEvent.id
+                                                        },
                                                         headers: {
                                                             'Authorization': 'Bearer ' + response.token
                                                         },
@@ -340,11 +343,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 selectedEvent.remove();
                                                                 selectedEvent = null;
                                                                 addEvent.hide();
-                                                            }
-                                                            else{
+                                                            } else {
                                                                 alert(data.message);
                                                             }
-                                    
+
                                                         }
                                                     });
                                                 } else {
@@ -355,15 +357,52 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 console.error(error);
                                             }
                                         });
-                                      
+
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
-                                    flatpicekrValueClear();
-                                    addNewEvent();
-                                    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-                                    document.getElementById('edit-event-btn').click();
-                                    document.getElementById("edit-event-btn").setAttribute("hidden", true);
+
+                                    $.ajax({
+                                        url: 'https://mobiloby.app/koluman/web/getApiToken',
+                                        type: 'GET',
+                                        success: function (response) {
+                                            if (response.success == 1) {
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
+                                                    data: {
+                                                        car_id: $("#car_id").val(),
+                                                        user_id:$("#user_id").val(),
+                                                        appointment_time:$("#appointment_time").val(),
+                                                        appointment_date:$("#appointment_date").val()
+                                                    },
+                                                    headers: {
+                                                        'Authorization': 'Bearer ' + response.token
+                                                    },
+                                                    dataType: 'json',
+                                                    success: function (data) {
+                                                        if (data.success == 1) {
+                                                            alert(data.message);
+                                                            flatpicekrValueClear();
+                                                            addNewEvent();
+                                                            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+                                                            document.getElementById('edit-event-btn').click();
+                                                            document.getElementById("edit-event-btn").setAttribute("hidden", true);
+                                                        } else {
+                                                            alert(data.message);
+                                                        }
+
+                                                    }
+                                                });
+                                            } else {
+                                                alert(response.message);
+                                            }
+                                        },
+                                        error: function (error) {
+                                            console.error(error);
+                                        }
+                                    });
+
                                 });
                             }
 
@@ -378,9 +417,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-   
+
     }
 });
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
@@ -470,7 +510,7 @@ function upcomingEvent(a) {
         var description = (element.description) ? element.description : "";
         var e_time_s = tConvert(getTime(element.start));
         var e_time_e = tConvert(getTime(updatedDay));
-        var ss = (element.state==0) ? "Onaylanmadı" : "Onaylandı";
+        var ss = (element.state == 0) ? "Onaylanmadı" : "Onaylandı";
         if (e_time_s == e_time_e) {
             var e_time_s = "30 dakika";
             var e_time_e = null;
@@ -521,6 +561,7 @@ var str_dt = function formatDate(date) {
         day = '0' + day;
     return [day + " " + month, year].join(',');
 };
+
 function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
