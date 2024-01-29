@@ -155,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.show();
                                         formEvent.reset();
                                         selectedEvent = info.event;
-                                        console.log(selectedEvent);
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
@@ -164,19 +163,21 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                        eventCategoryChoice2.destroy();
-                                        eventCategoryChoice2 = new Choices("#appointment_time", {
-                                            searchEnabled: false
-                                        });
-                                        eventCategoryChoice2.setChoiceByValue(selectedEvent.title);
-                                        if (selectedEvent) {
+                                        if (selectedEvent.classNames[0]) {
                                             eventCategoryChoice.destroy();
                                             eventCategoryChoice = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
-
-
+                                            
+                                        }
+                                        if (selectedEvent.title) {
+                                            eventCategoryChoice3.destroy();
+                                            eventCategoryChoice3 = new Choices("#appointment_time", {
+                                                searchEnabled: false
+                                            });
+                                            eventCategoryChoice3.setChoiceByValue(selectedEvent.title);
+                                            
                                         }
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
