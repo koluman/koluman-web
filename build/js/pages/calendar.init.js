@@ -255,9 +255,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
                                     var updatedCategory = 'bg-danger-subtle';
-                                    var updatedCar = document.getElementById('car_id').value;
+                                    var updatedCar = document.getElementById('car_id').text;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
-                                    var updatedUser = document.getElementById('user_id').value;
+                                    var updatedUser = document.getElementById('user_id').text;
                                     var start_date = document.getElementById("appointment_date").value;
                                     var updateStartDate = new Date(start_date.trim());
                                     var appointment_id = document.getElementById("appointment_id").value;
