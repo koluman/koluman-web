@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", appointment_id);
-                                            selectedEvent.setProp("user_id", updatedUser);
+                                            selectedEvent.setProp("title", updatedUser);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
@@ -286,8 +286,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 return x.id == selectedEvent.id
                                             });*/
                                             if (defaultEvents[indexOfSelectedEvent]) {
-                                                //defaultEvents[indexOfSelectedEvent].title = updatedTitle;
-                                                defaultEvents[indexOfSelectedEvent].start = updateStartDate;
+                                                defaultEvents[indexOfSelectedEvent].title = updatedTitle;
+                                                defaultEvents[indexOfSelectedEvent].start = updatedUser;
                                                 //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
