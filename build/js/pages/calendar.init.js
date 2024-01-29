@@ -345,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             description: updatedCar,
                                                             location: updatedUser
                                                         };
-                                                        console.log(newEvent);
                                                         calendar.addEvent(newEvent);
                                                         defaultEvents.push(newEvent);
                                                     } else {
@@ -440,33 +439,6 @@ function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
         var title = element.title;
-        if (element.end) {
-            endUpdatedDay = new Date(element.end);
-            var updatedDay = endUpdatedDay.setDate(endUpdatedDay.getDate() - 1);
-        }
-        var e_dt = updatedDay ? updatedDay : undefined;
-        if (e_dt == "Invalid Date" || e_dt == undefined) {
-            e_dt = null;
-        } else {
-            const newDate = new Date(e_dt).toLocaleDateString('en', {
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric'
-            });
-            e_dt = new Date(newDate)
-                .toLocaleDateString("tr-TR", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                })
-                .split(" ")
-                .join(" ");
-        }
-        var st_date = element.start ? str_dt(element.start) : null;
-        var ed_date = updatedDay ? str_dt(updatedDay) : null;
-        if (st_date === ed_date) {
-            e_dt = null;
-        }
         var startDate = element.start;
         if (startDate === "Invalid Date" || startDate === undefined) {
             startDate = null;
@@ -485,7 +457,6 @@ function upcomingEvent(a) {
                 .split(" ")
                 .join(" ");
         }
-        var end_dt = e_dt;
         var category = (element.className).split("-");
         var description = (element.description) ? element.description : "";
         var e_time_s = tConvert(getTime(element.start));
