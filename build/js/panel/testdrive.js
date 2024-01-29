@@ -26,6 +26,7 @@ function getshowroom() {
 }
 
 function getdate() {
+    console.log("ewsrfewr");
     // Seçilen tarihi al
     /*var selectedDate = $("#appointment_date").val();
     var selectedCar=$("#car_id").val();
