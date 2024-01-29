@@ -563,6 +563,8 @@ $("#appointment_date").change(function () {
                 console.log(options);
                 $('#appointment_time').html('');
                 $('#appointment_time').html(options);
+                $("#appointment_time").trigger("chosen:updated");
+
             }
 
         }
