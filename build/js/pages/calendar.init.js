@@ -534,9 +534,9 @@ function editEvent(data) {
 }
 
 function temizle() {
-    $("#car_id").val("");
-    $("#user_id").val("");
+    $("#car_id").val("0");
+    $("#user_id").val("0");
     $("#appointment_time").val("");
-    $("#appointment_date").val("");
+    $("#appointment_date").val("0");
     $("#appointment_id").val("");
 }
