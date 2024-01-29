@@ -361,8 +361,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
-                                    console.log($("#car_id").val()+"--"+$("#user_id").val()+"---"+
-                                    $("#appointment_time").val()+"---"+$("#appointment_date").val());
+                                    flatpicekrValueClear();
+                                    addNewEvent();
+                                    document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+                                    document.getElementById('edit-event-btn').click();
+                                    document.getElementById("edit-event-btn").setAttribute("hidden", true);
                                     /*$.ajax({
                                         url: 'https://mobiloby.app/koluman/web/getApiToken',
                                         type: 'GET',
