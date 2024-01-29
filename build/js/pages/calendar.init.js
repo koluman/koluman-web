@@ -331,8 +331,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 }
                                             });
                                         }
-                                        //addEvent.hide();
-                                       // upcomingEvent(defaultEvents);
+                                        addEvent.hide();
+                                        upcomingEvent(defaultEvents);
                                     }
 
                                 });
