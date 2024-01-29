@@ -281,8 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
                                             selectedEvent.setAllDay(all_day);
-                                            selectedEvent.setExtendedProp("description", updatedCar);
-                                            selectedEvent.setExtendedProp("location", updatedUser);
+                                            //selectedEvent.setExtendedProp("description", updatedCar);
+                                            //selectedEvent.setExtendedProp("location", updatedUser);
                                             var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                                 return x.appointment_id == selectedEvent.id
                                             });
@@ -292,8 +292,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                defaultEvents[indexOfSelectedEvent].description = updatedCar;
-                                                defaultEvents[indexOfSelectedEvent].location = updatedUser;
+                                                //defaultEvents[indexOfSelectedEvent].description = updatedCar;
+                                                //defaultEvents[indexOfSelectedEvent].location = updatedUser;
                                             }
                                             calendar.render();
                                             // default
