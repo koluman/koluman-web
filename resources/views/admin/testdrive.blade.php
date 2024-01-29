@@ -150,11 +150,11 @@
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Zamanı</label>
                                             <select class="form-select d-none" name="appointment_time" id="appointment_time" required>
-                                               
                                             </select>
-                                            <div class="invalid-feedback">Lütfen Randevu Süresini Seçiniz</div>
+                                            <div class="invalid-feedback">Lütfen Randevu Zamanı Seçiniz</div>
                                         </div>
                                     </div>
+                                  
                                     <input type="hidden" id="appointment_id" name="appointment_id" value="" />
 
                                     <!--end col-->

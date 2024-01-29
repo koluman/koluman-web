@@ -560,7 +560,7 @@ $("#appointment_date").change(function () {
                         options += "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
-
+                $('#appointment_time').html('');
                 $('#appointment_time').html(options);
 
             }
