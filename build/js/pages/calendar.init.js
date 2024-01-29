@@ -1,6 +1,7 @@
 var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 document.addEventListener("DOMContentLoaded", function () {
 
     testdrive();
@@ -297,6 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             calendar.render();
                                             // default
                                         } else {
+
                                             $.ajax({
                                                 type: 'POST',
                                                 url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
@@ -304,7 +306,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     car_id: $("#car_id").val(),
                                                     user_id: $("#user_id").val(),
                                                     appointment_time: $("#appointment_time").val(),
-                                                    appointment_date: $("#appointment_date").val()
+                                                    appointment_date: $("#appointment_date").val(),
+                                                    _token: csrfToken,
                                                 },
                                                 dataType: 'json',
                                                 success: function (data) {
@@ -337,7 +340,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
                                         console.log(selectedEvent);
-                                        var csrfToken = $('meta[name="csrf-token"]').attr('content');
                                         $.ajax({
                                             type: 'POST',
                                             url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
