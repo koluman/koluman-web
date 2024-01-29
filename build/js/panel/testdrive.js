@@ -41,14 +41,14 @@ $("#appointment_date").change(function () {
         success: function (data) {
             if (data.success == 1) {
                 var options = "<option value='0'>Lütfen Randevu Süresini Seçiniz</option>";
-                console.log(data.schedules);
                 // Tüm saatleri döngüye al ve dolu olanları işaretle
                 var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
 
                 for (var i = 0; i < allTimes.length; i++) {
                     var time = allTimes[i];
                     var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
-                    
+                    console.log(isTimeOccupied);
+
                     if (isTimeOccupied) {
                         options += "<option value='" + time + "' disabled>" + time + " (Dolu)</option>";
                     } else {
