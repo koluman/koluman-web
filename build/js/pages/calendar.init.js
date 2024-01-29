@@ -252,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
-                                    console.log("ekleme");
                                     ev.preventDefault();
                                     var updatedCategory = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
@@ -275,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", appointment_id);
-                                            selectedEvent.setProp("title", updatedUser);
+                                            //selectedEvent.setProp("title", updatedUser);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
@@ -287,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });*/
                                             if (defaultEvents[indexOfSelectedEvent]) {
                                                 defaultEvents[indexOfSelectedEvent].title = updatedTitle;
-                                                defaultEvents[indexOfSelectedEvent].start = updatedUser;
+                                                defaultEvents[indexOfSelectedEvent].start = updateStartDate;
                                                 //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
@@ -297,63 +296,60 @@ document.addEventListener("DOMContentLoaded", function () {
                                             calendar.render();
                                             // default
                                         } else {
-                                            var newEvent = {
-                                                id: e_id,
-                                                title: updatedUser,
-                                                start: start_date,
-                                                //end: end_date,
-                                                allDay: all_day,
-                                                className: updatedCategory,
-                                                //description: eventDescription,
-                                                //location: event_location
-                                            };
-                                            console.log(newEvent);
-                                            calendar.addEvent(newEvent);
-                                            defaultEvents.push(newEvent);
+                                            $.ajax({
+                                                url: 'https://mobiloby.app/koluman/web/getApiToken',
+                                                type: 'GET',
+                                                success: function (response) {
+                                                    if (response.success == 1) {
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
+                                                            data: {
+                                                                car_id: $("#car_id").val(),
+                                                                user_id: $("#user_id").val(),
+                                                                appointment_time: $("#appointment_time").val(),
+                                                                appointment_date: $("#appointment_date").val()
+                                                            },
+                                                            headers: {
+                                                                'Authorization': 'Bearer ' + response.token
+                                                            },
+                                                            dataType: 'json',
+                                                            success: function (data) {
+                                                                if (data.success == 1) {
+                                                                    alert(data.message);
+                                                                    var newEvent = {
+                                                                        id: e_id,
+                                                                        title: updatedUser,
+                                                                        start: start_date,
+                                                                        //end: start_date,
+                                                                        allDay: all_day,
+                                                                        className: updatedCategory,
+                                                                        //description: eventDescription,
+                                                                        //location: event_location
+                                                                    };
+
+                                                                    calendar.addEvent(newEvent);
+                                                                    defaultEvents.push(newEvent);
+                                                                } else {
+                                                                    alert(data.message);
+                                                                }
+
+                                                            }
+                                                        });
+                                                    } else {
+                                                        alert(response.message);
+                                                    }
+                                                },
+                                                error: function (error) {
+                                                    console.error(error);
+                                                }
+                                            });
+
                                         }
                                         addEvent.hide();
                                         upcomingEvent(defaultEvents);
                                     }
-                                       /*$.ajax({
-                                        url: 'https://mobiloby.app/koluman/web/getApiToken',
-                                        type: 'GET',
-                                        success: function (response) {
-                                            if (response.success == 1) {
-                                                $.ajax({
-                                                    type: 'POST',
-                                                    url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
-                                                    data: {
-                                                        car_id: $("#car_id").val(),
-                                                        user_id:$("#user_id").val(),
-                                                        appointment_time:$("#appointment_time").val(),
-                                                        appointment_date:$("#appointment_date").val()
-                                                    },
-                                                    headers: {
-                                                        'Authorization': 'Bearer ' + response.token
-                                                    },
-                                                    dataType: 'json',
-                                                    success: function (data) {
-                                                        if (data.success == 1) {
-                                                            alert(data.message);
-                                                            flatpicekrValueClear();
-                                                            addNewEvent();
-                                                            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-                                                            document.getElementById('edit-event-btn').click();
-                                                            document.getElementById("edit-event-btn").setAttribute("hidden", true);
-                                                        } else {
-                                                            alert(data.message);
-                                                        }
 
-                                                    }
-                                                });
-                                            } else {
-                                                alert(response.message);
-                                            }
-                                        },
-                                        error: function (error) {
-                                            console.error(error);
-                                        }
-                                    });*/
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
