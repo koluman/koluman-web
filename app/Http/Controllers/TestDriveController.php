@@ -107,4 +107,41 @@ class TestDriveController extends Controller
         }
         return response()->json($responseData);
     }
+    public function updatetestdriveappointment(Request $request)
+    {
+        try {
+            $car_id = $request->car_id;
+            $appointment_time = $request->appointment_time;
+            $user_id = $request->user_id;
+            $appointment_date = $request->appointment_date;
+            $appointment_id = $request->appointment_id;
+
+            $affectedRows = Appointment::where('appointment_id', $appointment_id)
+            ->update([
+                'user_id' => $user_id,
+                'car_id' => $car_id,
+                'appointment_time' => $appointment_time,
+                'state' => 0,
+                'appointment_date' => $appointment_date
+            ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "sonuc" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Test sürüş randevusu güncellendi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Test sürüş randevusu güncellenemedi , lütfen tekrar deneyiniz",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }

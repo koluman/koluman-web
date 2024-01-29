@@ -258,28 +258,47 @@ document.addEventListener("DOMContentLoaded", function () {
                                         forms[0].classList.add('was-validated');
                                     } else {
                                         if (appointment_id) {
-                                            console.log(selectedEvent);
-                                            selectedEvent.setProp("id", appointment_id);
-                                            selectedEvent.setProp("title", updatedAppointment);
-                                            selectedEvent.setProp("classNames", [updatedCategory]);
-                                            selectedEvent.setStart(updateStartDate);
-                                            //selectedEvent.setEnd(updateEndDate);
-                                            selectedEvent.setAllDay(all_day);
-                                            //selectedEvent.setExtendedProp("description", updatedCar);
-                                            //selectedEvent.setExtendedProp("location", updatedUser);
-                                            var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                                return x.appointment_id == selectedEvent.id
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'https://mobiloby.app/koluman/web/updatetestdriveappointment',
+                                                data: {
+                                                    car_id: $("#car_id").val(),
+                                                    user_id: $("#user_id").val(),
+                                                    appointment_time: $("#appointment_time").val(),
+                                                    appointment_date: $("#appointment_date").val(),
+                                                    _token: csrfToken,
+                                                    appointment_id:appointment_id
+                                                },
+                                                dataType: 'json',
+                                                success: function (data) {
+                                                    if (data.success == 1) {
+                                                        selectedEvent.setProp("id", appointment_id);
+                                                        selectedEvent.setProp("title", updatedAppointment);
+                                                        selectedEvent.setProp("classNames", [updatedCategory]);
+                                                        selectedEvent.setStart(updateStartDate);
+                                                        //selectedEvent.setEnd(updateEndDate);
+                                                        selectedEvent.setAllDay(all_day);
+                                                        //selectedEvent.setExtendedProp("description", updatedCar);
+                                                        //selectedEvent.setExtendedProp("location", updatedUser);
+                                                        var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
+                                                            return x.appointment_id == selectedEvent.id
+                                                        });
+                                                        if (defaultEvents[indexOfSelectedEvent]) {
+                                                            defaultEvents[indexOfSelectedEvent].title = updatedAppointment;
+                                                            defaultEvents[indexOfSelectedEvent].start = updateStartDate;
+                                                            //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
+                                                            defaultEvents[indexOfSelectedEvent].allDay = all_day;
+                                                            defaultEvents[indexOfSelectedEvent].className = updatedCategory;
+                                                            //defaultEvents[indexOfSelectedEvent].description = updatedCar;
+                                                            //defaultEvents[indexOfSelectedEvent].location = updatedUser;
+                                                        }
+                                                        calendar.render();
+                                                    } else {
+                                                        alert(data.message);
+                                                    }
+                                                }
                                             });
-                                            if (defaultEvents[indexOfSelectedEvent]) {
-                                                defaultEvents[indexOfSelectedEvent].title = updatedAppointment;
-                                                defaultEvents[indexOfSelectedEvent].start = updateStartDate;
-                                                //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
-                                                defaultEvents[indexOfSelectedEvent].allDay = all_day;
-                                                defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                //defaultEvents[indexOfSelectedEvent].description = updatedCar;
-                                                //defaultEvents[indexOfSelectedEvent].location = updatedUser;
-                                            }
-                                            calendar.render();
+                                          
                                         } else {
 
                                             $.ajax({
