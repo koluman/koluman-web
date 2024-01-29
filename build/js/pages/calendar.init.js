@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             eventCategoryChoice4 = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice4.setChoiceByValue(selectedEvent._def.extendedProps.location);
+                                            eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.toString()]);
                                         }
                                         
                                         if (selectedEvent._def.extendedProps.description) {
