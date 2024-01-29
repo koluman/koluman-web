@@ -67,7 +67,8 @@ class InsuranceController extends Controller
                     'user_id' => $user_id,
                     'insurance_description' => $insurance_description,
                     'insurance_type' => $insurance_type,
-                    'insurance_author' => $insurance_author
+                    'insurance_author' => $insurance_author,
+                    'insurance_policy_url'=>""
                 ]);
                 if ($affectedRows > 0) {
                     $responseData = [
