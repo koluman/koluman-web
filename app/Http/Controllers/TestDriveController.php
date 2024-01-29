@@ -15,7 +15,7 @@ class TestDriveController extends Controller
         try {
             $testDrives = Appointment::join('users', 'appointment.user_id', '=', 'users.user_id')
                 ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
-                ->get(['appointment.*', 'users.user_name', 'users.user_phone','users.user_id','showroom.car_id', 'showroom.car_name']);
+                ->get(['appointment.*','users.*','showroom.*']);
 
             $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
             $testlastDrives = Appointment::where('appointment_date', '>=', $lastWeek)
