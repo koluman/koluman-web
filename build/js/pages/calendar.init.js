@@ -4,6 +4,7 @@ var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 document.addEventListener("DOMContentLoaded", function () {
     testdrive();
+
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -44,7 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
-                                        location: event.car_id,
+                                        location: {
+                                            car_id: event.car_id,
+                                            car_name: event.car_name
+                                        },
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
@@ -79,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 });
                                 var calendarEl = document.getElementById('calendar');
+
                                 function addNewEvent(info) {
                                     document.getElementById('form-event').reset();
                                     document.getElementById('btn-delete-event').setAttribute('hidden', true);
@@ -92,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById('edit-event-btn').click();
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
                                 }
+
                                 function getInitialView() {
                                     if (window.innerWidth >= 768 && window.innerWidth < 1200) {
                                         return 'timeGridWeek';
@@ -171,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                             eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.toString()]);
                                         }
-                                        
+
                                         if (selectedEvent._def.extendedProps.description) {
                                             eventCategoryChoice2.destroy();
                                             eventCategoryChoice2 = new Choices("#user_id", {
@@ -179,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description);
                                         }
-                                        
+
                                         if (selectedEvent.title) {
                                             console.log("Setting appointment_time:", selectedEvent.title);
                                             eventCategoryChoice3.destroy();
@@ -190,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         } else {
                                             console.log("No title to set for appointment_time");
                                         }
-                                        
+
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
@@ -288,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     appointment_time: $("#appointment_time").val(),
                                                     appointment_date: $("#appointment_date").val(),
                                                     _token: csrfToken,
-                                                    appointment_id:appointment_id
+                                                    appointment_id: appointment_id
                                                 },
                                                 dataType: 'json',
                                                 success: function (data) {
@@ -319,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     }
                                                 }
                                             });
-                                          
+
                                         } else {
 
                                             $.ajax({
@@ -408,9 +414,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
+
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
     document.getElementById("car_id").classList.replace("d-block", "d-none");
@@ -423,6 +431,7 @@ function eventClicked() {
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
 }
+
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
@@ -435,6 +444,7 @@ function eventTyped() {
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
+
 function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
@@ -468,7 +478,7 @@ function upcomingEvent(a) {
                         <div class='card-body'>\
                             <div class='d-flex mb-3'>\
                                 <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + " </span></div>\
-                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s+"</small></div>\
+                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + "</small></div>\
                             </div>\
                             <h6 class='card-title fs-16'> " + title + "</h6>\
                             <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
@@ -477,6 +487,7 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
+
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
@@ -485,6 +496,7 @@ function getTime(params) {
         return hour + ":" + minute;
     }
 }
+
 function tConvert(time) {
     var t = time.split(":");
     var hours = t[0];
