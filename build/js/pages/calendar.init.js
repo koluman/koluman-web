@@ -317,7 +317,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             dataType: 'json',
                                                             success: function (data) {
                                                                 if (data.success == 1) {
-                                                                    alert(data.message);
+                                                                    window.location.reload();
+                                                                    /*alert(data.message);
                                                                     var newEvent = {
                                                                         id: appointment_id,
                                                                         title: updatedAppointment,
@@ -330,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                     };
                                                                     console.log(newEvent);
                                                                     calendar.addEvent(newEvent);
-                                                                    defaultEvents.push(newEvent);
+                                                                    defaultEvents.push(newEvent);*/
                                                                 } else {
                                                                     alert(data.message);
                                                                 }
@@ -371,10 +372,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             i--;
                                                         }
                                                     }
-                                                    upcomingEvent(defaultEvents);
+                                                    /*upcomingEvent(defaultEvents);
                                                     selectedEvent.remove();
                                                     selectedEvent = null;
-                                                    addEvent.hide();
+                                                    addEvent.hide();*/
+                                                    window.location.reload();
                                                 } else {
                                                     alert(data.message);
                                                 }
