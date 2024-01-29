@@ -555,20 +555,19 @@ $("#appointment_date").change(function () {
                     var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
 
                     if (isTimeOccupied) {
-                        options += "<option value='" + time + "' disabled>" + time + " (Dolu)</option>";
+                        options.push({ value: time, label: time + ' (Dolu)', disabled: true });
                     } else {
-                        options += "<option value='" + time + "'>" + time + "</option>";
+                        options.push({ value: time, label: time, disabled: false });
                     }
                 }
-                $('#appointment_time').destroy();
 
-                // Seçenekleri HTML'e uygula
-                $('#appointment_time').html(options);
-
-                // Choices eklentisini başlat
-                var appointmentTimeChoices = new Choices('#appointment_time', {});
-    
-
+                // Choices kütüphanesini güncelle
+                var appointmentTimeChoices = new Choices('#appointment_time', {
+                    choices: options,
+                    removeItems: true, // Mevcut seçenekleri temizle
+                    placeholder: true,
+                    placeholderValue: 'Lütfen Randevu Süresini Seçiniz',
+                });
             }
 
         }
