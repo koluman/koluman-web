@@ -38,6 +38,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::get('/getdealerships', [DealerShipsController::class, 'getdealerships'])->name('getdealerships');
     Route::get('/getuserinsurancelist', [InsuranceController::class, 'getuserinsurancelist'])->name('getuserinsurancelist');
     Route::post('/adduserinsurancelist', [InsuranceController::class, 'adduserinsurancelist'])->name('adduserinsurancelist');
+    Route::post('/deleteuserinsurancelist', [InsuranceController::class, 'deleteuserinsurancelist'])->name('deleteuserinsurancelist');
 
 
 });

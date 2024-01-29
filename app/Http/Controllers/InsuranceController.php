@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InsuranceAddRequest;
+use App\Http\Requests\InsuranceDeleteRequest;
 use App\Models\Insurance;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -95,4 +96,43 @@ class InsuranceController extends Controller
         }
         return response()->json($responseData);
     }
+
+    public function deleteuserinsurancelist(InsuranceDeleteRequest $request)
+    {
+        try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
+                $insurance_id = $request->insurance_id;
+                $insurance = Insurance::where('insurance_id', $insurance_id)->first();
+                if ($insurance->user_id == $u->user_id || $u->user_role=="admin" ) {
+                    $insurance->delete();
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Sigorta talebi başarıyla silindi",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Silmek istediğiniz Sigorta talebi size ait değil!",
+                    ];
+                }
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "testDrives" => "",
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
+
 }
