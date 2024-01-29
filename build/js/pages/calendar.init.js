@@ -3,9 +3,7 @@ var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 document.addEventListener("DOMContentLoaded", function () {
-
     testdrive();
-
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -16,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var formEvent = document.getElementById('form-event');
         var selectedEvent = null;
         var forms = document.getElementsByClassName('needs-validation');
-        /* initialize the calendar */
-
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -31,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
             type: 'GET',
             success: function (response) {
                 if (response.success == 1) {
-
                     $.ajax({
                         type: 'GET',
                         url: 'https://mobiloby.app/koluman/web/testdrivegetall',
@@ -54,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                             department: event.appointment_time
                                         },
                                         description: event.user_name
-                                        // Diğer özellikleri ekleyin
                                     };
                                 });
                                 var defaultlastEvents = data.testlastDrives.map(function (event) {
@@ -84,9 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         };
                                     }
                                 });
-
                                 var calendarEl = document.getElementById('calendar');
-
                                 function addNewEvent(info) {
                                     document.getElementById('form-event').reset();
                                     document.getElementById('btn-delete-event').setAttribute('hidden', true);
@@ -100,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById('edit-event-btn').click();
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
                                 }
-
                                 function getInitialView() {
                                     if (window.innerWidth >= 768 && window.innerWidth < 1200) {
                                         return 'timeGridWeek';
@@ -110,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         return 'dayGridMonth';
                                     }
                                 }
-
                                 var eventCategoryChoice = new Choices("#car_id", {
                                     searchEnabled: false
                                 });
@@ -165,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.show();
                                         formEvent.reset();
                                         selectedEvent = info.event;
-
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
@@ -174,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-
                                         if (selectedEvent.classNames[0]) {
                                             eventCategoryChoice.destroy();
                                             eventCategoryChoice = new Choices("#car_id", {
@@ -212,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         document.getElementById("event-start-date-tag").innerHTML = r_date;
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
-
                                         // formEvent.classList.add("view-event");
                                         document.getElementById('btn-delete-event').removeAttribute('hidden');
                                     },
@@ -248,9 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         upcomingEvent(defaultlastEvents);
                                     }
                                 });
-
                                 calendar.render();
-
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
@@ -269,12 +254,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         var e_date = start_date;
                                     }
                                     var e_id = defaultEvents.length + 1;
-
-                                    // validation
                                     if (forms[0].checkValidity() === false) {
                                         forms[0].classList.add('was-validated');
                                     } else {
                                         if (selectedEvent) {
+                                            console.log(selectedEvent);
                                             selectedEvent.setProp("id", appointment_id);
                                             selectedEvent.setProp("title", updatedAppointment);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
@@ -296,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 //defaultEvents[indexOfSelectedEvent].location = updatedUser;
                                             }
                                             calendar.render();
-                                            // default
                                         } else {
 
                                             $.ajax({
@@ -327,14 +310,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     } else {
                                                         alert(data.message);
                                                     }
-
                                                 }
                                             });
                                         }
                                         addEvent.hide();
                                         upcomingEvent(defaultEvents);
                                     }
-
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
@@ -376,7 +357,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
                                 });
                             }
-
                         }
                     });
                 } else {
@@ -387,16 +367,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error(error);
             }
         });
-
-
     }
 });
-
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
-
-
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
     document.getElementById("car_id").classList.replace("d-block", "d-none");
@@ -409,9 +384,6 @@ function eventClicked() {
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
 }
-
-
-
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
@@ -424,8 +396,6 @@ function eventTyped() {
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
-
-// upcoming Event
 function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
@@ -475,7 +445,6 @@ function upcomingEvent(a) {
                 .split(" ")
                 .join(" ");
         }
-
         var end_dt = e_dt;
         var category = (element.className).split("-");
         var description = (element.description) ? element.description : "";
@@ -500,7 +469,6 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
-
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
@@ -509,7 +477,6 @@ function getTime(params) {
         return hour + ":" + minute;
     }
 }
-
 function tConvert(time) {
     var t = time.split(":");
     var hours = t[0];
