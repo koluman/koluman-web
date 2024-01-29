@@ -352,6 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
+                                        console.log(selectedEvent);
                                         var csrfToken = $('meta[name="csrf-token"]').attr('content');
                                         $.ajax({
                                             type: 'POST',
@@ -366,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     // Remove the event from the FullCalendar and your events array
                                                     selectedEvent.remove();
                                                     var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                                        return x.id == selectedEvent.id;
+                                                        return x.appointment_idid == selectedEvent.id;
                                                     });
                                                     if (indexOfSelectedEvent !== -1) {
                                                         defaultEvents.splice(indexOfSelectedEvent, 1);
