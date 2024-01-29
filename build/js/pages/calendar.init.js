@@ -531,3 +531,41 @@ function editEvent(data) {
         eventClicked();
     }
 }
+$("#appointment_date").change(function () {
+    // Seçilen tarihi al
+    var selectedDate = $(this).val();
+    var selectedCar=$("#car_id").val();
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/testdriveschedules',
+        data: {
+            selectedDate:selectedDate,
+            selectedCar,selectedCar,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                var options = "<option value='0'>Lütfen Randevu Süresini Seçiniz</option>";
+                // Tüm saatleri döngüye al ve dolu olanları işaretle
+                var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
+
+                for (var i = 0; i < allTimes.length; i++) {
+                    var time = allTimes[i];
+                    var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
+
+                    if (isTimeOccupied) {
+                        options += "<option value='" + time + "' disabled>" + time + " (Dolu)</option>";
+                    } else {
+                        options += "<option value='" + time + "'>" + time + "</option>";
+                    }
+                }
+                console.log(options);
+                $('#appointment_time').html('');
+                $('#appointment_time').html(options);
+            }
+
+        }
+    });
+   
+});
