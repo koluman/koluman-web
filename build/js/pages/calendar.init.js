@@ -253,7 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
-                                    var updatedCategory = document.getElementById('car_id').value;
+                                    var updatedCategory=  document.getElementById('state').value == 0 ? 'bg-danger-subtle' : ' bg-success-subtle';
+                                    var updatedCar = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
                                     var start_date = document.getElementById("appointment_date").value;
@@ -318,9 +319,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                 if (data.success == 1) {
                                                                     alert(data.message);
                                                                     var newEvent = {
-                                                                        id: e_id,
-                                                                        title: updatedUser,
-                                                                        start: start_date,
+                                                                        id: appointment_id,
+                                                                        title: updatedAppointment,
+                                                                        start: updateStartDate,
                                                                         //end: start_date,
                                                                         allDay: all_day,
                                                                         className: updatedCategory,
