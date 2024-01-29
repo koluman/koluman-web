@@ -80,7 +80,7 @@ class TestDriveController extends Controller
             $user_id = $request->user_id;
             $appointment_date = $request->appointment_date;
 
-            $affectedRows = Appointment::insert([
+            $affectedRows = Appointment::insertGetId([
                 'user_id' => $user_id,
                 'car_id' => $car_id,
                 'appointment_time' => $appointment_time,
