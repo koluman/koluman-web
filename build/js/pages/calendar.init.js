@@ -345,6 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             description: updatedCar,
                                                             location: updatedUser
                                                         };
+                                                        console.log(newEvent);
                                                         calendar.addEvent(newEvent);
                                                         defaultEvents.push(newEvent);
                                                     } else {
