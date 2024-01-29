@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         userSelect.innerHTML = "";
                                         appointmentSelect.innerHTML = "";
                                         defaultEvents.forEach(function (event) {
+                                            console.log(event);
                                             // Car select
                                             var carOption = document.createElement("option");
                                             carOption.value = event.className;
