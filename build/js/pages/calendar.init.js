@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id  : '';
                                         }
                                         upcomingEvent(defaultlastEvents);
                                     },
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         console.log(selectedEvent);
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
-                                        document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
+                                        document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
                                         document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         // Edit Modal
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             eventCategoryChoice4 = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.toString()]);
+                                            eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.car_id.toString()]);
                                         }
 
                                         if (selectedEvent._def.extendedProps.description) {
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
-                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location) ? info.event._def.extendedProps.location : '';
+                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id : '';
                                         }
                                         upcomingEvent(defaultlastEvents);
                                     }
