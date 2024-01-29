@@ -435,6 +435,7 @@ $("#appointment_date").change(function () {
                         option+= "<option value='"+time+"'>"+time+"</option>";
                     }
                 }
+                console.log(option);
                 $('#appointment_time').html('');
                 $('#appointment_time').html(option);
 
