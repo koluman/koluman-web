@@ -349,10 +349,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                             dataType: 'json',
                                             success: function (data) {
                                                 if (data.success == 1) {
-                                                    // Remove the event from the FullCalendar and your events array
                                                     selectedEvent.remove();
                                                     var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                                        return x.appointment_idid == selectedEvent.id;
+                                                        return x.appointment_id == selectedEvent.id;
                                                     });
                                                     if (indexOfSelectedEvent !== -1) {
                                                         defaultEvents.splice(indexOfSelectedEvent, 1);
