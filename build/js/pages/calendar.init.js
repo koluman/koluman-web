@@ -546,7 +546,7 @@ $("#appointment_date").change(function () {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                var options = "<option value='0'>Lütfen Randevu Süresini Seçiniz</option>";
+                var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                 // Tüm saatleri döngüye al ve dolu olanları işaretle
                 var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
 
@@ -555,13 +555,13 @@ $("#appointment_date").change(function () {
                     var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
 
                     if (isTimeOccupied) {
-                        options += "<option value='" + time + "'>" + time + "</option>";
+                        option+= "<option value='" + time + "'>" + time + "</option>";
                     } else {
-                        options += "<option value='" + time + "'>" + time + "</option>";
+                        option+= "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
                 $('#appointment_time').html('');
-                $('#appointment_time').html(options);
+                $('#appointment_time').html(option);
 
             }
 
