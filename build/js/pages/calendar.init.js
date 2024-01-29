@@ -165,29 +165,38 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
                                         if (selectedEvent.location) {
+                                            console.log("Setting car_id:", selectedEvent.location);
                                             eventCategoryChoice.destroy();
                                             eventCategoryChoice = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice.setChoiceByValue(selectedEvent.location);
-                                            
+                                        } else {
+                                            console.log("No location to set for car_id");
                                         }
+                                        
                                         if (selectedEvent.description) {
+                                            console.log("Setting user_id:", selectedEvent.description);
                                             eventCategoryChoice2.destroy();
                                             eventCategoryChoice2 = new Choices("#user_id", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice2.setChoiceByValue(selectedEvent.description);
-                                            
+                                        } else {
+                                            console.log("No description to set for user_id");
                                         }
+                                        
                                         if (selectedEvent.title) {
+                                            console.log("Setting appointment_time:", selectedEvent.title);
                                             eventCategoryChoice3.destroy();
                                             eventCategoryChoice3 = new Choices("#appointment_time", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice3.setChoiceByValue(selectedEvent.title);
-                                            
+                                        } else {
+                                            console.log("No title to set for appointment_time");
                                         }
+                                        
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
