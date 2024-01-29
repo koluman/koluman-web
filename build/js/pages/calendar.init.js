@@ -318,7 +318,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             success: function (data) {
                                                                 if (data.success == 1) {
                                                                     window.location.reload();
-                                                                    /*alert(data.message);
                                                                     var newEvent = {
                                                                         id: appointment_id,
                                                                         title: updatedAppointment,
@@ -329,9 +328,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                         description: updatedCar,
                                                                         location: updatedUser
                                                                     };
-                                                                    console.log(newEvent);
                                                                     calendar.addEvent(newEvent);
-                                                                    defaultEvents.push(newEvent);*/
+                                                                    defaultEvents.push(newEvent);
                                                                 } else {
                                                                     alert(data.message);
                                                                 }
