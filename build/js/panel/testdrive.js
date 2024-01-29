@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
-    $("#appointment_date").change(function () {
-        getdate();
-    });
+   
 });
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
