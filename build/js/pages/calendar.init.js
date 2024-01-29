@@ -281,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             }
                                             calendar.render();
                                         } else {
+                                            console.log("Eklemeye geldim");
 
                                             $.ajax({
                                                 type: 'POST',
