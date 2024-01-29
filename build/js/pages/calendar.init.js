@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
-                                    var updatedCategory=  document.getElementById('state').value == 0 ? 'bg-danger-subtle' : ' bg-success-subtle';
+                                    var updatedCategory=  'bg-danger-subtle';
                                     var updatedCar = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
