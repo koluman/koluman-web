@@ -354,11 +354,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
+                                        var csrfToken = $('meta[name="csrf-token"]').attr('content');
                                         $.ajax({
                                             type: 'POST',
                                             url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
                                             data: {
-                                                appointment_id: selectedEvent.id
+                                                appointment_id: selectedEvent.id,
+                                                _token: csrfToken, // CSRF token'ını gönder
+
                                             },
                                             dataType: 'json',
                                             success: function (data) {
