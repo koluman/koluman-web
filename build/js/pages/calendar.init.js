@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description.user_id) ? info.event._def.extendedProps.description.user_id : '';
-                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id  : '';
+                                            defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id : '';
                                         }
                                         upcomingEvent(defaultlastEvents);
                                     },
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice3.setChoiceByValue(selectedEvent.title);
-                                        } 
+                                        }
 
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
@@ -515,6 +515,7 @@ var str_dt = function formatDate(date) {
 function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
+        temizle();
         document.getElementById('modal-title').innerHTML = "";
         document.getElementById('modal-title').innerHTML = "Randevu Ekle";
         document.getElementById("btn-save-event").innerHTML = "Randevu Ekle";
@@ -530,4 +531,12 @@ function editEvent(data) {
         data.setAttribute("data-id", 'edit-event');
         eventClicked();
     }
+}
+
+function temizle() {
+    $("#car_id").val("");
+    $("#user_id").val("");
+    $("#appointment_time").val("");
+    $("#appointment_date").val("");
+    $("#appointment_id").val("");
 }
