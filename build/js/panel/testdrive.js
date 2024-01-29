@@ -54,12 +54,8 @@ $("#appointment_date").change(function () {
                         options += "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
-                console.log(options);
-
-                $("#appointment_time").html('');
-
-                // Seçenekleri HTML'e uygula
-                $("#appointment_time").html(options);
+                $('#appointment_time').html('');
+                $('#appointment_time').html(options);
             }
 
         }
