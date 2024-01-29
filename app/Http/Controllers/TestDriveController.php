@@ -49,7 +49,7 @@ class TestDriveController extends Controller
         try {
             $appointment_id = $request->appointment_id;
             $testDrive = Appointment::where('appointment_id', $appointment_id)->first();
-            if ($testDrive) {
+           /*if ($testDrive) {
                 $testDrive->delete();
                 $responseData = [
                     "success" => 1,
@@ -60,7 +60,7 @@ class TestDriveController extends Controller
                     "success" => 0,
                     "message" => "Silmek istediğiniz randevu size ait değil!",
                 ];
-            }
+            }*/
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -68,6 +68,6 @@ class TestDriveController extends Controller
             ];
         }
 
-        return response()->json($responseData);
+        return response()->json($testDrive);
     }
 }

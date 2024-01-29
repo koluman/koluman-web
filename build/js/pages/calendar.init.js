@@ -362,7 +362,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                             },
                                             dataType: 'json',
                                             success: function (data) {
-                                                if (data.success == 1) {
+                                                console.log(data);
+                                                /*if (data.success == 1) {
                                                     for (var i = 0; i < defaultEvents.length; i++) {
                                                         if (defaultEvents[i].id == selectedEvent.id) {
                                                             defaultEvents.splice(i, 1);
@@ -375,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     addEvent.hide();
                                                 } else {
                                                     alert(data.message);
-                                                }
+                                                }*/
 
                                             }
                                         });
