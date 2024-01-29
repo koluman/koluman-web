@@ -68,12 +68,6 @@ class InsuranceController extends Controller
                     'insurance_description' => $insurance_description,
                     'insurance_type' => $insurance_type,
                     'insurance_author' => $insurance_author,
-                    'insurance_policy_url'=>"",
-                    'insurance_request_date'=>"",
-                    'insurance_review_date'=>"",
-                    'insurance_result_date'=>"",
-                    'insurance_end_date'=>"",
-                    'insurance_price'=>0,
                     'insurance_state'=>0
                 ]);
                 if ($affectedRows > 0) {
