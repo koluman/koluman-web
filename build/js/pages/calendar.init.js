@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
-                                        location: event.car_id,
+                                        location: event.car_name,
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
-                                        description: event.user_id
+                                        description: event.user_name
                                         // Diğer özellikleri ekleyin
                                     };
                                 });
