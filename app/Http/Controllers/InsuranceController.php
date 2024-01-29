@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InsuranceAddRequest;
 use App\Models\Insurance;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -45,6 +46,49 @@ class InsuranceController extends Controller
             $responseData = [
                 "success" => 0,
                 "shoowroom" => "",
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
+    public function adduserinsurancelist(InsuranceAddRequest $request)
+    {
+        try {
+
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
+                $insurance_description = $request->insurance_description;
+                $insurance_type = $request->insurance_type;
+                $user_id = $u->user_id;
+                $insurance_author = $request->insurance_author;
+                $affectedRows = Insurance::insert([
+                    'user_id' => $user_id,
+                    'insurance_description' => $insurance_description,
+                    'insurance_type' => $insurance_type,
+                    'insurance_author' => $insurance_author
+                ]);
+                if ($affectedRows > 0) {
+                    $responseData = [
+                        "success" => 1,
+                        "message" => "Sigorta talebiniz başarılı bir şekilde oluşturuldu",
+                    ];
+                } else {
+                    $responseData = [
+                        "success" => 0,
+                        "message" => "Sigorta talebiniz oluşturulamadı , lütfen tekrar deneyiniz",
+                    ];
+                }
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Bir hata oluştu, lütfen tekrar deneyiniz.",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
                 "message" => $e->getMessage(),
             ];
         }

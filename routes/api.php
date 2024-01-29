@@ -36,7 +36,9 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
     Route::get('/getdealerships', [DealerShipsController::class, 'getdealerships'])->name('getdealerships');
-    Route::get('/getuserinsurancelist', [InsuranceController::class, 'getuserinsurancelist'])->name('getdegetuserinsurancelistalerships');
+    Route::get('/getuserinsurancelist', [InsuranceController::class, 'getuserinsurancelist'])->name('getuserinsurancelist');
+    Route::post('/adduserinsurancelist', [InsuranceController::class, 'adduserinsurancelist'])->name('adduserinsurancelist');
+
 
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
