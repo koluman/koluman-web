@@ -311,8 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 },
                                                 dataType: 'json',
                                                 success: function (data) {
+                                                    console.log(data);
+
                                                     if (data.success == 1) {
-                                                        console.log(data.sonuc);
                                                         /*var newEvent = {
                                                             id: appointment_id,
                                                             title: updatedAppointment,
@@ -332,8 +333,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 }
                                             });
                                         }
-                                        addEvent.hide();
-                                        upcomingEvent(defaultEvents);
+                                        //addEvent.hide();
+                                       // upcomingEvent(defaultEvents);
                                     }
 
                                 });
