@@ -155,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.show();
                                         formEvent.reset();
                                         selectedEvent = info.event;
-                                        console.log(selectedEvent);
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
@@ -282,7 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                             }
                                             calendar.render();
                                         } else {
-                                            console.log("Eklemeye geldim");
 
                                             $.ajax({
                                                 type: 'POST',
@@ -321,7 +319,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
-                                        console.log(selectedEvent);
                                         $.ajax({
                                             type: 'POST',
                                             url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
