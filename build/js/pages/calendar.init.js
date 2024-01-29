@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                                     $.ajax({
                                                         type: 'POST',
-                                                        url: 'https://mobiloby.app/koluman/web/api/deleteTestDrive',
+                                                        url: 'https://mobiloby.app/koluman/web/api/deletetestdriveappointment',
                                                         data: {
                                                             appointment_id: selectedEvent.id
                                                         },
