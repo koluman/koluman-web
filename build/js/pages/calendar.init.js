@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
                                     document.getElementById('edit-event-btn').click();
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
+                                    console.log("ffıuwjwf");
                                 }
 
                                 function getInitialView() {
