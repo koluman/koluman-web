@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     if (selectedEvent) {
                                         var csrfToken = $('meta[name="csrf-token"]').attr('content');
                                         $.ajax({
-                                            type: 'GET',
+                                            type: 'POST',
                                             url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
                                             data: {
                                                 appointment_id: selectedEvent.id,
