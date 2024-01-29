@@ -47,7 +47,6 @@ $("#appointment_date").change(function () {
                 for (var i = 0; i < allTimes.length; i++) {
                     var time = allTimes[i];
                     var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
-                    console.log(isTimeOccupied);
 
                     if (isTimeOccupied) {
                         options += "<option value='" + time + "' disabled>" + time + " (Dolu)</option>";
@@ -55,6 +54,8 @@ $("#appointment_date").change(function () {
                         options += "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
+                console.log(options);
+
                 $("#appointment_time").html('');
 
                 // Seçenekleri HTML'e uygula
