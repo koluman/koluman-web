@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.show();
                                         formEvent.reset();
                                         selectedEvent = info.event;
+                                        console.log(selectedEvent);
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
