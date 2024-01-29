@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", appointment_id);
-                                            selectedEvent.setProp("title", updatedUser);
+                                            selectedEvent.setProp("user_id", updatedUser);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
