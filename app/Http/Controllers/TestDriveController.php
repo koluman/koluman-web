@@ -19,8 +19,11 @@ class TestDriveController extends Controller
 
             $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
             $testlastDrives = Appointment::where('appointment_date', '>=', $lastWeek)
-                ->orderBy('appointment_date', 'desc')
-                ->get();
+            ->orderBy('appointment_date', 'desc')
+            ->join('users', 'appointment.user_id', '=', 'users.user_id')
+            ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
+            ->get(['appointment.*','users.*','showroom.*']);
+       
 
             if (!$testDrives->isEmpty()) {
                 $responseData = [
