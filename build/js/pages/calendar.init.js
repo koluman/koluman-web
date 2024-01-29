@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
-                                        location: event.car_name,
+                                        location: event.car_id,
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
-                                        description: event.user_name
+                                        description: event.user_id
                                         // Diğer özellikleri ekleyin
                                     };
                                 });
@@ -170,6 +170,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
+                                            
+                                        }
+                                        if (selectedEvent.description) {
+                                            eventCategoryChoice2.destroy();
+                                            eventCategoryChoice2 = new Choices("#user_id", {
+                                                searchEnabled: false
+                                            });
+                                            eventCategoryChoice2.setChoiceByValue(selectedEvent.description);
                                             
                                         }
                                         if (selectedEvent.title) {
