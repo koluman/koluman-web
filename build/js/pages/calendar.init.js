@@ -164,7 +164,20 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                        document.getElementById("appointment_time").value=selectedEvent.title;
+                                        eventCategoryChoice2.destroy();
+                                        eventCategoryChoice2 = new Choices("#appointment_time", {
+                                            searchEnabled: false
+                                        });
+                                        eventCategoryChoice2.setChoiceByValue(selectedEvent.title);
+                                        if (selectedEvent) {
+                                            eventCategoryChoice.destroy();
+                                            eventCategoryChoice = new Choices("#car_id", {
+                                                searchEnabled: false
+                                            });
+                                            eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
+
+
+                                        }
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
