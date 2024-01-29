@@ -358,27 +358,27 @@ document.addEventListener("DOMContentLoaded", function () {
                                             url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
                                             data: {
                                                 appointment_id: selectedEvent.id,
+                                                _token: csrfToken,
                                             },
-                                            headers: { 'X-CSRF-TOKEN': csrfToken },
                                             dataType: 'json',
                                             success: function (data) {
-                                                console.log(data);
-                                                 /*if (data.success == 1) {
-                                                    for (var i = 0; i < defaultEvents.length; i++) {
-                                                        if (defaultEvents[i].id == selectedEvent.id) {
-                                                            defaultEvents.splice(i, 1);
-                                                            i--;
-                                                        }
-                                                    }
-                                                   upcomingEvent(defaultEvents);
+                                                if (data.success == 1) {
+                                                    // Remove the event from the FullCalendar and your events array
                                                     selectedEvent.remove();
-                                                    selectedEvent = null;
+                                                    var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
+                                                        return x.id == selectedEvent.id;
+                                                    });
+                                                    if (indexOfSelectedEvent !== -1) {
+                                                        defaultEvents.splice(indexOfSelectedEvent, 1);
+                                                    }
+                                                    upcomingEvent(defaultEvents);
                                                     addEvent.hide();
-                                                    window.location.reload();
                                                 } else {
                                                     alert(data.message);
-                                                }*/
-
+                                                }
+                                            },
+                                            error: function (error) {
+                                                console.error(error);
                                             }
                                         });
                                     }
