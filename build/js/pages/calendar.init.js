@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         return 'dayGridMonth';
                                     }
                                 }
-                                var eventCategoryChoice = new Choices("#car_id", {
+                                var eventCategoryChoice4 = new Choices("#car_id", {
                                     searchEnabled: false
                                 });
                                 var eventCategoryChoice2 = new Choices("#user_id", {
@@ -165,11 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
                                         if (selectedEvent._def.extendedProps.location) {
-                                            eventCategoryChoice.destroy();
-                                            eventCategoryChoice = new Choices("#car_id", {
+                                            eventCategoryChoice4.destroy();
+                                            eventCategoryChoice4 = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice.setChoiceByValue(selectedEvent._def.extendedProps.location);
+                                            eventCategoryChoice4.setChoiceByValue(selectedEvent._def.extendedProps.location);
                                         }
                                         
                                         if (selectedEvent._def.extendedProps.description) {
