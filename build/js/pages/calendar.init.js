@@ -408,6 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 $("#appointment_date").change(function () {
     // Seçilen tarihi al
+    console.log("geldimm");
     var selectedDate = $("#appointment_date").val();
     var selectedCar=$("#car_id").val();
     $.ajax({
