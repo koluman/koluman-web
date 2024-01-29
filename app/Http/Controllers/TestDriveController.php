@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestDriveDeleteRequest;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,6 +42,32 @@ class TestDriveController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
+        return response()->json($responseData);
+    }
+    public function deletetestdriveappointment(TestDriveDeleteRequest $request)
+    {
+        try {
+            $appointment_id = $request->appointment_id;
+            $testDrive = Appointment::where('appointment_id', $appointment_id)->first();
+            if ($testDrive) {
+                $testDrive->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Test sürüşü başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Silmek istediğiniz randevu size ait değil!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
         return response()->json($responseData);
     }
 }

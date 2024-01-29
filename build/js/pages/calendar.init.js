@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
-                                    var updatedCategory=  'bg-danger-subtle';
+                                    var updatedCategory = 'bg-danger-subtle';
                                     var updatedCar = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
@@ -297,55 +297,39 @@ document.addEventListener("DOMContentLoaded", function () {
                                             calendar.render();
                                             // default
                                         } else {
-                                            $.ajax({
-                                                url: 'https://mobiloby.app/koluman/web/getApiToken',
-                                                type: 'GET',
-                                                success: function (response) {
-                                                    if (response.success == 1) {
-                                                        $.ajax({
-                                                            type: 'POST',
-                                                            url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
-                                                            data: {
-                                                                car_id: $("#car_id").val(),
-                                                                user_id: $("#user_id").val(),
-                                                                appointment_time: $("#appointment_time").val(),
-                                                                appointment_date: $("#appointment_date").val()
-                                                            },
-                                                            headers: {
-                                                                'Authorization': 'Bearer ' + response.token
-                                                            },
-                                                            dataType: 'json',
-                                                            success: function (data) {
-                                                                if (data.success == 1) {
-                                                                    alert(data.message);
-                                                                    var newEvent = {
-                                                                        id: appointment_id,
-                                                                        title: updatedAppointment,
-                                                                        start: updateStartDate,
-                                                                        //end: start_date,
-                                                                        allDay: all_day,
-                                                                        className: updatedCategory,
-                                                                        description: updatedCar,
-                                                                        location: updatedUser
-                                                                    };
-                                                                    console.log(newEvent);
-                                                                    calendar.addEvent(newEvent);
-                                                                    defaultEvents.push(newEvent);
-                                                                } else {
-                                                                    alert(data.message);
-                                                                }
 
-                                                            }
-                                                        });
-                                                    } else {
-                                                        alert(response.message);
-                                                    }
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
+                                                data: {
+                                                    car_id: $("#car_id").val(),
+                                                    user_id: $("#user_id").val(),
+                                                    appointment_time: $("#appointment_time").val(),
+                                                    appointment_date: $("#appointment_date").val()
                                                 },
-                                                error: function (error) {
-                                                    console.error(error);
+                                                dataType: 'json',
+                                                success: function (data) {
+                                                    if (data.success == 1) {
+                                                        alert(data.message);
+                                                        var newEvent = {
+                                                            id: appointment_id,
+                                                            title: updatedAppointment,
+                                                            start: updateStartDate,
+                                                            //end: start_date,
+                                                            allDay: all_day,
+                                                            className: updatedCategory,
+                                                            description: updatedCar,
+                                                            location: updatedUser
+                                                        };
+                                                        console.log(newEvent);
+                                                        calendar.addEvent(newEvent);
+                                                        defaultEvents.push(newEvent);
+                                                    } else {
+                                                        alert(data.message);
+                                                    }
+
                                                 }
                                             });
-
                                         }
                                         addEvent.hide();
                                         upcomingEvent(defaultEvents);
