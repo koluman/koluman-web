@@ -426,7 +426,6 @@ function eventClicked() {
 
 function eventTyped() {
     var app = document.getElementById("appointment_time");
-    
     // Eğer randevu tarihi seçili değilse, tarih seçme alanını kapat ve fonksiyonu tamamla.
     if (app.value.trim() === "0") {
         document.getElementById("appointment_time").classList.replace("d-block", "d-none")

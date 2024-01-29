@@ -24,6 +24,12 @@ function getshowroom() {
 
 
 }
+$("#appointment_date").change(function () {
+    // Seçilen tarihi al
+    var selectedDate = $(this).val();
+    console.log(selectedDate);
+   
+});
 /*
 <option value="0">Lütfen Randevu Süresini Seçiniz</option>
 <option value="09:00">09:00</option>
