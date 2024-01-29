@@ -135,7 +135,7 @@ class InsuranceController extends Controller
 
         return response()->json($responseData);
     }
-    public function upddateuserinsurancelist(InsuranceUpdateRequest $request)
+    public function updateuserinsurancelist(InsuranceUpdateRequest $request)
     {
         try {
 
