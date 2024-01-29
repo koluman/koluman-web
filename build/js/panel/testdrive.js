@@ -27,7 +27,8 @@ function getshowroom() {
 $("#appointment_date").change(function () {
     // Seçilen tarihi al
     var selectedDate = $(this).val();
-    console.log(selectedDate);
+    var selectedCar=$("#car_id").val();
+    console.log(selectedCar);
    
 });
 /*
