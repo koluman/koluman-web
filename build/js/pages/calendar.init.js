@@ -563,8 +563,8 @@ $("#appointment_date").change(function () {
                 console.log(options);
                 $('#appointment_time').html('');
                 $('#appointment_time').html(options);
-                var choicesInstance = new Choices('#appointment_time');
-                choicesInstance.update();
+                var appointmentTimeChoices = new Choices('#appointment_time', {});
+
             }
 
         }
