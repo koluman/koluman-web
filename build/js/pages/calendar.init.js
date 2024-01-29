@@ -275,24 +275,24 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", appointment_id);
-                                            //selectedEvent.setProp("title", updatedUser);
+                                            selectedEvent.setProp("title", updatedAppointment);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
                                             selectedEvent.setAllDay(all_day);
-                                            //selectedEvent.setExtendedProp("description", eventDescription);
-                                            /*selectedEvent.setExtendedProp("location", event_location);
+                                            selectedEvent.setExtendedProp("description", updatedCar);
+                                            selectedEvent.setExtendedProp("location", updatedUser);
                                             var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                                return x.id == selectedEvent.id
-                                            });*/
+                                                return x.appointment_id == selectedEvent.id
+                                            });
                                             if (defaultEvents[indexOfSelectedEvent]) {
-                                                defaultEvents[indexOfSelectedEvent].title = updatedTitle;
+                                                defaultEvents[indexOfSelectedEvent].title = updatedAppointment;
                                                 defaultEvents[indexOfSelectedEvent].start = updateStartDate;
                                                 //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                 defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                 defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                // defaultEvents[indexOfSelectedEvent].description = eventDescription;
-                                                //defaultEvents[indexOfSelectedEvent].location = event_location;
+                                                defaultEvents[indexOfSelectedEvent].description = updatedCar;
+                                                defaultEvents[indexOfSelectedEvent].location = updatedUser;
                                             }
                                             calendar.render();
                                             // default
