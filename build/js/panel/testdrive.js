@@ -55,6 +55,7 @@ $("#appointment_date").change(function () {
                         options += "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
+                $("#appointment_time").html('');
 
                 // Seçenekleri HTML'e uygula
                 $("#appointment_time").html(options);
