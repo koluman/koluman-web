@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     getapiusers();
     function getdate() {
         // Seçilen tarihi al
-        /*var selectedDate = $("#appointment_date").val();
+        var selectedDate = $("#appointment_date").val();
         var selectedCar=$("#car_id").val();
         $.ajax({
             type: 'POST',
@@ -36,22 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
                 }
     
-            }
-        });*/
-        $.ajax({
-            type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/getshowroomcars',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
-                    for (i = 0; i < data.showroomcars.length; ++i) {
-                        option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
-    
-                    }
-                    $('#appointment_time').html('');
-                    $('#appointment_time').html(option);
-                }
             }
         });
     };
