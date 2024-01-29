@@ -325,10 +325,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                         //end: start_date,
                                                                         allDay: all_day,
                                                                         className: updatedCategory,
-                                                                        //description: eventDescription,
-                                                                        //location: event_location
+                                                                        description: updatedCar,
+                                                                        location: updatedUser
                                                                     };
-
+                                                                    console.log(newEvent);
                                                                     calendar.addEvent(newEvent);
                                                                     defaultEvents.push(newEvent);
                                                                 } else {
