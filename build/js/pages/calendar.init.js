@@ -311,11 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 },
                                                 dataType: 'json',
                                                 success: function (data) {
-                                                    console.log(data);
-
                                                     if (data.success == 1) {
-                                                        /*var newEvent = {
-                                                            id: appointment_id,
+                                                        var newEvent = {
+                                                            id: data.sonuc,
                                                             title: updatedAppointment,
                                                             start: updateStartDate,
                                                             //end: start_date,
@@ -325,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             location: updatedUser
                                                         };
                                                         calendar.addEvent(newEvent);
-                                                        defaultEvents.push(newEvent);*/
+                                                        defaultEvents.push(newEvent);
                                                     } else {
                                                         alert(data.message);
                                                     }
