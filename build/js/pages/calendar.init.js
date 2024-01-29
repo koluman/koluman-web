@@ -362,21 +362,22 @@ document.addEventListener("DOMContentLoaded", function () {
                                             headers: { 'X-CSRF-TOKEN': csrfToken },
                                             dataType: 'json',
                                             success: function (data) {
-                                                if (data.success == 1) {
+                                                console.log(data);
+                                                 /*if (data.success == 1) {
                                                     for (var i = 0; i < defaultEvents.length; i++) {
                                                         if (defaultEvents[i].id == selectedEvent.id) {
                                                             defaultEvents.splice(i, 1);
                                                             i--;
                                                         }
                                                     }
-                                                    /*upcomingEvent(defaultEvents);
+                                                   upcomingEvent(defaultEvents);
                                                     selectedEvent.remove();
                                                     selectedEvent = null;
-                                                    addEvent.hide();*/
+                                                    addEvent.hide();
                                                     window.location.reload();
                                                 } else {
                                                     alert(data.message);
-                                                }
+                                                }*/
 
                                             }
                                         });
