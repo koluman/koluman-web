@@ -165,12 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
                                         if (selectedEvent.location) {
-                                            console.log("Setting car_id:", selectedEvent.location);
                                             eventCategoryChoice.destroy();
                                             eventCategoryChoice = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice.setChoiceByValue(selectedEvent.location);
+                                            eventCategoryChoice.setChoiceByValue(selectedEvent._def.extendedProps.description);
                                         } else {
                                             console.log("No location to set for car_id");
                                         }
