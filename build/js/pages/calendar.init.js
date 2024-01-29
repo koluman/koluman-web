@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
-                                        description: event.user_id
+                                        description: {
+                                            user_id: event.user_id,
+                                            user_name: event.user_name
+                                        },
                                     };
                                 });
                                 var defaultlastEvents = data.testlastDrives.map(function (event) {
@@ -145,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
-                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
+                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description.user_id) ? info.event._def.extendedProps.description.user_id : '';
                                             defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id  : '';
                                         }
                                         upcomingEvent(defaultlastEvents);
@@ -165,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
-                                        document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
+                                        document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                                         // Edit Modal
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
@@ -183,19 +186,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                             eventCategoryChoice2 = new Choices("#user_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description);
+                                            eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                                         }
 
                                         if (selectedEvent.title) {
-                                            console.log("Setting appointment_time:", selectedEvent.title);
                                             eventCategoryChoice3.destroy();
                                             eventCategoryChoice3 = new Choices("#appointment_time", {
                                                 searchEnabled: false
                                             });
                                             eventCategoryChoice3.setChoiceByValue(selectedEvent.title);
-                                        } else {
-                                            console.log("No title to set for appointment_time");
-                                        }
+                                        } 
 
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
-                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description) ? info.event._def.extendedProps.description : '';
+                                            defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description.user_id) ? info.event._def.extendedProps.description.user_id : '';
                                             defaultEvents[indexOfSelectedEvent].location = (info.event._def.extendedProps.location.car_id) ? info.event._def.extendedProps.location.car_id : '';
                                         }
                                         upcomingEvent(defaultlastEvents);
