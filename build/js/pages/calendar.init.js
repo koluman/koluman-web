@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                    
+                                        document.getElementById("appointment_time").value=selectedEvent.title;
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
