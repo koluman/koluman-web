@@ -39,15 +39,21 @@ $("#appointment_date").change(function () {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            //if (data.success == 1) {
-                // var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
-                // for (i = 0; i < data.usersall.length; ++i) {
-                //     option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
-                // }
-                // $('#user_id').html('');
-                // $('#user_id').html(option);
-            //}
+            if (data.success == 1) {
+                var options = "<option value='0'>Lütfen Randevu Süresini Seçiniz</option>";
+                var disabledOptions = "";
+                for (var i = 0; i < data.schedules.length; i++) {
+                    var schedule = data.schedules[i];
+                    var scheduleTime = schedule.appointment_time;
+                    options += "<option value='" + scheduleTime + "'>" + scheduleTime + "</option>";
+                    if (schedule.state == 0) {
+                        disabledOptions += "<option value='" + scheduleTime + "' disabled>" + scheduleTime + " (Dolu)</option>";
+                    }
+                }
+                $("#appointment_time").html(options);
+                $("#appointment_time").after("<select class='form-select d-none' name='appointment_time' id='appointment_time_disabled' required>" + disabledOptions + "</select>");
+  
+            }
 
         }
     });
