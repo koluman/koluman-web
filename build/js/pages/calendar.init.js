@@ -164,12 +164,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                        if (selectedEvent.classNames[0]) {
+                                        if (selectedEvent.location) {
                                             eventCategoryChoice.destroy();
                                             eventCategoryChoice = new Choices("#car_id", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
+                                            eventCategoryChoice.setChoiceByValue(selectedEvent.location);
                                             
                                         }
                                         if (selectedEvent.description) {
