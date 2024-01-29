@@ -307,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 //description: eventDescription,
                                                 //location: event_location
                                             };
+                                            console.log(newEvent);
                                             calendar.addEvent(newEvent);
                                             defaultEvents.push(newEvent);
                                         }
