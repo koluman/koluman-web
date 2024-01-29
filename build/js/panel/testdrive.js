@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     getapiusers();
 });
 
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function getshowroom() {
     $.ajax({
@@ -28,7 +29,28 @@ $("#appointment_date").change(function () {
     // Seçilen tarihi al
     var selectedDate = $(this).val();
     var selectedCar=$("#car_id").val();
-    console.log(selectedCar);
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/testdriveschedules',
+        data: {
+            selectedDate:selectedDate,
+            selectedCar,selectedCar,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            //if (data.success == 1) {
+                // var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
+                // for (i = 0; i < data.usersall.length; ++i) {
+                //     option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
+                // }
+                // $('#user_id').html('');
+                // $('#user_id').html(option);
+            //}
+
+        }
+    });
    
 });
 /*
@@ -48,7 +70,6 @@ $("#appointment_date").change(function () {
 <option value="16:30">16:30</option>
 <option value="17:00">17:00</option>*/
 function getapiusers() {
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getapiusers',

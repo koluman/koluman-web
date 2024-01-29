@@ -44,6 +44,8 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/deletetestdriveappointment', [TestDriveController::class, 'deletetestdriveappointment'])->name('deletetestdriveappointment');
     Route::post('/addtestdriveappointment', [TestDriveController::class, 'addtestdriveappointment'])->name('addtestdriveappointment');
     Route::post('/updatetestdriveappointment', [TestDriveController::class, 'updatetestdriveappointment'])->name('updatetestdriveappointment');
+    Route::get('/testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
+
 
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {

@@ -147,4 +147,33 @@ class TestDriveController extends Controller
         }
         return response()->json($responseData);
     }
+    public function testdriveschedules(Request $request)
+    {
+        try {
+            $selectedDate =  $request->selectedDate;
+            $selectedCar =  $request->selectedCar;
+
+            $schedules = Appointment::where('car_id', $selectedCar)
+                ->where('appointment_date', '=', $selectedDate)
+                ->get();
+            if (!$schedules->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "schedules" => $schedules,
+                    "message" => "Arabaya ait randevu listesi getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Arabaya ait randevu listesi getirelemedi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
