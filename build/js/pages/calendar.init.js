@@ -460,18 +460,15 @@ function upcomingEvent(a) {
         var category = (element.className).split("-");
         var description = (element.description) ? element.description : "";
         var e_time_s = tConvert(getTime(element.start));
-        var e_time_e = tConvert(getTime(updatedDay));
         var ss = (element.state == 0) ? "Onaylanmadı" : "Onaylandı";
-        if (e_time_s == e_time_e) {
+        if (e_time_s) {
             var e_time_s = "30 dakika";
-            var e_time_e = null;
         }
-        var e_time_e = (e_time_e) ? " to " + e_time_e : "";
         u_event = "<div class='card mb-3'>\
                         <div class='card-body'>\
                             <div class='d-flex mb-3'>\
                                 <div class='flex-grow-1'><i class='mdi mdi-checkbox-blank-circle me-2 text-" + category[1] + "'></i><span class='fw-medium'>" + startDate + " </span></div>\
-                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + e_time_e + "</small></div>\
+                                <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s+"</small></div>\
                             </div>\
                             <h6 class='card-title fs-16'> " + title + "</h6>\
                             <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
