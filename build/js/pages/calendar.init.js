@@ -560,10 +560,14 @@ $("#appointment_date").change(function () {
                         options += "<option value='" + time + "'>" + time + "</option>";
                     }
                 }
-                console.log(options);
-                $('#appointment_time').html('');
+                $('#appointment_time').destroy();
+
+                // Seçenekleri HTML'e uygula
                 $('#appointment_time').html(options);
+
+                // Choices eklentisini başlat
                 var appointmentTimeChoices = new Choices('#appointment_time', {});
+    
 
             }
 
