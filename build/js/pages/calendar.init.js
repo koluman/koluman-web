@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
                                     document.getElementById('edit-event-btn').click();
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
-                                    console.log("ffıuwjwf");
                                 }
 
                                 function getInitialView() {
@@ -253,6 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
+                                    console.log("ekleme");
                                     ev.preventDefault();
                                     var updatedCategory = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
