@@ -247,8 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updateStartDate = new Date(start_date.trim());
                                     var appointment_id = document.getElementById("appointment_id").value;
                                     var all_day = false;
-                                    console.log(appointment_id);
-
                                     if (start_date.length > 1) {
                                         start_date = new Date(start_date[0]);
                                         all_day = true;
@@ -259,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     if (forms[0].checkValidity() === false) {
                                         forms[0].classList.add('was-validated');
                                     } else {
-                                        if (selectedEvent) {
+                                        if (appointment_id) {
                                             console.log(selectedEvent);
                                             selectedEvent.setProp("id", appointment_id);
                                             selectedEvent.setProp("title", updatedAppointment);
