@@ -247,6 +247,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     var updateStartDate = new Date(start_date.trim());
                                     var appointment_id = document.getElementById("appointment_id").value;
                                     var all_day = false;
+                                    console.log(appointment_id);
+
                                     if (start_date.length > 1) {
                                         start_date = new Date(start_date[0]);
                                         all_day = true;
