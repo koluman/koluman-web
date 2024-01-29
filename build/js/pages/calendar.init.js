@@ -317,7 +317,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             dataType: 'json',
                                                             success: function (data) {
                                                                 if (data.success == 1) {
-                                                                    window.location.reload();
                                                                     var newEvent = {
                                                                         id: appointment_id,
                                                                         title: updatedAppointment,
