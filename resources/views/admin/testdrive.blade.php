@@ -136,7 +136,7 @@
                                         <div class="mb-3">
                                             <label>Randevu Tarihi</label>
                                             <div class="input-group d-none">
-                                                <input type="text" id="appointment_date" name="appointment_date" onchange="getdate()"
+                                                <input type="text" id="appointment_date" name="appointment_date" 
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Lütfen Randevu Tarihini Seçiniz" readonly required>
                                                 <span class="input-group-text"><i
