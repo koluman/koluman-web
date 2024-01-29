@@ -555,9 +555,9 @@ $("#appointment_date").change(function () {
                     var isTimeOccupied = data.schedules.some(schedule => schedule.appointment_time === time);
 
                     if (isTimeOccupied) {
-                        option+= "<option value='" + time + "'>" + time + "</option>";
+                        option+= "<option value='"+time+"'>"+time+"</option>";
                     } else {
-                        option+= "<option value='" + time + "'>" + time + "</option>";
+                        option+= "<option value='"+time+"'>"+time+"</option>";
                     }
                 }
                 $('#appointment_time').html('');
