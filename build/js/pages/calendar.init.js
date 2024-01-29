@@ -145,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         if (defaultEvents[indexOfSelectedEvent]) {
                                             defaultEvents[indexOfSelectedEvent].title = info.event.title;
                                             defaultEvents[indexOfSelectedEvent].start = info.event.start;
-                                            defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description.user_id) ? info.event._def.extendedProps.description.user_id : '';
@@ -253,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         if (defaultEvents[indexOfSelectedEvent]) {
                                             defaultEvents[indexOfSelectedEvent].title = info.event.title;
                                             defaultEvents[indexOfSelectedEvent].start = info.event.start;
-                                            defaultEvents[indexOfSelectedEvent].end = (info.event.end) ? info.event.end : null;
                                             defaultEvents[indexOfSelectedEvent].allDay = info.event.allDay;
                                             defaultEvents[indexOfSelectedEvent].className = info.event.classNames[0];
                                             defaultEvents[indexOfSelectedEvent].description = (info.event._def.extendedProps.description.user_id) ? info.event._def.extendedProps.description.user_id : '';
@@ -277,10 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     if (start_date.length > 1) {
                                         start_date = new Date(start_date[0]);
                                         all_day = true;
-                                    } else {
-                                        var e_date = start_date;
                                     }
-                                    var e_id = defaultEvents.length + 1;
                                     if (forms[0].checkValidity() === false) {
                                         forms[0].classList.add('was-validated');
                                     } else {
@@ -303,7 +298,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         selectedEvent.setProp("title", updatedAppointment);
                                                         selectedEvent.setProp("classNames", [updatedCategory]);
                                                         selectedEvent.setStart(updateStartDate);
-                                                        //selectedEvent.setEnd(updateEndDate);
                                                         selectedEvent.setAllDay(all_day);
                                                         selectedEvent.setExtendedProp("description", updatedCar);
                                                         selectedEvent.setExtendedProp("location", updatedUser);
@@ -313,7 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         if (defaultEvents[indexOfSelectedEvent]) {
                                                             defaultEvents[indexOfSelectedEvent].title = updatedAppointment;
                                                             defaultEvents[indexOfSelectedEvent].start = updateStartDate;
-                                                            //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                             defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                             defaultEvents[indexOfSelectedEvent].className = updatedCategory;
                                                             defaultEvents[indexOfSelectedEvent].description = updatedCar;
@@ -345,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             id: data.sonuc,
                                                             title: updatedAppointment,
                                                             start: updateStartDate,
-                                                            //end: start_date,
                                                             allDay: all_day,
                                                             className: updatedCategory,
                                                             description: updatedCar,
