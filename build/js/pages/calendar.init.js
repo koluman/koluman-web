@@ -425,12 +425,11 @@ function eventClicked() {
 }
 
 function eventTyped() {
-    var appointmentDateInput = document.getElementById("appointment_date");
+    var app = document.getElementById("appointment_time");
     
     // Eğer randevu tarihi seçili değilse, tarih seçme alanını kapat ve fonksiyonu tamamla.
-    if (appointmentDateInput.value.trim() === "") {
+    if (app.value.trim() === "0") {
         document.getElementById("appointment_time").classList.replace("d-block", "d-none")
-        return;
     }
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
