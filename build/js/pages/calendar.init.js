@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
-                                        location: event.car_name,
+                                        location: event.car_id,
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
-                                        description: event.user_name
+                                        description: event.user_id
                                     };
                                 });
                                 var defaultlastEvents = data.testlastDrives.map(function (event) {
