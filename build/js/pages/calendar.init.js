@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     } else {
                                         if (selectedEvent) {
                                             selectedEvent.setProp("id", appointment_id);
-                                            //selectedEvent.setProp("title", updatedTitle);
+                                            selectedEvent.setProp("title", updatedUser);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
                                             //selectedEvent.setEnd(updateEndDate);
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         } else {
                                             var newEvent = {
                                                 id: e_id,
-                                                //title: updatedTitle,
+                                                title: updatedUser,
                                                 start: start_date,
                                                 //end: end_date,
                                                 allDay: all_day,
@@ -313,6 +313,46 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.hide();
                                         upcomingEvent(defaultEvents);
                                     }
+                                       /*$.ajax({
+                                        url: 'https://mobiloby.app/koluman/web/getApiToken',
+                                        type: 'GET',
+                                        success: function (response) {
+                                            if (response.success == 1) {
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
+                                                    data: {
+                                                        car_id: $("#car_id").val(),
+                                                        user_id:$("#user_id").val(),
+                                                        appointment_time:$("#appointment_time").val(),
+                                                        appointment_date:$("#appointment_date").val()
+                                                    },
+                                                    headers: {
+                                                        'Authorization': 'Bearer ' + response.token
+                                                    },
+                                                    dataType: 'json',
+                                                    success: function (data) {
+                                                        if (data.success == 1) {
+                                                            alert(data.message);
+                                                            flatpicekrValueClear();
+                                                            addNewEvent();
+                                                            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
+                                                            document.getElementById('edit-event-btn').click();
+                                                            document.getElementById("edit-event-btn").setAttribute("hidden", true);
+                                                        } else {
+                                                            alert(data.message);
+                                                        }
+
+                                                    }
+                                                });
+                                            } else {
+                                                alert(response.message);
+                                            }
+                                        },
+                                        error: function (error) {
+                                            console.error(error);
+                                        }
+                                    });*/
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
@@ -367,47 +407,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
                                     document.getElementById('edit-event-btn').click();
                                     document.getElementById("edit-event-btn").setAttribute("hidden", true);
-                                    /*$.ajax({
-                                        url: 'https://mobiloby.app/koluman/web/getApiToken',
-                                        type: 'GET',
-                                        success: function (response) {
-                                            if (response.success == 1) {
-                                                $.ajax({
-                                                    type: 'POST',
-                                                    url: 'https://mobiloby.app/koluman/web/api/addtestdriveappointment',
-                                                    data: {
-                                                        car_id: $("#car_id").val(),
-                                                        user_id:$("#user_id").val(),
-                                                        appointment_time:$("#appointment_time").val(),
-                                                        appointment_date:$("#appointment_date").val()
-                                                    },
-                                                    headers: {
-                                                        'Authorization': 'Bearer ' + response.token
-                                                    },
-                                                    dataType: 'json',
-                                                    success: function (data) {
-                                                        if (data.success == 1) {
-                                                            alert(data.message);
-                                                            flatpicekrValueClear();
-                                                            addNewEvent();
-                                                            document.getElementById("edit-event-btn").setAttribute("data-id", "new-event");
-                                                            document.getElementById('edit-event-btn').click();
-                                                            document.getElementById("edit-event-btn").setAttribute("hidden", true);
-                                                        } else {
-                                                            alert(data.message);
-                                                        }
-
-                                                    }
-                                                });
-                                            } else {
-                                                alert(response.message);
-                                            }
-                                        },
-                                        error: function (error) {
-                                            console.error(error);
-                                        }
-                                    });*/
-
                                 });
                             }
 
