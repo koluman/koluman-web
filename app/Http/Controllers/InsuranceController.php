@@ -68,7 +68,7 @@ class InsuranceController extends Controller
                     'insurance_description' => $insurance_description,
                     'insurance_type' => $insurance_type,
                     'insurance_author' => $insurance_author,
-                    'insurance_state'=>0
+                    'insurance_state'=>1
                 ]);
                 if ($affectedRows > 0) {
                     $responseData = [
