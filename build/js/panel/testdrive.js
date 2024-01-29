@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
+    $("#appointment_date").change(function () {
+        getdate();
+    });
 });
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -23,9 +26,7 @@ function getshowroom() {
         }
     });
 }
-$("#appointment_date").change(function () {
-    getdate();
-});
+
 function getdate() {
     // Seçilen tarihi al
     /*var selectedDate = $("#appointment_date").val();
