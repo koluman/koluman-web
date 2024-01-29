@@ -101,15 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                         return 'dayGridMonth';
                                     }
                                 }
-                                var eventCategoryChoice = new Choices("#car_id", {
-                                    searchEnabled: false
-                                });
-                                var eventCategoryChoice2 = new Choices("#user_id", {
-                                    searchEnabled: false
-                                });
-                                var eventCategoryChoice3 = new Choices("#appointment_time", {
-                                    searchEnabled: false
-                                });
+                                var carSelect = document.getElementById("car_id");
+                                var userSelect = document.getElementById("user_id");
+                                var appointmentSelect = document.getElementById("appointment_time");
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                     timeZone: 'local',
                                     editable: true,
@@ -163,13 +157,33 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                        if (selectedEvent.classNames[0]) {
-                                            eventCategoryChoice.destroy();
-                                            eventCategoryChoice = new Choices("#car_id", {
-                                                searchEnabled: false
-                                            });
-                                            eventCategoryChoice.setChoiceByValue(selectedEvent.classNames[0]);
-                                        }
+                                        carSelect.innerHTML = "";
+                                        userSelect.innerHTML = "";
+                                        appointmentSelect.innerHTML = "";
+                                        defaultEvents.forEach(function (event) {
+                                            // Car select
+                                            var carOption = document.createElement("option");
+                                            carOption.value = event.className;
+                                            carOption.text = event.className;
+                                            carSelect.add(carOption);
+                                        
+                                            // User select
+                                            var userOption = document.createElement("option");
+                                            userOption.value = event.user_id; // Bu kısmı veri yapınıza göre ayarlayın
+                                            userOption.text = event.user_name; // Bu kısmı veri yapınıza göre ayarlayın
+                                            userSelect.add(userOption);
+                                        
+                                            // Appointment time select
+                                            var appointmentOption = document.createElement("option");
+                                            appointmentOption.value = event.appointment_time; // Bu kısmı veri yapınıza göre ayarlayın
+                                            appointmentOption.text = event.appointment_time; // Bu kısmı veri yapınıza göre ayarlayın
+                                            appointmentSelect.add(appointmentOption);
+                                        });
+                                        
+                                        // Choices kütüphanesini tekrar initialize etmek
+                                        eventCategoryChoice = new Choices("#car_id", { searchEnabled: false });
+                                        eventCategoryChoice2 = new Choices("#user_id", { searchEnabled: false });
+                                        eventCategoryChoice3 = new Choices("#appointment_time", { searchEnabled: false });                                        
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
