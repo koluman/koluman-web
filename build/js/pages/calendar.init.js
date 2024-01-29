@@ -427,9 +427,7 @@ function eventClicked() {
 function eventTyped() {
     var app = document.getElementById("appointment_time");
     // Eğer randevu tarihi seçili değilse, tarih seçme alanını kapat ve fonksiyonu tamamla.
-    if (app.value.trim() === "0") {
-        document.getElementById("appointment_time").classList.replace("d-block", "d-none")
-    }
+
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
     document.getElementById("user_id").classList.replace("d-none", "d-block");
