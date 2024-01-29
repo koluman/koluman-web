@@ -258,9 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
                                     var updatedCategory = 'bg-danger-subtle';
-                                    var updatedCar = $("#car_id").text();
+                                    var updatedCar = $("#car_id").val();
                                     var updatedAppointment = document.getElementById('appointment_time').value;
-                                    var updatedUser = $("#user_id").text();
+                                    var updatedUser = $("#user_id").val();
                                     var start_date = document.getElementById("appointment_date").value;
                                     var updateStartDate = new Date(start_date.trim());
                                     var appointment_id = document.getElementById("appointment_id").value;
@@ -296,8 +296,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         selectedEvent.setStart(updateStartDate);
                                                         //selectedEvent.setEnd(updateEndDate);
                                                         selectedEvent.setAllDay(all_day);
-                                                        //selectedEvent.setExtendedProp("description", updatedCar);
-                                                        //selectedEvent.setExtendedProp("location", updatedUser);
+                                                        selectedEvent.setExtendedProp("description", updatedCar);
+                                                        selectedEvent.setExtendedProp("location", updatedUser);
                                                         var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
                                                             return x.appointment_id == selectedEvent.id
                                                         });
@@ -307,8 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             //defaultEvents[indexOfSelectedEvent].end = updateEndDate;
                                                             defaultEvents[indexOfSelectedEvent].allDay = all_day;
                                                             defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                            //defaultEvents[indexOfSelectedEvent].description = updatedCar;
-                                                            //defaultEvents[indexOfSelectedEvent].location = updatedUser;
+                                                            defaultEvents[indexOfSelectedEvent].description = updatedCar;
+                                                            defaultEvents[indexOfSelectedEvent].location = updatedUser;
                                                         }
                                                         calendar.render();
                                                     } else {
