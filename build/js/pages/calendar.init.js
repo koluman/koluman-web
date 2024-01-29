@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 upcomingEvent(defaultlastEvents);
                                 formEvent.addEventListener('submit', function (ev) {
                                     ev.preventDefault();
-                                    var updatedCategory=  'bg-danger-subtle';
+                                    var updatedCategory = 'bg-danger-subtle';
                                     var updatedCar = document.getElementById('car_id').value;
                                     var updatedAppointment = document.getElementById('appointment_time').value;
                                     var updatedUser = document.getElementById('user_id').value;
@@ -355,48 +355,30 @@ document.addEventListener("DOMContentLoaded", function () {
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
                                     if (selectedEvent) {
                                         $.ajax({
-                                            url: 'https://mobiloby.app/koluman/web/getApiToken',
-                                            type: 'GET',
-                                            success: function (response) {
-                                                if (response.success == 1) {
-
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: 'https://mobiloby.app/koluman/web/api/deletetestdriveappointment',
-                                                        data: {
-                                                            appointment_id: selectedEvent.id
-                                                        },
-                                                        headers: {
-                                                            'Authorization': 'Bearer ' + response.token
-                                                        },
-                                                        dataType: 'json',
-                                                        success: function (data) {
-                                                            if (data.success == 1) {
-                                                                for (var i = 0; i < defaultEvents.length; i++) {
-                                                                    if (defaultEvents[i].id == selectedEvent.id) {
-                                                                        defaultEvents.splice(i, 1);
-                                                                        i--;
-                                                                    }
-                                                                }
-                                                                upcomingEvent(defaultEvents);
-                                                                selectedEvent.remove();
-                                                                selectedEvent = null;
-                                                                addEvent.hide();
-                                                            } else {
-                                                                alert(data.message);
-                                                            }
-
-                                                        }
-                                                    });
-                                                } else {
-                                                    alert(response.message);
-                                                }
+                                            type: 'POST',
+                                            url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
+                                            data: {
+                                                appointment_id: selectedEvent.id
                                             },
-                                            error: function (error) {
-                                                console.error(error);
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                if (data.success == 1) {
+                                                    for (var i = 0; i < defaultEvents.length; i++) {
+                                                        if (defaultEvents[i].id == selectedEvent.id) {
+                                                            defaultEvents.splice(i, 1);
+                                                            i--;
+                                                        }
+                                                    }
+                                                    upcomingEvent(defaultEvents);
+                                                    selectedEvent.remove();
+                                                    selectedEvent = null;
+                                                    addEvent.hide();
+                                                } else {
+                                                    alert(data.message);
+                                                }
+
                                             }
                                         });
-
                                     }
                                 });
                                 document.getElementById("btn-new-event").addEventListener("click", function (e) {
