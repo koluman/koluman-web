@@ -541,13 +541,13 @@ function editEvent(data) {
         document.getElementById("btn-save-event").innerHTML = "Randevu Ekle";
         eventTyped();
     } else if (data_id == 'edit-event') {
-        data.innerHTML = "Cancel";
+        data.innerHTML = "Kapat";
         data.setAttribute("data-id", 'cancel-event');
         document.getElementById("btn-save-event").innerHTML = "Randevu Güncelle";
         data.removeAttribute("hidden");
         eventTyped();
     } else {
-        data.innerHTML = "Edit";
+        data.innerHTML = "Güncelle";
         data.setAttribute("data-id", 'edit-event');
         eventClicked();
     }
