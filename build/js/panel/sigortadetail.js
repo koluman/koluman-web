@@ -25,6 +25,7 @@ function getdetail(id){
         },
         success: function (data) {
             if (data.success == 1) {
+                console.log(data);
                 $("#insurance_review_date").val(data.sigortaid.insurance_review_date);
                 $("#insurance_result_date").val(data.sigortaid.insurance_result_date);
                 $("#insurance_request_date").val(data.sigortaid.insurance_request_date);
