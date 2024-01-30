@@ -30,8 +30,7 @@
         <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center gap-2">
-                <img class="rounded header-profile-user"
-                    src="{{ URL::asset('build/images/users/avatar-1.jpg') }}"
+                <img class="rounded header-profile-user" src="{{ URL::asset('build/images/users/avatar-1.jpg') }}"
                     alt="Header Avatar">
                 <span class="text-start">
                     <span class="d-block fw-medium sidebar-user-name-text">fddsfsdf</span>
@@ -43,7 +42,7 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <h6 class="dropdown-header">Hoşgeldin hgjjghj!</h6>
+            <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->backuser_name }}!</h6>
             <a class="dropdown-item" href="pages-profile"><i
                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Profile</span></a>
@@ -98,35 +97,49 @@
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu -->
-               @if(Auth::guard('web')->user()->backuser_role=='admin')
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarUsers">
-                        <i class="ri-account-circle-line"></i> <span>@lang('translation.user')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarUsers">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="adminusers" class="nav-link">@lang('translation.userlist')</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarTestDrive" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarTestDrive">
-                        <i class="ri-apps-2-line"></i> <span>@lang('translation.testdrive')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarTestDrive">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="admintestdrive" class="nav-link">@lang('translation.testdrivelist')</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> 
+                @if (Auth::guard('web')->user()->backuser_role == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarUsers">
+                            <i class="ri-account-circle-line"></i> <span>@lang('translation.user')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarUsers">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="adminusers" class="nav-link">@lang('translation.userlist')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarTestDrive" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarTestDrive">
+                            <i class="ri-apps-2-line"></i> <span>@lang('translation.testdrive')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarTestDrive">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="admintestdrive" class="nav-link">@lang('translation.testdrivelist')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 @endif
-               
+                @if (Auth::guard('web')->user()->backuser_role == 'sigorta')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarSigorta" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarSigorta">
+                            <i class="ri-apps-2-line"></i> <span>@lang('translation.sigorta')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarSigorta">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="adminsigorta" class="nav-link">@lang('translation.sigortalist')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
             </ul>
         </div>

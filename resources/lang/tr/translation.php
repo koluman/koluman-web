@@ -6,6 +6,8 @@ return [
     "userlist" => "Kullanıcı Listesi",
     "testdrive" => "Test Sürüş İşlemleri",
     "testdrivelist" => "Test Sürüş Listesi",
+    "sigorta" => "Sigorta İşlemleri",
+    "sigortalist" => "Sigorta Listesi",
     "analytics" => "Analiz",
     "crm" => "CRM",
     "ecommerce" => "E-ticaret",
