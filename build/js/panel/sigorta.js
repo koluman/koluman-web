@@ -5,8 +5,6 @@ let sigortadata = [];
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function sigorta() {
-    console.log("ff");
-
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
@@ -17,16 +15,17 @@ function sigorta() {
         dataType: 'json',
         success: function (data) {
 
-            if(data.success==1){
+            if (data.success == 1) {
                 sigortadata = data.sigortaall;
                 let son = sigortalist(sigortadata);
                 $("#sigortalist").html('');
                 $("#sigortalist").html(son);
             }
-         
+
         }
     });
 }
+
 function sigortalist(data) {
     var s = "";
     let j = 0;
@@ -68,4 +67,141 @@ function sigortalist(data) {
     }
     return s;
 
+}
+
+function filterSigortaByState(role) {
+    return sigortadata.filter(user => user.backuser_role === role);
+}
+
+var selectedTab = "All";
+
+$("ul.nav-tabs-custom li.nav-item").on("click", function () {
+    var clickedId = $(this).find("a").attr("id");
+    let sonn = "";
+    let veri = "";
+    if (selectedTab !== clickedId) {
+        selectedTab = clickedId;
+        filterAndSearch();
+    }
+    switch (clickedId) {
+        case "All":
+            sonn = sigortalist(sigortadata);
+            break;
+        case "1":
+            veri = filterSigortaByState("1");
+            sonn = sigortalist(veri);
+            break;
+        case "2":
+            veri = filterSigortaByState("2");
+            sonn = sigortalist(veri);
+            break;
+        case "3":
+            veri = filterSigortaByState("ku3llanici");
+            sonn = sigortalist(veri);
+            break;
+        case "4":
+            veri = filterSigortaByState("4");
+            sonn = sigortalist(veri);
+            break;
+        default:
+            break;
+    }
+    $("#sigortalist").html('');
+    $("#sigortalist").html(sonn);
+});
+$(document).on("input", '.search', function () {
+    var searchText = $(this).val().toLowerCase();
+    var filteredData = sigortadata.filter(function (sigorta) {
+        return (
+            sigorta.user_name.toLowerCase().includes(searchText) ||
+            sigorta.insurance_type.toLowerCase().includes(searchText) ||
+            sigorta.insurance_description.toLowerCase().includes(searchText) ||
+            sigorta.insurance_price.includes(searchText)
+        );
+    });
+    var son = sigortalist(filteredData);
+    $("#sigortalist").html('');
+    $("#sigortalist").html(son);
+});
+
+$(document).on("input", '.search', function () {
+    // Arama yapıldığında filtreleme yap
+    filterAndSearch();
+});
+
+function filterAndSearch() {
+    var searchText = $('.search').val().toLowerCase();
+
+    // Seçilen sekmeye göre kullanıcıları filtrele
+    var filteredData = sigortadata;
+    if (selectedTab !== "All") {
+        filteredData = filterSigortaByState(selectedTab.toLowerCase());
+    }
+
+    // Arama yap
+    filteredData = filteredData.filter(function (sigorta) {
+        return (
+            sigorta.user_name.toLowerCase().includes(searchText) ||
+            sigorta.insurance_type.toLowerCase().includes(searchText) ||
+            sigorta.insurance_description.toLowerCase().includes(searchText) ||
+            sigorta.insurance_price.includes(searchText)
+        );
+    });
+
+    // Listeyi güncelle
+    var son = sigortalist(filteredData);
+    $("#sigortalist").html('');
+    $("#sigortalist").html(son);
+}
+
+function SearchData() {
+    var selectedDateRange = $("#demo-datepicker").val();
+    var selectedStatus = $("#idStatus").val();
+    var searchText = $('.search').val().toLowerCase();
+
+    // Filtreleme ve arama işlemleri
+    var filteredData = sigortadata;
+
+    // Tarih filtresi
+    if (selectedDateRange) {
+        filteredData = filteredData.filter(function (sigorta) {
+            var sigortaDate = new Date(sigorta.insurance_end_date);
+            return sigortaDate >= new Date(selectedDateRange[0]) && sigortaDate <= new Date(selectedDateRange[1]);
+        });
+    }
+
+    // Yetki filtresi
+    if (selectedStatus && selectedStatus !== "all") {
+        filteredData = filteredData.filter(function (sigorta) {
+            return sigorta.insurance_state === selectedStatus;
+        });
+    }
+
+    // Arama filtresi
+    if (searchText) {
+        filteredData = filteredData.filter(function (sigorta) {
+            return (
+                sigorta.user_name.toLowerCase().includes(searchText) ||
+                sigorta.insurance_type.toLowerCase().includes(searchText) ||
+                sigorta.insurance_description.toLowerCase().includes(searchText) ||
+                sigorta.insurance_price.includes(searchText)
+            );
+        });
+    }
+
+    // Listeyi güncelle
+    updatePageWithFilteredData(filteredData);
+}
+
+function updatePageWithFilteredData(filteredData) {
+    var son = sigortalist(filteredData);
+    $("#sigortalist").html('');
+    $("#sigortalist").html(son);
+}
+
+
+function updatePageWithFilteredData(filteredData) {
+    var son = sigortalist(filteredData);
+    $("#sigortalist").html('');
+    $("#sigortalist").html(son);
 }
