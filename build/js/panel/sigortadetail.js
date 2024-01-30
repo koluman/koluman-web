@@ -33,6 +33,8 @@ function getdetail(id){
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
                 $("#insurance_end_date").val(a.insurance_end_date);
+                $("#user_id").val(a.user_id);
+                $("#insurance_state").val(a.insurance_state);
 
             }
 
