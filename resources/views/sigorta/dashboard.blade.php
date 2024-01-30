@@ -10,8 +10,6 @@
 
 <div class="row">
     <div class="col">
-        @dump(Auth::guard('web')->user())
-
         <div class="h-100">
             <div class="row mb-3 pb-1">
                 <div class="col-12">
