@@ -14,9 +14,10 @@ function sigorta() {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data);
+
             if(data.success==1){
                 sigortadata = data.sigortaall;
-                console.log(sigortadata);
                 let son = sigortalist(sigortadata);
                 $("#sigortalist").html('');
                 $("#sigortalist").html(son);
