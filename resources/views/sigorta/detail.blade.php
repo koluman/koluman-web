@@ -135,7 +135,6 @@
                     <div>
                         <label for="choices-privacy-status-input" class="form-label">Durum</label>
                         <select class="form-select" id="insurance_state" name="insurance_state">
-                            <option value="0" selected>Lütfen Seçiniz</option>
                             <option value="1">Talep Oluştu</option>
                             <option value="2">İncelemede</option>
                             <option value="3">Teklif Oluştu</option>
