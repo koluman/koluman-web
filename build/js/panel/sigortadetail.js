@@ -25,12 +25,12 @@ function getdetail(id){
         },
         success: function (data) {
             if (data.success == 1) {
-                console.log(data);
-                $("#insurance_review_date").val(data.sigortaid.insurance_review_date);
-                $("#insurance_result_date").val(data.sigortaid.insurance_result_date);
-                $("#insurance_request_date").val(data.sigortaid.insurance_request_date);
-                $("#insurance_price").val(data.sigortaid.insurance_price);
-                $("#insurance_description").text(data.sigortaid.insurance_description);
+                let a=data.sigortaid[0];
+                $("#insurance_review_date").val(a.insurance_review_date);
+                $("#insurance_result_date").val(a.insurance_result_date);
+                $("#insurance_request_date").val(a.insurance_request_date);
+                $("#insurance_price").val(a.insurance_price);
+                $("#insurance_description").text(a.insurance_description);
 
             }
 
