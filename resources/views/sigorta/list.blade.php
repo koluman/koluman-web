@@ -72,22 +72,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="1" href="#1" role="tab" aria-selected="false">
+                            <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="Talep" href="#Talep" role="tab" aria-selected="false">
                                 <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Talepler
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="2" href="#2" role="tab" aria-selected="false">
+                            <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="İnceleme" href="#İnceleme" role="tab" aria-selected="false">
                                 <i class="ri-truck-line me-1 align-bottom"></i> İncelemede <span class="badge bg-danger align-middle ms-1">2</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="3" href="#3" role="tab" aria-selected="false">
+                            <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="Teklif" href="#Teklif" role="tab" aria-selected="false">
                                 <i class="ri-arrow-left-right-fill me-1 align-bottom"></i>Teklifler
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="4" href="#4" role="tab" aria-selected="false">
+                            <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="Aktif" href="#Aktif" role="tab" aria-selected="false">
                                 <i class="ri-close-circle-line me-1 align-bottom"></i> Aktif
                             </a>
                         </li>

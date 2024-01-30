@@ -84,23 +84,23 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
         filterAndSearch();
     }
     console.log(clickedId);
-   /* switch (clickedId) {
+    switch (clickedId) {
         case "All":
             sonn = sigortalist(sigortadata);
             break;
-        case "1":
+        case "Talep":
             veri = filterSigortaByState("1");
             sonn = sigortalist(veri);
             break;
-        case "2":
+        case "İnceleme":
             veri = filterSigortaByState("2");
             sonn = sigortalist(veri);
             break;
-        case "3":
+        case "Teklif":
             veri = filterSigortaByState("ku3llanici");
             sonn = sigortalist(veri);
             break;
-        case "4":
+        case "Aktif":
             veri = filterSigortaByState("4");
             sonn = sigortalist(veri);
             break;
@@ -108,7 +108,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             break;
     }
     $("#sigortalist").html('');
-    $("#sigortalist").html(sonn);*/
+    $("#sigortalist").html(sonn);
 });
 $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
