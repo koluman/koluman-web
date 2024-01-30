@@ -56,7 +56,6 @@ Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function
     Route::post('/getallsigorta', [SigortaHomeController::class, 'getallsigorta'])->name('getallsigorta');
     Route::get('sigortadetail/{id}', [SigortaHomeController::class, 'sigortadetail'])->name('sigortadetail');;
     Route::post('getbyIdSigorta', [SigortaHomeController::class, 'getbyIdSigorta'])->name('getbyIdSigorta');;
-    Route::post('/getapiusers', [UserController::class, 'getapiusers'])->name('getapiusers');
 
-    
+
 });

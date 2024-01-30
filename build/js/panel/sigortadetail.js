@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    getapiusers();
     var id = getIdFromUrl();
     getdetail(id);
 });
@@ -15,29 +14,7 @@ function getIdFromUrl() {
         return null;
     }
 }
-function getapiusers() {
-    $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getapiusers',
-        data: {
-            _token: csrfToken, // CSRF token'ını gönder
-        },
-        dataType: 'json',
-        success: function (data) {
-            if (data.success == 1) {
-                console.log(data);
-                var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
-                for (i = 0; i < data.usersall.length; ++i) {
-                    option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
-                }
-                $('#user_id').html('');
-                $('#user_id').html(option);
-            }
 
-        }
-    });
-
-}
 function getdetail(id){
     $.ajax({
         type: 'POST',

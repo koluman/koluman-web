@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sigorta;
 
 use App\Http\Controllers\Controller;
 use App\Models\Insurance;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SigortaHomeController extends Controller
@@ -18,7 +19,8 @@ class SigortaHomeController extends Controller
     }
     public function sigortadetail(Request $request, $id)
     {
-        return view('sigorta.detail');
+        $users = User::get();
+        return view('sigorta.detail',compact('users'));
 
     }
     public function getallsigorta(Request $request)
