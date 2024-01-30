@@ -18,17 +18,15 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                  
-                     <div class="row">
-                     
+
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3 mb-lg-0">
                                 <label for="choices-status-input" class="form-label">Poliçe Bitiş TArihi</label>
-                               <input type="text" class="form-control" id="enddate"
-                                    placeholder="Enter due date" >
+                                <input type="text" class="form-control" id="enddate" placeholder="Enter due date">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6 mb-3">
                             <div>
                                 <label for="datepicker-deadline-input" class="form-label">Poliçe Tarih</label>
                                 <input type="text" class="form-control" id="datepicker-deadline-input"
@@ -36,11 +34,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">SigortaAçıklama</label>
-                     <textarea class="form-control" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label">SigortaAçıklama</label>
+                            <textarea class="form-control" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                        </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
