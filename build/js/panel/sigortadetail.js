@@ -42,7 +42,7 @@ function getdetail(id) {
 
                     // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
                     var mockFile = {
-                        name: "PDF", // PDF dosya adı
+                        name: "Poliçe PDF", // PDF dosya adı
                         size: 12345 // PDF dosya boyutu (değiştirebilirsiniz)
                     };
 
@@ -54,9 +54,9 @@ function getdetail(id) {
                     // Dropzone önizleme listesini güncelleyin
                     dropzone.files.push(mockFile);
 
-                    // Dropzone'un içindeki tüm dosyaları temizle
+                } else {
+                    // PDF dosyası yoksa Dropzone'u temizle
                     dropzone.removeAllFiles();
-
                 }
 
             }
