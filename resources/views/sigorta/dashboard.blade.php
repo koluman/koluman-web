@@ -1275,7 +1275,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div> <!-- end card-->
         </div> <!-- end .rightbar-->
