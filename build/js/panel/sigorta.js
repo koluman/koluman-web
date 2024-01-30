@@ -39,8 +39,8 @@ function sigortalist(data) {
         s += '    </div>';
         s += '</th>';
         s += '<td class="id"><a href="apps-ecommerce-order-details" class="fw-medium link-primary">#' + j + '</a></td>';
-        s += '<td hidden class="user">' + data[i].backuser_id + '</td>';
-        s += '<td class="username">' + data[i].backuser_name + '</td>';
+        s += '<td hidden class="user">' + data[i].user_id + '</td>';
+        s += '<td class="username">' + data[i].user_name + '</td>';
         s += '<td class="insurancetype">' + data[i].insurance_type + '</td>';
         s += '<td class="insuranceprice">' + data[i].insurance_price + '</td>';
         s += '<td class="insurancedescription">' + data[i].insurance_description + '</td>';
