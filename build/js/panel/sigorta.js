@@ -123,7 +123,7 @@ $(document).on("input", '.search', function () {
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
 });
-
+/*
 $(document).on("input", '.search', function () {
     // Arama yapıldığında filtreleme yap
     filterAndSearch();
@@ -134,7 +134,6 @@ function filterAndSearch() {
 
     // Seçilen sekmeye göre kullanıcıları filtrele
     var filteredData = sigortadata;
-    console.log(filteredData);
     if (selectedTab !== "All") {
         filteredData = filterSigortaByState(selectedTab.toLowerCase());
     }
@@ -153,7 +152,7 @@ function filterAndSearch() {
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
 }
-
+*/
 function SearchData() {
     var selectedDateRange = $("#demo-datepicker").val();
     var selectedStatus = $("#idStatus").val();
@@ -187,8 +186,6 @@ function SearchData() {
             );
         });
     }
-
-    // Listeyi güncelle
     updatePageWithFilteredData(filteredData);
 }
 
