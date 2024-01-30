@@ -50,10 +50,10 @@
                                         name="choices-single-default" id="idStatus">
                                         <option value="">Lütfen seçim yapınız</option>
                                         <option value="all" selected>Hepsi</option>
-                                        <option value="talep">Talep Oluştu</option>
-                                        <option value="inceleme">İncelemede</option>
-                                        <option value="teklif">Teklif Oluştu</option>
-                                        <option value="aktif">Aktif</option>
+                                        <option value="1">Talep Oluştu</option>
+                                        <option value="2">İncelemede</option>
+                                        <option value="3">Teklif Oluştu</option>
+                                        <option value="4">Aktif</option>
                                     </select>
                                 </div>
                             </div>

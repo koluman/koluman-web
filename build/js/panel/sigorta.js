@@ -154,21 +154,10 @@ function filterAndSearch() {
 }
 
 function SearchData() {
-    var selectedDateRange = $("#demo-datepicker").val();
     var selectedStatus = $("#idStatus").val();
     var searchText = $('.search').val().toLowerCase();
-
     // Filtreleme ve arama işlemleri
     var filteredData = sigortadata;
-
-    // Tarih filtresi
-    if (selectedDateRange) {
-        filteredData = filteredData.filter(function (sigorta) {
-            var sigortaDate = new Date(sigorta.insurance_end_date);
-            return sigortaDate >= new Date(selectedDateRange[0]) && sigortaDate <= new Date(selectedDateRange[1]);
-        });
-    }
-
     // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (sigorta) {
