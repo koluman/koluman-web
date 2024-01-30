@@ -177,7 +177,7 @@
             </div>
 
             <div class="text-end mb-4">
-                <button type="submit" class="btn btn-success w-sm">İncelemeye Al</button>
+                <button type="submit" class="btn btn-info w-sm">İncelemeye Al</button>
                 <button type="submit" class="btn btn-secondary w-sm">Sonuçlandırıldı</button>
             </div>
             <!-- end card -->
