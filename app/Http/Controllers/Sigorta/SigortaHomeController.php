@@ -16,7 +16,7 @@ class SigortaHomeController extends Controller
     {
         return view('sigorta.list');
     }
-    public function sigortadetail(Request $request)
+    public function sigortadetail($id)
     {
         return view('sigorta.detail');
     }
@@ -24,9 +24,9 @@ class SigortaHomeController extends Controller
     {
         try {
             $sigortaall = Insurance::select('insurance.*', 'a.*')
-            ->join('users as a', 'insurance.user_id', '=', 'a.user_id')
-            ->orderBy('insurance_id', 'desc')
-            ->get();
+                ->join('users as a', 'insurance.user_id', '=', 'a.user_id')
+                ->orderBy('insurance_id', 'desc')
+                ->get();
             if ($sigortaall->isEmpty()) {
                 $responseData = [
                     "sigortaall" => "",
