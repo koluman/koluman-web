@@ -157,7 +157,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="choices-lead-input" class="form-label">Kullanıcı Listesi</label>
-                        <select class="form-select" data-choices data-choices-search-false name="user_id" id="user_id">
+                        <select class="form-select d-none" name="user_id" id="user_id">
                           
                         </select>
                     </div>
