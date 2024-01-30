@@ -5,6 +5,8 @@ let sigortadata = [];
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function sigorta() {
+    console.log("ff");
+
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
@@ -14,7 +16,6 @@ function sigorta() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
 
             if(data.success==1){
                 sigortadata = data.sigortaall;
