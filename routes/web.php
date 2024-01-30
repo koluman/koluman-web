@@ -54,6 +54,6 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
-    Route::get('/adminsigorta', [SigortaHomeController::class, 'sigorta'])->name('admin.sigorta');
+    Route::get('/sigorta', [SigortaHomeController::class, 'sigorta'])->name('sigorta');
 
 });

@@ -134,7 +134,7 @@
                         <div class="collapse menu-dropdown" id="sidebarSigorta">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="adminsigorta" class="nav-link">@lang('translation.sigortalist')</a>
+                                    <a href="sigorta" class="nav-link">@lang('translation.sigortalist')</a>
                                 </li>
                             </ul>
                         </div>
