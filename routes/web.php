@@ -46,8 +46,6 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/addtestdriveappointment', [TestDriveController::class, 'addtestdriveappointment'])->name('addtestdriveappointment');
     Route::post('/updatetestdriveappointment', [TestDriveController::class, 'updatetestdriveappointment'])->name('updatetestdriveappointment');
     Route::post('/testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
-
-
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
@@ -55,5 +53,6 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
     Route::get('/sigortalist', [SigortaHomeController::class, 'sigorta'])->name('sigorta.list');
+    Route::post('/getallsigorta', [SigortaHomeController::class, 'getallsigorta'])->name('getallsigorta');
 
 });

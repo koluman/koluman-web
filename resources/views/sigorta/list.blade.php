@@ -6,8 +6,8 @@
 @endsection
 @section('content')
 @component('components.breadcrumb')
-@slot('li_1') Kullanıcılar @endslot
-@slot('title') Kullanıcı Ekle @endslot
+@slot('li_1') Sigorta @endslot
+@slot('title') Sigorta Talep Et @endslot
 @endcomponent
 
 <div class="row">
@@ -16,11 +16,11 @@
             <div class="card-header border-0">
                 <div class="row align-items-center gy-3">
                     <div class="col-sm">
-                        <h5 class="card-title mb-0">Kullanıcılar</h5>
+                        <h5 class="card-title mb-0">Sigorta Listesi</h5>
                     </div>
                     <div class="col-sm-auto">
                         <div class="d-flex gap-1 flex-wrap">
-                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Kullanıcı Ekle</button>
+                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Sigorta Talep Et</button>
                             <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="row g-3">
                         <div class="col-xxl-7 col-sm-6">
                             <div class="search-box">
-                                <input type="text" class="form-control search" placeholder="Kullanıcı ara...">
+                                <input type="text" class="form-control search" placeholder="Sigorta ara...">
                                 <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
@@ -41,10 +41,10 @@
                                 <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus">
                                     <option value="">Lütfen seçim yapınız</option>
                                     <option value="all" selected>Hepsi</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="kullanici">Genel Kullanıcı</option>
-                                    <option value="sigorta">Sigorta</option>
-                                    <option value="servis">Servis</option>
+                                    <option value="1">Talep Oluştu</option>
+                                    <option value="2">İncelemede</option>
+                                    <option value="3">Teklif Oluştu</option>
+                                    <option value="4">Aktif</option>
                                 </select>
                             </div>
                         </div>
@@ -68,34 +68,30 @@
                     <ul class="nav nav-tabs nav-tabs-custom nav-success mb-3" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active All py-3" data-bs-toggle="tab" id="All" href="#home1" role="tab" aria-selected="true">
-                                <i class="ri-store-2-fill me-1 align-bottom"></i> Tüm Kullanıcılar
+                                <i class="ri-store-2-fill me-1 align-bottom"></i> Hepsi
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="Admin" href="#admin" role="tab" aria-selected="false">
-                                <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Admin
+                            <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="1" href="#1" role="tab" aria-selected="false">
+                                <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Talepler
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="Ajans" href="#ajans" role="tab" aria-selected="false">
-                                <i class="ri-truck-line me-1 align-bottom"></i> Medya ve Ajans <span class="badge bg-danger align-middle ms-1">2</span>
+                            <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="2" href="#2" role="tab" aria-selected="false">
+                                <i class="ri-truck-line me-1 align-bottom"></i> İncelemede <span class="badge bg-danger align-middle ms-1">2</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="Kullanici" href="#kullanici" role="tab" aria-selected="false">
-                                <i class="ri-arrow-left-right-fill me-1 align-bottom"></i>Genel Kullanici
+                            <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="3" href="#3" role="tab" aria-selected="false">
+                                <i class="ri-arrow-left-right-fill me-1 align-bottom"></i>Teklifler
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="Sigorta" href="#sigorta" role="tab" aria-selected="false">
-                                <i class="ri-close-circle-line me-1 align-bottom"></i> Sigorta
+                            <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="4" href="#4" role="tab" aria-selected="false">
+                                <i class="ri-close-circle-line me-1 align-bottom"></i> Aktif
                             </a>
                         </li>
-                          <li class="nav-item">
-                            <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="Servis" href="#servis" role="tab" aria-selected="false">
-                                <i class="ri-close-circle-line me-1 align-bottom"></i> Servis
-                            </a>
-                        </li>
+                        
                     </ul>
 
                     <div class="table-responsive table-card mb-1">
@@ -109,14 +105,14 @@
                                     </th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="user_name">Kullanıcı Adı</th>
-                                    <th class="sort" data-sort="user_mail">E-posta</th>
-                                    <th class="sort" data-sort="user_phone">Telefon</th>
-                                    <th class="sort" data-sort="user_role">Yetki</th>
-                                    <th class="sort" data-sort="user_register_date">Kayıt Tarihi</th>
+                                    <th class="sort" data-sort="insurance_type">Sigorta Türü</th>
+                                    <th class="sort" data-sort="insurance_price">Fiyat</th>
+                                    <th class="sort" data-sort="insurance_description">Açıklama</th>
+                                    <th class="sort" data-sort="insurance_state">Durum</th>
                                     <th class="sort" data-sort="action">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody class="list form-check-all" id="userlist">
+                            <tbody class="list form-check-all" id="sigortalist">
                               
                             </tbody>
                         </table>
@@ -226,7 +222,7 @@
 <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ URL::asset('build/js/app.js') }}"></script>
-{{--<script src="{{ URL::asset('build/js/panel/backusers.js') }}"></script>--}}
+{{--<script src="{{ URL::asset('build/js/panel/sigorta.js') }}"></script>--}}
 
 
 @endsection
