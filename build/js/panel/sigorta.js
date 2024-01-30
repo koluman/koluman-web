@@ -176,7 +176,6 @@ function SearchData() {
             );
         });
     }
-    console.log(filteredData);
 
     updatePageWithFilteredData(filteredData);
 }
