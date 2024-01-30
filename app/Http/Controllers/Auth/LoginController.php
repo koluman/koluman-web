@@ -47,6 +47,7 @@ class LoginController extends Controller
             $redirectRoute = match ($userRole) {
                 'admin' => 'admindashboard',
                 'ajans' => 'ajansdashboard',
+                'sigorta' => 'sigortadashboard',
                 default => 'userdashboard',
             };
             $responseData = [
