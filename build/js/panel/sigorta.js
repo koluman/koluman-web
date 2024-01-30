@@ -158,6 +158,7 @@ function SearchData() {
     var searchText = $('.search').val().toLowerCase();
     // Filtreleme ve arama işlemleri
     var filteredData = sigortadata;
+    console.log(selectedStatus);
     // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (sigorta) {
