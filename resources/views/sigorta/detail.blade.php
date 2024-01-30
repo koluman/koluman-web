@@ -132,14 +132,18 @@
                 <button type="submit" class="btn btn-success w-sm">Create</button>
             </div>
         </div>
-          <div class="text-end mb-12">
-                <button type="submit" class="btn btn-danger w-sm">Delete</button>
-                <button type="submit" class="btn btn-secondary w-sm">Draft</button>
-                <button type="submit" class="btn btn-success w-sm">Create</button>
-            </div>
         <!-- end col -->
         <div class="col-lg-4">
-         
+            <div class="text-end mb-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-danger w-sm">Delete</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-secondary w-sm">Draft</button>
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">Durum</h5>
