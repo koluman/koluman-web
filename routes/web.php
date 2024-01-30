@@ -8,6 +8,7 @@ use App\Http\Controllers\Ajans\AjansHomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShoowroomController;
+use App\Http\Controllers\Sigorta\SigortaHomeController;
 use App\Http\Controllers\TestDriveController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,5 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
-    Route::get('/sigortadashboard', [AjansHomeController::class, 'dashboard'])->name('sigorta.dashboard');
+    Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
 });
