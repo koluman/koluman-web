@@ -25,8 +25,12 @@ function getdetail(id){
         },
         success: function (data) {
             if (data.success == 1) {
-                $("")
-               
+                $("#insurance_review_date").val(data.sigortaid.insurance_review_date);
+                $("#insurance_result_date").val(data.sigortaid.insurance_result_date);
+                $("#insurance_request_date").val(data.sigortaid.insurance_request_date);
+                $("#insurance_price").val(data.sigortaid.insurance_price);
+                $("#insurance_description").text(data.sigortaid.insurance_description);
+
             }
 
         }
