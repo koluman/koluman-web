@@ -16,10 +16,9 @@ class SigortaHomeController extends Controller
     {
         return view('sigorta.list');
     }
-    public function sigortadetail(Request $request)
+    public function sigortadetail(Request $request, $id)
     {
-       // $detay = Insurance::find($id);
-        return view('sigorta.detail'); //compact('detay')
+        return view('sigorta.detail');
 
     }
     public function getallsigorta(Request $request)

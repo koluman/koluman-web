@@ -18,37 +18,32 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label" for="project-title-input">Project Title</label>
-                        <input type="text" class="form-control" id="project-title-input" placeholder="Enter project title">
-                    </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="project-thumbnail-img">Thumbnail Image</label>
-                        <input class="form-control" id="project-thumbnail-img" type="file"
-                            accept="image/png, image/gif, image/jpeg">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Project Description</label>
-                        <div id="ckeditor-classic">
-                            <p>It will be as simple as occidental in fact, it will be Occidental. To an English person, it
-                                will seem like simplified English, as a skeptical Cambridge friend of mine told me what
-                                Occidental is. The European languages are members of the same family. Their separate
-                                existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.</p>
-                            <ul>
-                                <li>Product Design, Figma (Software), Prototype</li>
-                                <li>Four Dashboards : Ecommerce, Analytics, Project etc.</li>
-                                <li>Create calendar, chat and email app pages.</li>
-                                <li>Add authentication pages</li>
-                            </ul>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3 mb-lg-0">
+                                <label for="choices-status-input" class="form-label">Poliçe Bitiş TArihi</label>
+                                <input type="text" class="form-control" id="enddate" placeholder="Enter due date">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <div>
+                                <label for="datepicker-deadline-input" class="form-label">Poliçe Tarih</label>
+                                <input type="text" class="form-control" id="datepicker-deadline-input"
+                                    placeholder="Enter due date" data-provider="flatpickr">
+                            </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <label class="form-label">SigortaAçıklama</label>
+                            <textarea class="form-control" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
-                                <label for="choices-priority-input" class="form-label">Priority</label>
+                                <label for="choices-priority-input" class="form-label">Talep Tarihi</label>
                                 <select class="form-select" data-choices data-choices-search-false
                                     id="choices-priority-input">
                                     <option value="High" selected>High</option>
@@ -59,7 +54,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
-                                <label for="choices-status-input" class="form-label">Status</label>
+                                <label for="choices-status-input" class="form-label">İnceleme Tarihi</label>
                                 <select class="form-select" data-choices data-choices-search-false
                                     id="choices-status-input">
                                     <option value="Inprogress" selected>Inprogress</option>
@@ -69,7 +64,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div>
-                                <label for="datepicker-deadline-input" class="form-label">Deadline</label>
+                                <label for="datepicker-deadline-input" class="form-label">Sonuç Tarihi</label>
                                 <input type="text" class="form-control" id="datepicker-deadline-input"
                                     placeholder="Enter due date" data-provider="flatpickr">
                             </div>
@@ -82,7 +77,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Attached files</h5>
+                    <h5 class="card-title mb-0">Poliçe PDf</h5>
                 </div>
                 <div class="card-body">
                     <div>
@@ -132,25 +127,26 @@
             </div>
             <!-- end card -->
             <div class="text-end mb-4">
-                <button type="submit" class="btn btn-danger w-sm">Delete</button>
-                <button type="submit" class="btn btn-secondary w-sm">Draft</button>
-                <button type="submit" class="btn btn-success w-sm">Create</button>
+                <button type="submit" class="btn btn-danger w-sm">Sil</button>
+                <button type="submit" class="btn btn-success w-sm">Sigorta Talebi Oluştur</button>
             </div>
         </div>
         <!-- end col -->
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Privacy</h5>
+                    <h5 class="card-title mb-0">Durum</h5>
                 </div>
                 <div class="card-body">
                     <div>
-                        <label for="choices-privacy-status-input" class="form-label">Status</label>
+                        <label for="choices-privacy-status-input" class="form-label">Durum</label>
                         <select class="form-select" data-choices data-choices-search-false
                             id="choices-privacy-status-input">
-                            <option value="Private" selected>Private</option>
-                            <option value="Team">Team</option>
-                            <option value="Public">Public</option>
+                            <option value="0" selected>Lütfen Seçiniz</option>
+                            <option value="1">Talep Oluştu</option>
+                            <option value="2">İncelemede</option>
+                            <option value="3">Teklif Oluştu</option>
+                            <option value="4">Aktif</option>
                         </select>
                     </div>
                 </div>
@@ -158,37 +154,15 @@
             </div>
             <!-- end card -->
 
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Tags</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="choices-categories-input" class="form-label">Categories</label>
-                        <select class="form-select" data-choices data-choices-search-false id="choices-categories-input">
-                            <option value="Designing" selected>Designing</option>
-                            <option value="Development">Development</option>
-                        </select>
-                    </div>
 
-                    <div>
-                        <label for="choices-text-input" class="form-label">Skills</label>
-                        <input class="form-control" id="choices-text-input" data-choices
-                            data-choices-limit="Required Limit" placeholder="Enter Skills" type="text"
-                            value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs" />
-                    </div>
-                </div>
-                <!-- end card body -->
-            </div>
-            <!-- end card -->
 
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Members</h5>
+                    <h5 class="card-title mb-0">Kullanıcılar</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="choices-lead-input" class="form-label">Team Lead</label>
+                        <label for="choices-lead-input" class="form-label">Kullanıcı Listesi</label>
                         <select class="form-select" data-choices data-choices-search-false id="choices-lead-input">
                             <option value="Brent Gonzalez" selected>Brent Gonzalez</option>
                             <option value="Darline Williams">Darline Williams</option>
@@ -198,43 +172,13 @@
                             <option value="Mark Williams">Mark Williams</option>
                         </select>
                     </div>
-
-                    <div>
-                        <label class="form-label">Team Members</label>
-                        <div class="avatar-group">
-                            <a href="javascript: void(0);" class="avatar-group-item material-shadow" data-bs-toggle="tooltip"
-                                data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
-                                <div class="avatar-xs">
-                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt="" class="rounded-circle img-fluid">
-                                </div>
-                            </a>
-                            <a href="javascript: void(0);" class="avatar-group-item material-shadow" data-bs-toggle="tooltip"
-                                data-bs-trigger="hover" data-bs-placement="top" title="Sylvia Wright">
-                                <div class="avatar-xs">
-                                    <div class="avatar-title rounded-circle bg-secondary">
-                                        S
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript: void(0);" class="avatar-group-item material-shadow" data-bs-toggle="tooltip"
-                                data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
-                                <div class="avatar-xs">
-                                    <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt="" class="rounded-circle img-fluid">
-                                </div>
-                            </a>
-                            <a href="javascript: void(0);" class="avatar-group-item material-shadow" data-bs-toggle="tooltip"
-                                data-bs-trigger="hover" data-bs-placement="top" title="Add Members">
-                                <div class="avatar-xs" data-bs-toggle="modal" data-bs-target="#inviteMembersModal">
-                                    <div
-                                        class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
-                                        +
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <!-- end card body -->
+            </div>
+
+            <div class="text-end mb-4">
+                <button type="submit" class="btn btn-info w-sm">İncelemeye Al</button>
+                <button type="submit" class="btn btn-secondary w-sm">Sonuçlandırıldı</button>
             </div>
             <!-- end card -->
         </div>
@@ -267,7 +211,8 @@
                             <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
                                 data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                 <div class="avatar-xs">
-                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt="" class="rounded-circle img-fluid">
+                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt=""
+                                        class="rounded-circle img-fluid">
                                 </div>
                             </a>
                             <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
@@ -281,7 +226,8 @@
                             <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
                                 data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                 <div class="avatar-xs">
-                                    <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt="" class="rounded-circle img-fluid">
+                                    <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt=""
+                                        class="rounded-circle img-fluid">
                                 </div>
                             </a>
                         </div>
@@ -290,7 +236,8 @@
                         <div class="vstack gap-3">
                             <div class="d-flex align-items-center">
                                 <div class="avatar-xs flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                    <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}" alt=""
+                                        class="img-fluid rounded-circle">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Nancy Martino</a>
@@ -308,7 +255,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Henry Baird</a></h5>
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Henry Baird</a>
+                                    </h5>
                                 </div>
                                 <div class="flex-shrink-0">
                                     <button type="button" class="btn btn-light btn-sm">Add</button>
@@ -317,10 +265,12 @@
                             <!-- end member item -->
                             <div class="d-flex align-items-center">
                                 <div class="avatar-xs flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt=""
+                                        class="img-fluid rounded-circle">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Frank Hook</a></h5>
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Frank Hook</a>
+                                    </h5>
                                 </div>
                                 <div class="flex-shrink-0">
                                     <button type="button" class="btn btn-light btn-sm">Add</button>
@@ -329,10 +279,12 @@
                             <!-- end member item -->
                             <div class="d-flex align-items-center">
                                 <div class="avatar-xs flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                    <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt=""
+                                        class="img-fluid rounded-circle">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Jennifer Carter</a>
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Jennifer
+                                            Carter</a>
                                     </h5>
                                 </div>
                                 <div class="flex-shrink-0">
@@ -357,7 +309,8 @@
                             <!-- end member item -->
                             <div class="d-flex align-items-center">
                                 <div class="avatar-xs flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-7.jpg') }}" alt="" class="img-fluid rounded-circle">
+                                    <img src="{{ URL::asset('build/images/users/avatar-7.jpg') }}" alt=""
+                                        class="img-fluid rounded-circle">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Joseph Parker</a>
@@ -384,8 +337,8 @@
     <!-- end modal -->
 @endsection
 @section('script')
-    <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
-    <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/pages/project-create.init.js') }}"></script>
-    <script src="{{ URL::asset('build/js/app.js') }}"></script>
+    <script src="{{asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+    <script src="{{asset('build/libs/dropzone/dropzone-min.js') }}"></script>
+    <script src="{{asset('build/js/pages/project-create.init.js') }}"></script>
+    <script src="{{asset('build/js/app.js') }}"></script>
 @endsection
