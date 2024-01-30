@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mobil;
 
+use App\Http\Controllers\Controller;
 use App\Models\DealerShips;
 use Illuminate\Http\Request;
 

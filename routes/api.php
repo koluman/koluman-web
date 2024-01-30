@@ -1,8 +1,7 @@
 <?php
-
-use App\Http\Controllers\DealerShipsController;
-use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\Mobil\AnnouncementController;
+use App\Http\Controllers\Mobil\DealerShipsController;
+use App\Http\Controllers\Mobil\InsuranceController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
 use App\Http\Controllers\Mobil\TestDriveController;

@@ -19,7 +19,10 @@ class SigortaHomeController extends Controller
     public function getallsigorta(Request $request)
     {
         try {
-            $sigortaall = Insurance::orderBy('insurance_id', 'desc')->get();
+            $sigortaall = Insurance::select('insurance.*', 'a.*')
+            ->join('users as a', 'insurance.user_id', '=', 'a.user_id')
+            ->orderBy('insurance_id', 'desc')
+            ->get();
             if ($sigortaall->isEmpty()) {
                 $responseData = [
                     "sigortaall" => "",

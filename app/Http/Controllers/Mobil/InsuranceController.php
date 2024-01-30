@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Mobil;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\InsuranceAddRequest;
 use App\Http\Requests\InsuranceDeleteRequest;
 use App\Http\Requests\InsuranceUpdateRequest;
