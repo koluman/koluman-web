@@ -11,4 +11,8 @@ class SigortaHomeController extends Controller
     {
         return view('sigorta.dashboard');
     }
+    public function sigorta(Request $request)
+    {
+        return view('admin.sigorta');
+    }
 }
