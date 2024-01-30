@@ -20,12 +20,7 @@
                 <div class="card-body">
 
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3 mb-lg-0">
-                                <label for="choices-status-input" class="form-label">Poliçe Bitiş TArihi</label>
-                                <input type="text" class="form-control" id="enddate" placeholder="Enter due date">
-                            </div>
-                        </div>
+                      
                         <div class="col-lg-6 mb-3">
                             <div>
                                 <label for="datepicker-deadline-input" class="form-label">Poliçe Tarih</label>
