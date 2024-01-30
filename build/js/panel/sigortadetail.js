@@ -35,7 +35,25 @@ function getdetail(id){
                 $("#insurance_end_date").val(a.insurance_end_date);
                 $("#insurance_state").val(a.insurance_state);
                 $("#user_id").val(a.user_id);
-                $("#polid").text("Police PDF");
+                if (a.insurance_policy_url) {
+                    $("#polid").text("Police PDF");
+                    document.querySelector("#poldiv").style.display = "none";
+
+                    // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
+                    var mockFile = {
+                        name: a.insurance_policy_url, // PDF dosya adı
+                        size: 12345 // PDF dosya boyutu (değiştirebilirsiniz)
+                    };
+
+                    // Dropzone'a dosyanın eklenmiş gibi işlemesi için mockFile'ı ekleyin
+                    dropzone.emit("addedfile", mockFile);
+                    dropzone.emit("thumbnail", mockFile, ""); // Varsa bir önizleme görseli ekleyin
+                    dropzone.emit("complete", mockFile); // Dosyanın yükleme tamamlandı olarak işaretle
+
+                    // Dropzone önizleme listesini güncelleyin
+                    dropzone.files.push(mockFile);
+                
+            }
 
             }
 
