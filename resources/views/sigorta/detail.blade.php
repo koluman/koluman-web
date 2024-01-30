@@ -22,51 +22,45 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3 mb-lg-0">
-                                <label for="choices-status-input" class="form-label">Poliçe Bitiş TArihi</label>
-                                <input type="text" class="form-control" id="enddate" placeholder="Enter due date">
+                                <label for="choices-status-input" class="form-label">Poliçe Fiyat</label>
+                                <input type="text" class="form-control" id="insurance_price" name="insurance_price">
                             </div>
                         </div>
                         <div class="col-lg-6 mb-3">
                             <div>
-                                <label for="datepicker-deadline-input" class="form-label">Poliçe Tarih</label>
-                                <input type="text" class="form-control" id="datepicker-deadline-input"
-                                    placeholder="Enter due date" data-provider="flatpickr">
+                                <label for="datepicker-deadline-input" class="form-label">Poliçe Bitiş Tarih</label>
+                                <input type="text" class="form-control" id="insurance_end_date" name="insurance_end_date"
+                                    data-provider="flatpickr">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 mb-3">
-                            <label class="form-label">SigortaAçıklama</label>
-                            <textarea class="form-control" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                            <label class="form-label">Sigorta Açıklama</label>
+                            <textarea class="form-control" name="insurance_description" id="insurance_description" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
                                 <label for="choices-priority-input" class="form-label">Talep Tarihi</label>
-                                <select class="form-select" data-choices data-choices-search-false
-                                    id="choices-priority-input">
-                                    <option value="High" selected>High</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Low">Low</option>
-                                </select>
+                                <input type="text" class="form-control" id="insurance_request_date"
+                                    name="insurance_request_date">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
                                 <label for="choices-status-input" class="form-label">İnceleme Tarihi</label>
-                                <select class="form-select" data-choices data-choices-search-false
-                                    id="choices-status-input">
-                                    <option value="Inprogress" selected>Inprogress</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
+                                <input type="text" class="form-control" id="insurance_review_date"
+                                    name="insurance_review_date">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div>
                                 <label for="datepicker-deadline-input" class="form-label">Sonuç Tarihi</label>
-                                <input type="text" class="form-control" id="datepicker-deadline-input"
-                                    placeholder="Enter due date" data-provider="flatpickr">
+                                <input type="text" class="form-control" id="insurance_result_date"
+                                    name="insurance_result_date">
+
                             </div>
                         </div>
                     </div>
