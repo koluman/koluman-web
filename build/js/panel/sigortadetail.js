@@ -33,13 +33,18 @@ function getdetail(id){
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
                 $("#insurance_end_date").val(a.insurance_end_date);
-        
-                var choices = new Choices('#insurance_state', {
-                    // Choices.js yapılandırma seçenekleri
+                var choice= new Choices("#insurance_state", {
+                    searchEnabled: false
                 });
+                if (a.insurance_state) {
+                    choice.destroy();
+                    choice = new Choices("#insurance_state", {
+                        searchEnabled: false
+                    });
+                    choice.setChoiceByValue([a.insurance_state]);
+                }
+
                 
-                // Değiştirmek istediğiniz seçili değeri ayarlayın
-                choices.setValue([a.insurance_state]);
 
             }
 
