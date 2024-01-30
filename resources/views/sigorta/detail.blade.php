@@ -134,14 +134,12 @@
         </div>
         <!-- end col -->
         <div class="col-lg-4">
-            <div class="text-end mb-4">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <button type="submit" class="btn btn-danger w-sm">Delete</button>
-                    </div>
-                    <div class="col-lg-6">
-                        <button type="submit" class="btn btn-secondary w-sm">Draft</button>
-                    </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-danger w-sm">Delete</button>
+                </div>
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-secondary w-sm">Draft</button>
                 </div>
             </div>
             <div class="card">
