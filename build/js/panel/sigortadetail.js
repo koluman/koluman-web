@@ -33,15 +33,8 @@ function getdetail(id){
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
                 $("#insurance_end_date").val(a.insurance_end_date);
-                
-                if (a.user_id) {
-                    user_id.destroy();
-                    user_id = new Choices("#user_id", {
-                        searchEnabled: false
-                    });
-                    user_id.setChoiceByValue([a.user_id.toString()]);
-                }
-                $("#insurance_state option:selected").val(a.insurance_state);
+        
+                $("#insurance_state").val(a.insurance_state);
 
             }
 
