@@ -110,6 +110,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
     $("#sigortalist").html('');
     $("#sigortalist").html(sonn);
 });
+/*
 $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
     var filteredData = sigortadata.filter(function (sigorta) {
@@ -205,4 +206,4 @@ function updatePageWithFilteredData(filteredData) {
     var son = sigortalist(filteredData);
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
-}
+}*/
