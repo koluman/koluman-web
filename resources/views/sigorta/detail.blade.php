@@ -156,7 +156,6 @@
                     <div class="mb-3">
                         <label for="choices-lead-input" class="form-label">Kullanıcı Listesi</label>
                         <select class="form-select" data-choices data-choices-search-false id="user_id" name="user_id">
-                            <option value="0">Lütfen Seçim Yapınız</option>
                             @foreach ($users as $u)
                                 <option value="{{ $u->user_id }}">{{ $u->user_name . ' (' . $u->user_phone . ')' }}
                                 </option>

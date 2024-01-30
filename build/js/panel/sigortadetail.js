@@ -34,6 +34,7 @@ function getdetail(id){
                 $("#insurance_description").text(a.insurance_description);
                 $("#insurance_end_date").val(a.insurance_end_date);
                 $("#insurance_state").val(a.insurance_state);
+                $("#user_id").val(a.user_id);
 
                 var choice= new Choices("#insurance_state", {
                     searchEnabled: false
