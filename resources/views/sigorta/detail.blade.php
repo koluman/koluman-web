@@ -157,13 +157,8 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="choices-lead-input" class="form-label">Kullanıcı Listesi</label>
-                        <select class="form-select" data-choices data-choices-search-false id="choices-lead-input">
-                            <option value="Brent Gonzalez" selected>Brent Gonzalez</option>
-                            <option value="Darline Williams">Darline Williams</option>
-                            <option value="Sylvia Wright">Sylvia Wright</option>
-                            <option value="Ellen Smith">Ellen Smith</option>
-                            <option value="Jeffrey Salazar">Jeffrey Salazar</option>
-                            <option value="Mark Williams">Mark Williams</option>
+                        <select class="form-select" data-choices data-choices-search-false name="user_id" id="user_id">
+                          
                         </select>
                     </div>
                 </div>
