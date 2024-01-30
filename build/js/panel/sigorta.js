@@ -79,11 +79,10 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
     var clickedId = $(this).find("a").attr("id");
     let sonn = "";
     let veri = "";
-    /*if (selectedTab !== clickedId) {
+    if (selectedTab !== clickedId) {
         selectedTab = clickedId;
         filterAndSearch();
-    }*/
-    console.log(clickedId);
+    }
     switch (clickedId) {
         case "All":
             sonn = sigortalist(sigortadata);
@@ -97,7 +96,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             sonn = sigortalist(veri);
             break;
         case "Teklif":
-            veri = filterSigortaByState("ku3llanici");
+            veri = filterSigortaByState("3");
             sonn = sigortalist(veri);
             break;
         case "Aktif":
@@ -110,7 +109,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
     $("#sigortalist").html('');
     $("#sigortalist").html(sonn);
 });
-/*
+
 $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
     var filteredData = sigortadata.filter(function (sigorta) {
@@ -206,4 +205,4 @@ function updatePageWithFilteredData(filteredData) {
     var son = sigortalist(filteredData);
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
-}*/
+}
