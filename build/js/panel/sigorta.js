@@ -158,13 +158,11 @@ function SearchData() {
     var searchText = $('.search').val().toLowerCase();
     // Filtreleme ve arama işlemleri
     var filteredData = sigortadata;
-    console.log(selectedStatus);
-    console.log(filteredData);
 
-    // Yetki filtresi
+    // Status filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (sigorta) {
-            return sigorta.insurance_state === selectedStatus;
+            return sigorta.insurance_state == selectedStatus;
         });
     }
 
@@ -178,6 +176,8 @@ function SearchData() {
             );
         });
     }
+    console.log(filteredData);
+
     updatePageWithFilteredData(filteredData);
 }
 
