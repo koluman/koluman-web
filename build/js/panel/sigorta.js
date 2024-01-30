@@ -123,6 +123,36 @@ $(document).on("input", '.search', function () {
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
 });
+
+$(document).on("input", '.search', function () {
+    // Arama yapıldığında filtreleme yap
+    filterAndSearch();
+});
+
+function filterAndSearch() {
+    var searchText = $('.search').val().toLowerCase();
+
+    // Seçilen sekmeye göre kullanıcıları filtrele
+    var filteredData = sigortadata;
+    if (selectedTab !== "All") {
+        filteredData = filterSigortaByState(selectedTab.toLowerCase());
+    }
+
+    // Arama yap
+    filteredData = filteredData.filter(function (sigorta) {
+        return (
+            sigorta.user_name.toLowerCase().includes(searchText) ||
+            sigorta.insurance_type.toLowerCase().includes(searchText) ||
+            sigorta.insurance_description.toLowerCase().includes(searchText)
+        );
+    });
+
+    // Listeyi güncelle
+    var son = sigortalist(filteredData);
+    $("#sigortalist").html('');
+    $("#sigortalist").html(son);
+}
+
 function SearchData() {
     var selectedDateRange = $("#demo-datepicker").val();
     var selectedStatus = $("#idStatus").val();
