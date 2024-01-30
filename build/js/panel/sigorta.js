@@ -136,6 +136,7 @@ function filterAndSearch() {
 
     // Seçilen sekmeye göre kullanıcıları filtrele
     var filteredData = sigortadata;
+    console.log(filteredData);
     if (selectedTab !== "All") {
         filteredData = filterSigortaByState(selectedTab.toLowerCase());
     }
