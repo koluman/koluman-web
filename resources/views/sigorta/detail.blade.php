@@ -77,7 +77,7 @@
                     <div>
                         <p class="text-muted" id="polid">Poliçe Pdf Ekle.</p>
 
-                        <div class="dropzone">
+                        <div class="dropzone" id="poldiv">
                             <div class="fallback">
                                 <input name="file" type="file" multiple="multiple">
                             </div>
