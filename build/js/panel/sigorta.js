@@ -112,6 +112,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
 
 $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
+    console.log(sigortadata);
     var filteredData = sigortadata.filter(function (sigorta) {
         return (
             sigorta.user_name.toLowerCase().includes(searchText) ||
