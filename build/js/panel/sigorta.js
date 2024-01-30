@@ -159,6 +159,8 @@ function SearchData() {
     // Filtreleme ve arama işlemleri
     var filteredData = sigortadata;
     console.log(selectedStatus);
+    console.log(filteredData);
+
     // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (sigorta) {
