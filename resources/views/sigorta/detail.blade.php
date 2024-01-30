@@ -127,9 +127,8 @@
             </div>
             <!-- end card -->
             <div class="text-end mb-4">
-                <button type="submit" class="btn btn-danger w-sm">Delete</button>
-                <button type="submit" class="btn btn-secondary w-sm">Draft</button>
-                <button type="submit" class="btn btn-success w-sm">Create</button>
+                <button type="submit" class="btn btn-danger w-sm">Sil</button>
+                <button type="submit" class="btn btn-success w-sm">Sigorta Talebi Oluştur</button>
             </div>
         </div>
         <!-- end col -->
