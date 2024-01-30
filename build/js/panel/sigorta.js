@@ -5,7 +5,6 @@ let sigortadata = [];
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function sigorta() {
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getallsigorta',

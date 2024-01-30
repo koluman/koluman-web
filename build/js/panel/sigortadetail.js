@@ -1,14 +1,8 @@
 $(document).ready(function () {
     var id = getIdFromUrl();
-
-    if (id !== null) {
-        console.log("URL'deki ID: ", id);
-        // Diğer işlemleri yapabilirsiniz.
-    } else {
-        console.log("URL'de ID bulunamadı.");
-    }
+    getdetail(id);
 });
-
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 function getIdFromUrl() {
     var url = window.location.href;
     var match = url.match(/\/sigortadetail\/(\d+)/);
@@ -18,4 +12,25 @@ function getIdFromUrl() {
     } else {
         return null;
     }
+}
+function detail(id){
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getbyIdSigorta',
+        dataType: 'json',
+        data: {
+            id:id,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        success: function (data) {
+            console.log(data);
+            /*if (data.success == 1) {
+                sigortadata = data.sigortaall;
+                let son = sigortalist(sigortadata);
+                $("#sigortalist").html('');
+                $("#sigortalist").html(son);
+            }*/
+
+        }
+    });
 }

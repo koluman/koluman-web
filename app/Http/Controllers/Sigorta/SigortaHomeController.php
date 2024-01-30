@@ -50,4 +50,34 @@ class SigortaHomeController extends Controller
         }
         return response()->json($responseData);
     }
+    public function getbyIdSigorta(Request $request)
+    {
+        try {
+            $sigortaid = Insurance::select('insurance.*', 'a.*')
+                ->where('insurance_id',$request->id)
+                ->join('users as a', 'insurance.user_id', '=', 'a.user_id')
+                ->orderBy('insurance_id', 'desc')
+                ->get();
+            if ($sigortaid->isEmpty()) {
+                $responseData = [
+                    "sigortaid" => "",
+                    "success" => 0,
+                    "message" => "Sigorta talep bilgileri bulunamadı",
+                ];
+            } else {
+                $responseData = [
+                    "sigortaid" => $sigortaid,
+                    "success" => 1,
+                    "message" => "Sigorta talep bilgileri getirildi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "sigortaid" => "",
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
