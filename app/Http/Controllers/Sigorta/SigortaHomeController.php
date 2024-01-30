@@ -16,6 +16,10 @@ class SigortaHomeController extends Controller
     {
         return view('sigorta.list');
     }
+    public function sigortadetail(Request $request)
+    {
+        return view('sigorta.detail');
+    }
     public function getallsigorta(Request $request)
     {
         try {

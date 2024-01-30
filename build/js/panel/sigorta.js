@@ -37,7 +37,7 @@ function sigortalist(data) {
         s += '        <input class="form-check-input" type="checkbox" name="checkAll" value="option1">';
         s += '    </div>';
         s += '</th>';
-        s += '<td class="id"><a href="apps-ecommerce-order-details" class="fw-medium link-primary">#' + j + '</a></td>';
+        s += '<td class="id"><a href="javascript:detay(' + data[i].insurance_id + ')" class="fw-medium link-primary">#' + j + '</a></td>';
         s += '<td hidden class="user">' + data[i].user_id + '</td>';
         s += '<td class="username">' + data[i].user_name + '</td>';
         s += '<td class="insurancetype">' + data[i].insurance_type + '</td>';
@@ -46,19 +46,14 @@ function sigortalist(data) {
         s += '<td class="insurancestate">' + data[i].insurance_state + '</td>';
         s += '<td>';
         s += '    <ul class="list-inline hstack gap-2 mb-0">';
-        s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">';
-        s += '            <a href="apps-ecommerce-order-details" class="text-primary d-inline-block">';
+        s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Detay">';
+        s += '            <a href="javascript:detay(' + data[i].insurance_id + ')" class="text-primary d-inline-block">';
         s += '                <i class="ri-eye-fill fs-16"></i>';
         s += '            </a>';
         s += '        </li>';
-        s += '        <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Edit">';
+        s += '        <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Poliçe PDF">';
         s += '            <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">';
         s += '                <i class="ri-pencil-fill fs-16"></i>';
-        s += '            </a>';
-        s += '        </li>';
-        s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Remove">';
-        s += '            <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">';
-        s += '                <i class="ri-delete-bin-5-fill fs-16"></i>';
         s += '            </a>';
         s += '        </li>';
         s += '    </ul>';
@@ -68,7 +63,10 @@ function sigortalist(data) {
     return s;
 
 }
+function detay(id){
+    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail/"+productID; 
 
+}
 function filterSigortaByState(state) {
     return sigortadata.filter(sigorta => sigorta.insurance_state === state);
 }
