@@ -13,7 +13,7 @@ function getIdFromUrl() {
         return null;
     }
 }
-function detail(id){
+function getdetail(id){
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getbyIdSigorta',
