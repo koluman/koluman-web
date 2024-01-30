@@ -4,6 +4,7 @@ $(document).ready(function () {
 });
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
 function getIdFromUrl() {
     var url = window.location.href;
     var match = url.match(/\/sigortadetail\/(\d+)/);
@@ -15,18 +16,18 @@ function getIdFromUrl() {
     }
 }
 
-function getdetail(id){
+function getdetail(id) {
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getbyIdSigorta',
         dataType: 'json',
         data: {
-            id:id,
+            id: id,
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
             if (data.success == 1) {
-                let a=data.sigortaid[0];
+                let a = data.sigortaid[0];
                 $("#insurance_review_date").val(a.insurance_review_date);
                 $("#insurance_result_date").val(a.insurance_result_date);
                 $("#insurance_request_date").val(a.insurance_request_date);
@@ -41,7 +42,7 @@ function getdetail(id){
 
                     // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
                     var mockFile = {
-                        name: "Poliçe PDF", // PDF dosya adı
+                        name: "PDF", // PDF dosya adı
                         size: 12345 // PDF dosya boyutu (değiştirebilirsiniz)
                     };
 
@@ -52,8 +53,11 @@ function getdetail(id){
 
                     // Dropzone önizleme listesini güncelleyin
                     dropzone.files.push(mockFile);
-                
-            }
+
+                    // Dropzone'un içindeki tüm dosyaları temizle
+                    dropzone.removeAllFiles();
+
+                }
 
             }
 
