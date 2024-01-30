@@ -64,7 +64,7 @@ function sigortalist(data) {
 
 }
 function detay(id){
-    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail/"+id; 
+    window.location.href = "{ url('/sigortadetail') }}/"+id; 
 
 }
 function filterSigortaByState(state) {
