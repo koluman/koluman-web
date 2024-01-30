@@ -35,19 +35,7 @@ function getdetail(id){
                 $("#insurance_end_date").val(a.insurance_end_date);
                 $("#insurance_state").val(a.insurance_state);
                 $("#user_id").val(a.user_id);
-
-                var choice= new Choices("#insurance_state", {
-                    searchEnabled: false
-                });
-                if (a.insurance_state) {
-                    choice.destroy();
-                    choice = new Choices("#insurance_state", {
-                        searchEnabled: false
-                    });
-                    choice.setChoiceByValue([a.insurance_state]);
-                }
-
-                
+                $("#polid").text("Police PDF");
 
             }
 
