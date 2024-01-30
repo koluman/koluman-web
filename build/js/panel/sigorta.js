@@ -69,8 +69,8 @@ function sigortalist(data) {
 
 }
 
-function filterSigortaByState(role) {
-    return sigortadata.filter(user => user.backuser_role === role);
+function filterSigortaByState(state) {
+    return sigortadata.filter(sigorta => sigorta.insurance_state === state);
 }
 
 var selectedTab = "All";
@@ -88,19 +88,19 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             sonn = sigortalist(sigortadata);
             break;
         case "Talep":
-            veri = filterSigortaByState("1");
+            veri = filterSigortaByState(1);
             sonn = sigortalist(veri);
             break;
         case "İnceleme":
-            veri = filterSigortaByState("2");
+            veri = filterSigortaByState(2);
             sonn = sigortalist(veri);
             break;
         case "Teklif":
-            veri = filterSigortaByState("3");
+            veri = filterSigortaByState(3);
             sonn = sigortalist(veri);
             break;
         case "Aktif":
-            veri = filterSigortaByState("4");
+            veri = filterSigortaByState(4);
             sonn = sigortalist(veri);
             break;
         default:
