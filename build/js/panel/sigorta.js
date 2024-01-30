@@ -83,7 +83,8 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
         selectedTab = clickedId;
         filterAndSearch();
     }
-    switch (clickedId) {
+    console.log(clickedId);
+   /* switch (clickedId) {
         case "All":
             sonn = sigortalist(sigortadata);
             break;
@@ -107,7 +108,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             break;
     }
     $("#sigortalist").html('');
-    $("#sigortalist").html(sonn);
+    $("#sigortalist").html(sonn);*/
 });
 $(document).on("input", '.search', function () {
     var searchText = $(this).val().toLowerCase();
