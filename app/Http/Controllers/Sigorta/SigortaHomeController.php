@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InsuranceDeleteRequest;
 use App\Models\Insurance;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -108,6 +109,64 @@ class SigortaHomeController extends Controller
             ];
         }
 
+        return response()->json($responseData);
+    }
+    public function updatesigortareview(Request $request)
+    {
+        try {
+            $insurance_id = $request->insurance_id;
+            
+            $affectedRows = Insurance::where('insurance_id', $insurance_id)
+            ->update([
+                'insurance_review_date' =>Carbon::now('Europe/Istanbul'),
+            ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "sonuc" => $affectedRows,
+                    "success" => 1,
+                    "message" => "İncelendi durumu güncellendi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "İncelendi durumu güncellenemedi , lütfen tekrar deneyiniz",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
+    public function updatesigortaresult(Request $request)
+    {
+        try {
+            $insurance_id = $request->insurance_id;
+            
+            $affectedRows = Insurance::where('insurance_id', $insurance_id)
+            ->update([
+                'insurance_result_date' =>Carbon::now('Europe/Istanbul'),
+            ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "sonuc" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Sonuçlandırıldı durumu güncellendi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Sonuçlandırıldı durumu güncellenemedi , lütfen tekrar deneyiniz",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
         return response()->json($responseData);
     }
 }

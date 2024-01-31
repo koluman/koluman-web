@@ -54,9 +54,12 @@ Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
     Route::get('/sigortalist', [SigortaHomeController::class, 'sigorta'])->name('sigorta.list');
     Route::post('/getallsigorta', [SigortaHomeController::class, 'getallsigorta'])->name('getallsigorta');
-    Route::get('sigortadetail/{id}', [SigortaHomeController::class, 'sigortadetail'])->name('sigortadetail');;
-    Route::post('getbyIdSigorta', [SigortaHomeController::class, 'getbyIdSigorta'])->name('getbyIdSigorta');;
-    Route::post('deletesigorta', [SigortaHomeController::class, 'deletesigorta'])->name('deletesigorta');;
+    Route::get('sigortadetail/{id}', [SigortaHomeController::class, 'sigortadetail'])->name('sigortadetail');
+    Route::post('getbyIdSigorta', [SigortaHomeController::class, 'getbyIdSigorta'])->name('getbyIdSigorta');
+    Route::post('deletesigorta', [SigortaHomeController::class, 'deletesigorta'])->name('deletesigorta');
+    Route::post('updatesigortareview', [SigortaHomeController::class, 'updatesigortareview'])->name('updatesigortareview');
+    Route::post('updatesigortaresult', [SigortaHomeController::class, 'updatesigortaresult'])->name('updatesigortaresult');
 
+    
     
 });

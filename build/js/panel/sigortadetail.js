@@ -40,12 +40,12 @@ function getdetail(id) {
                 if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
-                    document.querySelector("#updinc").disabled=true;
+                    document.querySelector("#updinc").disabled = true;
                 }
                 if (a.insurance_result_date != "0000-00-00 00:00:00") {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
-                    document.querySelector("#updsnc").disabled=true;
+                    document.querySelector("#updsnc").disabled = true;
                 }
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
@@ -111,6 +111,62 @@ document.getElementById("newbutton").addEventListener("click", function () {
     $("#updinc").text("İncelemeye Al");
     $("#updsnc").val("");
     $("#updsnc").text("Sonuçlandır");
-    document.querySelector("#updsnc").disabled=false;
-    document.querySelector("#updinc").disabled=false;
-})
+    document.querySelector("#updsnc").disabled = false;
+    document.querySelector("#updinc").disabled = false;
+});
+document.getElementById("updinc").addEventListener("click", function () {
+    let id = $("#insurance_id").val();
+    if (id) {
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/updatesigortareview',
+            data: {
+                insurance_id: id,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    if (data.insurance.insurance_review_date != "0000-00-00 00:00:00") {
+                        $("#updinc").val(data.insurance.insurance_review_date);
+                        $("#updinc").text("İncelendi");
+                        document.querySelector("#updinc").disabled = true;
+                    }
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
+            }
+        });
+    }
+});
+document.getElementById("updsnc").addEventListener("click", function () {
+    let id = $("#insurance_id").val();
+    if (id) {
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/updatesigortaresult',
+            data: {
+                insurance_id: id,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    if (data.insurance.insurance_result_date != "0000-00-00 00:00:00") {
+                        $("#updsnc").val(data.insurance.insurance_result_date);
+                        $("#updsnc").text("Sonuçlandırıldı");
+                        document.querySelector("#updsnc").disabled = true;
+                    }
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
+            }
+        });
+    }
+});
