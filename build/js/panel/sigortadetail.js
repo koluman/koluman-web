@@ -223,8 +223,12 @@ document.getElementById("newbutton").addEventListener("click", function () {
             data: formData,
             processData: false,
             contentType: false,
-            success: function (response) {
-                console.log(response);
+            success: function (data) {
+                if (data.success == 1) {
+                    window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
+                } else {
+                    alert(data.message);
+                }
             },
             error: function (error) {
                 console.error(error);
