@@ -121,7 +121,7 @@
             </div>
             <!-- end card -->
             <div class="text-end mb-4">
-                <button type="submit" class="btn btn-danger w-sm">Sil</button>
+                <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll" class="btn btn-danger w-sm">Sil</button>
                 <button type="submit" class="btn btn-success w-sm">Sigorta Talebi Oluştur</button>
             </div>
         </div>
@@ -175,7 +175,28 @@
         <!-- end col -->
     </div>
     <!-- end row -->
-
+    <div class="modal fade flip" id="deleteAll" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-5 text-center">
+                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                        colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                    <div class="mt-4 text-center">
+                        <h4>Sigorta talebini silmek istediğinize emin misiniz?</h4>
+                        <p class="text-muted fs-15 mb-4">Bu talebi sildiğiniz taktirde işlemleri geri
+                            getiremezsiniz.</p>
+                        <div class="hstack gap-2 justify-content-center remove">
+                            <button class="btn btn-link link-success fw-medium text-decoration-none"
+                                data-bs-dismiss="modal" id="deleteRecord-close"><i
+                                    class="ri-close-line me-1 align-middle"></i>
+                                Kapat</button>
+                            <button class="btn btn-danger" id="delete-record">Eminim, Sil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
