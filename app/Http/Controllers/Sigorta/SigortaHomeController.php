@@ -171,17 +171,26 @@ class SigortaHomeController extends Controller
     }
     public function addsigorta(Request $request)
     {
-        // Gelen verileri al
-        /*$insuranceId = $request->input('insurance_id');
+        // Diğer verileri al
+        $insuranceId = $request->input('insurance_id');
         $insurancePrice = $request->input('insurance_price');
         $insuranceEndDate = $request->input('insurance_end_date');
         $insuranceDescription = $request->input('insurance_description');
         $insuranceRequestDate = $request->input('insurance_request_date');
         $insuranceReviewDate = $request->input('insurance_review_date');
         $insuranceResultDate = $request->input('insurance_result_date');
-        $insurancePolicyUrl = $request->input('insurance_policy_url');*/
 
-  
-        return response()->json($request);
+        // Dosyayı kontrol et
+        if ($request->hasFile('insurance_policy_url')) {
+            $file = $request->file('insurance_policy_url');
+            // Dosyayı işleme (örneğin, depolama veya veritabanına kaydetme)
+            $path = $file->store('upload');
+
+            // Diğer verilerle birlikte işlenmiş dosyanın yolu gibi şeyleri döndür
+            return response()->json(['path' => $path, 'otherData' => $insurancePrice]);
+        }
+
+        // Dosya gelmediyse, sadece diğer verileri döndür
+        return response()->json(['otherData' => $insurancePrice]);
     }
 }
