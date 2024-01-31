@@ -202,7 +202,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceRequestDate = $("#insurance_request_date").val();
     var insuranceReviewDate = $("#insurance_review_date").val();
     var insuranceResultDate = $("#insurance_result_date").val();
-    var insurance_type = $("#insurance_result_date").val();
+    var insurance_type = $("#insurance_type").val();
     if (insuranceId != "") {
         alert("güncelle");
     } else {
