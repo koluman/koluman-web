@@ -46,11 +46,12 @@ function getdetail(id) {
                     $("#insurance_review_date").val(a.insurance_review_date);
                     document.querySelector("#insurance_review_date").disabled = true;
 
-                }if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""){
+                }
+                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""){
                     $("#insurance_result_date").val(a.insurance_result_date);
                     document.querySelector("#insurance_result_date").disabled = true;
                 }
-                /*if (a.insurance_review_date != "0000-00-00 00:00:00") {
+                if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled = true;
@@ -59,7 +60,7 @@ function getdetail(id) {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled = true;
-                }*/
+                }
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
                     $("#polid").text(pdfFileName);
