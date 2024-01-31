@@ -123,7 +123,7 @@
             <!-- end card -->
             <div class="text-end mb-4">
                 <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll" class="btn btn-danger w-sm">Sil</button>
-                <button type="button" id="newbutton" class="btn btn-success w-sm">Sigorta Talebi Oluştur</button>
+                <button type="button" id="newbutton" class="btn btn-success w-sm">Ekle</button>
             </div>
         </div>
         <!-- end col -->
