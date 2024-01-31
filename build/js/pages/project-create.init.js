@@ -32,7 +32,7 @@ if (dropzonePreviewNode) {
         previewsContainer: "#dropzone-preview",
         init: function () {
             this.on("addedfile", function (file) {
-
+                console.log(file);
                 document.getElementById("newbutton").addEventListener("click", function () {
                     var insuranceId = $("#insurance_id").val();
                     var user_id = $("#user_id").val();
@@ -44,14 +44,13 @@ if (dropzonePreviewNode) {
                     var insuranceRequestDate = $("#insurance_request_date").val();
                     var insuranceReviewDate = $("#insurance_review_date").val();
                     var insuranceResultDate = $("#insurance_result_date").val();
-                    var insurancePolicyUrl = file;  // Dosya yolu veya input elementini değiştirmelisiniz*/
                    
 
                     if (insuranceId != "") {
                         alert("güncelle");
                     } else {
                         var formData = new FormData();
-                        formData.append('_token', csrfToken);
+                        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
                         formData.append('user_id', user_id);
                         formData.append('insurance_state', insurance_state);
                         formData.append('insurance_id', insuranceId);

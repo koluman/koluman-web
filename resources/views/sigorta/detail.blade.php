@@ -14,8 +14,7 @@
             Create Project
         @endslot
     @endcomponent
-    <form id="sigortaForm" method="post" enctype="multipart/form-data">
-        @csrf
+ 
         <div class="row">
 
             <div class="col-lg-8">
@@ -183,7 +182,6 @@
                 <!-- end card -->
             </div>
         </div>
-    </form>
 
     <!-- end row -->
     <div class="modal fade flip" id="deleteAll" tabindex="-1" aria-hidden="true">
