@@ -72,6 +72,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
             },
             dataType: 'json',
             success: function (data) {
+                console.log(data);
                 if (data.success == 1) {
                    window.location.href="https://mobiloby.app/koluman/web/sigortalist";
                 } else {
