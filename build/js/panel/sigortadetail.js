@@ -72,7 +72,7 @@ function getdetail(id) {
                         name: pdfFileName,
                     };
                     dropzone.emit("addedfile", mockFile);
-                    var pdfIconPath = "https://mobiloby.app/koluman/web/upload/pdf.png";
+                    var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
                     dropzone.emit("thumbnail", mockFile, pdfIconPath);
                     dropzone.emit("complete", mockFile);
                     dropzone.files.push(mockFile);
