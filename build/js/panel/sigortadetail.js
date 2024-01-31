@@ -37,6 +37,11 @@ function getdetail(id) {
                 $("#insurance_state").val(a.insurance_state);
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
+                if (a.insurance_review_date != "") {
+                    $("#updinc").val(a.insurance_review_date);
+                    $("#updinc").text("İncelendi");
+
+                }
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
                     $("#polid").text(pdfFileName);
@@ -47,7 +52,7 @@ function getdetail(id) {
                     dropzone.emit("addedfile", mockFile);
                     var pdfIconPath = "https://mobiloby.app/koluman/web/upload/pdf.png";
                     dropzone.emit("thumbnail", mockFile, pdfIconPath);
-                    dropzone.emit("complete", mockFile); 
+                    dropzone.emit("complete", mockFile);
                     dropzone.files.push(mockFile);
                 } else {
                     dropzone.removeAllFiles();
@@ -56,6 +61,7 @@ function getdetail(id) {
         }
     });
 }
+
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
@@ -74,7 +80,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
             success: function (data) {
                 console.log(data);
                 if (data.success == 1) {
-                   window.location.href="https://mobiloby.app/koluman/web/sigortalist";
+                    window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
                 } else {
                     alert(data.message);
                 }
