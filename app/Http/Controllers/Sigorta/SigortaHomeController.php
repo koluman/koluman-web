@@ -76,7 +76,6 @@ class SigortaHomeController extends Controller
                 $insurancePolicyPath = rtrim($sigortaid[0]->insurance_policy_url, '.');
                 $insurancePolicySize = Storage::disk('public')->size($insurancePolicyPath);
                 $responseData['insurance_policy_size'] = $insurancePolicySize;
-   
             }
         } catch (\Exception $e) {
             $responseData = [
