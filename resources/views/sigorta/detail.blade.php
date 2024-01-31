@@ -154,11 +154,11 @@
             <!-- end card -->
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Kullanıcılar</h5>
+                    <h5 class="card-title mb-0">Sigorta Türü</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="choices-lead-input" class="form-label">Kullanıcı Listesi</label>
+                        <label for="choices-lead-input" class="form-label">Sigorta Türü Listesi</label>
                         <select class="form-select" id="insurance_type" name="insurance_type">
                             <option value="0">Lütfen Seçim Yapınız</option>
                             <option value="Kasko">Kasko</option>
