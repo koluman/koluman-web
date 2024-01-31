@@ -91,3 +91,17 @@ document.getElementById("delete-record").addEventListener("click", function () {
         });
     }
 });
+document.getElementById("newbutton").addEventListener("click", function () {
+    $("#insurance_review_date").val("");
+    $("#insurance_result_date").val("");
+    $("#insurance_request_date").val("");
+    $("#insurance_price").val("");
+    $("#insurance_description").text("");
+    $("#insurance_end_date").val("");
+    $("#insurance_state").val("");
+    $("#insurance_id").val("");
+    $("#user_id").val("");
+    dropzone.removeAllFiles();
+    $("#updinc").val("");
+    $("#updinc").text("İncelemeye Al");
+})
