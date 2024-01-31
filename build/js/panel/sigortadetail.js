@@ -38,6 +38,7 @@ function getdetail(id) {
                 $("#insurance_state").val(a.insurance_state);
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
+                $("#newbutton").text("Sigorta Talebini Güncelle");
                 if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
@@ -116,7 +117,7 @@ function add(){
     document.querySelector("#updinc").disabled = false;
 }
 document.getElementById("newbutton").addEventListener("click", function () {
-add();
+    //ekleme işlemleri yapılmalı
 });
 document.getElementById("updinc").addEventListener("click", function () {
     let id = $("#insurance_id").val();
