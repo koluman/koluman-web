@@ -39,21 +39,25 @@ function getdetail(id) {
                 if (a.insurance_policy_url) {
                     $("#polid").text("Police PDF");
                     document.querySelector("#poldiv").style.display = "none";
-
+                
                     // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
                     var mockFile = {
                         name: "Poliçe PDF", // PDF dosya adı
-                        size: 12345 // PDF dosya boyutu (değiştirebilirsiniz)
                     };
-
+                
                     // Dropzone'a dosyanın eklenmiş gibi işlemesi için mockFile'ı ekleyin
                     dropzone.emit("addedfile", mockFile);
-                    dropzone.emit("thumbnail", mockFile, ""); // Varsa bir önizleme görseli ekleyin
+                
+                    // Özel bir PDF ikonunun yolunu belirleyin
+                    var pdfIconPath = "path/to/pdf-icon.png";
+                
+                    // Dropzone'a özel bir PDF ikonu önizleme görseli ekleyin
+                    dropzone.emit("thumbnail", mockFile, pdfIconPath);
+                
                     dropzone.emit("complete", mockFile); // Dosyanın yükleme tamamlandı olarak işaretle
-
+                
                     // Dropzone önizleme listesini güncelleyin
                     dropzone.files.push(mockFile);
-
                 } else {
                     // PDF dosyası yoksa Dropzone'u temizle
                     dropzone.removeAllFiles();

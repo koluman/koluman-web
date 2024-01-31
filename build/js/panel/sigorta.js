@@ -51,8 +51,8 @@ function sigortalist(data) {
         s += '            </a>';
         s += '        </li>';
         s += '        <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Poliçe PDF">';
-        s += '            <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">';
-        s += '                <i class="ri-pencil-fill fs-16"></i>';
+        s += '            <a href="'+ data[i].insurance_policy_url +'" target="_blank"  class="text-primary d-inline-block edit-item-btn">';
+        s += '                <i class=" ri-file-pdf-fill fs-16"></i>';
         s += '            </a>';
         s += '        </li>';
         s += '    </ul>';
