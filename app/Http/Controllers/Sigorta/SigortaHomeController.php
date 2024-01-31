@@ -180,13 +180,14 @@ class SigortaHomeController extends Controller
             $insuranceResultDate = $request->input('insurance_result_date') ?? '0000-00-00 00:00:00';
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
+            $pdfPath = "";
             if ($request->hasFile('insurance_policy_url')) {
                 $pdf = $request->file('insurance_policy_url');
                 $pdfName = time() . '.' . $pdf->getClientOriginalExtension();
                 $pdf->move(public_path('upload/pdf'), $pdfName);
                 $pdfPath = 'https://mobiloby.app/koluman/web/public/upload/pdf/' . $pdfName;
             } else {
-                $pdfPath="";
+                $pdfPath ="";
             }
             $result = Insurance::create([
                 'insurance_type' => "dasd",
