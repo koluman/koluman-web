@@ -173,11 +173,11 @@ class SigortaHomeController extends Controller
     {
         try {
             $insurancePrice = $request->input('insurance_price') ?? 0;
-            $insuranceEndDate = $request->input('insurance_end_date') ?? '0000-00-00 00:00:00';
+            $insuranceEndDate = $request->input('insurance_end_date') ??  "";
             $insuranceDescription = $request->input('insurance_description') ?? "";
-            $insuranceRequestDate = $request->input('insurance_request_date') ?? '0000-00-00 00:00:00';
-            $insuranceReviewDate = $request->input('insurance_review_date') ?? '0000-00-00 00:00:00';
-            $insuranceResultDate = $request->input('insurance_result_date') ?? '0000-00-00 00:00:00';
+            $insuranceRequestDate = $request->input('insurance_request_date') ??  "";
+            $insuranceReviewDate = $request->input('insurance_review_date') ??  "";
+            $insuranceResultDate = $request->input('insurance_result_date') ??  "";
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
             $pdfPath = "";
