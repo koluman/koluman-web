@@ -80,7 +80,7 @@
 
                         <div class="dropzone" id="poldiv">
                             <div class="fallback">
-                                <input name="file" type="file"  id="insurance_policy_url"  name="insurance_policy_url" multiple="multiple">
+                                <input name="file" type="file"  id="insurance_policy_url"  name="insurance_policy_url" >
                             </div>
                             <div class="dz-message needsclick">
                                 <div class="mb-3">
