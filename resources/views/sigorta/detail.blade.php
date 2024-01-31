@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-lg-8">
             <form id="sigortaForm" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="card">
                 <div class="card-body">
 
