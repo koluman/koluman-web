@@ -26,6 +26,7 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
+            console.log(data);
             if (data.success == 1) {
                 let a = data.sigortaid[0];
                 $("#insurance_review_date").val(a.insurance_review_date);
