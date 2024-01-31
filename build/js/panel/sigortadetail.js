@@ -60,8 +60,6 @@ function getdetail(id) {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled = true;
-                }else{
-                    document.querySelector("#updsnc").disabled = true;
                 }
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
