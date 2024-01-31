@@ -180,10 +180,10 @@ class SigortaHomeController extends Controller
             $insuranceReviewDate = $request->input('insurance_review_date');
             $insuranceResultDate = $request->input('insurance_result_date');
 
-            $insuranceReviewDate = !empty($insuranceReviewDate) ? $insuranceReviewDate : null;
-            $insuranceResultDate = !empty($insuranceResultDate) ? $insuranceResultDate : null;
-            $insuranceRequestDate = !empty($insuranceRequestDate) ? $insuranceRequestDate : null;
-            $insuranceEndDate = !empty($insuranceEndDate) ? $insuranceEndDate : null;
+            $insuranceReviewDate = !empty($insuranceReviewDate) ? $insuranceReviewDate : "0000-00-00 00:00:00";
+            $insuranceResultDate = !empty($insuranceResultDate) ? $insuranceResultDate : "0000-00-00 00:00:00";
+            $insuranceRequestDate = !empty($insuranceRequestDate) ? $insuranceRequestDate : "0000-00-00 00:00:00";
+            $insuranceEndDate = !empty($insuranceEndDate) ? $insuranceEndDate : "0000-00-00 00:00:00";
 
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
