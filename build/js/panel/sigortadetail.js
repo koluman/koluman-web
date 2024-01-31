@@ -114,6 +114,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     }
 });
 function add(){
+    document.querySelector("#deleteallbutton").style.display="none";
     $("#insurance_review_date").val("");
     $("#insurance_result_date").val("");
     $("#insurance_request_date").val("");
@@ -130,7 +131,6 @@ function add(){
     $("#updsnc").text("Sonuçlandır");
     document.querySelector("#updsnc").disabled = false;
     document.querySelector("#updinc").disabled = false;
-    document.querySelector("#deleteallbutton").style.display="none";
 }
 document.getElementById("newbutton").addEventListener("click", function () {
     //ekleme veya güncelleme yapılmalı işlemleri yapılmalı
