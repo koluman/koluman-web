@@ -16,9 +16,9 @@
     @endcomponent
     <div class="row">
         <form id="sigortaForm" method="post" enctype="multipart/form-data">
+            @csrf
 
             <div class="col-lg-8">
-                @csrf
                 <div class="card">
                     <div class="card-body">
 
