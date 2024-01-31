@@ -193,3 +193,7 @@ function updatePageWithFilteredData(filteredData) {
     $("#sigortalist").html('');
     $("#sigortalist").html(son);
 }
+
+document.getElementById("createsigorta").addEventListener("click", function () {
+    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail"; 
+});

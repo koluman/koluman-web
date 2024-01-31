@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-sm-auto">
                             <div class="d-flex gap-1 flex-wrap">
-                                <button type="button" onclick="{{route('sigortadetail')}}" class="btn btn-success add-btn" id="create-btn" ><i
+                                <button type="button" class="btn btn-success add-btn" id="createsigorta" ><i
                                         class="ri-add-line align-bottom me-1"></i> Sigorta Talep Et</button>
                                 <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
