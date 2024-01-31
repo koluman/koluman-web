@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    document.querySelector("#updsnc").disabled = true;
     var id = getIdFromUrl();
     if(id!="") getdetail(id);
     else add();
@@ -154,6 +155,8 @@ document.getElementById("updinc").addEventListener("click", function () {
                         $("#updinc").val(data.insurance.insurance_review_date);
                         $("#updinc").text("İncelendi");
                         document.querySelector("#updinc").disabled = true;
+                        document.querySelector("#updsnc").disabled = false;
+
                     }
                 } else {
                     alert(data.message);
