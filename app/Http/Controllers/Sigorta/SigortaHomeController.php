@@ -175,10 +175,10 @@ class SigortaHomeController extends Controller
             $insurancePrice = $request->input('insurance_price');
             $insuranceEndDate = $request->input('insurance_end_date');
 
-            $insuranceDescription = $request->input('insurance_description');
-            $insuranceRequestDate = $request->input('insurance_request_date');
-            $insuranceReviewDate = $request->input('insurance_review_date');
-            $insuranceResultDate = $request->input('insurance_result_date');
+            $insuranceDescription = $request->input('insurance_description'). ' ' . date('H:i:s');
+            $insuranceRequestDate = $request->input('insurance_request_date'). ' ' . date('H:i:s');
+            $insuranceReviewDate = $request->input('insurance_review_date'). ' ' . date('H:i:s');
+            $insuranceResultDate = $request->input('insurance_result_date'). ' ' . date('H:i:s');
 
             $insuranceReviewDate = !empty($insuranceReviewDate) ? $insuranceReviewDate . ' ' . date('H:i:s') : null;
             $insuranceResultDate = !empty($insuranceResultDate) ? $insuranceResultDate . ' ' . date('H:i:s') : null;
