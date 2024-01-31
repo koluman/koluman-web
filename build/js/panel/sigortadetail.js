@@ -39,36 +39,20 @@ function getdetail(id) {
                 $("#user_id").val(a.user_id);
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
-
                     $("#polid").text(pdfFileName);
                     document.querySelector("#poldiv").style.display = "none";
-                
-                    // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
                     var mockFile = {
-                        name: pdfFileName, // PDF dosya adı
-                        size: a.insurance_policy_size
+                        name: pdfFileName,
                     };
-                
-                    // Dropzone'a dosyanın eklenmiş gibi işlemesi için mockFile'ı ekleyin
                     dropzone.emit("addedfile", mockFile);
-                
-                    // Özel bir PDF ikonunun yolunu belirleyin
                     var pdfIconPath = "https://mobiloby.app/koluman/web/upload/pdf.png";
-                
-                    // Dropzone'a özel bir PDF ikonu önizleme görseli ekleyin
                     dropzone.emit("thumbnail", mockFile, pdfIconPath);
-                
-                    dropzone.emit("complete", mockFile); // Dosyanın yükleme tamamlandı olarak işaretle
-                
-                    // Dropzone önizleme listesini güncelleyin
+                    dropzone.emit("complete", mockFile); 
                     dropzone.files.push(mockFile);
                 } else {
-                    // PDF dosyası yoksa Dropzone'u temizle
                     dropzone.removeAllFiles();
                 }
-
             }
-
         }
     });
 }
