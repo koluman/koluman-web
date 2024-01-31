@@ -114,6 +114,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     }
 });
 function add(){
+    document.querySelector("#deleteallbutton").disabled = true;
     $("#insurance_review_date").val("");
     $("#insurance_result_date").val("");
     $("#insurance_request_date").val("");
