@@ -45,6 +45,7 @@ function getdetail(id) {
                     // Dropzone'nun programatik olarak dosya eklenmiş gibi davranması için
                     var mockFile = {
                         name: pdfFileName, // PDF dosya adı
+                        size: a.insurance_policy_size
                     };
                 
                     // Dropzone'a dosyanın eklenmiş gibi işlemesi için mockFile'ı ekleyin

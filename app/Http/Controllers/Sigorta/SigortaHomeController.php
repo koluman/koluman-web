@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Insurance;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SigortaHomeController extends Controller
 {
@@ -72,6 +73,10 @@ class SigortaHomeController extends Controller
                     "success" => 1,
                     "message" => "Sigorta talep bilgileri getirildi",
                 ];
+                $insurancePolicyPath = $sigortaid[0]->insurance_policy_url;
+                $insurancePolicySize = Storage::disk('public')->size($insurancePolicyPath);
+                $responseData['insurance_policy_size'] = $insurancePolicySize;
+   
             }
         } catch (\Exception $e) {
             $responseData = [
