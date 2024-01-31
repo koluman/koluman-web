@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sigorta;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InsuranceDeleteRequest;
 use App\Models\Insurance;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -81,6 +82,32 @@ class SigortaHomeController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
+        return response()->json($responseData);
+    }
+    public function deletesigorta(InsuranceDeleteRequest $request)
+    {
+        try {
+            $insurance_id = $request->insurance_id;
+            $insurance = Insurance::where('insurance_id', $insurance_id)->first();
+            if ($insurance) {
+                $insurance->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Sigorta talebi başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Silmek istediğiniz Sigorta talebi size ait değil!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
         return response()->json($responseData);
     }
 }

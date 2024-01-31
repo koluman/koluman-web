@@ -26,6 +26,7 @@
                                 <input type="text" class="form-control" id="insurance_price" name="insurance_price">
                             </div>
                         </div>
+                         <input type="hidden" class="form-control" id="insurance_id" name="insurance_id">
                         <div class="col-lg-6 mb-3">
                             <div>
                                 <label for="datepicker-deadline-input" class="form-label">Poliçe Bitiş Tarih</label>
