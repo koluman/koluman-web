@@ -33,15 +33,12 @@ if (dropzonePreviewNode) {
         previewTemplate: previewTemplate,
         previewsContainer: "#dropzone-preview",
         init: function () {
-            var self = this;  // Save a reference to Dropzone instance
-
             this.on("addedfile", function (file) {
                 insurance_policy_url = file;
             });
         }
     });
 
-    // Register click event outside of addedfile event
     document.getElementById("newbutton").addEventListener("click", function () {
         var insuranceId = $("#insurance_id").val();
         var user_id = $("#user_id").val();
@@ -68,6 +65,7 @@ if (dropzonePreviewNode) {
             formData.append('insurance_review_date', insuranceReviewDate);
             formData.append('insurance_result_date', insuranceResultDate);
             formData.append('insurance_policy_url', insurance_policy_url);
+            console.log(formData.get('insurance_policy_url'));
 
             $.ajax({
                 url: 'https://mobiloby.app/koluman/web/addsigorta',
@@ -77,7 +75,7 @@ if (dropzonePreviewNode) {
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    console.log(response);
+                    //console.log(response);
                 },
                 error: function (error) {
                     console.error(error);
