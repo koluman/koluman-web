@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    document.querySelector("#updsnc").disabled = true;
     var id = getIdFromUrl();
     if(id!="") getdetail(id);
     else add();
@@ -60,6 +59,8 @@ function getdetail(id) {
                 if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
+                    document.querySelector("#updsnc").disabled = true;
+                }else{
                     document.querySelector("#updsnc").disabled = true;
                 }
                 if (a.insurance_policy_url) {
