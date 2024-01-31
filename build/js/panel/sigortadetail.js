@@ -131,57 +131,7 @@ function add(){
     document.querySelector("#updsnc").disabled = false;
     document.querySelector("#updinc").disabled = false;
 }
-document.getElementById("newbutton").addEventListener("click", function () {
-    var insuranceId = $("#insurance_id").val();
-    /*var user_id = $("#user_id").val();
-    var insurancePrice = $("#insurance_price").val();
-    var insurance_state = $("#insurance_state").val();
 
-    
-    var insurancePrice = $("#insurance_price").val();
-    var insuranceEndDate = $("#insurance_end_date").val();
-    var insuranceDescription = $("#insurance_description").val();
-    var insuranceRequestDate = $("#insurance_request_date").val();
-    var insuranceReviewDate = $("#insurance_review_date").val();
-    var insuranceResultDate = $("#insurance_result_date").val();
-    var insurancePolicyUrl = $("#insurance_policy_url").val();  // Dosya yolu veya input elementini değiştirmelisiniz*/
-    var form = document.getElementById('sigortaForm');
-    var formData = new FormData(form);
-
-    if(insuranceId!=""){
-        alert("güncelle");
-    }else{
-     
-        $.ajax({
-            url: 'https://mobiloby.app/koluman/web/addsigorta', // Laravel Controller'ınızın URL'si
-            method: 'POST',
-            dataType:"json",
-            data: formData,
-            processData: false,
-            contentType: false,
-            /*data: {
-                _token: csrfToken,
-                user_id:user_id,
-                insurance_state:insurance_state,
-                insurance_id: insuranceId,
-                insurance_price: insurancePrice,
-                insurance_end_date: insuranceEndDate,
-                insurance_description: insuranceDescription,
-                insurance_request_date: insuranceRequestDate,
-                insurance_review_date: insuranceReviewDate,
-                insurance_result_date: insuranceResultDate,
-                insurance_policy_url: insurancePolicyUrl
-            },*/
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                // Hata durumunda burada bir işlem yapabilirsiniz
-                console.error(error);
-            }
-        });
-    }
-});
 document.getElementById("updinc").addEventListener("click", function () {
     let id = $("#insurance_id").val();
     if (id) {
