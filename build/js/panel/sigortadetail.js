@@ -107,4 +107,6 @@ document.getElementById("newbutton").addEventListener("click", function () {
     dropzone.removeAllFiles();
     $("#updinc").val("");
     $("#updinc").text("İncelemeye Al");
+    $("#updsnc").val("");
+    $("#updsnc").text("Sonuçlandır");
 })
