@@ -21,8 +21,7 @@ class SigortaHomeController extends Controller
     public function sigortadetail(Request $request, $id)
     {
         $users = User::get();
-        return view('sigorta.detail',compact('users'));
-
+        return view('sigorta.detail', compact('users'));
     }
     public function getallsigorta(Request $request)
     {
@@ -57,7 +56,7 @@ class SigortaHomeController extends Controller
     {
         try {
             $sigortaid = Insurance::select('insurance.*', 'a.*')
-                ->where('insurance_id',$request->id)
+                ->where('insurance_id', $request->id)
                 ->join('users as a', 'insurance.user_id', '=', 'a.user_id')
                 ->orderBy('insurance_id', 'desc')
                 ->get();
@@ -74,8 +73,8 @@ class SigortaHomeController extends Controller
                     "message" => "Sigorta talep bilgileri getirildi",
                 ];
                 $url = $sigortaid[0]->insurance_policy_url;
-                $insurancePolicySize = filesize($url);
-                $responseData['insurance_policy_size'] = $insurancePolicySize;
+                $dosyaBoyutu = Storage::size($url);
+                $responseData['insurance_policy_size'] = $dosyaBoyutu;
             }
         } catch (\Exception $e) {
             $responseData = [
