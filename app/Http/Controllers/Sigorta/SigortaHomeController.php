@@ -172,12 +172,12 @@ class SigortaHomeController extends Controller
     public function addsigorta(Request $request)
     {
         try {
-            $insurancePrice = $request->input('insurance_price') ?? 0;
-            $insuranceEndDate = $request->input('insurance_end_date') ??  "";
-            $insuranceDescription = $request->input('insurance_description') ?? "";
-            $insuranceRequestDate = $request->input('insurance_request_date') ??  "";
-            $insuranceReviewDate = $request->input('insurance_review_date') ??  "";
-            $insuranceResultDate = $request->input('insurance_result_date') ??  "";
+            $insurancePrice = $request->input('insurance_price');
+            $insuranceEndDate = $request->input('insurance_end_date');
+            $insuranceDescription = $request->input('insurance_description');
+            $insuranceRequestDate = $request->input('insurance_request_date');
+            $insuranceReviewDate = $request->input('insurance_review_date');
+            $insuranceResultDate = $request->input('insurance_result_date');
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
             $pdfPath = "";
