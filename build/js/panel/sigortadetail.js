@@ -37,12 +37,12 @@ function getdetail(id) {
                 $("#insurance_state").val(a.insurance_state);
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
-                if (a.insurance_review_date != "") {
+                if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled=true;
                 }
-                if (a.insurance_result_date != "") {
+                if (a.insurance_result_date != "0000-00-00 00:00:00") {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled=true;
