@@ -80,7 +80,7 @@
 
                         <div class="dropzone" id="poldiv">
                             <div class="fallback">
-                                <input name="file" type="file" multiple="multiple">
+                                <input name="file" type="file"  id="insurance_policy_url"  name="insurance_policy_url" multiple="multiple">
                             </div>
                             <div class="dz-message needsclick">
                                 <div class="mb-3">
@@ -98,7 +98,7 @@
                                     <div class="d-flex p-2">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar-sm bg-light rounded">
-                                                <img src="#" alt="Project-Image" data-dz-thumbnail
+                                                <img src="https://mobiloby.app/koluman/web/upload/pdf.png" alt="Project-Image" data-dz-thumbnail
                                                     class="img-fluid rounded d-block" />
                                             </div>
                                         </div>
@@ -110,7 +110,7 @@
                                             </div>
                                         </div>
                                         <div class="flex-shrink-0 ms-3">
-                                            <button data-dz-remove class="btn btn-sm btn-danger">Delete</button>
+                                            <button data-dz-remove class="btn btn-sm btn-danger">Sil</button>
                                         </div>
                                     </div>
                                 </div>

@@ -114,7 +114,6 @@ document.getElementById("delete-record").addEventListener("click", function () {
     }
 });
 function add(){
-    document.querySelector("#deleteallbutton").style.display="none";
     $("#insurance_review_date").val("");
     $("#insurance_result_date").val("");
     $("#insurance_request_date").val("");
@@ -133,7 +132,6 @@ function add(){
     document.querySelector("#updinc").disabled = false;
 }
 document.getElementById("newbutton").addEventListener("click", function () {
-    //ekleme veya güncelleme yapılmalı işlemleri yapılmalı
     let insurance_id=$("#insurance_id").val();
     if(insurance_id!=""){
         alert("güncelle");
