@@ -73,7 +73,7 @@ class SigortaHomeController extends Controller
                     "success" => 1,
                     "message" => "Sigorta talep bilgileri getirildi",
                 ];
-                $filePath = public_path($sigortaid->insurance_policy_url);
+                $filePath = public_path($sigortaid[0]->insurance_policy_url);
                 $fileSize = filesize($filePath);
     
                 $responseData['insurance_policy_size'] = $fileSize;
