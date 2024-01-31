@@ -172,12 +172,19 @@ class SigortaHomeController extends Controller
     public function addsigorta(Request $request)
     {
         try {
-            $insurancePrice = $request->input('insurance_price')?? 0;
-            $insuranceEndDate = $request->input('insurance_end_date')?? "";
-            $insuranceDescription = $request->input('insurance_description')??"";
-            $insuranceRequestDate = $request->input('insurance_request_date')??"";
-            $insuranceReviewDate = $request->input('insurance_review_date')??"";
-            $insuranceResultDate = $request->input('insurance_result_date')??"";
+            $insurancePrice = $request->input('insurance_price');
+            $insuranceEndDate = $request->input('insurance_end_date');
+
+            $insuranceDescription = $request->input('insurance_description');
+            $insuranceRequestDate = $request->input('insurance_request_date');
+            $insuranceReviewDate = $request->input('insurance_review_date');
+            $insuranceResultDate = $request->input('insurance_result_date');
+
+            $insuranceReviewDate = !empty($insuranceReviewDate) ? $insuranceReviewDate : null;
+            $insuranceResultDate = !empty($insuranceResultDate) ? $insuranceResultDate : null;
+            $insuranceRequestDate = !empty($insuranceRequestDate) ? $insuranceRequestDate : null;
+            $insuranceEndDate = !empty($insuranceEndDate) ? $insuranceEndDate : null;
+
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
             $pdfPath = "";
@@ -187,7 +194,7 @@ class SigortaHomeController extends Controller
                 $pdf->move(public_path('upload/pdf'), $pdfName);
                 $pdfPath = 'https://mobiloby.app/koluman/web/public/upload/pdf/' . $pdfName;
             } else {
-                $pdfPath ="";
+                $pdfPath = "";
             }
             $result = Insurance::create([
                 'insurance_type' => "dasd",
@@ -214,7 +221,6 @@ class SigortaHomeController extends Controller
                     "message" => "Sigorta talebi oluşturulamadı, lütfen tekrar deneyiniz",
                 ];
             }
-
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
