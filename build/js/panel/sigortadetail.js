@@ -42,7 +42,7 @@ function getdetail(id) {
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled = true;
                 }
-                if (a.insurance_result_date != "0000-00-00 00:00:00") {
+                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled = true;
