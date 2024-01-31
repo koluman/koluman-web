@@ -46,21 +46,21 @@
                             <div class="mb-3 mb-lg-0">
                                 <label for="choices-priority-input" class="form-label">Talep Tarihi</label>
                                 <input type="text" class="form-control" id="insurance_request_date"
-                                    name="insurance_request_date">
+                                    name="insurance_request_date" data-provider="flatpickr">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-3 mb-lg-0">
                                 <label for="choices-status-input" class="form-label">İnceleme Tarihi</label>
                                 <input type="text" class="form-control" id="insurance_review_date"
-                                    name="insurance_review_date">
+                                    name="insurance_review_date" data-provider="flatpickr">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div>
                                 <label for="datepicker-deadline-input" class="form-label">Sonuç Tarihi</label>
                                 <input type="text" class="form-control" id="insurance_result_date"
-                                    name="insurance_result_date">
+                                    name="insurance_result_date" data-provider="flatpickr">
 
                             </div>
                         </div>

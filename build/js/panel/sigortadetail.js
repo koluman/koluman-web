@@ -29,7 +29,6 @@ function getdetail(id) {
         success: function (data) {
             if (data.success == 1) {
                 let a = data.sigortaid[0];
-                $("#insurance_request_date").val(a.insurance_request_date);
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
                 $("#insurance_end_date").val(a.insurance_end_date);
