@@ -169,7 +169,7 @@
 
             <div class="text-end mb-4">
                 <button type="button" id="updinc" class="btn btn-info w-sm">İncelemeye Al</button>
-                <button type="button" class="btn btn-secondary w-sm">Sonuçlandırıldı</button>
+                <button type="button" id="updsnc" class="btn btn-secondary w-sm">Sonuçlandır</button>
             </div>
             <!-- end card -->
         </div>

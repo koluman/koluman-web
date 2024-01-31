@@ -40,7 +40,10 @@ function getdetail(id) {
                 if (a.insurance_review_date != "") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
-
+                }
+                if (a.insurance_result_date != "") {
+                    $("#updsnc").val(a.insurance_result_date);
+                    $("#updsnc").text("Sonuçlandırıldı");
                 }
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
