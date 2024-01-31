@@ -30,6 +30,13 @@ if (dropzonePreviewNode) {
         method: "post",
         previewTemplate: previewTemplate,
         previewsContainer: "#dropzone-preview",
+        init: function () {
+            this.on("addedfile", function (file) {
+                // Dosya eklenince çalışacak fonksiyon
+                var fileSize = file.size; // Dosya boyutunu buradan alabilirsiniz
+                console.log("Dosya Boyutu: " + fileSize + " bytes");
+            });
+        }
     });
 
 }
