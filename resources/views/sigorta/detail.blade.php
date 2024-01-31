@@ -16,7 +16,7 @@
     @endcomponent
     <div class="row">
         <div class="col-lg-8">
-
+            <form id="sigortaForm" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body">
 
@@ -126,7 +126,8 @@
                 <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll" class="btn btn-danger w-sm">Sil</button>
                 <button type="button" id="newbutton" class="btn btn-success w-sm">Ekle</button>
             </div>
-            
+            </form>
+
         </div>
         <!-- end col -->
         <div class="col-lg-4">

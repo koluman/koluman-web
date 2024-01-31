@@ -133,7 +133,7 @@ function add(){
 }
 document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceId = $("#insurance_id").val();
-    var user_id = $("#user_id").val();
+    /*var user_id = $("#user_id").val();
     var insurancePrice = $("#insurance_price").val();
     var insurance_state = $("#insurance_state").val();
 
@@ -144,7 +144,9 @@ document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceRequestDate = $("#insurance_request_date").val();
     var insuranceReviewDate = $("#insurance_review_date").val();
     var insuranceResultDate = $("#insurance_result_date").val();
-    var insurancePolicyUrl = $("#insurance_policy_url").val();  // Dosya yolu veya input elementini değiştirmelisiniz
+    var insurancePolicyUrl = $("#insurance_policy_url").val();  // Dosya yolu veya input elementini değiştirmelisiniz*/
+    var form = document.getElementById('sigortaForm');
+    var formData = new FormData(form);
 
     if(insuranceId!=""){
         alert("güncelle");
@@ -153,7 +155,10 @@ document.getElementById("newbutton").addEventListener("click", function () {
             url: 'https://mobiloby.app/koluman/web/addsigorta', // Laravel Controller'ınızın URL'si
             method: 'POST',
             dataType:"json",
-            data: {
+            data: formData,
+            processData: false,
+            contentType: false,
+            /*data: {
                 _token: csrfToken,
                 user_id:user_id,
                 insurance_state:insurance_state,
@@ -165,7 +170,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
                 insurance_review_date: insuranceReviewDate,
                 insurance_result_date: insuranceResultDate,
                 insurance_policy_url: insurancePolicyUrl
-            },
+            },*/
             success: function(response) {
                 console.log(response);
             },
