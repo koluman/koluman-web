@@ -73,9 +73,10 @@ class SigortaHomeController extends Controller
                     "success" => 1,
                     "message" => "Sigorta talep bilgileri getirildi",
                 ];
-                $insurancePolicyPath = rtrim($sigortaid[0]->insurance_policy_url, '.');
-                $insurancePolicySize = Storage::disk('public')->size($insurancePolicyPath);
-                $responseData['insurance_policy_size'] = $insurancePolicySize;
+                $filePath = public_path($sigortaid->insurance_policy_url);
+                $fileSize = filesize($filePath);
+    
+                $responseData['insurance_policy_size'] = $fileSize;
             }
         } catch (\Exception $e) {
             $responseData = [
