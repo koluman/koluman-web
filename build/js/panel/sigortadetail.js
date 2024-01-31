@@ -151,6 +151,18 @@ document.getElementById("newbutton").addEventListener("click", function () {
     if(insuranceId!=""){
         alert("güncelle");
     }else{
+        var dropzone = new Dropzone("#sigortaForm .dropzone", {
+            url: 'https://httpbin.org/post',
+            method: "post",
+            previewsContainer: "#dropzone-preview",
+            init: function () {
+                this.on("addedfile", function (file) {
+                    // Dosya eklenince çalışacak fonksiyon
+                    var fileSize = file.size; // Dosya boyutunu buradan alabilirsiniz
+                    console.log("Dosya Boyutu: " + fileSize + " bytes");
+                });
+            }
+        });
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/addsigorta', // Laravel Controller'ınızın URL'si
             method: 'POST',
