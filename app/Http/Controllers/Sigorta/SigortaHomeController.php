@@ -184,7 +184,7 @@ class SigortaHomeController extends Controller
                 $pdf = $request->file('insurance_policy_url');
                 $pdfName = time() . '.' . $pdf->getClientOriginalExtension();
                 $pdf->move(public_path('upload/pdf'), $pdfName);
-                $pdfPath = 'https://mobiloby.app/koluman/web/upload/pdf/' . $pdfName;
+                $pdfPath = 'https://mobiloby.app/koluman/web/public/upload/pdf/' . $pdfName;
             } else {
                 $pdfPath="";
             }
