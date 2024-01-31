@@ -360,6 +360,8 @@
             },
             removedfile: function (e) {
                 document.querySelector("#poldiv").style.display = "block";
+                $("#polid").text("");
+
                 return null != e.previewElement && null != e.previewElement.parentNode && e.previewElement.parentNode.removeChild(e.previewElement), this._updateMaxFilesReachedClass()
             },
             thumbnail: function (e, t) {
