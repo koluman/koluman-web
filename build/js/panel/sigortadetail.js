@@ -35,7 +35,6 @@ function getdetail(id) {
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
                 $("#newbutton").text("Güncelle");
-                document.querySelector("#deleteallbutton").style.display="block";
                 if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != ""){
                     $("#insurance_end_date").val(a.insurance_end_date);
                 }
