@@ -229,4 +229,33 @@ class SigortaHomeController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deletesigortapoliçe(Request $request)
+    {
+        try {
+            $insurance_id = $request->insurance_id;
+
+            $affectedRows = Insurance::where('insurance_id', $insurance_id)
+                ->update([
+                    'insurance_policy_url' =>"",
+                ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "insurance" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Poliçe silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Poliçe silinemedi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }

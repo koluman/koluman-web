@@ -60,6 +60,7 @@ Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function
     Route::post('updatesigortareview', [SigortaHomeController::class, 'updatesigortareview'])->name('updatesigortareview');
     Route::post('updatesigortaresult', [SigortaHomeController::class, 'updatesigortaresult'])->name('updatesigortaresult');
     Route::post('addsigorta', [SigortaHomeController::class, 'addsigorta'])->name('addsigorta');
+    Route::post('deletesigortapoliçe', [SigortaHomeController::class, 'deletesigortapoliçe'])->name('deletesigortapoliçe');
 
     
     
