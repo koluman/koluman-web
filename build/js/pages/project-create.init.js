@@ -50,24 +50,26 @@ if (dropzonePreviewNode) {
                     if (insuranceId != "") {
                         alert("güncelle");
                     } else {
-
+                        var formData = new FormData();
+                        formData.append('_token', csrfToken);
+                        formData.append('user_id', user_id);
+                        formData.append('insurance_state', insurance_state);
+                        formData.append('insurance_id', insuranceId);
+                        formData.append('insurance_price', insurancePrice);
+                        formData.append('insurance_end_date', insuranceEndDate);
+                        formData.append('insurance_description', insuranceDescription);
+                        formData.append('insurance_request_date', insuranceRequestDate);
+                        formData.append('insurance_review_date', insuranceReviewDate);
+                        formData.append('insurance_result_date', insuranceResultDate);
+                        formData.append('insurance_policy_url', file);
+        
                         $.ajax({
                             url: 'https://mobiloby.app/koluman/web/addsigorta', // Laravel Controller'ınızın URL'si
                             method: 'POST',
                             dataType: "json",
-                            data: {
-                                _token: csrfToken,
-                                user_id:user_id,
-                                insurance_state:insurance_state,
-                                insurance_id: insuranceId,
-                                insurance_price: insurancePrice,
-                                insurance_end_date: insuranceEndDate,
-                                insurance_description: insuranceDescription,
-                                insurance_request_date: insuranceRequestDate,
-                                insurance_review_date: insuranceReviewDate,
-                                insurance_result_date: insuranceResultDate,
-                                insurance_policy_url: insurancePolicyUrl
-                            },
+                            data: formData,
+                            processData: false,
+                            contentType: false,
                             success: function (response) {
                                 console.log(response);
                             },
