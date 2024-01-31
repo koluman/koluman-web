@@ -18,7 +18,7 @@ if (ckeditorClassic) {
             console.error(error);
         });
 }
-
+var insurance_policy_url;
 // Dropzone
 var dropzonePreviewNode = document.querySelector("#dropzone-preview-list");
 if (dropzonePreviewNode) {
@@ -32,7 +32,7 @@ if (dropzonePreviewNode) {
         previewsContainer: "#dropzone-preview",
         init: function () {
             this.on("addedfile", function (file) {
-                console.log(file);
+                insurance_policy_url = file;
                 document.getElementById("newbutton").addEventListener("click", function () {
                     var insuranceId = $("#insurance_id").val();
                     var user_id = $("#user_id").val();
@@ -60,7 +60,7 @@ if (dropzonePreviewNode) {
                         formData.append('insurance_request_date', insuranceRequestDate);
                         formData.append('insurance_review_date', insuranceReviewDate);
                         formData.append('insurance_result_date', insuranceResultDate);
-                        formData.append('insurance_policy_url', file);
+                        formData.append('insurance_policy_url', insurance_policy_url);
         
                         $.ajax({
                             url: 'https://mobiloby.app/koluman/web/addsigorta', // Laravel Controller'ınızın URL'si
