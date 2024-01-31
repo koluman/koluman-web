@@ -31,17 +31,19 @@ function getdetail(id) {
                 let a = data.sigortaid[0];
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
-                $("#insurance_end_date").val(a.insurance_end_date);
                 $("#insurance_state").val(a.insurance_state);
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
                 $("#newbutton").text("Sigorta Talebini Güncelle");
-                if (a.insurance_request_date != "0000-00-00 00:00:00" || a.insurance_request_date != ""){
+                if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != ""){
+                    $("#insurance_end_date").val(a.insurance_end_date);
+                }
+                if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != ""){
                     $("#insurance_request_date").val(a.insurance_request_date);
                 }
-                if (a.insurance_review_date != "0000-00-00 00:00:00" || a.insurance_review_date != ""){
+                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != ""){
                     $("#insurance_review_date").val(a.insurance_review_date);
-                }if (a.insurance_result_date != "0000-00-00 00:00:00" || a.insurance_result_date != ""){
+                }if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""){
                     $("#insurance_result_date").val(a.insurance_result_date);
                 }
                 /*if (a.insurance_review_date != "0000-00-00 00:00:00") {
