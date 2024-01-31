@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var id = getIdFromUrl();
-    getdetail(id);
+    if(id!="") getdetail(id);
+    else add();
 });
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -96,7 +97,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
         });
     }
 });
-document.getElementById("newbutton").addEventListener("click", function () {
+function add(){
     $("#insurance_review_date").val("");
     $("#insurance_result_date").val("");
     $("#insurance_request_date").val("");
@@ -113,6 +114,9 @@ document.getElementById("newbutton").addEventListener("click", function () {
     $("#updsnc").text("Sonuçlandır");
     document.querySelector("#updsnc").disabled = false;
     document.querySelector("#updinc").disabled = false;
+}
+document.getElementById("newbutton").addEventListener("click", function () {
+add();
 });
 document.getElementById("updinc").addEventListener("click", function () {
     let id = $("#insurance_id").val();

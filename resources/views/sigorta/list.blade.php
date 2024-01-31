@@ -25,8 +25,7 @@
                         </div>
                         <div class="col-sm-auto">
                             <div class="d-flex gap-1 flex-wrap">
-                                <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
+                                <button type="button" onclick="{{route('sigortadetail')}}" class="btn btn-success add-btn" id="create-btn" ><i
                                         class="ri-add-line align-bottom me-1"></i> Sigorta Talep Et</button>
                                 <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
@@ -154,84 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header bg-light p-3">
-                                    <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Ekle</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                        id="close-modal"></button>
-                                </div>
-                                <form class="tablelist-form" autocomplete="off">
-                                    <div class="modal-body">
-                                        <input type="hidden" id="userid" name="userid" />
-                                        <div class="mb-3">
-                                            <label for="customername-field" class="form-label">Kullanıcı Adsoyad</label>
-                                            <input type="text" id="username" name="username" class="form-control"
-                                                placeholder="Adsoyad" required />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="customername-field" class="form-label">Kullanıcı E-posta</label>
-                                            <input type="text" id="usermail" name="usermail" class="form-control"
-                                                placeholder="E-posta" required />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="customername-field" class="form-label">Kullanıcı Telefon</label>
-                                            <input type="text" id="userphone" name="userphone" class="form-control"
-                                                placeholder="Telefon" required />
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="productname-field" class="form-label">Kullanıcı Yetki</label>
-                                            <select class="form-control" data-trigger id="userrole" name="userrole"
-                                                required>
-                                                <option value="">Lütfen seçim yapınız</option>
-                                                <option value="all" selected>Hepsi</option>
-                                                <option value="talep">Talep Oluştu</option>
-                                                <option value="inceleme">İncelemede</option>
-                                                <option value="teklif">Teklif Oluştu</option>
-                                                <option value="aktif">Aktif</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="hstack gap-2 justify-content-end">
-                                            <button type="button" class="btn btn-light"
-                                                data-bs-dismiss="modal">Kapat</button>
-                                            <button type="submit" class="btn btn-success" id="add-btn">Ekle</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body p-5 text-center">
-                                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                                        colors="primary:#405189,secondary:#f06548"
-                                        style="width:90px;height:90px"></lord-icon>
-                                    <div class="mt-4 text-center">
-                                        <h4>Bu kullanıcıyı silmek istediğinize emin misiniz?</h4>
-                                        <p class="text-muted fs-15 mb-4">Kullanıcıyı sildiğiniz taktirde geri bu
-                                            kullanıcıyı getiremezsiniz.</p>
-                                        <div class="hstack gap-2 justify-content-center remove">
-                                            <button class="btn btn-link link-success fw-medium text-decoration-none"
-                                                data-bs-dismiss="modal" id="deleteRecord-close"><i
-                                                    class="ri-close-line me-1 align-middle"></i>
-                                                Kapat</button>
-                                            <button class="btn btn-danger" id="delete-record">Eminim, Sil</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end modal -->
+                    
                 </div>
             </div>
 
