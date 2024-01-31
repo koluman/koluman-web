@@ -45,7 +45,7 @@ if (dropzonePreviewNode) {
                     var insuranceReviewDate = $("#insurance_review_date").val();
                     var insuranceResultDate = $("#insurance_result_date").val();
                    
-
+console.log(insurance_policy_url);
                     if (insuranceId != "") {
                         alert("güncelle");
                     } else {
