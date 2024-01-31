@@ -76,7 +76,7 @@ class SigortaHomeController extends Controller
                 $filePath = $sigortaid[0]->insurance_policy_url;
                 $fileSize = filesize($filePath);
     
-                $responseData['insurance_policy_size'] = $fileSize;
+                $responseData['insurance_policy_size'] = $filePath;
             }
         } catch (\Exception $e) {
             $responseData = [
