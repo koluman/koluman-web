@@ -122,7 +122,7 @@ class SigortaHomeController extends Controller
             ]);
             if ($affectedRows > 0) {
                 $responseData = [
-                    "sonuc" => $affectedRows,
+                    "insurance" => $affectedRows,
                     "success" => 1,
                     "message" => "İncelendi durumu güncellendi",
                 ];
@@ -151,7 +151,7 @@ class SigortaHomeController extends Controller
             ]);
             if ($affectedRows > 0) {
                 $responseData = [
-                    "sonuc" => $affectedRows,
+                    "insurance" => $affectedRows,
                     "success" => 1,
                     "message" => "Sonuçlandırıldı durumu güncellendi",
                 ];
