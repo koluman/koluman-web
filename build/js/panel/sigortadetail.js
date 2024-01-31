@@ -26,7 +26,6 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
-            console.log(data);
             if (data.success == 1) {
                 let a = data.sigortaid[0];
                 $("#insurance_review_date").val(a.insurance_review_date);
@@ -74,7 +73,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                   window.location.href="sigortalist";
+                   window.location.href="https://mobiloby.app/koluman/web/sigortalist";
                 } else {
                     alert(data.message);
                 }
