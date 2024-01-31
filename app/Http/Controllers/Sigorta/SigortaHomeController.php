@@ -172,12 +172,12 @@ class SigortaHomeController extends Controller
     public function addsigorta(Request $request)
     {
         try {
-            $insurancePrice = $request->input('insurance_price');
-            $insuranceEndDate = $request->input('insurance_end_date');
-            $insuranceDescription = $request->input('insurance_description');
-            $insuranceRequestDate = $request->input('insurance_request_date');
-            $insuranceReviewDate = $request->input('insurance_review_date');
-            $insuranceResultDate = $request->input('insurance_result_date');
+            $insurancePrice = $request->input('insurance_price') ?? 0;
+            $insuranceEndDate = $request->input('insurance_end_date') ?? '0000-00-00 00:00:00';
+            $insuranceDescription = $request->input('insurance_description') ?? "";
+            $insuranceRequestDate = $request->input('insurance_request_date') ?? '0000-00-00 00:00:00';
+            $insuranceReviewDate = $request->input('insurance_review_date') ?? '0000-00-00 00:00:00';
+            $insuranceResultDate = $request->input('insurance_result_date') ?? '0000-00-00 00:00:00';
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
             if ($request->hasFile('insurance_policy_url')) {
