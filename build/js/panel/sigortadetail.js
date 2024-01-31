@@ -117,7 +117,13 @@ function add(){
     document.querySelector("#updinc").disabled = false;
 }
 document.getElementById("newbutton").addEventListener("click", function () {
-    //ekleme işlemleri yapılmalı
+    //ekleme veya güncelleme yapılmalı işlemleri yapılmalı
+    let insurance_id=$("#insurance_id").val();
+    if(insurance_id!=""){
+        alert("güncelle");
+    }else{
+        alert("ekle");
+    }
 });
 document.getElementById("updinc").addEventListener("click", function () {
     let id = $("#insurance_id").val();
