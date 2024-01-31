@@ -40,11 +40,15 @@ function getdetail(id) {
                 }
                 if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != ""){
                     $("#insurance_request_date").val(a.insurance_request_date);
+                    document.querySelector("#insurance_request_date").disabled = true;
                 }
                 if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != ""){
                     $("#insurance_review_date").val(a.insurance_review_date);
+                    document.querySelector("#insurance_review_date").disabled = true;
+
                 }if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""){
                     $("#insurance_result_date").val(a.insurance_result_date);
+                    document.querySelector("#insurance_result_date").disabled = true;
                 }
                 /*if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
