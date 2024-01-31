@@ -208,7 +208,6 @@ document.getElementById("newbutton").addEventListener("click", function () {
         formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
         formData.append('user_id', user_id);
         formData.append('insurance_state', insurance_state);
-        formData.append('insurance_id', insuranceId);
         formData.append('insurance_price', insurancePrice);
         formData.append('insurance_end_date', insuranceEndDate);
         formData.append('insurance_description', insuranceDescription);
@@ -216,7 +215,6 @@ document.getElementById("newbutton").addEventListener("click", function () {
         formData.append('insurance_review_date', insuranceReviewDate);
         formData.append('insurance_result_date', insuranceResultDate);
         formData.append('insurance_policy_url', insurance_policy_url);
-        console.log(formData.get('insurance_policy_url'));
 
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/addsigorta',

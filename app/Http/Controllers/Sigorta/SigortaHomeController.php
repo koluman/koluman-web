@@ -171,26 +171,55 @@ class SigortaHomeController extends Controller
     }
     public function addsigorta(Request $request)
     {
-        // Diğer verileri al
-        $insuranceId = $request->input('insurance_id');
-        $insurancePrice = $request->input('insurance_price');
-        $insuranceEndDate = $request->input('insurance_end_date');
-        $insuranceDescription = $request->input('insurance_description');
-        $insuranceRequestDate = $request->input('insurance_request_date');
-        $insuranceReviewDate = $request->input('insurance_review_date');
-        $insuranceResultDate = $request->input('insurance_result_date');
+        try {
+            $insurancePrice = $request->input('insurance_price');
+            $insuranceEndDate = $request->input('insurance_end_date');
+            $insuranceDescription = $request->input('insurance_description');
+            $insuranceRequestDate = $request->input('insurance_request_date');
+            $insuranceReviewDate = $request->input('insurance_review_date');
+            $insuranceResultDate = $request->input('insurance_result_date');
+            $insurance_state = $request->input('insurance_state');
+            $user_id = $request->input('user_id');
+            if ($request->hasFile('insurance_policy_url')) {
+                $pdf = $request->file('insurance_policy_url');
+                $pdfName = time() . '.' . $pdf->getClientOriginalExtension();
+                $pdf->move(public_path('upload/pdf'), $pdfName);
+                $pdfPath = 'https://mobiloby.app/koluman/web/upload/pdf/' . $pdfName;
+            } else {
+                $pdfPath="";
+            }
+            $result = Insurance::create([
+                'insurance_type' => "dasd",
+                'insurance_price' => $insurancePrice,
+                'insurance_end_date' => $insuranceEndDate,
+                'insurance_description' => $insuranceDescription,
+                'insurance_request_date' => $insuranceRequestDate,
+                'insurance_review_date' => $insuranceReviewDate,
+                'insurance_result_date' => $insuranceResultDate,
+                'insurance_state' => $insurance_state,
+                'insurance_author' => 1,
+                'user_id' => $user_id,
+                'insurance_policy_url' => $pdfPath, // Dosyanın URL'sini kaydet
+            ]);
+            if ($result) {
+                $responseData = [
+                    "result" => $result,
+                    "success" => 1,
+                    "message" => "Sigorta talebi oluşturuldu",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Sigorta talebi oluşturulamadı, lütfen tekrar deneyiniz",
+                ];
+            }
 
-        // Dosyayı kontrol et
-        if ($request->hasFile('insurance_policy_url')) {
-            $file = $request->file('insurance_policy_url');
-            // Dosyayı işleme (örneğin, depolama veya veritabanına kaydetme)
-            $path = $file->store('upload');
-
-            // Diğer verilerle birlikte işlenmiş dosyanın yolu gibi şeyleri döndür
-            return response()->json(['path' => $path, 'otherData' => $insurancePrice]);
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
         }
-
-        // Dosya gelmediyse, sadece diğer verileri döndür
-        return response()->json(['otherData' => $insurancePrice]);
+        return response()->json($responseData);
     }
 }
