@@ -29,8 +29,6 @@ function getdetail(id) {
         success: function (data) {
             if (data.success == 1) {
                 let a = data.sigortaid[0];
-                $("#insurance_review_date").val(a.insurance_review_date);
-                $("#insurance_result_date").val(a.insurance_result_date);
                 $("#insurance_request_date").val(a.insurance_request_date);
                 $("#insurance_price").val(a.insurance_price);
                 $("#insurance_description").text(a.insurance_description);
@@ -39,7 +37,15 @@ function getdetail(id) {
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
                 $("#newbutton").text("Sigorta Talebini Güncelle");
-                if (a.insurance_review_date != "0000-00-00 00:00:00") {
+                if (a.insurance_request_date != "0000-00-00 00:00:00" || a.insurance_request_date != ""){
+                    $("#insurance_request_date").val(a.insurance_request_date);
+                }
+                if (a.insurance_review_date != "0000-00-00 00:00:00" || a.insurance_review_date != ""){
+                    $("#insurance_review_date").val(a.insurance_review_date);
+                }if (a.insurance_result_date != "0000-00-00 00:00:00" || a.insurance_result_date != ""){
+                    $("#insurance_result_date").val(a.insurance_result_date);
+                }
+                /*if (a.insurance_review_date != "0000-00-00 00:00:00") {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled = true;
@@ -48,7 +54,7 @@ function getdetail(id) {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled = true;
-                }
+                }*/
                 if (a.insurance_policy_url) {
                     let pdfFileName = getFileNameFromUrl(a.insurance_policy_url);
                     $("#polid").text(pdfFileName);
