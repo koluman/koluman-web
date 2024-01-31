@@ -28,6 +28,7 @@ function sigorta() {
 function sigortalist(data) {
     var s = "";
     let j = 0;
+    let dizi=["Talep Oluştu","İncelemede","Teklif Oluştu","Aktif"];
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
@@ -42,7 +43,10 @@ function sigortalist(data) {
         s += '<td class="insurancetype">' + data[i].insurance_type + '</td>';
         s += '<td class="insuranceprice">' + data[i].insurance_price + '</td>';
         s += '<td class="insurancedescription">' + data[i].insurance_description + '</td>';
-        s += '<td class="insurancestate">' + data[i].insurance_state + '</td>';
+        if (data[i].insurance_state >= 1 && data[i].insurance_state <= 4) {
+            let durumMetni = dizi[data[i].insurance_state - 1];
+            s += '<td class="insurancestate">' + durumMetni + '</td>';
+        } 
         s += '<td>';
         s += '    <ul class="list-inline hstack gap-2 mb-0">';
         s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Detay">';
