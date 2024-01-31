@@ -133,6 +133,11 @@ function add(){
 }
 document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceId = $("#insurance_id").val();
+    var user_id = $("#user_id").val();
+    var insurancePrice = $("#insurance_price").val();
+    var insurance_state = $("#insurance_state").val();
+
+    
     var insurancePrice = $("#insurance_price").val();
     var insuranceEndDate = $("#insurance_end_date").val();
     var insuranceDescription = $("#insurance_description").val();
@@ -150,6 +155,8 @@ document.getElementById("newbutton").addEventListener("click", function () {
             dataType:"json",
             data: {
                 _token: csrfToken,
+                user_id:user_id,
+                insurance_state:insurance_state,
                 insurance_id: insuranceId,
                 insurance_price: insurancePrice,
                 insurance_end_date: insuranceEndDate,
