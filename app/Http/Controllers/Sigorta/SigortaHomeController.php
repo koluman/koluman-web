@@ -184,7 +184,7 @@ class SigortaHomeController extends Controller
             $insuranceResultDate = !empty($insuranceResultDate) ? $insuranceResultDate : null;
             $insuranceRequestDate = !empty($insuranceRequestDate) ? $insuranceRequestDate : null;
             $insuranceEndDate = !empty($insuranceEndDate) ? $insuranceEndDate : null;
-
+            $insurance_type = $request->input('insurance_type');
             $insurance_state = $request->input('insurance_state');
             $user_id = $request->input('user_id');
             $pdfPath = "";
@@ -197,7 +197,7 @@ class SigortaHomeController extends Controller
                 $pdfPath = "";
             }
             $result = Insurance::create([
-                'insurance_type' => "dasd",
+                'insurance_type' => $insurance_type,
                 'insurance_price' => $insurancePrice,
                 'insurance_end_date' => $insuranceEndDate,
                 'insurance_description' => $insuranceDescription,

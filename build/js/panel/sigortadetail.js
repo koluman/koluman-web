@@ -34,6 +34,7 @@ function getdetail(id) {
                 $("#insurance_state").val(a.insurance_state);
                 $("#insurance_id").val(a.insurance_id);
                 $("#user_id").val(a.user_id);
+                $("#insurance_type").val(a.insurance_type);
                 $("#newbutton").text("Güncelle");
                 if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != ""){
                     $("#insurance_end_date").val(a.insurance_end_date);
@@ -122,6 +123,7 @@ function add(){
     $("#insurance_end_date").val("");
     $("#insurance_state").val("");
     $("#insurance_id").val("");
+    $("#insurance_type").val("");
     $("#user_id").val("");
     dropzone.removeAllFiles();
     $("#updinc").val("");
@@ -200,7 +202,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceRequestDate = $("#insurance_request_date").val();
     var insuranceReviewDate = $("#insurance_review_date").val();
     var insuranceResultDate = $("#insurance_result_date").val();
-
+    var insurance_type = $("#insurance_result_date").val();
     if (insuranceId != "") {
         alert("güncelle");
     } else {
@@ -215,7 +217,9 @@ document.getElementById("newbutton").addEventListener("click", function () {
         formData.append('insurance_review_date', insuranceReviewDate);
         formData.append('insurance_result_date', insuranceResultDate);
         formData.append('insurance_policy_url', insurance_policy_url);
+        formData.append('insurance_type', insurance_type);
 
+        
         $.ajax({
             url: 'https://mobiloby.app/koluman/web/addsigorta',
             method: 'POST',
