@@ -115,11 +115,11 @@ class SigortaHomeController extends Controller
     {
         try {
             $insurance_id = $request->insurance_id;
-            
+
             $affectedRows = Insurance::where('insurance_id', $insurance_id)
-            ->update([
-                'insurance_review_date' =>Carbon::now('Europe/Istanbul'),
-            ]);
+                ->update([
+                    'insurance_review_date' => Carbon::now('Europe/Istanbul'),
+                ]);
             if ($affectedRows > 0) {
                 $responseData = [
                     "insurance" => $affectedRows,
@@ -144,11 +144,11 @@ class SigortaHomeController extends Controller
     {
         try {
             $insurance_id = $request->insurance_id;
-            
+
             $affectedRows = Insurance::where('insurance_id', $insurance_id)
-            ->update([
-                'insurance_result_date' =>Carbon::now('Europe/Istanbul'),
-            ]);
+                ->update([
+                    'insurance_result_date' => Carbon::now('Europe/Istanbul'),
+                ]);
             if ($affectedRows > 0) {
                 $responseData = [
                     "insurance" => $affectedRows,
@@ -168,5 +168,20 @@ class SigortaHomeController extends Controller
             ];
         }
         return response()->json($responseData);
+    }
+    public function addsigorta(Request $request)
+    {
+        // Gelen verileri al
+        /*$insuranceId = $request->input('insurance_id');
+        $insurancePrice = $request->input('insurance_price');
+        $insuranceEndDate = $request->input('insurance_end_date');
+        $insuranceDescription = $request->input('insurance_description');
+        $insuranceRequestDate = $request->input('insurance_request_date');
+        $insuranceReviewDate = $request->input('insurance_review_date');
+        $insuranceResultDate = $request->input('insurance_result_date');
+        $insurancePolicyUrl = $request->input('insurance_policy_url');*/
+
+  
+        return response()->json($request);
     }
 }
