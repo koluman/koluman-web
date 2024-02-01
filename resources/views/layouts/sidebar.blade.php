@@ -84,9 +84,12 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>@lang('translation.menu')</span></li>
                 <li class="nav-item">
-
+                    @php
+                        $dashboardLink = Auth::guard('web')->user()->backuser_role . 'dashboard';
+                    @endphp
                 <li class="nav-item">
-                    <a href="admindashboard" class="nav-link"> <i class="ri-dashboard-2-line"></i>
+                    <a href="{{ $dashboardLink }}" "class="nav-link"> <i
+                            class="ri-dashboard-2-line"></i>
                         <span>@lang('translation.dashboards')</span></a>
                 </li>
 
