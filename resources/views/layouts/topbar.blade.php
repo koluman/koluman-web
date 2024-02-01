@@ -632,7 +632,7 @@
 
                             <div class="notification-actions" id="notification-actions">
                                 <div class="d-flex text-muted justify-content-center">
-                                    Seç <div id="select-content" class="text-body fw-semibold px-1">0</div> Sonuç
+                                    Seçilen <div id="select-content" class="text-body fw-semibold px-1">0</div> adet
                                     <button type="button" class="btn btn-link link-danger p-0 ms-3"
                                         data-bs-toggle="modal"
                                         data-bs-target="#removeNotificationModal">Sil</button>
@@ -659,20 +659,20 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->backuser_name }}!</h6>
-                        <a class="dropdown-item" href="pages-profile"><i
+                        <a class="dropdown-item" href="#"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profilim</span></a>
-                        <a class="dropdown-item" href="apps-chat"><i
+                        <a class="dropdown-item" href="#"><i
                                 class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Mesajlar</span></a>
-                        <a class="dropdown-item" href="apps-tasks-kanban"><i
+                        <a class="dropdown-item" href="#"><i
                                 class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Takvim</span></a>
-                        <a class="dropdown-item" href="pages-faqs"><i
+                        <a class="dropdown-item" href="#"><i
                                 class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Yardım</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="pages-profile-settings"><span
+                        <a class="dropdown-item" href="#"><span
                                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Ayarlar</span></a>
