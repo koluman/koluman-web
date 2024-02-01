@@ -87,12 +87,11 @@
                     @php
                         $dashboardLink = Auth::guard('web')->user()->backuser_role . 'dashboard';
                     @endphp
+
                 <li class="nav-item">
-                    <a href="{{ $dashboardLink }}" "class="nav-link"> <i
-                            class="ri-dashboard-2-line"></i>
+                    <a href="{{ $dashboardLink }}" class="nav-link"> <i class="ri-dashboard-2-line"></i>
                         <span>@lang('translation.dashboards')</span></a>
                 </li>
-
                 </li> <!-- end Dashboard Menu -->
                 @if (Auth::guard('web')->user()->backuser_role == 'admin')
                     <li class="nav-item">
