@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sigorta;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InsuranceDeleteRequest;
+use App\Http\Requests\InsuranceWebAddRequest;
 use App\Models\Insurance;
 use App\Models\User;
 use Carbon\Carbon;
@@ -171,7 +172,7 @@ class SigortaHomeController extends Controller
         }
         return response()->json($responseData);
     }
-    public function addsigorta(Request $request)
+    public function addsigorta(InsuranceWebAddRequest $request)
     {
         try {
             $insurancePrice = $request->input('insurance_price');
@@ -260,7 +261,7 @@ class SigortaHomeController extends Controller
         }
         return response()->json($responseData);
     }
-    public function updatesigorta(Request $request)
+    public function updatesigorta(InsuranceWebAddRequest $request)
     {
         try {
             $insurancePrice = $request->input('insurance_price');
