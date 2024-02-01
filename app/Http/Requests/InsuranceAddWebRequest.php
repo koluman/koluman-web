@@ -13,7 +13,6 @@ class InsuranceAddWebRequest extends FormRequest
             'success' => 0,
             'message' => $validator->errors(),
         ], 422));
-   
     }
     public function authorize()
     {
@@ -23,9 +22,9 @@ class InsuranceAddWebRequest extends FormRequest
     public function rules()
     {
         return [
-            'insurance_state' => 'sometimes|required',
-            'user_id' => 'sometimes|required',
-            'insurance_type' => 'sometimes|required',
+            'insurance_type' => 'required',
+            'insurance_state' => 'required',
+            'user_id' => 'required',
 
         ];
     }
@@ -33,9 +32,9 @@ class InsuranceAddWebRequest extends FormRequest
     public function messages()
     {
         return [
-            'insurance_state.required' => 'Sigorta durumu seçimi zorunludur.',
-            'user_id.required' => 'Kullanıcı alanı seçimi zorunludur.',
-            'insurance_type.required' => 'Sigorta türü seçimi zorunludur.',
+            'insurance_type.required' => 'Sigorta türü alanı zorunludur.',
+            'insurance_state.required' => 'Sigorta durumu alanı zorunludur.',
+            'user_id.required' => 'Kullnıcı seçimi  zorunlu alandır.',
 
         ];
     }
