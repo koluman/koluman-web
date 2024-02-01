@@ -86,7 +86,8 @@
                 <li class="nav-item">
 
                 <li class="nav-item">
-                    <a href="admindashboard" class="nav-link">@lang('translation.dashboards')</a>
+                    <a href="admindashboard" class="nav-link"> <i class="ri-dashboard-2-line"></i>
+                        <span>@lang('translation.dashboards')</span></a>
                 </li>
 
                 </li> <!-- end Dashboard Menu -->
