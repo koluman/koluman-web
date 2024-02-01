@@ -124,8 +124,8 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Don't have an account ? <a href=""
-                                    class="fw-semibold text-primary text-decoration-underline"> Giriş Yap </a> </p>
+                            <p class="mb-0">Hesabınız yok mu ? <a href=""
+                                    class="fw-semibold text-primary text-decoration-underline"> Kayıt Ol </a> </p>
                         </div>
 
                     </div>
