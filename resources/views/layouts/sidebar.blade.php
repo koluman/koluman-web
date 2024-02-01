@@ -43,27 +43,27 @@
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
             <h6 class="dropdown-header">Hoşgeldin {{ Auth::guard('web')->user()->backuser_name }}!</h6>
-            <a class="dropdown-item" href="pages-profile"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Profile</span></a>
-            <a class="dropdown-item" href="apps-chat"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Messages</span></a>
-            <a class="dropdown-item" href="apps-tasks-kanban"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Taskboard</span></a>
-            <a class="dropdown-item" href="pages-faqs"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Help</span></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="pages-profile"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance :
                     <b>$5971.67</b></span></a>
-            <a class="dropdown-item" href="pages-profile-settings"><span
+            <a class="dropdown-item" href="#"><span
                     class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                     class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Settings</span></a>
-            <a class="dropdown-item" href="auth-lockscreen-basic"><i
+            <a class="dropdown-item" href="#"><i
                     class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
                     screen</span></a>
 
@@ -85,17 +85,11 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>@lang('translation.menu')</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="admindashboard" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ri-dashboard-2-line"></i> <span>@lang('translation.dashboards')</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarDashboards">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="dashboard-analytics" class="nav-link">@lang('translation.analytics')</a>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </li> <!-- end Dashboard Menu -->
                 @if (Auth::guard('web')->user()->backuser_role == 'admin')
                     <li class="nav-item">
