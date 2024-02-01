@@ -147,7 +147,6 @@ document.getElementById("updinc").addEventListener("click", function () {
             },
             dataType: 'json',
             success: function (data) {
-                console.log(data);s
                 if (data.success == 1) {
                     if (data.insurance.insurance_review_date != "0000-00-00 00:00:00" && data.insurance.insurance_review_date != null) {
                         $("#updinc").val(data.insurance.insurance_review_date);

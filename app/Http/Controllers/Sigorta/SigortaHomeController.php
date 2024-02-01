@@ -121,8 +121,9 @@ class SigortaHomeController extends Controller
                     'insurance_review_date' => Carbon::now('Europe/Istanbul'),
                 ]);
             if ($affectedRows > 0) {
+                $updatedInsurance = Insurance::where('insurance_id', $insurance_id)->first();
                 $responseData = [
-                    "insurance" => $affectedRows,
+                    "insurance" => $updatedInsurance,
                     "success" => 1,
                     "message" => "İncelendi durumu güncellendi",
                 ];
@@ -150,8 +151,9 @@ class SigortaHomeController extends Controller
                     'insurance_result_date' => Carbon::now('Europe/Istanbul'),
                 ]);
             if ($affectedRows > 0) {
+                $updatedInsurance = Insurance::where('insurance_id', $insurance_id)->first();
                 $responseData = [
-                    "insurance" => $affectedRows,
+                    "insurance" => $updatedInsurance,
                     "success" => 1,
                     "message" => "Sonuçlandırıldı durumu güncellendi",
                 ];
