@@ -15806,7 +15806,7 @@ span.flatpickr-weekday {
 }
 
 .auth-one-bg {
-    background-image: url(icons/auth-one-bg.jpg);
+    background-image: "/koluman/web/build/icons/auth-one-bg.jpg";
     background-position: center;
     background-size: cover
 }
