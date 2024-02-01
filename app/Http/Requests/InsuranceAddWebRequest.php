@@ -10,7 +10,7 @@ class InsuranceAddWebRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'success' => 0,
+            'success' => 2,
             'message' => $validator->errors(),
         ]));
     }
