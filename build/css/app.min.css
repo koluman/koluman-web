@@ -15806,7 +15806,7 @@ span.flatpickr-weekday {
 }
 
 .auth-one-bg {
-    background-image: "/koluman/web/build/icons/auth-one-bg.jpg";
+    background-image: "https://mobiloby.app/koluman/web/build/icons/auth-one-bg.jpg";
     background-position: center;
     background-size: cover
 }
