@@ -34,7 +34,7 @@ class InsuranceAddWebRequest extends FormRequest
         return [
             'insurance_type.required' => 'Sigorta türü alanı zorunludur.',
             'insurance_state.required' => 'Sigorta durumu alanı zorunludur.',
-            'user_id.required' => 'Kullnıcı seçimi  zorunlu alandır.',
+            'user_id.required' => 'Kullanıcı seçimi  zorunlu alandır.',
 
         ];
     }

@@ -232,15 +232,15 @@ document.getElementById("newbutton").addEventListener("click", function () {
             }
             if (data.success == 2) {
                 if (data.message.insurance_type) {
-                    alert("Sigorta Türü: " + data.message.insurance_type[0]);
+                    alert(data.message.insurance_type[0]);
                 }
 
                 if (data.message.insurance_state) {
-                    alert("Sigorta Durumu: " + data.message.insurance_state[0]);
+                    alert(data.message.insurance_state[0]);
                 }
 
                 if (data.message.user_id) {
-                    alert("Kullanıcı: " + data.message.user_id[0]);
+                    alert(data.message.user_id[0]);
                 }
             } else {
                 alert(data.message);
