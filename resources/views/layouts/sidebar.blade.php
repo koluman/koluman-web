@@ -52,19 +52,18 @@
             <a class="dropdown-item" href="#"><i
                     class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Taskboard</span></a>
-            <a class="dropdown-item" href="#"><i
-                    class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
-                    class="align-middle">Help</span></a>
+            <a class="dropdown-item" href="#"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i>
+                <span class="align-middle">Help</span></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i
-                    class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance :
+            <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
+                <span class="align-middle">Balance :
                     <b>$5971.67</b></span></a>
             <a class="dropdown-item" href="#"><span
                     class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                     class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                     class="align-middle">Settings</span></a>
-            <a class="dropdown-item" href="#"><i
-                    class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
+            <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i>
+                <span class="align-middle">Lock
                     screen</span></a>
 
             <a class="dropdown-item " href="javascript:void();"
@@ -85,11 +84,11 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>@lang('translation.menu')</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="admindashboard" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i> <span>@lang('translation.dashboards')</span>
-                    </a>
-                    
+
+                <li class="nav-item">
+                    <a href="admindashboard" class="nav-link">@lang('translation.dashboards')</a>
+                </li>
+
                 </li> <!-- end Dashboard Menu -->
                 @if (Auth::guard('web')->user()->backuser_role == 'admin')
                     <li class="nav-item">
