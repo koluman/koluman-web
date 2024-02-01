@@ -36,7 +36,7 @@ function orderslist(data) {
         s += '        <input class="form-check-input" type="checkbox" name="checkAll" value="option1">';
         s += '    </div>';
         s += '</th>';
-        s += '<td class="id"><a href="apps-ecommerce-order-details" class="fw-medium link-primary">#' + j + '</a></td>';
+        s += '<td class="id"><a href="#" class="fw-medium link-primary">#' + j + '</a></td>';
         s += '<td hidden class="user">' + data[i].backuser_id + '</td>';
         s += '<td class="username">' + data[i].backuser_name + '</td>';
         s += '<td class="usermail">' + data[i].backuser_mail + '</td>';
@@ -46,7 +46,7 @@ function orderslist(data) {
         s += '<td>';
         s += '    <ul class="list-inline hstack gap-2 mb-0">';
         s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="View">';
-        s += '            <a href="apps-ecommerce-order-details" class="text-primary d-inline-block">';
+        s += '            <a href="#" class="text-primary d-inline-block">';
         s += '                <i class="ri-eye-fill fs-16"></i>';
         s += '            </a>';
         s += '        </li>';
