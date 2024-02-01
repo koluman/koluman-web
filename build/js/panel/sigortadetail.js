@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var id = getIdFromUrl();
-    if(id!="") getdetail(id);
+    if (id != "") getdetail(id);
     else add();
 });
 
@@ -36,19 +36,19 @@ function getdetail(id) {
                 $("#user_id").val(a.user_id);
                 $("#insurance_type").val(a.insurance_type);
                 $("#newbutton").text("Güncelle");
-                if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != "" && a.insurance_end_date != null){
+                if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != "" && a.insurance_end_date != null) {
                     $("#insurance_end_date").val(a.insurance_end_date);
                 }
-                if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != "" && a.insurance_request_date != null){
+                if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != "" && a.insurance_request_date != null) {
                     $("#insurance_request_date").val(a.insurance_request_date);
                     document.querySelector("#insurance_request_date").disabled = true;
                 }
-                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != "" && a.insurance_review_date != null){
+                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != "" && a.insurance_review_date != null) {
                     $("#insurance_review_date").val(a.insurance_review_date);
                     document.querySelector("#insurance_review_date").disabled = true;
 
                 }
-                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""  && a.insurance_result_date != null){
+                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != "" && a.insurance_result_date != null) {
                     $("#insurance_result_date").val(a.insurance_result_date);
                     document.querySelector("#insurance_result_date").disabled = true;
                 }
@@ -56,8 +56,7 @@ function getdetail(id) {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled = true;
-                }
-                else{
+                } else {
                     document.querySelector("#updsnc").disabled = true;
                 }
                 if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != null) {
@@ -114,7 +113,8 @@ document.getElementById("delete-record").addEventListener("click", function () {
         });
     }
 });
-function add(){
+
+function add() {
     $("#insurance_review_date").val("");
     $("#insurance_result_date").val("");
     $("#insurance_request_date").val("");
@@ -217,8 +217,8 @@ document.getElementById("newbutton").addEventListener("click", function () {
     formData.append('insurance_policy_url', insurance_policy_url);
     formData.append('insurance_type', insurance_type);
     formData.append('insurance_id', insuranceId);
-    if (insuranceId != "")         $url="https://mobiloby.app/koluman/web/updatesigorta";
-    else    $url="https://mobiloby.app/koluman/web/addsigorta"
+    if (insuranceId != "") $url = "https://mobiloby.app/koluman/web/updatesigorta";
+    else $url = "https://mobiloby.app/koluman/web/addsigorta"
     $.ajax({
         url: $url,
         method: 'POST',
@@ -229,10 +229,20 @@ document.getElementById("newbutton").addEventListener("click", function () {
         success: function (data) {
             if (data.success == 1) {
                 window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
-            } 
+            }
             if (data.success == 2) {
-                console.log(data);
-            }else {
+                if (data.message.insurance_type) {
+                    alert("Sigorta Türü: " + data.message.insurance_type[0]);
+                }
+
+                if (data.message.insurance_state) {
+                    alert("Sigorta Durumu: " + data.message.insurance_state[0]);
+                }
+
+                if (data.message.user_id) {
+                    alert("Kullanıcı: " + data.message.user_id[0]);
+                }
+            } else {
                 alert(data.message);
             }
         },
