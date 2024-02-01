@@ -147,7 +147,7 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Zamanı</label>
-                                            <select class="form-select d-none" name="appointment_time" id="appointment_time" required>
+                                            <select class="form-select" name="appointment_time" id="appointment_time" required>
                                             </select>
                                         </div>
                                     </div>
