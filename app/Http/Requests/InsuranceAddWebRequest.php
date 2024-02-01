@@ -23,9 +23,9 @@ class InsuranceAddWebRequest extends FormRequest
     public function rules()
     {
         return [
-            'insurance_state' => 'required',
-            'user_id' => 'required',
-            'insurance_type' => 'required',
+            'insurance_state' => 'sometimes|required',
+            'user_id' => 'sometimes|required',
+            'insurance_type' => 'sometimes|required',
 
         ];
     }
