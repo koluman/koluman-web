@@ -101,7 +101,7 @@
                                     <div class="d-flex p-2">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar-sm bg-light rounded">
-                                                <img src="https://mobiloby.app/koluman/web/upload/pdf.png"
+                                                <img src="https://mobiloby.app/koluman/web/public/upload/pdf.png"
                                                     alt="Project-Image" data-dz-thumbnail
                                                     class="img-fluid rounded d-block" />
                                             </div>
