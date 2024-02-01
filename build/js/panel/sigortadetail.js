@@ -36,23 +36,23 @@ function getdetail(id) {
                 $("#user_id").val(a.user_id);
                 $("#insurance_type").val(a.insurance_type);
                 $("#newbutton").text("Güncelle");
-                if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != ""){
+                if (a.insurance_end_date != "0000-00-00 00:00:00" && a.insurance_end_date != "" && a.insurance_end_date != null){
                     $("#insurance_end_date").val(a.insurance_end_date);
                 }
-                if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != ""){
+                if (a.insurance_request_date != "0000-00-00 00:00:00" && a.insurance_request_date != "" && a.insurance_request_date != null){
                     $("#insurance_request_date").val(a.insurance_request_date);
                     document.querySelector("#insurance_request_date").disabled = true;
                 }
-                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != ""){
+                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != "" && a.insurance_review_date != null){
                     $("#insurance_review_date").val(a.insurance_review_date);
                     document.querySelector("#insurance_review_date").disabled = true;
 
                 }
-                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""){
+                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_result_date != ""  && a.insurance_result_date != null){
                     $("#insurance_result_date").val(a.insurance_result_date);
                     document.querySelector("#insurance_result_date").disabled = true;
                 }
-                if (a.insurance_review_date != "0000-00-00 00:00:00") {
+                if (a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != null) {
                     $("#updinc").val(a.insurance_review_date);
                     $("#updinc").text("İncelendi");
                     document.querySelector("#updinc").disabled = true;
@@ -60,7 +60,7 @@ function getdetail(id) {
                 else{
                     document.querySelector("#updsnc").disabled = true;
                 }
-                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_review_date != "0000-00-00 00:00:00") {
+                if (a.insurance_result_date != "0000-00-00 00:00:00" && a.insurance_review_date != "0000-00-00 00:00:00" && a.insurance_review_date != null) {
                     $("#updsnc").val(a.insurance_result_date);
                     $("#updsnc").text("Sonuçlandırıldı");
                     document.querySelector("#updsnc").disabled = true;
@@ -147,7 +147,7 @@ document.getElementById("updinc").addEventListener("click", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    if (data.insurance.insurance_review_date != "0000-00-00 00:00:00") {
+                    if (data.insurance.insurance_review_date != "0000-00-00 00:00:00" && data.insurance.insurance_review_date != null) {
                         $("#updinc").val(data.insurance.insurance_review_date);
                         $("#updinc").text("İncelendi");
                         document.querySelector("#updinc").disabled = true;
@@ -177,7 +177,7 @@ document.getElementById("updsnc").addEventListener("click", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    if (data.insurance.insurance_result_date != "0000-00-00 00:00:00") {
+                    if (data.insurance.insurance_result_date != "0000-00-00 00:00:00" && data.insurance.insurance_result_date != null) {
                         $("#updsnc").val(data.insurance.insurance_result_date);
                         $("#updsnc").text("Sonuçlandırıldı");
                         document.querySelector("#updsnc").disabled = true;
