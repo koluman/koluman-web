@@ -31,7 +31,7 @@ return [
     "sellers-details" => "Seller Details",
     "list" => "List",
     "overview" => "Overview",
-    "create-project" => "Create Project",
+    "create-project" => "Sigorta Detayı",
     "tasks" => "Tasks",
     "kanbanboard" => "Kanban Board",
     "list-view" => "List View",

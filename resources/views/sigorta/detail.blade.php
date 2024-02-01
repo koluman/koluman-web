@@ -8,10 +8,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Project
+            Sigorta
         @endslot
         @slot('title')
-            Create Project
+            Sigorta Detayı
         @endslot
     @endcomponent
 
