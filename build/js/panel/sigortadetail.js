@@ -231,7 +231,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
                 window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
             } 
             if (data.success == 2) {
-                alert(data);
+                console.log(data);
             }else {
                 alert(data.message);
             }
