@@ -204,40 +204,37 @@ document.getElementById("newbutton").addEventListener("click", function () {
     var insuranceReviewDate = $("#insurance_review_date").val();
     var insuranceResultDate = $("#insurance_result_date").val();
     var insurance_type = $("#insurance_type").val();
-    if (insuranceId != "") {
-        alert("güncelle");
-    } else {
-        var formData = new FormData();
-        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-        formData.append('user_id', user_id);
-        formData.append('insurance_state', insurance_state);
-        formData.append('insurance_price', insurancePrice);
-        formData.append('insurance_end_date', insuranceEndDate);
-        formData.append('insurance_description', insuranceDescription);
-        formData.append('insurance_request_date', insuranceRequestDate);
-        formData.append('insurance_review_date', insuranceReviewDate);
-        formData.append('insurance_result_date', insuranceResultDate);
-        formData.append('insurance_policy_url', insurance_policy_url);
-        formData.append('insurance_type', insurance_type);
-
-        
-        $.ajax({
-            url: 'https://mobiloby.app/koluman/web/addsigorta',
-            method: 'POST',
-            dataType: "json",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                if (data.success == 1) {
-                    window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
-                } else {
-                    alert(data.message);
-                }
-            },
-            error: function (error) {
-                console.error(error);
+    var formData = new FormData();
+    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+    formData.append('user_id', user_id);
+    formData.append('insurance_state', insurance_state);
+    formData.append('insurance_price', insurancePrice);
+    formData.append('insurance_end_date', insuranceEndDate);
+    formData.append('insurance_description', insuranceDescription);
+    formData.append('insurance_request_date', insuranceRequestDate);
+    formData.append('insurance_review_date', insuranceReviewDate);
+    formData.append('insurance_result_date', insuranceResultDate);
+    formData.append('insurance_policy_url', insurance_policy_url);
+    formData.append('insurance_type', insurance_type);
+    formData.append('insurance_id', insuranceId);
+    if (insuranceId != "")         $url="https://mobiloby.app/koluman/web/updatesigorta";
+    else    $url="https://mobiloby.app/koluman/web/addsigorta"
+    $.ajax({
+        url: $url,
+        method: 'POST',
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if (data.success == 1) {
+                window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
+            } else {
+                alert(data.message);
             }
-        });
-    }
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
 });
