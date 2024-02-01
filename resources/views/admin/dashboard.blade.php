@@ -852,7 +852,7 @@
         </div> <!-- end .h-100-->
 
     </div> <!-- end col -->
-
+    {{--
     <div class="col-auto layout-rightside-col">
         <div class="overlay"></div>
         <div class="layout-rightside">
@@ -1281,6 +1281,7 @@
         </div> <!-- end .rightbar-->
 
     </div> <!-- end col -->
+    --}}
 </div>
 
 @endsection
