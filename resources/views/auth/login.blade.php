@@ -25,7 +25,7 @@
                             <div>
                                 <a href="index" class="d-inline-block auth-logo">
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt=""
-                                        height="%50">
+                                        height="32" weight="187">
                                 </a>
                             </div>
                             <p class="mt-3 fs-15 fw-medium">Koluman Admin & Yönetim Paneli</p>
