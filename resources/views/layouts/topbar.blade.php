@@ -574,13 +574,13 @@
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <a href="#!" class="stretched-link">
-                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kullanıcı adı</h6>
                                                 </a>
                                                 <div class="fs-13 text-muted">
-                                                    <p class="mb-1">We talked about a project on linkedin.</p>
+                                                    <p class="mb-1">dssdfdsfsdfdsfdsfsdf.</p>
                                                 </div>
                                                 <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                    <span><i class="mdi mdi-clock-outline"></i> 30 min ago</span>
+                                                    <span><i class="mdi mdi-clock-outline"></i> 30 dakika önce</span>
                                                 </p>
                                             </div>
                                             <div class="px-2 fs-15">
@@ -600,12 +600,10 @@
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-grow-1">
                                                 <a href="#!" class="stretched-link">
-                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6>
+                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kullanıcı 2</h6>
                                                 </a>
                                                 <div class="fs-13 text-muted">
-                                                    <p class="mb-1">Answered to your comment on the cash flow
-                                                        forecast's
-                                                        graph 🔔.</p>
+                                                    <p class="mb-1">asdsadasdasdsadad asfdafadf assf🔔.</p>
                                                 </div>
                                                 <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
                                                     <span><i class="mdi mdi-clock-outline"></i> 2 hrs ago</span>
@@ -622,64 +620,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="text-reset notification-item d-block dropdown-item">
-                                        <div class="d-flex">
-                                            <img src="{{ URL::asset('build/images/users/avatar-6.jpg') }}"
-                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                            <div class="flex-grow-1">
-                                                <a href="#!" class="stretched-link">
-                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
-                                                </a>
-                                                <div class="fs-13 text-muted">
-                                                    <p class="mb-1">Mentionned you in his comment on 📃 invoice
-                                                        #12501.
-                                                    </p>
-                                                </div>
-                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                    <span><i class="mdi mdi-clock-outline"></i> 10 hrs ago</span>
-                                                </p>
-                                            </div>
-                                            <div class="px-2 fs-15">
-                                                <div class="form-check notification-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="messages-notification-check03">
-                                                    <label class="form-check-label"
-                                                        for="messages-notification-check03"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-reset notification-item d-block dropdown-item">
-                                        <div class="d-flex">
-                                            <img src="{{ URL::asset('build/images/users/avatar-8.jpg') }}"
-                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                            <div class="flex-grow-1">
-                                                <a href="#!" class="stretched-link">
-                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6>
-                                                </a>
-                                                <div class="fs-13 text-muted">
-                                                    <p class="mb-1">We talked about a project on linkedin.</p>
-                                                </div>
-                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                    <span><i class="mdi mdi-clock-outline"></i> 3 days ago</span>
-                                                </p>
-                                            </div>
-                                            <div class="px-2 fs-15">
-                                                <div class="form-check notification-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="messages-notification-check04">
-                                                    <label class="form-check-label"
-                                                        for="messages-notification-check04"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="my-3 text-center view-all">
                                         <button type="button"
-                                            class="btn btn-soft-success waves-effect waves-light">View
-                                            All Messages <i class="ri-arrow-right-line align-middle"></i></button>
+                                            class="btn btn-soft-success waves-effect waves-light">Tümünü Gör <i class="ri-arrow-right-line align-middle"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -688,10 +632,10 @@
 
                             <div class="notification-actions" id="notification-actions">
                                 <div class="d-flex text-muted justify-content-center">
-                                    Select <div id="select-content" class="text-body fw-semibold px-1">0</div> Result
+                                    Seç <div id="select-content" class="text-body fw-semibold px-1">0</div> Sonuç
                                     <button type="button" class="btn btn-link link-danger p-0 ms-3"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#removeNotificationModal">Remove</button>
+                                        data-bs-target="#removeNotificationModal">Sil</button>
                                 </div>
                             </div>
                         </div>
