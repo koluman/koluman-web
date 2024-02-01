@@ -200,10 +200,10 @@
                         <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0 fw-semibold fs-15"> Web Apps </h6>
+                                    <h6 class="m-0 fw-semibold fs-15">Box İçeriği </h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="btn btn-sm btn-soft-info"> View All Apps
+                                    <a href="#!" class="btn btn-sm btn-soft-info"> Tümünü Gör
                                         <i class="ri-arrow-right-s-line align-middle"></i></a>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+               {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item">
                     <button type="button"
                         class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle"
                         id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside"
@@ -428,7 +428,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button"
