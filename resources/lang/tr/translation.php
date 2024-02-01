@@ -5,6 +5,7 @@ return [
     "user" => "Kullanıcı İşlemleri",
     "userlist" => "Kullanıcı Listesi",
     "testdrive" => "Test Sürüş İşlemleri",
+    "sigortaname"=>"Sigorta Listesi",
     "testdrivelist" => "Test Sürüş Listesi",
     "sigorta" => "Sigorta İşlemleri",
     "sigortalist" => "Sigorta Listesi",
