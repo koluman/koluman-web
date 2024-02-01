@@ -43,12 +43,12 @@
                             id="search-close-options"></span>
                     </div>
                     <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
-                        {{--<div data-simplebar style="max-height: 320px;">
+                      <div data-simplebar style="max-height: 320px;">
                             <!-- item-->
                             <div class="dropdown-header">
-                                <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
+                                <h6 class="text-overflow text-muted mb-0 text-uppercase">İçerik</h6>
                             </div>
-
+                              {{--
                             <div class="dropdown-item bg-transparent text-wrap">
                                 <a href="index" class="btn btn-soft-secondary btn-sm rounded-pill">how to setup <i
                                         class="mdi mdi-magnify ms-1"></i></a>
@@ -117,13 +117,13 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div>--}}
                         </div>
 
                         <div class="text-center pt-3 pb-1">
-                            <a href="pages-search-results" class="btn btn-primary btn-sm">View All Results <i
+                            <a href="pages-search-results" class="btn btn-primary btn-sm">Görüntüle <i
                                     class="ri-arrow-right-line ms-1"></i></a>
-                        </div>--}}
+                        </div>
                     </div>
                 </form>
             </div>
