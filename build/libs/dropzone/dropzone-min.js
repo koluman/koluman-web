@@ -372,7 +372,6 @@
                         if (data.success == 1) {
                             document.querySelector("#poldiv").style.display = "block";
                             $("#polid").text("");
-                            return null != e.previewElement && null != e.previewElement.parentNode && e.previewElement.parentNode.removeChild(e.previewElement), this._updateMaxFilesReachedClass()
                         } else {
                             alert(data.message);
                         }
@@ -381,6 +380,7 @@
                         alert("AJAX request failed:", status, error);
                     }
                 });
+                return null != e.previewElement && null != e.previewElement.parentNode && e.previewElement.parentNode.removeChild(e.previewElement), this._updateMaxFilesReachedClass()
 
             },
             thumbnail: function (e, t) {
