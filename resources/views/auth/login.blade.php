@@ -28,7 +28,7 @@
                                         height="20">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                            <p class="mt-3 fs-15 fw-medium">Koluman Admin & Yönetim Paneli</p>
                         </div>
                     </div>
                 </div>
@@ -44,18 +44,18 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                                    <h5 class="text-primary">Hoşgeldiniz !</h5>
+                                    <p class="text-muted">Devam etmek için oturum açın lütfen.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="#" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username <span
+                                            <label for="username" class="form-label">E-posta <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control @error('email') is-invalid @enderror"
                                                 value="{{ old('email', 'info@mobiloby.com') }}" id="username"
-                                                name="email" placeholder="Enter username">
+                                                name="email" placeholder="Lütfen e-posta adresinizi giriniz">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -65,14 +65,14 @@
 
                                         <div class="mb-3">
                                             <div class="float-end">
-                                                <a href="" class="text-muted">Forgot password?</a>
+                                                <a href="" class="text-muted">Şifrenizi mi unuttunuz?</a>
                                             </div>
-                                            <label class="form-label" for="password-input">Password <span
+                                            <label class="form-label" for="password-input">Şifre <span
                                                     class="text-danger">*</span></label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
                                                 <input type="password"
                                                     class="form-control password-input pe-5 @error('password') is-invalid @enderror"
-                                                    name="password" placeholder="Enter password" id="password-input"
+                                                    name="password" placeholder="Lütfen şifrenizi giriniz" id="password-input"
                                                     value="123456">
                                                 <button
                                                     class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
@@ -89,16 +89,16 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                            <label class="form-check-label" for="auth-remember-check">Beni Hatırla</label>
                                         </div>
 
                                         <div class="mt-4">
                                             <button class="btn btn-success w-100" type="button" id="loginbutton">Giriş Yap</button>
                                         </div>
-
+                                        {{--
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title">Sign In with</h5>
+                                                <h5 class="fs-13 mb-4 title">Şununla giriş yap</h5>
                                             </div>
                                             <div>
                                                 <button type="button"
@@ -115,6 +115,7 @@
                                                         class="ri-twitter-fill fs-16"></i></button>
                                             </div>
                                         </div>
+                                        --}}
                                     </form>
                                 </div>
                             </div>
@@ -124,7 +125,7 @@
 
                         <div class="mt-4 text-center">
                             <p class="mb-0">Don't have an account ? <a href=""
-                                    class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
+                                    class="fw-semibold text-primary text-decoration-underline"> Giriş Yap </a> </p>
                         </div>
 
                     </div>
@@ -144,7 +145,7 @@
                             <p class="mb-0 text-muted">&copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by
+                                </script> Mobiloby. App-Web Designer <i class="mdi mdi-heart text-danger"></i> by
                                 Themesbrand
                             </p>
                         </div>
