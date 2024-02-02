@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
     $("#appointment_date").change(function () {
+        eventCategoryChoice3 = new Choices("#appointment_time", {
+            searchEnabled: false
+        });
         getdate();
     });
 });
@@ -40,8 +43,8 @@ function getdate() {
 
                     choicesArray.push(choice);
                 }
-                eventCategoryChoice5.clearChoices(); // Clear existing choices
-                eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices
+                eventCategoryChoice3.clearChoices(); // Clear existing choices
+                eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true); // Set new choices
             }
 
         }
@@ -49,6 +52,7 @@ function getdate() {
 };
 
 function getshowroom() {
+    
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/getshowroomcars',
