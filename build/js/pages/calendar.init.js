@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                             eventCategoryChoice4.setChoiceByValue(selectedEvent.title);
                                         }
-
+                                        console.log(selectedEvent._def.extendedProps);
                                         var st_date = selectedEvent._def.extendedProps.appointment_date;
                                         var ed_date = selectedEvent._def.extendedProps.appointment_date;;
                                         var date_r = function formatDate(date) {
