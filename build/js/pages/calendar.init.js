@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
 
                                         if (selectedEvent.title) {
+                                            console.log(selectedEvent.title);
                                             eventCategoryChoice5.destroy();
                                             eventCategoryChoice5 = new Choices("#appointment_time", {
                                                 searchEnabled: false
