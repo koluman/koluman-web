@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             mode: ed_date !== null ? "range" : "range",
                                         });
                                         console.log(r_date);
-                                        document.getElementById("event-start-date-tag").innerHTML = r_date;
+                                        document.getElementById("event-start-date-tag").innerHTML = selectedEvent._def.extendedProps.appointment_date;
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
                                         // formEvent.classList.add("view-event");
