@@ -6,7 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
     var eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
     });
+    var choicesArray = [];
+    var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
+    for (var i = 0; i < allTimes.length; i++) {
+        var time = allTimes[i];
+        var choice = {
+            value: time,
+            label: time,
+        };
+        choicesArray.push(choice);
+    }
+    eventCategoryChoice5.clearChoices(); // Clear existing choices
+    eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices
     testdrive();
+
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -118,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 var eventCategoryChoice2 = new Choices("#user_id", {
                                     searchEnabled: false
                                 });
-                                
+
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                     timeZone: 'local',
                                     editable: true,
@@ -197,18 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                                         }
-                                        /*var choicesArray = [];
-                                        var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
-                                        for (var i = 0; i < allTimes.length; i++) {
-                                            var time = allTimes[i];
-                                            var choice = {
-                                                value: time,
-                                                label: time,
-                                            };
-                                            choicesArray.push(choice);
-                                        }
-                                        eventCategoryChoice5.clearChoices(); // Clear existing choices
-                                        eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices*/
+
 
                                         var st_date = selectedEvent.start;
                                         var ed_date = selectedEvent.end;
@@ -424,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#appointment_date").change(function () {
         getdate();
     });
-    
+
 });
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -467,7 +469,7 @@ function getdate() {
 };
 
 function getshowroom() {
-    
+
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/getshowroomcars',
@@ -508,6 +510,7 @@ function getapiusers() {
     });
 
 }
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
