@@ -2,12 +2,15 @@ var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
-var eventCategoryChoice5 ;var eventCategoryChoice4 ;
+var eventCategoryChoice5 ;var eventCategoryChoice4 ; var eventCategoryChoice2 ;
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
     });
     eventCategoryChoice4 = new Choices("#car_id", {
+        searchEnabled: false
+    });
+    eventCategoryChoice2 = new Choices("#user_id", {
         searchEnabled: false
     });
     var choicesArray = [];
@@ -131,10 +134,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                 }
                                 /*var eventCategoryChoice4 = new Choices("#car_id", {
                                     searchEnabled: false
-                                });*/
+                                });
                                 var eventCategoryChoice2 = new Choices("#user_id", {
                                     searchEnabled: false
-                                });
+                                });*/
 
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                     timeZone: 'local',
@@ -481,13 +484,6 @@ function getshowroom() {
         success: function (data) {
             if (data.success == 1) {
                 var choicesArray2 = [];
-
-                /*for (i = 0; i < data.showroomcars.length; ++i) {
-                    option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
-
-                }
-                $('#car_id').html('');
-                $('#car_id').html(option);*/
                 for (var i = 0; i < data.showroomcars.length; i++) {
                     var v = data.showroomcars[i]["car_id"] ;
                     var t = data.showroomcars[i]["car_name"];
@@ -515,11 +511,24 @@ function getapiusers() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                for (i = 0; i < data.usersall.length; ++i) {
+                /*for (i = 0; i < data.usersall.length; ++i) {
                     option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
                 }
                 $('#user_id').html('');
-                $('#user_id').html(option);
+                $('#user_id').html(option);*/
+                var choicesArray3 = [];
+                for (var i = 0; i < usersall.length; i++) {
+                    var v = data.usersall[i]["user_id"] ;
+                    var t =  data.usersall[i]["user_name"];
+
+                    var choice = {
+                        value: v,
+                        label: t,
+                    };
+                    choicesArray3.push(choice);
+                }
+                eventCategoryChoice2.clearChoices(); // Clear existing choices
+                eventCategoryChoice2.setChoices(choicesArray3, 'value', 'label', true); // Set new choices
             }
 
         }
