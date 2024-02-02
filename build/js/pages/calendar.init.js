@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5.clearChoices(); // Clear existing choices
     eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices
     testdrive();
-
+  
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -477,7 +477,6 @@ function getshowroom() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                 for (i = 0; i < data.showroomcars.length; ++i) {
                     option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
 
@@ -499,7 +498,6 @@ function getapiusers() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                var option = "<option value='0'>Lütfen Seçim Yapınız</option>";
                 for (i = 0; i < data.usersall.length; ++i) {
                     option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
                 }
