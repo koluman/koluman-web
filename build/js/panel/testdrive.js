@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             choicesArray.push(choice);
                         }
     
+                        eventCategoryChoice3.clearChoices();
                         eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true);
+                   
                  
         
                     }
