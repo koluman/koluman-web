@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 var eventCategoryChoice2 = new Choices("#user_id", {
                                     searchEnabled: false
                                 });
-                                var eventCategoryChoice4 = new Choices("#appointment_time", {
+                                var eventCategoryChoice5 = new Choices("#appointment_time", {
                                     searchEnabled: false
                                 });
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -190,11 +190,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
 
                                         if (selectedEvent.title) {
-                                            eventCategoryChoice4.destroy();
-                                            eventCategoryChoice4 = new Choices("#appointment_time", {
+                                            eventCategoryChoice5.destroy();
+                                            eventCategoryChoice5 = new Choices("#appointment_time", {
                                                 searchEnabled: false
                                             });
-                                            eventCategoryChoice4.setChoiceByValue(selectedEvent.title);
+                                            eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                                         }
 
                                         var st_date = selectedEvent.start;
