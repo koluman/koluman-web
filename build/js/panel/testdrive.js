@@ -40,8 +40,8 @@ function getdate() {
 
                     choicesArray.push(choice);
                 }
-                eventCategoryChoice3.clearChoices(); // Clear existing choices
-                eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true); // Set new choices
+                eventCategoryChoice5.clearChoices(); // Clear existing choices
+                eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices
             }
 
         }
