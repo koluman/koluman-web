@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         addEvent.show();
                                         formEvent.reset();
                                         selectedEvent = info.event;
-                                        console.log(selectedEvent);
+                                        console.log(selectedEvent._def.extendedProps);
                                         // First Modal
                                         document.getElementById("modal-title").innerHTML = "";
                                         document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                             eventCategoryChoice4.setChoiceByValue(selectedEvent.title);
                                         }
-                                        console.log(selectedEvent._def.extendedProps);
                                         var st_date = selectedEvent._def.extendedProps.appointment_date;
                                         var ed_date = selectedEvent._def.extendedProps.appointment_date;;
                                         var date_r = function formatDate(date) {
