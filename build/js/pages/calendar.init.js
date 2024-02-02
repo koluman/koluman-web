@@ -477,12 +477,26 @@ function getshowroom() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                for (i = 0; i < data.showroomcars.length; ++i) {
+                var choicesArray2 = [];
+
+                /*for (i = 0; i < data.showroomcars.length; ++i) {
                     option += "<option value='" + data.showroomcars[i]["car_id"] + "'>" + data.showroomcars[i]["car_name"] + "</option>";
 
                 }
                 $('#car_id').html('');
-                $('#car_id').html(option);
+                $('#car_id').html(option);*/
+                for (var i = 0; i < data.showroomcars.length; i++) {
+                    var v = data.showroomcars[i]["car_id"] ;
+                    var t = data.showroomcars[i]["car_name"];
+
+                    var choice = {
+                        value: v,
+                        label: t,
+                    };
+                    choicesArray2.push(choice);
+                }
+                eventCategoryChoice4.clearChoices(); // Clear existing choices
+                eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
             }
         }
     });
