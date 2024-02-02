@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
+                                        document.getElementById("appointment_date").value = selectedEvent.appointment_date;
 
                                         if (selectedEvent._def.extendedProps.location) {
                                             eventCategoryChoice4.destroy();
