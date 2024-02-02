@@ -199,20 +199,33 @@ document.addEventListener("DOMContentLoaded", function () {
                                             eventCategoryChoice4.setChoiceByValue(selectedEvent.title);
                                         }
                                         var st_date = selectedEvent._def.extendedProps.appointment_date;
-                                        var r_date = str_dt(st_date);
-                                        
-                                        // Alt input için başlangıç tarihini belirtilen formata dönüştür (örneğin: 1 Şubat 2024)
-                                        var er_date = date_r(st_date);
-                                        
-                                        // flatpickr kütüphanesini kullanarak başlangıç tarihini görselleştir ve altInput için formatı belirle
+                                        var ed_date = selectedEvent._def.extendedProps.appointment_date;;
+                                        var date_r = function formatDate(date) {
+                                            var d = new Date(date),
+                                                month = '' + (d.getMonth() + 1),
+                                                day = '' + d.getDate(),
+                                                year = d.getFullYear();
+                                            if (month.length < 2)
+                                                month = '0' + month;
+                                            if (day.length < 2)
+                                                day = '0' + day;
+                                            return [year, month, day].join('-');
+                                        };
+                                        var updateDay = null
+                                        if (ed_date != null) {
+                                            var endUpdateDay = new Date(ed_date);
+                                            updateDay = endUpdateDay.setDate(endUpdateDay.getDate() - 1);
+                                        }
+                                        var r_date = ed_date == null ? (str_dt(st_date)) : (str_dt(st_date)) + ' to ' + (str_dt(updateDay));
+                                        var er_date = ed_date == null ? (date_r(st_date)) : (date_r(st_date)) + ' to ' + (date_r(updateDay));
                                         flatpickr(start_date, {
-                                            defaultDate: st_date,  // Doğrudan başlangıç tarihini kullan
+                                            defaultDate: er_date,
                                             altInput: true,
                                             altFormat: "j F Y",
-                                            dateFormat: "Y-m-d",  // flatpickr'ın beklendiği gibi format
+                                            dateFormat: "Y-m-d",
+                                            mode: ed_date !== null ? "range" : "range",
                                         });
-                                        
-                                        // HTML içindeki etkinlik başlangıç tarihini güncelle
+                                        console.log(r_date);
                                         document.getElementById("event-start-date-tag").innerHTML = r_date;
                                         newEventData = null;
                                         modalTitle.innerText = selectedEvent.title;
