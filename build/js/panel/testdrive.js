@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
     $("#appointment_date").change(function () {
+        if (eventCategoryChoice3) {
+            eventCategoryChoice3.destroy();
+        }
+
         eventCategoryChoice3 = new Choices("#appointment_time", {
             searchEnabled: false
         });
