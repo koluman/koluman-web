@@ -3,12 +3,6 @@ var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 document.addEventListener("DOMContentLoaded", function () {
-    var eventCategoryChoice4 = new Choices("#car_id", {
-        searchEnabled: false
-    });
-    var eventCategoryChoice2 = new Choices("#user_id", {
-        searchEnabled: false
-    });
     var eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
     });
@@ -118,7 +112,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                         return 'dayGridMonth';
                                     }
                                 }
-                             
+                                var eventCategoryChoice4 = new Choices("#car_id", {
+                                    searchEnabled: false
+                                });
+                                var eventCategoryChoice2 = new Choices("#user_id", {
+                                    searchEnabled: false
+                                });
+                                
                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                     timeZone: 'local',
                                     editable: true,
