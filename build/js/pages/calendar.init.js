@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         id: event.appointment_id,
                                         title: event.appointment_time, // Yeni başlık
                                         start: new Date(event.appointment_date),
-                                        end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
                                         location: {
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         id: event.appointment_id,
                                         title: event.appointment_time, // Yeni başlık
                                         start: new Date(event.appointment_date),
-                                        end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                                         allDay: true,
                                         className: event.state == 0 ? 'bg-danger-subtle' : ' bg-success-subtle',
                                         location: event.car_name,
@@ -200,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
                                         console.log(selectedEvent);
                                         var st_date = selectedEvent.start;
-                                        var ed_date = selectedEvent.end;
                                         var date_r = function formatDate(date) {
                                             var d = new Date(date),
                                                 month = '' + (d.getMonth() + 1),
@@ -212,19 +209,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 day = '0' + day;
                                             return [year, month, day].join('-');
                                         };
-                                        var updateDay = null
-                                        if (ed_date != null) {
-                                            var endUpdateDay = new Date(ed_date);
-                                            updateDay = endUpdateDay.setDate(endUpdateDay.getDate() - 1);
-                                        }
-                                        var r_date = ed_date == null ? (str_dt(st_date)) : (str_dt(st_date)) + ' to ' + (str_dt(updateDay));
-                                        var er_date = ed_date == null ? (date_r(st_date)) : (date_r(st_date)) + ' to ' + (date_r(updateDay));
+                                       
+                                        var r_date = str_dt(st_date);
+                                        var er_date = date_r(st_date);
                                         flatpickr(start_date, {
                                             defaultDate: er_date,
                                             altInput: true,
                                             altFormat: "j F Y",
                                             dateFormat: "Y-m-d",
-                                            mode: ed_date !== null ? "range" : "range",
                                         });
                                         document.getElementById("event-start-date-tag").innerHTML = r_date;
                                         newEventData = null;
