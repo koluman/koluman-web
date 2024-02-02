@@ -50,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                             car_name: event.car_name
                                         },
                                         extendedProps: {
-                                            department: event.appointment_time
+                                            department: event.appointment_time,
+                                            appointment_date: event.appointment_date
+
                                         },
                                         description: {
                                             user_id: event.user_id,
