@@ -40,6 +40,9 @@ function getdate() {
                 console.log(option);
                 $('#appointment_time').html('');
                 $('#appointment_time').html(option);*/
+                var eventCategoryChoice3 = new Choices("#appointment_time", {
+                    searchEnabled: false
+                });
                 var choicesArray = [];
                 // Tüm saatleri döngüye al ve dolu olanları işaretle
                 var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
