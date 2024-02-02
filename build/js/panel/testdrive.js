@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
-    var eventCategoryChoice3 = new Choices("#appointment_time", {
-        searchEnabled: false
-    });
+    
     $("#appointment_date").change(function () {
+        var eventCategoryChoice3 = new Choices("#appointment_time", {
+            searchEnabled: false
+        });
         getdate();
     });
 });
