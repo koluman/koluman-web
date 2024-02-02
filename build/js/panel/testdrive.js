@@ -1,11 +1,12 @@
+var eventCategoryChoice3; // Declare eventCategoryChoice3 at the top level
+
 document.addEventListener("DOMContentLoaded", function () {
     getshowroom();
     getapiusers();
-    
+    eventCategoryChoice3 = new Choices("#appointment_time", {
+        searchEnabled: false
+    });
     $("#appointment_date").change(function () {
-        var eventCategoryChoice3 = new Choices("#appointment_time", {
-            searchEnabled: false
-        });
         getdate();
     });
 });
@@ -65,6 +66,7 @@ function getdate() {
                 console.log(choicesArray);
                 eventCategoryChoice3.clearChoices(); // Clear existing choices
                 eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true); // Set new choices
+        
 
 
 
