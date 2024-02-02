@@ -517,7 +517,7 @@ function getapiusers() {
                 $('#user_id').html('');
                 $('#user_id').html(option);*/
                 var choicesArray3 = [];
-                for (var i = 0; i < usersall.length; i++) {
+                for (var i = 0; i < data.usersall.length; i++) {
                     var v = data.usersall[i]["user_id"] ;
                     var t =  data.usersall[i]["user_name"];
 
