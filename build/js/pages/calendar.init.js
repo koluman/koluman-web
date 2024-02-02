@@ -2,9 +2,12 @@ var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
-var eventCategoryChoice5 ;
+var eventCategoryChoice5 ;var eventCategoryChoice4 ;
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
+        searchEnabled: false
+    });
+    eventCategoryChoice4 = new Choices("#car_id", {
         searchEnabled: false
     });
     var choicesArray = [];
@@ -126,9 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                         return 'dayGridMonth';
                                     }
                                 }
-                                var eventCategoryChoice4 = new Choices("#car_id", {
+                                /*var eventCategoryChoice4 = new Choices("#car_id", {
                                     searchEnabled: false
-                                });
+                                });*/
                                 var eventCategoryChoice2 = new Choices("#user_id", {
                                     searchEnabled: false
                                 });
