@@ -174,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         //document.getElementById("event-location").value = selectedEvent.extendedProps.location === undefined ? "No Location" : selectedEvent.extendedProps.location;
                                         //document.getElementById("event-description").value = selectedEvent.extendedProps.description === undefined ? "No Description" : selectedEvent.extendedProps.description;
                                         document.getElementById("appointment_id").value = selectedEvent.id;
-                                        document.getElementById("appointment_date").value = selectedEvent.appointment_date;
 
                                         if (selectedEvent._def.extendedProps.location) {
                                             eventCategoryChoice4.destroy();
@@ -200,8 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                             eventCategoryChoice4.setChoiceByValue(selectedEvent.title);
                                         }
 
-                                        var st_date = selectedEvent.start;
-                                        var ed_date = selectedEvent.end;
+                                        var st_date = selectedEvent._def.extendedProps.appointment_date;
+                                        var ed_date = selectedEvent._def.extendedProps.appointment_date;;
                                         var date_r = function formatDate(date) {
                                             var d = new Date(date),
                                                 month = '' + (d.getMonth() + 1),
