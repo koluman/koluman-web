@@ -2,8 +2,9 @@ var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
+var eventCategoryChoice5 ;
 document.addEventListener("DOMContentLoaded", function () {
-    var eventCategoryChoice5 = new Choices("#appointment_time", {
+    eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
     });
     var choicesArray = [];
