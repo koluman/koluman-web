@@ -61,7 +61,12 @@ function getdate() {
                 }
                 console.log(choicesArray);
                 eventCategoryChoice3.clearChoices();
-                eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true);
+                eventCategoryChoice3.setChoices(choicesArray, 'value', 'label', true).then(function() {
+                    console.log("Choices set successfully");
+                }).catch(function(error) {
+                    console.error("Error setting choices:", error);
+                });
+                
            
          
 
