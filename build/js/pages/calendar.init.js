@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             location: $("#user_id").text()
                                                         };
                                                         calendar.addEvent(newEvent);
-                                                        defaultlastEvents.push(newEvent);
+                                                        defaultEvents.push(newEvent);
                                                     } else {
                                                         alert(data.message);
                                                     }
@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                         }
                                         addEvent.hide();
-                                        upcomingEvent(defaultlastEvents);
+                                        upcomingEvent(defaultEvents);
                                     }
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
@@ -569,6 +569,7 @@ function eventTyped() {
 function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     Array.from(a).forEach(function (element) {
+        console.log(element);
         var title = element.title;
         var startDate = element.start;
         if (startDate === "Invalid Date" || startDate === undefined) {
