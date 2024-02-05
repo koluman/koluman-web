@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             location: $("#user_id").text()
                                                         };
                                                         calendar.addEvent(newEvent);
-                                                        defaultEvents.push(newEvent);
+                                                        defaultlastEvents.push(newEvent);
                                                     } else {
                                                         alert(data.message);
                                                     }
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             });
                                         }
                                         addEvent.hide();
-                                        upcomingEvent(defaultEvents);
+                                        upcomingEvent(defaultlastEvents);
                                     }
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
