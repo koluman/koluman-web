@@ -376,6 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 }
                                             });
                                         }
+                                        console.log(defaultlastEvents);
                                         addEvent.hide();
                                         upcomingEvent(defaultlastEvents);
                                     }
