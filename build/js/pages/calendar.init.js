@@ -603,7 +603,7 @@ function upcomingEvent(a) {
                                 <div class='flex-shrink-0'><small class='badge bg-primary-subtle text-primary ms-auto'>" + e_time_s + "</small></div>\
                             </div>\
                             <h6 class='card-title fs-16'> " + title + "</h6>\
-                            <p class='text-muted text-truncate-two-lines mb-0'> " + description + "</p>\
+                            <p class='text-muted text-truncate-two-lines mb-0'> " + description.user_name + "</p>\
                         </div>\
                     </div>";
         document.getElementById("upcoming-event-list").innerHTML += u_event;
