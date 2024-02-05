@@ -92,8 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                         extendedProps: {
                                             department: event.appointment_time
                                         },
-                                        description: event.user_name
-                                        // Diğer özellikleri ekleyin
+                                        description: {
+                                            user_id: event.user_id,
+                                            user_name: event.user_name
+                                        },
                                     };
                                 });
                                 new Draggable(externalEventContainerEl, {
