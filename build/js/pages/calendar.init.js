@@ -363,8 +363,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             start: updateStartDate,
                                                             allDay: all_day,
                                                             className: updatedCategory,
-                                                            description: updatedCar,
-                                                            location: updatedUser
+                                                            description: $("#car_id").text(),
+                                                            location: $("#user_id").text()
                                                         };
                                                         calendar.addEvent(newEvent);
                                                         defaultEvents.push(newEvent);
