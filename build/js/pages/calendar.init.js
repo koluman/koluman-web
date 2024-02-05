@@ -2,7 +2,9 @@ var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
-var eventCategoryChoice5 ;var eventCategoryChoice4 ; var eventCategoryChoice2 ;
+var eventCategoryChoice5;
+var eventCategoryChoice4;
+var eventCategoryChoice2;
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5.clearChoices(); // Clear existing choices
     eventCategoryChoice5.setChoices(choicesArray, 'value', 'label', true); // Set new choices
     testdrive();
-  
+
     function testdrive() {
         //flatPickrInit();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
@@ -370,15 +372,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                                         };
                                                         calendar.addEvent(newEvent);
                                                         defaultlastEvents.push(newEvent);
+
+                                                        addEvent.hide();
+                                                        upcomingEvent(defaultlastEvents);
                                                     } else {
                                                         alert(data.message);
                                                     }
                                                 }
                                             });
                                         }
-                                        console.log(defaultlastEvents);
-                                        addEvent.hide();
-                                        upcomingEvent(defaultlastEvents);
                                     }
                                 });
                                 document.getElementById("btn-delete-event").addEventListener("click", function (e) {
@@ -488,7 +490,7 @@ function getshowroom() {
             if (data.success == 1) {
                 var choicesArray2 = [];
                 for (var i = 0; i < data.showroomcars.length; i++) {
-                    var v = data.showroomcars[i]["car_id"] ;
+                    var v = data.showroomcars[i]["car_id"];
                     var t = data.showroomcars[i]["car_name"];
 
                     var choice = {
@@ -521,8 +523,8 @@ function getapiusers() {
                 $('#user_id').html(option);*/
                 var choicesArray3 = [];
                 for (var i = 0; i < data.usersall.length; i++) {
-                    var v = data.usersall[i]["user_id"] ;
-                    var t =  data.usersall[i]["user_name"];
+                    var v = data.usersall[i]["user_id"];
+                    var t = data.usersall[i]["user_name"];
 
                     var choice = {
                         value: v,
