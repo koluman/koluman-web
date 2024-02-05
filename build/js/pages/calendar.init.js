@@ -367,8 +367,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             start: updateStartDate,
                                                             allDay: all_day,
                                                             className: updatedCategory,
-                                                            description: $("#car_id").text(),
-                                                            location: $("#user_id").text()
+                                                            description: {
+                                                                user_id: updatedUser,
+                                                                user_name: $("#user_id").text()
+                                                            },
+                                                            location: $("#car_id").text()
                                                         };
                                                         calendar.addEvent(newEvent);
                                                         defaultlastEvents.push(newEvent);
