@@ -399,13 +399,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                             success: function (data) {
                                                 if (data.success == 1) {
                                                     selectedEvent.remove();
-                                                    var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
+                                                    var indexOfSelectedEvent = defaultlastEvents.findIndex(function (x) {
                                                         return x.appointment_id == selectedEvent.id;
                                                     });
                                                     if (indexOfSelectedEvent !== -1) {
-                                                        defaultEvents.splice(indexOfSelectedEvent, 1);
+                                                        defaultlastEvents.splice(indexOfSelectedEvent, 1);
                                                     }
-                                                    upcomingEvent(defaultEvents);
+                                                    upcomingEvent(defaultlastEvents);
                                                     addEvent.hide();
                                                 } else {
                                                     alert(data.message);
@@ -575,7 +575,11 @@ function eventTyped() {
 }
 
 function upcomingEvent(a) {
+    console.log(a);
     document.getElementById("upcoming-event-list").innerHTML = null;
+    /*a.sort(function (o1, o2) {
+        return (new Date(o1.start)) - (new Date(o2.start));
+    });*/
     Array.from(a).forEach(function (element) {
         console.log(element);
         var title = element.title;
