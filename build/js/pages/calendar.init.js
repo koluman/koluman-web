@@ -575,11 +575,10 @@ function eventTyped() {
 }
 
 function upcomingEvent(a) {
-    console.log(a);
     document.getElementById("upcoming-event-list").innerHTML = null;
-    /*a.sort(function (o1, o2) {
-        return (new Date(o1.start)) - (new Date(o2.start));
-    });*/
+    a.sort(function (o1, o2) {
+        return new Date(o2.start) - new Date(o1.start);
+    });
     Array.from(a).forEach(function (element) {
         console.log(element);
         var title = element.title;
