@@ -120,19 +120,6 @@
                             </ul>
                         </div>
                     </li>
-                       <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarSigorta" data-bs-toggle="collapse"
-                            role="button" aria-expanded="false" aria-controls="sidebarSigorta">
-                            <i class="ri-apps-2-line"></i> <span>@lang('translation.sigorta')</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarSigorta">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="sigortalist" class="nav-link">@lang('translation.sigortalist')</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
                 @endif
                 @if (Auth::guard('web')->user()->backuser_role == 'sigorta')
                     <li class="nav-item">

@@ -46,17 +46,6 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/addtestdriveappointment', [TestDriveController::class, 'addtestdriveappointment'])->name('addtestdriveappointment');
     Route::post('/updatetestdriveappointment', [TestDriveController::class, 'updatetestdriveappointment'])->name('updatetestdriveappointment');
     Route::post('/testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
-
-    Route::get('/sigortalist', [SigortaHomeController::class, 'sigorta'])->name('sigorta.list');
-    Route::post('/getallsigorta', [SigortaHomeController::class, 'getallsigorta'])->name('getallsigorta');
-    Route::get('sigortadetail/{id?}', [SigortaHomeController::class, 'sigortadetail'])->name('sigortadetail');
-    Route::post('getbyIdSigorta', [SigortaHomeController::class, 'getbyIdSigorta'])->name('getbyIdSigorta');
-    Route::post('deletesigorta', [SigortaHomeController::class, 'deletesigorta'])->name('deletesigorta');
-    Route::post('updatesigortareview', [SigortaHomeController::class, 'updatesigortareview'])->name('updatesigortareview');
-    Route::post('updatesigortaresult', [SigortaHomeController::class, 'updatesigortaresult'])->name('updatesigortaresult');
-    Route::post('addsigorta', [SigortaHomeController::class, 'addsigorta'])->name('addsigorta');
-    Route::post('deletesigortapoliçe', [SigortaHomeController::class, 'deletesigortapoliçe'])->name('deletesigortapoliçe');
-    Route::post('updatesigorta', [SigortaHomeController::class, 'updatesigorta'])->name('updatesigorta');
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
