@@ -51,9 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $.ajax({
             type: 'GET',
             url: 'https://mobiloby.app/koluman/web/testdrivegetall',
-            headers: {
-                'Authorization': 'Bearer ' + response.token
-            },
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {

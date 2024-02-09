@@ -18,12 +18,20 @@ class TestDriveController extends Controller
                 ->get(['appointment.*','users.*','showroom.*']);
 
             $lastWeek = Carbon::now()->subWeek(); // Şu anki tarihten bir hafta önceki tarih
+            $currentDateTime = now(); // Şuanki tarih ve saat
+            $lastWeek = now()->subWeek(); // Geçen haftanın başlangıcı
             $testlastDrives = Appointment::where('appointment_date', '>=', $lastWeek)
-            ->orderBy('appointment_date', 'desc')
-            ->join('users', 'appointment.user_id', '=', 'users.user_id')
-            ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
-            ->get(['appointment.*','users.*','showroom.*']);
-       
+                ->where(function ($query) use ($currentDateTime) {
+                    $query->where('appointment_date', '>', now()->toDateString()) // Bugünden sonraki randevular
+                        ->orWhere(function ($query) use ($currentDateTime) {
+                            $query->where('appointment_date', '=', now()->toDateString())
+                                ->where('appointment_time', '>', now()->toTimeString()); // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
+                        });
+                })
+                ->orderBy('appointment_date', 'desc')
+                ->join('users', 'appointment.user_id', '=', 'users.user_id')
+                ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
+                ->get(['appointment.*', 'users.*', 'showroom.*']);
 
             if (!$testDrives->isEmpty()) {
                 $responseData = [
