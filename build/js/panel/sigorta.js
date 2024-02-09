@@ -39,7 +39,8 @@ function sigortalist(data) {
         }
     });
     for (let durum in durumSayilari) {
-        $("#"+durum).val(durumSayilari[durum] );
+        let a="#"+durum;
+        $(a).text(durumSayilari[durum]);
     }
     for (let i = 0; i < data.length; i++) {
         j++;
