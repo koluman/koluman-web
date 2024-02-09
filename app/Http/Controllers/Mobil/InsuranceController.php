@@ -24,7 +24,7 @@ class InsuranceController extends Controller
                     'insurance_review_date', 'insurance_result_date', 'insurance_end_date', 'insurance_price',
                     'insurance_description', 'insurance_state', 'insurance_author'
                 ];
-                $insurances = Insurance::select($columnsToSelect)->where('user_id', $u->user_id)->whereNotIn('insurance_state', 5)->get();
+                $insurances = Insurance::select($columnsToSelect)->where('user_id', $u->user_id)->get();
                 if (!$insurances->isEmpty()) {
                     $responseData = [
                         "success" => 1,
