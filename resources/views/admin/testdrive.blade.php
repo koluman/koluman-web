@@ -20,7 +20,6 @@
                             <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş
                                 Ranvusu Oluştur</button>                                <br>
 
-                            <button class="btn btn-primary w-100" id="btn-psf"><i class="mdi mdi-plus"></i> Randevu Saati Pasif</button>
                             <div id="external-events">
                                 <br>
                                 <p class="text-muted">Drag and drop your event or click in the calendar</p>
