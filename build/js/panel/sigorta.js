@@ -31,7 +31,7 @@ function sigortalist(data) {
     let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif"];
     let durumSayilari = {};
 
-    data.forEach(function (veri) {
+    veriler.forEach(function (veri) {
         let durum = veri.insurance_state;
         if (durumSayilari.hasOwnProperty(durum)) {
             durumSayilari[durum]++;
@@ -39,6 +39,11 @@ function sigortalist(data) {
             durumSayilari[durum] = 1;
         }
     });
+    
+    console.log("Durum Sayıları:");
+    for (let durum in durumSayilari) {
+        console.log(durum + ": " + durumSayilari[durum] + " adet");
+    }
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
