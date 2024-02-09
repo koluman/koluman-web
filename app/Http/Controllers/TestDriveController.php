@@ -28,7 +28,7 @@ class TestDriveController extends Controller
                                 ->where('appointment_time', '>', now()->toTimeString()); // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
                         });
                 })
-                ->orderBy('appointment_date', 'desc')
+                ->orderBy('.appointment.appointment_date', 'desc')
                 ->join('users', 'appointment.user_id', '=', 'users.user_id')
                 ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
                 ->get(['appointment.*', 'users.*', 'showroom.*']);
