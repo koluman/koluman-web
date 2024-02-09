@@ -21,24 +21,21 @@ class TestDriveController extends Controller
             $currentDateTime = now(); // Şuanki tarih ve saat
             $lastWeek = now()->subWeek(); // Geçen haftanın başlangıcı
             $testlastDrives = Appointment::where('appointment_date', '>=', $lastWeek)
-            ->where(function ($query) use ($currentDateTime) {
-                $query->where('appointment_date', '>', now()->toDateString()) // Bugünden sonraki randevular
-                    ->orWhere(function ($query) use ($currentDateTime) {
-                        $query->where('appointment_date', '=', now()->toDateString())
-                            ->where(function ($query) use ($currentDateTime) {
-                                $query->where('appointment_time', '>', now()->toTimeString()) // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
-                                    ->orWhere('appointment_time', '=', now()->toTimeString()); // Saati şuanki saat ile aynı olanlar
-                            });
-                    });
-            })
-            ->orderBy('appointment_date', 'desc')
-            ->join('users', 'appointment.user_id', '=', 'users.user_id')
-            ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id');
+                ->where(function ($query) use ($currentDateTime) {
+                    $query->where('appointment_date', '>', now()->toDateString()) // Bugünden sonraki randevular
+                        ->orWhere(function ($query) use ($currentDateTime) {
+                            $query->where('appointment_date', '=', now()->toDateString())
+                                ->where('appointment_time', '>', now()->toTimeString()); // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
+                        });
+                })
+                ->orderBy('appointment_date', 'desc')
+                ->join('users', 'appointment.user_id', '=', 'users.user_id')
+                ->join('showroom', 'appointment.car_id', '=', 'showroom.car_id')
+                ->get(['appointment.*', 'users.*', 'showroom.*']);
 
             if (!$testDrives->isEmpty()) {
                 $responseData = [
                     "success" => 1,
-                    "sql"=>$testlastDrives->toSql(),
                     "testDrives" => $testDrives,
                     "testlastDrives" => $testlastDrives,
                     "message" => "Test sürüş randevu listesi getirildi",
