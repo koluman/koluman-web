@@ -24,7 +24,7 @@ class HomeController extends Controller
         $currentDate = Carbon::now()->toDateString();
         $appointments = Appointment::select('appointment_id', 'car_id', 'appointment_time', 'appointment_date', 'user_id', 'state', 'created_at', 'updated_at')
         ->where('state', 1)
-        ->where('appointment_date', '>', $currentDate)
+        ->where('appointment_date', '<', $currentDate)
         ->get();
             dd($appointments);
         //return view('admin.testdrive');
