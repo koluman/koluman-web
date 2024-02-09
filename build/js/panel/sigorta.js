@@ -16,7 +16,7 @@ function sigorta() {
 
             if (data.success == 1) {
                 sigortadata = data.sigortaall;
-                let son = sigortalist(sigortadata);
+                let son = sigortalist(sigortadata,sigortadata.length);
                 $("#sigortalist").html('');
                 $("#sigortalist").html(son);
             }
@@ -25,8 +25,7 @@ function sigorta() {
     });
 }
 
-function sigortalist(data) {
-    let sayi=data.length;
+function sigortalist(data,sayi) {
     var s = "";
     let j = 0;
     let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif", "İptal Edildi"];
