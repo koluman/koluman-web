@@ -26,6 +26,7 @@ function sigorta() {
 }
 
 function sigortalist(data) {
+    let sayi=data.length;
     var s = "";
     let j = 0;
     let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif", "İptal Edildi"];
@@ -42,7 +43,7 @@ function sigortalist(data) {
         let a = "#" + durum;
         $(a).text(durumSayilari[durum]);
     }
-    $("#0").text(data.length);
+    $("#0").text(sayi);
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
