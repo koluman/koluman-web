@@ -18,6 +18,9 @@ class CheckRole
 
         // Retrieve the user's role from the session
         $userRole = Auth::guard('web')->user()->backuser_role;
+        if ($userRole === 'admin') {
+            return $next($request);
+        }
         // Check if the user has the required role
         if (!in_array($userRole, $roles)) {
             // Redirect or handle unauthorized access as needed
