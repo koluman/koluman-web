@@ -113,7 +113,7 @@
                             </li>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="İptal" href="#iptal"
+                                <a class="nav-link py-3" data-bs-toggle="tab" id="İptal" href="#iptal"
                                     role="tab" aria-selected="false">
                                     <i class="ri-close-circle-line me-1 align-bottom"></i> iptal Edilenler<span
                                         id="5" class="badge bg-danger align-middle ms-1"></span>
