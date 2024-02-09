@@ -39,7 +39,6 @@ class TestDriveController extends Controller
                 $responseData = [
                     "success" => 1,
                     "testDrives" => $testDrives,
-                    "aSa"=>now()->toTimeString(),
                     "testlastDrives" => $testlastDrives,
                     "message" => "Test sürüş randevu listesi getirildi",
                 ];
