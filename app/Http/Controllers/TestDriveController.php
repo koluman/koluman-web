@@ -40,7 +40,7 @@ class TestDriveController extends Controller
                     "success" => 1,
                     "testDrives" => $testDrives,
                     "testlastDrives" => $testlastDrives,
-                    "message" => "Test sürüş randevu listesi getirildi",
+                    "message" => dd($testlastDrives->toSql()),
                 ];
             } else {
                 $responseData = [
