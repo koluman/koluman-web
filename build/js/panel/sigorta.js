@@ -59,7 +59,7 @@ function sigortalist(data) {
         s += '<td class="insurancetype">' + data[i].insurance_type + '</td>';
         s += '<td class="insuranceprice">' + data[i].insurance_price + '</td>';
         s += '<td class="insurancedescription">' + data[i].insurance_description + '</td>';
-        if (data[i].insurance_state >= 1 && data[i].insurance_state <= 4) {
+        if (data[i].insurance_state >= 1 && data[i].insurance_state <= 5) {
             let durumMetni = dizi[data[i].insurance_state - 1];
             s += '<td class="insurancestate">' + durumMetni + '</td>';
         }
