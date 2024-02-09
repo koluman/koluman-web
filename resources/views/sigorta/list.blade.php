@@ -78,32 +78,36 @@
                             <li class="nav-item">
                                 <a class="nav-link active All py-3" data-bs-toggle="tab" id="All" href="#home1"
                                     role="tab" aria-selected="true">
-                                    <i class="ri-store-2-fill me-1 align-bottom"></i> Hepsi
+                                    <i class="ri-store-2-fill me-1 align-bottom"></i> Hepsi<span id="allcount"
+                                        class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="Talep" href="#talep"
                                     role="tab" aria-selected="false">
-                                    <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Talepler
+                                    <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Talepler<span id="talepcount"
+                                        class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="İnceleme" href="#inceleme"
                                     role="tab" aria-selected="false">
-                                    <i class="ri-truck-line me-1 align-bottom"></i> İncelemede <span
-                                        class="badge bg-danger align-middle ms-1">2</span>
+                                    <i class="ri-truck-line me-1 align-bottom"></i> İncelemede <span id="incelemecount"
+                                        class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="Teklif" href="#teklif"
                                     role="tab" aria-selected="false">
-                                    <i class="ri-arrow-left-right-fill me-1 align-bottom"></i>Teklifler
+                                    <i class="ri-arrow-left-right-fill me-1 align-bottom"></i>Teklifler <span id="teklifcount"
+                                        class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="Aktif" href="#aktif"
                                     role="tab" aria-selected="false">
-                                    <i class="ri-close-circle-line me-1 align-bottom"></i> Aktif
+                                    <i class="ri-close-circle-line me-1 align-bottom"></i> Aktif<span id="aktifcount"
+                                        class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
 
