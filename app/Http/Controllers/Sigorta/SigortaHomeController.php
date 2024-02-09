@@ -20,12 +20,12 @@ class SigortaHomeController extends Controller
     }
     public function sigorta(Request $request)
     {
-        return view('sigorta.list');
+        return view('list');
     }
     public function sigortadetail(Request $request)
     {
         $users = User::get();
-        return view('sigorta.detail', compact('users'));
+        return view('detail', compact('users'));
     }
     public function getallsigorta(Request $request)
     {
