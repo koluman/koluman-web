@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             url: 'https://mobiloby.app/koluman/web/testdrivegetall',
             dataType: 'json',
             success: function (data) {
+                console.log(data);
                 if (data.success == 1) {
                     var defaultEvents = data.testDrives.map(function (event) {
                         return {
