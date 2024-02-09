@@ -17,7 +17,7 @@ function sigorta() {
 
             if (data.success == 1) {
                 sigortadata = data.sigortaall;
-                sayi=data.length;
+                sayi=data.sigortaall.length;
                 let son = sigortalist(sigortadata);
                 $("#sigortalist").html('');
                 $("#sigortalist").html(son);
