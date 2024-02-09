@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş
                                 Ranvusu Oluştur</button>
-
+                            <button class="btn btn-primary w-100" id="btn-psf"><i class="mdi mdi-plus"></i> Randevu Saati Pasif</button>
                             <div id="external-events">
                                 <br>
                                 <p class="text-muted">Drag and drop your event or click in the calendar</p>
@@ -140,7 +140,7 @@
                                         <div class="mb-3">
                                             <label>Randevu Tarihi</label>
                                             <div class="input-group d-none">
-                                                <input type="text" id="appointment_date" name="appointment_date" 
+                                                <input type="text" id="appointment_date" name="appointment_date"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Lütfen Randevu Tarihini Seçiniz" readonly required>
                                                 <span class="input-group-text"><i
@@ -151,11 +151,12 @@
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Zamanı</label>
-                                            <select class="form-select" name="appointment_time" id="appointment_time" required>
+                                            <select class="form-select" name="appointment_time" id="appointment_time"
+                                                required>
                                             </select>
                                         </div>
                                     </div>
-                                  
+
                                     <input type="hidden" id="appointment_id" name="appointment_id" value="" />
 
                                     <!--end col-->
