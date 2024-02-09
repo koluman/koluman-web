@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-sm-auto">
                             <div class="d-flex gap-1 flex-wrap">
-                                <button type="button" class="btn btn-success add-btn" id="createsigorta" ><i
+                                <button type="button" class="btn btn-success add-btn" id="createsigorta"><i
                                         class="ri-add-line align-bottom me-1"></i> Sigorta Talep Et</button>
                                 <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
@@ -53,6 +53,7 @@
                                         <option value="2">İncelemede</option>
                                         <option value="3">Teklif Oluştu</option>
                                         <option value="4">Aktif</option>
+                                        <option value="5">İptal Edildi</option>
                                     </select>
                                 </div>
                             </div>
@@ -110,7 +111,14 @@
                                         class="badge bg-danger align-middle ms-1"></span>
                                 </a>
                             </li>
-
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="İptal" href="#iptal"
+                                    role="tab" aria-selected="false">
+                                    <i class="ri-close-circle-line me-1 align-bottom"></i> iptal Edilenler<span
+                                        id="5" class="badge bg-danger align-middle ms-1"></span>
+                                </a>
+                            </li>
                         </ul>
 
                         <div class="table-responsive table-card mb-1">
@@ -157,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
