@@ -38,9 +38,10 @@ class TestDriveController extends Controller
             if (!$testDrives->isEmpty()) {
                 $responseData = [
                     "success" => 1,
+                    "sql"=>$testlastDrives->toSql(),
                     "testDrives" => $testDrives,
                     "testlastDrives" => $testlastDrives,
-                    "message" => dd($testlastDrives->toSql()),
+                    "message" => "Test sürüş randevu listesi getirildi",
                 ];
             } else {
                 $responseData = [
