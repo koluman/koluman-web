@@ -29,8 +29,19 @@ function sigortalist(data) {
     var s = "";
     let j = 0;
     let dizi=["Talep Oluştu","İncelemede","Teklif Oluştu","Aktif"];
-    console.log(data);
-    for (let i = 0; i < data.length; i++) {
+// Her durumun sayısını tutmak için bir obje oluştur
+let durumSayilari = {};
+
+// Dizi üzerinde dönerek her durumu say
+dizi.forEach(function (durum) {
+    // Eğer durumSayilari objesinde bu durum yoksa, 1 olarak başla; varsa bir arttır
+    durumSayilari[durum] = (durumSayilari[durum] || 0) + 1;
+});
+
+// Sonuçları yazdır
+for (let durum in durumSayilari) {
+    console.log(durum + ": " + durumSayilari[durum]);
+}    for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
         s += '<th scope="row">';
