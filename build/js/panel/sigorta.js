@@ -3,6 +3,7 @@ $(document).ready(function () {
 });
 let sigortadata = [];
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
+let sayi;
 
 function sigorta() {
     $.ajax({
@@ -16,7 +17,8 @@ function sigorta() {
 
             if (data.success == 1) {
                 sigortadata = data.sigortaall;
-                let son = sigortalist(sigortadata,sigortadata.length);
+                sayi=data.length;
+                let son = sigortalist(sigortadata);
                 $("#sigortalist").html('');
                 $("#sigortalist").html(son);
             }
@@ -25,7 +27,7 @@ function sigorta() {
     });
 }
 
-function sigortalist(data,sayi) {
+function sigortalist(data) {
     var s = "";
     let j = 0;
     let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif", "İptal Edildi"];
