@@ -18,7 +18,8 @@
                     <div class="card card-h-100">
                         <div class="card-body">
                             <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş
-                                Ranvusu Oluştur</button>
+                                Ranvusu Oluştur</button>                                <br>
+
                             <button class="btn btn-primary w-100" id="btn-psf"><i class="mdi mdi-plus"></i> Randevu Saati Pasif</button>
                             <div id="external-events">
                                 <br>
