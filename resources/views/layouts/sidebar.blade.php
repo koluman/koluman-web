@@ -121,7 +121,7 @@
                         </div>
                     </li>
                 @endif
-                @if (Auth::guard('web')->user()->backuser_role == 'sigorta')
+                @if (Auth::guard('web')->user()->backuser_role == 'sigorta' ||  Auth::guard('web')->user()->backuser_role == 'admiin')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarSigorta" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarSigorta">
