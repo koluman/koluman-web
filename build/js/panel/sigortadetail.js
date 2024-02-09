@@ -153,6 +153,7 @@ document.getElementById("updinc").addEventListener("click", function () {
                         $("#updinc").text("İncelendi");
                         document.querySelector("#updinc").disabled = true;
                         document.querySelector("#updsnc").disabled = false;
+                        $("#insurance_state").val(data.insurance.insurance_state);
 
                     }
                 } else {

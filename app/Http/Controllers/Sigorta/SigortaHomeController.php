@@ -119,6 +119,7 @@ class SigortaHomeController extends Controller
 
             $affectedRows = Insurance::where('insurance_id', $insurance_id)
                 ->update([
+                    'insurance_state' =>2,
                     'insurance_review_date' => Carbon::now('Europe/Istanbul'),
                 ]);
             if ($affectedRows > 0) {
