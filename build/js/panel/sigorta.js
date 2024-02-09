@@ -28,7 +28,7 @@ function sigorta() {
 function sigortalist(data) {
     var s = "";
     let j = 0;
-    let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif","İptal Edildi"];
+    let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif", "İptal Edildi"];
     let durumSayilari = {};
     data.forEach(function (veri) {
         let durum = veri.insurance_state;
@@ -39,11 +39,10 @@ function sigortalist(data) {
         }
     });
     for (let durum in durumSayilari) {
-        let a="#"+durum;
+        let a = "#" + durum;
         $(a).text(durumSayilari[durum]);
     }
     $("#0").text(data.length);
-    console.log(data);
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
@@ -118,6 +117,10 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             sonn = sigortalist(veri);
             break;
         case "Aktif":
+            veri = filterSigortaByState(4);
+            sonn = sigortalist(veri);
+            break;
+        case "İptal":
             veri = filterSigortaByState(4);
             sonn = sigortalist(veri);
             break;
