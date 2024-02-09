@@ -121,7 +121,7 @@ $("ul.nav-tabs-custom li.nav-item").on("click", function () {
             sonn = sigortalist(veri);
             break;
         case "İptal":
-            veri = filterSigortaByState(4);
+            veri = filterSigortaByState(5);
             sonn = sigortalist(veri);
             break;
         default:
