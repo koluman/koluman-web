@@ -25,7 +25,7 @@ class TestDriveController extends Controller
                     $query->where('appointment_date', '>', now()->toDateString()) // Bugünden sonraki randevular
                         ->orWhere(function ($query) use ($currentDateTime) {
                             $query->where('appointment_date', '=', now()->toDateString())
-                                ->where('appointment_time', '>', now()->toTimeString()); // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
+                                ->where('appointment_time', '>=', now()->toTimeString()); // Bugünkü randevular, ancak şuanki saatinden sonraki saatte olanlar
                         });
                 })
                 ->orderBy('appointment_date', 'desc')
