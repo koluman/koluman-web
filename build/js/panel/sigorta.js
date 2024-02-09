@@ -43,7 +43,7 @@ function sigortalist(data) {
         $(a).text(durumSayilari[durum]);
     }
     $("#0").text(data.length);
-
+    console.log(data);
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
