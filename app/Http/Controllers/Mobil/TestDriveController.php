@@ -72,6 +72,7 @@ class TestDriveController extends Controller
                 $testDrives = Appointment::select('appointment.appointment_id', 'appointment.car_id', 'appointment.appointment_time', 'appointment.appointment_date', 'appointment.user_id', 'appointment.state', 'c.car_name')
                     ->join('showroom as c', 'appointment.car_id', '=', 'c.car_id')
                     ->where('appointment.user_id', $u->user_id)
+                    ->whereNotIn('appointment.state', [2])
                     ->where('appointment.appointment_date', '>=', $today)
                     ->first();
                 if ($testDrives) {
