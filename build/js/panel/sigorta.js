@@ -28,20 +28,18 @@ function sigorta() {
 function sigortalist(data) {
     var s = "";
     let j = 0;
-    let dizi=["Talep Oluştu","İncelemede","Teklif Oluştu","Aktif"];
-// Her durumun sayısını tutmak için bir obje oluştur
-let durumSayilari = {};
+    let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif"];
+    let durumSayilari = {};
 
-// Dizi üzerinde dönerek her durumu say
-dizi.forEach(function (durum) {
-    // Eğer durumSayilari objesinde bu durum yoksa, 1 olarak başla; varsa bir arttır
-    durumSayilari[durum] = (durumSayilari[durum] || 0) + 1;
-});
-
-// Sonuçları yazdır
-for (let durum in durumSayilari) {
-    console.log(durum + ": " + durumSayilari[durum]);
-}    for (let i = 0; i < data.length; i++) {
+    data.forEach(function (veri) {
+        let durum = veri.insurance_state;
+        if (durumSayilari.hasOwnProperty(durum)) {
+            durumSayilari[durum]++;
+        } else {
+            durumSayilari[durum] = 1;
+        }
+    });
+    for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
         s += '<th scope="row">';
@@ -58,7 +56,7 @@ for (let durum in durumSayilari) {
         if (data[i].insurance_state >= 1 && data[i].insurance_state <= 4) {
             let durumMetni = dizi[data[i].insurance_state - 1];
             s += '<td class="insurancestate">' + durumMetni + '</td>';
-        } 
+        }
         s += '<td>';
         s += '    <ul class="list-inline hstack gap-2 mb-0">';
         s += '        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Detay">';
@@ -67,7 +65,7 @@ for (let durum in durumSayilari) {
         s += '            </a>';
         s += '        </li>';
         s += '        <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Poliçe PDF">';
-        s += '            <a href="'+ data[i].insurance_policy_url +'" target="_blank"  class="text-primary d-inline-block edit-item-btn">';
+        s += '            <a href="' + data[i].insurance_policy_url + '" target="_blank"  class="text-primary d-inline-block edit-item-btn">';
         s += '                <i class=" ri-file-pdf-fill fs-16"></i>';
         s += '            </a>';
         s += '        </li>';
@@ -78,10 +76,12 @@ for (let durum in durumSayilari) {
     return s;
 
 }
-function detay(id){
-    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail/"+id; 
+
+function detay(id) {
+    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail/" + id;
 
 }
+
 function filterSigortaByState(state) {
     return sigortadata.filter(sigorta => sigorta.insurance_state === state);
 }
@@ -207,5 +207,5 @@ function updatePageWithFilteredData(filteredData) {
 }
 
 document.getElementById("createsigorta").addEventListener("click", function () {
-    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail"; 
+    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail";
 });
