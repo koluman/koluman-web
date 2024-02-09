@@ -29,7 +29,7 @@ function sigortalist(data) {
     var s = "";
     let j = 0;
     let dizi=["Talep Oluştu","İncelemede","Teklif Oluştu","Aktif"];
-    console.log(dizi);
+    console.log(data);
     for (let i = 0; i < data.length; i++) {
         j++;
         s += '<tr>';
