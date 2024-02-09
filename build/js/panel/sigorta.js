@@ -28,7 +28,7 @@ function sigorta() {
 function sigortalist(data) {
     var s = "";
     let j = 0;
-    let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif"];
+    let dizi = ["Talep Oluştu", "İncelemede", "Teklif Oluştu", "Aktif","İptal Edildi"];
     let durumSayilari = {};
     data.forEach(function (veri) {
         let durum = veri.insurance_state;
