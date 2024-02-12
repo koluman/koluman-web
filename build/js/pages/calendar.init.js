@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice2 = new Choices("#user_id", {
         searchEnabled: false
     });
+    company = new Choices("#company_id", {
+        searchEnabled: false
+    });
+    step1 = new Choices("#step1", {
+        searchEnabled: false
+    });
     var choicesArray = [];
     var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
     for (var i = 0; i < allTimes.length; i++) {
@@ -130,12 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             return 'dayGridMonth';
                         }
                     }
-                    /*var eventCategoryChoice4 = new Choices("#car_id", {
-                        searchEnabled: false
-                    });
-                    var eventCategoryChoice2 = new Choices("#user_id", {
-                        searchEnabled: false
-                    });*/
 
                     var calendar = new FullCalendar.Calendar(calendarEl, {
                         timeZone: 'local',
@@ -514,21 +514,21 @@ function getcompany() {
                     },
                     success: function (data) {
                         console.log(data);
-                       /* if (data.success == 1) {
-                            var choicesArray2 = [];
-                            for (var i = 0; i < data.showroomcars.length; i++) {
-                                var v = data.showroomcars[i]["car_id"];
-                                var t = data.showroomcars[i]["car_name"];
+                       if (data.success == 1) {
+                            var ch = [];
+                            for (var i = 0; i < data.companies.length; i++) {
+                                var v = data.companies[i]["company_id"];
+                                var t = data.companies[i]["company_name"];
 
-                                var choice = {
+                                var c = {
                                     value: v,
                                     label: t,
                                 };
-                                choicesArray2.push(choice);
+                                ch.push(c);
                             }
-                            eventCategoryChoice4.clearChoices(); // Clear existing choices
-                            eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
-                        }*/
+                            company.clearChoices(); // Clear existing choices
+                            company.setChoices(ch, 'value', 'label', true); // Set new choices
+                        }
                     }
                 });
             }
