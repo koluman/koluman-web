@@ -39,8 +39,9 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/adduserinsurancelist', [InsuranceController::class, 'adduserinsurancelist'])->name('adduserinsurancelist');
     Route::post('/deleteuserinsurancelist', [InsuranceController::class, 'deleteuserinsurancelist'])->name('deleteuserinsurancelist');
     Route::post('/updateuserinsurancelist', [InsuranceController::class, 'updateuserinsurancelist'])->name('updateuserinsurancelist');
+    Route::get('/gettestdrivecars', [InsuranceController::class, 'gettestdrivecars'])->name('gettestdrivecars');
 
-
+     
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
 

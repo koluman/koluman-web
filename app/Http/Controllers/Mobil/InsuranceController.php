@@ -6,6 +6,7 @@ use App\Http\Requests\InsuranceAddRequest;
 use App\Http\Requests\InsuranceDeleteRequest;
 use App\Http\Requests\InsuranceUpdateRequest;
 use App\Models\Insurance;
+use App\Models\Showroom;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -13,6 +14,31 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class InsuranceController extends Controller
 {
+    public function gettestdrivecars(Request $request)
+    {
+        try {
+            $testdrivecars = Showroom::where('company_id',$request->company_id)->where('isTestdrive',1)
+            ->select( 'car_id', 'company_id', 'step1', 'step2', 'step3', 'step4', 'step5', 'car_name', 'car_description', 'car_image_url', 'isTestdrive')->get();
+            if (!$testdrivecars->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "testdrivecars" => $testdrivecars,
+                    "message" => "Test sürüş arabalar listesi getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Test sürüş arabalar listesi bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
     public function getuserinsurancelist(Request $request)
     {
         try {
