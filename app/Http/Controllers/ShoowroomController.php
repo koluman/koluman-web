@@ -35,5 +35,9 @@ class ShoowroomController extends Controller
     {
         return view('ajans.list');
     }
+    public function shoowroomdetail(Request $request)
+    {
+        return view('ajans.detail');
+    }
 
 }

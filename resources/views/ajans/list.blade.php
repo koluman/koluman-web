@@ -102,7 +102,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="apps-ecommerce-add-product" class="btn btn-success" id="addproduct-btn"><i
+                                    <a href="shoowroomdetail" class="btn btn-success" id="addproduct-btn"><i
                                             class="ri-add-line align-bottom me-1"></i>Araba Ekle</a>
                                 </div>
                             </div>

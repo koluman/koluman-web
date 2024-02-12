@@ -52,6 +52,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
     Route::get('/shoowroomlist', [ShoowroomController::class, 'shoowroom'])->name('ajans.list');
+    Route::get('shoowroomdetail/{id?}', [ShoowroomController::class, 'shoowroomdetail'])->name('shoowroomdetail');
 
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
