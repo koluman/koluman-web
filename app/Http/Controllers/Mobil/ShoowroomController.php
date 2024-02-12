@@ -11,7 +11,7 @@ class ShoowroomController extends Controller
     public function getshowroomcars(Request $request)
     {
         try {
-            $shoowroom = Showroom::select('car_id', 'car_name', 'car_image_url','isTestdrive')->get();
+            $shoowroom = Showroom::select( 'car_id', 'car_type', 'step1', 'step2', 'step3', 'step4', 'step5', 'car_name', 'car_description', 'car_image_url', 'isTestdrive')->get();
             if (!$shoowroom->isEmpty()) {
                 $responseData = [
                     "success" => 1,

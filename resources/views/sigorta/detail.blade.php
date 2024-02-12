@@ -146,6 +146,7 @@
                             <option value="2">İncelemede</option>
                             <option value="3">Teklif Oluştu</option>
                             <option value="4">Aktif</option>
+                            <option value="5">İptal Et</option>
                         </select>
                     </div>
                 </div>

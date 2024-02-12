@@ -12,7 +12,14 @@ class Showroom extends Model
     protected $primaryKey = 'car_id';
     protected $fillable = [
         'car_id',
+        'car_type',
+        'step1',
+        'step2',
+        'step3',
+        'step4',
+        'step5',
         'car_name',
+        'car_description',
         'car_image_url',
         'isTestdrive',
         'created_at',

@@ -6,6 +6,7 @@ use App\Http\Requests\InsuranceAddRequest;
 use App\Http\Requests\InsuranceDeleteRequest;
 use App\Http\Requests\InsuranceUpdateRequest;
 use App\Models\Insurance;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -73,7 +74,8 @@ class InsuranceController extends Controller
                     'insurance_description' => $insurance_description,
                     'insurance_type' => $insurance_type,
                     'insurance_author' => $insurance_author,
-                    'insurance_state' => 1
+                    'insurance_state' => 1,
+                    'insurance_request_date'=> Carbon::now('Europe/Istanbul')
                 ]);
                 if ($affectedRows > 0) {
                     $responseData = [
