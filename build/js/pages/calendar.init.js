@@ -475,7 +475,7 @@ function getshowroom() {
 
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcars',
+        url: 'https://mobiloby.app/koluman/web/gettestdrivecars',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
