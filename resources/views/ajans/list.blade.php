@@ -22,88 +22,34 @@
                 <div class="card-header">
                     <div class="d-flex mb-3">
                         <div class="flex-grow-1">
-                            <h5 class="fs-16">Filters</h5>
+                            <h5 class="fs-16">Filtreler</h5>
                         </div>
                         <div class="flex-shrink-0">
-                            <a href="#" class="text-decoration-underline" id="clearall">Clear All</a>
+                            <a href="#" class="text-decoration-underline" id="clearall">Tümünü Temizle</a>
                         </div>
                     </div>
-
-                  
                 </div>
 
                 <div class="accordion accordion-flush filter-accordion">
 
                     <div class="card-body border-bottom">
                         <div>
-                            <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Products</p>
+                            <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
                             <ul class="list-unstyled mb-0 filter-list">
                                 <li>
                                     <a href="#" class="d-flex py-1 align-items-center">
                                         <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Grocery</h5>
+                                            <h5 class="fs-13 mb-0 listname">Mercedes</h5>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="d-flex py-1 align-items-center">
                                         <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Fashion</h5>
+                                            <h5 class="fs-13 mb-0 listname">Koluman</h5>
                                         </div>
                                         <div class="flex-shrink-0 ms-2">
                                             <span class="badge bg-light text-muted">5</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Watches</h5>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Electronics</h5>
-                                        </div>
-                                        <div class="flex-shrink-0 ms-2">
-                                            <span class="badge bg-light text-muted">5</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Furniture</h5>
-                                        </div>
-                                        <div class="flex-shrink-0 ms-2">
-                                            <span class="badge bg-light text-muted">6</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Automotive Accessories</h5>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Appliances</h5>
-                                        </div>
-                                        <div class="flex-shrink-0 ms-2">
-                                            <span class="badge bg-light text-muted">7</span>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Kids</h5>
                                         </div>
                                     </a>
                                 </li>
