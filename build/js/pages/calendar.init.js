@@ -425,6 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
     getshowroom();
+    getcompany();
     getapiusers();
     $("#appointment_date").change(function () {
         getdate();
@@ -496,7 +497,43 @@ function getshowroom() {
         }
     });
 }
+function getcompany() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://mobiloby.app/koluman/api/getcompanies',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    success: function (data) {
+                        console.log(data);
+                       /* if (data.success == 1) {
+                            var choicesArray2 = [];
+                            for (var i = 0; i < data.showroomcars.length; i++) {
+                                var v = data.showroomcars[i]["car_id"];
+                                var t = data.showroomcars[i]["car_name"];
 
+                                var choice = {
+                                    value: v,
+                                    label: t,
+                                };
+                                choicesArray2.push(choice);
+                            }
+                            eventCategoryChoice4.clearChoices(); // Clear existing choices
+                            eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
+                        }*/
+                    }
+                });
+            }
+        }
+    });
+}
 function getapiusers() {
     $.ajax({
         type: 'POST',

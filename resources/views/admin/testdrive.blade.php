@@ -18,7 +18,7 @@
                     <div class="card card-h-100">
                         <div class="card-body">
                             <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Test Sürüş
-                                Ranvusu Oluştur</button>                                <br>
+                                Ranvusu Oluştur</button> <br>
 
                             <div id="external-events">
                                 <br>
@@ -128,7 +128,20 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Firmalar</label>
+                                            <select class="form-select d-none" name="company_id" id="company_id" required>
+                                            </select>
+                                        </div>
+                                    </div>
+                                     <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Firmalar</label>
+                                            <select class="form-select d-none" name="step1" id="step1" required>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Arabalar</label>
