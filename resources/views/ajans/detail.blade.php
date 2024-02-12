@@ -23,7 +23,7 @@
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="product-title-input">Kategori</label>
+                                <label class="form-label" for="product-title-input">Araba Adı</label>
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
                                 <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
@@ -52,30 +52,6 @@
                         <h5 class="card-title mb-0">Araba Resimleri</h5>
                     </div>
                     <div class="card-body">
-                        <div class="mb-4">
-                            <h5 class="fs-14 mb-1">Product Image</h5>
-                            <p class="text-muted">Add Product main Image.</p>
-                            <div class="text-center">
-                                <div class="position-relative d-inline-block">
-                                    <div class="position-absolute top-100 start-100 translate-middle">
-                                        <label for="product-image-input" class="mb-0"  data-bs-toggle="tooltip" data-bs-placement="right" title="Select Image">
-                                            <div class="avatar-xs">
-                                                <div class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                    <i class="ri-image-fill"></i>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <input class="form-control d-none" value="" id="product-image-input" type="file"
-                                            accept="image/png, image/gif, image/jpeg">
-                                    </div>
-                                    <div class="avatar-lg">
-                                        <div class="avatar-title bg-light rounded">
-                                            <img src="" id="product-img" class="avatar-md h-auto" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div>
                             <h5 class="fs-14 mb-1">Product Gallery</h5>
                             <p class="text-muted">Add Product Gallery Images.</p>
