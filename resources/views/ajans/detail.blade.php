@@ -8,10 +8,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Ecommerce
+            Shoowroom İşlemleri
         @endslot
         @slot('title')
-            Shoowroom
+            Shoowroom Detay
         @endslot
     @endcomponent
 
@@ -26,7 +26,7 @@
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
                                 <input type="text" class="form-control" id="product-title-input" value=""
-                                    placeholder="Enter product title" required>
+                                    required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
                             <div class="mb-3">
@@ -34,24 +34,14 @@
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
                                 <input type="text" class="form-control" id="product-title-input" value=""
-                                    placeholder="Enter product title" required>
+                                   required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
 
                         </div>
                         <div>
                             <label>Araba Açıklama</label>
-                            <div id="ckeditor-classic">
-                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is
-                                    100% organic cotton. This is one of the world’s leading designer lifestyle brands and is
-                                    internationally recognized for celebrating the essence of classic American cool style,
-                                    featuring preppy with a twist designs.</p>
-                                <ul>
-                                    <li>Full Sleeve</li>
-                                    <li>Cotton</li>
-                                    <li>All Sizes available</li>
-                                    <li>4 Different Color</li>
-                                </ul>
+                            <div id="ckeditor-classic">                               
                             </div>
                         </div>
                     </div>
@@ -64,8 +54,7 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <h5 class="fs-14 mb-1">Product Gallery</h5>
-                            <p class="text-muted">Add Product Gallery Images.</p>
+                            <p class="text-muted">Araba resişmleri ekleme formu.</p>
 
                             <div class="dropzone">
                                 <div class="fallback">
@@ -76,13 +65,12 @@
                                         <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
                                     </div>
 
-                                    <h5>Drop files here or click to upload.</h5>
+                                    <h5>Resmi buraya yükleyiniz.</h5>
                                 </div>
                             </div>
 
                             <ul class="list-unstyled mb-0" id="dropzone-preview">
                                 <li class="mt-2" id="dropzone-preview-list">
-                                    <!-- This is used as the file preview template -->
                                     <div class="border rounded">
                                         <div class="d-flex p-2">
                                             <div class="flex-shrink-0 me-3">
@@ -99,7 +87,7 @@
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-3">
-                                                <button data-dz-remove class="btn btn-sm btn-danger">Delete</button>
+                                                <button data-dz-remove class="btn btn-sm btn-danger">Sil</button>
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +100,7 @@
                 <!-- end card -->
 
                 <div class="text-end mb-3">
-                    <button type="submit" class="btn btn-success w-sm">Submit</button>
+                    <button type="submit" class="btn btn-success w-sm">Ekle</button>
                 </div>
             </div>
             <!-- end col -->
@@ -120,7 +108,7 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Publish</h5>
+                        <h5 class="card-title mb-0">Detay</h5>
                     </div>
                     <div class="card-body">
                         <div class="live-preview">
@@ -133,15 +121,9 @@
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -150,15 +132,9 @@
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -167,15 +143,9 @@
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -184,15 +154,9 @@
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -201,15 +165,9 @@
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                                             </ul>
                                         </div>
                                     </div>
