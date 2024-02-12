@@ -430,6 +430,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#appointment_date").change(function () {
         getdate();
     });
+    $("#company_id").change(function () {
+        getstep();
+    });
 
 });
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -571,10 +574,9 @@ function getapiusers() {
     });
 
 }
-document.getElementById("company_id").addEventListener("click", function () {
-    // Tıklama olayında çalışmasını istediğiniz kodları buraya yazabilirsiniz.
-    alert("Button clicked!");
-});
+function getstep() {   
+console.log("sdfdsf");
+};
 
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
