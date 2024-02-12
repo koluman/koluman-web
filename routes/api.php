@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Mobil\AnnouncementController;
+use App\Http\Controllers\Mobil\CompaniesController;
 use App\Http\Controllers\Mobil\DealerShipsController;
 use App\Http\Controllers\Mobil\InsuranceController;
 use App\Http\Controllers\Mobil\LoginController;
@@ -40,6 +41,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/deleteuserinsurancelist', [InsuranceController::class, 'deleteuserinsurancelist'])->name('deleteuserinsurancelist');
     Route::post('/updateuserinsurancelist', [InsuranceController::class, 'updateuserinsurancelist'])->name('updateuserinsurancelist');
     Route::get('/gettestdrivecars', [InsuranceController::class, 'gettestdrivecars'])->name('gettestdrivecars');
+    Route::get('/getcompanies', [CompaniesController::class, 'getcompanies'])->name('getcompanies');
 
      
 });
