@@ -121,7 +121,7 @@
                         </div>
                     </li>
                 @endif
-                @if (Auth::guard('web')->user()->backuser_role == 'sigorta' ||  Auth::guard('web')->user()->backuser_role == 'admin')
+                @if (Auth::guard('web')->user()->backuser_role == 'sigorta' || Auth::guard('web')->user()->backuser_role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarSigorta" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarSigorta">
@@ -136,7 +136,21 @@
                         </div>
                     </li>
                 @endif
-
+                @if (Auth::guard('web')->user()->backuser_role == 'ajans' || Auth::guard('web')->user()->backuser_role == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarShoowroom" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarShoowroom">
+                            <i class="ri-apps-2-line"></i> <span>@lang('translation.shoowroom')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarShoowroom">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="shoowroomlist" class="nav-link">@lang('translation.shoowroomlist')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->

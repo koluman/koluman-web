@@ -31,5 +31,9 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
+    public function shoowroom(Request $request)
+    {
+        return view('ajans.list');
+    }
 
 }
