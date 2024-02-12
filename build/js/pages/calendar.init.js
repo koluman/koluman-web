@@ -569,7 +569,7 @@ function getapiusers() {
     });
 
 }
-document.getElementById("step1").addEventListener("click", function (e) {
+document.getElementById("company_id").addEventListener("click", function (e) {
  console.log("gergreg");
 });
 function flatpicekrValueClear() {
