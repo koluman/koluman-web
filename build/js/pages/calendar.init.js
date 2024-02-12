@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
             url: 'https://mobiloby.app/koluman/web/testdrivegetall',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 if (data.success == 1) {
                     var defaultEvents = data.testDrives.map(function (event) {
                         return {
@@ -181,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             addEvent.show();
                             formEvent.reset();
                             selectedEvent = info.event;
-                            console.log(selectedEvent);
                             // First Modal
                             document.getElementById("modal-title").innerHTML = "";
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
@@ -208,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             }
 
                             if (selectedEvent.title) {
-                                console.log(selectedEvent.title);
                                 eventCategoryChoice5.destroy();
                                 eventCategoryChoice5 = new Choices("#appointment_time", {
                                     searchEnabled: false
@@ -517,7 +514,6 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        console.log(data);
                         if (data.success == 1) {
                             var ch = [];
                             for (var i = 0; i < data.companies.length; i++) {
@@ -614,7 +610,6 @@ function upcomingEvent(a) {
         return new Date(o2.start) - new Date(o1.start);
     });
     Array.from(a).forEach(function (element) {
-        console.log(element);
         var title = element.title;
         var startDate = element.start;
         if (startDate === "Invalid Date" || startDate === undefined) {
