@@ -57,22 +57,12 @@
                         </div>
                     </div>
 
-                    <div class="card-body border-bottom">
-                        <p class="text-muted text-uppercase fs-12 fw-medium mb-4">Price</p>
-
-                        <div id="product-price-range"></div>
-                        <div class="formCost d-flex gap-2 align-items-center mt-3">
-                            <input class="form-control form-control-sm" type="text" id="minCost" value="0" /> <span class="fw-semibold text-muted">to</span> <input
-                                class="form-control form-control-sm" type="text" id="maxCost" value="1000" />
-                        </div>
-                    </div>
-
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingBrands">
                             <button class="accordion-button bg-transparent shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands"
                                 aria-expanded="true" aria-controls="flush-collapseBrands">
-                                <span class="text-muted text-uppercase fs-12 fw-medium">Brands</span> <span
+                                <span class="text-muted text-uppercase fs-12 fw-medium">Step2</span> <span
                                     class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
                             </button>
                         </h2>
@@ -91,35 +81,8 @@
                                         <label class="form-check-label"
                                             for="productBrandRadio5">Boat</label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="OnePlus"
-                                            id="productBrandRadio4">
-                                        <label class="form-check-label"
-                                            for="productBrandRadio4">OnePlus</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Realme"
-                                            id="productBrandRadio3">
-                                        <label class="form-check-label"
-                                            for="productBrandRadio3">Realme</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Sony"
-                                            id="productBrandRadio2">
-                                        <label class="form-check-label"
-                                            for="productBrandRadio2">Sony</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="JBL"
-                                            id="productBrandRadio1" checked>
-                                        <label class="form-check-label" for="productBrandRadio1">JBL</label>
-                                    </div>
 
-                                    <div>
-                                        <button type="button"
-                                            class="btn btn-link text-decoration-none text-uppercase fw-medium p-0">1,235
-                                            More</button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
