@@ -6,7 +6,7 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Ecommerce @endslot
-@slot('title') Create Product @endslot
+@slot('title') Shoowroom @endslot
 @endcomponent
 
 <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <div class="mb-3">
-                                <label class="form-label" for="product-title-input">Product Title</label>
+                                <label class="form-label" for="product-title-input">Kategori</label>
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
                                 <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
@@ -24,8 +24,7 @@
                             </div>
                         </div>
                         <div>
-                            <label>Product Description</label>
-
+                            <label>Araba  Açıklama</label>
                             <div id="ckeditor-classic">
                                 <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
                                 <ul>
@@ -42,7 +41,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Product Gallery</h5>
+                        <h5 class="card-title mb-0">Araba Resimleri</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-4">
