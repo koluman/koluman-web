@@ -17,7 +17,7 @@
 
     <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
@@ -117,7 +117,7 @@
             </div>
             <!-- end col -->
 
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">Publish</h5>
@@ -128,7 +128,7 @@
                                 <p class="text-muted">You can use a button with the dropdown toggle to set the file input
                                     group.</p>
                                 <div class="row g-3">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="input-group">
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
@@ -145,7 +145,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="input-group">
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
@@ -162,7 +162,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="input-group">
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
@@ -179,7 +179,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="input-group">
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
