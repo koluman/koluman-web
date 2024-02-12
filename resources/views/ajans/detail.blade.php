@@ -11,7 +11,7 @@
 
 <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
@@ -105,7 +105,7 @@
         </div>
         <!-- end col -->
 
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">Publish</h5>
