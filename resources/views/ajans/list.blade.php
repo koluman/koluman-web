@@ -10,10 +10,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Ecommerce
+            Shoowroom
         @endslot
         @slot('title')
-            Products
+            Shoowroom
         @endslot
     @endcomponent
     <div class="row">
