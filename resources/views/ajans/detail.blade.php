@@ -113,8 +113,7 @@
                     <div class="card-body">
                         <div class="live-preview">
                             <div>
-                                <p class="text-muted">You can use a button with the dropdown toggle to set the file input
-                                    group.</p>
+                                <p class="text-muted">Çıklama yazılabilir</p>
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="input-group">
@@ -180,10 +179,10 @@
                 <!-- end card -->
                 <div class="card">
                     <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Custom Forms</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">Test Sürüş/Shoowroom Arabası</h4>
                     <div class="flex-shrink-0">
                         <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="input-group-custom-showcode" class="form-label text-muted">Show Code</label>
+                            <label for="input-group-custom-showcode" class="form-label text-muted">Test Sürüş Arabası</label>
                             <input class="form-check-input code-switcher" type="checkbox" id="input-group-custom-showcode">
                         </div>
                     </div>
