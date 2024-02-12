@@ -6,6 +6,8 @@ return [
     "userlist" => "User List",
     "testdrive" => "Test Drive",
     "testdrivelist" => "Test Drive List",
+    "shoowroom" => "Shoowroom",
+    "shoowroomlist" => "Shoowroom List",
     "analytics" => "Analytics",
     "crm" => "CRM",
     "ecommerce" => "E-commerce",

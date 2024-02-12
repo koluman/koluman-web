@@ -9,6 +9,8 @@ return [
     "testdrivelist" => "Test Sürüş Listesi",
     "sigorta" => "Sigorta İşlemleri",
     "sigortalist" => "Sigorta Listesi",
+    "shoowroom" => "Shoowroom",
+    "shoowroomlist" => "Shoowroom Listesi",
     "analytics" => "Analiz",
     "crm" => "CRM",
     "ecommerce" => "E-ticaret",
