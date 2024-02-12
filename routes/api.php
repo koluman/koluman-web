@@ -32,7 +32,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('userlogin');
     Route::post('/userlogout', [LoginController::class, 'userlogout'])->name('userlogout');
     Route::post('/userregister', [LoginController::class, 'userregister'])->name('userregister');
-    Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
+    Route::post('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
     Route::get('/getannouncement', [AnnouncementController::class, 'getannouncement'])->name('getannouncement');
     Route::get('/getdealerships', [DealerShipsController::class, 'getdealerships'])->name('getdealerships');
     Route::get('/getuserinsurancelist', [InsuranceController::class, 'getuserinsurancelist'])->name('getuserinsurancelist');
