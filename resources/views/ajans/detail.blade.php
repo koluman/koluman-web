@@ -113,7 +113,7 @@
                     <div class="card-body">
                         <div class="live-preview">
                             <div>
-                                <p class="text-muted">Çıklama yazılabilir</p>
+                                <p class="text-muted">Açıklama yazılabilir</p>
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="input-group">

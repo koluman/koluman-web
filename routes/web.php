@@ -41,7 +41,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/deleteusers', [BackUsersController::class, 'deleteusers'])->name('deleteusers');
     Route::get('/testdrivegetall', [TestDriveController::class, 'testdrivegetall'])->name('testdrivegetall');
     Route::post('/getapiusers', [UserController::class, 'getapiusers'])->name('getapiusers');
-    Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
+    Route::get('/gettestdrivecars', [TestDriveController::class, 'gettestdrivecars'])->name('gettestdrivecars');
     Route::post('/deletetestdriveappointment', [TestDriveController::class, 'deletetestdriveappointment'])->name('deletetestdriveappointment');
     Route::post('/addtestdriveappointment', [TestDriveController::class, 'addtestdriveappointment'])->name('addtestdriveappointment');
     Route::post('/updatetestdriveappointment', [TestDriveController::class, 'updatetestdriveappointment'])->name('updatetestdriveappointment');

@@ -182,5 +182,4 @@
     <script src="{{ URL::asset('build/libs/fullcalendar/index.global.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/calendar.init.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
-    <script src="{{ URL::asset('build/js/panel/testdrive.js') }}"></script>
 @endsection

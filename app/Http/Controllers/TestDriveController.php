@@ -5,11 +5,36 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TestDriveAddRequest;
 use App\Http\Requests\TestDriveDeleteRequest;
 use App\Models\Appointment;
+use App\Models\Showroom;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TestDriveController extends Controller
 {
+    public function gettestdrivecars(Request $request)
+    {
+        try {
+            $shoowroom = Showroom::where('isTestdrive',1)->get();
+            if (!$shoowroom->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "showroomcars" => $shoowroom,
+                    "message" => "Arabalar listesi getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Arabalar listesi bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
     public function testdrivegetall(Request $request)
     {
         try {
