@@ -503,12 +503,11 @@ function getcompany() {
         url: 'https://mobiloby.app/koluman/web/getApiToken',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
 
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/api/getcompanies',
+                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
