@@ -497,6 +497,7 @@ function getshowroom() {
         }
     });
 }
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -514,7 +515,7 @@ function getcompany() {
                     },
                     success: function (data) {
                         console.log(data);
-                       if (data.success == 1) {
+                        if (data.success == 1) {
                             var ch = [];
                             for (var i = 0; i < data.companies.length; i++) {
                                 var v = data.companies[i]["company_id"];
@@ -535,6 +536,7 @@ function getcompany() {
         }
     });
 }
+
 function getapiusers() {
     $.ajax({
         type: 'POST',
@@ -569,9 +571,11 @@ function getapiusers() {
     });
 
 }
-document.getElementById("company_id").addEventListener("click", function (e) {
- console.log("gergreg");
+document.getElementById("company_id").addEventListener("click", function () {
+    // Tıklama olayında çalışmasını istediğiniz kodları buraya yazabilirsiniz.
+    alert("Button clicked!");
 });
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
