@@ -191,10 +191,8 @@ return [
     "Apex_Treemap_Chart" => "Apex Treemap Chart",
     "Apex_Pie_Chart" => "Apex Pie Chart",
     "Apex_Radialbar_Chart" => "Apex Radial Bar Chart",
-    "Apex_Line_Chart" => "Apex Line Chart",
     "Apex_Radar_Chart" => "Apex Radar Chart",
     "Apex_Polar_area_Chart" => "Apex Polar Area Chart",
-
     "nft" => "NFT",
     "email" => "Email",
     "email-templates" => "Email Templates",
