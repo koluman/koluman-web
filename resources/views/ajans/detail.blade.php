@@ -115,7 +115,7 @@
                         <div>
                             <p class="text-muted">You can use a button with the dropdown toggle to set the file input group.</p>
                             <div class="row g-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="input-group">
                                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
                                         <ul class="dropdown-menu">
@@ -130,35 +130,11 @@
                                         <input type="text" class="form-control" aria-label="Text input with dropdown button">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
+                              
+                                <div class="col-lg-12">
+                                     <div class="input-group">
                                         <input type="text" class="form-control" aria-label="Text input with dropdown button">
                                         <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="input-group">
-                                        <button class="btn btn-outline-secondary material-shadow-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action before</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action before</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
-                                        <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
-                                        <button class="btn btn-outline-secondary material-shadow-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><a class="dropdown-item" href="#">Action</a></li>
                                             <li><a class="dropdown-item" href="#">Another action</a></li>
