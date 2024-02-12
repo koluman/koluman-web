@@ -569,7 +569,9 @@ function getapiusers() {
     });
 
 }
-
+document.getElementById("step1").addEventListener("click", function (e) {
+ console.log("gergreg");
+});
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }

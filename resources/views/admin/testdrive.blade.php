@@ -137,7 +137,7 @@
                                     </div>
                                      <div class="col-12">
                                         <div class="mb-3">
-                                            <label class="form-label">Firmalar</label>
+                                            <label class="form-label">Kategori</label>
                                             <select class="form-select d-none" name="step1" id="step1" required>
                                             </select>
                                         </div>
