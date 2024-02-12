@@ -503,6 +503,8 @@ function getcompany() {
         url: 'https://mobiloby.app/koluman/web/getApiToken',
         dataType: 'json',
         success: function (data) {
+            console.log(data);
+
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
