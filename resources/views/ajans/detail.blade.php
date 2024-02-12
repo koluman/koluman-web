@@ -1,17 +1,23 @@
 @extends('layouts.master')
-@section('title') @lang('translation.create-product') @endsection
+@section('title')
+    @lang('translation.create-product')
+@endsection
 @section('css')
-<link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-@component('components.breadcrumb')
-@slot('li_1') Ecommerce @endslot
-@slot('title') Shoowroom @endslot
-@endcomponent
+    @component('components.breadcrumb')
+        @slot('li_1')
+            Ecommerce
+        @endslot
+        @slot('title')
+            Shoowroom
+        @endslot
+    @endcomponent
 
-<form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
-    <div class="row">
-        <div class="col-lg-7">
+    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col-lg-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
@@ -19,22 +25,27 @@
                                 <label class="form-label" for="product-title-input">Kategori</label>
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
-                                <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
+                                <input type="text" class="form-control" id="product-title-input" value=""
+                                    placeholder="Enter product title" required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="product-title-input">Araba Adı</label>
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
-                                <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
+                                <input type="text" class="form-control" id="product-title-input" value=""
+                                    placeholder="Enter product title" required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
-                            
+
                         </div>
                         <div>
-                            <label>Araba  Açıklama</label>
+                            <label>Araba Açıklama</label>
                             <div id="ckeditor-classic">
-                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
+                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is
+                                    100% organic cotton. This is one of the world’s leading designer lifestyle brands and is
+                                    internationally recognized for celebrating the essence of classic American cool style,
+                                    featuring preppy with a twist designs.</p>
                                 <ul>
                                     <li>Full Sleeve</li>
                                     <li>Cotton</li>
@@ -76,7 +87,8 @@
                                         <div class="d-flex p-2">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar-sm bg-light rounded">
-                                                    <img data-dz-thumbnail class="img-fluid rounded d-block" src="#" alt="Product-Image" />
+                                                    <img data-dz-thumbnail class="img-fluid rounded d-block" src="#"
+                                                        alt="Product-Image" />
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -102,125 +114,134 @@
                 <div class="text-end mb-3">
                     <button type="submit" class="btn btn-success w-sm">Submit</button>
                 </div>
-        </div>
-        <!-- end col -->
+            </div>
+            <!-- end col -->
 
-        <div class="col-lg-5">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Publish</h5>
-                </div>
-                <div class="card-body">
-                      <div class="live-preview">
-                        <div>
-                            <p class="text-muted">You can use a button with the dropdown toggle to set the file input group.</p>
-                            <div class="row g-3">
-                                <div class="col-lg-6">
-                                       <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Publish</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="live-preview">
+                            <div>
+                                <p class="text-muted">You can use a button with the dropdown toggle to set the file input
+                                    group.</p>
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                aria-label="Text input with dropdown button">
+                                            <button class="btn btn-success dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                aria-label="Text input with dropdown button">
+                                            <button class="btn btn-success dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                       <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                aria-label="Text input with dropdown button">
+                                            <button class="btn btn-success dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                aria-label="Text input with dropdown button">
+                                            <button class="btn btn-success dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="input-group">
-                                        <button class="btn btn-outline-secondary material-shadow-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action before</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action before</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
-                                        <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
-                                        <button class="btn btn-outline-secondary material-shadow-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                    <div class="col-lg-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                aria-label="Text input with dropdown button">
+                                            <button class="btn btn-success dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- end card body -->
                 </div>
-                <!-- end card body -->
+                <!-- end card -->
+                <div class="card">
+                    <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Custom Forms</h4>
+                    <div class="flex-shrink-0">
+                        <div class="form-check form-switch form-switch-right form-switch-md">
+                            <label for="input-group-custom-showcode" class="form-label text-muted">Show Code</label>
+                            <input class="form-check-input code-switcher" type="checkbox" id="input-group-custom-showcode">
+                        </div>
+                    </div>
+                </div>
+                    <!-- end card body -->
+                </div>
             </div>
-            <!-- end card -->
-      
         </div>
-    </div>
-    <!-- end row -->
-</form>
-
-
+        <!-- end row -->
+    </form>
 @endsection
 @section('script')
-<script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
 
-<script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
-<script src="{{ URL::asset('build/js/pages/ecommerce-product-create.init.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
+    <script src="{{ URL::asset('build/js/pages/ecommerce-product-create.init.js') }}"></script>
 
-<script src="{{ URL::asset('build/js/app.js') }}"></script>
+    <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection
-
