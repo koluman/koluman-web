@@ -29,10 +29,7 @@
                         </div>
                     </div>
 
-                    <div class="filter-choices-input">
-                        <input class="form-control" data-choices data-choices-removeItem type="text" id="filter-choices-input"
-                            value="T-Shirts" />
-                    </div>
+                  
                 </div>
 
                 <div class="accordion accordion-flush filter-accordion">
