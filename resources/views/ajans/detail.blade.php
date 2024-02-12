@@ -22,6 +22,14 @@
                                 <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Kategori</label>
+                                <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
+                                <input type="text" class="form-control d-none" id="product-id-input">
+                                <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
+                                <div class="invalid-feedback">Please Enter a product title.</div>
+                            </div>
+                            
                         </div>
                         <div>
                             <label>Araba  Açıklama</label>
