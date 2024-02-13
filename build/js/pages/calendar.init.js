@@ -676,12 +676,19 @@ function getstep() {
         success: function (data) {
             if (data.success == 1) {
                 var tt = [];
+                var v ="";
+                var t = "Lütfen Seçiniz";
+                var choice = {
+                    value: v,
+                    label: t,
+                };
+                tt.push(choice);
                 steps = data.getsteps;
                 for (var i = 0; i < steps.length; i++) {
-                    var v = steps[i]["step1"];
-                    var t = steps[i]["step1"];
+                    v = steps[i]["step1"];
+                    t = steps[i]["step1"];
                     if (!uniqueValues.includes(v)) {
-                        var choice = {
+                        choice = {
                             value: v,
                             label: t,
                         };
@@ -707,8 +714,13 @@ function getstep1() {
             label: value,
         };
     });
-    step2.clearChoices(); // Clear existing choices for step2
-    step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
+    step2.clearChoices(); 
+    var pleaseSelectOption = {
+        value: "",
+        label: "Lütfen Seçiniz",
+    };
+    step2Choices.unshift(pleaseSelectOption); 
+    step2.setChoices(step2Choices, 'value', 'label', true); 
 }
 
 function getshowroom() {
@@ -730,6 +742,11 @@ function getshowroom() {
 
 
     eventCategoryChoice4.clearChoices(); // Clear existing choices
+    var pleaseSelectOption = {
+        value: "",
+        label: "Lütfen Seçiniz",
+    };
+    combinedChoices.unshift(pleaseSelectOption); 
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
 }
 
