@@ -70,19 +70,7 @@ document.getElementById("addproduct-btn").addEventListener("click", function(){
 var productListAll = new gridjs.Grid({
 	columns:
 		[
-			{
-				name: '#',
-				width: '40px',
-				sort: {
-					enabled: false
-				},
-				data: (function (row) {
-					return gridjs.html('<div class="form-check checkbox-product-list">\
-					<input class="form-check-input" type="checkbox" value="'+ row.id + '" id="checkbox-' + row.id + '">\
-					<label class="form-check-label" for="checkbox-'+ row.id + '"></label>\
-				  </div>');
-				})
-			},
+			
 			{
 				name: 'Product',
 				width: '360px',
