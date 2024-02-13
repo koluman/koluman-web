@@ -21,10 +21,10 @@ class HomeController extends Controller
     }
     public function testdrive(Request $request)
     {
-        /*$currentDate = Carbon::now()->toDateString();
+        $currentDate = Carbon::now()->toDateString();
         $veri=Appointment::where('state', 1)
             ->where('appointment_date', '<', $currentDate)
-            ->update(['state' => 2]);*/
+            ->update(['state' => 2]);
         return view('admin.testdrive');
     }
     public function getApiToken()
