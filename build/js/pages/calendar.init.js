@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             newEventData = null;
                             modalTitle.innerText = selectedEvent.title;
                             // formEvent.classList.add("view-event");
-                            document.getElementById('btn-delete-event').removeAttribute('hidden');
+                            //document.getElementById('btn-delete-event').removeAttribute('hidden');
                         },
                         dateClick: function (info) {
                             addNewEvent(info);
