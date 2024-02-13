@@ -35,7 +35,8 @@ class TestDriveController extends Controller
             ];
         }
         return response()->json($responseData);
-    }    public function testdrivegetall(Request $request)
+    }    
+    public function testdrivegetall(Request $request)
     {
         try {
             $testDrives = Appointment::join('users', 'appointment.user_id', '=', 'users.user_id')
