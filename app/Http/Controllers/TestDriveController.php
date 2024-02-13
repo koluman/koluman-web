@@ -177,13 +177,13 @@ class TestDriveController extends Controller
             $user_id = $request->user_id;
             $appointment_date = $request->appointment_date;
             $appointment_id = $request->appointment_id;
-
+            $state = $request->state;
             $affectedRows = Appointment::where('appointment_id', $appointment_id)
             ->update([
                 'user_id' => $user_id,
                 'car_id' => $car_id,
                 'appointment_time' => $appointment_time,
-                'state' => 0,
+                'state' => $state,
                 'appointment_date' => $appointment_date
             ]);
             if ($affectedRows > 0) {
