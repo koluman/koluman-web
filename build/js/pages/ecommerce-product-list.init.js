@@ -39,7 +39,6 @@ function updateTable(data) {
                 title: item.car_name,
                 category: item.company_id
             },
-            stock: item.isTestdrive,
             price: item.step1,
             orders: item.step2,
             rating: item.step3,
@@ -114,10 +113,7 @@ var productListAll = new gridjs.Grid({
 						'</div>');
 				})
 			},
-			{
-				name: 'Test Arabası',
-				width: '94px',
-			},
+		
 			{
 				name: 'Step1',
 				width: '101px',
@@ -177,37 +173,7 @@ var productListAll = new gridjs.Grid({
 
 // table-product-list-published
 var productListPublishedData = [
-	{
-		"id": 1,
-		"product": {
-			"img": "build/images/products/img-2.png",
-			"title": "Urban Ladder Pashe Chair",
-			"category": "Furniture"
-		},
-		"stock": "06",
-		"price": "160.00",
-		"orders": "30",
-		"rating": "4.3",
-		"published": {
-			"publishDate": "06 Jan, 2021",
-			"publishTime": "01:31 PM",
-		}
-	},{
-		"id": 2,
-		"product": {
-			"img": "build/images/products/img-6.png",
-			"title": "Half Sleeve T-Shirts (Blue)",
-			"category": "Fashion"
-		},
-		"stock": "15",
-		"price": "125.00",
-		"orders": "48",
-		"rating": "4.2",
-		"published": {
-			"publishDate": "12 Oct, 2021",
-			"publishTime": "04:55 PM",
-		}
-	}
+	
 ]
 
 var productListPublished = new gridjs.Grid({
