@@ -610,7 +610,7 @@ function getstep1() {
     console.log(selectedStep1);
 
     // Filter steps based on selected step1
-    var filteredSteps = steps.filter(item => item.step1 === selectedStep1);
+    var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
 
     // Get unique values for step2
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
