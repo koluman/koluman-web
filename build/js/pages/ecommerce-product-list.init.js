@@ -117,8 +117,8 @@ var productListAll = new gridjs.Grid({
 			{
 				name: 'Step1',
 				width: '101px',
-				formatter: (function (cell) {
-					return gridjs.html('$' + cell);
+				formatter: (function (price) {
+					return gridjs.html(price);
 				})
 			},
 			{
@@ -133,7 +133,7 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Step4',
+				name: 'Araba Açıklaması',
 				width: '220px',
 				data: (function (row) {
 					return gridjs.html(row.published.publishDate + '<small class="text-muted ms-1">' + row.published.publishTime + '</small>');
