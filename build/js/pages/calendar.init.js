@@ -598,9 +598,11 @@ function getstep1() {
 function getshowroom() {
     var step1 = document.getElementById('step1').value;
     var step2 = document.getElementById('step2').value;
-    var filteredSteps = steps.filter(item => item.step1 === step1.value && item.step2 === step2.value);
+    var filteredSteps = steps.filter(item => item.step1 === step1 && item.step2 === step2);
+    
     console.log(steps);
-    console.log(step1+"--"+step2);
+    console.log(step1 + "--" + step2);
+    
     var combinedChoices = filteredSteps.map(item => {
         var combinedLabel = `${item.step3} - ${item.step4} - ${item.step5}`;
         return {
@@ -608,6 +610,7 @@ function getshowroom() {
             label: combinedLabel,
         };
     });
+    
     eventCategoryChoice4.clearChoices(); // Clear existing choices
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
     /*$.ajax({
