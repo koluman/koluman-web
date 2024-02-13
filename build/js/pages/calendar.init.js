@@ -235,10 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             }
                             */
                             if (selectedEvent.title) {
-                                eventCategoryChoice5.destroy();
-                                eventCategoryChoice5 = new Choices("#appointment_time", {
-                                    searchEnabled: false
-                                });
                                 eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             }
                             
