@@ -180,6 +180,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Durumu</label>
                                             <select class="form-select" name="state" id="state" required>
+                                            <option value="">Lütfen Seçiniz</option>
                                             <option value="0">Beklemede</option>
                                             <option value="1">Onayla</option>
                                             <option value="2">İptal Et</option>
