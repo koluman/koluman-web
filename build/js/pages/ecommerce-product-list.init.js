@@ -29,7 +29,7 @@ xhr.send();
 
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
-
+console.log(data);
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
         return {
