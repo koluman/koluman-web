@@ -216,6 +216,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                             document.getElementById("appointment_id").value = selectedEvent.id;
+                            document.getElementById("appointment_date").value = selectedEvent.extendedProps.location.appointment_date;
+
+                            
                             /*if (selectedEvent._def.extendedProps.location) {
                                 eventCategoryChoice4.destroy();
                                 eventCategoryChoice4 = new Choices("#car_id", {
