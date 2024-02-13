@@ -146,11 +146,11 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Stock',
+				name: 'Test Arabası',
 				width: '94px',
 			},
 			{
-				name: 'Price',
+				name: 'Kategori',
 				width: '101px',
 				formatter: (function (cell) {
 					return gridjs.html(cell);
