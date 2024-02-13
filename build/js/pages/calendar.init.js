@@ -194,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             upcomingEvent(defaultlastEvents);
                         },
                         eventClick: function (info) {
+
                             document.getElementById("edit-event-btn").removeAttribute("hidden");
                             document.getElementById('btn-save-event').setAttribute("hidden", true);
                             document.getElementById("edit-event-btn").setAttribute("data-id", "edit-event");
@@ -222,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.car_id.toString()]);
                             }
-
                             if (selectedEvent._def.extendedProps.description) {
                                 eventCategoryChoice2.destroy();
                                 eventCategoryChoice2 = new Choices("#user_id", {
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             newEventData = null;
                             modalTitle.innerText = selectedEvent.title;
                             // formEvent.classList.add("view-event");
-                            //document.getElementById('btn-delete-event').removeAttribute('hidden');
+                            document.getElementById('btn-delete-event').removeAttribute('hidden');
                         },
                         dateClick: function (info) {
                             addNewEvent(info);
