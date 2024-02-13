@@ -309,16 +309,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     formEvent.addEventListener('submit', function (ev) {
                         ev.preventDefault();                    
                         var updatedCar = $("#car_id").val();
+                        var updatedCategory;
                         var updatedAppointment = document.getElementById('appointment_time').value;
                         var updatedState = document.getElementById('state').value;
-                        if (updatedState === 0) {
+                        if (updatedState == 0) {
                             updatedCategory = 'bg-danger-subtle';
                         } 
-                        else if (updatedState === 1) {
+                        else if (updatedState == 1) {
                             updatedCategory = 'bg-success-subtle';
                         } else {
                             updatedCategory = 'bg-warning-subtle';
-                        }                        var updatedUser = $("#user_id").val();
+                        }                        
+                        var updatedUser = $("#user_id").val();
                         var start_date = document.getElementById("appointment_date").value;
                         var updateStartDate = new Date(start_date.trim());
                         var appointment_id = document.getElementById("appointment_id").value;
