@@ -225,18 +225,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                     searchEnabled: false
                                 });
                                 eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.car_id.toString()]);
-                            }
-                            if (selectedEvent._def.extendedProps.description) {
-                                eventCategoryChoice2.destroy();
-                                eventCategoryChoice2 = new Choices("#user_id", {
-                                    searchEnabled: false
-                                });
-                                eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
-                            }
-                            */
-                            if (selectedEvent.title) {
-                                eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
-                            }
+                            }*/
+                            if (selectedEvent._def.extendedProps.description) eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
+                            if (selectedEvent.title) eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
+                            
                             
 
                             /*var st_date = selectedEvent.start;
