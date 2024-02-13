@@ -125,7 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             },
                             extendedProps: {
                                 department: event.appointment_time,
-                                state: event.state
+                                state: event.state,
+                                company_id: event.company_id
                             },
                             description: {
                                 user_id: event.user_id,
