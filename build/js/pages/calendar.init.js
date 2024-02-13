@@ -460,13 +460,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     var tt = [];
                     var tt2 = [];
                     var tt3 = [];
+                    var v = "";
+                    var t = "Lütfen Seçiniz";
+                    var v2 = "";
+                    var t2 = "Lütfen Seçiniz";
+                    var v3 = "";
+                    var t3 = "Lütfen Seçiniz";
                     for (var i = 0; i < data.getsteps.length; i++) {
-                        var v = data.getsteps[i]["step1"];
-                        var t = data.getsteps[i]["step1"];
-                        var v2 = data.getsteps[i]["step2"];
-                        var t2 = data.getsteps[i]["step2"];
-                        var v3 = data.getsteps[i]["car_id"];
-                        var t3 = data.getsteps[i]["step3"] + " - " + data.getsteps[i]["step4"] + " - " + data.getsteps[i]["step5"] + " - " + data.getsteps[i]["car_name"];
+                        v = data.getsteps[i]["step1"];
+                        t = data.getsteps[i]["step1"];
+                        v2 = data.getsteps[i]["step2"];
+                        t2 = data.getsteps[i]["step2"];
+                        v3 = data.getsteps[i]["car_id"];
+                        t3 = data.getsteps[i]["step3"] + " - " + data.getsteps[i]["step4"] + " - " + data.getsteps[i]["step5"] + " - " + data.getsteps[i]["car_name"];
                         if (!uniqueValues2.includes(v)) {
                             var choice = {
                                 value: v,
@@ -832,5 +838,7 @@ function temizle() {
     document.getElementById("appointment_date").value = "";
     document.querySelector("#state").value = "";
     eventCategoryChoice5.setChoiceByValue("Lütfen Seçiniz");
-
+    step1.setChoiceByValue("");
+    step2.setChoiceByValue("");
 }
+
