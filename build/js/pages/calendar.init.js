@@ -1,3 +1,7 @@
+const {
+    templateSettings
+} = require("lodash");
+
 var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
@@ -29,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     step2 = new Choices("#step2", {
         searchEnabled: false
     });
-   
+
     testdrive();
 
     function testdrive() {
@@ -217,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                             document.getElementById("appointment_id").value = selectedEvent.id;
                             document.getElementById("appointment_date").value = selectedEvent.extendedProps.location.appointment_date;
-                            document.querySelector("#state").value=selectedEvent._def.extendedProps.state;
+                            document.querySelector("#state").value = selectedEvent._def.extendedProps.state;
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
@@ -332,13 +336,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
-                                           window.location.reload();
+                                            window.location.reload();
                                         } else {
                                             alert(data.message);
                                         }
                                     }
                                 });
-                            }else{
+                            } else {
                                 $.ajax({
                                     type: 'POST',
                                     url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
@@ -429,7 +433,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     }
-    function yukle(){
+
+    function yukle() {
         var r = [];
         var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
         for (var i = 0; i < allTimes.length; i++) {
@@ -455,14 +460,16 @@ document.addEventListener("DOMContentLoaded", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    var tt = [];var tt2 = [];var tt3 = [];
+                    var tt = [];
+                    var tt2 = [];
+                    var tt3 = [];
                     for (var i = 0; i < data.getsteps.length; i++) {
                         var v = data.getsteps[i]["step1"];
                         var t = data.getsteps[i]["step1"];
                         var v2 = data.getsteps[i]["step2"];
                         var t2 = data.getsteps[i]["step2"];
                         var v3 = data.getsteps[i]["car_id"];
-                        var t3 = data.getsteps[i]["step3"]+" - "+data.getsteps[i]["step4"]+" - "+data.getsteps[i]["step5"]+" - "+data.getsteps[i]["car_name"];
+                        var t3 = data.getsteps[i]["step3"] + " - " + data.getsteps[i]["step4"] + " - " + data.getsteps[i]["step5"] + " - " + data.getsteps[i]["car_name"];
                         if (!uniqueValues2.includes(v)) {
                             var choice = {
                                 value: v,
@@ -513,6 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
         getshowroom();
     });
 });
+
 function getdate() {
     // Seçilen tarihi al
     var selectedDate = $("#appointment_date").val();
@@ -550,6 +558,7 @@ function getdate() {
         }
     });
 };
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -587,6 +596,7 @@ function getcompany() {
         }
     });
 }
+
 function getapiusers() {
     $.ajax({
         type: 'POST',
@@ -650,6 +660,7 @@ function getstep() {
         }
     });
 };
+
 function getstep1() {
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
@@ -663,6 +674,7 @@ function getstep1() {
     step2.clearChoices(); // Clear existing choices for step2
     step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
 }
+
 function getshowroom() {
     var step1 = document.getElementById('step1').value;
     var step2 = document.getElementById('step2').value;
@@ -684,9 +696,11 @@ function getshowroom() {
     eventCategoryChoice4.clearChoices(); // Clear existing choices
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
 }
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
+
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
     document.getElementById("car_id").classList.replace("d-block", "d-none");
@@ -699,6 +713,7 @@ function eventClicked() {
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
 }
+
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
@@ -711,6 +726,7 @@ function eventTyped() {
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
+
 function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     a.sort(function (o1, o2) {
@@ -756,6 +772,7 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
+
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
@@ -764,6 +781,7 @@ function getTime(params) {
         return hour + ":" + minute;
     }
 }
+
 function tConvert(time) {
     var t = time.split(":");
     var hours = t[0];
@@ -786,6 +804,7 @@ var str_dt = function formatDate(date) {
         day = '0' + day;
     return [day + " " + month, year].join(',');
 };
+
 function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
@@ -793,6 +812,7 @@ function editEvent(data) {
         document.getElementById('modal-title').innerHTML = "Randevu Ekle";
         document.getElementById("btn-save-event").innerHTML = "Randevu Ekle";
         eventTyped();
+        temizle();
     } else if (data_id == 'edit-event') {
         data.innerHTML = "Kapat";
         data.setAttribute("data-id", 'cancel-event');
@@ -804,4 +824,20 @@ function editEvent(data) {
         data.setAttribute("data-id", 'edit-event');
         eventClicked();
     }
+}
+
+function clearChoices(choicesInstance) {
+    choicesInstance.clear();
+}
+
+function temizle() {
+    document.getElementById("appointment_id").value = "";
+    document.getElementById("appointment_date").value = "";
+    document.querySelector("#state").value = "";
+    clearChoices(eventCategoryChoice2);
+    clearChoices(eventCategoryChoice5);
+    clearChoices(company);
+    clearChoices(step1);
+    clearChoices(step2);
+    clearChoices(eventCategoryChoice4);
 }
