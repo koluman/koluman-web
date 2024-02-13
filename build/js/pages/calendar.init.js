@@ -431,7 +431,9 @@ document.addEventListener("DOMContentLoaded", function () {
         getstep();
     });
 
-});
+    $("#step1").change(function () {
+        getstep1();
+    });});
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function getdate() {
@@ -590,8 +592,6 @@ function getstep() {
                             label: t,
                         };
                         tt.push(choice);
-
-                        // Add the value to uniqueValues array
                         uniqueValues.push(v);
                     }
                 }
@@ -602,7 +602,9 @@ function getstep() {
         }
     });
 };
-
+function getstep1() {
+    console.log(steps);
+}
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
