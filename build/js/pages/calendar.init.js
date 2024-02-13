@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
                             step1.setChoiceByValue(selectedEvent._def.extendedProps.step1);
                             step2.setChoiceByValue(selectedEvent._def.extendedProps.step2);
-                            car_id.setChoiceByValue(selectedEvent._def.extendedProps.location.car_id.toString());
+                            eventCategoryChoice4.setChoiceByValue(selectedEvent._def.extendedProps.location.car_id.toString());
 
                             /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
