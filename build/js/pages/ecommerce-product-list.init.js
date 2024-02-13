@@ -31,8 +31,6 @@ function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
-		console.log(item.company_name);
-
         return {
             id: item.car_id,
             product: {
@@ -142,7 +140,7 @@ var productListAll = new gridjs.Grid({
 						'</div>' +
 						'<div class="flex-grow-1">' +
 						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.product.title + '</a></h5>' +
-						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.product.company_name + '</span></p>' +
+						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.product.category + '</span></p>' +
 						'</div>' +
 						'</div>');
 				})
