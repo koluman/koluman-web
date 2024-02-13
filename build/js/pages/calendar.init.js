@@ -565,34 +565,43 @@ function getapiusers() {
     });
 
 }
-function getstep() {   
+let steps = [];
+let uniqueValues = []; // Array to store unique values
+
+function getstep() {
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getsteps',
         data: {
-            company_id:$("#company_id").val(),
+            company_id: $("#company_id").val(),
             _token: csrfToken, // CSRF token'ını gönder
         },
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 var tt = [];
-                for (var i = 0; i < data.getsteps.length; i++) {
-                    var v = data.getsteps[i]["step1"];
-                    var t = data.getsteps[i]["step1"];
+                steps = data.getsteps;
+                for (var i = 0; i < steps.length; i++) {
+                    var v = steps[i]["step1"];
+                    var t = steps[i]["step1"];
+                    if (!uniqueValues.includes(v)) {
+                        var choice = {
+                            value: v,
+                            label: t,
+                        };
+                        tt.push(choice);
 
-                    var choice = {
-                        value: v,
-                        label: t,
-                    };
-                    tt.push(choice);
+                        // Add the value to uniqueValues array
+                        uniqueValues.push(v);
+                    }
                 }
                 step1.clearChoices(); // Clear existing choices
                 step1.setChoices(tt, 'value', 'label', true); // Set new choices
             }
 
         }
-    });};
+    });
+};
 
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
