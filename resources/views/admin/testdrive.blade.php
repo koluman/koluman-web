@@ -186,7 +186,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="text" id="appointment_id" name="appointment_id" value="" />
+                                    <input type="hidden" id="appointment_id" name="appointment_id" value="" />
 
                                     <!--end col-->
                                 </div>
