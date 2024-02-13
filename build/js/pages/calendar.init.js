@@ -576,7 +576,7 @@ function getstep() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                var t = [];
+                var tt = [];
                 for (var i = 0; i < data.getsteps.length; i++) {
                     var v = data.getsteps[i]["step1"];
                     var t = data.getsteps[i]["step1"];
@@ -585,10 +585,10 @@ function getstep() {
                         value: v,
                         label: t,
                     };
-                    t.push(choice);
+                    tt.push(choice);
                 }
                 step1.clearChoices(); // Clear existing choices
-                step1.setChoices(t, 'value', 'label', true); // Set new choices
+                step1.setChoices(tt, 'value', 'label', true); // Set new choices
             }
 
         }
