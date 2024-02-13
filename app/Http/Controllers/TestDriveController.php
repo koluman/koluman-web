@@ -115,12 +115,13 @@ class TestDriveController extends Controller
             $appointment_time = $request->appointment_time;
             $user_id = $request->user_id;
             $appointment_date = $request->appointment_date;
+            $state = $request->state;
 
             $affectedRows = Appointment::insertGetId([
                 'user_id' => $user_id,
                 'car_id' => $car_id,
                 'appointment_time' => $appointment_time,
-                'state' => 0,
+                'state' => $state,
                 'appointment_date' => $appointment_date
             ]);
             if ($affectedRows > 0) {

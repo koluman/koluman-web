@@ -354,6 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         user_id: $("#user_id").val(),
                                         appointment_time: $("#appointment_time").val(),
                                         appointment_date: $("#appointment_date").val(),
+                                        state: $("#state").val(),
                                         _token: csrfToken,
                                     },
                                     dataType: 'json',
