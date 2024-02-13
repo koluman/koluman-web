@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             selectedEvent = info.event;
                             console.log(selectedEvent);
                             // First Modal
+                         
                             document.getElementById("modal-title").innerHTML = "";
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;

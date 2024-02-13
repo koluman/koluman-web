@@ -176,7 +176,16 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Randevu Durumu</label>
+                                            <select class="form-select" name="state" id="state" required>
+                                            <option value="0">Beklemede</option>
+                                            <option value="1">Onayla</option>
+                                            <option value="2">İptal Et</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <input type="hidden" id="appointment_id" name="appointment_id" value="" />
 
                                     <!--end col-->
@@ -185,7 +194,6 @@
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i
                                             class="ri-close-line align-bottom"></i> Randevuyu Sil</button>
-                                    <button type="button" class="btn btn-success" id="btn-state">Onayla</button>
                                     <button type="submit" class="btn btn-success" id="btn-save-event">Randevu
                                         Ekle</button>
                                 </div>
