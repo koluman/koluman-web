@@ -135,7 +135,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                     <div class="col-12">
+                                    <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Kategori</label>
                                             <select class="form-select d-none" name="step1" id="step1" required>
@@ -185,6 +185,7 @@
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i
                                             class="ri-close-line align-bottom"></i> Randevuyu Sil</button>
+                                    <button type="submit" class="btn btn-success" id="btn-state-event">Onayla</button>
                                     <button type="submit" class="btn btn-success" id="btn-save-event">Randevu
                                         Ekle</button>
                                 </div>
