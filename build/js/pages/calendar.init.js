@@ -331,12 +331,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
-                            
                                             selectedEvent.setProp("id", appointment_id);
                                             selectedEvent.setProp("title", updatedAppointment);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
-                                            selectedEvent.setEnd(updateStartDate);
                                             selectedEvent.setAllDay(all_day);
                                             selectedEvent.setExtendedProp("description", updatedCar);
                                             selectedEvent.setExtendedProp("location", updatedUser);
