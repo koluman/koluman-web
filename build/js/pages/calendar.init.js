@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             addEvent.show();
                             formEvent.reset();
                             selectedEvent = info.event;
+                            console.log(info);
                             console.log(selectedEvent);
                             // First Modal
 
@@ -464,8 +465,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     }
-    getcompany();
     getapiusers();
+    getcompany();
     $("#appointment_date").change(function () {
         getdate();
     });
