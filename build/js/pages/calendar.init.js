@@ -460,13 +460,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     var tt = [];
                     var tt2 = [];
                     var tt3 = [];
-                    var v = "";
-                    var t = "Lütfen Seçiniz";
-                    var v2 = "";
-                    var t2 = "Lütfen Seçiniz";
-                    var v3 = "";
-                    var t3 = "Lütfen Seçiniz";
+                   
                     for (var i = 0; i < data.getsteps.length; i++) {
+                        var v = "";
+                        var t = "Lütfen Seçiniz";
+                        var v2 = "";
+                        var t2 = "Lütfen Seçiniz";
+                        var v3 = "";
+                        var t3 = "Lütfen Seçiniz";
                         v = data.getsteps[i]["step1"];
                         t = data.getsteps[i]["step1"];
                         v2 = data.getsteps[i]["step2"];
