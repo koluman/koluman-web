@@ -331,33 +331,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
-                                            selectedEvent.setProp("id", appointment_id);
-                                            selectedEvent.setProp("title", updatedAppointment);
-                                            selectedEvent.setProp("classNames", [updatedCategory]);
-                                            selectedEvent.setStart(updateStartDate);
-                                            selectedEvent.setAllDay(all_day);
-                                            selectedEvent.setExtendedProp("description", updatedCar);
-                                            selectedEvent.setExtendedProp("location", updatedUser);
-                                            var indexOfSelectedEvent = defaultEvents.findIndex(function (x) {
-                                                return x.appointment_id == selectedEvent.id
-                                            });
-                                            if (defaultEvents[indexOfSelectedEvent]) {
-                                                defaultEvents[indexOfSelectedEvent].title = updatedAppointment;
-                                                defaultEvents[indexOfSelectedEvent].start = updateStartDate;
-                                                defaultEvents[indexOfSelectedEvent].allDay = all_day;
-                                                defaultEvents[indexOfSelectedEvent].className = updatedCategory;
-                                                defaultEvents[indexOfSelectedEvent].description = updatedCar;
-                                                defaultEvents[indexOfSelectedEvent].location = updatedUser;
-                                            }
-                                            calendar.render();
+                                           window.location.reload();
                                         } else {
                                             alert(data.message);
                                         }
                                     }
                                 });
 
-                            } else {
-                                console.log($("#state").val());
                                 $.ajax({
                                     type: 'POST',
                                     url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
