@@ -8,6 +8,7 @@ var eventCategoryChoice2;
 var company;
 var step1;
 var step2;
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
@@ -461,7 +462,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         eventCategoryChoice5.clearChoices(); // Clear existing choices
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
-        getstep();
+        
+        yukle();
     }
     getapiusers();
     getcompany();
@@ -479,7 +481,6 @@ document.addEventListener("DOMContentLoaded", function () {
         getshowroom();
     });
 });
-var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function getdate() {
     // Seçilen tarihi al
