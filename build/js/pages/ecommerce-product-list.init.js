@@ -37,7 +37,7 @@ console.log(data);
             product: {
                 img: item.car_image_url,
                 title: item.car_name,
-				category: item.company ? item.company.company_name : 'Bilinmiyor'
+				category: item.company_name
             },
             stock: item.isTestdrive,
             price: item.step1,

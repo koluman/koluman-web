@@ -25,8 +25,5 @@ class Showroom extends Model
         'created_at',
         'updated_at'
     ];
-    public function company()
-    {
-        return $this->belongsTo(Companies::class, 'company_id', 'company_id');
-    }
+   
 }

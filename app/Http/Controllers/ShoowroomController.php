@@ -19,10 +19,10 @@ class ShoowroomController extends Controller
     public function getshowroomcars(Request $request)
     {
         try {
-            $shoowroom = Showroom::select('car_id', 'company_id', 'step1', 'step2', 'step3', 'step4', 'step5', 'car_name', 'car_description', 'car_image_url', 'isTestdrive')
-            ->with(['company' => function ($query) {
-                $query->select('company_id', 'company_name');
-            }])->get();
+            $shoowroom = Showroom::select('showrooms.car_id', 'showrooms.company_id', 'showrooms.step1', 'showrooms.step2', 'showrooms.step3', 'showrooms.step4', 'showrooms.step5', 'showrooms.car_name', 'showrooms.car_description', 'showrooms.car_image_url', 'showrooms.isTestdrive', 'companies.company_name')
+            ->join('companies', 'showrooms.company_id', '=', 'companies.company_id')
+            ->get();
+
             if (!$shoowroom->isEmpty()) {
                 $responseData = [
                     "success" => 1,
