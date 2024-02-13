@@ -322,6 +322,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                     url: 'https://mobiloby.app/koluman/web/updatetestdriveappointment',
                                     data: {
                                         car_id: $("#car_id").val(),
+                                        company_id: $("#company_id").val(),
+                                        step1: $("#step1").val(),
+                                        step2: $("#step2").val(),
+                                        state: $("#state").val(),
                                         user_id: $("#user_id").val(),
                                         appointment_time: $("#appointment_time").val(),
                                         appointment_date: $("#appointment_date").val(),
@@ -331,10 +335,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
+                            
                                             selectedEvent.setProp("id", appointment_id);
                                             selectedEvent.setProp("title", updatedAppointment);
                                             selectedEvent.setProp("classNames", [updatedCategory]);
                                             selectedEvent.setStart(updateStartDate);
+                                            selectedEvent.setEnd(updateStartDate);
                                             selectedEvent.setAllDay(all_day);
                                             selectedEvent.setExtendedProp("description", updatedCar);
                                             selectedEvent.setExtendedProp("location", updatedUser);
