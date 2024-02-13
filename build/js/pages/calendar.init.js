@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                             document.getElementById("appointment_id").value = selectedEvent.id;
                             document.getElementById("appointment_date").value = selectedEvent.extendedProps.location.appointment_date;
-                            document.querySelector("#state").value=selectedEvent._def.extendedProps.description.state
+                            document.querySelector("#state").value="'"+selectedEvent._def.extendedProps.description.state+"'";
 
                             
                             /*if (selectedEvent._def.extendedProps.location) {
