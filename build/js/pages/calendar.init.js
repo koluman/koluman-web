@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var updatedCar = $("#car_id").val();
                         var updatedAppointment = document.getElementById('appointment_time').value;
                         var updatedState = document.getElementById('state').value;
+                        console.log(updatedState);
                         var updatedUser = $("#user_id").val();
                         var start_date = document.getElementById("appointment_date").value;
                         var updateStartDate = new Date(start_date.trim());
@@ -398,7 +399,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     car_id:$("#car_id").val(),
                                                     car_name:$("#car_id").text()
                                                 },
-                                                location: $("#car_id").text()
                                             };
                                             calendar.addEvent(newEvent);
                                             defaultlastEvents.push(newEvent);
