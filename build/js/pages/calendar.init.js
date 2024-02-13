@@ -769,8 +769,6 @@ function flatPickrInit() {
                 }
             },
         });
-    flatpickr(timepicker1, config);
-    flatpickr(timepicker2, config);
 
 }
 
