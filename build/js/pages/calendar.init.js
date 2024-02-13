@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             start: new Date(event.appointment_date),
                             end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                             allDay: true,
-                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 2 ? 'bg-warning-subtle' : 'bg-success-subtle'),
+                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 2 ? 'bg-success-subtle' : 'bg-warning-subtle'),
                             location: {
                                 car_id: event.car_id,
                                 car_name: event.car_name
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             start: new Date(event.appointment_date),
                             end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                             allDay: true,
-                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 2 ? 'bg-warning-subtle' : 'bg-success-subtle'),
+                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 1 ? 'bg-success-subtle' : 'bg-warning-subtle'),
                             location: event.car_name,
                             extendedProps: {
                                 department: event.appointment_time,
