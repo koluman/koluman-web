@@ -462,8 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         eventCategoryChoice5.clearChoices(); // Clear existing choices
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
-        
-        yukle();
+        getstep();
     }
     getapiusers();
     getcompany();
