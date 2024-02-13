@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     step1 = new Choices("#step1", {
         searchEnabled: false
     });
+    step2 = new Choices("#step2", {
+        searchEnabled: false
+    });
     var choicesArray = [];
     var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
     for (var i = 0; i < allTimes.length; i++) {
@@ -603,7 +606,24 @@ function getstep() {
     });
 };
 function getstep1() {
-    console.log(steps);
+    var selectedStep1 = step1.getValue();
+
+    // Filter steps based on selected step1
+    var filteredSteps = steps.filter(item => item.step1 === selectedStep1);
+
+    // Get unique values for step2
+    var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
+
+    // Populate step2 choices
+    var step2Choices = uniqueStep2Values.map(value => {
+        return {
+            value: value,
+            label: value,
+        };
+    });
+
+    step2.clearChoices(); // Clear existing choices for step2
+    step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
 }
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();

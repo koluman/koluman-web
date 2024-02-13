@@ -144,6 +144,13 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
+                                            <label class="form-label">Kategori2</label>
+                                            <select class="form-select d-none" name="step2" id="step2" required>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
                                             <label class="form-label">Arabalar</label>
                                             <select class="form-select d-none" name="car_id" id="car_id" required>
                                             </select>
