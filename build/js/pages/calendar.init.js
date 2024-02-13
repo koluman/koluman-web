@@ -220,6 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
+                            console.log(selectedEvent._def.extendedProps.step1);
                             step1.setChoiceByValue(selectedEvent._def.extendedProps.step1);
                             step2.setChoiceByValue(selectedEvent._def.extendedProps.step2);
                             eventCategoryChoice4.setChoiceByValue(selectedEvent._def.extendedProps.location.car_id.toString());
