@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 department: event.appointment_time,
                                 state: event.state,
                                 company_id: event.company_id,
-                                step1: event.step1
-
+                                step1: event.step1,
+                                step2: event.step2
                             },
                             description: {
                                 user_id: event.user_id,
@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 department: event.appointment_time,
                                 state: event.state,
                                 company_id: event.company_id,
-                                step1: event.step1
+                                step1: event.step1,
+                                step2: event.step2
                             },
                             description: {
                                 user_id: event.user_id,
@@ -216,20 +217,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("appointment_id").value = selectedEvent.id;
                             document.getElementById("appointment_date").value = selectedEvent.extendedProps.location.appointment_date;
                             document.querySelector("#state").value=selectedEvent._def.extendedProps.state;
-
-                            
-                            /*if (selectedEvent._def.extendedProps.location) {
-                                eventCategoryChoice4.destroy();
-                                eventCategoryChoice4 = new Choices("#car_id", {
-                                    searchEnabled: false
-                                });
-                                eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.car_id.toString()]);
-                            }*/
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
-                            getstep();
                             step1.setChoiceByValue(selectedEvent._def.extendedProps.step1);
+                            step2.setChoiceByValue(selectedEvent._def.extendedProps.step2);
+                            car_id.setChoiceByValue(selectedEvent._def.extendedProps.location.car_id.toString());
 
                             /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
@@ -467,6 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         eventCategoryChoice5.clearChoices(); // Clear existing choices
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
+        getstep();
     }
     getapiusers();
     getcompany();
