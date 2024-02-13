@@ -765,10 +765,6 @@ function flatPickrInit() {
                 if (dates.length > 1) {
                     document.getElementById('event-time').setAttribute("hidden", true);
                 } else {
-                    document.getElementById("timepicker1").parentNode.classList.remove("d-none");
-                    document.getElementById("timepicker1").classList.replace("d-none", "d-block");
-                    document.getElementById("timepicker2").parentNode.classList.remove("d-none");
-                    document.getElementById("timepicker2").classList.replace("d-none", "d-block");
                     document.getElementById('event-time').removeAttribute("hidden");
                 }
             },
