@@ -29,9 +29,10 @@ xhr.send();
 
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
-console.log(data);
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
+		console.log(item.company_name);
+
         return {
             id: item.car_id,
             product: {
