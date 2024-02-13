@@ -474,7 +474,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    var tt = [];var tt2 = [];
+                    var tt = [];var tt2 = [];var tt3 = [];
                     for (var i = 0; i < data.getsteps.length; i++) {
                         var v = data.getsteps[i]["step1"];
                         var t = data.getsteps[i]["step1"];
