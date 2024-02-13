@@ -58,39 +58,7 @@ function updateTable(data) {
 
 // table-product-list-all 
 var productListAllData = [
-	{
-		"id": 1,
-		"product": {
-			"img": "build/images/products/img-1.png",
-			"title": "Half Sleeve Round Neck T-Shirts",
-			"category": "Fashion"
-		},
-		"stock": "12",
-		"price": "215.00",
-		"orders": "48",
-		"rating": "4.2",
-		"published": {
-			"publishDate": "12 Oct, 2021",
-			"publishTime": "10:05 AM",
-		}
-	},
-	{
-		"id": 2,
-		"product": {
-			"img": "build/images/products/img-2.png",
-			"title": "Urban Ladder Pashe Chair",
-			"category": "Furniture"
-		},
-		"stock": "06",
-		"price": "160.00",
-		"orders": "30",
-		"rating": "4.3",
-		"published": {
-			"publishDate": "06 Jan, 2021",
-			"publishTime": "01:31 PM",
-		}
-	}
-	
+
 ];
 
 var inputValueJson = sessionStorage.getItem('inputValue');
@@ -132,7 +100,7 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Product',
+				name: 'Araba Bilgisi',
 				width: '360px',
 				data: (function (row) {
 					return gridjs.html('<div class="d-flex align-items-center">' +
@@ -147,29 +115,29 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Stock',
+				name: 'Test Arabası',
 				width: '94px',
 			},
 			{
-				name: 'Price',
+				name: 'Step1',
 				width: '101px',
 				formatter: (function (cell) {
 					return gridjs.html('$' + cell);
 				})
 			},
 			{
-				name: 'Orders',
+				name: 'Step2',
 				width: '84px',
 			},
 			{
-				name: 'Rating',
+				name: 'Step3',
 				width: '105px',
 				formatter: (function (cell) {
 					return gridjs.html('<span class="badge bg-light text-body fs-12 fw-medium"><i class="mdi mdi-star text-warning me-1"></i>' + cell + '</span></td>');
 				})
 			},
 			{
-				name: 'Published',
+				name: 'Step4',
 				width: '220px',
 				data: (function (row) {
 					return gridjs.html(row.published.publishDate + '<small class="text-muted ms-1">' + row.published.publishTime + '</small>');
