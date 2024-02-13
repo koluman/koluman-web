@@ -8,7 +8,6 @@ var eventCategoryChoice2;
 var company;
 var step1;
 var step2;
-var state;
 
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
@@ -29,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     step2 = new Choices("#step2", {
         searchEnabled: false
     });
-    state = new Choices("#state", {
-        searchEnabled: false
-    });
+   
     testdrive();
 
     function testdrive() {
@@ -224,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                             document.getElementById("appointment_id").value = selectedEvent.id;
                             document.getElementById("appointment_date").value = selectedEvent.extendedProps.location.appointment_date;
+                            document.getElementById("state").value = selectedEvent._def.extendedProps.description.state;
 
                             
                             /*if (selectedEvent._def.extendedProps.location) {
@@ -235,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             }*/
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
-                            state.setChoiceByValue(selectedEvent._def.extendedProps.description.state);
 
                             
 
