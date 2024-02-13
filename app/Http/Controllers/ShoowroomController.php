@@ -20,7 +20,7 @@ class ShoowroomController extends Controller
     {
         try {
             $shoowroom = Showroom::select('car_id', 'company_id', 'step1', 'step2', 'step3', 'step4', 'step5', 'car_name', 'car_description', 'car_image_url', 'isTestdrive')
-                ->with('company:id,company_name') // with() metodu ile ilişkili tablodan sadece istediğimiz sütunları çekiyoruz
+                ->with('company:company_id,company_name') // with() metodu ile ilişkili tablodan sadece istediğimiz sütunları çekiyoruz
                 ->get();
             if (!$shoowroom->isEmpty()) {
                 $responseData = [
