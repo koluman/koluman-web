@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var updatedCategory = 'bg-danger-subtle';
                         var updatedCar = $("#car_id").val();
                         var updatedAppointment = document.getElementById('appointment_time').value;
+                        var updatedState = document.getElementById('state').value;
                         var updatedUser = $("#user_id").val();
                         var start_date = document.getElementById("appointment_date").value;
                         var updateStartDate = new Date(start_date.trim());
@@ -346,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             } else {
                                 console.log($("#state").val());
-                               /* $.ajax({
+                                $.ajax({
                                     type: 'POST',
                                     url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
                                     data: {
@@ -359,7 +360,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     },
                                     dataType: 'json',
                                     success: function (data) {
-                                        if (data.success == 1) {
+                                        console.log(data);
+                                    /*if (data.success == 1) {
                                             var newEvent = {
                                                 id: data.sonuc,
                                                 title: updatedAppointment,
@@ -370,18 +372,22 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     user_id: updatedUser,
                                                     user_name: $("#user_id").text()
                                                 },
+                                                extendedProps: {
+                                                    department:updatedAppointment,
+                                                    state:updatedState
+                                                },
                                                 location: $("#car_id").text()
                                             };
                                             calendar.addEvent(newEvent);
                                             defaultlastEvents.push(newEvent);
 
                                             addEvent.hide();
-                                            upcomingEvent(defaultlastEvents);
+                                            upcomingEvent(defaultlastEvents);*
                                         } else {
                                             alert(data.message);
-                                        }
+                                        }*/
                                     }
-                                });*/
+                                });
                             }
                         }
                     });
