@@ -37,7 +37,7 @@ function updateTable(data) {
             product: {
                 img: item.car_image_url,
                 title: item.car_name,
-                category: item.company_id
+                category: item.company_name
             },
             stock: item.isTestdrive,
             price: item.step1,
@@ -141,7 +141,7 @@ var productListAll = new gridjs.Grid({
 						'</div>' +
 						'<div class="flex-grow-1">' +
 						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.product.title + '</a></h5>' +
-						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.product.category + '</span></p>' +
+						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.product.company_name + '</span></p>' +
 						'</div>' +
 						'</div>');
 				})
