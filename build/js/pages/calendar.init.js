@@ -32,19 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     testdrive();
 
     function testdrive() {
-        var r = [];
-        var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
-        for (var i = 0; i < allTimes.length; i++) {
-            var time = allTimes[i];
-            var choice = {
-                value: time,
-                label: time,
-            };
-            r.push(choice);
-        }
-        eventCategoryChoice5.clearChoices(); // Clear existing choices
-        eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
         //flatPickrInit();
+        yukle();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
             keyboard: false
         });
@@ -236,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
-
+                            getstep();
 
                             /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
@@ -460,6 +449,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
+    }
+    function yukle(){
+        var r = [];
+        var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
+        for (var i = 0; i < allTimes.length; i++) {
+            var time = allTimes[i];
+            var choice = {
+                value: time,
+                label: time,
+            };
+            r.push(choice);
+        }
+        eventCategoryChoice5.clearChoices(); // Clear existing choices
+        eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
     }
     getapiusers();
     getcompany();
