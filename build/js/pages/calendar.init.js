@@ -599,7 +599,8 @@ function getshowroom() {
     var step1 = document.getElementById('step1').value;
     var step2 = document.getElementById('step2').value;
     var filteredSteps = steps.filter(item => item.step1 === step1.value && item.step2 === step2.value);
-    console.log(filteredSteps);
+    console.log(steps);
+    console.log(step1+"--"+step2);
     var combinedChoices = filteredSteps.map(item => {
         var combinedLabel = `${item.step3} - ${item.step4} - ${item.step5}`;
         return {
