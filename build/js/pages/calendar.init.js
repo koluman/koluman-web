@@ -82,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             extendedProps: {
                                 department: event.appointment_time,
                                 state: event.state,
-                                company_id: event.company_id
+                                company_id: event.company_id,
+                                step1: event.step1
+
                             },
                             description: {
                                 user_id: event.user_id,
@@ -115,7 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             extendedProps: {
                                 department: event.appointment_time,
                                 state: event.state,
-                                company_id: event.company_id
+                                company_id: event.company_id,
+                                step1: event.step1
                             },
                             description: {
                                 user_id: event.user_id,
@@ -226,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
                             getstep();
+                            step1.setChoiceByValue(selectedEvent._def.extendedProps.step1);
 
                             /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
