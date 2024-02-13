@@ -596,6 +596,7 @@ function getstep1() {
     step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
 }
 function getshowroom() {
+    var company_id = company_id.getValue();
     var step1 = step1.getValue();
     var step2 = step2.getValue();
     var filteredSteps = steps.filter(item => item.step1 === step1.value && item.step2 === step2.value && item.company_id === company_id.value);
