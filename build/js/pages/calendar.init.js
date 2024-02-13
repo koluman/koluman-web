@@ -463,6 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
         let uniqueValues3 = []; // Array to store unique values
         let uniqueValues2 = []; // Array to store unique values
+        let uniqueValues4 = []; // Array to store unique values
 
         $.ajax({
             type: 'POST',
@@ -479,6 +480,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         var t = data.getsteps[i]["step1"];
                         var v2 = data.getsteps[i]["step2"];
                         var t2 = data.getsteps[i]["step2"];
+                        var v3 = data.getsteps[i]["car_id"];
+                        var t3 = data.getsteps[i]["step3"]+" - "+data.getsteps[i]["step4"]+" - "+data.getsteps[i]["step5"]+" - "+data.getsteps[i]["car_name"];
                         if (!uniqueValues2.includes(v)) {
                             var choice = {
                                 value: v,
@@ -495,9 +498,21 @@ document.addEventListener("DOMContentLoaded", function () {
                             tt2.push(choice);
                             uniqueValues3.push(v2);
                         }
+                        if (!uniqueValues4.includes(v2)) {
+                            var choice = {
+                                value: v3,
+                                label: t3,
+                            };
+                            tt3.push(choice);
+                            uniqueValues4.push(v3);
+                        }
                     }
+                    step1.clearChoices(); // Clear existing choices
+                    step1.setChoices(tt, 'value', 'label', true); // Set new choices
                     step2.clearChoices(); // Clear existing choices
                     step2.setChoices(tt2, 'value', 'label', true); // Set new choices
+                    eventCategoryChoice4.clearChoices(); // Clear existing choices
+                    eventCategoryChoice4.setChoices(tt3, 'value', 'label', true); // Set new choices
                 }
     
             }
