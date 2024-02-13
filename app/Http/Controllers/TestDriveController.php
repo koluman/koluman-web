@@ -11,34 +11,11 @@ use Illuminate\Http\Request;
 
 class TestDriveController extends Controller
 {
-    public function gettestdrivecars(Request $request)
-    {
-        try {
-            $shoowroom = Showroom::where('isTestdrive',1)->get();
-            if (!$shoowroom->isEmpty()) {
-                $responseData = [
-                    "success" => 1,
-                    "showroomcars" => $shoowroom,
-                    "message" => "Arabalar listesi getirildi",
-                ];
-            } else {
-                $responseData = [
-                    "success" => 0,
-                    "message" => "Arabalar listesi bulunamadı",
-                ];
-            }
-        } catch (\Exception $e) {
-            $responseData = [
-                "success" => 0,
-                "message" => $e->getMessage(),
-            ];
-        }
-        return response()->json($responseData);
-    }
+   
     public function getsteps(Request $request)
     {
         try {
-            $getsteps = Showroom::where('company_id',$request->company_id)->get();
+            $getsteps = Showroom::where('company_id',$request->company_id)->where('isTestdrive',1)->get();
             if (!$getsteps->isEmpty()) {
                 $responseData = [
                     "success" => 1,

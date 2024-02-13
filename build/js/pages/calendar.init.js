@@ -615,28 +615,6 @@ function getshowroom() {
     
     eventCategoryChoice4.clearChoices(); // Clear existing choices
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
-    /*$.ajax({
-        type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/gettestdrivecars',
-        dataType: 'json',
-        success: function (data) {
-            if (data.success == 1) {
-                var choicesArray2 = [];
-                for (var i = 0; i < data.showroomcars.length; i++) {
-                    var v = data.showroomcars[i]["car_id"];
-                    var t = data.showroomcars[i]["car_name"];
-
-                    var choice = {
-                        value: v,
-                        label: t,
-                    };
-                    choicesArray2.push(choice);
-                }
-                eventCategoryChoice4.clearChoices(); // Clear existing choices
-                eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
-            }
-        }
-    });*/
 }
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
