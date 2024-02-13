@@ -570,7 +570,7 @@ function getstep() {
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getsteps',
         data: {
-            categoryid:$("#category_id").val(),
+            categoryid:$("#company_id").val(),
             _token: csrfToken, // CSRF token'ını gönder
         },
         dataType: 'json',
