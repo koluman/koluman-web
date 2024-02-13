@@ -424,7 +424,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     }
-    getshowroom();
     getcompany();
     getapiusers();
     $("#appointment_date").change(function () {
@@ -436,7 +435,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#step1").change(function () {
         getstep1();
-    });});
+    });
+    $("#step2").change(function () {
+        getshowroom();
+    });
+});
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 function getdate() {
@@ -476,32 +479,6 @@ function getdate() {
         }
     });
 };
-
-function getshowroom() {
-
-    $.ajax({
-        type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/gettestdrivecars',
-        dataType: 'json',
-        success: function (data) {
-            if (data.success == 1) {
-                var choicesArray2 = [];
-                for (var i = 0; i < data.showroomcars.length; i++) {
-                    var v = data.showroomcars[i]["car_id"];
-                    var t = data.showroomcars[i]["car_name"];
-
-                    var choice = {
-                        value: v,
-                        label: t,
-                    };
-                    choicesArray2.push(choice);
-                }
-                eventCategoryChoice4.clearChoices(); // Clear existing choices
-                eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
-            }
-        }
-    });
-}
 
 function getcompany() {
     $.ajax({
@@ -607,24 +584,52 @@ function getstep() {
 };
 function getstep1() {
     var selectedStep1 = step1.getValue();
-    console.log(selectedStep1);
-
-    // Filter steps based on selected step1
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
-
-    // Get unique values for step2
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
-
-    // Populate step2 choices
     var step2Choices = uniqueStep2Values.map(value => {
         return {
             value: value,
             label: value,
         };
     });
-
     step2.clearChoices(); // Clear existing choices for step2
     step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
+}
+function getshowroom() {
+    var step1 = step1.getValue();
+    var step2 = step2.getValue();
+    var filteredSteps = steps.filter(item => item.step1 === step1.value && item.step2 === step2.value && item.company_id === company_id.value);
+    var combinedChoices = filteredSteps.map(item => {
+        var combinedLabel = `${item.step3} - ${item.step4} - ${item.step5}`;
+        return {
+            value: item.car_id,
+            label: combinedLabel,
+        };
+    });
+    eventCategoryChoice4.clearChoices(); // Clear existing choices
+    eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
+    /*$.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/gettestdrivecars',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                var choicesArray2 = [];
+                for (var i = 0; i < data.showroomcars.length; i++) {
+                    var v = data.showroomcars[i]["car_id"];
+                    var t = data.showroomcars[i]["car_name"];
+
+                    var choice = {
+                        value: v,
+                        label: t,
+                    };
+                    choicesArray2.push(choice);
+                }
+                eventCategoryChoice4.clearChoices(); // Clear existing choices
+                eventCategoryChoice4.setChoices(choicesArray2, 'value', 'label', true); // Set new choices
+            }
+        }
+    });*/
 }
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
