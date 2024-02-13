@@ -461,6 +461,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         eventCategoryChoice5.clearChoices(); // Clear existing choices
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
+        let uniqueValues3 = []; // Array to store unique values
+        let uniqueValues2 = []; // Array to store unique values
+
         $.ajax({
             type: 'POST',
             url: 'https://mobiloby.app/koluman/web/getstepsall',
@@ -476,21 +479,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         var t = data.getsteps[i]["step1"];
                         var v2 = data.getsteps[i]["step2"];
                         var t2 = data.getsteps[i]["step2"];
-                        if (!uniqueValues.includes(v)) {
+                        if (!uniqueValues2.includes(v)) {
                             var choice = {
                                 value: v,
                                 label: t,
                             };
                             tt.push(choice);
-                            uniqueValues.push(v);
+                            uniqueValues2.push(v);
                         }
-                        if (!uniqueValues2.includes(v2)) {
+                        if (!uniqueValues3.includes(v2)) {
                             var choice = {
                                 value: v22,
                                 label: t,
                             };
                             tt2.push(choice);
-                            uniqueValues2.push(v2);
+                            uniqueValues3.push(v2);
                         }
                     }
                     step2.clearChoices(); // Clear existing choices
