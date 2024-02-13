@@ -471,6 +471,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         label: t,
                     };
                     tt.push(choice);
+                    var choice = {
+                        value: v2,
+                        label: t2,
+                    };
+                    tt2.push(choice);
+                    var choice = {
+                        value: v3,
+                        label: t3,
+                    };
+                    tt3.push(choice);
                     for (var i = 0; i < data.getsteps.length; i++) {
                         v = data.getsteps[i]["step1"];
                         t = data.getsteps[i]["step1"];
@@ -479,7 +489,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         v3 = data.getsteps[i]["car_id"];
                         t3 = data.getsteps[i]["step3"] + " - " + data.getsteps[i]["step4"] + " - " + data.getsteps[i]["step5"] + " - " + data.getsteps[i]["car_name"];
                         if (!uniqueValues2.includes(v)) {
-                            var choice = {
+                            choice = {
                                 value: v,
                                 label: t,
                             };
@@ -487,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             uniqueValues2.push(v);
                         }
                         if (!uniqueValues3.includes(v2)) {
-                            var choice = {
+                            choice = {
                                 value: v2,
                                 label: t2,
                             };
@@ -495,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             uniqueValues3.push(v2);
                         }
                         if (!uniqueValues4.includes(v2)) {
-                            var choice = {
+                            choice = {
                                 value: v3,
                                 label: t3,
                             };
