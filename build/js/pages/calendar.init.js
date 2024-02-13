@@ -855,5 +855,6 @@ function temizle() {
     eventCategoryChoice5.setChoiceByValue("Lütfen Seçiniz");
     step1.setChoiceByValue("");
     step2.setChoiceByValue("");
+    eventCategoryChoice4.setChoiceByValue("");
 }
 
