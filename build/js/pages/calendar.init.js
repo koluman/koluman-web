@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     step2 = new Choices("#step2", {
         searchEnabled: false
     });
-   
+
     testdrive();
 
     function testdrive() {
@@ -69,8 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         if (event.state === 0) {
                             className = 'bg-danger-subtle';
-                        } 
-                        else if (event.state === 1) {
+                        } else if (event.state === 1) {
                             className = 'bg-success-subtle';
                         } else {
                             className = 'bg-warning-subtle';
@@ -84,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             className: className,
                             location: {
                                 car_id: event.car_id,
-                                car_name: event.car_name
+                                car_name: event.car_name,
+                                appointment_date: event.appointment_date
                             },
                             extendedProps: {
                                 department: event.appointment_time,
@@ -113,7 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                             allDay: true,
                             className: className,
-                            location: event.car_name,
+                            location: {
+                                car_id: event.car_id,
+                                car_name: event.car_name,
+                                appointment_date: event.appointment_date
+                            },
                             extendedProps: {
                                 department: event.appointment_time,
                                 state: event.state
@@ -206,15 +210,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             addEvent.show();
                             formEvent.reset();
                             selectedEvent = info.event;
-                            console.log(info);
                             console.log(selectedEvent);
-                            // First Modal
 
                             document.getElementById("modal-title").innerHTML = "";
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
                             document.getElementById("appointment_id").value = selectedEvent.id;
-
                             /*if (selectedEvent._def.extendedProps.location) {
                                 eventCategoryChoice4.destroy();
                                 eventCategoryChoice4 = new Choices("#car_id", {
@@ -237,9 +238,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             }
+                            */
 
-
-                            var st_date = selectedEvent.start;
+                            /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
                             var date_r = function formatDate(date) {
                                 var d = new Date(date),
@@ -266,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 dateFormat: "Y-m-d",
                                 mode: ed_date !== null ? "range" : "range",
                             });*/
-                            document.getElementById("event-start-date-tag").innerHTML = r_date;
+                            document.getElementById("event-start-date-tag").innerHTML = selectedEvent.extendedProps.location.appointment_date;
                             newEventData = null;
                             modalTitle.innerText = selectedEvent.title;
                             // formEvent.classList.add("view-event");
@@ -306,19 +307,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     calendar.render();
                     upcomingEvent(defaultlastEvents);
                     formEvent.addEventListener('submit', function (ev) {
-                        ev.preventDefault();                    
+                        ev.preventDefault();
                         var updatedCar = $("#car_id").val();
                         var updatedCategory;
                         var updatedAppointment = document.getElementById('appointment_time').value;
                         var updatedState = document.getElementById('state').value;
                         if (updatedState == 0) {
                             updatedCategory = 'bg-danger-subtle';
-                        } 
-                        else if (updatedState == 1) {
+                        } else if (updatedState == 1) {
                             updatedCategory = 'bg-success-subtle';
                         } else {
                             updatedCategory = 'bg-warning-subtle';
-                        }                        
+                        }
                         var updatedUser = $("#user_id").val();
                         var start_date = document.getElementById("appointment_date").value;
                         var updateStartDate = new Date(start_date.trim());
@@ -402,8 +402,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     state: updatedState
                                                 },
                                                 location: {
-                                                    car_id:$("#car_id").val(),
-                                                    car_name:$("#car_id").text()
+                                                    car_id: $("#car_id").val(),
+                                                    car_name: $("#car_id").text()
                                                 },
                                             };
                                             calendar.addEvent(newEvent);
