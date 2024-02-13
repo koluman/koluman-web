@@ -35,7 +35,31 @@ class TestDriveController extends Controller
             ];
         }
         return response()->json($responseData);
-    }    
+    } 
+    public function getstepsall(Request $request)
+    {
+        try {
+            $getsteps = Showroom::where('isTestdrive',1)->get();
+            if (!$getsteps->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "getsteps" => $getsteps,
+                    "message" => "Diğer adımlar listesi getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Diğer adımlar listesi bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }      
     public function testdrivegetall(Request $request)
     {
         try {

@@ -221,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
-                            getstep();
                             step1.setChoiceByValue(selectedEvent._def.extendedProps.step1);
                             step2.setChoiceByValue(selectedEvent._def.extendedProps.step2);
                             eventCategoryChoice4.setChoiceByValue(selectedEvent._def.extendedProps.location.car_id.toString());
@@ -462,6 +461,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         eventCategoryChoice5.clearChoices(); // Clear existing choices
         eventCategoryChoice5.setChoices(r, 'value', 'label', true); // Set new choices
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/getstepsall',
+            data: {
+                _token: csrfToken, // CSRF token'ını gönder
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    var tt = [];
+                    for (var i = 0; i < data.getsteps.length; i++) {
+                        var v = data.getsteps[i]["step1"];
+                        var t = data.getsteps[i]["step1"];
+                        if (!uniqueValues.includes(v)) {
+                            var choice = {
+                                value: v,
+                                label: t,
+                            };
+                            tt.push(choice);
+                            uniqueValues.push(v);
+                        }
+                    }
+                    step1.clearChoices(); // Clear existing choices
+                    step1.setChoices(tt, 'value', 'label', true); // Set new choices
+                }
+    
+            }
+        });
     }
     getapiusers();
     getcompany();
