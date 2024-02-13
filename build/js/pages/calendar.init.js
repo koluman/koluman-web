@@ -514,7 +514,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     eventCategoryChoice4.clearChoices(); // Clear existing choices
                     eventCategoryChoice4.setChoices(tt3, 'value', 'label', true); // Set new choices
                 }
-    
             }
         });
     }
@@ -526,7 +525,6 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#company_id").change(function () {
         getstep();
     });
-
     $("#step1").change(function () {
         getstep1();
     });
@@ -534,7 +532,6 @@ document.addEventListener("DOMContentLoaded", function () {
         getshowroom();
     });
 });
-
 function getdate() {
     // Seçilen tarihi al
     var selectedDate = $("#appointment_date").val();
@@ -572,7 +569,6 @@ function getdate() {
         }
     });
 };
-
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -610,7 +606,6 @@ function getcompany() {
         }
     });
 }
-
 function getapiusers() {
     $.ajax({
         type: 'POST',
@@ -642,7 +637,6 @@ function getapiusers() {
 }
 let steps = [];
 let uniqueValues = []; // Array to store unique values
-
 function getstep() {
     $.ajax({
         type: 'POST',
@@ -675,7 +669,6 @@ function getstep() {
         }
     });
 };
-
 function getstep1() {
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
@@ -689,7 +682,6 @@ function getstep1() {
     step2.clearChoices(); // Clear existing choices for step2
     step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
 }
-
 function getshowroom() {
     var step1 = document.getElementById('step1').value;
     var step2 = document.getElementById('step2').value;
@@ -711,11 +703,9 @@ function getshowroom() {
     eventCategoryChoice4.clearChoices(); // Clear existing choices
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
 }
-
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
-
 function eventClicked() {
     document.getElementById('form-event').classList.add("view-event");
     document.getElementById("car_id").classList.replace("d-block", "d-none");
@@ -728,7 +718,6 @@ function eventClicked() {
     document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
     document.getElementById('btn-save-event').setAttribute("hidden", true);
 }
-
 function eventTyped() {
     document.getElementById('form-event').classList.remove("view-event");
     document.getElementById("car_id").classList.replace("d-none", "d-block");
@@ -741,7 +730,6 @@ function eventTyped() {
     document.getElementById("event-description-tag").classList.replace("d-block", "d-none");
     document.getElementById('btn-save-event').removeAttribute("hidden");
 }
-
 function upcomingEvent(a) {
     document.getElementById("upcoming-event-list").innerHTML = null;
     a.sort(function (o1, o2) {
@@ -787,7 +775,6 @@ function upcomingEvent(a) {
         document.getElementById("upcoming-event-list").innerHTML += u_event;
     });
 };
-
 function getTime(params) {
     params = new Date(params);
     if (params.getHours() != null) {
@@ -796,7 +783,6 @@ function getTime(params) {
         return hour + ":" + minute;
     }
 }
-
 function tConvert(time) {
     var t = time.split(":");
     var hours = t[0];
@@ -819,7 +805,6 @@ var str_dt = function formatDate(date) {
         day = '0' + day;
     return [day + " " + month, year].join(',');
 };
-
 function editEvent(data) {
     var data_id = data.getAttribute("data-id");
     if (data_id == 'new-event') {
