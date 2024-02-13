@@ -1,4 +1,3 @@
-
 var start_date = document.getElementById("appointment_date");
 var date_range = null;
 var T_check = null;
@@ -433,10 +432,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function yukle() {
         var r = [];
-        var allTimes = ["Lütfen Seçiniz","09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
+        var choice = {
+            value: "",
+            label: "Lütfen Seçiniz",
+        };
+        r.push(choice);
+        var allTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
         for (var i = 0; i < allTimes.length; i++) {
-            var time = allTimes[i];
-            var choice = {
+            time = allTimes[i];
+            choice = {
                 value: time,
                 label: time,
             };
@@ -595,11 +599,18 @@ function getcompany() {
                     success: function (data) {
                         if (data.success == 1) {
                             var ch = [];
+                            var v = "";
+                            var t = "Lütfen Seçiniz";
+                            var c = {
+                                value: v,
+                                label: t,
+                            };
+                            ch.push(c);
                             for (var i = 0; i < data.companies.length; i++) {
-                                var v = data.companies[i]["company_id"];
-                                var t = data.companies[i]["company_name"];
+                                v = data.companies[i]["company_id"];
+                                t = data.companies[i]["company_name"];
 
-                                var c = {
+                                c = {
                                     value: v,
                                     label: t,
                                 };
@@ -626,11 +637,18 @@ function getapiusers() {
         success: function (data) {
             if (data.success == 1) {
                 var choicesArray3 = [];
+                var v = "";
+                var t = "Lütfen Seçiniz";
+                var choice = {
+                    value: v,
+                    label: t,
+                };
+                choicesArray3.push(choice);
                 for (var i = 0; i < data.usersall.length; i++) {
-                    var v = data.usersall[i]["user_id"];
-                    var t = data.usersall[i]["user_name"];
+                    v = data.usersall[i]["user_id"];
+                    t = data.usersall[i]["user_name"];
 
-                    var choice = {
+                    choice = {
                         value: v,
                         label: t,
                     };
@@ -852,9 +870,11 @@ function temizle() {
     document.getElementById("appointment_id").value = "";
     document.getElementById("appointment_date").value = "";
     document.querySelector("#state").value = "";
-    eventCategoryChoice5.setChoiceByValue("Lütfen Seçiniz");
+    eventCategoryChoice5.setChoiceByValue("");
     step1.setChoiceByValue("");
     step2.setChoiceByValue("");
     eventCategoryChoice4.setChoiceByValue("");
-}
+    eventCategoryChoice2.setChoiceByValue("");
+    company.setChoiceByValue("");
 
+}
