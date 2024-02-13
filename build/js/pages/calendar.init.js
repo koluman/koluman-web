@@ -394,6 +394,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     department: updatedAppointment,
                                                     state: updatedState
                                                 },
+                                                location: {
+                                                    car_id:$("#car_id").val(),
+                                                    car_name:$("#car_id").text()
+                                                },
                                                 location: $("#car_id").text()
                                             };
                                             calendar.addEvent(newEvent);
