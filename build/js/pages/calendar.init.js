@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             }
-
+                            */
                             if (selectedEvent.title) {
                                 eventCategoryChoice5.destroy();
                                 eventCategoryChoice5 = new Choices("#appointment_time", {
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
                             }
-                            */
+                            
 
                             /*var st_date = selectedEvent.start;
                             var ed_date = selectedEvent.end;
