@@ -1,6 +1,3 @@
-const {
-    templateSettings
-} = require("lodash");
 
 var start_date = document.getElementById("appointment_date");
 var date_range = null;
