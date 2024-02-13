@@ -64,13 +64,24 @@ document.addEventListener("DOMContentLoaded", function () {
             success: function (data) {
                 if (data.success == 1) {
                     var defaultEvents = data.testDrives.map(function (event) {
+                        var className;
+
+                        if (event.state === 0) {
+                            className = 'bg-danger-subtle';
+                        } else if (event.state === 1) {
+                            className = 'your-class-for-state-1';
+                        } else if (event.state === 2) {
+                            className = 'bg-success-subtle';
+                        } else {
+                            className = 'bg-warning-subtle';
+                        }
                         return {
                             id: event.appointment_id,
                             title: event.appointment_time, // Yeni başlık
                             start: new Date(event.appointment_date),
                             end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                             allDay: true,
-                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 2 ? 'bg-success-subtle' : 'bg-warning-subtle'),
+                            className: className,
                             location: {
                                 car_id: event.car_id,
                                 car_name: event.car_name
@@ -86,13 +97,24 @@ document.addEventListener("DOMContentLoaded", function () {
                         };
                     });
                     var defaultlastEvents = data.testlastDrives.map(function (event) {
+                        var className;
+
+                        if (event.state === 0) {
+                            className = 'bg-danger-subtle';
+                        } else if (event.state === 1) {
+                            className = 'your-class-for-state-1';
+                        } else if (event.state === 2) {
+                            className = 'bg-success-subtle';
+                        } else {
+                            className = 'bg-warning-subtle';
+                        }
                         return {
                             id: event.appointment_id,
                             title: event.appointment_time, // Yeni başlık
                             start: new Date(event.appointment_date),
                             end: new Date(event.appointment_date), // İsterseniz aynı tarih olarak bırakabilirsiniz
                             allDay: true,
-                            className: event.state == 0 ? 'bg-danger-subtle' : (event.state == 1 ? 'bg-success-subtle' : 'bg-warning-subtle'),
+                            className: className,
                             location: event.car_name,
                             extendedProps: {
                                 department: event.appointment_time,
