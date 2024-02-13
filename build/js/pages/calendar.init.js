@@ -575,22 +575,21 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            /*if (data.success == 1) {
-                var choicesArray3 = [];
-                for (var i = 0; i < data.usersall.length; i++) {
-                    var v = data.usersall[i]["user_id"];
-                    var t = data.usersall[i]["user_name"];
+            if (data.success == 1) {
+                var t = [];
+                for (var i = 0; i < data.getsteps.length; i++) {
+                    var v = data.getsteps[i]["step1"];
+                    var t = data.getsteps[i]["step1"];
 
                     var choice = {
                         value: v,
                         label: t,
                     };
-                    choicesArray3.push(choice);
+                    t.push(choice);
                 }
-                eventCategoryChoice2.clearChoices(); // Clear existing choices
-                eventCategoryChoice2.setChoices(choicesArray3, 'value', 'label', true); // Set new choices
-            }*/
+                step1.clearChoices(); // Clear existing choices
+                step1.setChoices(t, 'value', 'label', true); // Set new choices
+            }
 
         }
     });};
