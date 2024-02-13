@@ -37,18 +37,18 @@ class TestDriveController extends Controller
     }
     public function getsteps(Request $request)
     {
-       /* try {
-            $shoowroom = Showroom::where('isTestdrive',1)->get();
-            if (!$shoowroom->isEmpty()) {
+        try {
+            $getsteps = Showroom::where('company_id',$request->company_id)->get();
+            if (!$getsteps->isEmpty()) {
                 $responseData = [
                     "success" => 1,
-                    "showroomcars" => $shoowroom,
-                    "message" => "Arabalar listesi getirildi",
+                    "getsteps" => $getsteps,
+                    "message" => "Diğer adımlar listesi getirildi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Arabalar listesi bulunamadı",
+                    "message" => "Diğer adımlar listesi bulunamadı",
                 ];
             }
         } catch (\Exception $e) {
@@ -56,7 +56,7 @@ class TestDriveController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
-        }*/
+        }
         return response()->json($request);
     }    public function testdrivegetall(Request $request)
     {
