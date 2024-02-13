@@ -68,9 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         if (event.state === 0) {
                             className = 'bg-danger-subtle';
-                        } else if (event.state === 1) {
-                            className = 'your-class-for-state-1';
-                        } else if (event.state === 2) {
+                        } 
+                        else if (event.state === 1) {
                             className = 'bg-success-subtle';
                         } else {
                             className = 'bg-warning-subtle';
@@ -101,8 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         if (event.state === 0) {
                             className = 'bg-danger-subtle';
-                        } else if (event.state === 1) {
-                            className = 'your-class-for-state-1';
                         } else if (event.state === 2) {
                             className = 'bg-success-subtle';
                         } else {
