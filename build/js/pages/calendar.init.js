@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 car_name: event.car_name
                             },
                             extendedProps: {
-                                department: event.appointment_time
+                                department: event.appointment_time,
+                                state:event.state
                             },
                             description: {
                                 user_id: event.user_id,
@@ -94,7 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             className: event.state === 0 ? 'bg-danger-subtle' : (event.state === 2 ? 'bg-warning-subtle' : 'bg-success-subtle'),
                             location: event.car_name,
                             extendedProps: {
-                                department: event.appointment_time
+                                department: event.appointment_time,
+                                state:event.state
                             },
                             description: {
                                 user_id: event.user_id,
