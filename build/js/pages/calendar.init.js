@@ -5,6 +5,11 @@ var csrfToken = $('meta[name="csrf-token"]').attr('content');
 var eventCategoryChoice5;
 var eventCategoryChoice4;
 var eventCategoryChoice2;
+var company;
+var step1;
+var step2;
+var state;
+
 document.addEventListener("DOMContentLoaded", function () {
     eventCategoryChoice5 = new Choices("#appointment_time", {
         searchEnabled: false
@@ -24,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     step2 = new Choices("#step2", {
         searchEnabled: false
     });
-
+    state = new Choices("#state", {
+        searchEnabled: false
+    });
     testdrive();
 
     function testdrive() {
