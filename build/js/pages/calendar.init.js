@@ -489,8 +489,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                         if (!uniqueValues3.includes(v2)) {
                             var choice = {
-                                value: v22,
-                                label: t,
+                                value: v2,
+                                label: t2,
                             };
                             tt2.push(choice);
                             uniqueValues3.push(v2);
