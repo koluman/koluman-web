@@ -322,10 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     url: 'https://mobiloby.app/koluman/web/updatetestdriveappointment',
                                     data: {
                                         car_id: $("#car_id").val(),
-                                        company_id: $("#company_id").val(),
-                                        step1: $("#step1").val(),
-                                        step2: $("#step2").val(),
-                                        state: $("#state").val(),
                                         user_id: $("#user_id").val(),
                                         appointment_time: $("#appointment_time").val(),
                                         appointment_date: $("#appointment_date").val(),

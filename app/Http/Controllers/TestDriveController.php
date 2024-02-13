@@ -177,19 +177,13 @@ class TestDriveController extends Controller
             $user_id = $request->user_id;
             $appointment_date = $request->appointment_date;
             $appointment_id = $request->appointment_id;
-            $company_id = $request->company_id;
-            $step1 = $request->step1;
-            $step2 = $request->step2;
-            $state = $request->state;
+
             $affectedRows = Appointment::where('appointment_id', $appointment_id)
             ->update([
                 'user_id' => $user_id,
                 'car_id' => $car_id,
                 'appointment_time' => $appointment_time,
-                'state' => $state,
-                'company_id' => $company_id,
-                'step1' => $step1,
-                'step2' => $step2,
+                'state' => 0,
                 'appointment_date' => $appointment_date
             ]);
             if ($affectedRows > 0) {
