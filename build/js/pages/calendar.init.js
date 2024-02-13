@@ -604,7 +604,7 @@ function getshowroom() {
     console.log(step1 + "--" + step2);
     
     var combinedChoices = filteredSteps.map(item => {
-        var combinedLabel = `${item.step3 ? item.step3 + ' - ' : ''}${item.step4 ? item.step4 + ' - ' : ''}${item.step5 ? item.step5 : ''}`;
+        var combinedLabel = `${item.step3 ? item.step3 + ' - ' : ''}${item.step4 ? item.step4 + ' - ' : ''}${item.step5 ? item.step5 : ''}${item.car_name ? item.car_name}`;
         combinedLabel = combinedLabel.replace(/ -$/, '');
         return {
             value: item.car_id,
