@@ -131,7 +131,7 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Product',
+				name: 'Araba Bilgileri',
 				width: '360px',
 				data: (function (row) {
 					return gridjs.html('<div class="d-flex align-items-center">' +
