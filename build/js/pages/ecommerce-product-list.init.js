@@ -78,6 +78,7 @@ var productListAll = new gridjs.Grid({
 				},
 				data: (function (row) {
 					return gridjs.html('<div class="form-check checkbox-product-list">\
+					<input class="form-check-input" type="checkbox" value="'+ row.id + '" id="checkbox-' + row.id + '">\
 					<label class="form-check-label" for="checkbox-'+ row.id + '"></label>\
 				  </div>');
 				})
