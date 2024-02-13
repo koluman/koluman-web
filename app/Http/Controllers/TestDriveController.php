@@ -35,7 +35,30 @@ class TestDriveController extends Controller
         }
         return response()->json($responseData);
     }
-    public function testdrivegetall(Request $request)
+    public function getsteps(Request $request)
+    {
+       /* try {
+            $shoowroom = Showroom::where('isTestdrive',1)->get();
+            if (!$shoowroom->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "showroomcars" => $shoowroom,
+                    "message" => "Arabalar listesi getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Arabalar listesi bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }*/
+        return response()->json($request);
+    }    public function testdrivegetall(Request $request)
     {
         try {
             $testDrives = Appointment::join('users', 'appointment.user_id', '=', 'users.user_id')

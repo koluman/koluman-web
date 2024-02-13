@@ -546,11 +546,6 @@ function getapiusers() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                /*for (i = 0; i < data.usersall.length; ++i) {
-                    option += "<option value='" + data.usersall[i]["user_id"] + "'>" + data.usersall[i]["user_name"] + "</option>";
-                }
-                $('#user_id').html('');
-                $('#user_id').html(option);*/
                 var choicesArray3 = [];
                 for (var i = 0; i < data.usersall.length; i++) {
                     var v = data.usersall[i]["user_id"];
@@ -571,8 +566,34 @@ function getapiusers() {
 
 }
 function getstep() {   
-console.log("sdfdsf");
-};
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getsteps',
+        data: {
+            categoryid:$("#category_id").val(),
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            /*if (data.success == 1) {
+                var choicesArray3 = [];
+                for (var i = 0; i < data.usersall.length; i++) {
+                    var v = data.usersall[i]["user_id"];
+                    var t = data.usersall[i]["user_name"];
+
+                    var choice = {
+                        value: v,
+                        label: t,
+                    };
+                    choicesArray3.push(choice);
+                }
+                eventCategoryChoice2.clearChoices(); // Clear existing choices
+                eventCategoryChoice2.setChoices(choicesArray3, 'value', 'label', true); // Set new choices
+            }*/
+
+        }
+    });};
 
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
