@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     testdrive();
 
     function testdrive() {
-        //flatPickrInit();
+        flatPickrInit();
         yukle();
         var addEvent = new bootstrap.Modal(document.getElementById('event-modal'), {
             keyboard: false
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.getElementById("edit-event-btn").setAttribute("data-id", "edit-event");
                             document.getElementById("edit-event-btn").innerHTML = "Güncelle";
                             eventClicked();
-                            //flatPickrInit();
+                            flatPickrInit();
                             flatpicekrValueClear();
                             addEvent.show();
                             formEvent.reset();
@@ -748,6 +748,34 @@ function getshowroom() {
     };
     combinedChoices.unshift(pleaseSelectOption); 
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
+}
+function flatPickrInit() {
+    var config = {
+        enableTime: true,
+        noCalendar: true,
+    };
+    var date_range = flatpickr(
+        start_date, {
+            enableTime: false,
+            mode: "range",
+            minDate: "today",
+            onChange: function (selectedDates, dateStr, instance) {
+                var date_range = dateStr;
+                var dates = date_range.split("to");
+                if (dates.length > 1) {
+                    document.getElementById('event-time').setAttribute("hidden", true);
+                } else {
+                    document.getElementById("timepicker1").parentNode.classList.remove("d-none");
+                    document.getElementById("timepicker1").classList.replace("d-none", "d-block");
+                    document.getElementById("timepicker2").parentNode.classList.remove("d-none");
+                    document.getElementById("timepicker2").classList.replace("d-none", "d-block");
+                    document.getElementById('event-time').removeAttribute("hidden");
+                }
+            },
+        });
+    flatpickr(timepicker1, config);
+    flatpickr(timepicker2, config);
+
 }
 
 function flatpicekrValueClear() {
