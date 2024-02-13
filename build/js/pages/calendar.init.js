@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             }*/
                             eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
                             eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
-                            company.setChoiceByValue(selectedEvent.company_id);
+                            company.setChoiceByValue(selectedEvent._def.extendedProps.company_id);
 
 
                             /*var st_date = selectedEvent.start;
