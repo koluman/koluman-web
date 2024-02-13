@@ -6,6 +6,55 @@ Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
 
+// API endpoint'i (örnek URL, kendi API URL'nizi kullanmalısınız)
+var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
+
+// AJAX isteği
+var xhr = new XMLHttpRequest();
+xhr.open('GET', apiEndpoint, true);
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+            var responseData = JSON.parse(xhr.responseText);
+			console.log(responseData);
+            // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
+            //updateTable(responseData);
+        } else {
+            console.error('Sunucu hatası:', xhr.status);
+        }
+    }
+};
+
+xhr.send();
+
+function updateTable(data) {
+    // Tabloyu güncelleme işlemleri burada yapılır
+
+    // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
+    var tableData = data.map(function (item) {
+        return {
+            id: item.id,
+            product: {
+                img: item.product.img,
+                title: item.product.title,
+                category: item.product.category
+            },
+            stock: item.stock,
+            price: item.price,
+            orders: item.orders,
+            rating: item.rating,
+            published: {
+                publishDate: item.published.publishDate,
+                publishTime: item.published.publishTime
+            }
+        };
+    });
+
+    // Tabloyu güncelle
+    productListAll.updateConfig({ data: tableData }).forceRender();
+}
+
 
 
 // table-product-list-all 
