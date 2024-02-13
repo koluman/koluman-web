@@ -470,10 +470,12 @@ document.addEventListener("DOMContentLoaded", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    var tt = [];
+                    var tt = [];var tt2 = [];
                     for (var i = 0; i < data.getsteps.length; i++) {
                         var v = data.getsteps[i]["step1"];
                         var t = data.getsteps[i]["step1"];
+                        var v2 = data.getsteps[i]["step2"];
+                        var t2 = data.getsteps[i]["step2"];
                         if (!uniqueValues.includes(v)) {
                             var choice = {
                                 value: v,
@@ -482,9 +484,17 @@ document.addEventListener("DOMContentLoaded", function () {
                             tt.push(choice);
                             uniqueValues.push(v);
                         }
+                        if (!uniqueValues2.includes(v2)) {
+                            var choice = {
+                                value: v22,
+                                label: t,
+                            };
+                            tt2.push(choice);
+                            uniqueValues2.push(v2);
+                        }
                     }
-                    step1.clearChoices(); // Clear existing choices
-                    step1.setChoices(tt, 'value', 'label', true); // Set new choices
+                    step2.clearChoices(); // Clear existing choices
+                    step2.setChoices(tt2, 'value', 'label', true); // Set new choices
                 }
     
             }
