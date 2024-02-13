@@ -226,9 +226,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                 });
                                 eventCategoryChoice4.setChoiceByValue([selectedEvent._def.extendedProps.location.car_id.toString()]);
                             }*/
-                            if (selectedEvent._def.extendedProps.description) eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
-                            if (selectedEvent.title) eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
-                            
+                            eventCategoryChoice2.setChoiceByValue(selectedEvent._def.extendedProps.description.user_id);
+                            eventCategoryChoice5.setChoiceByValue(selectedEvent.title);
+                            state.setChoiceByValue(selectedEvent._def.extendedProps.description.state);
+
                             
 
                             /*var st_date = selectedEvent.start;
