@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
                                     }
                                 });
-
+                            }else{
                                 $.ajax({
                                     type: 'POST',
                                     url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
