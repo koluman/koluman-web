@@ -70,7 +70,14 @@ document.getElementById("addproduct-btn").addEventListener("click", function(){
 var productListAll = new gridjs.Grid({
 	columns:
 		[
-			
+			{
+				name: '#',
+				width: '40px',
+				sort: {
+					enabled: false
+				}
+				
+			},
 			{
 				name: 'Product',
 				width: '360px',
