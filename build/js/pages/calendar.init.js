@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         console.log(data);
-                                        if (data.success == 1) {
+                                        /*if (data.success == 1) {
                                             var newEvent = {
                                                 id: data.sonuc,
                                                 title: updatedAppointment,
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             upcomingEvent(defaultlastEvents);
                                         } else {
                                             alert(data.message);
-                                        }
+                                        }*/
                                     }
                                 });
                             }
