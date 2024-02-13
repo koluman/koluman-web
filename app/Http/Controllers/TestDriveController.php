@@ -117,7 +117,7 @@ class TestDriveController extends Controller
             $appointment_date = $request->appointment_date;
             $state = $request->state;
 
-            /*$affectedRows = Appointment::insertGetId([
+            $affectedRows = Appointment::insertGetId([
                 'user_id' => $user_id,
                 'car_id' => $car_id,
                 'appointment_time' => $appointment_time,
@@ -135,14 +135,14 @@ class TestDriveController extends Controller
                     "success" => 0,
                     "message" => "Test sürüş randevusu oluşturulamadı , lütfen tekrar deneyiniz",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($state);
+        return response()->json($responseData);
     }
     public function updatetestdriveappointment(Request $request)
     {

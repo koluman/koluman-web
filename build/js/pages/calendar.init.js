@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             },
                             extendedProps: {
                                 department: event.appointment_time,
-                                state:event.state
+                                state: event.state
                             },
                             description: {
                                 user_id: event.user_id,
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             location: event.car_name,
                             extendedProps: {
                                 department: event.appointment_time,
-                                state:event.state
+                                state: event.state
                             },
                             description: {
                                 user_id: event.user_id,
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             selectedEvent = info.event;
                             console.log(selectedEvent);
                             // First Modal
-                         
+
                             document.getElementById("modal-title").innerHTML = "";
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
                             document.getElementById("event-description-tag").innerHTML = selectedEvent.extendedProps.description.user_name === undefined ? "No Description" : selectedEvent.extendedProps.description.user_name;
@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         console.log(data);
-                                    /*if (data.success == 1) {
+                                        if (data.success == 1) {
                                             var newEvent = {
                                                 id: data.sonuc,
                                                 title: updatedAppointment,
@@ -373,8 +373,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     user_name: $("#user_id").text()
                                                 },
                                                 extendedProps: {
-                                                    department:updatedAppointment,
-                                                    state:updatedState
+                                                    department: updatedAppointment,
+                                                    state: updatedState
                                                 },
                                                 location: $("#car_id").text()
                                             };
@@ -382,10 +382,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                             defaultlastEvents.push(newEvent);
 
                                             addEvent.hide();
-                                            upcomingEvent(defaultlastEvents);*
+                                            upcomingEvent(defaultlastEvents);
                                         } else {
                                             alert(data.message);
-                                        }*/
+                                        }
                                     }
                                 });
                             }
@@ -593,6 +593,7 @@ function getstep() {
         }
     });
 };
+
 function getstep1() {
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
@@ -606,14 +607,15 @@ function getstep1() {
     step2.clearChoices(); // Clear existing choices for step2
     step2.setChoices(step2Choices, 'value', 'label', true); // Set new choices for step2
 }
+
 function getshowroom() {
     var step1 = document.getElementById('step1').value;
     var step2 = document.getElementById('step2').value;
     var filteredSteps = steps.filter(item => item.step1 === step1 && item.step2 === step2);
-    
+
     console.log(steps);
     console.log(step1 + "--" + step2);
-    
+
     var combinedChoices = filteredSteps.map(item => {
         var combinedLabel = `${item.step3 ? item.step3 + ' - ' : ''}${item.step4 ? item.step4 + ' - ' : ''}${item.step5 ? item.step5 : ''}${item.car_name}`;
         combinedLabel = combinedLabel.replace(/ -$/, '');
@@ -622,11 +624,12 @@ function getshowroom() {
             label: combinedLabel,
         };
     });
-    
-    
+
+
     eventCategoryChoice4.clearChoices(); // Clear existing choices
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
 }
+
 function flatpicekrValueClear() {
     start_date.flatpickr().clear();
 }
