@@ -17,9 +17,8 @@ xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
-			console.log(responseData);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            //updateTable(responseData);
+            updateTable(responseData.showroomcars);
         } else {
             console.error('Sunucu hatası:', xhr.status);
         }
@@ -34,19 +33,19 @@ function updateTable(data) {
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
         return {
-            id: item.id,
+            id: item.car_id,
             product: {
-                img: item.product.img,
-                title: item.product.title,
-                category: item.product.category
+                img: item.car_image_url,
+                title: item.car_name,
+                category: item.company_id
             },
-            stock: item.stock,
-            price: item.price,
-            orders: item.orders,
-            rating: item.rating,
+            stock: item.isTestdrive,
+            price: item.step1,
+            orders: item.step2,
+            rating: item.step3,
             published: {
-                publishDate: item.published.publishDate,
-                publishTime: item.published.publishTime
+                publishDate: item.car_description,
+                publishTime: item.step4
             }
         };
     });
