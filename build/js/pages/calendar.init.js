@@ -831,5 +831,6 @@ function temizle() {
     document.getElementById("appointment_id").value = "";
     document.getElementById("appointment_date").value = "";
     document.querySelector("#state").value = "";
- 
+    eventCategoryChoice5.setChoiceByValue("Lütfen Seçiniz");
+
 }
