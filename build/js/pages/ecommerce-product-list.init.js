@@ -252,7 +252,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		let s="";
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
 				s+='<div class="form-check">';
-				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'"';
+				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'" checked';
 				s+='		id="productBrandRadio'+i+'" >';
 				s+='	<label class="form-check-label"';
 				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
@@ -300,21 +300,7 @@ Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEa
 				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
 			}
 		}, false);
-		// clearall
-		document.getElementById("clearall").addEventListener("click", function () {
-			subitem.checked = false;
-			filterChoicesInput.removeActiveItemsByValue(checkElm);
-			isFilterSelected = 0;
-			item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-			(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-			productListAll.updateConfig({
-				data: productListAllData
-			}).forceRender();
-
-			productListPublished.updateConfig({
-				data: productListPublishedData
-			}).forceRender();
-		});
+		
 	});
 });
 
