@@ -174,18 +174,14 @@ var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
-
 		return arr.filter(function (el) {
-			console.log(el);
-			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+			return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
 	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
-
-	
 	checkRemoveItem();
 });
 
@@ -197,7 +193,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		filteritem.classList.add('active');
 
 		var filterItemValue = filteritem.querySelector(".listname").innerHTML
-		console.log(filterlist);
 
 		var filterData = productListAllData.filter(filterlist => filterlist.product.category === filterItemValue);
 
