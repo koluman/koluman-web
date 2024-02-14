@@ -35,7 +35,7 @@
                     <div class="card-body border-bottom">
                         <div>
                             <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
-                            <ul class="list-unstyled mb-0 filter-list">
+                            <ul class="list-unstyled mb-0 filter-list" id="cat">
                                 
                                
                             </ul>

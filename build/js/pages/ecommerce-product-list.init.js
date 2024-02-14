@@ -62,8 +62,11 @@ function kategori() {
 									l += '	</div>';
 									l += '</a>';
 									l += '</li>';
-									
+
 								}
+								$("#cat").html('');
+								$("#cat").html(l);
+
 							}
 							
 
