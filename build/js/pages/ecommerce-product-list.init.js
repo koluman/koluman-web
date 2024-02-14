@@ -254,7 +254,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
 				s+='<div class="form-check">';
 				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'"';
-				s+='		id="productBrandRadio"'+i+' >';
+				s+='		id="productBrandRadio'+i+'" >';
 				s+='	<label class="form-check-label"';
 				s+='		for="productBrandRadio5">'+uniqueStep1Values[i]+'</label>';
 				s+='</div>';
