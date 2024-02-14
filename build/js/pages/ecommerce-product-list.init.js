@@ -233,8 +233,8 @@ searchProductList.addEventListener("keyup", function () {
 
     checkRemoveItem();
 });
-function tikla(selectedValue) {
-	const isChecked = document.getElementById("productBrandRadio" + selectedValue).checked;
+function tikla(selectedValue,i) {
+	const isChecked = document.getElementById("productBrandRadio" + i).checked;
 
     if (isChecked) {
         // Checkbox işaretli ise, selectedValue'yi uniqueStep1Values içine ekle
@@ -269,7 +269,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
 			s += '<div class="form-check">';
 			s += '    <input class="form-check-input" type="checkbox" value="' + uniqueStep1Values[i] + '" checked';
-			s += '        id="productBrandRadio' + i + '" onchange="tikla(\'' + uniqueStep1Values[i] + '\')">';
+			s += '        id="productBrandRadio' + i + '" onchange="tikla(\'' + uniqueStep1Values[i] + '\','+i+')">';
 			s += '    <label class="form-check-label"';
 			s += '        for="productBrandRadio' + i + '">' + uniqueStep1Values[i] + '</label>';
 			s += '</div>';
