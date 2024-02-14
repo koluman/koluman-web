@@ -271,6 +271,7 @@ searchProductList.addEventListener("keyup", function () {
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
 		return arr.filter(function (el) {
+			console.log(el);
 			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
