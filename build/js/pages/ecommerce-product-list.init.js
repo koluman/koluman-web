@@ -233,23 +233,7 @@ searchProductList.addEventListener("keyup", function () {
 
     checkRemoveItem();
 });
-let uniqueStep1Values = []; 
-function tikla(selectedValue, i) {
-    const isChecked = document.getElementById("productBrandRadio" + i).checked;
-    if (!isChecked) {
-        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
-    } else {
-		
 
-        if (!uniqueStep1Values.includes(selectedValue)) {
-            uniqueStep1Values.push(selectedValue);
-        }
-		console.log(uniqueStep1Values);
-
-    }
-    const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
-    updateTable(filteredData);
-}
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
     filteritem.addEventListener("click", function () {
         var filterListItem = document.querySelector(".filter-list a.active");
@@ -278,7 +262,22 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         checkRemoveItem();
     });
 })
+function tikla(selectedValue, i) {
+    const isChecked = document.getElementById("productBrandRadio" + i).checked;
+    if (!isChecked) {
+        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
+    } else {
+		
 
+        if (!uniqueStep1Values.includes(selectedValue)) {
+            uniqueStep1Values.push(selectedValue);
+        }
+		console.log(uniqueStep1Values.includes(selectedValue));
+
+    }
+    const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
+    updateTable(filteredData);
+}
 
 
 
