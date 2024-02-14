@@ -235,24 +235,25 @@ searchProductList.addEventListener("keyup", function () {
 });
 let uniqueStep1Values = [];
 
-function tikla(selectedValue,i) {
-	const isChecked = document.getElementById("productBrandRadio" + i).checked;
+function tikla(selectedValue, i) {
+    const isChecked = document.getElementById("productBrandRadio" + i).checked;
     console.log(selectedValue + "--" + i);
 
-    if (isChecked) {
+    if (!isChecked) {
+        // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
+        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
+    } else {
         // Checkbox işaretli ise, selectedValue'yi uniqueStep1Values içine ekle
         if (!uniqueStep1Values.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
         }
-    } else {
-        // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
-        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
     }
 
     // Filtreleme işlemini gerçekleştir
     const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
     updateTable(filteredData);
 }
+
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
     filteritem.addEventListener("click", function () {
