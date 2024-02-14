@@ -53,8 +53,7 @@ function updateTable(data) {
 
 
 // table-product-list-all 
-var productListAllData = [
-];
+var productListAllData = [];
 
 var inputValueJson = sessionStorage.getItem('inputValue');
 if (inputValueJson) {
@@ -173,8 +172,9 @@ var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
+		console.log(arr);
+
 		return arr.filter(function (el) {
-			console.log(el);
 			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
