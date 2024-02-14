@@ -36,9 +36,9 @@ function updateTable(data) {
     var tableData = data.map(function (item) {
         return {
             id: item.car_id,
-            img: item.car_image_url,
-            title: item.car_name,
-			category: item.company_name,
+            car_image_url: item.car_image_url,
+            car_name: item.car_name,
+			company_name: item.company_name,
             step1: item.step1,
             step2: item.step2,
             step3: item.step3,
@@ -99,11 +99,11 @@ var productListAll = new gridjs.Grid({
 				data: (function (row) {
 					return gridjs.html('<div class="d-flex align-items-center">' +
 						'<div class="flex-shrink-0 me-3">' +
-						'<div class="avatar-sm bg-light rounded p-1"><img src="' + row.img + '" alt="" class="img-fluid d-block"></div>' +
+						'<div class="avatar-sm bg-light rounded p-1"><img src="' + row.car_image_url + '" alt="" class="img-fluid d-block"></div>' +
 						'</div>' +
 						'<div class="flex-grow-1">' +
-						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.title + '</a></h5>' +
-						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.category + '</span></p>' +
+						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.car_name + '</a></h5>' +
+						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.company_name + '</span></p>' +
 						'</div>' +
 						'</div>');
 				})
@@ -196,7 +196,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 
 		var filterItemValue = filteritem.querySelector(".listname").innerHTML
 
-		var filterData = productListAllData.filter(filterlist => filterlist.category === filterItemValue);
+		var filterData = productListAllData.filter(filterlist => filterlist.company_name === filterItemValue);
 
 		productListAll.updateConfig({
 			data: filterData
