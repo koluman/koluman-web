@@ -52,7 +52,7 @@ function kategori() {
 									const companyId = data.companies[i].company_id;
 							
 									// productListAll içinde company_id'yi bul
-									const productItem = productListAll.find(item => item.company_id === companyId);
+									const productItem = productListAllData.find(item => item.company_id === companyId);
 							
 									// Eğer company_id bulunduysa ve bu öğenin bir ürün sayısı varsa
 									if (productItem && productItem.products.length > 0) {
