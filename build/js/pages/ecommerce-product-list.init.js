@@ -255,7 +255,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		let s="";
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
 			s += '<div class="form-check">';
-			s += '    <input class="form-check-input" type="checkbox" value="' + uniqueStep1Values[i] + '" checked';
+			s += '    <input class="form-check-input" type="checkbox" value="' + uniqueStep1Values[i] + '" ';
 			s += '        id="productBrandRadio' + i + '" onchange="tikla(\'' + uniqueStep1Values[i] + '\')">';
 			s += '    <label class="form-check-label"';
 			s += '        for="productBrandRadio' + i + '">' + uniqueStep1Values[i] + '</label>';
@@ -277,37 +277,6 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
-// sidebar filter check
-Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
-	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
-	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
-		var checkElm = subitem.value;
-		if (subitem.checked) {
-			filterChoicesInput.setValue([checkElm]);
-		}
-		subitem.addEventListener("click", function (event) {
-			if (subitem.checked) {
-				isFilterSelected++;
-				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-				filterChoicesInput.setValue([checkElm]);
-
-			} else {
-				filterChoicesInput.removeActiveItemsByValue(checkElm);
-			}
-		});
-		filterChoicesInput.passedElement.element.addEventListener('removeItem', function (event) {
-			if (event.detail.value == checkElm) {
-				subitem.checked = false;
-				isFilterSelected--;
-				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-			}
-		}, false);
-	
-	});
-});
 
 
 

@@ -59,7 +59,7 @@
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands"
                                 aria-expanded="true" aria-controls="flush-collapseBrands">
                                 <span class="text-muted text-uppercase fs-12 fw-medium">Step2</span> <span
-                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
+                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge" id="adet"></span>
                             </button>
                         </h2>
 
