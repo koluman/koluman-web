@@ -127,6 +127,21 @@ productListAll = new gridjs.Grid({
 	sort: true,
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
+// Search product list
+var searchProductList = document.getElementById("searchProductList");
+searchProductList.addEventListener("keyup", function () {
+	var inputVal = searchProductList.value.toLowerCase();
+	function filterItems(arr, query) {
+		return arr.filter(function (el) {
+			return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+		})
+	}
+	var filterData = filterItems(productListAllData, inputVal);
+	productListAll.updateConfig({
+		data: filterData
+	}).forceRender();
+	checkRemoveItem();
+});
 
 })
 
@@ -156,22 +171,6 @@ document.getElementById("addproduct-btn").addEventListener("click", function(){
 
 
 
-// Search product list
-var searchProductList = document.getElementById("searchProductList");
-searchProductList.addEventListener("keyup", function () {
-	console.log(productListAll);
-	var inputVal = searchProductList.value.toLowerCase();
-	function filterItems(arr, query) {
-		return arr.filter(function (el) {
-			return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
-		})
-	}
-	var filterData = filterItems(productListAllData, inputVal);
-	productListAll.updateConfig({
-		data: filterData
-	}).forceRender();
-	checkRemoveItem();
-});
 
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
