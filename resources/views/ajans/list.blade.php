@@ -58,7 +58,7 @@
                             <button class="accordion-button bg-transparent shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands"
                                 aria-expanded="true" aria-controls="flush-collapseBrands">
-                                <span class="text-muted text-uppercase fs-12 fw-medium">Step2</span> <span
+                                <span class="text-muted text-uppercase fs-12 fw-medium">Kategori</span> <span
                                     class="badge bg-success rounded-pill align-middle ms-1 filter-badge" id="adet"></span>
                             </button>
                         </h2>
@@ -67,7 +67,7 @@
                             aria-labelledby="flush-headingBrands">
                             <div class="accordion-body text-body pt-0">
                                 <div class="search-box search-box-sm">
-                                    <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Search Brands...">
+                                    <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Kategori Ara...">
                                     <i class="ri-search-line search-icon"></i>
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3 filter-check" id="tik">
