@@ -5,15 +5,11 @@ Website: https://Themesbrand.com/
 Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
-
-// API endpoint'i (örnek URL, kendi API URL'nizi kullanmalısınız)
+document.addEventListener("DOMContentLoaded", function () {
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
-
-// AJAX isteği
 var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
-
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
@@ -27,6 +23,7 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
+})
 
 
 function updateTable(data) {
