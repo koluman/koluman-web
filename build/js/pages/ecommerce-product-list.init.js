@@ -233,16 +233,14 @@ searchProductList.addEventListener("keyup", function () {
 
     checkRemoveItem();
 });
-document.addEventListener('DOMContentLoaded', function() {
-	function tikla(selectedValue) {
-		console.log(selectedValue);
-		// Seçilen değeri kullanarak veriyi filtrele
-		const filteredData = productListAllData.filter(item => item.step1 === selectedValue);
-	
-		// Tabloyu güncelle
-		updateTable(filteredData);
-	}
+function tikla(selectedValue) {
+	console.log(selectedValue);
+	// Seçilen değeri kullanarak veriyi filtrele
+	const filteredData = productListAllData.filter(item => item.step1 === selectedValue);
 
+	// Tabloyu güncelle
+	updateTable(filteredData);
+}
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
     filteritem.addEventListener("click", function () {
