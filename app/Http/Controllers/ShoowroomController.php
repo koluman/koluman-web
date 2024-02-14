@@ -11,24 +11,19 @@ class ShoowroomController extends Controller
 
     public function shoowroom(Request $request)
     {
-        $companies = Companies::select('company_id', 'company_name', 'company_image_url')->get();
+        $companies = Companies::with(['showrooms', 'showrooms.cars'])->get();
 
         foreach ($companies as $company) {
-            $showrooms = $company->showrooms;
             $carCount = 0;
 
-            foreach ($showrooms as $showroom) {
-                $step1Values[] = $showroom->step1;
-                $carCount += $showroom->cars->count(); // Her bir showroom'daki araba sayısını topla
+            foreach ($company->showrooms as $showroom) {
+                $carCount += $showroom->cars->count();
             }
 
-            $company->setAttribute('showroomCount', $showrooms->count()); 
-            $company->setAttribute('carCount', $carCount); 
+            $company->setAttribute('carCount', $carCount);
         }
 
-        $uniqueStep1Values = array_unique($step1Values);
-
-        return view('ajans.list', compact('companies', 'uniqueStep1Values'));
+        return view('ajans.list', compact('companies'));
     }
     public function shoowroomdetail(Request $request)
     {

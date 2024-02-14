@@ -36,7 +36,6 @@
                         <div>
                             <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
                             <ul class="list-unstyled mb-0 filter-list">
-                        @dump($uniqueStep1Values);
                             @foreach ($companies as $c)
 
                                <li>
@@ -45,7 +44,7 @@
                                             <h5 class="fs-13 mb-0 listname">{{$c->company_name}}</h5>
                                         </div>
                                         <div class="flex-shrink-0 ms-2">
-                                            <span class="badge bg-light text-muted">5</span>
+                                            <span class="badge bg-light text-muted">{{$c->carCount}}</span>
                                         </div>
                                     </a>
                                 </li>
