@@ -50,7 +50,7 @@ function updateTable(data) {
 
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
-	console.log(productListAll);
+	console.log(tableData);
 }
 
 
