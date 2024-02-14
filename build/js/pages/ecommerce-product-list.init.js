@@ -273,21 +273,21 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
-const subitems = document.querySelectorAll('.form-check-input');
 
-subitems.forEach(subitem => {
-    subitem.addEventListener("click", function (event) {
-        console.log("dsdasd");
-        /*if (subitem.checked) {
-            isFilterSelected++;
-            item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-            (isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-            filterChoicesInput.setValue([checkElm]);
-        } else {
-            filterChoicesInput.removeActiveItemsByValue(checkElm);
-        }*/
-    });
+const checkboxess = document.querySelectorAll('.form-check-input');
+
+checkboxess.forEach(checkbox => {
+    checkbox.addEventListener('change', handleCheckboxClick);
 });
+
+// Tıklanıldığında çalışacak fonksiyon
+function handleCheckboxClick() {
+    const checkboxess = document.querySelectorAll('.form-check-input:checked');
+    const selectedValues = Array.from(checkboxess).map(checkbox => checkbox.value);
+    const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
+    updateTable(filteredData);
+}
+
 
 
 
