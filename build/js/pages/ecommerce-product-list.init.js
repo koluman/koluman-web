@@ -179,10 +179,11 @@ searchProductList.addEventListener("keyup", function () {
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
-	productListAll.updateConfig({
+	console.log(filterData);
+	/*productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
-	checkRemoveItem();
+	checkRemoveItem();*/
 });
 
 // mail list click event
