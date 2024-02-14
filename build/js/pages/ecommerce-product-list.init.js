@@ -199,7 +199,18 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         productListAll.updateConfig({
             data: filterData
         }).forceRender();
-		
+
+		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
+		let s="";
+		for (let i = 0; i < uniqueStep1Values.length; i++) {
+				s+='<div class="form-check">';
+				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'" checked';
+				s+='		id="productBrandRadio'+i+'" >';
+				s+='	<label class="form-check-label"';
+				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
+				s+='</div>';
+		}
+		$("#tik").html(s);
         checkRemoveItem();
     });
 })
