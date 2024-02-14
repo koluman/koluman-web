@@ -275,6 +275,7 @@ var filterDataPublished = '';
 const subitems = document.querySelectorAll('.form-check-input');
 
 subitems.forEach(subitem => {
+	console.log(subitem);
     subitem.addEventListener("click", function (event) {
         console.log("dsdasd");
         if (subitem.checked) {
