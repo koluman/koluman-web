@@ -17,9 +17,6 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
-
-})
-
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
@@ -42,30 +39,7 @@ function updateTable(data) {
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
 }
-
-var inputValueJson = sessionStorage.getItem('inputValue');
-if (inputValueJson) {
-	inputValueJson = JSON.parse(inputValueJson);
-	Array.from(inputValueJson).forEach(element => {
-		productListAllData.unshift(element);
-	});
-}
-
-var editinputValueJson = sessionStorage.getItem('editInputValue');
-if(editinputValueJson){
-	editinputValueJson = JSON.parse(editinputValueJson);
-	productListAllData = productListAllData.map(function (item) {
-		if (item.id == editinputValueJson.id) {
-			return editinputValueJson;
-		}
-		return item;
-	});
-}
-document.getElementById("addproduct-btn").addEventListener("click", function(){
-	sessionStorage.setItem('editInputValue',"")
-})
-
-var productListAll = new gridjs.Grid({
+productListAll = new gridjs.Grid({
 	columns:
 		[
 			{
@@ -154,11 +128,38 @@ var productListAll = new gridjs.Grid({
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
 
-console.log(productListAll);
+})
+
+
+
+var inputValueJson = sessionStorage.getItem('inputValue');
+if (inputValueJson) {
+	inputValueJson = JSON.parse(inputValueJson);
+	Array.from(inputValueJson).forEach(element => {
+		productListAllData.unshift(element);
+	});
+}
+
+var editinputValueJson = sessionStorage.getItem('editInputValue');
+if(editinputValueJson){
+	editinputValueJson = JSON.parse(editinputValueJson);
+	productListAllData = productListAllData.map(function (item) {
+		if (item.id == editinputValueJson.id) {
+			return editinputValueJson;
+		}
+		return item;
+	});
+}
+document.getElementById("addproduct-btn").addEventListener("click", function(){
+	sessionStorage.setItem('editInputValue',"")
+})
+
+
 
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
+	console.log(productListAll);
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
 		return arr.filter(function (el) {
