@@ -1,15 +1,26 @@
+/*
+Template Name: Velzon - Admin & Dashboard Template
+Author: Themesbrand
+Website: https://Themesbrand.com/
+Contact: Themesbrand@gmail.com
+File: Ecommerce product list Js File
+*/
 
-var productListAllData = [];
-document.addEventListener("DOMContentLoaded", function () {
+// API endpoint'i (örnek URL, kendi API URL'nizi kullanmalısınız)
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
+
+// AJAX isteği
+var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
+
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            updateTable(responseData.showroomcars);
+            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
+            updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
         }
@@ -17,17 +28,17 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
+
+
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
         return {
             id: item.car_id,
-            product: {
-                img: item.car_image_url,
-                title: item.car_name,
-				category: item.company_name
-            },
+            img: item.car_image_url,
+            title: item.car_name,
+			category: item.company_name,
             step1: item.step1,
             step2: item.step2,
             step3: item.step3,
@@ -39,7 +50,34 @@ function updateTable(data) {
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
 }
-productListAll = new gridjs.Grid({
+
+
+
+// table-product-list-all 
+
+var inputValueJson = sessionStorage.getItem('inputValue');
+if (inputValueJson) {
+	inputValueJson = JSON.parse(inputValueJson);
+	Array.from(inputValueJson).forEach(element => {
+		productListAllData.unshift(element);
+	});
+}
+
+var editinputValueJson = sessionStorage.getItem('editInputValue');
+if(editinputValueJson){
+	editinputValueJson = JSON.parse(editinputValueJson);
+	productListAllData = productListAllData.map(function (item) {
+		if (item.id == editinputValueJson.id) {
+			return editinputValueJson;
+		}
+		return item;
+	});
+}
+document.getElementById("addproduct-btn").addEventListener("click", function(){
+	sessionStorage.setItem('editInputValue',"")
+})
+
+var productListAll = new gridjs.Grid({
 	columns:
 		[
 			{
@@ -61,11 +99,11 @@ productListAll = new gridjs.Grid({
 				data: (function (row) {
 					return gridjs.html('<div class="d-flex align-items-center">' +
 						'<div class="flex-shrink-0 me-3">' +
-						'<div class="avatar-sm bg-light rounded p-1"><img src="' + row.product.img + '" alt="" class="img-fluid d-block"></div>' +
+						'<div class="avatar-sm bg-light rounded p-1"><img src="' + row.img + '" alt="" class="img-fluid d-block"></div>' +
 						'</div>' +
 						'<div class="flex-grow-1">' +
-						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.product.title + '</a></h5>' +
-						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.product.category + '</span></p>' +
+						'<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.title + '</a></h5>' +
+						'<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.category + '</span></p>' +
 						'</div>' +
 						'</div>');
 				})
@@ -127,50 +165,27 @@ productListAll = new gridjs.Grid({
 	sort: true,
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
+
+
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
+
 		return arr.filter(function (el) {
 			return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
+
 	var filterData = filterItems(productListAllData, inputVal);
 	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
+
+	
 	checkRemoveItem();
 });
-
-})
-
-
-
-var inputValueJson = sessionStorage.getItem('inputValue');
-if (inputValueJson) {
-	inputValueJson = JSON.parse(inputValueJson);
-	Array.from(inputValueJson).forEach(element => {
-		productListAllData.unshift(element);
-	});
-}
-
-var editinputValueJson = sessionStorage.getItem('editInputValue');
-if(editinputValueJson){
-	editinputValueJson = JSON.parse(editinputValueJson);
-	productListAllData = productListAllData.map(function (item) {
-		if (item.id == editinputValueJson.id) {
-			return editinputValueJson;
-		}
-		return item;
-	});
-}
-document.getElementById("addproduct-btn").addEventListener("click", function(){
-	sessionStorage.setItem('editInputValue',"")
-})
-
-
-
 
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
@@ -181,7 +196,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 
 		var filterItemValue = filteritem.querySelector(".listname").innerHTML
 
-		var filterData = productListAllData.filter(filterlist => filterlist.product.category === filterItemValue);
+		var filterData = productListAllData.filter(filterlist => filterlist.category === filterItemValue);
 
 		productListAll.updateConfig({
 			data: filterData
