@@ -5,6 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('build/libs/nouislider/nouislider.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('build/libs/gridjs/theme/mermaid.min.css') }}">
+
 @endsection
 @section('content')
     @component('components.breadcrumb')
@@ -35,28 +36,17 @@
                         <div>
                             <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
                             <ul class="list-unstyled mb-0 filter-list">
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Mercedes</h5>
-                                        </div>
-                                    </a>
-                                </li>
+                                @dump($companies);
                                 <li>
                                     <a href="#" class="d-flex py-1 align-items-center">
                                         <div class="flex-grow-1">
                                             <h5 class="fs-13 mb-0 listname">Koluman</h5>
                                         </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">Monde</h5>
+                                        <div class="flex-shrink-0 ms-2">
+                                            <span class="badge bg-light text-muted">5</span>
                                         </div>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -64,8 +54,8 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingBrands">
                             <button class="accordion-button bg-transparent shadow-none" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands" aria-expanded="true"
-                                aria-controls="flush-collapseBrands">
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands"
+                                aria-expanded="true" aria-controls="flush-collapseBrands">
                                 <span class="text-muted text-uppercase fs-12 fw-medium">Step2</span> <span
                                     class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
                             </button>
@@ -75,23 +65,18 @@
                             aria-labelledby="flush-headingBrands">
                             <div class="accordion-body text-body pt-0">
                                 <div class="search-box search-box-sm">
-                                    <input type="text" class="form-control bg-light border-0" id="searchBrandsList"
-                                        placeholder="Kategori ara...">
+                                    <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Search Brands...">
                                     <i class="ri-search-line search-icon"></i>
                                 </div>
                                 <div class="d-flex flex-column gap-2 mt-3 filter-check">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Otomobil"
+                                        <input class="form-check-input" type="checkbox" value="Boat"
                                             id="productBrandRadio5" checked>
-                                        <label class="form-check-label" for="productBrandRadio5">Otomobil</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="Hafif"
-                                            id="productBrandRadio1" checked>
-                                        <label class="form-check-label" for="productBrandRadio1">Hafif</label>
+                                        <label class="form-check-label"
+                                            for="productBrandRadio5">Boat</label>
                                     </div>
 
-
+                                    
                                 </div>
                             </div>
                         </div>
@@ -118,8 +103,7 @@
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
-                                        <input type="text" class="form-control" id="searchProductList"
-                                            placeholder="Ara...">
+                                        <input type="text" class="form-control" id="searchProductList" placeholder="Ara...">
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
@@ -129,14 +113,11 @@
 
                     <div class="card-header">
                         <div class="row align-items-center">
-
+                           
                             <div class="col-auto">
                                 <div id="selection-element">
                                     <div class="my-n1 d-flex align-items-center text-muted">
-                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result
-                                        <button type="button"
-                                            class="btn btn-link link-danger p-0 ms-3 material-shadow-none"
-                                            data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
+                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3 material-shadow-none" data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
                                     </div>
                                 </div>
                             </div>

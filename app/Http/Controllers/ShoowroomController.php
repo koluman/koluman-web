@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Companies;
 use App\Models\Showroom;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,17 @@ class ShoowroomController extends Controller
 
     public function shoowroom(Request $request)
     {
-        return view('ajans.list');
+        $companies = Companies::select('company_id', 'company_name', 'company_image_url')->get();
+        foreach ($companies as $company) {
+            $showrooms = $company->showrooms; 
+        
+            foreach ($showrooms as $showroom) {
+                $step1Values[] = $showroom->step1;
+            }
+        
+            $uniqueStep1Values = array_unique($step1Values);
+        }
+        return view('ajans.list'.compact('companies'));
     }
     public function shoowroomdetail(Request $request)
     {

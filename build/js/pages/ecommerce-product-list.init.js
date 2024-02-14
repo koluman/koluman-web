@@ -28,57 +28,9 @@ xhr.onreadystatechange = function () {
 };
 
 xhr.send();
-/*kategori();
-function kategori() {
-    $.ajax({
-            type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/getApiToken',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/getcompanies',
-						headers: {
-							"Authorization": "Bearer " + data.token, // Boşluk ekleyin
-						},
-                        dataType: 'json',
-                        success: function (data) {
-							let l="";
-							if (data.success == 1) {
-								for (let i = 0; i < data.companies.length; i++) {
-									const companyName = data.companies[i].company_name;
-									const companyId = data.companies[i].company_id;
-									const productItem = productListAllData.find(item => item.company_id == companyId);
-									let propertyCount = productItem ? Object.keys(productItem).length : 0;
-									l += '<li>';
-									l += '<a href="#" class="d-flex py-1 align-items-center">';
-									l += '	<div class="flex-grow-1">';
-									l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
-									l += '	</div>';
-									l += '	<div class="flex-shrink-0 ms-2">';
-									l += '		<span class="badge bg-light text-muted">' + propertyCount + '</span>';
-									l += '	</div>';
-									l += '</a>';
-									l += '</li>';
 
-								}
-								$("#cat").html('');
-								$("#cat").html(l);
-
-							}
-							
-
-                        }
-                    });
-                }
-            }
-        }) 
-}*/
 
 function updateTable(data) {
-    // Tabloyu güncelleme işlemleri burada yapılır
-    // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
         return {
             id: item.car_id,
@@ -247,18 +199,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         productListAll.updateConfig({
             data: filterData
         }).forceRender();
-
-		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
-		let s="";
-		for (let i = 0; i < uniqueStep1Values.length; i++) {
-				s+='<div class="form-check">';
-				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'" checked';
-				s+='		id="productBrandRadio'+i+'" >';
-				s+='	<label class="form-check-label"';
-				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
-				s+='</div>';
-		}
-		//$("#tik").html(s);
+		
         checkRemoveItem();
     });
 })
