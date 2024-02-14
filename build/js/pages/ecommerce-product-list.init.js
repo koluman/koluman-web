@@ -248,7 +248,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
             data: filterData
         }).forceRender();
 
-		const uniqueStep1Values = [...new Set(filterItemValue.map(item => item.step1))];
+		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
 		console.log(uniqueStep1Values);
 
 		for (let i = 0; i < filterData.length; i++) {
