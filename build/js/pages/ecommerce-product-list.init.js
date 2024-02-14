@@ -237,7 +237,7 @@ let uniqueStep1Values = [];
 
 function tikla(selectedValue,i) {
 	const isChecked = document.getElementById("productBrandRadio" + i).checked;
-
+	console.log(selectedValue+"--"+i);
     if (isChecked) {
         // Checkbox işaretli ise, selectedValue'yi uniqueStep1Values içine ekle
         if (!uniqueStep1Values.includes(selectedValue)) {
