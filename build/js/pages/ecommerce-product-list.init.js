@@ -176,7 +176,7 @@ searchProductList.addEventListener("keyup", function () {
 	function filterItems(arr, query) {
 
 		return arr.filter(function (el) {
-			console.log(el.product);
+			console.log(el);
 			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
@@ -197,6 +197,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		filteritem.classList.add('active');
 
 		var filterItemValue = filteritem.querySelector(".listname").innerHTML
+		console.log(filterlist);
 
 		var filterData = productListAllData.filter(filterlist => filterlist.product.category === filterItemValue);
 
