@@ -31,7 +31,7 @@ xhr.send();
 kategori();
 function kategori() {
     $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: 'https://mobiloby.app/koluman/web/getApiToken',
             dataType: 'json',
             success: function (data) {
