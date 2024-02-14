@@ -167,11 +167,6 @@ var productListAll = new gridjs.Grid({
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
 
-// table-product-list-published
-var productListPublishedData = [
-]
-
-
 
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
@@ -185,14 +180,11 @@ searchProductList.addEventListener("keyup", function () {
 	}
 
 	var filterData = filterItems(productListAllData, inputVal);
-	var filterPublishData = filterItems(productListPublishedData, inputVal);
 	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
 
-	productListPublished.updateConfig({
-		data: filterPublishData
-	}).forceRender();
+	
 	checkRemoveItem();
 });
 
@@ -206,15 +198,12 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		var filterItemValue = filteritem.querySelector(".listname").innerHTML
 
 		var filterData = productListAllData.filter(filterlist => filterlist.product.category === filterItemValue);
-		var filterPublishedData = productListPublishedData.filter(filterlist => filterlist.product.category === filterItemValue);
 
 		productListAll.updateConfig({
 			data: filterData
 		}).forceRender();
 
-		productListPublished.updateConfig({
-			data: filterPublishedData
-		}).forceRender();
+		
 
 		checkRemoveItem();
 	});
@@ -298,9 +287,7 @@ function removeItems() {
 						});
 					}
 					var filtered = arrayRemove(productListAllData, getid);
-					var filteredPublished = arrayRemove(productListPublishedData, getid);
 					productListAllData = filtered;
-					productListPublishedData = filteredPublished;
 					element.remove();
 				}
 			});
@@ -325,9 +312,7 @@ function removeSingleItem() {
 					});
 				}
 				var filtered = arrayRemove(productListAllData, getid);
-				var filteredPublished = arrayRemove(productListPublishedData, getid);
 				productListAllData = filtered;
-				productListPublishedData = filteredPublished;
 				var element = item.closest(".gridjs-tr");
 				element.remove();
 			});
