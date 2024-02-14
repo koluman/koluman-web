@@ -296,6 +296,7 @@ var filterDataPublished = '';
 var searchBrandsOptions = document.getElementById("searchBrandsList");
 searchBrandsOptions.addEventListener("keyup", function () {
     var inputVal = searchBrandsOptions.value.toLowerCase();
+	console.log(inputVal);
     var searchItem = document.querySelectorAll("#flush-collapseBrands .form-check");
     Array.from(searchItem).forEach(function (elem) {
         var searchBrandsTxt = elem.getElementsByClassName("form-check-label")[0].innerText.toLowerCase();
