@@ -39,9 +39,9 @@ function kategori() {
                     $.ajax({
                         type: 'GET',
                         url: 'https://mobiloby.app/koluman/web/api/getcompanies',
-                        headers: {
-                            "Authorization": "Bearer"+data.token, // CSRF token'ını gönder
-                        },
+						headers: {
+							"Authorization": "Bearer " + data.token, // Boşluk ekleyin
+						},
                         dataType: 'json',
                         success: function (data) {
 
