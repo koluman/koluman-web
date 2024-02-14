@@ -10,6 +10,7 @@ File: Ecommerce product list Js File
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
 
 // AJAX isteği
+var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
 
@@ -53,7 +54,6 @@ function updateTable(data) {
 
 
 // table-product-list-all 
-var productListAllData = [];
 
 var inputValueJson = sessionStorage.getItem('inputValue');
 if (inputValueJson) {
@@ -172,12 +172,12 @@ var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
 	var inputVal = searchProductList.value.toLowerCase();
 	function filterItems(arr, query) {
-		console.log(arr);
 
 		return arr.filter(function (el) {
 			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
+	console.log(productListAllData);
 
 	var filterData = filterItems(productListAllData, inputVal);
 	productListAll.updateConfig({
