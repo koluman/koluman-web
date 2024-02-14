@@ -12,16 +12,18 @@ class ShoowroomController extends Controller
     public function shoowroom(Request $request)
     {
         $companies = Companies::select('company_id', 'company_name', 'company_image_url')->get();
+
         foreach ($companies as $company) {
-            $showrooms = $company->showrooms; 
-        
+            $showrooms = $company->showrooms;
+
             foreach ($showrooms as $showroom) {
                 $step1Values[] = $showroom->step1;
             }
-        
-            $uniqueStep1Values = array_unique($step1Values);
         }
-        return view('ajans.list'.compact('companies'));
+
+        $uniqueStep1Values = array_unique($step1Values);
+
+        return view('ajans.list', compact('companies', 'uniqueStep1Values'));
     }
     public function shoowroomdetail(Request $request)
     {
@@ -31,8 +33,8 @@ class ShoowroomController extends Controller
     {
         try {
             $shoowroom = Showroom::select('showroom.car_id', 'showroom.company_id', 'showroom.step1', 'showroom.step2', 'showroom.step3', 'showroom.step4', 'showroom.step5', 'showroom.car_name', 'showroom.car_description', 'showroom.car_image_url', 'showroom.isTestdrive', 'companies.company_name')
-            ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
-            ->get();
+                ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
+                ->get();
 
             if (!$shoowroom->isEmpty()) {
                 $responseData = [
