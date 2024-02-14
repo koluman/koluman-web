@@ -275,6 +275,8 @@ var filterDataPublished = '';
 
 // sidebar filter check
 Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
+	console.log(item);
+
 	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
 	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
 	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
@@ -282,7 +284,6 @@ Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEa
 		if (subitem.checked) {
 			filterChoicesInput.setValue([checkElm]);
 		}
-		console.log(filterChoicesInput);
 		/*subitem.addEventListener("click", function (event) {
 			if (subitem.checked) {
 				isFilterSelected++;
