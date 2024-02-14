@@ -242,14 +242,13 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         filteritem.classList.add('active');
 
         var filterItemValue = filteritem.querySelector(".listname").innerHTML
-		console.log(filterItemValue);
         var filterData = productListAllData.filter(filterlist => filterlist.company_name === filterItemValue);
 
         productListAll.updateConfig({
             data: filterData
         }).forceRender();
 
-		const uniqueStep1Values = [...new Set(data.map(item => item.step1))];
+		const uniqueStep1Values = [...new Set(filterItemValue.map(item => item.step1))];
 		console.log(uniqueStep1Values);
 
 		for (let i = 0; i < filterData.length; i++) {
