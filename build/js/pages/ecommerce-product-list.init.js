@@ -1,10 +1,4 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Ecommerce product list Js File
-*/
+
 var productListAllData = [];
 document.addEventListener("DOMContentLoaded", function () {
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
@@ -15,7 +9,7 @@ xhr.onreadystatechange = function() {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            updateTable(productListAllData);
+            updateTable(responseData.showroomcars);
         } else {
             console.error('Sunucu hatası:', xhr.status);
         }
