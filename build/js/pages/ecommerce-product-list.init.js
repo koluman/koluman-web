@@ -38,7 +38,6 @@ function updateTable(data) {
                 title: item.car_name,
 				category: item.company_name
             },
-            stock: item.isTestdrive,
             price: item.step1,
             orders: item.step2,
             rating: item.step3,
@@ -111,10 +110,6 @@ var productListAll = new gridjs.Grid({
 						'</div>' +
 						'</div>');
 				})
-			},
-			{
-				name: 'Stock',
-				width: '94px',
 			},
 			{
 				name: 'Price',
