@@ -249,7 +249,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         }).forceRender();
 
 		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
-		console.log(uniqueStep1Values);
 		let s="";
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
 				s+='<div class="form-check">';
@@ -259,13 +258,22 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 				s+='		for="productBrandRadio5">'+uniqueStep1Values[i]+'</label>';
 				s+='</div>';
 		}
-	
 		$("#tik").html(s);
-
         checkRemoveItem();
     });
 })
 
+// Checkbox'ların tıklandığı durumu ele alan fonksiyon
+function handleCheckboxClick() {
+    const checkboxes = document.querySelectorAll('.form-check-input:checked');
+    const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+    const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
+    updateTable(filteredData);
+}
+
+Array.from(document.querySelectorAll('.form-check-input')).forEach(checkbox => {
+    checkbox.addEventListener('change', handleCheckboxClick);
+});
 
 var minCostInput = document.getElementById('minCost'),
     maxCostInput = document.getElementById('maxCost');
