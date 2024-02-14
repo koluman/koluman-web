@@ -275,6 +275,7 @@ var filterDataPublished = '';
 // sidebar filter check
 Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
 	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
+	console.log(isFilterSelected);
 	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
 	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
 		var checkElm = subitem.value;
