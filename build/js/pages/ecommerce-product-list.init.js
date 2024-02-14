@@ -52,6 +52,8 @@ function kategori() {
 									const productItem = productListAllData.find(item => item.company_id == companyId);
 									if(productItem==undefined) say=0;
 									else say=productItem.length;
+									console.log(productItem);
+
 									l += '<li>';
 									l += '<a href="#" class="d-flex py-1 align-items-center">';
 									l += '	<div class="flex-grow-1">';
