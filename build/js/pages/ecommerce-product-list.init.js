@@ -38,7 +38,7 @@ function updateTable(data) {
                 title: item.car_name,
 				category: item.company_name
             },
-            price: item.step1,
+            step1: item.step1,
             orders: item.step2,
             rating: item.step3,
             published: {
@@ -112,7 +112,7 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Price',
+				name: 'Step1',
 				width: '101px',
 				formatter: (function (cell) {
 					return gridjs.html(cell);
@@ -209,7 +209,7 @@ var productListPublished = new gridjs.Grid({
 				width: '94px',
 			},
 			{
-				name: 'Price',
+				name: 'Step1',
 				width: '101px',
 				formatter: (function (cell) {
 					return gridjs.html('$' + cell);
