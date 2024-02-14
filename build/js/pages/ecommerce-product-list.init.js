@@ -271,6 +271,17 @@ var minCostInput = document.getElementById('minCost'),
 
 var filterDataAll = '';
 var filterDataPublished = '';
+var filterChoicesInput = new Choices(
+	document.getElementById('filter-choices-input'),
+	{
+		addItems: true,
+		delimiter: ',',
+		editItems: true,
+		maxItemCount: 10,
+		removeItems: true,
+		removeItemButton: true,
+	}
+)
 
 // sidebar filter check
 Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
