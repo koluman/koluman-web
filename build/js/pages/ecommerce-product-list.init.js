@@ -237,7 +237,6 @@ let uniqueStep1Values = [];
 
 function tikla(selectedValue, i) {
     const isChecked = document.getElementById("productBrandRadio" + i).checked;
-    console.log(selectedValue + "--" + i);
 
     if (!isChecked) {
         // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
@@ -248,7 +247,7 @@ function tikla(selectedValue, i) {
             uniqueStep1Values.push(selectedValue);
         }
     }
-
+	console.log(uniqueStep1Values);
     // Filtreleme işlemini gerçekleştir
     const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
     updateTable(filteredData);
