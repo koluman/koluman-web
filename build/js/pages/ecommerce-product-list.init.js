@@ -282,7 +282,8 @@ Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEa
 		if (subitem.checked) {
 			filterChoicesInput.setValue([checkElm]);
 		}
-		subitem.addEventListener("click", function (event) {
+		console.log(filterChoicesInput);
+		/*subitem.addEventListener("click", function (event) {
 			if (subitem.checked) {
 				isFilterSelected++;
 				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
@@ -315,7 +316,7 @@ Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEa
 			productListPublished.updateConfig({
 				data: productListPublishedData
 			}).forceRender();
-		});
+		});*/
 	});
 });
 
