@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Tabloyu güncelle
 		updateTable(filteredData);
 	}
-	})
+
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
     filteritem.addEventListener("click", function () {
