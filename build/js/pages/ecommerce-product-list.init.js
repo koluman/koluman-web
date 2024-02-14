@@ -242,7 +242,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         filteritem.classList.add('active');
 
         var filterItemValue = filteritem.querySelector(".listname").innerHTML
-
+		console.log(filterItemValue);
         var filterData = productListAllData.filter(filterlist => filterlist.company_name === filterItemValue);
 
         productListAll.updateConfig({
