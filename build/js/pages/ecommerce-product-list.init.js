@@ -181,7 +181,7 @@ var productListAll = new gridjs.Grid({
             width: '84px',
         },
         {
-            name: "Action",
+            name: "İşlemler",
             width: '80px',
             sort: {
                 enabled: false
@@ -196,7 +196,7 @@ var productListAll = new gridjs.Grid({
                     '<li><a class="dropdown-item" href="apps-ecommerce-product-details"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>' +
                     '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="apps-ecommerce-add-product"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>' +
                     '<li class="dropdown-divider"></li>' +
-                    '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a></li>' +
+                    '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
                     '</ul>' +
                     '</div>');
             })
@@ -357,7 +357,7 @@ function removeItems() {
                 var filtered = '';
                 if (element.classList.contains("gridjs-tr-selected")) {
                     var getid = element.querySelector('.form-check-input').value;
-
+					console.log(getid);
                     function arrayRemove(arr, value) {
                         return arr.filter(function (ele) {
                             return ele.id != value;
