@@ -41,7 +41,7 @@
                                <li>
                                     <a href="#" class="d-flex py-1 align-items-center">
                                         <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">$c->company_name</h5>
+                                            <h5 class="fs-13 mb-0 listname">{{$c->company_name}}</h5>
                                         </div>
                                         <div class="flex-shrink-0 ms-2">
                                             <span class="badge bg-light text-muted">5</span>
