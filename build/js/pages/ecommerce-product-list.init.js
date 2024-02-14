@@ -234,11 +234,7 @@ searchProductList.addEventListener("keyup", function () {
     checkRemoveItem();
 });
 function tikla(selectedValue) {
-	console.log(selectedValue);
-	// Seçilen değeri kullanarak veriyi filtrele
 	const filteredData = productListAllData.filter(item => item.step1 === selectedValue);
-
-	// Tabloyu güncelle
 	updateTable(filteredData);
 }
 // mail list click event
