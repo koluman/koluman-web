@@ -255,7 +255,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'"';
 				s+='		id="productBrandRadio'+i+'" >';
 				s+='	<label class="form-check-label"';
-				s+='		for="productBrandRadio5">'+uniqueStep1Values[i]+'</label>';
+				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
 				s+='</div>';
 		}
 		$("#tik").html(s);
@@ -288,6 +288,23 @@ subitems.forEach(subitem => {
         }
     });
 });
+const productBrandRadios = document.querySelectorAll('.productBrandRadio');
+
+productBrandRadios.forEach(checkbox => {
+    checkbox.addEventListener("click", function (event) {
+        console.log("Tıklandı");
+
+        // Checkbox'ın durumunu kontrol etmek için
+        if (checkbox.checked) {
+            // Seçiliyse yapılacak işlemler
+            console.log("Checkbox seçildi");
+        } else {
+            // Seçili değilse yapılacak işlemler
+            console.log("Checkbox seçili değil");
+        }
+    });
+});
+
 
 
 
