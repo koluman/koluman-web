@@ -312,21 +312,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 	});
 })
 
-// price range slider
-var slider = document.getElementById('product-price-range');
-
-noUiSlider.create(slider, {
-	start: [0, 2000], // Handle start position
-	step: 10, // Slider moves in increments of '10'
-	margin: 20, // Handles must be more than '20' apart
-	connect: true, // Display a colored bar between the handles
-	behaviour: 'tap-drag', // Move handle on tap, bar is draggable
-	range: { // Slider can select '0' to '100'
-		'min': 0,
-		'max': 2000
-	},
-	format: wNumb({ decimals: 0, prefix: '$ ' })
-});
 
 var minCostInput = document.getElementById('minCost'),
 	maxCostInput = document.getElementById('maxCost');
@@ -334,42 +319,6 @@ var minCostInput = document.getElementById('minCost'),
 var filterDataAll = '';
 var filterDataPublished = '';
 
-// When the slider value changes, update the input and span
-slider.noUiSlider.on('update', function (values, handle) {
-	var productListupdatedAll = productListAllData;
-	var productListupdatedPublished = productListPublishedData;
-	if (handle) {
-		maxCostInput.value = values[handle];
-
-	} else {
-		minCostInput.value = values[handle];
-	}
-
-	var maxvalue = maxCostInput.value.substr(2);
-	var minvalue = minCostInput.value.substr(2);
-	filterDataAll = productListupdatedAll.filter(
-		product => parseFloat(product.price) >= minvalue && parseFloat(product.price) <= maxvalue
-	);
-	filterDataPublished = productListupdatedPublished.filter(
-		product => parseFloat(product.price) >= minvalue && parseFloat(product.price) <= maxvalue
-	);
-	productListAll.updateConfig({
-		data: filterDataAll
-	}).forceRender();
-	productListPublished.updateConfig({
-		data: filterDataPublished
-	}).forceRender();
-	checkRemoveItem();
-});
-
-
-minCostInput.addEventListener('change', function () {
-	slider.noUiSlider.set([null, this.value]);
-});
-
-maxCostInput.addEventListener('change', function () {
-	slider.noUiSlider.set([null, this.value]);
-});
 
 // text inputs example
 var filterChoicesInput = new Choices(
