@@ -252,28 +252,24 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
 		let s="";
 		for (let i = 0; i < uniqueStep1Values.length; i++) {
-				s+='<div class="form-check">';
-				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'" checked';
-				s+='		id="productBrandRadio'+i+'" >';
-				s+='	<label class="form-check-label"';
-				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
-				s+='</div>';
+			s += '<div class="form-check">';
+			s += '    <input class="form-check-input" type="checkbox" value="' + uniqueStep1Values[i] + '" checked';
+			s += '        id="productBrandRadio' + i + '" onchange="tikla(\'' + uniqueStep1Values[i] + '\')">';
+			s += '    <label class="form-check-label"';
+			s += '        for="productBrandRadio' + i + '">' + uniqueStep1Values[i] + '</label>';
+			s += '</div>';
 		}
+		
 		$("#tik").html(s);
         checkRemoveItem();
     });
 })
-const checkboxess = document.querySelectorAll('.form-check-input');
+function tikla(selectedValue) {
+	console.log(selectedValue);
+    // Seçilen değeri kullanarak veriyi filtrele
+    const filteredData = productListAllData.filter(item => item.step1 === selectedValue);
 
-checkboxess.forEach(checkbox => {
-    checkbox.addEventListener('change', handleCheckboxClick);
-});
-
-// Tıklanıldığında çalışacak fonksiyon
-function handleCheckboxClick() {
-    const checkboxess = document.querySelectorAll('.form-check-input:checked');
-    const selectedValues = Array.from(checkboxess).map(checkbox => checkbox.value);
-    const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
+    // Tabloyu güncelle
     updateTable(filteredData);
 }
 })
