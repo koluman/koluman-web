@@ -250,17 +250,17 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 
 		const uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
 		console.log(uniqueStep1Values);
-
-		for (let i = 0; i < filterData.length; i++) {
-			
+		let s="";
+		for (let i = 0; i < uniqueStep1Values.length; i++) {
+				s+='<div class="form-check">';
+				s+='	<input class="form-check-input" type="checkbox" value="'+uniqueStep1Values[i]+'"';
+				s+='		id="productBrandRadio"'+i+' >';
+				s+='	<label class="form-check-label"';
+				s+='		for="productBrandRadio5">'+uniqueStep1Values[i]+'</label>';
+				s+='</div>';
 		}
-	// 	<div class="form-check">
-	// 	<input class="form-check-input" type="checkbox" value="Boat"
-	// 		id="productBrandRadio5" checked>
-	// 	<label class="form-check-label"
-	// 		for="productBrandRadio5">Boat</label>
-	// </div>
-
+	
+		$("#s").html(s);
 
         checkRemoveItem();
     });

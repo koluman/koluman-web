@@ -79,7 +79,7 @@
                                     <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Kategori ara...">
                                     <i class="ri-search-line search-icon"></i>
                                 </div>
-                                <div class="d-flex flex-column gap-2 mt-3 filter-check">
+                                <div class="d-flex flex-column gap-2 mt-3 filter-check" id="tik">
                                    
 
                                     
