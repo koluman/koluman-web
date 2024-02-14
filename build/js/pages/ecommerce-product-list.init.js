@@ -249,6 +249,15 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
             data: filterData
         }).forceRender();
 
+		const productItem = productListAll.find(item => item.company_id == companyId);
+		console.log(productItem);
+	// 	<div class="form-check">
+	// 	<input class="form-check-input" type="checkbox" value="Boat"
+	// 		id="productBrandRadio5" checked>
+	// 	<label class="form-check-label"
+	// 		for="productBrandRadio5">Boat</label>
+	// </div>
+
 
         checkRemoveItem();
     });
