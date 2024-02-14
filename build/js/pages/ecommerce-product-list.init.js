@@ -260,7 +260,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 				s+='</div>';
 		}
 	
-		$("#s").html(s);
+		$("#tik").html(s);
 
         checkRemoveItem();
     });
