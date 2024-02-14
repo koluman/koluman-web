@@ -13,8 +13,12 @@ class Companies extends Model
     protected $fillable = [
         'company_id',
         'company_name',
-        'company_image_url', 
-        'created_at', 
+        'company_image_url',
+        'created_at',
         'updated_at'
     ];
+    public function showrooms()
+    {
+        return $this->hasMany(Showroom::class, 'company_id', 'company_id');
+    }
 }
