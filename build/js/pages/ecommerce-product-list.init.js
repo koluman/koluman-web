@@ -154,6 +154,7 @@ var productListAll = new gridjs.Grid({
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
 
+console.log(productListAll);
 
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
@@ -165,7 +166,6 @@ searchProductList.addEventListener("keyup", function () {
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
-	console.log(filterData);
 	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
