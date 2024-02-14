@@ -236,7 +236,6 @@ searchProductList.addEventListener("keyup", function () {
 let uniqueStep1Values = []; 
 function tikla(selectedValue, i) {
     const isChecked = document.getElementById("productBrandRadio" + i).checked;
-	console.log(isChecked);
     if (!isChecked) {
         uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
     } else {
@@ -245,6 +244,8 @@ function tikla(selectedValue, i) {
         if (!uniqueStep1Values.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
         }
+		console.log(uniqueStep1Values);
+
     }
     const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
     updateTable(filteredData);
