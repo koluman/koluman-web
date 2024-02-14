@@ -166,6 +166,7 @@ var productListAll = new gridjs.Grid({
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
 
+console.log(productListAllData);
 
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
@@ -177,7 +178,6 @@ searchProductList.addEventListener("keyup", function () {
 			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
-	console.log(productListAllData);
 
 	var filterData = filterItems(productListAllData, inputVal);
 	productListAll.updateConfig({
@@ -202,7 +202,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		productListAll.updateConfig({
 			data: filterData
 		}).forceRender();
-		console.log(productListAll);
 		
 
 		checkRemoveItem();
