@@ -258,7 +258,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 				s+='		for="productBrandRadio'+i+'">'+uniqueStep1Values[i]+'</label>';
 				s+='</div>';
 		}
-		$("#tik").html(s);
+		//$("#tik").html(s);
         checkRemoveItem();
     });
 })
