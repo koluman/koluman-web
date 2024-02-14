@@ -237,21 +237,28 @@ let uniqueStep1Values = [];
 
 function tikla(selectedValue, i) {
     const isChecked = document.getElementById("productBrandRadio" + i).checked;
+    console.log(selectedValue + "--" + i);
 
-    if (!isChecked) {
-        // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
-        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
-    } else {
+    if (isChecked) {
         // Checkbox işaretli ise, selectedValue'yi uniqueStep1Values içine ekle
         if (!uniqueStep1Values.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
         }
+    } else {
+        // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
+        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
     }
-	console.log(uniqueStep1Values);
-    // Filtreleme işlemini gerçekleştir
-    const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
-    updateTable(filteredData);
+
+    // Eğer hiçbir checkbox seçili değilse, tüm veriyi göster
+    if (uniqueStep1Values.length === 0) {
+        updateTable(productListAllData);
+    } else {
+        // Aksi durumda filtreyi uygula
+        const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
+        updateTable(filteredData);
+    }
 }
+
 
 // mail list click event
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
