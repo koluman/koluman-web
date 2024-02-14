@@ -240,12 +240,12 @@ function tikla(selectedValue,i) {
 	console.log(selectedValue+"--"+i);
     if (isChecked) {
         // Checkbox işaretli ise, selectedValue'yi uniqueStep1Values içine ekle
-        if (!uniqueStep1Values.includes(selectedValue)) {
+        if (!productListAllData.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
         }
     } else {
         // Checkbox işaretli değilse, uniqueStep1Values içinden çıkar
-        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
+        uniqueStep1Values = productListAllData.filter(value => value !== selectedValue);
     }
 
     // Filtreleme işlemini gerçekleştir
