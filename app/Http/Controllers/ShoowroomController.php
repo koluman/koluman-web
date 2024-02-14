@@ -15,10 +15,15 @@ class ShoowroomController extends Controller
 
         foreach ($companies as $company) {
             $showrooms = $company->showrooms;
+            $carCount = 0;
 
             foreach ($showrooms as $showroom) {
                 $step1Values[] = $showroom->step1;
+                $carCount += $showroom->cars->count(); // Her bir showroom'daki araba sayısını topla
             }
+
+            $company->setAttribute('showroomCount', $showrooms->count()); 
+            $company->setAttribute('carCount', $carCount); 
         }
 
         $uniqueStep1Values = array_unique($step1Values);
