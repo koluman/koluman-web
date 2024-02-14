@@ -240,11 +240,13 @@ function tikla(selectedValue, i) {
     if (!isChecked) {
         uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
     } else {
+		console.log(uniqueStep1Values);
+		console.log(selectedValue);
+
         if (!uniqueStep1Values.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
         }
     }
-    console.log(uniqueStep1Values);
     const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
     updateTable(filteredData);
 }
