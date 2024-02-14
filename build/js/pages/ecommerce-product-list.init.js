@@ -249,7 +249,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
             data: filterData
         }).forceRender();
 
-		const productItem = productListAllData.find(item => item.company_id == companyId);
 		console.log(filterData);
 	// 	<div class="form-check">
 	// 	<input class="form-check-input" type="checkbox" value="Boat"
