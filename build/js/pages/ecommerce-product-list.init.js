@@ -42,9 +42,7 @@ function updateTable(data) {
             step2: item.step2,
             step3: item.step3,
 			step4: item.step4,
-            published: {
-                publishDate: item.car_description,
-            }
+			step5: item.step5,
         };
     });
 
@@ -134,11 +132,8 @@ var productListAll = new gridjs.Grid({
 				width: '84px',
 			},
 			{
-				name: 'Published',
-				width: '220px',
-				data: (function (row) {
-					return gridjs.html(row.published.publishDate + '<small class="text-muted ms-1">' + row.published.publishTime + '</small>');
-				})
+				name: 'Step5',
+				width: '84px',
 			},
 			{
 				name: "Action",
@@ -231,11 +226,12 @@ var productListPublished = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Published',
-				width: '220px',
-				data: (function (row) {
-					return gridjs.html(row.published.publishDate + '<small class="text-muted ms-1">' + row.published.publishTime + '</small>');
-				})
+				name: 'Step4',
+				width: '84px',
+			},
+			{
+				name: 'Step5',
+				width: '84px',
 			},
 			{
 				name: "Action",
