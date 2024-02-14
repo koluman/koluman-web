@@ -47,10 +47,10 @@ function updateTable(data) {
 			step5: item.step5,
         };
     });
-	productListAllData = tableData; // productListAllData dizisini güncelle
 
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
+	console.log(productListAll);
 }
 
 
