@@ -40,7 +40,7 @@ function kategori() {
                         type: 'GET',
                         url: 'https://mobiloby.app/koluman/web/api/getcompanies',
                         headers: {
-                            "Aythorization": "Bearer"+data.token, // CSRF token'ını gönder
+                            "Authorization": "Bearer"+data.token, // CSRF token'ını gönder
                         },
                         dataType: 'json',
                         success: function (data) {
