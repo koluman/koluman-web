@@ -5,9 +5,9 @@ Website: https://Themesbrand.com/
 Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
+var productListAllData = [];
 document.addEventListener("DOMContentLoaded", function () {
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
-var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
 xhr.onreadystatechange = function() {
@@ -23,7 +23,6 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
-})
 
 
 function updateTable(data) {
@@ -49,10 +48,6 @@ function updateTable(data) {
     productListAll.updateConfig({ data: tableData }).forceRender();
 	console.log(tableData);
 }
-
-
-
-// table-product-list-all 
 
 var inputValueJson = sessionStorage.getItem('inputValue');
 if (inputValueJson) {
@@ -328,3 +323,4 @@ function removeSingleItem() {
 		});
 	});
 }
+})
