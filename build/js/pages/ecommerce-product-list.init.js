@@ -320,64 +320,8 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
-// text inputs example
-var filterChoicesInput = new Choices(
-	document.getElementById('filter-choices-input'),
-	{
-		addItems: true,
-		delimiter: ',',
-		editItems: true,
-		maxItemCount: 10,
-		removeItems: true,
-		removeItemButton: true,
-	}
-)
 
-// sidebar filter check
-Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
-	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
-	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
-		var checkElm = subitem.value;
-		if (subitem.checked) {
-			filterChoicesInput.setValue([checkElm]);
-		}
-		subitem.addEventListener("click", function (event) {
-			if (subitem.checked) {
-				isFilterSelected++;
-				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-				filterChoicesInput.setValue([checkElm]);
 
-			} else {
-				filterChoicesInput.removeActiveItemsByValue(checkElm);
-			}
-		});
-		filterChoicesInput.passedElement.element.addEventListener('removeItem', function (event) {
-			if (event.detail.value == checkElm) {
-				subitem.checked = false;
-				isFilterSelected--;
-				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-			}
-		}, false);
-		// clearall
-		document.getElementById("clearall").addEventListener("click", function () {
-			subitem.checked = false;
-			filterChoicesInput.removeActiveItemsByValue(checkElm);
-			isFilterSelected = 0;
-			item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-			(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-			productListAll.updateConfig({
-				data: productListAllData
-			}).forceRender();
-
-			productListPublished.updateConfig({
-				data: productListPublishedData
-			}).forceRender();
-		});
-	});
-});
 
 // Search Brands Options
 var searchBrandsOptions = document.getElementById("searchBrandsList");
