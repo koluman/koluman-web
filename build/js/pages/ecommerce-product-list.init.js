@@ -41,7 +41,6 @@ function updateTable(data) {
 
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
-	console.log(tableData);
 }
 
 var inputValueJson = sessionStorage.getItem('inputValue');
@@ -166,6 +165,7 @@ searchProductList.addEventListener("keyup", function () {
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
+	console.log(filterData);
 	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
