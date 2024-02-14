@@ -36,8 +36,17 @@
                         <div>
                             <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
                             <ul class="list-unstyled mb-0 filter-list" id="cat">
-                                
-                               
+                            
+                                <li>
+                                    <a href="#" class="d-flex py-1 align-items-center">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-13 mb-0 listname">Koluman</h5>
+                                        </div>
+                                        <div class="flex-shrink-0 ms-2">
+                                            <span class="badge bg-light text-muted">5</span>
+                                        </div>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
