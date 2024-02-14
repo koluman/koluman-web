@@ -288,21 +288,25 @@ subitems.forEach(subitem => {
         }
     });
 });
-const productBrandRadios = document.querySelectorAll('.productBrandRadio');
+const regex = /productBrandRadio\d+/; // \d+ ifadesi bir veya daha fazla rakamı temsil eder
+
+const productBrandRadios = document.querySelectorAll('input[type="checkbox"]');
 
 productBrandRadios.forEach(checkbox => {
-    checkbox.addEventListener("click", function (event) {
-        console.log("Tıklandı");
+    if (regex.test(checkbox.id)) {
+        checkbox.addEventListener("click", function (event) {
+            console.log("Tıklandı");
 
-        // Checkbox'ın durumunu kontrol etmek için
-        if (checkbox.checked) {
-            // Seçiliyse yapılacak işlemler
-            console.log("Checkbox seçildi");
-        } else {
-            // Seçili değilse yapılacak işlemler
-            console.log("Checkbox seçili değil");
-        }
-    });
+            // Checkbox'ın durumunu kontrol etmek için
+            if (checkbox.checked) {
+                // Seçiliyse yapılacak işlemler
+                console.log("Checkbox seçildi");
+            } else {
+                // Seçili değilse yapılacak işlemler
+                console.log("Checkbox seçili değil");
+            }
+        });
+    }
 });
 
 
