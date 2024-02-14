@@ -202,7 +202,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 		productListAll.updateConfig({
 			data: filterData
 		}).forceRender();
-
+		console.log(productListAll);
 		
 
 		checkRemoveItem();
