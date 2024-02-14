@@ -24,6 +24,7 @@ xhr.onreadystatechange = function() {
 
 xhr.send();
 
+})
 
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
@@ -323,4 +324,3 @@ function removeSingleItem() {
 		});
 	});
 }
-})
