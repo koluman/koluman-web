@@ -233,15 +233,14 @@ searchProductList.addEventListener("keyup", function () {
 
     checkRemoveItem();
 });
-
+let uniqueStep1Values = []; 
 function tikla(selectedValue, i) {
-    let uniqueStep1Values = []; 
     const isChecked = document.getElementById("productBrandRadio" + i).checked;
+	console.log(isChecked);
     if (!isChecked) {
         uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
     } else {
-		console.log(uniqueStep1Values);
-		console.log(selectedValue);
+		
 
         if (!uniqueStep1Values.includes(selectedValue)) {
             uniqueStep1Values.push(selectedValue);
