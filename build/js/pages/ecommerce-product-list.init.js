@@ -263,18 +263,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         checkRemoveItem();
     });
 })
-})
-
-
-
-var minCostInput = document.getElementById('minCost'),
-    maxCostInput = document.getElementById('maxCost');
-
-var filterDataAll = '';
-var filterDataPublished = '';
-
-
-
 const checkboxess = document.querySelectorAll('.form-check-input');
 
 checkboxess.forEach(checkbox => {
@@ -288,6 +276,19 @@ function handleCheckboxClick() {
     const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
     updateTable(filteredData);
 }
+})
+
+
+
+var minCostInput = document.getElementById('minCost'),
+    maxCostInput = document.getElementById('maxCost');
+
+var filterDataAll = '';
+var filterDataPublished = '';
+
+
+
+
 
 
 
