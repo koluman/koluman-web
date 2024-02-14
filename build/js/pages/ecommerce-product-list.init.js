@@ -249,7 +249,12 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
             data: filterData
         }).forceRender();
 
-		console.log(filterData);
+		const uniqueStep1Values = [...new Set(data.map(item => item.step1))];
+		console.log(uniqueStep1Values);
+
+		for (let i = 0; i < filterData.length; i++) {
+			
+		}
 	// 	<div class="form-check">
 	// 	<input class="form-check-input" type="checkbox" value="Boat"
 	// 		id="productBrandRadio5" checked>
