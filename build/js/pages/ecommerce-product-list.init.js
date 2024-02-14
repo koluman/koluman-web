@@ -277,7 +277,8 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
-
+var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
+	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
 
 
 
