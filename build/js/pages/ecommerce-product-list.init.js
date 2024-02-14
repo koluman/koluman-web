@@ -275,11 +275,13 @@ var filterDataPublished = '';
 
 // sidebar filter check
 Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
-	console.log(item);
 
 	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
+
 	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
 	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
+		console.log(subitem);
+
 		var checkElm = subitem.value;
 		if (subitem.checked) {
 			filterChoicesInput.setValue([checkElm]);
