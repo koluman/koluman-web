@@ -50,14 +50,15 @@ function kategori() {
 									const companyName = data.companies[i].company_name;
 									const companyId = data.companies[i].company_id;
 									const productItem = productListAllData.find(item => item.company_id == companyId);
-									if(productItem==undefined) productItem.length=0;
+									if(productItem==undefined) say=0;
+									else say=productItem.length;
 									l += '<li>';
 									l += '<a href="#" class="d-flex py-1 align-items-center">';
 									l += '	<div class="flex-grow-1">';
 									l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
 									l += '	</div>';
 									l += '	<div class="flex-shrink-0 ms-2">';
-									l += '		<span class="badge bg-light text-muted">' + productItem.length + '</span>';
+									l += '		<span class="badge bg-light text-muted">' + say + '</span>';
 									l += '	</div>';
 									l += '</a>';
 									l += '</li>';
