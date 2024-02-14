@@ -41,9 +41,9 @@ function updateTable(data) {
             step1: item.step1,
             step2: item.step2,
             step3: item.step3,
+			step4: item.step4,
             published: {
                 publishDate: item.car_description,
-                publishTime: item.step4
             }
         };
     });
@@ -128,6 +128,10 @@ var productListAll = new gridjs.Grid({
 				formatter: (function (cell) {
 					return gridjs.html('<span class="badge bg-light text-body fs-12 fw-medium">' + cell + '</span></td>');
 				})
+			},
+			{
+				name: 'Step4',
+				width: '84px',
 			},
 			{
 				name: 'Published',
