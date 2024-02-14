@@ -272,18 +272,20 @@ var minCostInput = document.getElementById('minCost'),
 var filterDataAll = '';
 var filterDataPublished = '';
 
-const subitem =document.querySelectorAll('.form-check-input')
-subitem.addEventListener("click", function (event) {
-	console.log("dsdasd");
-	if (subitem.checked) {
-		isFilterSelected++;
-		item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-		(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-		filterChoicesInput.setValue([checkElm]);
+const subitems = document.querySelectorAll('.form-check-input');
 
-	} else {
-		filterChoicesInput.removeActiveItemsByValue(checkElm);
-	}
+subitems.forEach(subitem => {
+    subitem.addEventListener("click", function (event) {
+        console.log("dsdasd");
+        if (subitem.checked) {
+            isFilterSelected++;
+            item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+            (isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+            filterChoicesInput.setValue([checkElm]);
+        } else {
+            filterChoicesInput.removeActiveItemsByValue(checkElm);
+        }
+    });
 });
 
 
