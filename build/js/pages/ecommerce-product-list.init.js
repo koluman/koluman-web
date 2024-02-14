@@ -263,18 +263,24 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
     });
 })
 
-// Checkbox'ların tıklandığı durumu ele alan fonksiyon
 function handleCheckboxClick() {
-	console.log("dasdsadsa");
     const checkboxes = document.querySelectorAll('.form-check-input:checked');
     const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
-    const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
-    updateTable(filteredData);
+
+    if (selectedValues.length > 0) {
+        const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
+        updateTable(filteredData);
+    } else {
+        // Eğer hiç checkbox seçilmezse, tüm veriyi göster
+        updateTable(productListAllData);
+    }
 }
 
+// Her bir checkbox'a click event listener ekle
 Array.from(document.querySelectorAll('.form-check-input')).forEach(checkbox => {
     checkbox.addEventListener('change', handleCheckboxClick);
 });
+
 
 var minCostInput = document.getElementById('minCost'),
     maxCostInput = document.getElementById('maxCost');
