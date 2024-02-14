@@ -19,7 +19,6 @@ xhr.onreadystatechange = function() {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
             updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
@@ -48,6 +47,7 @@ function updateTable(data) {
 			step5: item.step5,
         };
     });
+	productListAllData = tableData; // productListAllData dizisini güncelle
 
     // Tabloyu güncelle
     productListAll.updateConfig({ data: tableData }).forceRender();
@@ -179,11 +179,10 @@ searchProductList.addEventListener("keyup", function () {
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
-	console.log(filterData);
-	/*productListAll.updateConfig({
+	productListAll.updateConfig({
 		data: filterData
 	}).forceRender();
-	checkRemoveItem();*/
+	checkRemoveItem();
 });
 
 // mail list click event
