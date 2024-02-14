@@ -57,39 +57,6 @@ function updateTable(data) {
 
 // table-product-list-all 
 var productListAllData = [
-	{
-		"id": 1,
-		"product": {
-			"img": "build/images/products/img-1.png",
-			"title": "Half Sleeve Round Neck T-Shirts",
-			"category": "Fashion"
-		},
-		"stock": "12",
-		"price": "215.00",
-		"orders": "48",
-		"rating": "4.2",
-		"published": {
-			"publishDate": "12 Oct, 2021",
-			"publishTime": "10:05 AM",
-		}
-	},
-	{
-		"id": 2,
-		"product": {
-			"img": "build/images/products/img-2.png",
-			"title": "Urban Ladder Pashe Chair",
-			"category": "Furniture"
-		},
-		"stock": "06",
-		"price": "160.00",
-		"orders": "30",
-		"rating": "4.3",
-		"published": {
-			"publishDate": "06 Jan, 2021",
-			"publishTime": "01:31 PM",
-		}
-	}
-	
 ];
 
 var inputValueJson = sessionStorage.getItem('inputValue');
@@ -208,37 +175,7 @@ var productListAll = new gridjs.Grid({
 
 // table-product-list-published
 var productListPublishedData = [
-	{
-		"id": 1,
-		"product": {
-			"img": "build/images/products/img-2.png",
-			"title": "Urban Ladder Pashe Chair",
-			"category": "Furniture"
-		},
-		"stock": "06",
-		"price": "160.00",
-		"orders": "30",
-		"rating": "4.3",
-		"published": {
-			"publishDate": "06 Jan, 2021",
-			"publishTime": "01:31 PM",
-		}
-	},{
-		"id": 2,
-		"product": {
-			"img": "build/images/products/img-6.png",
-			"title": "Half Sleeve T-Shirts (Blue)",
-			"category": "Fashion"
-		},
-		"stock": "15",
-		"price": "125.00",
-		"orders": "48",
-		"rating": "4.2",
-		"published": {
-			"publishDate": "12 Oct, 2021",
-			"publishTime": "04:55 PM",
-		}
-	}
+
 ]
 
 var productListPublished = new gridjs.Grid({
