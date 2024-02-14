@@ -233,6 +233,8 @@ searchProductList.addEventListener("keyup", function () {
 
     checkRemoveItem();
 });
+let uniqueStep1Values = [];
+
 function tikla(selectedValue,i) {
 	const isChecked = document.getElementById("productBrandRadio" + i).checked;
 
