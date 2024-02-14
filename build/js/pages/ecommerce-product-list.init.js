@@ -176,7 +176,8 @@ searchProductList.addEventListener("keyup", function () {
 	function filterItems(arr, query) {
 
 		return arr.filter(function (el) {
-			return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+			console.log(el.product);
+			return el.product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
 		})
 	}
 	var filterData = filterItems(productListAllData, inputVal);
