@@ -49,9 +49,8 @@ function kategori() {
 								for (let i = 0; i < data.companies.length; i++) {
 									const companyName = data.companies[i].company_name;
 									const companyId = data.companies[i].company_id;
-									console.log(companyId);
 									const productItem = productListAllData.find(item => item.company_id == companyId);
-									console.log(productItem);
+									if(productItem==undefined) productItem.length=0;
 									l += '<li>';
 									l += '<a href="#" class="d-flex py-1 align-items-center">';
 									l += '	<div class="flex-grow-1">';
