@@ -39,7 +39,7 @@ function updateTable(data) {
 				category: item.company_name
             },
             step1: item.step1,
-            orders: item.step2,
+            step2: item.step2,
             rating: item.step3,
             published: {
                 publishDate: item.car_description,
@@ -119,7 +119,7 @@ var productListAll = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Orders',
+				name: 'Step2',
 				width: '84px',
 			},
 			{
@@ -216,7 +216,7 @@ var productListPublished = new gridjs.Grid({
 				})
 			},
 			{
-				name: 'Orders',
+				name: 'Step2',
 				width: '84px',
 			},
 			{
