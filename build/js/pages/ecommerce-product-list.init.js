@@ -265,6 +265,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 
 // Checkbox'ların tıklandığı durumu ele alan fonksiyon
 function handleCheckboxClick() {
+	console.log("dasdsadsa");
     const checkboxes = document.querySelectorAll('.form-check-input:checked');
     const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
     const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
