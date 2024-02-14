@@ -272,41 +272,50 @@ var minCostInput = document.getElementById('minCost'),
 var filterDataAll = '';
 var filterDataPublished = '';
 
-const subitems = document.querySelectorAll('.form-check-input');
+// sidebar filter check
+Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
+	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
+	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
+		var checkElm = subitem.value;
+		if (subitem.checked) {
+			filterChoicesInput.setValue([checkElm]);
+		}
+		subitem.addEventListener("click", function (event) {
+			if (subitem.checked) {
+				isFilterSelected++;
+				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+				filterChoicesInput.setValue([checkElm]);
 
-subitems.forEach(subitem => {
-	console.log(subitem);
-    subitem.addEventListener("click", function (event) {
-        console.log("dsdasd");
-        if (subitem.checked) {
-            isFilterSelected++;
-            item.querySelector(".filter-badge").innerHTML = isFilterSelected;
-            (isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
-            filterChoicesInput.setValue([checkElm]);
-        } else {
-            filterChoicesInput.removeActiveItemsByValue(checkElm);
-        }
-    });
-});
-const regex = /productBrandRadio\d+/; // \d+ ifadesi bir veya daha fazla rakamı temsil eder
+			} else {
+				filterChoicesInput.removeActiveItemsByValue(checkElm);
+			}
+		});
+		filterChoicesInput.passedElement.element.addEventListener('removeItem', function (event) {
+			if (event.detail.value == checkElm) {
+				subitem.checked = false;
+				isFilterSelected--;
+				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+			}
+		}, false);
+		// clearall
+		document.getElementById("clearall").addEventListener("click", function () {
+			subitem.checked = false;
+			filterChoicesInput.removeActiveItemsByValue(checkElm);
+			isFilterSelected = 0;
+			item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+			(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+			productListAll.updateConfig({
+				data: productListAllData
+			}).forceRender();
 
-const productBrandRadios = document.querySelectorAll('input[type="checkbox"]');
-
-productBrandRadios.forEach(checkbox => {
-    if (regex.test(checkbox.id)) {
-        checkbox.addEventListener("click", function (event) {
-            console.log("Tıklandı");
-
-            // Checkbox'ın durumunu kontrol etmek için
-            if (checkbox.checked) {
-                // Seçiliyse yapılacak işlemler
-                console.log("Checkbox seçildi");
-            } else {
-                // Seçili değilse yapılacak işlemler
-                console.log("Checkbox seçili değil");
-            }
-        });
-    }
+			productListPublished.updateConfig({
+				data: productListPublishedData
+			}).forceRender();
+		});
+	});
 });
 
 
