@@ -263,23 +263,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
     });
 })
 
-function handleCheckboxClick() {
-    const checkboxes = document.querySelectorAll('.form-check-input:checked');
-    const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
 
-    if (selectedValues.length > 0) {
-        const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
-        updateTable(filteredData);
-    } else {
-        // Eğer hiç checkbox seçilmezse, tüm veriyi göster
-        updateTable(productListAllData);
-    }
-}
-
-// Her bir checkbox'a click event listener ekle
-Array.from(document.querySelectorAll('.form-check-input')).forEach(checkbox => {
-    checkbox.addEventListener('change', handleCheckboxClick);
-});
 
 
 var minCostInput = document.getElementById('minCost'),
@@ -289,14 +273,57 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
+// sidebar filter check
+Array.from(document.querySelectorAll(".filter-accordion .accordion-item")).forEach(function (item) {
+	var isFilterSelected = item.querySelectorAll(".filter-check .form-check .form-check-input:checked").length;
+	item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+	Array.from(item.querySelectorAll(".form-check .form-check-input")).forEach(function (subitem) {
+		var checkElm = subitem.value;
+		if (subitem.checked) {
+			filterChoicesInput.setValue([checkElm]);
+		}
+		subitem.addEventListener("click", function (event) {
+			if (subitem.checked) {
+				isFilterSelected++;
+				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+				filterChoicesInput.setValue([checkElm]);
 
+			} else {
+				filterChoicesInput.removeActiveItemsByValue(checkElm);
+			}
+		});
+		filterChoicesInput.passedElement.element.addEventListener('removeItem', function (event) {
+			if (event.detail.value == checkElm) {
+				subitem.checked = false;
+				isFilterSelected--;
+				item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+				(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+			}
+		}, false);
+		// clearall
+		document.getElementById("clearall").addEventListener("click", function () {
+			subitem.checked = false;
+			filterChoicesInput.removeActiveItemsByValue(checkElm);
+			isFilterSelected = 0;
+			item.querySelector(".filter-badge").innerHTML = isFilterSelected;
+			(isFilterSelected > 0) ? item.querySelector(".filter-badge").style.display = 'block' : item.querySelector(".filter-badge").style.display = 'none';
+			productListAll.updateConfig({
+				data: productListAllData
+			}).forceRender();
+
+			productListPublished.updateConfig({
+				data: productListPublishedData
+			}).forceRender();
+		});
+	});
+});
 
 
 // Search Brands Options
 var searchBrandsOptions = document.getElementById("searchBrandsList");
 searchBrandsOptions.addEventListener("keyup", function () {
     var inputVal = searchBrandsOptions.value.toLowerCase();
-	console.log(inputVal);
     var searchItem = document.querySelectorAll("#flush-collapseBrands .form-check");
     Array.from(searchItem).forEach(function (elem) {
         var searchBrandsTxt = elem.getElementsByClassName("form-check-label")[0].innerText.toLowerCase();
