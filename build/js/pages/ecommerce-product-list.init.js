@@ -44,8 +44,47 @@ function kategori() {
 						},
                         dataType: 'json',
                         success: function (data) {
-
-                           console.log(data);
+							let l="";
+							if (data.success == 1) {
+								for (let i = 0; i < data.companies.length; i++) {
+									// Şirket adını ve company_id'yi al
+									const companyName = data.companies[i].company_name;
+									const companyId = data.companies[i].company_id;
+							
+									// productListAll içinde company_id'yi bul
+									const productItem = productListAll.find(item => item.company_id === companyId);
+							
+									// Eğer company_id bulunduysa ve bu öğenin bir ürün sayısı varsa
+									if (productItem && productItem.products.length > 0) {
+										const productCount = productItem.products.length;
+							
+										// HTML'e ürün sayısını ekleyin
+										l += '<li>';
+										l += '<a href="#" class="d-flex py-1 align-items-center">';
+										l += '	<div class="flex-grow-1">';
+										l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
+										l += '	</div>';
+										l += '	<div class="flex-shrink-0 ms-2">';
+										l += '		<span class="badge bg-light text-muted">' + productCount + '</span>';
+										l += '	</div>';
+										l += '</a>';
+										l += '</li>';
+									} else {
+										// Eğer ürün sayısı yoksa
+										l += '<li>';
+										l += '<a href="#" class="d-flex py-1 align-items-center">';
+										l += '	<div class="flex-grow-1">';
+										l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
+										l += '	</div>';
+										l += '	<div class="flex-shrink-0 ms-2">';
+										l += '		<span class="badge bg-light text-muted">0</span>'; // Varsa 0 olarak ekleyebilirsiniz
+										l += '	</div>';
+										l += '</a>';
+										l += '</li>';
+									}
+								}
+							}
+							
 
                         }
                     });
