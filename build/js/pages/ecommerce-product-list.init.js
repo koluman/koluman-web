@@ -19,7 +19,8 @@ xhr.onreadystatechange = function() {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            updateTable(responseData.showroomcars);
+            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
+            updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
         }
@@ -27,6 +28,7 @@ xhr.onreadystatechange = function() {
 };
 
 xhr.send();
+
 
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
@@ -166,7 +168,6 @@ var productListAll = new gridjs.Grid({
 	data: productListAllData
 }).render(document.getElementById("table-product-list-all"));
 
-console.log(productListAllData);
 
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
