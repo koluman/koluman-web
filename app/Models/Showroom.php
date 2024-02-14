@@ -25,5 +25,8 @@ class Showroom extends Model
         'created_at',
         'updated_at'
     ];
-   
+    public function cars()
+    {
+        return $this->hasMany(Companies::class, 'company_id', 'company_id');
+    }
 }
