@@ -28,7 +28,7 @@ xhr.onreadystatechange = function () {
 };
 
 xhr.send();
-kategori();
+/*kategori();
 function kategori() {
     $.ajax({
             type: 'GET',
@@ -74,7 +74,7 @@ function kategori() {
                 }
             }
         }) 
-}
+}*/
 
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
