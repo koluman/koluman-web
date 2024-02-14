@@ -280,11 +280,17 @@ checkboxess.forEach(checkbox => {
 
 // Tıklanıldığında çalışacak fonksiyon
 function handleCheckboxClick() {
-    const checkboxess = document.querySelectorAll('.form-check-input:checked');
-    const selectedValues = Array.from(checkboxess).map(checkbox => checkbox.value);
+    console.log("Checkbox clicked");
+
+    const checkboxes = document.querySelectorAll('.form-check-input:checked');
+    const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
     const filteredData = productListAllData.filter(item => selectedValues.includes(item.step1));
+
+    console.log(filteredData);  // Kontrol amacıyla log ekle
+
     updateTable(filteredData);
 }
+
 
 
 
