@@ -143,7 +143,7 @@ $("#addcar").click(function () {
     formData.append('step4', $("#step4text").val());
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5text").val());
-    formData.append('state', document.querySelector("#state").checked);
+    formData.append('state', document.querySelector("#state").checked==false ? 0 : 1);
     formData.append('car_description', document.querySelector("#car_description").value);
     if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
