@@ -32,18 +32,13 @@ var dropzone = new Dropzone(".dropzone", {
 // Form Event
 (function () {
     'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
-    let company;
-
+    let  company = new Choices("#company_id", {
+        searchEnabled: false
+    });
     document.addEventListener("DOMContentLoaded", function () {
-        company = new Choices("#company_id", {
-            searchEnabled: false
-        });
         getcompany();
     });
-
     function getcompany() {
         $.ajax({
             type: 'GET',
@@ -88,11 +83,5 @@ var dropzone = new Dropzone(".dropzone", {
             }
         });
     }
- 
-
-    // choices category input
-    var prdoctCategoryInput = new Choices('#choices-category-input', {
-        searchEnabled: false,
-    });
 
 })()
