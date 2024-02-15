@@ -20,7 +20,6 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-status-input" class="form-label">Status</label>
 
@@ -34,16 +33,8 @@
                                 <select class="form-select" id="car_name" data-choices data-choices-search-false>
                                 </select>
                             </div>
-                        </div>
-
-                    </div>
-                
-                </div><br>
-                 <div class="card">
-                    <div class="card-body">
-                      
                          <div>
-                            <label>Product Description</label><br>
+                            <label>Product Description</label>
 
                             <div id="ckeditor-classic">
                                 <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
