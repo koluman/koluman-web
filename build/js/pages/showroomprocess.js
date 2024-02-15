@@ -1,13 +1,17 @@
 itemid = 13;
+var editorContent;
+
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
+        editorContent = editor.getData(); // CKEditor içeriğini al
+
     })
     .catch(function (error) {
         console.error(error);
     });
-console.log(ClassicEditor);
+console.log(editorContent);
 var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
