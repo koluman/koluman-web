@@ -35,72 +35,74 @@ var dropzone = new Dropzone(".dropzone", {
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company;
+    let company;
 
-document.addEventListener("DOMContentLoaded", function () {
-    company = new Choices("#company_id", {
-        searchEnabled: false
+    document.addEventListener("DOMContentLoaded", function () {
+        company = new Choices("#company_id", {
+            searchEnabled: false
+        });
+        getcompany();
     });
-    getcompany();
-});
-function getcompany() {
-    $.ajax({
-        type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
-        dataType: 'json',
-        success: function (data) {
 
-            if (data.success == 1) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
-                    dataType: 'json',
-                    headers: {
-                        "Authorization": 'Bearer ' + data.token
-                    },
-                    success: function (data) {
-                        if (data.success == 1) {
-                            var ch = [];
-                            var v = "";
-                            var t = "Lütfen Seçiniz";
-                            var c = {
-                                value: v,
-                                label: t,
-                            };
-                            ch.push(c);
-                            for (var i = 0; i < data.companies.length; i++) {
-                                v = data.companies[i]["company_id"];
-                                t = data.companies[i]["company_name"];
+    function getcompany() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://mobiloby.app/koluman/web/getApiToken',
+            dataType: 'json',
+            success: function (data) {
 
-                                c = {
+                if (data.success == 1) {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                        dataType: 'json',
+                        headers: {
+                            "Authorization": 'Bearer ' + data.token
+                        },
+                        success: function (data) {
+                            if (data.success == 1) {
+                                var ch = [];
+                                var v = "";
+                                var t = "Lütfen Seçiniz";
+                                var c = {
                                     value: v,
                                     label: t,
                                 };
                                 ch.push(c);
+                                for (var i = 0; i < data.companies.length; i++) {
+                                    v = data.companies[i]["company_id"];
+                                    t = data.companies[i]["company_name"];
+
+                                    c = {
+                                        value: v,
+                                        label: t,
+                                    };
+                                    ch.push(c);
+                                }
+                                company.clearChoices(); // Clear existing choices
+                                company.setChoices(ch, 'value', 'label', true); // Set new choices
                             }
-                            company.clearChoices(); // Clear existing choices
-                            company.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
-                    }
-                });
+                    });
+                }
             }
-        }
-    });
-}
+        });
+    }
     var forms = document.querySelectorAll('.needs-validation')
 
     // date & time
     var date = new Date().toUTCString().slice(5, 16);
+
     function currentTime() {
         var ampm = new Date().getHours() >= 12 ? "PM" : "AM";
         var hour =
-            new Date().getHours() > 12
-                ? new Date().getHours() % 12
-                : new Date().getHours();
+            new Date().getHours() > 12 ?
+            new Date().getHours() % 12 :
+            new Date().getHours();
         var minute =
-            new Date().getMinutes() < 10
-                ? "0" + new Date().getMinutes()
-                : new Date().getMinutes();
+            new Date().getMinutes() < 10 ?
+            "0" + new Date().getMinutes() :
+            new Date().getMinutes();
         if (hour < 10) {
             return "0" + hour + ":" + minute + " " + ampm;
         } else {
@@ -109,26 +111,14 @@ function getcompany() {
     }
     setInterval(currentTime, 1000);
 
-    // product image
-    document.querySelector("#product-image-input").addEventListener("change", function () {
-        var preview = document.querySelector("#product-img");
-        var file = document.querySelector("#product-image-input").files[0];
-        var reader = new FileReader();
-        reader.addEventListener("load",function () {
-            preview.src = reader.result;
-        },false);
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
+  
 
-    
 
     // choices category input
     var prdoctCategoryInput = new Choices('#choices-category-input', {
         searchEnabled: false,
     });
-    
+
     var editinputValueJson = sessionStorage.getItem('editInputValue');
     if (editinputValueJson) {
         var editinputValueJson = JSON.parse(editinputValueJson);
@@ -142,7 +132,7 @@ function getcompany() {
         prdoctCategoryInput.setChoiceByValue(editinputValueJson.product.category);
     }
 
-   
+
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
@@ -164,10 +154,10 @@ function getcompany() {
 
                     var formAction = document.getElementById("formAction").value;
                     if (formAction == "add") {
-                            if (sessionStorage.getItem('inputValue') != null) {
+                        if (sessionStorage.getItem('inputValue') != null) {
                             var inputValueJson = JSON.parse(sessionStorage.getItem('inputValue'));
                             var newObj = {
-                                "id": productItemID+1,
+                                "id": productItemID + 1,
                                 "product": {
                                     "img": productImageValue,
                                     "title": productTitleValue,
