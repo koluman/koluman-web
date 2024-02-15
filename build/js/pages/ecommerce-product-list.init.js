@@ -213,7 +213,7 @@ var productListAll = new gridjs.Grid({
 }).render(document.getElementById("table-product-list-all"));
 
 function redirectToGaleri() {
-    var yeniSayfaURL = "/gallery";
+    var yeniSayfaURL = "https://mobiloby.app/koluman/web/gallery";
     window.location.href = yeniSayfaURL;
 }
 // Search product list
