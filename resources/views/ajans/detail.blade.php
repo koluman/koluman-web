@@ -25,7 +25,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="choices-publish-status-input" class="form-label">Status</label>
-                                    <select class="form-select" id="category_id" data-choices
+                                    <select class="form-select" id="company_id" name="company_id" data-choices
                                         data-choices-search-false>
                                     </select>
                                 </div>
