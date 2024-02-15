@@ -1,18 +1,11 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-    var isEditorContentLoaded = false;
-    itemid = 13;
-
-var editorContent;
-
+itemid = 13;
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
         editor.model.document.on('change:data', function () {
             var editorContent = editor.getData();
-            isEditorContentLoaded = true;
-            console.log(editorContent);
+            $("car_description").val(editorContent);
         });
     })
     .catch(function (error) {
@@ -47,11 +40,12 @@ let company = new Choices("#company_id", {
 });
 let steps = [];
 let uniqueValues = [];
-getcompany();
-var id = getIdFromUrl();
-if (id != "" && id != null) getdetail(id);
-else add();
-
+$(document).ready(function () {
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+});
 
 function getIdFromUrl() {
     var url = window.location.href;
@@ -151,12 +145,11 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked);
 
-    if (isEditorContentLoaded) {
+    if (editorContent) {
         console.log(editorContent);
-        // Diğer işlemler...
     } else {
-        console.error('CKEditor içeriği henüz yüklenmedi.');
-    } 
+        console.error('CKEditor içeriği bulunamadı.');
+    }    
 
 
 
@@ -271,4 +264,3 @@ function getstep5(stp) {
 function getstep6(stp) {
     document.querySelector("#step5text").value = stp;
 }
-})
