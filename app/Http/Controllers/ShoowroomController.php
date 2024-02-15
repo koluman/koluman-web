@@ -27,8 +27,7 @@ class ShoowroomController extends Controller
     }
     public function shoowroomdetail(Request $request)
     {
-        dd("dsfsdf");
-        //return view('ajans.detail');
+        return view('ajans.detail');
     }
     public function getshowroomcars(Request $request)
     {
