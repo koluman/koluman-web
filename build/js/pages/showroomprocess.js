@@ -47,12 +47,11 @@ let company = new Choices("#company_id", {
 });
 let steps = [];
 let uniqueValues = [];
-$(document).ready(function () {
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-});
+getcompany();
+var id = getIdFromUrl();
+if (id != "" && id != null) getdetail(id);
+else add();
+
 
 function getIdFromUrl() {
     var url = window.location.href;
