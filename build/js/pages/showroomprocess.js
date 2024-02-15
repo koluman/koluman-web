@@ -123,7 +123,7 @@ function getcompany() {
 $("#company_id").change(function () {
     getstep();
 });
-$("#company_id").change(function () {
+$("#addcar").change(function () {
  
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
