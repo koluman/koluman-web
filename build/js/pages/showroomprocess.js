@@ -102,8 +102,7 @@ function getstep() {
             steps = data.getsteps;
 
             if (data.success == 1) {
-                let a="";
-             
+                let a="";var tt = [];
                 for (var i = 0; i < steps.length; i++) {
                     if (!uniqueValues.includes(steps[i]["step1"])) {
                      
@@ -111,8 +110,8 @@ function getstep() {
                         uniqueValues.push(steps[i]["step1"]);
                     }
                 }
-                for (var i = 0; i < uniqueValues.length; i++) {
-                    a+='<li><a class="dropdown-item" href="#">'+uniqueValues[i]+'</a></li>';
+                for (var i = 0; i < tt.length; i++) {
+                    a+='<li><a class="dropdown-item" href="#">'+tt[i]+'</a></li>';
                 }
 
                 $("#step1").html(''); // Clear existing choices
