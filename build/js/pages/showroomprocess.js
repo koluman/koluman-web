@@ -54,11 +54,11 @@ function add() {
     $("#user_id").val("");
     dropzone.removeAllFiles();
     $("#addcar").text("Ekle");
-    document.querySelector("#step1").disabled = true;
-    document.querySelector("#step2").disabled = true;
-    document.querySelector("#step3").disabled = true;
-    document.querySelector("#step4").disabled = true;
-    document.querySelector("#step5").disabled = true;
+    document.querySelector("#step1text").disabled = true;
+    document.querySelector("#step2text").disabled = true;
+    document.querySelector("#step3text").disabled = true;
+    document.querySelector("#step4text").disabled = true;
+    document.querySelector("#step5text").disabled = true;
 
 }
 function getcompany() {
@@ -129,7 +129,7 @@ function getstep() {
                 for (var i = 0; i < tt.length; i++) {
                     a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
                 }
-                document.querySelector("#step1").disabled = false;
+                document.querySelector("#step1text").disabled = false;
                 $("#step1").html(''); 
                 $("#step1").html(a); 
             }
@@ -146,7 +146,7 @@ function getstep1(stp) {
     for (var i = 0; i < uniqueStep2Values.length; i++) {
         b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i] + '\')">'+uniqueStep2Values[i]+'</a></li>';
     }
-    document.querySelector("#step2").disabled = false;
+    document.querySelector("#step2text").disabled = false;
     $("#step2").html(''); 
     $("#step2").html(b);
 }
@@ -158,7 +158,7 @@ function getstep3(stp) {
     for (var i = 0; i < uniqueStep3Values.length; i++) {
         bb+='<li><a class="dropdown-item" href="javascript:getstep4(\'' + uniqueStep3Values[i] + '\')">'+uniqueStep3Values[i]+'</a></li>';
     }
-    document.querySelector("#step3").disabled = false;
+    document.querySelector("#step3text").disabled = false;
 
     $("#step3").html(''); 
     $("#step3").html(bb);
@@ -171,7 +171,7 @@ function getstep4(stp) {
     for (var i = 0; i < uniqueStep4Values.length; i++) {
         bbb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
     }
-    document.querySelector("#step4").disabled = false;
+    document.querySelector("#step4text").disabled = false;
 
     $("#step4").html(''); 
     $("#step4").html(bbb);
@@ -184,7 +184,7 @@ function getstep5(stp) {
     for (var i = 0; i < uniqueStep5Values.length; i++) {
         bbbb+='<li><a class="dropdown-item" href="javascript:getstep6(\'' + uniqueStep5Values[i] + '\')">'+uniqueStep5Values[i]+'</a></li>';
     }
-    document.querySelector("#step5").disabled = false;
+    document.querySelector("#step5text").disabled = false;
     $("#step5").html(''); 
     $("#step5").html(bbbb);
 }
