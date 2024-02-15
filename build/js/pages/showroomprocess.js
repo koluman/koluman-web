@@ -82,6 +82,8 @@ function getdetail(id) {
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
+            if(data.showroomcarid[0].isTestdrive==1) document.querySelector("#state").checked = true;
+            else  document.querySelector("#state").checked = false;
            if (data.showroomcarid[0].car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
