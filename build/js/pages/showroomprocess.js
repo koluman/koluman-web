@@ -79,8 +79,8 @@ function getdetail(id) {
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
-           if (data.showroomcarid.car_image_url) {
-                let FileName = getFileNameFromUrl(data.showroomcarid.car_image_url);
+           if (data.showroomcarid[0].car_image_url) {
+                let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
                 document.querySelector("#shdiv").style.display = "none";
                 var mockFile = {
