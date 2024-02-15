@@ -47,10 +47,9 @@ $(document).ready(function () {
     if (id != "" && id != null) getdetail(id);
     else add();
 });
-
 function getIdFromUrl() {
     var url = window.location.href;
-    var match = url.match(/\/shoowroomdetail\/(\d+)/);
+    var match = url.match(/\/showroomdetail\/(\d+)/);
 
     if (match && match[1]) {
         return parseInt(match[1], 10);
@@ -58,6 +57,7 @@ function getIdFromUrl() {
         return null;
     }
 }
+
 
 function getdetail(id) {
     console.log("sdsdddddddd");
