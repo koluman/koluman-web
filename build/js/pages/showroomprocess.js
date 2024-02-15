@@ -70,6 +70,36 @@ function getdetail(id) {
         },
         success: function (data) {
             console.log(data);
+            $("#car_id").val(data.showroomcarid.car_id);
+            $("#car_name").val(data.showroomcarid.car_name);
+            $("#company_id").val(data.showroomcarid.company_id);
+            $("#ckeditor-classic").val(data.showroomcarid.car_description);
+            $("#step1").text(data.showroomcarid.step1);
+            $("#step2").val(data.showroomcarid.step2);
+            $("#step3").val(data.showroomcarid.step3);
+            $("#step4").val(data.showroomcarid.step4);
+            $("#step5").val(data.showroomcarid.step5);
+           /* if (data.showroomcarid.car_image_url) {
+                let FileName = getFileNameFromUrl(data.showroomcarid.car_image_url);
+                $("#polid").text(FileName);
+                document.querySelector("#poldiv").style.display = "none";
+                var mockFile = {
+                    name: pdfFileName,
+                };
+                dropzone.emit("addedfile", mockFile);
+                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                dropzone.emit("thumbnail", mockFile, pdfIconPath);
+                dropzone.emit("complete", mockFile);
+                dropzone.files.push(mockFile);
+            } else {
+                dropzone.removeAllFiles();
+            }*/
+            $("#addcar").text("Güncelle");
+            document.querySelector("#step1text").disabled = false;
+            document.querySelector("#step2text").disabled = false;
+            document.querySelector("#step3text").disabled = false;
+            document.querySelector("#step4text").disabled = false;
+            document.querySelector("#step5text").disabled = false;
         }
 
     });
