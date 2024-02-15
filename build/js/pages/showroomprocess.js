@@ -79,12 +79,12 @@ function getdetail(id) {
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
-           /* if (data.showroomcarid.car_image_url) {
+           if (data.showroomcarid.car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid.car_image_url);
-                $("#polid").text(FileName);
-                document.querySelector("#poldiv").style.display = "none";
+                $("#shid").text(FileName);
+                document.querySelector("#shdiv").style.display = "none";
                 var mockFile = {
-                    name: pdfFileName,
+                    name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
                 var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
@@ -93,7 +93,7 @@ function getdetail(id) {
                 dropzone.files.push(mockFile);
             } else {
                 dropzone.removeAllFiles();
-            }*/
+            }
             $("#addcar").text("Güncelle");
             document.querySelector("#step1text").disabled = false;
             document.querySelector("#step2text").disabled = false;

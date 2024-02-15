@@ -55,9 +55,9 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <p class="text-muted">Araba kapak resmi ekleme formu.</p>
+                            <p class="text-muted" id="shid">Araba kapak resmi ekleme formu.</p>
 
-                            <div class="dropzone">
+                            <div class="dropzone" id="shdiv">
                                 <div class="fallback">
                                     <input name="file" type="file">
                                 </div>
