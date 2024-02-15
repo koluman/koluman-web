@@ -119,7 +119,7 @@ function getstep() {
 };
 
 function getstep1() {
-    console.log( $("#step1").val());
+    console.log("sdfsdf");
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
