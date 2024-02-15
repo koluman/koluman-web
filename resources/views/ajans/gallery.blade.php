@@ -24,10 +24,6 @@
                             <div class="text-center">
                                 <ul class="list-inline categories-filter animation-nav" id="filter">
                                     <li class="list-inline-item"><a class="categories active" data-filter="*">All</a></li>
-                                    <li class="list-inline-item"><a class="categories" data-filter=".project">Project</a></li>
-                                    <li class="list-inline-item"><a class="categories" data-filter=".designing">Designing</a></li>
-                                    <li class="list-inline-item"><a class="categories" data-filter=".photography">Photography</a></li>
-                                    <li class="list-inline-item"><a class="categories" data-filter=".development">Development</a></li>
                                 </ul>
                             </div>
 
