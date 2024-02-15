@@ -38,7 +38,7 @@ if (dropzonePreviewNode) {
         }
     });
 }
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function() {
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
