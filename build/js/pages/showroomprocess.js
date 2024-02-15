@@ -1,4 +1,5 @@
 itemid = 13;
+
 var editorContent;
 
 ClassicEditor
@@ -6,38 +7,26 @@ ClassicEditor
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
         editorContent = editor.getData(); // CKEditor içeriğini al
-
     })
     .catch(function (error) {
         console.error(error);
     });
-    var editorContent;
 
-    ClassicEditor
-        .create(document.querySelector('#ckeditor-classic'))
-        .then(function (editor) {
-            editor.ui.view.editable.element.style.height = '200px';
-            editorContent = editor.getData(); // CKEditor içeriğini al
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-    
-    // CKEditor yüklenene kadar bekleyin
-    document.addEventListener('DOMContentLoaded', function () {
-        if (typeof ClassicEditor !== 'undefined') {
-            console.log(editorContent);
-        } else {
-            console.log('CKEditor henüz yüklenmedi.');
-        }
-    });
-    var car_img_url;
+// CKEditor yüklenene kadar bekleyin
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof ClassicEditor !== 'undefined') {
+        console.log(editorContent);
+    } else {
+        console.log('CKEditor henüz yüklenmedi.');
+    }
+});
+var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
     dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
-    
+
     var dropzone = new Dropzone(".dropzone", {
         url: 'https://httpbin.org/post',
         method: "post",
@@ -50,7 +39,7 @@ if (dropzonePreviewNode) {
         }
     });
 
-    
+
 }
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let company = new Choices("#company_id", {
@@ -148,46 +137,46 @@ $("#company_id").change(function () {
     getstep();
 });
 $("#addcar").click(function () {
- 
+
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-    formData.append('car_id',  $("#car_id").val());
-    formData.append('car_name',document.querySelector("#car_name").value);
-    formData.append('company_id',document.querySelector("#company_id").value);
+    formData.append('car_id', $("#car_id").val());
+    formData.append('car_name', document.querySelector("#car_name").value);
+    formData.append('company_id', document.querySelector("#company_id").value);
     formData.append('step1', $("#step1text").val());
     formData.append('step2', $("#step2text").val());
-    
+
     formData.append('step3', $("#step3text").val());
     formData.append('step4', $("#step4text").val());
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5text").val());
-    formData.append('state',document.querySelector("#state").checked);
+    formData.append('state', document.querySelector("#state").checked);
 
-   
-    
-    
 
-   /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
-    else $url = "https://mobiloby.app/koluman/web/addshowroom"
-    $.ajax({
-        url: $url,
-        method: 'POST',
-        dataType: "json",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (data) {
-            console.log(data);
-            if (data.success == 1) {
-                window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
-            } else {
-                alert(data.message);
-            }
-        },
-        error: function (error) {
-            console.error(error);
-        }
-    });*/
+
+
+
+    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
+     else $url = "https://mobiloby.app/koluman/web/addshowroom"
+     $.ajax({
+         url: $url,
+         method: 'POST',
+         dataType: "json",
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function (data) {
+             console.log(data);
+             if (data.success == 1) {
+                 window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+             } else {
+                 alert(data.message);
+             }
+         },
+         error: function (error) {
+             console.error(error);
+         }
+     });*/
 });
 
 function getstep() {
