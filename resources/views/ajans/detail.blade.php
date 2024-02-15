@@ -21,29 +21,21 @@
                 <div class="card">
                     <div class="card-body">
                             <div class="col-lg-12 mb-4">
-                                <label for="choices-publish-status-input" class="form-label">Status</label>
+                                <label for="choices-publish-status-input" class="form-label">Firmalar</label>
 
-                                <select class="form-select" id="company_id" data-choices data-choices-search-false>
+                                <select class="form-select" name="company_id" id="company_id"data-choices data-choices-search-false>
 
                                 </select>
                             </div>
 
                             <div class="col-lg-12 mb-5">
-                                <label for="choices-publish-visibility-input" class="form-label">Visibility</label>
-                                <select class="form-select" id="car_name" data-choices data-choices-search-false>
+                                <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
+                                <select class="form-select" name="car_name" id="car_name" data-choices data-choices-search-false>
                                 </select>
                             </div>
                          <div>
-                            <label>Product Description</label>
-
-                            <div id="ckeditor-classic">
-                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
-                                <ul>
-                                    <li>Full Sleeve</li>
-                                    <li>Cotton</li>
-                                    <li>All Sizes available</li>
-                                    <li>4 Different Color</li>
-                                </ul>
+                            <label>Araba Açıklaması</label>
+                            <div id="ckeditor-classic" name="ckeditor-classic">
                             </div>
                         </div>
 
