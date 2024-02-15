@@ -139,14 +139,21 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state',document.querySelector("#state").checked);
 
-    var ckeditorElement = document.querySelector('#ckeditor-classic');
-var ckeditorInstance = ClassicEditor.instances[ckeditorElement.id];
-
-// CKEditor içeriğini al
-var editorContent = ckeditorInstance.getData();
-
-// Elde edilen içeriği konsola yazdır (isteğe bağlı)
-console.log(editorContent);
+    var ckeditorClassic = document.querySelector('#ckeditor-classic');
+    if (ckeditorClassic) {
+        ClassicEditor
+            .create(ckeditorClassic)
+            .then(function (editor) {
+                editor.ui.view.editable.element.style.height = '200px';
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+    var ckeditorInstance = ClassicEditor.instances[ckeditorClassic.id]; // Değişiklik burada
+    var editorContent = ckeditorInstance.getData();
+    console.log(editorContent);
+    
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
