@@ -123,7 +123,7 @@ function getstep1(stp) {
     let b="";
     console.log(uniqueStep2Values);
     for (var i = 0; i < uniqueStep2Values.length; i++) {
-        b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i]["step2"] + '\')">'+uniqueStep2Values[i]["step2"]+'</a></li>';
+        b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i] + '\')">'+uniqueStep2Values[i]+'</a></li>';
     }
     $("#step2").html(''); // Clear existing choices
     $("#step2").html(b); // Clear existing choices
