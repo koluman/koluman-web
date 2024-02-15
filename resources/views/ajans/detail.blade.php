@@ -22,13 +22,12 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-lg-6 mb-4">
+                            <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
-                                <select class="form-select" name="car_name" id="car_name" data-choices
-                                    data-choices-search-false>
+                                <input class="form-control" name="car_name" id="car_name" type="text" required>
                                 </select>
                             </div>
-                            <div class="col-lg-6 mb-4">
+                            <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-status-input" class="form-label">Firmalar</label>
 
                                 <select class="form-select" name="company_id" id="company_id"data-choices
