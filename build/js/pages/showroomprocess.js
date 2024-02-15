@@ -144,17 +144,9 @@ $("#addcar").click(function () {
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked);
-
-    if (editorContent) {
-        console.log(editorContent);
-    } else {
-        console.error('CKEditor içeriği bulunamadı.');
-    }    
-
-
-
-    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
-     else $url = "https://mobiloby.app/koluman/web/addshowroom"
+    formData.append('car_description', document.querySelector("#car_description").value);
+    if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
+    else $url = "https://mobiloby.app/koluman/web/addshowroom"
      $.ajax({
          url: $url,
          method: 'POST',
@@ -173,7 +165,7 @@ $("#addcar").click(function () {
          error: function (error) {
              console.error(error);
          }
-     });*/
+    });
 });
 
 function getstep() {

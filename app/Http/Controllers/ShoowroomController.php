@@ -68,6 +68,7 @@ class ShoowroomController extends Controller
             $step4 = $request->step4;
             $step5 = $request->step5;
             $state = $request->state;
+            $car_description = $request->car_description;
             $showroomPath = "";
             if ($request->hasFile('car_img_url')) {
                 $showroom = $request->file('car_img_url');
@@ -85,6 +86,7 @@ class ShoowroomController extends Controller
                 'step3' => $step3,
                 'step4' => $step4,
                 'step5' => $step5,
+                'car_description'=>$car_description,
                 'isTestDrive' => $state,
                 'car_img_url' => $showroomPath, // Dosyanın URL'sini kaydet
             ]);
@@ -120,6 +122,7 @@ class ShoowroomController extends Controller
             $step4 = $request->input('step4');
             $step5 = $request->input('step5');
             $state = $request->input('state');
+            $car_description = $request->car_description;
             $showroomPath = "";
 
             if ($request->hasFile('car_img_url')) {
@@ -136,6 +139,7 @@ class ShoowroomController extends Controller
                     'step3' => $step3,
                     'step4' => $step4,
                     'step5' => $step5,
+                    'car_description'=>$car_description,
                     'isTestDrive' => $state,
                     'car_img_url' => $showroomPath,
                 ]);
