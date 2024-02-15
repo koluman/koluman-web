@@ -5,7 +5,7 @@ ClassicEditor
         editor.ui.view.editable.element.style.height = '200px';
         editor.model.document.on('change:data', function () {
             var editorContent = editor.getData();
-            $("car_description").val(editorContent);
+            document.querySelector("#car_description").value=editorContent;
         });
     })
     .catch(function (error) {
