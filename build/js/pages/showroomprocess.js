@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 itemid = 13;
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
@@ -304,3 +306,4 @@ function getstep5(stp) {
 function getstep6(stp) {
     document.querySelector("#step5text").value = stp;
 }
+})
