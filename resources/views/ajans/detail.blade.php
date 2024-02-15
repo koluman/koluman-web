@@ -20,7 +20,7 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-3">
+                        <div class="col-lg-6 mb-3">
                             <label for="choices-publish-status-input" class="form-label">Status</label>
 
                             <select class="form-select" id="company_id" data-choices
@@ -29,7 +29,7 @@
                             </select>
                         </div>
 
-                        <div>
+                        <div class="col-lg-6 mb-3">
                             <label for="choices-publish-visibility-input" class="form-label">Visibility</label>
                             <select class="form-select" id="car_name" data-choices
                                 data-choices-search-false>
