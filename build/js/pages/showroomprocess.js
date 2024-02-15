@@ -41,6 +41,10 @@ function getIdFromUrl() {
         return null;
     }
 }
+function getdetail(id) {
+    console.log("sdsdddddddd");
+
+}
 function add() {
     console.log("sfdsf");
     $("#car_id").val("");
