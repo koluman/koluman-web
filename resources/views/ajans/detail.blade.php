@@ -131,7 +131,6 @@
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end" id="step2">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
                                     </div>

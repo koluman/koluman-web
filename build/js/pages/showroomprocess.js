@@ -118,12 +118,11 @@ function getstep() {
 
 function getstep1(stp) {
     console.log(stp);
-    var selectedStep1 = step1.getValue();
-    var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
+    var filteredSteps = steps.filter(item => item.step1 === stp.value);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
     let b="";
     for (var i = 0; i < uniqueStep2Values.length; i++) {
-        a+='<li><a class="dropdown-item" href="#">'+uniqueStep2Values[i]["step2"]+'</a></li>';
+        b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i]["step2"] + '\')">'+uniqueStep2Values[i]["step2"]+'</a></li>';
     }
     $("#step2").html(''); // Clear existing choices
     $("#step2").html(b); // Clear existing choices
