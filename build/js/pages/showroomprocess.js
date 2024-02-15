@@ -34,19 +34,18 @@ if (dropzonePreviewNode) {
 
 }
 
-
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
+let company = new Choices("#company_id", {
+    searchEnabled: false
+});
+let steps = [];
+let uniqueValues = [];
 $(document).ready(function () {
-    let csrfToken = $('meta[name="csrf-token"]').attr('content');
-    let company = new Choices("#company_id", {
-        searchEnabled: false
-    });
-    let steps = [];
-    let uniqueValues = [];
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
     else add();
-
+});
 
 function getIdFromUrl() {
     var url = window.location.href;
@@ -63,7 +62,6 @@ function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
 }
-
 function getdetail(id) {
     $.ajax({
         type: 'POST',
@@ -77,7 +75,10 @@ function getdetail(id) {
             console.log(data);
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            company.setChoiceByValue(data.showroomcarid[0].company_id);
+            let company2 = new Choices("#company_id", {
+                searchEnabled: false
+            });
+            company2.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
@@ -85,8 +86,8 @@ function getdetail(id) {
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
             $("#car_description").val(data.showroomcarid[0].car_description);
-            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
-            else document.querySelector("#state").checked = false;
+            if(data.showroomcarid[0].isTestdrive==1) document.querySelector("#state").checked = true;
+            else  document.querySelector("#state").checked = false;
             if (data.showroomcarid[0].car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
@@ -306,4 +307,3 @@ function getstep5(stp) {
 function getstep6(stp) {
     document.querySelector("#step5text").value = stp;
 }
-});
