@@ -36,7 +36,19 @@
                             </div>
                         </div>
                     </div>
+                     <div>
+                            <label>Product Description</label>
 
+                            <div id="ckeditor-classic">
+                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton. Material composition is 100% organic cotton. This is one of the world’s leading designer lifestyle brands and is internationally recognized for celebrating the essence of classic American cool style, featuring preppy with a twist designs.</p>
+                                <ul>
+                                    <li>Full Sleeve</li>
+                                    <li>Cotton</li>
+                                    <li>All Sizes available</li>
+                                    <li>4 Different Color</li>
+                                </ul>
+                            </div>
+                        </div>
                 </div>
                 <!-- end card -->
 
