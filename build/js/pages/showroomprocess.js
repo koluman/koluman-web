@@ -98,6 +98,8 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data);
+
             if (data.success == 1) {
                 let a="";
                 for (var i = 0; i < steps.length; i++) {
