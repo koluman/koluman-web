@@ -42,6 +42,7 @@ function getIdFromUrl() {
     }
 }
 function add() {
+    console.log("sfdsf");
     $("#car_id").val("");
     $("#car_name").val("");
     $("#company_id").val("");
@@ -54,7 +55,7 @@ function add() {
     $("#user_id").val("");
     dropzone.removeAllFiles();
     $("#addcar").text("Ekle");
-    document.querySelector("#step1text").disabled = true;
+    document.querySelector("#step1text").disabled=true;
     document.querySelector("#step2text").disabled = true;
     document.querySelector("#step3text").disabled = true;
     document.querySelector("#step4text").disabled = true;
