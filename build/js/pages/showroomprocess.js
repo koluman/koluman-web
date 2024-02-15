@@ -28,8 +28,7 @@ let uniqueValues = [];
 $(document).ready(function () {
     getcompany();
     var id = getIdFromUrl();
-    console.log(id);
-    if (id != "") getdetail(id);
+    if (id != "" && id!=null) getdetail(id);
     else add();
 });
 function getIdFromUrl() {
