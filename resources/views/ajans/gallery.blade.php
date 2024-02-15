@@ -21,6 +21,8 @@
                 <div class="card-body px-1">
                     <div class="row">
                         <div class="col-lg-8">
+                                                    <div class="card">
+
                             <div class="text-center">
                                 <ul class="list-inline categories-filter animation-nav" id="filter">
                                     <li class="list-inline-item"><a class="categories active" data-filter="*">All</a></li>
@@ -72,6 +74,9 @@
                                 <a href="javascript:void(0);" class="text-success material-shadow-none"><i
                                         class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i> Load More </a>
                             </div>
+
+                                                        </div>
+
                         </div>
                         <div class="col-lg-4">
 
