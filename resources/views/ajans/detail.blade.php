@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                     <div>
+                    <div class="row">
                             <label>Product Description</label>
 
                             <div id="ckeditor-classic">
