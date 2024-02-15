@@ -103,9 +103,18 @@ function getstep() {
 
             if (data.success == 1) {
                 let a="";
+             
                 for (var i = 0; i < steps.length; i++) {
-                    a+='<li><a class="dropdown-item" href="#">'+steps[i]["step1"]+'</a></li>';
+                    if (!uniqueValues.includes(steps[i]["step1"])) {
+                     
+                        tt.push(steps[i]["step1"]);
+                        uniqueValues.push(steps[i]["step1"]);
+                    }
                 }
+                for (var i = 0; i < uniqueValues.length; i++) {
+                    a+='<li><a class="dropdown-item" href="#">'+uniqueValues[i]+'</a></li>';
+                }
+
                 $("#step1").html(''); // Clear existing choices
                 $("#step1").html(a); // Clear existing choices
             }
