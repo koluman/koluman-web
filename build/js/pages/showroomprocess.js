@@ -11,8 +11,27 @@ ClassicEditor
     .catch(function (error) {
         console.error(error);
     });
-console.log(editorContent);
-var car_img_url;
+    var editorContent;
+
+    ClassicEditor
+        .create(document.querySelector('#ckeditor-classic'))
+        .then(function (editor) {
+            editor.ui.view.editable.element.style.height = '200px';
+            editorContent = editor.getData(); // CKEditor içeriğini al
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+    
+    // CKEditor yüklenene kadar bekleyin
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof ClassicEditor !== 'undefined') {
+            console.log(editorContent);
+        } else {
+            console.log('CKEditor henüz yüklenmedi.');
+        }
+    });
+    var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
