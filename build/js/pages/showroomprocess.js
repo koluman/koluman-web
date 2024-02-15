@@ -128,8 +128,8 @@ $("#addcar").click(function () {
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
     formData.append('car_id',  $("#car_id").val());
-    formData.append('car_name', $("#car_name").val());
-    formData.append('company_id',$("#company_id").val());
+    formData.append('car_name',document.querySelector("#car_name").value);
+    formData.append('company_id',document.querySelector("#company_id").value);
     formData.append('step1', $("#step1text").val());
     formData.append('step2', $("#step2text").val());
     formData.append('step3', $("#step3text").val());
