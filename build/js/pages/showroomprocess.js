@@ -1,4 +1,7 @@
-itemid = 13;
+
+document.addEventListener("DOMContentLoaded", function () {
+    var isEditorContentLoaded = false;
+    itemid = 13;
 
 var editorContent;
 
@@ -8,6 +11,7 @@ ClassicEditor
         editor.ui.view.editable.element.style.height = '200px';
         editor.model.document.on('change:data', function () {
             var editorContent = editor.getData();
+            isEditorContentLoaded = true;
             console.log(editorContent);
         });
     })
@@ -36,6 +40,7 @@ if (dropzonePreviewNode) {
 
 
 }
+
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let company = new Choices("#company_id", {
     searchEnabled: false
@@ -147,11 +152,12 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked);
 
-    if (editorContent) {
+    if (isEditorContentLoaded) {
         console.log(editorContent);
+        // Diğer işlemler...
     } else {
-        console.error('CKEditor içeriği bulunamadı.');
-    }    
+        console.error('CKEditor içeriği henüz yüklenmedi.');
+    } 
 
 
 
@@ -266,3 +272,4 @@ function getstep5(stp) {
 function getstep6(stp) {
     document.querySelector("#step5text").value = stp;
 }
+})
