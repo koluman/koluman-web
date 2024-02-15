@@ -59,15 +59,15 @@ class ShoowroomController extends Controller
     public function addshowroom(Request $request)
     {
         try {
-            $car_id = $request->input('car_id');
-            $car_name = $request->input('car_name');
-            $company_id = $request->input('company_id');
-            $step1 = $request->input('step1');
-            $step2 = $request->input('step2');
-            $step3 = $request->input('step3');
-            $step4 = $request->input('step4');
-            $step5 = $request->input('step5');
-            $state = $request->input('state');
+            $car_id = $request->car_id;
+            $car_name = $request->car_name;
+            $company_id = $request->company_id;
+            $step1 = $request->step1;
+            $step2 = $request->step2;
+            $step3 = $request->step3;
+            $step4 = $request->step4;
+            $step5 = $request->step5;
+            $state = $request->state;
             $showroomPath = "";
             if ($request->hasFile('car_img_url')) {
                 $showroom = $request->file('car_img_url');
