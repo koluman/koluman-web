@@ -451,7 +451,7 @@
     <script src="{{ URL::asset('build/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
 
-    <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/dropzone/dropzone2-min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/gallery-create.js') }}"></script>
 
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
