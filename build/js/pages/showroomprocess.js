@@ -153,8 +153,9 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state',document.querySelector("#state").checked);
 
-        var editorContent = document.querySelector('#ckeditor-classic').getData();
-        console.log(editorContent);
+    var editorContent = ClassicEditor.instances['ckeditor-classic'].getData();
+    console.log(editorContent);
+    
     
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
