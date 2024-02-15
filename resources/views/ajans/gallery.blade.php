@@ -47,6 +47,16 @@
                 </div>
                 <!-- end card -->
 
+                <!-- end card -->
+
+                <div class="text-end mb-3">
+                    <button type="submit" class="btn btn-success w-sm">Ekle</button>
+                </div>
+            </div>
+            <!-- end col -->
+
+            <div class="col-lg-4">
+                
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">Araba Kapak Resmi</h5>
@@ -97,96 +107,7 @@
                     </div>
                 </div>
                 <!-- end card -->
-
-                <div class="text-end mb-3">
-                    <button type="submit" class="btn btn-success w-sm">Ekle</button>
-                </div>
-            </div>
-            <!-- end col -->
-
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Detay</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="live-preview">
-                            <div>
-                                <p class="text-muted">Açıklama yazılabilir</p>
-                                <div class="row g-3">
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end card body -->
-                </div>
-                <!-- end card -->
-                <div class="card">
-                    <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Test Sürüş Arabası</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="input-group-custom-showcode">
-                        </div>
-                    </div>
-                </div>
-                    <!-- end card body -->
+             
                 </div>
             </div>
         </div>
