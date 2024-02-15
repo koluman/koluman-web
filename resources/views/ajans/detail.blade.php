@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="step31text" name="step3text"
+                                            <input type="text" class="form-control" id="step3text" name="step3text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>

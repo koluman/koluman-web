@@ -140,7 +140,7 @@ function getstep3(stp) {
 }
 function getstep4(stp) {
     document.querySelector("#step3text").value=stp;
-    /*var filteredSteps = steps.filter(item => item.step3 === stp);
+    var filteredSteps = steps.filter(item => item.step3 === stp);
     var uniqueStep4Values = [...new Set(filteredSteps.map(item => item.step4))];
     let bbb="";
     console.log(uniqueStep4Values);
@@ -148,5 +148,5 @@ function getstep4(stp) {
         bb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
     }
     $("#step4").html(''); 
-    $("#step4").html(bbb);*/
+    $("#step4").html(bbb);
 }
