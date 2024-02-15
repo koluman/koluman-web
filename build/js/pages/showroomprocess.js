@@ -121,7 +121,7 @@ function getdetail(id) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
 
-            company.setChoiceByValue([1]);
+            company.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
