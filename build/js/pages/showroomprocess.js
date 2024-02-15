@@ -1,6 +1,5 @@
 itemid = 13;
-ClassicEditor
-    .create(document.querySelector('#ckeditor-classic'))
+ClassicEditor.create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
     })
@@ -141,18 +140,11 @@ $("#addcar").click(function () {
 
     var ckeditorClassic = document.querySelector('#ckeditor-classic');
     if (ckeditorClassic) {
-        ClassicEditor
-            .create(ckeditorClassic)
-            .then(function (editor) {
-                editor.ui.view.editable.element.style.height = '200px';
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-    }
-    var ckeditorInstance = ClassicEditor.instances[ckeditorClassic.id]; // Değişiklik burada
+        var ckeditorInstance = ClassicEditor.instances[ckeditorClassic.id]; // Değişiklik burada
     var editorContent = ckeditorInstance.getData();
     console.log(editorContent);
+    }
+
     
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
