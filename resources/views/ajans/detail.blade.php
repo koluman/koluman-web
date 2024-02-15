@@ -20,26 +20,20 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="mb-3">
+                            <label for="choices-publish-status-input" class="form-label">Status</label>
 
-                            <div class="col-6 mb-6">
-                                    <label for="choices-publish-status-input" class="form-label">Status</label>
-                                    <select class="form-select" id="company_id" name="company_id" data-choices
-                                        data-choices-search-false>
-                                    </select>
-                            </div>
-                            <div class="col-6 mb-6">
-                                <label class="form-label" for="product-title-input">Product Title</label>
-                                <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
-                                <input type="text" class="form-control d-none" id="product-id-input">
-                                <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
-                                <div class="invalid-feedback">Please Enter a product title.</div>
-                            </div>
+                            <select class="form-select" id="company_id" data-choices
+                                data-choices-search-false>
+                                
+                            </select>
                         </div>
+
                         <div>
-                            <label>Araba Açıklama</label>
-                            <div id="ckeditor-classic" name="ckeditor-classic">
-                            </div>
+                            <label for="choices-publish-visibility-input" class="form-label">Visibility</label>
+                            <select class="form-select" id="car_name" data-choices
+                                data-choices-search-false>
+                            </select>
                         </div>
                     </div>
                 </div>
