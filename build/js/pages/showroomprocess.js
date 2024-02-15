@@ -99,6 +99,7 @@ function getstep() {
         dataType: 'json',
         success: function (data) {
             console.log(data);
+            steps = data.getsteps;
 
             if (data.success == 1) {
                 let a="";
