@@ -143,10 +143,23 @@ function getstep4(stp) {
     var filteredSteps = steps.filter(item => item.step3 === stp);
     var uniqueStep4Values = [...new Set(filteredSteps.map(item => item.step4))];
     let bbb="";
-    console.log(uniqueStep4Values);
     for (var i = 0; i < uniqueStep4Values.length; i++) {
         bbb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
     }
     $("#step4").html(''); 
     $("#step4").html(bbb);
+}
+function getstep5(stp) {
+    document.querySelector("#step4text").value=stp;
+    var filteredSteps = steps.filter(item => item.step4 === stp);
+    var uniqueStep5Values = [...new Set(filteredSteps.map(item => item.step5))];
+    let bbbb="";
+    for (var i = 0; i < uniqueStep5Values.length; i++) {
+        bbbb+='<li><a class="dropdown-item" href="javascript:getstep6(\'' + uniqueStep5Values[i] + '\')">'+uniqueStep5Values[i]+'</a></li>';
+    }
+    $("#step5").html(''); 
+    $("#step5").html(bbbb);
+}
+function getstep6(stp) {
+    document.querySelector("#step5text").value=stp;
 }
