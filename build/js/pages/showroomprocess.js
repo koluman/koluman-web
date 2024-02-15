@@ -5,7 +5,7 @@ ClassicEditor
         editor.ui.view.editable.element.style.height = '200px';
         editor.model.document.on('change:data', function () {
             var editorContent = editor.getData();
-            document.querySelector("#car_description").value=editorContent;
+            document.querySelector("#car_description").value = editorContent;
         });
     })
     .catch(function (error) {
@@ -43,10 +43,10 @@ let uniqueValues = [];
 $(document).ready(function () {
     getcompany();
     var id = getIdFromUrl();
-    console.log(id);
     if (id != "" && id != null) getdetail(id);
     else add();
 });
+
 function getIdFromUrl() {
     var url = window.location.href;
     var match = url.match(/\/showroomdetail\/(\d+)/);
@@ -60,7 +60,19 @@ function getIdFromUrl() {
 
 
 function getdetail(id) {
-    console.log("sdsdddddddd");
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+        dataType: 'json',
+        data: {
+            car_id: id,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        success: function (data) {
+            console.log(data);
+        }
+
+    });
 }
 
 function add() {
@@ -144,27 +156,27 @@ $("#addcar").click(function () {
     formData.append('step4', $("#step4text").val());
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5text").val());
-    formData.append('state', document.querySelector("#state").checked==false ? 0 : 1);
+    formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     formData.append('car_description', document.querySelector("#car_description").value);
     if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
-     $.ajax({
-         url: $url,
-         method: 'POST',
-         dataType: "json",
-         data: formData,
-         processData: false,
-         contentType: false,
-         success: function (data) {
-             if (data.success == 1) {
-                 window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
-             } else {
-                 alert(data.message);
-             }
-         },
-         error: function (error) {
-             console.error(error);
-         }
+    $.ajax({
+        url: $url,
+        method: 'POST',
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if (data.success == 1) {
+                window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+            } else {
+                alert(data.message);
+            }
+        },
+        error: function (error) {
+            console.error(error);
+        }
     });
 });
 
