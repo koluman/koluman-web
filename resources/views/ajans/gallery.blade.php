@@ -16,7 +16,7 @@
     @endcomponent
 
        <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
@@ -386,7 +386,7 @@
             </div>
             <!-- end col -->
 
-            <div class="col-lg-4">
+            <div class="col-lg-12>
                 
                 <div class="card">
                     <div class="card-header">
@@ -448,7 +448,7 @@
     <script src="{{ URL::asset('build/libs/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
-        <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
 
     <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/ecommerce-product-create.init.js') }}"></script>
