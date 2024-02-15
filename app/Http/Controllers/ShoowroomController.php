@@ -87,7 +87,7 @@ class ShoowroomController extends Controller
                 'step4' => $step4,
                 'step5' => $step5,
                 'car_description'=>$car_description,
-                'isTestDrive' => $state,
+                'isTestdrive' => $state,
                 'car_image_url' => $showroomPath, // Dosyanın URL'sini kaydet
             ]);
             if ($result) {
@@ -140,7 +140,7 @@ class ShoowroomController extends Controller
                     'step4' => $step4,
                     'step5' => $step5,
                     'car_description'=>$car_description,
-                    'isTestDrive' => $state,
+                    'isTestdrive' => $state,
                     'car_image_url' => $showroomPath,
                 ]);
             } else {
