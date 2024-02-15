@@ -35,7 +35,6 @@ let company = new Choices("#company_id", {
     searchEnabled: false
 });
 getcompany();
-
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -79,4 +78,47 @@ function getcompany() {
             }
         }
     });
+}
+$("#company_id").change(function () {
+    getstep();
+});
+$("#step1").change(function () {
+    getstep1();
+});
+
+let steps = [];
+let uniqueValues = []; // Array to store unique values
+function getstep() {
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getsteps',
+        data: {
+            company_id: $("#company_id").val(),
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                let a="";
+                for (var i = 0; i < steps.length; i++) {
+                    a+='<li><a class="dropdown-item" href="#">'+steps[i]["step1"]+'</a></li>';
+                }
+                $("#step1").html(''); // Clear existing choices
+                $("#step1").html(a); // Clear existing choices
+            }
+
+        }
+    });
+};
+
+function getstep1() {
+    var selectedStep1 = step1.getValue();
+    var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
+    var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
+    let b="";
+    for (var i = 0; i < uniqueStep2Values.length; i++) {
+        a+='<li><a class="dropdown-item" href="#">'+uniqueStep2Values[i]["step2"]+'</a></li>';
+    }
+    $("#step2").html(''); // Clear existing choices
+    $("#step2").html(b); // Clear existing choices
 }
