@@ -1,28 +1,13 @@
 itemid = 13;
-/*ClassicEditor
+ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
     })
     .catch(function (error) {
         console.error(error);
-    });*/
-    var ckeditorClassic = document.querySelector('#ckeditor-classic');
-
-    // CKEditor örneği daha önce oluşturulmamışsa ve element varsa oluştur
-    if (!ClassicEditor.instances['ckeditor-classic'] && ckeditorClassic) {
-        ClassicEditor
-            .create(ckeditorClassic)
-            .then(function (editor) {
-                editor.ui.view.editable.element.style.height = '200px';
-                // CKEditor içeriği değiştiğinde olay dinle
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-    } else {
-        console.error('CKEditor elementi zaten var veya bulunamadı.');
-    }
+    });
+console.log(ClassicEditor);
 var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
@@ -155,8 +140,7 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state',document.querySelector("#state").checked);
 
-    var editorContent = ClassicEditor.instances['ckeditor-classic'].getData();
-    console.log(editorContent);
+   
     
     
 
