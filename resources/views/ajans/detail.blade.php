@@ -116,7 +116,7 @@
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control" id="step1text" name="step1text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control" id="step2text" name="step2text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
@@ -136,34 +136,31 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control" id="step31text" name="step3text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end" id="step3">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control" id="step4text" name="step4text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end" id="step4">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
+                                        <div class="input-group"> 
+                                            <input type="text" class="form-control" id="step5text" name="step5text"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
                                             <ul class="dropdown-menu dropdown-menu-end" id="step5">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
                                     </div>

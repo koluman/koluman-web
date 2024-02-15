@@ -85,7 +85,7 @@ $("#company_id").change(function () {
 
 
 let steps = [];
-let uniqueValues = []; // Array to store unique values
+let uniqueValues = []; 
 function getstep() {
     $.ajax({
         type: 'GET',
@@ -108,8 +108,8 @@ function getstep() {
                     a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
                 }
 
-                $("#step1").html(''); // Clear existing choices
-                $("#step1").html(a); // Clear existing choices
+                $("#step1").html(''); 
+                $("#step1").html(a); 
             }
 
         }
@@ -117,7 +117,8 @@ function getstep() {
 };
 
 function getstep1(stp) {
-    console.log(stp);
+    $("#step1test").text(stp); 
+    $("#step1test").val(stp); 
     var filteredSteps = steps.filter(item => item.step1 === stp);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
     let b="";
@@ -125,6 +126,6 @@ function getstep1(stp) {
     for (var i = 0; i < uniqueStep2Values.length; i++) {
         b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i] + '\')">'+uniqueStep2Values[i]+'</a></li>';
     }
-    $("#step2").html(''); // Clear existing choices
-    $("#step2").html(b); // Clear existing choices
+    $("#step2").html(''); 
+    $("#step2").html(b);
 }
