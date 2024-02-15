@@ -140,13 +140,13 @@ $("#addcar").click(function () {
     formData.append('state',document.querySelector("#state").checked);
 
     var ckeditorElement = document.querySelector('#ckeditor-classic');
-/*var ckeditorInstance = ClassicEditor.instances[ckeditorElement.id];
+var ckeditorInstance = ClassicEditor.instances[ckeditorElement.id];
 
 // CKEditor içeriğini al
-var editorContent = ckeditorInstance.getData();*/
+var editorContent = ckeditorInstance.getData();
 
 // Elde edilen içeriği konsola yazdır (isteğe bağlı)
-console.log(ckeditorElement);
+console.log(editorContent);
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
