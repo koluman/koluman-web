@@ -46,7 +46,7 @@ $(document).ready(function () {
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
     else add();
-});
+
 
 function getIdFromUrl() {
     var url = window.location.href;
@@ -306,3 +306,4 @@ function getstep5(stp) {
 function getstep6(stp) {
     document.querySelector("#step5text").value = stp;
 }
+});
