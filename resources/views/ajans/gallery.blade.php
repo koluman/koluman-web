@@ -14,6 +14,7 @@
             Gallery
         @endslot
     @endcomponent
+    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
 
        <div class="row">
             <div class="col-lg-7">
@@ -442,6 +443,7 @@
                 </div>
             </div>
         </div>
+</form>
     <!-- end row -->
 @endsection
 @section('script')
