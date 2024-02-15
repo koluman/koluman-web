@@ -194,7 +194,7 @@ var productListAll = new gridjs.Grid({
                     '</button>' +
                     '<ul class="dropdown-menu dropdown-menu-end">' +
                     '<li><a class="dropdown-item"  href="javascript:void(0);" onclick="redirectToGaleri()"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> Galeri</a></li>' +
-                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="javascript:detay(' + row.id+ ')"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
+                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="javascript:detay(' + x+ ')"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
                     '<li class="dropdown-divider"></li>' +
                     '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
                     '</ul>' +
