@@ -21,6 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
+                                <input class="form-control" name="hidden" id="car_id" type="car_id" required>
 
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
@@ -99,7 +100,7 @@
                 <!-- end card -->
 
                 <div class="text-end mb-3">
-                    <button type="submit" class="btn btn-success w-sm">Ekle</button>
+                    <button type="button" id="addcar" class="btn btn-success w-sm">Ekle</button>
                 </div>
             </div>
             <!-- end col -->

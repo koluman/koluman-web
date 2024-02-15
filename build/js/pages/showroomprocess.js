@@ -1,12 +1,4 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Ecommerce product create Js File
-*/
 
-// ckeditor
 itemid = 13;
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
@@ -17,7 +9,6 @@ ClassicEditor
         console.error(error);
     });
 
-// Dropzone
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 dropzonePreviewNode.itemid = "";
 var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
@@ -28,13 +19,48 @@ var dropzone = new Dropzone(".dropzone", {
     previewTemplate: previewTemplate,
     previewsContainer: "#dropzone-preview2",
 });
-
-
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let company = new Choices("#company_id", {
     searchEnabled: false
 });
-getcompany();
+let steps = [];
+let uniqueValues = []; 
+$(document).ready(function () {
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "") getdetail(id);
+    else add();
+});
+function getIdFromUrl() {
+    var url = window.location.href;
+    var match = url.match(/\/shoowroomdetail\/(\d+)/);
+
+    if (match && match[1]) {
+        return parseInt(match[1], 10);
+    } else {
+        return null;
+    }
+}
+function add() {
+    $("#car_id").val("");
+    $("#car_name").val("");
+    $("#company_id").val("");
+    $("#ckeditor-classic").val("");
+    $("#step1").text("");
+    $("#step2").val("");
+    $("#step3").val("");
+    $("#step4").val("");
+    $("#step5").val("");
+    $("#user_id").val("");
+    dropzone.removeAllFiles();
+    $("#addcar").text("Ekle");
+    document.querySelector("#step1").disabled = true;
+    document.querySelector("#step2").disabled = true;
+    document.querySelector("#step3").disabled = true;
+    document.querySelector("#step4").disabled = true;
+    document.querySelector("#step5").disabled = true;
+
+}
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -82,10 +108,6 @@ function getcompany() {
 $("#company_id").change(function () {
     getstep();
 });
-
-
-let steps = [];
-let uniqueValues = []; 
 function getstep() {
     $.ajax({
         type: 'GET',
@@ -107,7 +129,7 @@ function getstep() {
                 for (var i = 0; i < tt.length; i++) {
                     a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
                 }
-
+                document.querySelector("#step1").disabled = false;
                 $("#step1").html(''); 
                 $("#step1").html(a); 
             }
@@ -124,6 +146,7 @@ function getstep1(stp) {
     for (var i = 0; i < uniqueStep2Values.length; i++) {
         b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i] + '\')">'+uniqueStep2Values[i]+'</a></li>';
     }
+    document.querySelector("#step2").disabled = false;
     $("#step2").html(''); 
     $("#step2").html(b);
 }
@@ -135,6 +158,8 @@ function getstep3(stp) {
     for (var i = 0; i < uniqueStep3Values.length; i++) {
         bb+='<li><a class="dropdown-item" href="javascript:getstep4(\'' + uniqueStep3Values[i] + '\')">'+uniqueStep3Values[i]+'</a></li>';
     }
+    document.querySelector("#step3").disabled = false;
+
     $("#step3").html(''); 
     $("#step3").html(bb);
 }
@@ -146,6 +171,8 @@ function getstep4(stp) {
     for (var i = 0; i < uniqueStep4Values.length; i++) {
         bbb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
     }
+    document.querySelector("#step4").disabled = false;
+
     $("#step4").html(''); 
     $("#step4").html(bbb);
 }
@@ -157,6 +184,7 @@ function getstep5(stp) {
     for (var i = 0; i < uniqueStep5Values.length; i++) {
         bbbb+='<li><a class="dropdown-item" href="javascript:getstep6(\'' + uniqueStep5Values[i] + '\')">'+uniqueStep5Values[i]+'</a></li>';
     }
+    document.querySelector("#step5").disabled = false;
     $("#step5").html(''); 
     $("#step5").html(bbbb);
 }
