@@ -28,7 +28,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-lg-12 mb-4">
+                            <div class="col-lg-12 mb-5">
                                 <label for="choices-publish-visibility-input" class="form-label">Visibility</label>
                                 <select class="form-select" id="car_name" data-choices data-choices-search-false>
                                 </select>
