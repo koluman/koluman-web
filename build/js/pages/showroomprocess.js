@@ -118,7 +118,7 @@ function getstep() {
 
 function getstep1(stp) {
     console.log(stp);
-    var filteredSteps = steps.filter(item => item.step1 === stp.value);
+    var filteredSteps = steps.filter(item => item.step1 === stp);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
     let b="";
     for (var i = 0; i < uniqueStep2Values.length; i++) {
