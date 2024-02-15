@@ -38,21 +38,20 @@ if (dropzonePreviewNode) {
         }
     });
 }
-$(document).ready(function() {
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-
+$(document).ready(function () {
+    let cevap = getcompany();
+    if (cevap == true) {
+        var id = getIdFromUrl();
+        if (id != "" && id != null) getdetail(id);
+        else add();
+    }
 })
-
 function getcompany() {
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/getApiToken',
         dataType: 'json',
         success: function (data) {
-
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
@@ -89,6 +88,7 @@ function getcompany() {
             }
         }
     });
+    return true;
 }
 
 function getIdFromUrl() {
