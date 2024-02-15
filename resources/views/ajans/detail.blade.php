@@ -32,17 +32,13 @@
                            <div class="col-6">
                             <div class="mb-3">
                                 <label class="form-label" for="product-title-input">Araba Adı</label>
-                                <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
-                                <input type="text" class="form-control d-none" id="product-id-input">
-                                <input type="text" class="form-control" id="product-title-input" value="" required>
-                                <div class="invalid-feedback">Please Enter a product title.</div>
+                                <input type="text" class="form-control d-none" id="car_name" name="car_name">
                             </div>
                             </div>
-
                         </div>
                         <div>
                             <label>Araba Açıklama</label>
-                            <div id="ckeditor-classic">
+                            <div id="ckeditor-classic" name="ckeditor-classic">
                             </div>
                         </div>
                     </div>
@@ -55,7 +51,7 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <p class="text-muted">Araba resişmleri ekleme formu.</p>
+                            <p class="text-muted">Araba kapak resmi ekleme formu.</p>
 
                             <div class="dropzone">
                                 <div class="fallback">
@@ -70,8 +66,8 @@
                                 </div>
                             </div>
 
-                            <ul class="list-unstyled mb-0" id="dropzone-preview">
-                                <li class="mt-2" id="dropzone-preview-list">
+                            <ul class="list-unstyled mb-0" id="dropzone-preview2">
+                                <li class="mt-2" id="dropzone-preview2-list">
                                     <div class="border rounded">
                                         <div class="d-flex p-2">
                                             <div class="flex-shrink-0 me-3">
