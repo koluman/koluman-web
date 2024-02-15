@@ -12,14 +12,6 @@ ClassicEditor
         console.error(error);
     });
 
-// CKEditor yüklenene kadar bekleyin
-document.addEventListener('DOMContentLoaded', function () {
-    if (typeof ClassicEditor !== 'undefined') {
-        console.log(editorContent);
-    } else {
-        console.log('CKEditor henüz yüklenmedi.');
-    }
-});
 var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
@@ -153,6 +145,14 @@ $("#addcar").click(function () {
     formData.append('state', document.querySelector("#state").checked);
 
 
+    // CKEditor yüklenene kadar bekleyin
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof ClassicEditor !== 'undefined') {
+            console.log(editorContent);
+        } else {
+            console.log('CKEditor henüz yüklenmedi.');
+        }
+    });
 
 
 
