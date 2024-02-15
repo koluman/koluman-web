@@ -6,7 +6,9 @@ ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
-        editorContent = editor.getData(); // CKEditor içeriğini al
+        editor.model.document.on('change:data', function () {
+            var editorContent = editor.getData();
+        });
     })
     .catch(function (error) {
         console.error(error);
@@ -144,15 +146,8 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked);
 
-
-    // CKEditor yüklenene kadar bekleyin
-    document.addEventListener('DOMContentLoaded', function () {
-        if (typeof ClassicEditor !== 'undefined') {
-            console.log(editorContent);
-        } else {
-            console.log('CKEditor henüz yüklenmedi.');
-        }
-    });
+    console.log(editorContent);
+    
 
 
 
