@@ -36,9 +36,8 @@ var dropzone = new Dropzone(".dropzone", {
     let  company = new Choices("#company_id", {
         searchEnabled: false
     });
-    document.addEventListener("DOMContentLoaded", function () {
-        getcompany();
-    });
+    getcompany();
+    
     function getcompany() {
         $.ajax({
             type: 'GET',
