@@ -82,9 +82,7 @@ function getcompany() {
 $("#company_id").change(function () {
     getstep();
 });
-$("#step1").change(function () {
-    getstep1();
-});
+
 
 let steps = [];
 let uniqueValues = []; // Array to store unique values
@@ -107,7 +105,7 @@ function getstep() {
                     }
                 }
                 for (var i = 0; i < tt.length; i++) {
-                    a+='<li><a class="dropdown-item" href="#">'+tt[i]+'</a></li>';
+                    a+='<li><a class="dropdown-item" href="javascript:getstep1("'+tt[i]+'")">'+tt[i]+'</a></li>';
                 }
 
                 $("#step1").html(''); // Clear existing choices
@@ -118,8 +116,8 @@ function getstep() {
     });
 };
 
-function getstep1() {
-    console.log("sdfsdf");
+function getstep1(stp) {
+    console.log(stp);
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
