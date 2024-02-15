@@ -34,13 +34,14 @@ if (dropzonePreviewNode) {
 
 }
 
-let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company = new Choices("#company_id", {
-    searchEnabled: false
-});
-let steps = [];
-let uniqueValues = [];
+
 $(document).ready(function () {
+    let csrfToken = $('meta[name="csrf-token"]').attr('content');
+    let company = new Choices("#company_id", {
+        searchEnabled: false
+    });
+    let steps = [];
+    let uniqueValues = [];
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
@@ -62,6 +63,7 @@ function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
 }
+
 function getdetail(id) {
     $.ajax({
         type: 'POST',
@@ -83,8 +85,8 @@ function getdetail(id) {
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
             $("#car_description").val(data.showroomcarid[0].car_description);
-            if(data.showroomcarid[0].isTestdrive==1) document.querySelector("#state").checked = true;
-            else  document.querySelector("#state").checked = false;
+            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
+            else document.querySelector("#state").checked = false;
             if (data.showroomcarid[0].car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
