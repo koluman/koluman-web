@@ -73,7 +73,7 @@
                                         class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i> Load More </a>
                             </div>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-4">
 
 
                             <div class="card">
