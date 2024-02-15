@@ -114,11 +114,12 @@
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="input-group">
+                                            <label>Step1</label>
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end" id="step1">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
