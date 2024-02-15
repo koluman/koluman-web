@@ -121,6 +121,7 @@ function getstep1(stp) {
     var filteredSteps = steps.filter(item => item.step1 === stp);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
     let b="";
+    console.log(uniqueStep2Values);
     for (var i = 0; i < uniqueStep2Values.length; i++) {
         b+='<li><a class="dropdown-item" href="javascript:getstep3(\'' + uniqueStep2Values[i]["step2"] + '\')">'+uniqueStep2Values[i]["step2"]+'</a></li>';
     }
