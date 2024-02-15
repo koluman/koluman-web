@@ -24,15 +24,19 @@
 
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Kategori</label>
-                                    <select class="form-select" name="company_id" id="company_id" required>
+                                    <label for="choices-publish-status-input" class="form-label">Status</label>
+                                    <select class="form-select" id="category_id" data-choices
+                                        data-choices-search-false>
                                     </select>
                                 </div>
                             </div>
-                           <div class="col-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-title-input">Araba Adı</label>
-                                <input type="text" class="form-control d-none" id="car_name" name="car_name">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Product Title</label>
+                                <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
+                                <input type="text" class="form-control d-none" id="product-id-input">
+                                <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
+                                <div class="invalid-feedback">Please Enter a product title.</div>
                             </div>
                             </div>
                         </div>
@@ -114,7 +118,6 @@
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="input-group">
-                                            <label>Step1</label>
                                             <input type="text" class="form-control"
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
@@ -130,7 +133,7 @@
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end" id="step2">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
@@ -141,7 +144,7 @@
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end" id="step3">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
@@ -152,7 +155,7 @@
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end" id="step4">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
@@ -163,7 +166,7 @@
                                                 aria-label="Text input with dropdown button">
                                             <button class="btn btn-success dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end" id="step5">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                             </ul>
                                         </div>
