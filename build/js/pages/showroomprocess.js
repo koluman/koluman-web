@@ -146,7 +146,7 @@ $("#addcar").click(function () {
 var editorContent = ckeditorInstance.getData();*/
 
 // Elde edilen içeriği konsola yazdır (isteğe bağlı)
-console.log(ClassicEditor);
+console.log(ckeditorElement);
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
