@@ -72,7 +72,7 @@ function getdetail(id) {
             console.log(data);
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            $("#company_id").val(data.showroomcarid[0].company_id);
+            company.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1").text(data.showroomcarid[0].step1);
             $("#step2").val(data.showroomcarid[0].step2);

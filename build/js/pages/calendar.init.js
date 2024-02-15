@@ -210,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             addEvent.show();
                             formEvent.reset();
                             selectedEvent = info.event;
-                            console.log(selectedEvent);
 
                             document.getElementById("modal-title").innerHTML = "";
                             document.getElementById("event-location-tag").innerHTML = selectedEvent.extendedProps.location.car_name === undefined ? "No Location" : selectedEvent.extendedProps.location.car_name;
