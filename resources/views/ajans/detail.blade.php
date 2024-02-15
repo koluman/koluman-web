@@ -179,7 +179,7 @@
                             <div class="form-check form-switch form-switch-right form-switch-md">
                                 <label for="input-group-custom-showcode" class="form-label text-muted"></label>
                                 <input class="form-check-input code-switcher" type="checkbox"
-                                    id="input-group-custom-showcode">
+                                    id="state" name="state">
                             </div>
                         </div>
                     </div>

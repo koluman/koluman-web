@@ -136,10 +136,10 @@ $("#addcar").click(function () {
     formData.append('step4', $("#step4").val());
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5").val());
-    //if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
-    //else $url = "https://mobiloby.app/koluman/web/addshowroom"
-    console.log(formData);
-    /*$.ajax({
+    formData.append('state',document.querySelector("#state").checked);
+    if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
+    else $url = "https://mobiloby.app/koluman/web/addshowroom"
+    $.ajax({
         url: $url,
         method: 'POST',
         dataType: "json",
@@ -149,20 +149,7 @@ $("#addcar").click(function () {
         success: function (data) {
             console.log(data);
             if (data.success == 1) {
-                window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
-            }
-            if (data.success == 2) {
-                if (data.message.insurance_type) {
-                    alert(data.message.insurance_type[0]);
-                }
-
-                if (data.message.insurance_state) {
-                    alert(data.message.insurance_state[0]);
-                }
-
-                if (data.message.user_id) {
-                    alert(data.message.user_id[0]);
-                }
+                window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
             } else {
                 alert(data.message);
             }
@@ -170,7 +157,7 @@ $("#addcar").click(function () {
         error: function (error) {
             console.error(error);
         }
-    });*/
+    });
 });
 
 function getstep() {
