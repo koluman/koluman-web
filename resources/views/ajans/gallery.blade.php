@@ -16,7 +16,7 @@
     @endcomponent
 
        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
@@ -386,7 +386,7 @@
             </div>
             <!-- end col -->
 
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 
                 <div class="card">
                     <div class="card-header">
