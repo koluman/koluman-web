@@ -132,10 +132,21 @@ function getstep3(stp) {
     var filteredSteps = steps.filter(item => item.step2 === stp);
     var uniqueStep3Values = [...new Set(filteredSteps.map(item => item.step3))];
     let bb="";
-    console.log(uniqueStep3Values);
     for (var i = 0; i < uniqueStep3Values.length; i++) {
         bb+='<li><a class="dropdown-item" href="javascript:getstep4(\'' + uniqueStep3Values[i] + '\')">'+uniqueStep3Values[i]+'</a></li>';
     }
     $("#step3").html(''); 
     $("#step3").html(bb);
+}
+function getstep4(stp) {
+    document.querySelector("#step3text").value=stp;
+    var filteredSteps = steps.filter(item => item.step3 === stp);
+    var uniqueStep4Values = [...new Set(filteredSteps.map(item => item.step4))];
+    let bbb="";
+    console.log(uniqueStep4Values);
+    for (var i = 0; i < uniqueStep4Values.length; i++) {
+        bb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
+    }
+    $("#step4").html(''); 
+    $("#step4").html(bbb);
 }
