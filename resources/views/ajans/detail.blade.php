@@ -30,7 +30,7 @@
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-status-input" class="form-label">Firmalar</label>
 
-                                <select class="form-select" name="company_id" id="company_id"data-choices
+                                <select class="form-select" name="company_id" id="company_id" data-choices
                                     data-choices-search-false>
 
                                 </select>
