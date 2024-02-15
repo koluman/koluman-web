@@ -128,6 +128,7 @@ function getdetail(id) {
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
+            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent=data.showroomcarid[0].car_description;
             $("#car_description").val(data.showroomcarid[0].car_description);
             if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
