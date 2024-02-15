@@ -90,17 +90,14 @@ let steps = [];
 let uniqueValues = []; // Array to store unique values
 function getstep() {
     $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getsteps',
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcars',
         data: {
             company_id: $("#company_id").val(),
-            _token: csrfToken, // CSRF token'ını gönder
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            steps = data.getsteps;
-
+            steps = data.showroomcars;
             if (data.success == 1) {
                 let a="";var tt = [];
                 for (var i = 0; i < steps.length; i++) {
