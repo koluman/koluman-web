@@ -130,12 +130,12 @@ $("#addcar").click(function () {
     formData.append('car_id',  $("#car_id").val());
     formData.append('car_name', $("#car_name").val());
     formData.append('company_id', $("#company_id").val());
-    formData.append('step1', $("#step1").val());
-    formData.append('step2', $("#step2").val());
-    formData.append('step3', $("#step3").val());
-    formData.append('step4', $("#step4").val());
+    formData.append('step1', $("#step1text").val());
+    formData.append('step2', $("#step2text").val());
+    formData.append('step3', $("#step3text").val());
+    formData.append('step4', $("#step4text").val());
     formData.append('car_img_url', car_img_url);
-    formData.append('step5', $("#step5").val());
+    formData.append('step5', $("#step5text").val());
     formData.append('state',document.querySelector("#state").checked);
     if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
     else $url = "https://mobiloby.app/koluman/web/addshowroom"
