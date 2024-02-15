@@ -35,8 +35,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                         <div>
                             <label>Product Description</label>
 
                             <div id="ckeditor-classic">
@@ -49,6 +48,9 @@
                                 </ul>
                             </div>
                         </div>
+
+                    </div>
+                
                 </div>
                 <!-- end card -->
 
