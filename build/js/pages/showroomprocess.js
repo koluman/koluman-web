@@ -147,8 +147,11 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked);
 
-    console.log(editorContent);
-    
+    if (editorContent) {
+        console.log(editorContent);
+    } else {
+        console.error('CKEditor içeriği bulunamadı.');
+    }    
 
 
 
