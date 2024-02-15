@@ -40,12 +40,11 @@ let company = new Choices("#company_id", {
 });
 let steps = [];
 let uniqueValues = [];
-$(document).ready(function () {
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-});
+getcompany();
+var id = getIdFromUrl();
+if (id != "" && id != null) getdetail(id);
+else add();
+
 
 function getIdFromUrl() {
     var url = window.location.href;
@@ -75,10 +74,8 @@ function getdetail(id) {
             console.log(data);
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            let company2 = new Choices("#company_id", {
-                searchEnabled: false
-            });
-            company2.setChoiceByValue([1]);
+       
+            company.setChoiceByValue([1]);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
