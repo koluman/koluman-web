@@ -22,22 +22,18 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-6">
-                                <div class="mb-3">
+                            <div class="col-6 mb-6">
                                     <label for="choices-publish-status-input" class="form-label">Status</label>
                                     <select class="form-select" id="company_id" name="company_id" data-choices
                                         data-choices-search-false>
                                     </select>
-                                </div>
                             </div>
-                            <div class="col-6">
-                                <div class="mb-6">
+                            <div class="col-6 mb-6">
                                 <label class="form-label" for="product-title-input">Product Title</label>
                                 <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
                                 <input type="text" class="form-control d-none" id="product-id-input">
                                 <input type="text" class="form-control" id="product-title-input" value="" placeholder="Enter product title" required>
                                 <div class="invalid-feedback">Please Enter a product title.</div>
-                            </div>
                             </div>
                         </div>
                         <div>
