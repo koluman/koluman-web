@@ -19,6 +19,7 @@ class Showroom extends Model
         'step4',
         'step5',
         'car_name',
+        'company_id',
         'car_description',
         'car_image_url',
         'isTestdrive',
