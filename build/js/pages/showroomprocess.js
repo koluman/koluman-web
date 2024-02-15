@@ -58,7 +58,10 @@ function getIdFromUrl() {
     }
 }
 
-
+function getFileNameFromUrl(url) {
+    let parts = url.split('/');
+    return parts[parts.length - 1];
+}
 function getdetail(id) {
     $.ajax({
         type: 'POST',
