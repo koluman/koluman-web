@@ -7,6 +7,20 @@ itemid = 13;
     .catch(function (error) {
         console.error(error);
     });*/
+    var ckeditorClassic = document.querySelector('#ckeditor-classic');
+    if (ckeditorClassic) {
+        ClassicEditor
+            .create(ckeditorClassic)
+            .then(function (editor) {
+                editor.ui.view.editable.element.style.height = '200px';
+    
+                // CKEditor içeriği değiştiğinde olay dinle
+               
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
 var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
@@ -139,23 +153,10 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state',document.querySelector("#state").checked);
 
-    var ckeditorClassic = document.querySelector('#ckeditor-classic');
-    if (ckeditorClassic) {
-        ClassicEditor
-            .create(ckeditorClassic)
-            .then(function (editor) {
-                editor.ui.view.editable.element.style.height = '200px';
-    
-                // CKEditor içeriği değiştiğinde olay dinle
-                editor.model.document.on('change:data', function () {
-                    var editorContent = editor.getData();
-                    console.log(editorContent);
-                });
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-    }
+    document.querySelector('#ckeditor-classic').on('change:data', function () {
+        var editorContent = document.querySelector('#ckeditor-classic').getData();
+        console.log(editorContent);
+    });
     
 
    /* if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
