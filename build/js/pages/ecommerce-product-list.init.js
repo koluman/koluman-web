@@ -148,7 +148,7 @@ var productListAll = new gridjs.Grid({
                     '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.car_image_url + '" alt="" class="img-fluid d-block"></div>' +
                     '</div>' +
                     '<div class="flex-grow-1">' +
-                    '<h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details" class="text-body">' + row.car_name + '</a></h5>' +
+                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.car_name + '</a></h5>' +
                     '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.company_name + '</span></p>' +
                     '</div>' +
                     '</div>');
@@ -194,7 +194,7 @@ var productListAll = new gridjs.Grid({
                     '</button>' +
                     '<ul class="dropdown-menu dropdown-menu-end">' +
                     '<li><a class="dropdown-item"  href="javascript:void(0);" onclick="redirectToGaleri()"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> Galeri</a></li>' +
-                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="shoowroomdetail"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
+                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="javascript:detay(' + row.id+ ')"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
                     '<li class="dropdown-divider"></li>' +
                     '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
                     '</ul>' +
@@ -414,4 +414,8 @@ function removeSingleItem() {
             });
         });
     });
+}
+function detay(id) {
+    window.location.href = "https://mobiloby.app/koluman/web/showroomdetail/" + id;
+
 }
