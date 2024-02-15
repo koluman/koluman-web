@@ -20,27 +20,31 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                            <div class="col-lg-12 mb-4">
+                        <div class="row">
+
+                            <div class="col-lg-6 mb-4">
+                                <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
+                                <select class="form-select" name="car_name" id="car_name" data-choices
+                                    data-choices-search-false>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 mb-4">
                                 <label for="choices-publish-status-input" class="form-label">Firmalar</label>
 
-                                <select class="form-select" name="company_id" id="company_id"data-choices data-choices-search-false>
+                                <select class="form-select" name="company_id" id="company_id"data-choices
+                                    data-choices-search-false>
 
                                 </select>
                             </div>
-
-                            <div class="col-lg-12 mb-5">
-                                <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
-                                <select class="form-select" name="car_name" id="car_name" data-choices data-choices-search-false>
-                                </select>
-                            </div>
-                         <div>
+                        </div>
+                        <div>
                             <label>Araba Açıklaması</label>
                             <div id="ckeditor-classic" name="ckeditor-classic">
                             </div>
                         </div>
 
                     </div>
-                
+
                 </div>
                 <!-- end card -->
 
