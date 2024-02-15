@@ -13,6 +13,6 @@ class AjansHomeController extends Controller
     }
     public function gallery(Request $request)
     {
-        return view('gallery');
+        return view('ajans.gallery');
     }
 }
