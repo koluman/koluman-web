@@ -105,7 +105,7 @@ function getstep() {
                     }
                 }
                 for (var i = 0; i < tt.length; i++) {
-                    a+='<li><a class="dropdown-item" href="javascript:getstep1("'+tt[i]+'")">'+tt[i]+'</a></li>';
+                    a+='<li><a class="dropdown-item" href="javascript:getstep1('+tt[i]+')">'+tt[i]+'</a></li>';
                 }
 
                 $("#step1").html(''); // Clear existing choices
