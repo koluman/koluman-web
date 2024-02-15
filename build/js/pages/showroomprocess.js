@@ -145,7 +145,7 @@ function getstep4(stp) {
     let bbb="";
     console.log(uniqueStep4Values);
     for (var i = 0; i < uniqueStep4Values.length; i++) {
-        bb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
+        bbb+='<li><a class="dropdown-item" href="javascript:getstep5(\'' + uniqueStep4Values[i] + '\')">'+uniqueStep4Values[i]+'</a></li>';
     }
     $("#step4").html(''); 
     $("#step4").html(bbb);
