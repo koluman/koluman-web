@@ -58,7 +58,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
     Route::post('addshowroom', [ShoowroomController::class, 'addshowroom'])->name('addshowroom');
     Route::post('updateshowroom', [ShoowroomController::class, 'updateshowroom'])->name('updateshowroom');
-    Route::get('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
+    Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
 
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
