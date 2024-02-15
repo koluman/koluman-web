@@ -88,7 +88,7 @@ class ShoowroomController extends Controller
                 'step5' => $step5,
                 'car_description'=>$car_description,
                 'isTestDrive' => $state,
-                'car_img_url' => $showroomPath, // Dosyanın URL'sini kaydet
+                'car_image_url' => $showroomPath, // Dosyanın URL'sini kaydet
             ]);
             if ($result) {
                 $responseData = [
@@ -141,7 +141,7 @@ class ShoowroomController extends Controller
                     'step5' => $step5,
                     'car_description'=>$car_description,
                     'isTestDrive' => $state,
-                    'car_img_url' => $showroomPath,
+                    'car_image_url' => $showroomPath,
                 ]);
             } else {
                 $affectedRows = Showroom::where('car_id', $car_id)
