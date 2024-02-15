@@ -70,15 +70,15 @@ function getdetail(id) {
         },
         success: function (data) {
             console.log(data);
-            $("#car_id").val(data.showroomcarid.car_id);
-            $("#car_name").val(data.showroomcarid.car_name);
-            $("#company_id").val(data.showroomcarid.company_id);
-            $("#ckeditor-classic").val(data.showroomcarid.car_description);
-            $("#step1").text(data.showroomcarid.step1);
-            $("#step2").val(data.showroomcarid.step2);
-            $("#step3").val(data.showroomcarid.step3);
-            $("#step4").val(data.showroomcarid.step4);
-            $("#step5").val(data.showroomcarid.step5);
+            $("#car_id").val(data.showroomcarid[0].car_id);
+            $("#car_name").val(data.showroomcarid[0].car_name);
+            $("#company_id").val(data.showroomcarid[0].company_id);
+            $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
+            $("#step1").text(data.showroomcarid[0].step1);
+            $("#step2").val(data.showroomcarid[0].step2);
+            $("#step3").val(data.showroomcarid[0].step3);
+            $("#step4").val(data.showroomcarid[0].step4);
+            $("#step5").val(data.showroomcarid[0].step5);
            /* if (data.showroomcarid.car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid.car_image_url);
                 $("#polid").text(FileName);
