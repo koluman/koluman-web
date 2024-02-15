@@ -22,26 +22,19 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <div class="col-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Kategori</label>
-                                        <select class="form-select" name="company_id" id="company_id"
-                                            required>
-                                        </select>
-                                    </div>
-                                </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="product-title-input">Araba Adı</label>
-                                <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
-                                <input type="text" class="form-control d-none" id="product-id-input">
-                                <input type="text" class="form-control" id="product-title-input" value=""
-                                   required>
-                                <div class="invalid-feedback">Please Enter a product title.</div>
+                                <label class="form-label">Kategori</label>
+                                <select class="form-select" name="company_id" id="company_id" required>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Araba Adı</label>
+                                <input type="text" class="form-control" name="car_name" id="car_name" required>
                             </div>
 
                         </div>
                         <div>
                             <label>Araba Açıklama</label>
-                            <div id="ckeditor-classic">                               
+                            <div id="ckeditor-classic">
                             </div>
                         </div>
                     </div>
@@ -179,14 +172,15 @@
                 <!-- end card -->
                 <div class="card">
                     <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Test Sürüş Arabası</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="input-group-custom-showcode">
+                        <h4 class="card-title mb-0 flex-grow-1">Test Sürüş Arabası</h4>
+                        <div class="flex-shrink-0">
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                <label for="input-group-custom-showcode" class="form-label text-muted"></label>
+                                <input class="form-check-input code-switcher" type="checkbox"
+                                    id="input-group-custom-showcode">
+                            </div>
                         </div>
                     </div>
-                </div>
                     <!-- end card body -->
                 </div>
             </div>
