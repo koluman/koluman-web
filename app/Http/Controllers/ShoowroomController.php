@@ -56,7 +56,7 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
-    public function addsigorta(Request $request)
+    public function addshowroom(Request $request)
     {
         try {
             $car_id = $request->input('car_id');
@@ -108,7 +108,7 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
-    public function updatesigorta(Request $request)
+    public function updateshowroom(Request $request)
     {
         try {
             $car_id = $request->input('car_id');
