@@ -52,11 +52,7 @@ var dropzone = new Dropzone(".dropzone", {
     
     
 
-    // choices category input
-    var prdoctCategoryInput = new Choices('#choices-category-input', {
-        searchEnabled: false,
-    });
-    
+  
     var editinputValueJson = sessionStorage.getItem('editInputValue');
     if (editinputValueJson) {
         var editinputValueJson = JSON.parse(editinputValueJson);
