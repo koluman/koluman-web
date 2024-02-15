@@ -34,7 +34,14 @@
                                 <select class="form-select" id="car_name" data-choices data-choices-search-false>
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+
+                    </div>
+                
+                </div>
+                 <div class="card">
+                    <div class="card-body">
+                      
                          <div>
                             <label>Product Description</label>
 
