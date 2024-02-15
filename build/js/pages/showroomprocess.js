@@ -98,7 +98,7 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log($("#company_id").val());
+            console.log(data);
 
             if (data.success == 1) {
                 let a="";
