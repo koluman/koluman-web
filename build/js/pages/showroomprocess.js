@@ -102,7 +102,6 @@ function getstep() {
                 let a="";var tt = [];
                 for (var i = 0; i < steps.length; i++) {
                     if (!uniqueValues.includes(steps[i]["step1"])) {
-                     
                         tt.push(steps[i]["step1"]);
                         uniqueValues.push(steps[i]["step1"]);
                     }
@@ -120,6 +119,7 @@ function getstep() {
 };
 
 function getstep1() {
+    console.log( $("#step1").val());
     var selectedStep1 = step1.getValue();
     var filteredSteps = steps.filter(item => item.step1 === selectedStep1.value);
     var uniqueStep2Values = [...new Set(filteredSteps.map(item => item.step2))];
