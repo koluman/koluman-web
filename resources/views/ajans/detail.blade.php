@@ -50,7 +50,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Araba Resimleri</h5>
+                        <h5 class="card-title mb-0">Araba Kapak Resmi</h5>
                     </div>
                     <div class="card-body">
                         <div>
@@ -58,7 +58,7 @@
 
                             <div class="dropzone">
                                 <div class="fallback">
-                                    <input name="file" type="file" multiple="multiple">
+                                    <input name="file" type="file">
                                 </div>
                                 <div class="dz-message needsclick">
                                     <div class="mb-3">

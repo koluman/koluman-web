@@ -193,8 +193,8 @@ var productListAll = new gridjs.Grid({
                     '<i class="ri-more-fill"></i>' +
                     '</button>' +
                     '<ul class="dropdown-menu dropdown-menu-end">' +
-                    '<li><a class="dropdown-item" href="apps-ecommerce-product-details"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>' +
-                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="apps-ecommerce-add-product"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>' +
+                    '<li><a class="dropdown-item" href="shoowroomdetail/"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> Detay</a></li>' +
+                    '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="shoowroomdetail"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
                     '<li class="dropdown-divider"></li>' +
                     '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
                     '</ul>' +
