@@ -8,18 +8,20 @@ itemid = 13;
         console.error(error);
     });*/
     var ckeditorClassic = document.querySelector('#ckeditor-classic');
-    if (ckeditorClassic) {
+
+    // CKEditor örneği daha önce oluşturulmamışsa ve element varsa oluştur
+    if (!ClassicEditor.instances['ckeditor-classic'] && ckeditorClassic) {
         ClassicEditor
             .create(ckeditorClassic)
             .then(function (editor) {
                 editor.ui.view.editable.element.style.height = '200px';
-    
                 // CKEditor içeriği değiştiğinde olay dinle
-               
             })
             .catch(function (error) {
                 console.error(error);
             });
+    } else {
+        console.error('CKEditor elementi zaten var veya bulunamadı.');
     }
 var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
