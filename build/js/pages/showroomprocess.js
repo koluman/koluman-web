@@ -119,18 +119,8 @@ function getdetail(id) {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
-                let a = "";
-                var tt = [];
-                for (var i = 0; i < data.getsteps.length; i++) {
-                    if (!tt.includes( data.getsteps[i]["step1"])) {
-                        tt.push( data.getsteps[i]["step1"]);
-                    }                
-                }
-                console.log(tt);
-                for (var i = 0; i < tt.length; i++) {
-                    a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
-                }
-                $("#step1").html('');
+                let uniqueSteps = [...new Set(data.getsteps.map(item => item.step1))];
+                let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
                 $("#step1").html(a);
             }
         }
