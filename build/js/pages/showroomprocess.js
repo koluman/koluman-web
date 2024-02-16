@@ -274,7 +274,6 @@ function getstep() {
             }
             else{
                 console.log("sdfsdfd:"+data);
-
             }
         }
     });
