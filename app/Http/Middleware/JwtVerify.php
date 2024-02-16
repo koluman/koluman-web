@@ -20,7 +20,7 @@ class JwtVerify
             try {
                 $token = $this->extractToken($token);
                 $user = JWTAuth::setToken($token)->authenticate();
-    
+
                 if (!$user) {
                     return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
                 }
