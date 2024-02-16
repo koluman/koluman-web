@@ -61,7 +61,7 @@ class ShoowroomController extends Controller
         try {
             $shoowroomid = Showroom::select('showroom.car_id', 'showroom.company_id', 'showroom.step1', 'showroom.step2', 'showroom.step3', 'showroom.step4', 'showroom.step5', 'showroom.car_name', 'showroom.car_description', 'showroom.car_image_url', 'showroom.isTestdrive', 'companies.company_name')
                 ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
-                ->where('car_id',$request->car_id)
+                ->where('car_id', $request->car_id)
                 ->get();
 
             if (!$shoowroomid->isEmpty()) {
@@ -114,7 +114,7 @@ class ShoowroomController extends Controller
                 'step3' => $step3,
                 'step4' => $step4,
                 'step5' => $step5,
-                'car_description'=>$car_description,
+                'car_description' => $car_description,
                 'isTestdrive' => $state,
                 'car_image_url' => $showroomPath, // Dosyanın URL'sini kaydet
             ]);
@@ -159,30 +159,30 @@ class ShoowroomController extends Controller
                 $showroom->move(public_path('upload/showroom'), $showroomName);
                 $showroomPath = 'https://mobiloby.app/koluman/web/public/upload/showroom/' . $showroomName;
                 $affectedRows = Showroom::where('car_id', $car_id)
-                ->update([
-                    'car_name' => $car_name,
-                    'company_id' => $company_id,
-                    'step1' => $step1,
-                    'step2' => $step2,
-                    'step3' => $step3,
-                    'step4' => $step4,
-                    'step5' => $step5,
-                    'car_description'=>$car_description,
-                    'isTestdrive' => $state,
-                    'car_image_url' => $showroomPath,
-                ]);
+                    ->update([
+                        'car_name' => $car_name,
+                        'company_id' => $company_id,
+                        'step1' => $step1,
+                        'step2' => $step2,
+                        'step3' => $step3,
+                        'step4' => $step4,
+                        'step5' => $step5,
+                        'car_description' => $car_description,
+                        'isTestdrive' => $state,
+                        'car_image_url' => $showroomPath,
+                    ]);
             } else {
                 $affectedRows = Showroom::where('car_id', $car_id)
-                ->update([
-                    'car_name' => $car_name,
-                    'company_id' => $company_id,
-                    'step1' => $step1,
-                    'step2' => $step2,
-                    'step3' => $step3,
-                    'step4' => $step4,
-                    'step5' => $step5,
-                    'isTestDrive' => $state,
-                ]);
+                    ->update([
+                        'car_name' => $car_name,
+                        'company_id' => $company_id,
+                        'step1' => $step1,
+                        'step2' => $step2,
+                        'step3' => $step3,
+                        'step4' => $step4,
+                        'step5' => $step5,
+                        'isTestDrive' => $state,
+                    ]);
             }
             if ($affectedRows > 0) {
                 $responseData = [
@@ -206,18 +206,23 @@ class ShoowroomController extends Controller
     public function deleteshowroomimage(Request $request)
     {
         try {
+
             $car_id = $request->car_id;
-            $car = Showroom::where('car_id', $car_id)->first();
-            if ($car) {
-                $car->delete();
+
+            $affectedRows = Showroom::where('car_id', $car_id)
+                ->update([
+                    'car_image_url' => "",
+                ]);
+            if ($affectedRows > 0) {
                 $responseData = [
+                    "showroom" => $affectedRows,
                     "success" => 1,
-                    "message" => "Araba başarıyla silindi",
+                    "message" => "Resim silindi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Araba başarıyla silinemedi!",
+                    "message" => "Resim silinemedi",
                 ];
             }
         } catch (\Exception $e) {
@@ -226,7 +231,6 @@ class ShoowroomController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-
         return response()->json($responseData);
     }
 }
