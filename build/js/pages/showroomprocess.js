@@ -36,170 +36,170 @@ if (dropzonePreviewNode) {
         }
     });
 }
-$(document).ready(function () {
-    let company = new Choices("#company_id", {
-        searchEnabled: false
-    });
-    let cevap = getcompany();
-    if (cevap == true) {
-        var id = getIdFromUrl();
-        if (id != "" && id != null) getdetail(id);
-        else add();
-    }
-    function getcompany() {
-        $.ajax({
-            type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/getApiToken',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/getcompanies',
-                        dataType: 'json',
-                        headers: {
-                            "Authorization": 'Bearer ' + data.token
-                        },
-                        success: function (data) {
-                            if (data.success == 1) {
-                                var ch = [];
-                                var v = "";
-                                var t = "Lütfen Seçiniz";
-                                var c = {
+    
+function getcompany() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    success: function (data) {
+                        if (data.success == 1) {
+                            var ch = [];
+                            var v = "";
+                            var t = "Lütfen Seçiniz";
+                            var c = {
+                                value: v,
+                                label: t,
+                            };
+                            ch.push(c);
+                            for (var i = 0; i < data.companies.length; i++) {
+                                v = data.companies[i]["company_id"];
+                                t = data.companies[i]["company_name"];
+
+                                c = {
                                     value: v,
                                     label: t,
                                 };
                                 ch.push(c);
-                                for (var i = 0; i < data.companies.length; i++) {
-                                    v = data.companies[i]["company_id"];
-                                    t = data.companies[i]["company_name"];
-    
-                                    c = {
-                                        value: v,
-                                        label: t,
-                                    };
-                                    ch.push(c);
-                                }
-                                company.clearChoices(); // Clear existing choices
-                                company.setChoices(ch, 'value', 'label', true); // Set new choices
                             }
-                        }
-                    });
-                }
-            }
-        });
-        return true;
-    }
-
-    function getIdFromUrl() {
-        var url = window.location.href;
-        var match = url.match(/\/showroomdetail\/(\d+)/);
-    
-        if (match && match[1]) {
-            return parseInt(match[1], 10);
-        } else {
-            return null;
-        }
-    }
-    
-    function getFileNameFromUrl(url) {
-        let parts = url.split('/');
-        return parts[parts.length - 1];
-    }
-    
-    function getdetail(id) {
-    
-        $.ajax({
-            type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
-            dataType: 'json',
-            data: {
-                car_id: id,
-                _token: csrfToken, // CSRF token'ını gönder
-            },
-            success: function (data) {
-                $("#car_id").val(data.showroomcarid[0].car_id);
-                $("#car_name").val(data.showroomcarid[0].car_name);
-                console.log(data.showroomcarid[0].company_id);
-                console.log(company);
-    company.setValue(data.showroomcarid[0].company_id);
-                $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
-                $("#step1text").val(data.showroomcarid[0].step1);
-                $("#step2text").val(data.showroomcarid[0].step2);
-                $("#step3text").val(data.showroomcarid[0].step3);
-                $("#step4text").val(data.showroomcarid[0].step4);
-                $("#step5text").val(data.showroomcarid[0].step5);
-                document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
-                $("#car_description").val(data.showroomcarid[0].car_description);
-                if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
-                else document.querySelector("#state").checked = false;
-                if (data.showroomcarid[0].car_image_url) {
-                    let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
-                    $("#shid").text(FileName);
-                    document.querySelector("#shdiv").style.display = "none";
-                    var mockFile = {
-                        name: FileName,
-                    };
-                    dropzone.emit("addedfile", mockFile);
-                    var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
-                    dropzone.emit("thumbnail", mockFile, pdfIconPath);
-                    dropzone.emit("complete", mockFile);
-                    dropzone.files.push(mockFile);
-                } else {
-                    dropzone.removeAllFiles();
-                }
-                $("#addcar").text("Güncelle");
-    
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
-                    data: {
-                        company_id: data.showroomcarid[0].company_id,
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success == 1) {
-                            let uniqueSteps = [...new Set(data.showroomcars.map(item => item.step1))];
-                            let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
-                            $("#step1").html('');
-                            $("#step1").html(a);
-                            steps = data.showroomcars;
-                            document.querySelector("#step1text").disabled = false;
-                            document.querySelector("#step2text").disabled = false;
-                            document.querySelector("#step3text").disabled = false;
-                            document.querySelector("#step4text").disabled = false;
-                            document.querySelector("#step5text").disabled = false;
-    
-                        }
-                        else{
-                            $("#step1").html('');
+                            company.clearChoices(); // Clear existing choices
+                            company.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
                     }
                 });
             }
-    
-        });
+        }
+    });
+    return true;
+}
+
+function getIdFromUrl() {
+    var url = window.location.href;
+    var match = url.match(/\/showroomdetail\/(\d+)/);
+
+    if (match && match[1]) {
+        return parseInt(match[1], 10);
+    } else {
+        return null;
     }
-    
-    function add() {
-        $("#car_id").val("");
-        $("#car_name").val("");
-        $("#company_id").val("");
-        $("#ckeditor-classic").val("");
-        $("#step1").text("");
-        $("#step2").val("");
-        $("#step3").val("");
-        $("#step4").val("");
-        $("#step5").val("");
-        dropzone.removeAllFiles();
-        $("#addcar").text("Ekle");
-        document.querySelector("#step1text").disabled = true;
-        document.querySelector("#step2text").disabled = true;
-        document.querySelector("#step3text").disabled = true;
-        document.querySelector("#step4text").disabled = true;
-        document.querySelector("#step5text").disabled = true;
-    
-    }
+}
+
+function getFileNameFromUrl(url) {
+    let parts = url.split('/');
+    return parts[parts.length - 1];
+}
+
+function getdetail(id) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+        dataType: 'json',
+        data: {
+            car_id: id,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        success: function (data) {
+            $("#car_id").val(data.showroomcarid[0].car_id);
+            $("#car_name").val(data.showroomcarid[0].car_name);
+            console.log(data.showroomcarid[0].company_id);
+            console.log(company);
+company.setValue(data.showroomcarid[0].company_id);
+            $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
+            $("#step1text").val(data.showroomcarid[0].step1);
+            $("#step2text").val(data.showroomcarid[0].step2);
+            $("#step3text").val(data.showroomcarid[0].step3);
+            $("#step4text").val(data.showroomcarid[0].step4);
+            $("#step5text").val(data.showroomcarid[0].step5);
+            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
+            $("#car_description").val(data.showroomcarid[0].car_description);
+            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
+            else document.querySelector("#state").checked = false;
+            if (data.showroomcarid[0].car_image_url) {
+                let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
+                $("#shid").text(FileName);
+                document.querySelector("#shdiv").style.display = "none";
+                var mockFile = {
+                    name: FileName,
+                };
+                dropzone.emit("addedfile", mockFile);
+                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                dropzone.emit("thumbnail", mockFile, pdfIconPath);
+                dropzone.emit("complete", mockFile);
+                dropzone.files.push(mockFile);
+            } else {
+                dropzone.removeAllFiles();
+            }
+            $("#addcar").text("Güncelle");
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
+                data: {
+                    company_id: data.showroomcarid[0].company_id,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success == 1) {
+                        let uniqueSteps = [...new Set(data.showroomcars.map(item => item.step1))];
+                        let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
+                        $("#step1").html('');
+                        $("#step1").html(a);
+                        steps = data.showroomcars;
+                        document.querySelector("#step1text").disabled = false;
+                        document.querySelector("#step2text").disabled = false;
+                        document.querySelector("#step3text").disabled = false;
+                        document.querySelector("#step4text").disabled = false;
+                        document.querySelector("#step5text").disabled = false;
+
+                    }
+                    else{
+                        $("#step1").html('');
+                    }
+                }
+            });
+        }
+
+    });
+}
+
+function add() {
+    $("#car_id").val("");
+    $("#car_name").val("");
+    $("#company_id").val("");
+    $("#ckeditor-classic").val("");
+    $("#step1").text("");
+    $("#step2").val("");
+    $("#step3").val("");
+    $("#step4").val("");
+    $("#step5").val("");
+    dropzone.removeAllFiles();
+    $("#addcar").text("Ekle");
+    document.querySelector("#step1text").disabled = true;
+    document.querySelector("#step2text").disabled = true;
+    document.querySelector("#step3text").disabled = true;
+    document.querySelector("#step4text").disabled = true;
+    document.querySelector("#step5text").disabled = true;
+
+}
+$(document).ready(function () {
+    let company = new Choices("#company_id", {
+        searchEnabled: false
+    });
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+
 })
 
 
