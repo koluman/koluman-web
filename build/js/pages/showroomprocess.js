@@ -75,7 +75,6 @@ function getcompany() {
                                 };
                                 ch.push(c);
                             }
-                            console.log(company2);
                             company2.clearChoices();
                             company2.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
@@ -99,6 +98,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
+            console.log(company2);
             company2.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
