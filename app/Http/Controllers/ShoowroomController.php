@@ -203,4 +203,30 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deleteshowroomimage(Request $request)
+    {
+        try {
+            $car_id = $request->car_id;
+            $car = Showroom::where('car_id', $car_id)->first();
+            if ($car) {
+                $car->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Araba başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Araba başarıyla silinemedi!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }

@@ -59,7 +59,9 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('addshowroom', [ShoowroomController::class, 'addshowroom'])->name('addshowroom');
     Route::post('updateshowroom', [ShoowroomController::class, 'updateshowroom'])->name('updateshowroom');
     Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
+    Route::post('deleteshowroomimage', [ShoowroomController::class, 'deleteshowroomimage'])->name('deleteshowroomimage');
 
+    
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
