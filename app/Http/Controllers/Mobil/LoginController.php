@@ -92,7 +92,7 @@ class LoginController extends Controller
             $token = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $token);
             $u = JWTAuth::setToken($token)->authenticate();
-            /*if ($u) {
+            if ($u) {
                 JWTAuth::invalidate($token);
                 Auth::guard('api')->logout();
                 User::where('user_id', $u->user_id)->update(['user_notification_token' => ""]);
@@ -105,7 +105,7 @@ class LoginController extends Controller
                     "success" => 0,
                     "message" => "Token bulunamadı, Logout işlemi başarısız",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -113,7 +113,7 @@ class LoginController extends Controller
             ];
         }
 
-        return response()->json(JWTAuth::invalidate($token));
+        return response()->json($responseData);
     }
     public function userregister(RegisterRequest $request)
     {
