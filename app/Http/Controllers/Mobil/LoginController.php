@@ -113,7 +113,7 @@ class LoginController extends Controller
             ];
         }
 
-        return response()->json($u);
+        return response()->json(JWTAuth::invalidate($token));
     }
     public function userregister(RegisterRequest $request)
     {
