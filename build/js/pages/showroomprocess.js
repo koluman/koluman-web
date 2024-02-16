@@ -273,7 +273,7 @@ function getstep() {
                 $("#step1").html(a);
             }
             else{
-                console.log("sdfsdfd:"+data);
+                $("#step1").html('');
             }
         }
     });
