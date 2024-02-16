@@ -241,6 +241,7 @@ $("#addcar").click(function () {
 });
 
 function getstep() {
+    let steps = [];
     document.querySelector("#step1text").value = "";
     document.querySelector("#step2text").value = "";
     document.querySelector("#step3text").value = "";
