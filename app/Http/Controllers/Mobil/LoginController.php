@@ -200,10 +200,8 @@ class LoginController extends Controller
     public function sendcode(Request $request)
     {
         try {
-            $token = $request->header('Authorization');
-            $token = str_replace('Bearer ', '', $token);
-            $u = JWTAuth::setToken($token)->authenticate();
-            if ($u) {
+            $user_phone=$request->user_phone;
+            if ($user_phone) {
                 $responseData = [
                     "success" => 1,
                     "message" => "Doğrulama kodunuz telefon numaranıza gönderilmiştir.",
