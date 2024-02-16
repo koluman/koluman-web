@@ -3,10 +3,15 @@ let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let company ;
 let steps = [];
 let uniqueValues = [];
+var car_img_url;
 document.addEventListener("DOMContentLoaded", function () {
     company = new Choices("#company_id", {
         searchEnabled: false
     });
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
 });
 itemid = 13;
 ClassicEditor
@@ -21,8 +26,6 @@ ClassicEditor
     .catch(function (error) {
         console.error(error);
     });
-
-var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
@@ -41,15 +44,6 @@ if (dropzonePreviewNode) {
         }
     });
 }
-$(document).ready(function () {
-  
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-
-})
-
 function getcompany() {
     $.ajax({
         type: 'GET',
