@@ -241,7 +241,7 @@ $("#addcar").click(function () {
 });
 
 function getstep() {
-    let steps = [];let uniqueValues = [];
+    let steps = [];let uniqueValues = [];var tt = [];
     document.querySelector("#step1text").value = "";
     document.querySelector("#step2text").value = "";
     document.querySelector("#step3text").value = "";
@@ -255,11 +255,10 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data);
-            steps = data.showroomcars;
             if (data.success == 1) {
+                steps = data.showroomcars;
+                console.log(steps);
                 let a = "";
-                var tt = [];
                 for (var i = 0; i < steps.length; i++) {
                     if (!uniqueValues.includes(steps[i]["step1"])) {
                         tt.push(steps[i]["step1"]);
