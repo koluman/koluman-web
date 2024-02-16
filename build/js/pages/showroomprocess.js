@@ -30,19 +30,17 @@ if (dropzonePreviewNode) {
     });
 }
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company2;
 let steps = [];
 let uniqueValues = [];
 var car_img_url;
-document.addEventListener("DOMContentLoaded", function () {
-    company2 = new Choices("#company_id", {
-        searchEnabled: false
-    });
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
+let company2 = new Choices("#company_id", {
+    searchEnabled: false
 });
+getcompany();
+var id = getIdFromUrl();
+if (id != "" && id != null) getdetail(id);
+else add();
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -78,7 +76,7 @@ function getcompany() {
                                 ch.push(c);
                             }
                             console.log(company2);
-                            company2.clearChoices(); // Clear existing choices
+                            company2.clearChoices();
                             company2.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
                     }
@@ -87,6 +85,7 @@ function getcompany() {
         }
     });
 }
+
 function getdetail(id) {
 
     $.ajax({
@@ -148,8 +147,7 @@ function getdetail(id) {
                         document.querySelector("#step4text").disabled = false;
                         document.querySelector("#step5text").disabled = false;
 
-                    }
-                    else{
+                    } else {
                         $("#step1").html('');
                     }
                 }
@@ -158,6 +156,7 @@ function getdetail(id) {
 
     });
 }
+
 function add() {
     $("#car_id").val("");
     $("#car_name").val("");
@@ -177,6 +176,7 @@ function add() {
     document.querySelector("#step5text").disabled = true;
 
 }
+
 function getIdFromUrl() {
     var url = window.location.href;
     var match = url.match(/\/showroomdetail\/(\d+)/);
@@ -236,7 +236,9 @@ $("#addcar").click(function () {
 });
 
 function getstep() {
-    let steps = [];let uniqueValues = [];var tt = [];
+    let steps = [];
+    let uniqueValues = [];
+    var tt = [];
     document.querySelector("#step1text").value = "";
     document.querySelector("#step2text").value = "";
     document.querySelector("#step3text").value = "";
@@ -265,13 +267,13 @@ function getstep() {
                 document.querySelector("#step1text").disabled = false;
                 $("#step1").html('');
                 $("#step1").html(a);
-            }
-            else{
+            } else {
                 $("#step1").html('');
             }
         }
     });
 };
+
 function getstep1(stp) {
     document.querySelector("#step1text").value = stp;
     var filteredSteps = steps.filter(item => item.step1 === stp);
