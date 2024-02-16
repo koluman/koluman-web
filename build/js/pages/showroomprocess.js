@@ -125,7 +125,8 @@ function getdetail(id) {
             $("#car_name").val(data.showroomcarid[0].car_name);
             console.log(data.showroomcarid[0].company_id);
             console.log(company);
-            company.setChoiceByValue(data.showroomcarid[0].company_id);
+// Assuming `company` is your Choices instance
+company.setValue([data.showroomcarid[0].company_id]);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
