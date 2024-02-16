@@ -233,7 +233,7 @@ return [
     |
     */
 
-    'blacklist_grace_period' => env('JWT_BLACKLIST_GRACE_PERIOD', 60),
+    'blacklist_grace_period' => 60,
 
     /*
     |--------------------------------------------------------------------------
@@ -301,7 +301,7 @@ return [
     'driver' => 'jwt',
     'user' => App\Models\User::class,
     'backuser' => App\Models\BackUser::class,
-    'identifier' => 'user_phone',
+    'identifier' => 'user_id',
     'require_claim' => true,
 
 
