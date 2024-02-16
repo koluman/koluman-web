@@ -112,7 +112,7 @@ function getFileNameFromUrl(url) {
 function getdetail(id) {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcars',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
         data: {
             company_id: $("#company_id").val(),
         },

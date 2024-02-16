@@ -56,6 +56,8 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::get('/shoowroomlist', [ShoowroomController::class, 'shoowroom'])->name('ajans.list');
     Route::get('/showroomdetail/{id?}', [ShoowroomController::class, 'shoowroomdetail'])->name('shoowroomdetail');
     Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
+    Route::get('/getshowroomcarcompany', [ShoowroomController::class, 'getshowroomcarcompany'])->name('getshowroomcarcompany');
+
     Route::post('addshowroom', [ShoowroomController::class, 'addshowroom'])->name('addshowroom');
     Route::post('updateshowroom', [ShoowroomController::class, 'updateshowroom'])->name('updateshowroom');
     Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
