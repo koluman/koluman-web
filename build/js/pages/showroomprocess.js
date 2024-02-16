@@ -1,18 +1,3 @@
-
-let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company;
-let steps = [];
-let uniqueValues = [];
-var car_img_url;
-document.addEventListener("DOMContentLoaded", function () {
-    company = new Choices("#company_id", {
-        searchEnabled: false
-    });
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-});
 itemid = 13;
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
@@ -44,6 +29,20 @@ if (dropzonePreviewNode) {
         }
     });
 }
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
+let company2;
+let steps = [];
+let uniqueValues = [];
+var car_img_url;
+document.addEventListener("DOMContentLoaded", function () {
+    company2 = new Choices("#company_id", {
+        searchEnabled: false
+    });
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+});
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -78,8 +77,8 @@ function getcompany() {
                                 };
                                 ch.push(c);
                             }
-                            company.clearChoices(); // Clear existing choices
-                            company.setChoices(ch, 'value', 'label', true); // Set new choices
+                            company2.clearChoices(); // Clear existing choices
+                            company2.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
                     }
                 });
@@ -117,9 +116,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            console.log(data.showroomcarid[0].company_id);
-            console.log(company);
-            company.setChoiceByValue(data.showroomcarid[0].company_id);
+            company2.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
@@ -177,7 +174,6 @@ function getdetail(id) {
 
     });
 }
-
 function add() {
     $("#car_id").val("");
     $("#car_name").val("");
@@ -197,10 +193,6 @@ function add() {
     document.querySelector("#step5text").disabled = true;
 
 }
-
-
-
-
 $("#company_id").change(function () {
     getstep();
 });
@@ -279,7 +271,6 @@ function getstep() {
         }
     });
 };
-
 function getstep1(stp) {
     document.querySelector("#step1text").value = stp;
     var filteredSteps = steps.filter(item => item.step1 === stp);
