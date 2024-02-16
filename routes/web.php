@@ -60,7 +60,9 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('updateshowroom', [ShoowroomController::class, 'updateshowroom'])->name('updateshowroom');
     Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
     Route::post('deleteshowroomimage', [ShoowroomController::class, 'deleteshowroomimage'])->name('deleteshowroomimage');
+    Route::post('deleteshowroom', [ShoowroomController::class, 'deleteshowroom'])->name('deleteshowroom');
 
+    
     
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
