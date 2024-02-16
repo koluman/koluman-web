@@ -172,6 +172,9 @@ function getdetail(id) {
                         document.querySelector("#step5text").disabled = false;
 
                     }
+                    else{
+                        $("#step1").html('');
+                    }
                 }
             });
         }
@@ -257,7 +260,6 @@ function getstep() {
         success: function (data) {
             if (data.success == 1) {
                 steps = data.showroomcars;
-                console.log(steps);
                 let a = "";
                 for (var i = 0; i < steps.length; i++) {
                     if (!uniqueValues.includes(steps[i]["step1"])) {
