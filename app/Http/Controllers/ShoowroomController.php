@@ -139,18 +139,18 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
-    public function updateshowroom(Request $request)
+    public function updateshowroom(ShowroomAddRequest $request)
     {
         try {
             $car_id = $request->input('car_id');
             $car_name = $request->input('car_name');
             $company_id = $request->input('company_id');
-            $step1 = $request->input('step1');
-            $step2 = $request->input('step2');
-            $step3 = $request->input('step3');
-            $step4 = $request->input('step4');
-            $step5 = $request->input('step5');
-            $state = $request->input('state');
+            $step1 = $request->filled('step1') ? $request->step1 : '';
+            $step2 = $request->filled('step2') ? $request->step2 : '';
+            $step3 = $request->filled('step3') ? $request->step3 : '';
+            $step4 = $request->filled('step4') ? $request->step4 : '';
+            $step5 = $request->filled('step5') ? $request->step5 : '';
+            $state = $request->filled('state') ? $request->state : '';
             $car_description = $request->car_description;
             $showroomPath = "";
 
