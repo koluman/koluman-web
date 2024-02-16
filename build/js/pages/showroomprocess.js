@@ -1,10 +1,13 @@
 
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company = new Choices("#company_id", {
-    searchEnabled: false
-});
+let company ;
 let steps = [];
 let uniqueValues = [];
+document.addEventListener("DOMContentLoaded", function () {
+    company = new Choices("#company_id", {
+        searchEnabled: false
+    });
+});
 itemid = 13;
 ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
