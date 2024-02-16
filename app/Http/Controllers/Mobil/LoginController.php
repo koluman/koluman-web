@@ -153,7 +153,7 @@ class LoginController extends Controller
                     'user_identity' => $user_identity,
                     'user_register_date' => Carbon::now('Europe/Istanbul'),
                 ]);
-                $accessToken = JWTAuth::fromUser($user_id);
+                $accessToken = JWTAuth::fromUser($user);
                 $expiresInSeconds = Auth::factory()->getTTL() * 60;
                 $now = Carbon::now();
                 $expirationDate = $now->addSeconds($expiresInSeconds);
