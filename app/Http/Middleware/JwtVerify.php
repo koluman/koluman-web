@@ -25,7 +25,7 @@ class JwtVerify
                     return response()->json(['success' => 401, 'messages' => 'Geçersiz. Bearer Auth kimlik doğrulama yapılamadı.']);
                 }
             } catch (\Exception $e) {
-                return response()->json(['messages' => $e->getMessage()],401);
+                return response()->json(['success' => 401,'messages' => $e->getMessage()],401);
             }
         }
         else if ($this->isBasicAuthToken($token)) {
