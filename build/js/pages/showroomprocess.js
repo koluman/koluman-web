@@ -77,7 +77,7 @@ function getcompany() {
                                 };
                                 ch.push(c);
                             }
-                            console.log(ch);
+                            console.log(company2);
                             company2.clearChoices(); // Clear existing choices
                             company2.setChoices(ch, 'value', 'label', true); // Set new choices
                         }
