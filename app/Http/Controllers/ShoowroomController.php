@@ -167,7 +167,7 @@ class ShoowroomController extends Controller
     }
     public function updateshowroom(ShowroomAddRequest $request)
     {
-        /*try {
+        try {
             $car_id = $request->input('car_id');
             $car_name = $request->input('car_name');
             $company_id = $request->input('company_id');
@@ -227,8 +227,8 @@ class ShoowroomController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
-        }*/
-        return response()->json($request);
+        }
+        return response()->json($responseData);
     }
     public function deleteshowroomimage(Request $request)
     {
