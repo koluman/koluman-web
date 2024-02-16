@@ -221,6 +221,9 @@ class LoginController extends Controller
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
+     
         }
+        return response()->json($responseData);
+
     }
 }
