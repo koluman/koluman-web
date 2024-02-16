@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShowroomAddRequest;
 use App\Models\Companies;
 use App\Models\Showroom;
 use Illuminate\Http\Request;
@@ -84,19 +85,19 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
-    public function addshowroom(Request $request)
+    public function addshowroom(ShowroomAddRequest $request)
     {
         try {
             $car_id = $request->car_id;
             $car_name = $request->car_name;
             $company_id = $request->company_id;
-            $step1 = $request->step1;
-            $step2 = $request->step2;
-            $step3 = $request->step3;
-            $step4 = $request->step4;
-            $step5 = $request->step5;
-            $state = $request->state;
             $car_description = $request->car_description;
+            $step1 = $request->filled('step1') ? $request->step1 : '';
+            $step2 = $request->filled('step2') ? $request->step2 : '';
+            $step3 = $request->filled('step3') ? $request->step3 : '';
+            $step4 = $request->filled('step4') ? $request->step4 : '';
+            $step5 = $request->filled('step5') ? $request->step5 : '';
+            $state = $request->filled('state') ? $request->state : '';
             $showroomPath = "";
             if ($request->hasFile('car_img_url')) {
                 $showroom = $request->file('car_img_url');
