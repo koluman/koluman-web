@@ -164,6 +164,13 @@ function getdetail(id) {
                         let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
                         $("#step1").html('');
                         $("#step1").html(a);
+
+                        let uniqueSteps2 = [...new Set(data.showroomcars.map(item => item.step2))];
+                        let aa = uniqueSteps2.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
+                        $("#step2").html('');
+                        $("#step2").html(aa)
+
+
                         document.querySelector("#step1text").disabled = false;
                         document.querySelector("#step2text").disabled = false;
                         document.querySelector("#step3text").disabled = false;
