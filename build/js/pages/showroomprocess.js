@@ -46,8 +46,9 @@ $(document).ready(function () {
         else add();
     }
 
-  
+
 })
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -110,23 +111,7 @@ function getFileNameFromUrl(url) {
 }
 
 function getdetail(id) {
-    $.ajax({
-        type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
-        data: {
-            company_id: $("#company_id").val(),
-        },
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            if (data.success == 1) {
-                let uniqueSteps = [...new Set(data.showroomcars.map(item => item.step1))];
-                let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
-                $("#step1").html('');
-                $("#step1").html(a);
-            }
-        }
-    });
+
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
@@ -136,10 +121,8 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
-            console.log(data);
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-
             company.setChoiceByValue(data.showroomcarid[0].company_id);
             $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
@@ -147,7 +130,7 @@ function getdetail(id) {
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
-            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent=data.showroomcarid[0].car_description;
+            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
             $("#car_description").val(data.showroomcarid[0].car_description);
             if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
@@ -167,11 +150,29 @@ function getdetail(id) {
                 dropzone.removeAllFiles();
             }
             $("#addcar").text("Güncelle");
-            document.querySelector("#step1text").disabled = false;
-            document.querySelector("#step2text").disabled = false;
-            document.querySelector("#step3text").disabled = false;
-            document.querySelector("#step4text").disabled = false;
-            document.querySelector("#step5text").disabled = false;
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
+                data: {
+                    company_id: data.showroomcarid[0].company_id,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success == 1) {
+                        let uniqueSteps = [...new Set(data.showroomcars.map(item => item.step1))];
+                        let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
+                        $("#step1").html('');
+                        $("#step1").html(a);
+                        document.querySelector("#step1text").disabled = false;
+                        document.querySelector("#step2text").disabled = false;
+                        document.querySelector("#step3text").disabled = false;
+                        document.querySelector("#step4text").disabled = false;
+                        document.querySelector("#step5text").disabled = false;
+
+                    }
+                }
+            });
         }
 
     });
