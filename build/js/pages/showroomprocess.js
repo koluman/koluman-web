@@ -111,11 +111,10 @@ function getFileNameFromUrl(url) {
 
 function getdetail(id) {
     $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getsteps',
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcars',
         data: {
-            company_id:$("#company_id").val(),
-            _token: csrfToken, 
+            company_id: $("#company_id").val(),
         },
         dataType: 'json',
         success: function (data) {
