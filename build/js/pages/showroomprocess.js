@@ -38,7 +38,15 @@ if (dropzonePreviewNode) {
         }
     });
 }
-    
+$(document).ready(function () {
+  
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+
+})
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -81,7 +89,6 @@ function getcompany() {
             }
         }
     });
-    return true;
 }
 
 function getIdFromUrl() {
@@ -193,14 +200,6 @@ function add() {
     document.querySelector("#step5text").disabled = true;
 
 }
-$(document).ready(function () {
-  
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-
-})
 
 
 
