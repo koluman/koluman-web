@@ -42,7 +42,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/updateuserinsurancelist', [InsuranceController::class, 'updateuserinsurancelist'])->name('updateuserinsurancelist');
     Route::get('/gettestdrivecars', [InsuranceController::class, 'gettestdrivecars'])->name('gettestdrivecars');
     Route::get('/getcompanies', [CompaniesController::class, 'getcompanies'])->name('getcompanies');
-    Route::get('/sendcode', [LoginController::class, 'sendcode'])->name('sendcode');
+    Route::post('/sendcode', [LoginController::class, 'sendcode'])->name('sendcode');
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
 
