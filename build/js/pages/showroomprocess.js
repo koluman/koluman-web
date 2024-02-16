@@ -126,6 +126,7 @@ function getdetail(id) {
                         tt.push( data.getsteps[i]["step1"]);
                     }                
                 }
+                console.log(tt);
                 for (var i = 0; i < tt.length; i++) {
                     a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
                 }
