@@ -197,4 +197,30 @@ class LoginController extends Controller
         }
         return response()->json($responseData);
     }
+    public function sendcode(Request $request)
+    {
+        try {
+            $token = $request->header('Authorization');
+            $token = str_replace('Bearer ', '', $token);
+            $u = JWTAuth::setToken($token)->authenticate();
+            if ($u) {
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Doğrulama kodunuz telefon numaranıza gönderilmiştir.",
+                    "timemilis" =>floor(microtime(true) * 1000),
+                    "code"=>rand(111111, 999999)
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Sisteme ait öyle bir telefon numarası bulunamadı.",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+    }
 }
