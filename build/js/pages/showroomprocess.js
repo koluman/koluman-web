@@ -1,6 +1,8 @@
 
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
-
+let company = new Choices("#company_id", {
+    searchEnabled: false
+});
 let steps = [];
 let uniqueValues = [];
 itemid = 13;
@@ -192,9 +194,7 @@ function add() {
 
 }
 $(document).ready(function () {
-    let company = new Choices("#company_id", {
-        searchEnabled: false
-    });
+  
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
