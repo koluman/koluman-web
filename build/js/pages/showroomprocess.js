@@ -231,11 +231,12 @@ $("#addcar").click(function () {
         processData: false,
         contentType: false,
         success: function (data) {
-            if (data.success == 1) {
+            console.log(data);
+            /*if (data.success == 1) {
                 window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
             } else {
                 alert(data.message);
-            }
+            }*/
         },
         error: function (error) {
             console.error(error);
