@@ -241,6 +241,11 @@ $("#addcar").click(function () {
 });
 
 function getstep() {
+    document.querySelector("#step1text").value = "";
+    document.querySelector("#step2text").value = "";
+    document.querySelector("#step3text").value = "";
+    document.querySelector("#step4text").value = "";
+    document.querySelector("#step5text").value = "";
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
