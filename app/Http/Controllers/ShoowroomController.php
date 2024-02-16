@@ -35,7 +35,6 @@ class ShoowroomController extends Controller
         try {
             $shoowroom = Showroom::select('showroom.car_id', 'showroom.company_id', 'showroom.step1', 'showroom.step2', 'showroom.step3', 'showroom.step4', 'showroom.step5', 'showroom.car_name', 'showroom.car_description', 'showroom.car_image_url', 'showroom.isTestdrive', 'companies.company_name')
                 ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
-                ->where('company_id',$request->company_id)
                 ->get();
 
             if (!$shoowroom->isEmpty()) {
