@@ -1,6 +1,5 @@
-
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let company ;
+let company;
 let steps = [];
 let uniqueValues = [];
 var car_img_url;
@@ -8,7 +7,47 @@ document.addEventListener("DOMContentLoaded", function () {
     company = new Choices("#company_id", {
         searchEnabled: false
     });
-    getcompany();
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    success: function (data) {
+                        if (data.success == 1) {
+                            var ch = [];
+                            var v = "";
+                            var t = "Lütfen Seçiniz";
+                            var c = {
+                                value: v,
+                                label: t,
+                            };
+                            ch.push(c);
+                            for (var i = 0; i < data.companies.length; i++) {
+                                v = data.companies[i]["company_id"];
+                                t = data.companies[i]["company_name"];
+
+                                c = {
+                                    value: v,
+                                    label: t,
+                                };
+                                ch.push(c);
+                            }
+                            company.clearChoices(); // Clear existing choices
+                            company.setChoices(ch, 'value', 'label', true); // Set new choices
+                        }
+                    }
+                });
+            }
+        }
+    });
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
     else add();
@@ -44,6 +83,7 @@ if (dropzonePreviewNode) {
         }
     });
 }
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -167,8 +207,7 @@ function getdetail(id) {
                         document.querySelector("#step4text").disabled = false;
                         document.querySelector("#step5text").disabled = false;
 
-                    }
-                    else{
+                    } else {
                         $("#step1").html('');
                     }
                 }
@@ -243,7 +282,9 @@ $("#addcar").click(function () {
 });
 
 function getstep() {
-    let steps = [];let uniqueValues = [];var tt = [];
+    let steps = [];
+    let uniqueValues = [];
+    var tt = [];
     document.querySelector("#step1text").value = "";
     document.querySelector("#step2text").value = "";
     document.querySelector("#step3text").value = "";
@@ -272,8 +313,7 @@ function getstep() {
                 document.querySelector("#step1text").disabled = false;
                 $("#step1").html('');
                 $("#step1").html(a);
-            }
-            else{
+            } else {
                 $("#step1").html('');
             }
         }
