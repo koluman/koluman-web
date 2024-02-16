@@ -221,10 +221,10 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     formData.append('car_description', document.querySelector("#car_description").value);
-    if ($("#car_id").val() != "") $url = "https://mobiloby.app/koluman/web/updateshowroom";
-    else $url = "https://mobiloby.app/koluman/web/addshowroom"
+    if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
+    else url = "https://mobiloby.app/koluman/web/addshowroom"
     $.ajax({
-        url: $url,
+        url: url,
         method: 'POST',
         dataType: "json",
         data: formData,
