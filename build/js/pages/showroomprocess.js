@@ -118,6 +118,7 @@ function getdetail(id) {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data);
             if (data.success == 1) {
                 let uniqueSteps = [...new Set(data.showroomcars.map(item => item.step1))];
                 let a = uniqueSteps.map(step => '<li><a class="dropdown-item" href="javascript:getstep1(\'' + step + '\')">' + step + '</a></li>').join('');
