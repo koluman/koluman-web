@@ -118,12 +118,9 @@ class LoginController extends Controller
     public function userregister(RegisterRequest $request)
     {
         try {
-
-
             $user_identity = $request->user_identity;
             $user_phone = $request->user_phone;
             $user_name = $request->user_name;
-
             $existingUser = User::where('user_phone', $user_phone)->first();
             if ($existingUser) {
 
@@ -171,7 +168,7 @@ class LoginController extends Controller
                         "user_phone" => $user->user_phone,
                         "user_image_url" => $user->user_image_url,
                     ],
-                    "message" => "Login İşlemi başarılı",
+                    "message" => "Kullanıcı kayıt işlemi başarılı",
                 ];
             }
         } catch (\Exception $e) {
