@@ -254,6 +254,7 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data);
             steps = data.showroomcars;
             if (data.success == 1) {
                 let a = "";
