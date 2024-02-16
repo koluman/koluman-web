@@ -45,6 +45,31 @@ $(document).ready(function () {
         if (id != "" && id != null) getdetail(id);
         else add();
     }
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getstepsall',
+        data: {
+            _token: csrfToken, 
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                let a = "";
+                var tt = [];
+                for (var i = 0; i < data.getsteps.length; i++) {
+                    if (!tt.includes( data.getsteps[i]["step1"])) {
+                        tt.push( data.getsteps[i]["step1"]);
+                    }                
+                }
+                for (var i = 0; i < tt.length; i++) {
+                    a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
+                }
+                $("#step1").html('');
+                $("#step1").html(a);
+            }
+        }
+    });
 })
 function getcompany() {
     $.ajax({
