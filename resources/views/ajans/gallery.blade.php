@@ -21,13 +21,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
-
-
+                                @foreach ($shoowroomdetail as $s)                                
                                 <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development" data-category="designing development">
                                     <div class="gallery-box card">
                                         <div class="gallery-container">
-                                            <a class="image-popup" href="{{ URL::asset('build/images/small/img-1.jpg') }}" title="">
-                                                <img class="gallery-img img-fluid mx-auto" src="{{ URL::asset('build/images/small/img-1.jpg') }}" alt="" />
+                                            <a class="image-popup" href="{{$s->gallery->car_img_url }}" title="">
+                                                <img class="gallery-img img-fluid mx-auto" src="{{$s->gallery->car_img_url }}" alt="" />
                                                 <div class="gallery-overlay">
                                                     <h5 class="overlay-caption">Glasses and laptop from above</h5>
                                                 </div>
@@ -51,7 +50,7 @@
                                         </div>
                                     </div>
                                 </div>                               
-
+                                @endforeach
                             
 
                             </div>
