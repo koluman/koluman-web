@@ -125,7 +125,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarSigorta" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarSigorta">
-                            <i class=" ri-police-car-fill-2-line"></i> <span>@lang('translation.sigorta')</span>
+                            <i class=" ri-police-car-fill"></i> <span>@lang('translation.sigorta')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarSigorta">
                             <ul class="nav nav-sm flex-column">
