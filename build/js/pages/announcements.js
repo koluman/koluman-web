@@ -118,7 +118,7 @@ var productListAll = new gridjs.Grid({
             width: '360px',
             data: (function (row) {
                 // Define the maximum number of characters to display
-                var maxChars = 200;
+                var maxChars = 100;
         
                 // Truncate the description if it exceeds the maximum characters
                 var truncatedDescription = row.announcement_description.length > maxChars ?
