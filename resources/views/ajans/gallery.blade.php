@@ -410,8 +410,8 @@
                                 </div>
                             </div>
 
-                            <ul class="list-unstyled mb-0" id="dropzone-preview">
-                                <li class="mt-2" id="dropzone-preview-list">
+                            <ul class="list-unstyled mb-0" id="dropzone-preview3">
+                                <li class="mt-2" id="dropzone-preview3-list">
                                     <div class="border rounded">
                                         <div class="d-flex p-2">
                                             <div class="flex-shrink-0 me-3">
