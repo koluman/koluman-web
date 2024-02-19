@@ -6,29 +6,7 @@ Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
 
-// API endpoint'i (örnek URL, kendi API URL'nizi kullanmalısınız)
-var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
 
-// AJAX isteği
-var productListAllData = [];
-var xhr = new XMLHttpRequest();
-xhr.open('GET', apiEndpoint, true);
-
-xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-            var responseData = JSON.parse(xhr.responseText);
-            // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
-            updateTable(productListAllData);
-        } else {
-            console.error('Sunucu hatası:', xhr.status);
-        }
-    }
-};
-
-xhr.send();
-/*kategori();
 function kategori() {
     $.ajax({
             type: 'GET',
@@ -38,58 +16,31 @@ function kategori() {
                 if (data.success == 1) {
                     $.ajax({
                         type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                        url: 'https://mobiloby.app/koluman/web/api/getannouncement',
 						headers: {
 							"Authorization": "Bearer " + data.token, // Boşluk ekleyin
 						},
                         dataType: 'json',
                         success: function (data) {
-							let l="";
 							if (data.success == 1) {
-								for (let i = 0; i < data.companies.length; i++) {
-									const companyName = data.companies[i].company_name;
-									const companyId = data.companies[i].company_id;
-									const productItem = productListAllData.find(item => item.company_id == companyId);
-									let propertyCount = productItem ? Object.keys(productItem).length : 0;
-									l += '<li>';
-									l += '<a href="#" class="d-flex py-1 align-items-center">';
-									l += '	<div class="flex-grow-1">';
-									l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
-									l += '	</div>';
-									l += '	<div class="flex-shrink-0 ms-2">';
-									l += '		<span class="badge bg-light text-muted">' + propertyCount + '</span>';
-									l += '	</div>';
-									l += '</a>';
-									l += '</li>';
-
-								}
-								$("#cat").html('');
-								$("#cat").html(l);
-
+                                productListAllData = data.announcement; // productListAllData dizisini güncelle
+                                updateTable(productListAllData);
 							}
 							
-
                         }
                     });
                 }
             }
         }) 
-}*/
+}
 
 function updateTable(data) {
-    // Tabloyu güncelleme işlemleri burada yapılır
-    // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
     var tableData = data.map(function (item) {
         return {
-            id: item.car_id,
-            car_image_url: item.car_image_url,
-            car_name: item.car_name,
-            company_name: item.company_name,
-            step1: item.step1,
-            step2: item.step2,
-            step3: item.step3,
-            step4: item.step4,
-            step5: item.step5,
+            id: item.announcement_id,
+            announcement_image_url: item.announcement_image_url,
+            announcement_title: item.announcement_title,
+            announcement_description: item.announcement_description,
         };
     });
 
@@ -145,40 +96,14 @@ var productListAll = new gridjs.Grid({
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-shrink-0 me-3">' +
-                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.car_image_url + '" alt="" class="img-fluid d-block"></div>' +
+                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.announcement_image_url + '" alt="" class="img-fluid d-block"></div>' +
                     '</div>' +
                     '<div class="flex-grow-1">' +
-                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.car_name + '</a></h5>' +
-                    '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.company_name + '</span></p>' +
+                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.announcement_title + '</a></h5>' +
+                    '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.announcement_description + '</span></p>' +
                     '</div>' +
                     '</div>');
             })
-        },
-        {
-            name: 'Step1',
-            width: '101px',
-            formatter: (function (cell) {
-                return gridjs.html(cell);
-            })
-        },
-        {
-            name: 'Step2',
-            width: '84px',
-        },
-        {
-            name: 'Step3',
-            width: '105px',
-            formatter: (function (cell) {
-                return gridjs.html('<span class="badge bg-light text-body fs-12 fw-medium">' + cell + '</span></td>');
-            })
-        },
-        {
-            name: 'Step4',
-            width: '84px',
-        },
-        {
-            name: 'Step5',
-            width: '84px',
         },
         {
             name: "İşlemler",
@@ -224,7 +149,7 @@ searchProductList.addEventListener("keyup", function () {
     function filterItems(arr, query) {
 
         return arr.filter(function (el) {
-            return el.car_name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+            return el.announcement_title.toLowerCase().indexOf(query.toLowerCase()) !== -1
         })
     }
 
@@ -258,24 +183,12 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         filteritem.classList.add('active');
 
         var filterItemValue = filteritem.querySelector(".listname").innerHTML
-        var filterData = productListAllData.filter(filterlist => filterlist.company_name === filterItemValue);
+        var filterData = productListAllData.filter(filterlist => filterlist.announcement_description === filterItemValue);
 
         productListAll.updateConfig({
             data: filterData
         }).forceRender();
 
-        uniqueStep1Values = [...new Set(filterData.map(item => item.step1))];
-        let s = "";
-        for (let i = 0; i < uniqueStep1Values.length; i++) {
-            s += '<div class="form-check">';
-            s += '    <input class="form-check-input" type="checkbox" value="' + uniqueStep1Values[i] + '" checked';
-            s += '        id="productBrandRadio' + i + '" onclick="tikla(\'' + uniqueStep1Values[i] + '\',' + i + ')">';
-            s += '    <label class="form-check-label"';
-            s += '        for="productBrandRadio' + i + '">' + uniqueStep1Values[i] + '</label>';
-            s += '</div>';
-        }
-
-        $("#tik").html(s);
         checkRemoveItem();
     });
 });
