@@ -330,13 +330,12 @@ function SearchData() {
 
     
     if (selectedStatus && selectedStatus !== "all") {
-        console.log(selectedStatus);
-        console.log(filteredData);
 
         filteredData = filteredData.filter(function (b) {
             return b.announcement_state === selectedStatus;
         });
     }
+    console.log(filteredData);
 
     // Arama filtresi
     if (searchText) {
@@ -347,6 +346,8 @@ function SearchData() {
             );
         });
     }
+    console.log(filteredData);
+
     productListAll.updateConfig({
         data: filteredData
     }).forceRender();
