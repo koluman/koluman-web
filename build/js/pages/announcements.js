@@ -330,6 +330,9 @@ function SearchData() {
 
     
     if (selectedStatus && selectedStatus !== "all") {
+        console.log(selectedStatus);
+        console.log(filteredData);
+
         filteredData = filteredData.filter(function (b) {
             return b.announcement_state === selectedStatus;
         });
