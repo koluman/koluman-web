@@ -17,73 +17,9 @@
         @endslot
     @endcomponent
     <div class="row">
-        <div class="col-xl-3 col-lg-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex mb-3">
-                        <div class="flex-grow-1">
-                            <h5 class="fs-16">Filtreler</h5>
-                        </div>
-                    </div>
-                </div>
+        
 
-                <div class="accordion accordion-flush filter-accordion">
-
-                    <div class="card-body border-bottom">
-                        <div>
-                            <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Kategoriler</p>
-                            <ul class="list-unstyled mb-0 filter-list">
-                            @foreach ($companies as $c)
-
-                               <li>
-                                    <a href="#" class="d-flex py-1 align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-13 mb-0 listname">{{$c->company_name}}</h5>
-                                        </div>
-                                        <div class="flex-shrink-0 ms-2">
-                                            <span class="badge bg-light text-muted">{{$c->carCount}}</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach 
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingBrands">
-                            <button class="accordion-button bg-transparent shadow-none" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands"
-                                aria-expanded="true" aria-controls="flush-collapseBrands">
-                                <span class="text-muted text-uppercase fs-12 fw-medium">Kategori</span> <span
-                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge" id="adet"></span>
-                            </button>
-                        </h2>
-
-                        <div id="flush-collapseBrands" class="accordion-collapse collapse show"
-                            aria-labelledby="flush-headingBrands">
-                            <div class="accordion-body text-body pt-0">
-                                <div class="search-box search-box-sm">
-                                    <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Kategori Ara...">
-                                    <i class="ri-search-line search-icon"></i>
-                                </div>
-                                <div class="d-flex flex-column gap-2 mt-3 filter-check" id="tik">
-                                  
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end accordion-item -->
-
-                </div>
-            </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-
-        <div class="col-xl-9 col-lg-8">
+        <div class="col-xl-12 col-lg-12">
             <div>
                 <div class="card">
                     <div class="card-header border-0">
