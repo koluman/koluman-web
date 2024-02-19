@@ -114,10 +114,11 @@
                             </ul>
                             <!-- end dropzon-preview -->
                         </div>
-                    </div>
-                      <div class="text-end mb-3">
+                          <div class="text-end mb-3">
                     <button type="submit" class="btn btn-success w-sm">Ekle</button>
                 </div>
+                    </div>
+                    
                 </div>
                 <!-- end card -->
 
