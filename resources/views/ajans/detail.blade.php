@@ -21,8 +21,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <input class="form-control" name="hidden" id="car_id" type="car_id" required>
-                            <input class="form-control" name="hidden" id="car_description" type="car_description" required>
+                            <input class="form-control" name="car_id" id="car_id" type="hidden" required>
+                            <input class="form-control" name="car_description" id="car_description" type="hidden" required>
 
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
