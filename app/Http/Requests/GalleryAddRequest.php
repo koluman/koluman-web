@@ -12,7 +12,7 @@ class GalleryAddRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'success' => 2,
             'message' => $validator->errors(),
-        ], 422));
+        ]));
     }
     public function authorize()
     {
