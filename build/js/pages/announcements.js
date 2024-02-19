@@ -115,7 +115,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Açıklama',
-            width: '360px',
+            width: '300px',
             data: (function (row) {
                 // Define the maximum number of characters to display
                 var maxChars = 100;
