@@ -150,6 +150,19 @@
                             </ul>
                         </div>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarAnnouncements" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebarAnnouncements">
+                            <i class="ri-apps-2-line"></i> <span>@lang('translation.announcements')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarAnnouncements">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="announcements" class="nav-link">@lang('translation.announcements')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 @endif
             </ul>
         </div>

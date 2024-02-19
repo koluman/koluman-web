@@ -2,9 +2,8 @@
 
 use App\Http\Controllers\Admin\BackUsersController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Ajans\AjansHomeController;
+use App\Http\Controllers\Ajans\AnnouncementsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShoowroomController;
@@ -57,17 +56,16 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::get('/showroomdetail/{id?}', [ShoowroomController::class, 'shoowroomdetail'])->name('shoowroomdetail');
     Route::get('/getshowroomcars', [ShoowroomController::class, 'getshowroomcars'])->name('getshowroomcars');
     Route::get('/getshowroomcarcompany', [ShoowroomController::class, 'getshowroomcarcompany'])->name('getshowroomcarcompany');
-
     Route::post('addshowroom', [ShoowroomController::class, 'addshowroom'])->name('addshowroom');
     Route::post('updateshowroom', [ShoowroomController::class, 'updateshowroom'])->name('updateshowroom');
     Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
     Route::post('deleteshowroomimage', [ShoowroomController::class, 'deleteshowroomimage'])->name('deleteshowroomimage');
     Route::post('deleteshowroom', [ShoowroomController::class, 'deleteshowroom'])->name('deleteshowroom');
     Route::post('deletegallery', [ShoowroomController::class, 'deletegallery'])->name('deletegallery');
-
     Route::post('addgallery', [ShoowroomController::class, 'addgallery'])->name('addgallery');
 
-    
+    Route::get('/announcements', [AnnouncementsController::class, 'announcements'])->name('ajans.announcements');
+
     
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
