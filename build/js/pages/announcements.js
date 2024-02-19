@@ -107,11 +107,7 @@ var productListAll = new gridjs.Grid({
             width: '360px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
-                    '<div class="flex-shrink-0 me-3">' +
-                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.announcement_image_url + '" alt="" class="img-fluid d-block"></div>' +
-                    '</div>' +
                     '<div class="flex-grow-1">' +
-                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.announcement_title + '</a></h5>' +
                     '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.announcement_description + '</span></p>' +
                     '</div>' +
                     '</div>');
