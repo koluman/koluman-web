@@ -26,7 +26,7 @@
                                     <div class="gallery-box card">
                                         <div class="gallery-container">
                                             <a class="image-popup" href="{{$s->car_img_url }}" title="">
-                                                <img class="gallery-img img-fluid mx-auto" src="{{ $s->car_img_url } }}" alt="" />
+                                                <img class="gallery-img img-fluid mx-auto" src="{{ $s->car_img_url }}" alt="" />
                                                 <div class="gallery-overlay">
                                                     <h5 class="overlay-caption">Glasses and laptop from above</h5>
                                                 </div>
