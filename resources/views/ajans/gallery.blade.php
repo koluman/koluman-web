@@ -21,8 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
-                            @foreach ($ShowroomDetail as $showroom)
-                                @foreach ($showroom->gallery as $galleryItem)
+                                @foreach ($ShowroomDetail as $galleryItem)
                                     <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                         data-category="designing development">
                                         <div class="gallery-box card">
@@ -60,7 +59,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
                                 @endforeach
 
                         </div>
