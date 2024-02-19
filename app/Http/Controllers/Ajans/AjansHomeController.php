@@ -63,7 +63,7 @@ class AjansHomeController extends Controller
         } else {
             $shoowroomdetail = "";
         }
-
-        return view('ajans.gallery',compact('shoowroomdetail'));
+dd($shoowroomdetail);
+        //return view('ajans.gallery',compact('shoowroomdetail'));
     }
 }
