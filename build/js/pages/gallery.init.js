@@ -8,7 +8,9 @@ File: Gallery init
 
 // Portfolio Filter
 document.addEventListener("DOMContentLoaded", function (event) {
-
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
     // init Isotope
     var GalleryWrapper = document.querySelector('.gallery-wrapper');
     if (GalleryWrapper) {
@@ -44,7 +46,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
             radioButtonGroup(buttonGroup);
         });
     }
-
+    function getIdFromUrl() {
+        var url = window.location.href;
+        var match = url.match(/\/gallery\/(\d+)/);
+    
+        if (match && match[1]) {
+            return parseInt(match[1], 10);
+        } else {
+            return null;
+        }
+    }
     function radioButtonGroup(buttonGroup) {
         buttonGroup.addEventListener('click', function (event) {
             // only work with buttons
@@ -63,3 +74,23 @@ var lightbox = GLightbox({
     selector: '.image-popup',
     title: false,
 });
+function getdetail(id) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+        dataType: 'json',
+        data: {
+            car_id: id,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        success: function (data) {
+           console.log(data);
+        }
+
+    });
+}
+
+function add() {
+   console.log("ekle");
+}
