@@ -107,8 +107,15 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'announcement_title',
-            width: '84px',
+            name: 'Başlık',
+            width: '84',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-grow-1">' +
+                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.announcement_title + '</a></h5>' +
+                    '</div>' +
+                    '</div>');
+            })
         },
         {
             name: "İşlemler",
