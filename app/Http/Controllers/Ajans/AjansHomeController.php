@@ -37,7 +37,7 @@ class AjansHomeController extends Controller
             ->where('showroom.car_id', $request->id)
             ->get();
 
-            $groupedShowroomDetail = (object)[
+            $ShowroomDetail = (object)[
                 'gallery' => $shoowroomdetail->map(function ($item) {
                     return [
                         'gallery_id' => $item->gallery_id,
@@ -46,7 +46,6 @@ class AjansHomeController extends Controller
                 })->toArray(),
             ];
        
-dd($groupedShowroomDetail);
-        //return view('ajans.gallery',compact('shoowroomdetail'));
+        return view('ajans.gallery',compact('ShowroomDetail'));
     }
 }
