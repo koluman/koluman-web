@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function getdetail(id) {
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: 'https://mobiloby.app/koluman/web/getApiToken',
             dataType: 'json',
             success: function (data) {
