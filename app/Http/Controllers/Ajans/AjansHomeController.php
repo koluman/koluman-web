@@ -37,22 +37,7 @@ class AjansHomeController extends Controller
             ->where('showroom.car_id', $request->car_id)
             ->get();
 
-        // Boş kontrolü
-        if (!$shoowroomdetail->isEmpty()) {
-            // Gruplandırma işlemi
             $groupedShowroomDetail = (object)[
-                'car_id' => $shoowroomdetail[0]->car_id,
-                'company_id' => $shoowroomdetail[0]->company_id,
-                'step1' => $shoowroomdetail[0]->step1,
-                'step2' => $shoowroomdetail[0]->step2,
-                'step3' => $shoowroomdetail[0]->step3,
-                'step4' => $shoowroomdetail[0]->step4,
-                'step5' => $shoowroomdetail[0]->step5,
-                'car_name' => $shoowroomdetail[0]->car_name,
-                'car_description' => $shoowroomdetail[0]->car_description,
-                'car_image_url' => $shoowroomdetail[0]->car_image_url,
-                'isTestdrive' => $shoowroomdetail[0]->isTestdrive,
-                'company_name' => $shoowroomdetail[0]->company_name,
                 'gallery' => $shoowroomdetail->map(function ($item) {
                     return [
                         'gallery_id' => $item->gallery_id,
@@ -60,10 +45,8 @@ class AjansHomeController extends Controller
                     ];
                 })->toArray(),
             ];
-        } else {
-            $shoowroomdetail = "";
-        }
-dd($shoowroomdetail);
+       
+dd($groupedShowroomDetail);
         //return view('ajans.gallery',compact('shoowroomdetail'));
     }
 }
