@@ -57,7 +57,7 @@ class ShoowroomController extends Controller
                 ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
                 ->leftJoin('showroom_gallery', 'showroom.car_id', '=', 'showroom_gallery.car_id')
                 ->where('showroom.car_id', $request->car_id)
-                ->get();
+                ->first();
             
             // Gruplandırma işlemi
             $groupedShowroomDetail = $shoowroomdetail->groupBy('car_id')->map(function ($group) {
