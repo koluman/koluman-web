@@ -359,26 +359,7 @@
                 }
             },
             removedfile: function (e) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://mobiloby.app/koluman/web/deleteshowroomimage',
-                    data: {
-                        car_id:  $("#car_id").val(),
-                        _token: csrfToken,
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success == 1) {
-                            document.querySelector("#shdiv").style.display = "block";
-                            $("#shid").text("");
-                        } else {
-                            alert(data.message);
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        alert("AJAX request failed:", status, error);
-                    }
-                });
+              
                 return null != e.previewElement && null != e.previewElement.parentNode && e.previewElement.parentNode.removeChild(e.previewElement), this._updateMaxFilesReachedClass()
             },
             thumbnail: function (e, t) {
