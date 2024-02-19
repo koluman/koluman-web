@@ -21,12 +21,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
-                                @foreach ($shoowroomdetail as $s)                                
+                                @foreach ($shoowroomdetail->galley as $s)                                
                                 <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development" data-category="designing development">
                                     <div class="gallery-box card">
                                         <div class="gallery-container">
-                                            <a class="image-popup" href="{{$s->gallery->car_img_url }}" title="">
-                                                <img class="gallery-img img-fluid mx-auto" src="{{$s->gallery->car_img_url }}" alt="" />
+                                            <a class="image-popup" href="{{$s->car_img_url }}" title="">
+                                                <img class="gallery-img img-fluid mx-auto" src="{{ $s->car_img_url } }}" alt="" />
                                                 <div class="gallery-overlay">
                                                     <h5 class="overlay-caption">Glasses and laptop from above</h5>
                                                 </div>
