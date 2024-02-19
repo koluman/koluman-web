@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     $("#imadd").click(function () {
         var formData = new FormData();
-        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        formData.append('_token', csrfToken);
         formData.append('car_id', $("#car_id").val());
         formData.append('car_img_url', car_img_url);
         $.ajax({
