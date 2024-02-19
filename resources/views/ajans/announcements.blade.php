@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    @lang('translation.products')
+    @lang('translation.announcement')
 @endsection
 @section('css')
     <link href="{{ URL::asset('build/libs/nouislider/nouislider.min.css') }}" rel="stylesheet">
@@ -9,10 +9,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Shoowroom
+            Duyuru/Haber/Kampanya
         @endslot
         @slot('title')
-            Shoowroom
+            Duyuru/Haber/Kampanya
         @endslot
     @endcomponent
     <div class="row">

@@ -158,7 +158,7 @@
                         <div class="collapse menu-dropdown" id="sidebarAnnouncements">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="announcements" class="nav-link">@lang('translation.announcements')</a>
+                                    <a href="announcements" class="nav-link">@lang('translation.announcementslist')</a>
                                 </li>
                             </ul>
                         </div>
