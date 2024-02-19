@@ -24,9 +24,6 @@
                         <div class="flex-grow-1">
                             <h5 class="fs-16">Filtreler</h5>
                         </div>
-                        <div class="flex-shrink-0">
-                            <a href="#" class="text-decoration-underline" id="clearall">Tümünü Temizle</a>
-                        </div>
                     </div>
                 </div>
 
