@@ -57,30 +57,34 @@ class ShoowroomController extends Controller
                 ->join('companies', 'showroom.company_id', '=', 'companies.company_id')
                 ->leftJoin('showroom_gallery', 'showroom.car_id', '=', 'showroom_gallery.car_id')
                 ->where('showroom.car_id', $request->car_id)
-                ->first();
-
+                ->get();
+    
             // Boş kontrolü
-            if ($shoowroomdetail) {
+            if (!$shoowroomdetail->isEmpty()) {
                 // Gruplandırma işlemi
-                $groupedShowroomDetail = [
-                    'car_id' => $shoowroomdetail->car_id,
-                    'company_id' => $shoowroomdetail->company_id,
-                    'step1' => $shoowroomdetail->step1,
-                    'step2' => $shoowroomdetail->step2,
-                    'step3' => $shoowroomdetail->step3,
-                    'step4' => $shoowroomdetail->step4,
-                    'step5' => $shoowroomdetail->step5,
-                    'car_name' => $shoowroomdetail->car_name,
-                    'car_description' => $shoowroomdetail->car_description,
-                    'car_image_url' => $shoowroomdetail->car_image_url,
-                    'isTestdrive' => $shoowroomdetail->isTestdrive,
-                    'company_name' => $shoowroomdetail->company_name,
-                    'gallery' => [
-                        'gallery_id' => $shoowroomdetail->gallery_id,
-                        'car_img_url' => $shoowroomdetail->car_img_url,
-                    ],
+                $groupedShowroomDetail = (object)[
+                    'car_id' => $shoowroomdetail[0]->car_id,
+                    'company_id' => $shoowroomdetail[0]->company_id,
+                    'step1' => $shoowroomdetail[0]->step1,
+                    'step2' => $shoowroomdetail[0]->step2,
+                    'step3' => $shoowroomdetail[0]->step3,
+                    'step4' => $shoowroomdetail[0]->step4,
+                    'step5' => $shoowroomdetail[0]->step5,
+                    'car_name' => $shoowroomdetail[0]->car_name,
+                    'car_description' => $shoowroomdetail[0]->car_description,
+                    'car_image_url' => $shoowroomdetail[0]->car_image_url,
+                    'isTestdrive' => $shoowroomdetail[0]->isTestdrive,
+                    'company_name' => $shoowroomdetail[0]->company_name,
+                    'gallery' => $shoowroomdetail->map(function ($item) {
+                        return [
+                            'gallery_id' => $item->gallery_id,
+                            'created_at' => $item->created_at,
+                            'updated_at' => $item->updated_at,
+                            'car_img_url' => $item->car_img_url,
+                        ];
+                    })->toArray(),
                 ];
-
+    
                 $responseData = [
                     "success" => 1,
                     "shoowroomdetail" => $groupedShowroomDetail,
@@ -100,4 +104,5 @@ class ShoowroomController extends Controller
         }
         return response()->json($responseData);
     }
+    
 }
