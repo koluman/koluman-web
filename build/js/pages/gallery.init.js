@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             dataType: 'json',
             success: function (data) {
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: 'https://mobiloby.app/koluman/web/api/getshowroomdetail',
                     dataType: 'json',
                     headers: {
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     },
                     data: {
                         car_id: id,
-                        _token: csrfToken, // CSRF token'ını gönder
                     },
                     success: function (data) {
                         console.log(data);
