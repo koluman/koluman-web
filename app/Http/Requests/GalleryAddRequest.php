@@ -22,8 +22,7 @@ class GalleryAddRequest extends FormRequest
     {
         return [
             'car_id' => 'required',
-            'car_img_url' => 'required',
-
+            'car_img_url' => 'required|file|mimes:jpeg,jpg,png,gif', // Dosya kontrolü ekledik
         ];
     }
 
