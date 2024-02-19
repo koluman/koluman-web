@@ -12,6 +12,7 @@ class DealerShips extends Model
     protected $primaryKey = 'dealership_id';
     protected $fillable = [
         'dealership_id',
+        'company_id',
         'dealership_name',
         'dealership_city', 
         'dealership_address', 
