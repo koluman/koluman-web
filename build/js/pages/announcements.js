@@ -6,8 +6,9 @@ Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
 
-
-function kategori() {
+var announcementListAllData = [];
+announcements();
+function announcements() {
     $.ajax({
             type: 'GET',
             url: 'https://mobiloby.app/koluman/web/getApiToken',
@@ -23,8 +24,8 @@ function kategori() {
                         dataType: 'json',
                         success: function (data) {
 							if (data.success == 1) {
-                                productListAllData = data.announcement; // productListAllData dizisini güncelle
-                                updateTable(productListAllData);
+                                announcementListAllData = data.announcement; // announcementListAllData dizisini güncelle
+                                updateTable(announcementListAllData);
 							}
 							
                         }
@@ -58,14 +59,14 @@ var inputValueJson = sessionStorage.getItem('inputValue');
 if (inputValueJson) {
     inputValueJson = JSON.parse(inputValueJson);
     Array.from(inputValueJson).forEach(element => {
-        productListAllData.unshift(element);
+        announcementListAllData.unshift(element);
     });
 }
 
 var editinputValueJson = sessionStorage.getItem('editInputValue');
 if (editinputValueJson) {
     editinputValueJson = JSON.parse(editinputValueJson);
-    productListAllData = productListAllData.map(function (item) {
+    announcementListAllData = announcementListAllData.map(function (item) {
         if (item.id == editinputValueJson.id) {
             return editinputValueJson;
         }
@@ -134,7 +135,7 @@ var productListAll = new gridjs.Grid({
         limit: 10
     },
     sort: true,
-    data: productListAllData
+    data: announcementListAllData
 }).render(document.getElementById("table-product-list-all"));
 
 function redirectToGaleri(id) {
@@ -153,7 +154,7 @@ searchProductList.addEventListener("keyup", function () {
         })
     }
 
-    var filterData = filterItems(productListAllData, inputVal);
+    var filterData = filterItems(announcementListAllData, inputVal);
     productListAll.updateConfig({
         data: filterData
     }).forceRender();
@@ -173,7 +174,7 @@ function tikla(selectedValue, i) {
             uniqueStep1Values.push(selectedValue);
         }
     }
-    const filteredData = productListAllData.filter(item => uniqueStep1Values.includes(item.step1));
+    const filteredData = announcementListAllData.filter(item => uniqueStep1Values.includes(item.step1));
     updateTable(filteredData);
 }
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
@@ -183,7 +184,7 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
         filteritem.classList.add('active');
 
         var filterItemValue = filteritem.querySelector(".listname").innerHTML
-        var filterData = productListAllData.filter(filterlist => filterlist.announcement_description === filterItemValue);
+        var filterData = announcementListAllData.filter(filterlist => filterlist.announcement_description === filterItemValue);
 
         productListAll.updateConfig({
             data: filterData
@@ -279,8 +280,8 @@ function removeItems() {
                             return ele.id != value;
                         });
                     }
-                    var filtered = arrayRemove(productListAllData, getid);
-                    productListAllData = filtered;
+                    var filtered = arrayRemove(announcementListAllData, getid);
+                    announcementListAllData = filtered;
                     element.remove();
                 }
             });
@@ -304,8 +305,8 @@ function removeSingleItem() {
                         return ele.id != value;
                     });
                 }
-                var filtered = arrayRemove(productListAllData, getid);
-                productListAllData = filtered;
+                var filtered = arrayRemove(announcementListAllData, getid);
+                announcementListAllData = filtered;
                 var element = item.closest(".gridjs-tr");
                 element.remove();
             });
@@ -318,7 +319,7 @@ function removeSingleItem() {
         elem.addEventListener('click', function (event) {
             getEditid = elem.getAttribute('data-edit-id');
 
-            productListAllData = productListAllData.map(function (item) {
+            announcementListAllData = announcementListAllData.map(function (item) {
                 if (item.id == getEditid) {
 
                     sessionStorage.setItem('editInputValue', JSON.stringify(item));
