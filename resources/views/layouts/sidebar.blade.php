@@ -140,7 +140,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarShoowroom" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarShoowroom">
-                            <i class="ri-apps-2-line"></i> <span>@lang('translation.shoowroom')</span>
+                            <i class="ri-taxi-wifi-line"></i> <span>@lang('translation.shoowroom')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarShoowroom">
                             <ul class="nav nav-sm flex-column">
@@ -153,7 +153,7 @@
                      <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAnnouncements" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarAnnouncements">
-                            <i class="ri-apps-2-line"></i> <span>@lang('translation.announcements')</span>
+                            <i class="ri-newspaper-fill"></i> <span>@lang('translation.announcements')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarAnnouncements">
                             <ul class="nav nav-sm flex-column">
