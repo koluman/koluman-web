@@ -332,7 +332,7 @@ function SearchData() {
     if (selectedStatus && selectedStatus !== "all") {
 
         filteredData = filteredData.filter(function (b) {
-            return b.announcement_state === selectedStatus;
+            return b.announcement_state == selectedStatus;
         });
     }
     console.log(filteredData);
@@ -346,7 +346,6 @@ function SearchData() {
             );
         });
     }
-    console.log(filteredData);
 
     productListAll.updateConfig({
         data: filteredData
