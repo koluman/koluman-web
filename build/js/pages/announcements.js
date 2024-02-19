@@ -195,11 +195,6 @@ searchProductList.addEventListener("keyup", function () {
 var filterDataAll = '';
 var filterDataPublished = '';
 
-
-
-
-
-
 function removeSingleItem() {
     var getid = 0;
     Array.from(document.querySelectorAll(".remove-list")).forEach(function (item) {

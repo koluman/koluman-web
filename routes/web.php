@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', [AuthController::class, 'signin'])->name('signin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -46,8 +45,6 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('/testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
     Route::post('/getsteps', [TestDriveController::class, 'getsteps'])->name('getsteps');
     Route::post('/getstepsall', [TestDriveController::class, 'getstepsall'])->name('getstepsall');
-
-    
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('/ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
@@ -63,11 +60,8 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('deleteshowroom', [ShoowroomController::class, 'deleteshowroom'])->name('deleteshowroom');
     Route::post('deletegallery', [ShoowroomController::class, 'deletegallery'])->name('deletegallery');
     Route::post('addgallery', [ShoowroomController::class, 'addgallery'])->name('addgallery');
-
     Route::get('/announcements', [AnnouncementsController::class, 'announcements'])->name('ajans.announcements');
     Route::get('/announcementsdetail/{id?}', [AnnouncementsController::class, 'announcementsdetail'])->name('announcementsdetail');
-
-    
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
@@ -81,5 +75,4 @@ Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function
     Route::post('addsigorta', [SigortaHomeController::class, 'addsigorta'])->name('addsigorta');
     Route::post('deletesigortapoliçe', [SigortaHomeController::class, 'deletesigortapoliçe'])->name('deletesigortapoliçe');
     Route::post('updatesigorta', [SigortaHomeController::class, 'updatesigorta'])->name('updatesigorta');
-
 });
