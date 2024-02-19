@@ -114,12 +114,20 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'Araba Bilgileri',
-            width: '120px',
+            name: 'Açıklama',
+            width: '360px',
             data: (function (row) {
+                // Define the maximum number of characters to display
+                var maxChars = 200;
+        
+                // Truncate the description if it exceeds the maximum characters
+                var truncatedDescription = row.announcement_description.length > maxChars ?
+                    row.announcement_description.substring(0, maxChars) + '...' :
+                    row.announcement_description;
+        
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
-                    '<p class="text-muted mb-0"><span class="fw-medium">' + row.announcement_description + '</span></p>' +
+                    '<p class="text-muted mb-0"><span class="fw-medium">' + truncatedDescription + '</span></p>' +
                     '</div>' +
                     '</div>');
             })
