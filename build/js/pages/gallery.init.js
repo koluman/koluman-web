@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     success: function (data) {
                         console.log(data);
                         if(data.success==1){
-                            let veri=shoowroomdetail.gallery;let s="";
+                            let veri=data.shoowroomdetail.gallery;let s="";
                             for (let i = 0; i < veri.length; i++) {
                                s+='    <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development" data-category="designing development">';
                                s+='    <div class="gallery-box card">';
