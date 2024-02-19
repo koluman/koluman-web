@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             success: function (data) {
                 if (data.success == 1) {
                     window.location.reload();
-                } else {
+                } 
+                else {
                     alert(data.message);
                 }
             },

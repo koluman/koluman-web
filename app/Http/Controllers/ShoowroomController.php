@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GalleryAddRequest;
 use App\Http\Requests\ShowroomAddRequest;
 use App\Models\Companies;
 use App\Models\Gallery;
@@ -316,7 +317,7 @@ class ShoowroomController extends Controller
         return response()->json($responseData);
         
     }
-    public function addgallery(Request $request)
+    public function addgallery(GalleryAddRequest $request)
     {
         try {
             $car_id = $request->input('car_id');
