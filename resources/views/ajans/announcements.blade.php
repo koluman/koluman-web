@@ -25,7 +25,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('announcementsdetail') }}" class="btn btn-success"
+                                    <a href="#" class="btn btn-success"
                                         id="addproduct-btn"><i
                                             class="ri-add-line align-bottom me-1"></i>Duyuru/Haber/Kampanya Ekle</a>
                                 </div>
