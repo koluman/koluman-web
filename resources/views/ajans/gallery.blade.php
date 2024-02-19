@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="flex-shrink-0">
                                                     <div class="d-flex gap-3">
-                                                        <button type="button"
+                                                        <button type="button" data-id="{{ $galleryItem->gallery_id }}"
                                                             class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none">
                                                             <i
                                                                 class=" ri-delete-bin-6-line text-muted align-bottom me-1"></i>

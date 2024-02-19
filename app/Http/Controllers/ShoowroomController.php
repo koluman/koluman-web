@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ShowroomAddRequest;
 use App\Models\Companies;
+use App\Models\Gallery;
 use App\Models\Showroom;
 use Illuminate\Http\Request;
 
@@ -285,6 +286,37 @@ class ShoowroomController extends Controller
             ];
         }
 
+        return response()->json($responseData);
+    }
+
+    public function deletegallery(Request $request)
+    {
+        try {
+
+            $id = $request->id;
+
+            $affectedRows = Gallery::where('gallery_id', $id)
+                ->update([
+                    'car_img_url' => "",
+                ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "gallery" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Resim silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Resim silinemedi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
         return response()->json($responseData);
     }
 }

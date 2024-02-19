@@ -63,7 +63,9 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('/getshowroomcarid', [ShoowroomController::class, 'getshowroomcarid'])->name('getshowroomcarid');
     Route::post('deleteshowroomimage', [ShoowroomController::class, 'deleteshowroomimage'])->name('deleteshowroomimage');
     Route::post('deleteshowroom', [ShoowroomController::class, 'deleteshowroom'])->name('deleteshowroom');
+    Route::post('deletegallery', [ShoowroomController::class, 'deletegallery'])->name('deletegallery');
 
+    
     
     
 });
