@@ -30,28 +30,21 @@
                                                     <img class="gallery-img img-fluid mx-auto" src="{{ $galleryItem->car_img_url }}"
                                                         alt="" />
                                                     <div class="gallery-overlay">
-                                                        <h5 class="overlay-caption">Glasses and laptop from above</h5>
+                                                        <h5 class="overlay-caption">{{ $galleryItem->car_name }}</h5>
                                                     </div>
                                                 </a>
                                             </div>
 
                                             <div class="box-content">
                                                 <div class="d-flex align-items-center mt-1">
-                                                    <div class="flex-grow-1 text-muted">by <a href=""
+                                                    <div class="flex-grow-1 text-muted"><a href=""
                                                             class="text-body text-truncate">{{ $galleryItem->car_name }}</a></div>
                                                     <div class="flex-shrink-0">
                                                         <div class="d-flex gap-3">
                                                             <button type="button"
                                                                 class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none">
-                                                                <i
-                                                                    class="ri-thumb-up-fill text-muted align-bottom me-1"></i>
-                                                                2.2K
-                                                            </button>
-                                                            <button type="button"
-                                                                class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none">
-                                                                <i
-                                                                    class="ri-question-answer-fill text-muted align-bottom me-1"></i>
-                                                                1.3K
+                                                                <i class="ri-question-answer-fill text-muted align-bottom me-1"></i>
+                                                                Sil
                                                             </button>
                                                         </div>
                                                     </div>
