@@ -103,17 +103,6 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'Araba Bilgileri',
-            width: '360px',
-            data: (function (row) {
-                return gridjs.html('<div class="d-flex align-items-center">' +
-                    '<div class="flex-grow-1">' +
-                    '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.announcement_description + '</span></p>' +
-                    '</div>' +
-                    '</div>');
-            })
-        },
-        {
             name: 'Başlık',
             width: '84',
             data: (function (row) {
@@ -124,6 +113,18 @@ var productListAll = new gridjs.Grid({
                     '</div>');
             })
         },
+        {
+            name: 'Araba Bilgileri',
+            width: '120px',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-grow-1">' +
+                    '<p class="text-muted mb-0"><span class="fw-medium">' + row.announcement_description + '</span></p>' +
+                    '</div>' +
+                    '</div>');
+            })
+        },
+      
         {
             name: "İşlemler",
             width: '80px',
