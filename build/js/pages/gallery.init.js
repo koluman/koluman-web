@@ -8,6 +8,7 @@ File: Gallery init
 
 // Portfolio Filter
 document.addEventListener("DOMContentLoaded", function (event) {
+    let csrfToken = $('meta[name="csrf-token"]').attr('content');
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
     else add();
@@ -66,6 +67,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
             event.target.classList.add('active');
         });
     }
+    function getdetail(id) {
+
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+            dataType: 'json',
+            data: {
+                car_id: id,
+                _token: csrfToken, // CSRF token'ını gönder
+            },
+            success: function (data) {
+               console.log(data);
+            }
+    
+        });
+    }
+    
+    function add() {
+       console.log("ekle");
+    }
+    
 });
 
 
@@ -74,23 +96,3 @@ var lightbox = GLightbox({
     selector: '.image-popup',
     title: false,
 });
-function getdetail(id) {
-
-    $.ajax({
-        type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
-        dataType: 'json',
-        data: {
-            car_id: id,
-            _token: csrfToken, // CSRF token'ını gönder
-        },
-        success: function (data) {
-           console.log(data);
-        }
-
-    });
-}
-
-function add() {
-   console.log("ekle");
-}
