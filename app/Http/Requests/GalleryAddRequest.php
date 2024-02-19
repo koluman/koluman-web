@@ -10,15 +10,14 @@ class GalleryAddRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-            'success' => 422,
+            'success' => 2,
             'message' => $validator->errors(),
-        ]));
+        ], 422));
     }
     public function authorize()
     {
         return true;
     }
-
     public function rules()
     {
         return [
