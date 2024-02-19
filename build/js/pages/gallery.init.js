@@ -46,17 +46,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
     }
 
-    function getIdFromUrl() {
-        var url = window.location.href;
-        var match = url.match(/\/gallery\/(\d+)/);
-
-        if (match && match[1]) {
-            return parseInt(match[1], 10);
-        } else {
-            return null;
-        }
-    }
-
     function radioButtonGroup(buttonGroup) {
         buttonGroup.addEventListener('click', function (event) {
             // only work with buttons
@@ -69,32 +58,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     
-
+    document.querySelectorAll('.delete-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var galleryId = this.getAttribute('data-id');
+            $.ajax({
+              type: 'POST',
+              url: 'https://mobiloby.app/koluman/web/deletegallery',
+              data: {
+                id: galleryId,
+                _token: csrfToken, // CSRF token'ını gönder
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (data.success == 1) {
+                  window.location.reload(); 
+                } else {
+                    alert(data.message); 
+                }
+              }
+          });
+        });
+    });
   
 
 });
 
-document.querySelectorAll('.delete-btn').forEach(function(button) {
-    button.addEventListener('click', function() {
-        var galleryId = this.getAttribute('data-id');
-        $.ajax({
-          type: 'POST',
-          url: 'https://mobiloby.app/koluman/web/deletegallery',
-          data: {
-            id: galleryId,
-            _token: csrfToken, // CSRF token'ını gönder
-          },
-          dataType: 'json',
-          success: function (data) {
-            if (data.success == 1) {
-              window.location.reload(); 
-            } else {
-                alert(data.message); 
-            }
-          }
-      });
-    });
-});
+
 // GLightbox Popup
 var lightbox = GLightbox({
     selector: '.image-popup',
