@@ -30,7 +30,7 @@
                                                     <img class="gallery-img img-fluid mx-auto" src="{{ $galleryItem->car_img_url }}"
                                                         alt="" />
                                                     <div class="gallery-overlay">
-                                                        <h5 class="overlay-caption">{{ $galleryItem->car_name }}</h5>
+                                                        <h5 class="overlay-caption">Glasses and laptop from above</h5>
                                                     </div>
                                                 </a>
                                             </div>
@@ -38,7 +38,7 @@
                                             <div class="box-content">
                                                 <div class="d-flex align-items-center mt-1">
                                                     <div class="flex-grow-1 text-muted">by <a href=""
-                                                            class="text-body text-truncate">Ron Mackie</a></div>
+                                                            class="text-body text-truncate">{{ $galleryItem->car_name }}</a></div>
                                                     <div class="flex-shrink-0">
                                                         <div class="d-flex gap-3">
                                                             <button type="button"
