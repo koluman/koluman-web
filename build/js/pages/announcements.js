@@ -329,10 +329,9 @@ function SearchData() {
     var filteredData = announcementListAllData;
 
     
-    // Yetki filtresi
     if (selectedStatus && selectedStatus !== "all") {
         filteredData = filteredData.filter(function (b) {
-            return b.announcement_title === selectedStatus;
+            return b.announcement_state === selectedStatus;
         });
     }
 
