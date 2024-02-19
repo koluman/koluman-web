@@ -64,8 +64,6 @@ class ShoowroomController extends Controller
                 $galleryImages = $group->map(function ($item) {
                     return [
                         'gallery_id' => $item->gallery_id,
-                        'created_at' => $item->created_at,
-                        'updated_at' => $item->updated_at,
                         'car_img_url' => $item->car_img_url,
                     ];
                 })->toArray();
