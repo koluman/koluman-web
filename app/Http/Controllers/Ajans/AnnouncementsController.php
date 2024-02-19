@@ -11,18 +11,11 @@ class AnnouncementsController extends Controller
     
     public function announcements(Request $request)
     {
-        $companies = Companies::with(['showrooms', 'showrooms.cars'])->get();
-
-        foreach ($companies as $company) {
-            $carCount = 0;
-
-            foreach ($company->showrooms as $showroom) {
-                $carCount += $showroom->cars->count();
-            }
-
-            $company->setAttribute('carCount', $carCount);
-        }
-
-        return view('ajans.announcements', compact('companies'));
+        return view('ajans.announcements');
     }
+    public function announcementsdetail(Request $request)
+    {
+        return view('ajans.announcementsdetail');
+    }
+
 }

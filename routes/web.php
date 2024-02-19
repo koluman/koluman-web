@@ -65,6 +65,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('addgallery', [ShoowroomController::class, 'addgallery'])->name('addgallery');
 
     Route::get('/announcements', [AnnouncementsController::class, 'announcements'])->name('ajans.announcements');
+    Route::get('/announcementsdetail/{id?}', [AnnouncementsController::class, 'announcementsdetail'])->name('announcementsdetail');
 
     
 });
