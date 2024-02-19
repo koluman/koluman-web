@@ -30,7 +30,7 @@
                                                     <img class="gallery-img img-fluid mx-auto" src="{{ $galleryItem->car_img_url }}"
                                                         alt="" />
                                                     <div class="gallery-overlay">
-                                                        <h5 class="overlay-caption">{{ $shoowroom->car_name }}</h5>
+                                                        <h5 class="overlay-caption">{{ $galleryItem->car_name }}</h5>
                                                     </div>
                                                 </a>
                                             </div>
