@@ -59,6 +59,7 @@ class ShoowroomController extends Controller
                 ->where('showroom.car_id', $request->car_id)
                 ->first();
             
+            
             // Gruplandırma işlemi
             $groupedShowroomDetail = $shoowroomdetail->groupBy('car_id')->map(function ($group) {
                 $galleryImages = $group->map(function ($item) {
