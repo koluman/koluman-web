@@ -190,20 +190,7 @@ searchProductList.addEventListener("keyup", function () {
     checkRemoveItem();
 });
 
-// uniqueStep1Values dizisini başlangıçta boş olacak şekilde tanımla
-let uniqueStep1Values = [];
-function tikla(selectedValue, i) {
-    const isChecked = document.getElementById("productBrandRadio" + i).checked;
-    if (!isChecked) {
-        uniqueStep1Values = uniqueStep1Values.filter(value => value !== selectedValue);
-    } else {
-        if (!uniqueStep1Values.includes(selectedValue)) {
-            uniqueStep1Values.push(selectedValue);
-        }
-    }
-    const filteredData = announcementListAllData.filter(item => uniqueStep1Values.includes(item.step1));
-    updateTable(filteredData);
-}
+
 Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
     filteritem.addEventListener("click", function () {
         var filterListItem = document.querySelector(".filter-list a.active");
@@ -238,16 +225,7 @@ var filterDataPublished = '';
 
 
 
-// Search Brands Options
-var searchBrandsOptions = document.getElementById("searchBrandsList");
-searchBrandsOptions.addEventListener("keyup", function () {
-    var inputVal = searchBrandsOptions.value.toLowerCase();
-    var searchItem = document.querySelectorAll("#flush-collapseBrands .form-check");
-    Array.from(searchItem).forEach(function (elem) {
-        var searchBrandsTxt = elem.getElementsByClassName("form-check-label")[0].innerText.toLowerCase();
-        elem.style.display = searchBrandsTxt.includes(inputVal) ? "block" : "none";
-    })
-});
+
 
 // table select to remove
 // checkbox-wrapper
