@@ -71,11 +71,11 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Araba Kapak Resmi</h5>
+                        <h5 class="card-title mb-0">Araba Galeri Resmi</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <p class="text-muted">Araba resişmleri ekleme formu.</p>
+                            <p class="text-muted">Araba resim ekleme formu.</p>
 
                             <div class="dropzone">
                                 <div class="fallback">
@@ -135,6 +135,5 @@
     <script src="{{ URL::asset('build/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone3-min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/pages/gallery-create.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection

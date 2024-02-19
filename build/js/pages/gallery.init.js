@@ -7,6 +7,20 @@ File: Gallery init
 */
 
 // Portfolio Filter
+itemid = 13;
+
+
+// Dropzone
+var dropzonePreviewNode = document.querySelector("#dropzone-preview3-list");
+dropzonePreviewNode.itemid = "";
+var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
+dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
+var dropzone = new Dropzone(".dropzone", {
+    url: 'https://httpbin.org/post',
+    method: "post",
+    previewTemplate: previewTemplate,
+    previewsContainer: "#dropzone-preview3",
+});
 document.addEventListener("DOMContentLoaded", function (event) {
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
