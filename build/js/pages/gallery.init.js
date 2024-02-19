@@ -88,6 +88,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     },
                     success: function (data) {
                         console.log(data);
+                        if(data.success==1){
+
+                        }
+                        else{
+                            
+                        }
                     }
 
                 });
