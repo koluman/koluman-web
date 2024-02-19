@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             success: function (data) {
                 $.ajax({
                     type: 'POST',
-                    url: 'https://mobiloby.app/koluman/web/getshowroomdetail',
+                    url: 'https://mobiloby.app/koluman/web/api/getshowroomdetail',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
