@@ -43,7 +43,7 @@
                                                         <div class="d-flex gap-3">
                                                             <button type="button"
                                                                 class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none">
-                                                                <i class="ri-question-answer-fill text-muted align-bottom me-1"></i>
+                                                                <i class=" ri-delete-bin-6-line text-muted align-bottom me-1"></i>
                                                                 Sil
                                                             </button>
                                                         </div>
