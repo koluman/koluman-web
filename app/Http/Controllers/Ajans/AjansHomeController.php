@@ -16,6 +16,7 @@ class AjansHomeController extends Controller
     {
         $shoowroomdetail = Showroom::select(
             'showroom.car_name',
+            'showroom.car_id',
             'showroom_gallery.gallery_id',
             'showroom_gallery.car_img_url'
         )->leftJoin('showroom_gallery', 'showroom.car_id', '=', 'showroom_gallery.car_id')

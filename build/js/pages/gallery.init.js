@@ -11,16 +11,25 @@ itemid = 13;
 
 
 // Dropzone
+var car_img_url;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview3-list");
-dropzonePreviewNode.itemid = "";
-var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
-dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
-var dropzone = new Dropzone(".dropzone", {
-    url: 'https://httpbin.org/post',
-    method: "post",
-    previewTemplate: previewTemplate,
-    previewsContainer: "#dropzone-preview3",
-});
+if (dropzonePreviewNode) {
+    dropzonePreviewNode.id = "";
+    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
+    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
+
+    var dropzone = new Dropzone(".dropzone", {
+        url: 'https://httpbin.org/post',
+        method: "post",
+        previewTemplate: previewTemplate,
+        previewsContainer: "#dropzone-preview3",
+        init: function () {
+            this.on("addedfile", function (file) {
+                car_img_url = file;
+            });
+        }
+    });
+}
 document.addEventListener("DOMContentLoaded", function (event) {
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -95,6 +104,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   
 
+
+    $("#imadd").click(function () {
+        var formData = new FormData();
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        formData.append('car_id', $("#car_id").val());
+        formData.append('car_img_url', car_img_url);
+        $.ajax({
+            url: "https://mobiloby.app/koluman/web/addgallery",
+            method: 'POST',
+            dataType: "json",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.success == 1) {
+                    window.location.reload();
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });
 });
 
 

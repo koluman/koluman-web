@@ -12,6 +12,7 @@ ClassicEditor
         console.error(error);
     });
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
+var car_img_url;
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
@@ -32,7 +33,6 @@ if (dropzonePreviewNode) {
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
-var car_img_url;
 let company2 = new Choices("#company_id", {
     searchEnabled: false
 });

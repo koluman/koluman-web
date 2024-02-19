@@ -34,7 +34,7 @@
                                                 </div>
                                             </a>
                                         </div>
-
+                                        <input type="hidden" id="car_id" name="car_id" value="{{ $galleryItem->car_id }}">
                                         <div class="box-content">
                                             <div class="d-flex align-items-center mt-1">
                                                 <div class="flex-grow-1 text-muted"><a href=""
@@ -117,7 +117,7 @@
                             <!-- end dropzon-preview -->
                         </div>
                         <div class="text-end mb-3">
-                            <button type="submit" class="btn btn-success w-sm">Ekle</button>
+                            <button type="submit" class="btn btn-success w-sm" id="imadd">Ekle</button>
                         </div>
                     </div>
 
