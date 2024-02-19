@@ -335,6 +335,6 @@ function removeSingleItem() {
     });
 }
 function detay(id) {
-    window.location.href = "https://mobiloby.app/koluman/web/showroomdetail/" + id;
+    window.location.href = "https://mobiloby.app/koluman/web/announcementsdetail/" + id;
 
 }

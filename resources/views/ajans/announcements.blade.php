@@ -5,7 +5,6 @@
 @section('css')
     <link href="{{ URL::asset('build/libs/nouislider/nouislider.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('build/libs/gridjs/theme/mermaid.min.css') }}">
-
 @endsection
 @section('content')
     @component('components.breadcrumb')
@@ -17,7 +16,7 @@
         @endslot
     @endcomponent
     <div class="row">
-        
+
 
         <div class="col-xl-12 col-lg-12">
             <div>
@@ -26,15 +25,41 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('shoowroomdetail') }}" class="btn btn-success" id="addproduct-btn"><i
-                                            class="ri-add-line align-bottom me-1"></i>Araba Ekle</a>
+                                    <a href="{{ route('announcementsdetail') }}" class="btn btn-success"
+                                        id="addproduct-btn"><i
+                                            class="ri-add-line align-bottom me-1"></i>Duyuru/Haber/Kampanya Ekle</a>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
+                    <div class="row g-3">
+                                <div class="col-xxl-7 col-sm-6">
                                     <div class="search-box ms-2">
-                                        <input type="text" class="form-control" id="searchProductList" placeholder="Ara...">
+                                        <input type="text" class="form-control" id="searchProductList"
+                                            placeholder="Ara...">
                                         <i class="ri-search-line search-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-4 col-sm-6">
+                                    <div>
+                                        <select class="form-control" data-choices data-choices-search-false
+                                            name="choices-single-default" id="idStatus">
+                                            <option value="">Lütfen seçim yapınız</option>
+                                            <option value="all" selected>Hepsi</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="kullanici">Genel Kullanıcı</option>
+                                            <option value="sigorta">Sigorta</option>
+                                            <option value="servis">Servis</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--end col-->
+
+                                <!--end col-->
+                                <div class="col-xxl-1 col-sm-4">
+                                    <div>
+                                        <button type="button" class="btn btn-primary w-100" onclick="SearchData();"> <i
+                                                class="ri-equalizer-fill me-1 align-bottom"></i>
+                                            Filtrele
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -43,11 +68,14 @@
 
                     <div class="card-header">
                         <div class="row align-items-center">
-                           
+
                             <div class="col-auto">
                                 <div id="selection-element">
                                     <div class="my-n1 d-flex align-items-center text-muted">
-                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3 material-shadow-none" data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
+                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result
+                                        <button type="button"
+                                            class="btn btn-link link-danger p-0 ms-3 material-shadow-none"
+                                            data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
                                     </div>
                                 </div>
                             </div>
