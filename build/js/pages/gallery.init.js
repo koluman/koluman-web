@@ -47,16 +47,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
             radioButtonGroup(buttonGroup);
         });
     }
+
     function getIdFromUrl() {
         var url = window.location.href;
         var match = url.match(/\/gallery\/(\d+)/);
-    
+
         if (match && match[1]) {
             return parseInt(match[1], 10);
         } else {
             return null;
         }
     }
+
     function radioButtonGroup(buttonGroup) {
         buttonGroup.addEventListener('click', function (event) {
             // only work with buttons
@@ -67,27 +69,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
             event.target.classList.add('active');
         });
     }
-    function getdetail(id) {
 
+    function getdetail(id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+            url: 'https://mobiloby.app/koluman/web/getApiToken',
             dataType: 'json',
-            data: {
-                car_id: id,
-                _token: csrfToken, // CSRF token'ını gönder
-            },
             success: function (data) {
-               console.log(data);
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/getshowroomdetail',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    data: {
+                        car_id: id,
+                        _token: csrfToken, // CSRF token'ını gönder
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+
+                });
             }
-    
         });
     }
-    
+
     function add() {
-       console.log("ekle");
+        console.log("ekle");
     }
-    
+
 });
 
 
