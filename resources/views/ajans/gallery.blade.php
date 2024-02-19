@@ -117,13 +117,11 @@
                             <!-- end dropzon-preview -->
                         </div>
                         <div class="text-end mb-3">
-                            <button type="submit" class="btn btn-success w-sm" id="imadd">Ekle</button>
+                            <button type="button" class="btn btn-success w-sm" id="imadd">Ekle</button>
                         </div>
                     </div>
-
                 </div>
                 <!-- end card -->
-
             </div>
         </div>
         </div>
