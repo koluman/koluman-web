@@ -11,8 +11,9 @@ class AjansHomeController extends Controller
     {
         return view('ajans.dashboard');
     }
-    public function gallery(Request $request)
+    public function gallery(Request $request,$id=null)
     {
-        return view('ajans.gallery');
+        dd($id);
+        //return view('ajans.gallery');
     }
 }
