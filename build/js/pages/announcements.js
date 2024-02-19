@@ -208,27 +208,10 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
     });
 });
 
-
-
-
-
-
-var minCostInput = document.getElementById('minCost'),
-    maxCostInput = document.getElementById('maxCost');
-
 var filterDataAll = '';
 var filterDataPublished = '';
 
 
-
-
-
-
-
-
-
-// table select to remove
-// checkbox-wrapper
 var isSelected = 0;
 
 function checkRemoveItem() {
@@ -340,7 +323,7 @@ function detay(id) {
 }
 function SearchData() {
     var selectedStatus = $("#idStatus").val();
-    var searchText = $('.search').val().toLowerCase();
+    var searchText = $('#searchProductList').val().toLowerCase();
 
     // Filtreleme ve arama işlemleri
     var filteredData = announcementListAllData;
