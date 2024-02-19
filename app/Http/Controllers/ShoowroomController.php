@@ -316,4 +316,41 @@ class ShoowroomController extends Controller
         return response()->json($responseData);
         
     }
+    public function addgallery(Request $request)
+    {
+        try {
+            $car_id = $request->input('car_id');
+            $path = "";
+            if ($request->hasFile('car_img_url')) {
+                $im = $request->file('car_img_url');
+                $imName = time() . '.' . $im->getClientOriginalExtension();
+                $im->move(public_path('upload/gallery'), $imName);
+                $path = 'https://mobiloby.app/koluman/web/public/upload/gallery/' . $imName;
+            } else {
+                $path = "";
+            }
+            $result = Gallery::create([
+                'car_id' => $car_id,
+                'car_img_url' => $path, 
+            ]);
+            if ($result) {
+                $responseData = [
+                    "result" => $result,
+                    "success" => 1,
+                    "message" => "Galeriye resim eklendi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Galeriye resim eklenemedi, lütfen tekrar deneyiniz",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
