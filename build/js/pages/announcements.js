@@ -191,96 +191,14 @@ searchProductList.addEventListener("keyup", function () {
 });
 
 
-Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filteritem) {
-    filteritem.addEventListener("click", function () {
-        var filterListItem = document.querySelector(".filter-list a.active");
-        if (filterListItem) filterListItem.classList.remove("active");
-        filteritem.classList.add('active');
-
-        var filterItemValue = filteritem.querySelector(".listname").innerHTML
-        var filterData = announcementListAllData.filter(filterlist => filterlist.announcement_description === filterItemValue);
-
-        productListAll.updateConfig({
-            data: filterData
-        }).forceRender();
-
-        checkRemoveItem();
-    });
-});
 
 var filterDataAll = '';
 var filterDataPublished = '';
 
 
-var isSelected = 0;
-
-function checkRemoveItem() {
-    var tabEl = document.querySelectorAll('a[data-bs-toggle="tab"]');
-    Array.from(tabEl).forEach(function (el) {
-        el.addEventListener('show.bs.tab', function (event) {
-            isSelected = 0;
-            document.getElementById("selection-element").style.display = 'none';
-        });
-    });
-    setTimeout(function () {
-        Array.from(document.querySelectorAll(".checkbox-product-list input")).forEach(function (item) {
-            item.addEventListener('click', function (event) {
-                if (event.target.checked == true) {
-                    event.target.closest('tr').classList.add("gridjs-tr-selected");
-                } else {
-                    event.target.closest('tr').classList.remove("gridjs-tr-selected");
-                }
-
-                var checkboxes = document.querySelectorAll('.checkbox-product-list input:checked');
-                isSelected = checkboxes.length;
-
-                if (event.target.closest('tr').classList.contains("gridjs-tr-selected")) {
-                    document.getElementById("select-content").innerHTML = isSelected;
-                    (isSelected > 0) ? document.getElementById("selection-element").style.display = 'block': document.getElementById("selection-element").style.display = 'none';
-                } else {
-
-                    document.getElementById("select-content").innerHTML = isSelected;
-                    (isSelected > 0) ? document.getElementById("selection-element").style.display = 'block': document.getElementById("selection-element").style.display = 'none';
-                }
-            });
-        });
-        removeItems();
-        removeSingleItem();
-    }, 100);
-}
 
 
-// check to remove item
-var checkboxes = document.querySelectorAll('.checkbox-wrapper-mail input');
 
-function removeItems() {
-    var removeItem = document.getElementById('removeItemModal');
-    removeItem.addEventListener('show.bs.modal', function (event) {
-        isSelected = 0;
-        document.getElementById("delete-product").addEventListener("click", function () {
-            Array.from(document.querySelectorAll(".gridjs-table tr")).forEach(function (element) {
-                var filtered = '';
-                if (element.classList.contains("gridjs-tr-selected")) {
-                    var getid = element.querySelector('.form-check-input').value;
-					console.log(getid);
-                    function arrayRemove(arr, value) {
-                        return arr.filter(function (ele) {
-                            return ele.id != value;
-                        });
-                    }
-                    var filtered = arrayRemove(announcementListAllData, getid);
-                    announcementListAllData = filtered;
-                    element.remove();
-                }
-            });
-            document.getElementById("btn-close").click();
-            if (document.getElementById("selection-element"))
-                document.getElementById("selection-element").style.display = 'none';
-
-            checkboxes.checked = false;
-        });
-    })
-}
 
 function removeSingleItem() {
     var getid = 0;
