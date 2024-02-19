@@ -9,10 +9,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Duyuru/Haber/Kampanya
+            Duyurular
         @endslot
         @slot('title')
-            Duyuru/Haber/Kampanya
+            Duyurular
         @endslot
     @endcomponent
     <div class="row">
