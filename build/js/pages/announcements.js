@@ -338,3 +338,32 @@ function detay(id) {
     window.location.href = "https://mobiloby.app/koluman/web/announcementsdetail/" + id;
 
 }
+function SearchData() {
+    var selectedStatus = $("#idStatus").val();
+    var searchText = $('.search').val().toLowerCase();
+
+    // Filtreleme ve arama işlemleri
+    var filteredData = announcementListAllData;
+
+    
+    // Yetki filtresi
+    if (selectedStatus && selectedStatus !== "all") {
+        filteredData = filteredData.filter(function (b) {
+            return b.announcement_title === selectedStatus;
+        });
+    }
+
+    // Arama filtresi
+    if (searchText) {
+        filteredData = filteredData.filter(function (b) {
+            return (
+                b.announcement_title.includes(searchText) ||
+                b.announcement_description.toLowerCase().includes(searchText)
+            );
+        });
+    }
+    productListAll.updateConfig({
+        data: filteredData
+    }).forceRender();
+
+}

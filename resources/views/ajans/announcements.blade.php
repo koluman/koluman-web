@@ -44,10 +44,9 @@
                                             name="choices-single-default" id="idStatus">
                                             <option value="">Lütfen seçim yapınız</option>
                                             <option value="all" selected>Hepsi</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="kullanici">Genel Kullanıcı</option>
-                                            <option value="sigorta">Sigorta</option>
-                                            <option value="servis">Servis</option>
+                                            <option value="1">Haber</option>
+                                            <option value="2">Kampanya</option>
+                                            <option value="3">Sigorta</option>
                                         </select>
                                     </div>
                                 </div>
