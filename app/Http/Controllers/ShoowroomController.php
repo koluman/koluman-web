@@ -292,23 +292,18 @@ class ShoowroomController extends Controller
     public function deletegallery(Request $request)
     {
         try {
-
             $id = $request->id;
-
-            $affectedRows = Gallery::where('gallery_id', $id)
-                ->update([
-                    'car_img_url' => "",
-                ]);
-            if ($affectedRows > 0) {
+            $gallery = Gallery::find($id);
+            if ($gallery) {
+                $gallery->delete();
                 $responseData = [
-                    "gallery" => $affectedRows,
                     "success" => 1,
                     "message" => "Resim silindi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Resim silinemedi",
+                    "message" => "Resim bulunamadı",
                 ];
             }
         } catch (\Exception $e) {
@@ -317,6 +312,8 @@ class ShoowroomController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
+        
         return response()->json($responseData);
+        
     }
 }
