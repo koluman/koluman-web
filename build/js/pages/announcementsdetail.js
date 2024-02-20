@@ -42,8 +42,13 @@ function getdetail(id) {
 }
 
 function add() {
-  console.log("ekleme");
-
+    $("#announcement_id").val("");
+    $("#announcement_description").val("");
+    $("#announcement_title").val("");
+    $("#ckeditor-classic").val("");
+    $("#announcement_state").val("");
+    dropzone.removeAllFiles();
+    $("#addannouncement").text("Ekle");
 }
 
 function getIdFromUrl() {
@@ -56,3 +61,32 @@ function getIdFromUrl() {
         return null;
     }
 }
+$("#addannouncement").click(function () {
+
+    var formData = new FormData();
+    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+    formData.append('announcement_id', $("#announcement_id").val());
+    formData.append('announcement_description', document.querySelector("#announcement_description").value);
+    formData.append('announcement_state', document.querySelector("#announcement_state").value);
+    formData.append('announcement_title', $("#announcement_title").val());
+    if ($("#announcement_id").val() != "") url = "https://mobiloby.app/koluman/web/updateannouncement";
+    else url = "https://mobiloby.app/koluman/web/addannouncement"
+    $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if (data.success == 1) {
+                window.location.href = "https://mobiloby.app/koluman/web/announcements";
+            } else {
+                alert(data.message);
+            }
+        },
+        error: function (error) {
+            console.error(error);
+        }
+    });
+});
