@@ -21,44 +21,47 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
-                        @if(@shoowroomdetail!="")
                             @foreach ($shoowroomdetail as $galleryItem)
-                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
-                                    data-category="designing development">
-                                    <div class="gallery-box card">
-                                        <div class="gallery-container">
-                                            <a class="image-popup" href="{{ $galleryItem->car_img_url }}" title="">
-                                                <img class="gallery-img img-fluid mx-auto"
-                                                    src="{{ $galleryItem->car_img_url }}" alt="" />
-                                                <div class="gallery-overlay">
-                                                    <h5 class="overlay-caption">{{ $galleryItem->car_name }}</h5>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <input type="hidden" id="car_id" name="car_id" value="{{ $galleryItem->car_id }}">
-                                        <div class="box-content">
-                                            <div class="d-flex align-items-center mt-1">
-                                                <div class="flex-grow-1 text-muted"><a href=""
-                                                        class="text-body text-truncate">{{ $galleryItem->car_name }}</a>
-                                                </div>
-                                                <div class="flex-shrink-0">
-                                                    <div class="d-flex gap-3">
-                                                        <button type="button" data-id="{{ $galleryItem->gallery_id }}"
-                                                            class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none delete-btn">
-                                                            <i
-                                                                class=" ri-delete-bin-6-line text-muted align-bottom me-1"></i>
-                                                            Sil
-                                                        </button>
+                                @if (@galleryItem != '')
+                                    <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
+                                        data-category="designing development">
+                                        <div class="gallery-box card">
+                                            <div class="gallery-container">
+                                                <a class="image-popup" href="{{ $galleryItem->car_img_url }}"
+                                                    title="">
+                                                    <img class="gallery-img img-fluid mx-auto"
+                                                        src="{{ $galleryItem->car_img_url }}" alt="" />
+                                                    <div class="gallery-overlay">
+                                                        <h5 class="overlay-caption">{{ $galleryItem->car_name }}</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <input type="hidden" id="car_id" name="car_id"
+                                                value="{{ $galleryItem->car_id }}">
+                                            <div class="box-content">
+                                                <div class="d-flex align-items-center mt-1">
+                                                    <div class="flex-grow-1 text-muted"><a href=""
+                                                            class="text-body text-truncate">{{ $galleryItem->car_name }}</a>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <div class="d-flex gap-3">
+                                                            <button type="button" data-id="{{ $galleryItem->gallery_id }}"
+                                                                class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0 material-shadow-none delete-btn">
+                                                                <i
+                                                                    class=" ri-delete-bin-6-line text-muted align-bottom me-1"></i>
+                                                                Sil
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <p>Henüz arabaya ait galeri bilgisi bulunmamaktadır.</p>
+                                @endif
                             @endforeach
-                        @else
-                        <p>Henüz arabaya ait galeri bilgisi bulunmamaktadır.</p>
-                        @endif
+
                         </div>
                     </div>
                 </div>
@@ -135,6 +138,6 @@
     <script src="{{ URL::asset('build/libs/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone3-min.js') }}"></script>
-        <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
+    <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection
