@@ -14,6 +14,7 @@ return [
     "products" => "Shoowroom",
     "announcements"=>"Duyurlar",
     "announcementslist"=>"Listeler",
+    "create-announcement"=>"Duyuru|Haber|Kampanya",
     "announcement"=>"Duyurular",
     "analytics" => "Analiz",
     "crm" => "CRM",
