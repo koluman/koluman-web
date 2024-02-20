@@ -1,9 +1,13 @@
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
+    @php
+        $dashboardLink = Auth::guard('web')->user()->backuser_role . 'dashboard';
+    @endphp
+
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index" class="logo logo-dark">
+        <a href="{{ $dashboardLink }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -12,7 +16,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index" class="logo logo-light">
+        <a href="{{ $dashboardLink }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -84,9 +88,6 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>@lang('translation.menu')</span></li>
                 <li class="nav-item">
-                    @php
-                        $dashboardLink = Auth::guard('web')->user()->backuser_role . 'dashboard';
-                    @endphp
 
                 <li class="nav-item">
                     <a href="{{ $dashboardLink }}" class="nav-link"> <i class="ri-dashboard-2-line"></i>
@@ -150,7 +151,7 @@
                             </ul>
                         </div>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAnnouncements" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarAnnouncements">
                             <i class="ri-newspaper-fill"></i> <span>@lang('translation.announcements')</span>
