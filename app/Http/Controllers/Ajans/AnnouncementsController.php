@@ -62,7 +62,7 @@ class AnnouncementsController extends Controller
         }
         return response()->json($responseData);
     }
-    public function updatannouncement(Request $request)
+    public function updateannouncement(Request $request)
     {
         try {
             $announcement_id = $request->announcement_id;
