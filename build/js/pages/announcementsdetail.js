@@ -134,7 +134,7 @@ $("#addannouncement").click(function () {
         }
     });
 });
-document.getElementById("deleteallbutton").addEventListener("click", function () {
+document.getElementById("delete-record").addEventListener("click", function () {
     let id = $("#announcement_id").val();
     if (id) {
         $.ajax({

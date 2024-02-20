@@ -124,8 +124,8 @@
                     <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
                         colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
                     <div class="mt-4 text-center">
-                        <h4>Arabayı silmek istediğinize emin misiniz?</h4>
-                        <p class="text-muted fs-15 mb-4">Bu arabayı sildiğiniz taktirde işlemleri geri
+                        <h4>Emin misiniz?</h4>
+                        <p class="text-muted fs-15 mb-4">Bu veriyi sildiğiniz taktirde işlemleri geri
                             getiremezsiniz.</p>
                         <div class="hstack gap-2 justify-content-center remove">
                             <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"
