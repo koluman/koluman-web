@@ -265,14 +265,17 @@ function SearchData() {
     }).forceRender();
 
 }
-document.getElementById("delbutton").addEventListener("click", function () {
-    // Extract the ID from the data-id attribute
-    var id = this.getAttribute('data-id');
+document.getElementById("removeItemModal").addEventListener("click", function (event) {
+    // Check if the clicked element has the class "remove-list"
+    if (event.target.classList.contains("remove-list")) {
+        // Extract the ID from the data-id attribute
+        var id = event.target.getAttribute("data-id");
 
-    // Perform further processing with the extracted ID
-    console.log("Selected ID: ", id);
+        // Perform further processing with the extracted ID
+        console.log("Selected ID: ", id);
 
-    // Add your AJAX request or other logic here using the extracted ID
+        // Add your AJAX request or other logic here using the extracted ID
+    }
 });
 document.getElementById("delete-announcement").addEventListener("click", function () {
     /*let id = $("#delbutton").val();
