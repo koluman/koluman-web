@@ -42,7 +42,7 @@ function getdetail(id) {
         url: 'https://mobiloby.app/koluman/web/getannouncementid',
         dataType: 'json',
         data: {
-            car_id: id,
+            announcement_id: id,
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
