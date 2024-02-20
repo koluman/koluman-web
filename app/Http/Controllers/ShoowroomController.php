@@ -85,7 +85,8 @@ class ShoowroomController extends Controller
             ];
         }
         return response()->json($responseData);
-    }    public function getshowroomcarid(Request $request)
+    }    
+    public function getshowroomcarid(Request $request)
     {
         try {
             $shoowroomid = Showroom::select('showroom.car_id', 'showroom.company_id', 'showroom.step1', 'showroom.step2', 'showroom.step3', 'showroom.step4', 'showroom.step5', 'showroom.car_name', 'showroom.car_description', 'showroom.car_image_url', 'showroom.isTestdrive', 'companies.company_name')

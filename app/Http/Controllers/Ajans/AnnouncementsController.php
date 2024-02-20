@@ -170,4 +170,30 @@ class AnnouncementsController extends Controller
 
         return response()->json($responseData);
     }
+    public function getannouncementid(Request $request)
+    {
+        try {
+            $announcementid = Announcement::where('announcement_id', $request->announcement_id)
+                ->get();
+
+            if (!$announcementid->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "announcementid" => $announcementid,
+                    "message" => "Liste getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Liste bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
