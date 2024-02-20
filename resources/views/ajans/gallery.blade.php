@@ -138,6 +138,6 @@
     <script src="{{ URL::asset('build/libs/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone3-min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/pages/gallery.init.js') }}"></script>
+    <script src="{{ URL::asset('build/js/panel/gallery.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection
