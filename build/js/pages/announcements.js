@@ -5,40 +5,7 @@ Website: https://Themesbrand.com/
 Contact: Themesbrand@gmail.com
 File: Ecommerce product list Js File
 */
-var ckeditorClassic = document.querySelector('#ckeditor-classic');
-if (ckeditorClassic) {
-    ClassicEditor
-        .create(document.querySelector('#ckeditor-classic'))
-        .then(function (editor) {
-            editor.ui.view.editable.element.style.height = '200px';
-            editor.model.document.on('change:data', function () {
-                var editorContent = editor.getData();
-                document.querySelector("#announcement_description").value = editorContent;
-            });
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-}
-var dropzonePreviewNode = document.querySelector("#dropzone-preview4-list");
-var announcement_img_url;
-if (dropzonePreviewNode) {
-    dropzonePreviewNode.id = "";
-    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
-    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-    var dropzone = new Dropzone(".dropzone", {
-        url: 'https://httpbin.org/post',
-        method: "post",
-        previewTemplate: previewTemplate,
-        previewsContainer: "#dropzone-preview4",
-        init: function () {
-            this.on("addedfile", function (file) {
-                announcement_img_url = file;
-            });
-        }
-    });
-}
 var announcementListAllData = [];
 announcements();
 function announcements() {
