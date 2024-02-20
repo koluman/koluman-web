@@ -265,3 +265,43 @@ function SearchData() {
     }).forceRender();
 
 }
+
+document.getElementById("delete-announcement").addEventListener("click", function () {
+    /*let id = $("#car_id").val();
+    if (id) {
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/deleteshowroom',
+            data: {
+                car_id: id,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
+            }
+        });
+    }*/
+    var selectedRow = document.querySelector('.gridjs-table tbody tr.selected');
+
+    // Check if a row is selected
+    if (selectedRow) {
+        // Extract the ID from the selected row's data
+        var id = selectedRow.cells[1].data.props.content; // Assuming ID is in the second column
+
+        // Perform further processing with the extracted ID
+        console.log("Selected ID: ", id);
+
+        // Add your AJAX request or other logic here using the extracted ID
+    } else {
+        // Handle the case where no row is selected
+        alert("Please select a row before deleting.");
+    }
+});

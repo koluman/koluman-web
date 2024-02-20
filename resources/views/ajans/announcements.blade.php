@@ -117,12 +117,12 @@
                             colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
                         <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                             <h4>Are you Sure ?</h4>
-                            <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Product ?</p>
+                            <p class="text-muted mx-4 mb-0">Bu kaydı silmek istediğinize emin misiniz?</p>
                         </div>
                     </div>
                     <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn w-sm btn-danger " id="delete-product">Yes, Delete It!</button>
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" class="btn w-sm btn-danger"  id="delete-announcement">Evet, Sil!</button>
                     </div>
                 </div>
 
