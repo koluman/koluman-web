@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <div class="row gallery-wrapper">
                             @foreach ($shoowroomdetail as $galleryItem)
-                                @if (@galleryItem != '')
+                                @if (count($galleryItem) > 0)
                                     <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                         data-category="designing development">
                                         <div class="gallery-box card">
