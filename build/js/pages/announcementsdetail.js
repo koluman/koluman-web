@@ -48,22 +48,15 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
-            console.log(data);
-            /*$("#announcement_id").val(data.showroomcarid[0].car_id);
-            $("#car_name").val(data.showroomcarid[0].car_name);
-            company2.setChoiceByValue(data.showroomcarid[0].company_id);
-            $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
-            $("#step1text").val(data.showroomcarid[0].step1);
-            $("#step2text").val(data.showroomcarid[0].step2);
-            $("#step3text").val(data.showroomcarid[0].step3);
-            $("#step4text").val(data.showroomcarid[0].step4);
-            $("#step5text").val(data.showroomcarid[0].step5);
-            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
-            $("#car_description").val(data.showroomcarid[0].car_description);
-            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
-            else document.querySelector("#state").checked = false;
-            if (data.showroomcarid[0].car_image_url) {
-                let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
+            $("#announcement_id").val(data.announcementid[0].announcement_id);
+            $("#announcement_title").val(data.announcementid[0].announcement_title);
+            $("#ckeditor-classic").val(data.announcementid[0].announcement_description);
+           
+            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.announcementid[0].announcement_description;
+            $("#announcement_description").val(data.announcementid[0].announcement_description);
+          
+            if (data.announcementid[0].announcement_image_url) {
+                let FileName = getFileNameFromUrl(data.announcementid[0].announcement_image_url);
                 $("#anid").text(FileName);
                 document.querySelector("#andiv").style.display = "none";
                 var mockFile = {
@@ -78,7 +71,7 @@ function getdetail(id) {
                 dropzone.removeAllFiles();
             }
             $("#addannouncement").text("Güncelle");
-*/
+
         }
 
     });
