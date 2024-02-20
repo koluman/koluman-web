@@ -1,3 +1,36 @@
+var ckeditorClassic = document.querySelector('#ckeditor-classic');
+if (ckeditorClassic) {
+    ClassicEditor
+        .create(document.querySelector('#ckeditor-classic'))
+        .then(function (editor) {
+            editor.ui.view.editable.element.style.height = '200px';
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+var insurance_policy_url;
+
+// Dropzone
+var dropzonePreviewNode = document.querySelector("#dropzone-preview-list");
+if (dropzonePreviewNode) {
+    dropzonePreviewNode.id = "";""
+    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
+    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
+    
+    var dropzone = new Dropzone(".dropzone", {
+        url: 'https://httpbin.org/post',
+        method: "post",
+        previewTemplate: previewTemplate,
+        previewsContainer: "#dropzone-preview",
+        init: function () {
+            this.on("addedfile", function (file) {
+                insurance_policy_url = file;
+            });
+        }
+    });
+}
+
 $(document).ready(function () {
     var id = getIdFromUrl();
     if (id != "") getdetail(id);

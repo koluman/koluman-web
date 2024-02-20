@@ -225,7 +225,6 @@
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/pages/project-create.init.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/sigortadetail.js') }}"></script>
 @endsection
