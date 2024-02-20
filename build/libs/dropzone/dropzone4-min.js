@@ -363,7 +363,7 @@
                     type: 'POST',
                     url: 'https://mobiloby.app/koluman/web/deleteannouncementimg',
                     data: {
-                        announcement:  $("#announcement").val(),
+                        announcement_id:  $("#announcement_id").val(),
                         _token: csrfToken,
                     },
                     dataType: 'json',
