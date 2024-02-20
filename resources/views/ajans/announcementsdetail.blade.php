@@ -34,8 +34,7 @@
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-status-input" class="form-label">Tür</label>
 
-                                <select class="form-select" name="announcement_state" id="announcement_state" data-choices
-                                    data-choices-search-false>
+                                <select class="form-select" name="announcement_state" id="announcement_state">
                                     <option value="0" selected>Lütfen Seçiniz</option>
                                     <option value="1">Duyuru</option>
                                     <option value="2">Haber</option>
