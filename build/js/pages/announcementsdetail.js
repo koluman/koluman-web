@@ -1,4 +1,5 @@
 var ckeditorClassic = document.querySelector('#ckeditor-classic');
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
 if (ckeditorClassic) {
     ClassicEditor
         .create(document.querySelector('#ckeditor-classic'))
