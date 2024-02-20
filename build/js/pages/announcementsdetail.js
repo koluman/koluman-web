@@ -44,7 +44,6 @@ var id = getIdFromUrl();
 if (id != "" && id != null) getdetail(id);
 else add();
 function getdetail(id) {
-    console.log(id);
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getannouncementid',
