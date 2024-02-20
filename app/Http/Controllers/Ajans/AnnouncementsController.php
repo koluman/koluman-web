@@ -28,7 +28,7 @@ class AnnouncementsController extends Controller
             $announcement_state = $request->announcement_state;
             $announcement_description = $request->announcement_description;
           
-            /*$announcementPath = "";
+            $announcementPath = "";
             if ($request->hasFile('announcement_img_url')) {
                 $announcement = $request->file('announcement_img_url');
                 $announcementName = time() . '.' . $announcement->getClientOriginalExtension();
@@ -55,14 +55,14 @@ class AnnouncementsController extends Controller
                     "success" => 0,
                     "message" => "Başarılı bir şekilde oluşturulamadı, lütfen tekrar deneyiniz",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($request->file('announcement_img_url'));
+        return response()->json($responseData);
     }
     public function updateannouncement(Request $request)
     {

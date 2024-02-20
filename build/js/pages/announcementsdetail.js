@@ -81,12 +81,11 @@ $("#addannouncement").click(function () {
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
-           /* if (data.success == 1) {
+            if (data.success == 1) {
                 window.location.href = "https://mobiloby.app/koluman/web/announcements";
             } else {
                 alert(data.message);
-            }*/
+            }
         },
         error: function (error) {
             console.error(error);
