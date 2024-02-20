@@ -22,11 +22,13 @@
                     <div class="card-body">
                         <div class="row">
                             <input class="form-control" name="announcement_id" id="announcement_id" type="hidden" required>
-                            <input class="form-control" name="announcement_description" id="announcement_description" type="hidden" required>
+                            <input class="form-control" name="announcement_description" id="announcement_description"
+                                type="hidden" required>
 
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
-                                <input class="form-control" name="announcement_title" id="announcement_title" type="text" required>
+                                <input class="form-control" name="announcement_title" id="announcement_title" type="text"
+                                    required>
                                 </select>
                             </div>
                             <div class="col-lg-6 mb-3">
@@ -34,7 +36,10 @@
 
                                 <select class="form-select" name="announcement_state" id="announcement_state" data-choices
                                     data-choices-search-false>
-
+                                    <option value="0" selected>Lütfen Seçiniz</option>
+                                    <option value="1">Duyuru</option>
+                                    <option value="2">Haber</option>
+                                    <option value="3">Kampanya</option>
                                 </select>
                             </div>
                         </div>
@@ -70,8 +75,8 @@
                                 </div>
                             </div>
 
-                            <ul class="list-unstyled mb-0" id="dropzone-preview3">
-                                <li class="mt-2" id="dropzone-preview3-list">
+                            <ul class="list-unstyled mb-0" id="dropzone-preview4">
+                                <li class="mt-2" id="dropzone-preview4-list">
                                     <div class="border rounded">
                                         <div class="d-flex p-2">
                                             <div class="flex-shrink-0 me-3">
@@ -100,11 +105,11 @@
                 </div>
                 <!-- end card -->
 
-                 <div class="text-end mb-4">
-                <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll"
-                    class="btn btn-danger w-sm">Sil</button>
-                <button type="button" id="addcar" class="btn btn-success w-sm">Ekle</button>
-            </div>
+                <div class="text-end mb-4">
+                    <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll"
+                        class="btn btn-danger w-sm">Sil</button>
+                    <button type="button" id="addcar" class="btn btn-success w-sm">Ekle</button>
+                </div>
             </div>
             <!-- end col -->
 
@@ -112,7 +117,7 @@
         <!-- end row -->
     </form>
 
-      <div class="modal fade flip" id="deleteAll" tabindex="-1" aria-hidden="true">
+    <div class="modal fade flip" id="deleteAll" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body p-5 text-center">
@@ -123,9 +128,8 @@
                         <p class="text-muted fs-15 mb-4">Bu arabayı sildiğiniz taktirde işlemleri geri
                             getiremezsiniz.</p>
                         <div class="hstack gap-2 justify-content-center remove">
-                            <button class="btn btn-link link-success fw-medium text-decoration-none"
-                                data-bs-dismiss="modal" id="deleteRecord-close"><i
-                                    class="ri-close-line me-1 align-middle"></i>
+                            <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"
+                                id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i>
                                 Kapat</button>
                             <button class="btn btn-danger" id="delete-record">Eminim, Sil</button>
                         </div>
@@ -137,7 +141,7 @@
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
-    <script src="{{ URL::asset('build/libs/dropzone/dropzone2-min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/dropzone/dropzone4-min.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/showroomprocess.js') }}"></script>
     <script src="{{ URL::asset('build/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
