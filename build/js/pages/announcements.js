@@ -149,7 +149,7 @@ var productListAll = new gridjs.Grid({
                     '<li><a class="dropdown-item"  href="javascript:void(0);" onclick="javascript:redirectToGaleri(' + x+ ')"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> Galeri</a></li>' +
                     '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="javascript:detay(' + x+ ')"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
                     '<li class="dropdown-divider"></li>' +
-                    '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
+                    '<li><a class="dropdown-item remove-list" href="#" data-id=' + x + ' id="delbutton" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Sil</a></li>' +
                     '</ul>' +
                     '</div>');
             })
@@ -265,9 +265,17 @@ function SearchData() {
     }).forceRender();
 
 }
+document.getElementById("delbutton").addEventListener("click", function () {
+    // Extract the ID from the data-id attribute
+    var id = this.getAttribute('data-id');
 
+    // Perform further processing with the extracted ID
+    console.log("Selected ID: ", id);
+
+    // Add your AJAX request or other logic here using the extracted ID
+});
 document.getElementById("delete-announcement").addEventListener("click", function () {
-    /*let id = $("#car_id").val();
+    /*let id = $("#delbutton").val();
     if (id) {
         $.ajax({
             type: 'POST',
@@ -289,19 +297,5 @@ document.getElementById("delete-announcement").addEventListener("click", functio
             }
         });
     }*/
-    var selectedRow = document.querySelector('.gridjs-table tbody tr.selected');
 
-    // Check if a row is selected
-    if (selectedRow) {
-        // Extract the ID from the selected row's data
-        var id = selectedRow.cells[1].data.props.content; // Assuming ID is in the second column
-
-        // Perform further processing with the extracted ID
-        console.log("Selected ID: ", id);
-
-        // Add your AJAX request or other logic here using the extracted ID
-    } else {
-        // Handle the case where no row is selected
-        alert("Please select a row before deleting.");
-    }
 });

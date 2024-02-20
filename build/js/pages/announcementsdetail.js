@@ -92,3 +92,28 @@ $("#addannouncement").click(function () {
         }
     });
 });
+document.getElementById("delete-announcement").addEventListener("click", function () {
+    /*let id = $("#car_id").val();
+    if (id) {
+        $.ajax({
+            type: 'POST',
+            url: 'https://mobiloby.app/koluman/web/deleteshowroom',
+            data: {
+                car_id: id,
+                _token: csrfToken,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success == 1) {
+                    window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("AJAX request failed:", status, error);
+            }
+        });
+    }*/
+
+});
