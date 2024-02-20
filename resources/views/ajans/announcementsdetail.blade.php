@@ -60,9 +60,9 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <p class="text-muted" id="shid">Resim ekleme formu.</p>
+                            <p class="text-muted" id="anid">Resim ekleme formu.</p>
 
-                            <div class="dropzone" id="shdiv">
+                            <div class="dropzone" id="andiv">
                                 <div class="fallback">
                                     <input name="file" type="file">
                                 </div>

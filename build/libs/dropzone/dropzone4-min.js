@@ -359,8 +359,28 @@
                 }
             },
             removedfile: function (e) {
-              
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/deleteannouncementimg',
+                    data: {
+                        announcement:  $("#announcement").val(),
+                        _token: csrfToken,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == 1) {
+                            document.querySelector("#andiv").style.display = "block";
+                            $("#anid").text("");
+                        } else {
+                            alert(data.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("AJAX request failed:", status, error);
+                    }
+                });
                 return null != e.previewElement && null != e.previewElement.parentNode && e.previewElement.parentNode.removeChild(e.previewElement), this._updateMaxFilesReachedClass()
+
             },
             thumbnail: function (e, t) {
                 if (e.previewElement) {

@@ -115,5 +115,34 @@ class AnnouncementsController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deleteannouncementimg(Request $request)
+    {
+        try {
 
+            $announcement_id = $request->announcement_id;
+
+            $affectedRows = Announcement::where('announcement_id', $announcement_id)
+                ->update([
+                    'announcement_image_url' => "",
+                ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "announcement" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Resim silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Resim silinemedi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
