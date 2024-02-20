@@ -53,7 +53,7 @@ function getdetail(id) {
             $("#announcement_title").val(data.announcementid[0].announcement_title);
             $("#ckeditor-classic").val(data.announcementid[0].announcement_description);
             $("#announcement_description").val(data.announcementid[0].announcement_description);
-            announcement_state.setChoiceByValue(data.announcementid[0].announcement_state);
+            announcement_state.setChoiceByValue([data.announcementid[0].announcement_state]);
             if (data.announcementid[0].announcement_image_url) {
                 let FileName = getFileNameFromUrl(data.announcementid[0].announcement_image_url);
                 $("#anid").text(FileName);
