@@ -69,7 +69,7 @@ $("#addannouncement").click(function () {
     formData.append('announcement_description', document.querySelector("#announcement_description").value);
     formData.append('announcement_state', document.querySelector("#announcement_state").value);
     formData.append('announcement_title', $("#announcement_title").val());
-    formData.append('announcement_img_url', $("#announcement_img_url").val());
+    formData.append('announcement_img_url',announcement_img_url);
 
     if ($("#announcement_id").val() != "") url = "https://mobiloby.app/koluman/web/updateannouncement";
     else url = "https://mobiloby.app/koluman/web/addannouncement"
