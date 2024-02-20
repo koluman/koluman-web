@@ -21,8 +21,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row gallery-wrapper">
-                            @foreach ($shoowroomdetail as $galleryItem)
-                                @if (count($galleryItem) > 0)
+                            @if (count($shoowroomdetail) > 0)
+                                @foreach ($shoowroomdetail as $galleryItem)
                                     <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                         data-category="designing development">
                                         <div class="gallery-box card">
@@ -57,11 +57,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                @else
-                                    <p>Henüz arabaya ait galeri bilgisi bulunmamaktadır.</p>
-                                @endif
-                            @endforeach
-
+                                @endforeach
+                            @else
+                                <p>Henüz arabaya ait galeri bilgisi bulunmamaktadır.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
