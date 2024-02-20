@@ -144,4 +144,30 @@ class AnnouncementsController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deleteannouncement(Request $request)
+    {
+        try {
+            $announcement_id = $request->announcement_id;
+            $announcement = Announcement::where('announcement_id', $announcement_id)->first();
+            if ($announcement) {
+                $announcement->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Başarıyla silinemedi!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }

@@ -37,7 +37,49 @@ if (id != "" && id != null) getdetail(id);
 else add();
 
 function getdetail(id) {
+    $.ajax({
+        type: 'POST',
+        url: 'https://mobiloby.app/koluman/web/getannouncementid',
+        dataType: 'json',
+        data: {
+            car_id: id,
+            _token: csrfToken, // CSRF token'ını gönder
+        },
+        success: function (data) {
+            console.log(data);
+            /*$("#announcement_id").val(data.showroomcarid[0].car_id);
+            $("#car_name").val(data.showroomcarid[0].car_name);
+            company2.setChoiceByValue(data.showroomcarid[0].company_id);
+            $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
+            $("#step1text").val(data.showroomcarid[0].step1);
+            $("#step2text").val(data.showroomcarid[0].step2);
+            $("#step3text").val(data.showroomcarid[0].step3);
+            $("#step4text").val(data.showroomcarid[0].step4);
+            $("#step5text").val(data.showroomcarid[0].step5);
+            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
+            $("#car_description").val(data.showroomcarid[0].car_description);
+            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
+            else document.querySelector("#state").checked = false;
+            if (data.showroomcarid[0].car_image_url) {
+                let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
+                $("#anid").text(FileName);
+                document.querySelector("#andiv").style.display = "none";
+                var mockFile = {
+                    name: FileName,
+                };
+                dropzone.emit("addedfile", mockFile);
+                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                dropzone.emit("thumbnail", mockFile, pdfIconPath);
+                dropzone.emit("complete", mockFile);
+                dropzone.files.push(mockFile);
+            } else {
+                dropzone.removeAllFiles();
+            }
+            $("#addannouncement").text("Güncelle");
+*/
+        }
 
+    });
   
 }
 
@@ -92,20 +134,20 @@ $("#addannouncement").click(function () {
         }
     });
 });
-document.getElementById("delete-announcement").addEventListener("click", function () {
-    /*let id = $("#car_id").val();
+document.getElementById("deleteallbutton").addEventListener("click", function () {
+    let id = $("#announcement_id").val();
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/deleteshowroom',
+            url: 'https://mobiloby.app/koluman/web/deleteannouncement',
             data: {
-                car_id: id,
+                announcement_id: id,
                 _token: csrfToken,
             },
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                    window.location.href = "https://mobiloby.app/koluman/web/announcements";
                 } else {
                     alert(data.message);
                 }
@@ -114,6 +156,6 @@ document.getElementById("delete-announcement").addEventListener("click", functio
                 alert("AJAX request failed:", status, error);
             }
         });
-    }*/
+    }
 
 });

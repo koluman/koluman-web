@@ -66,6 +66,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('addannouncement', [AnnouncementsController::class, 'addannouncement'])->name('addannouncement');
     Route::post('updatannouncement', [AnnouncementsController::class, 'updatannouncement'])->name('updatannouncement');
     Route::post('deleteannouncementimg', [AnnouncementsController::class, 'deleteannouncementimg'])->name('deleteannouncementimg');
+    Route::post('deleteannouncement', [AnnouncementsController::class, 'deleteannouncement'])->name('deleteannouncement');
 
     
 });
