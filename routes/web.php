@@ -62,14 +62,11 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('addgallery', [ShoowroomController::class, 'addgallery'])->name('addgallery');
     Route::get('/announcements', [AnnouncementsController::class, 'announcements'])->name('ajans.announcements');
     Route::get('/announcementsdetail/{id?}', [AnnouncementsController::class, 'announcementsdetail'])->name('announcementsdetail');
-
     Route::post('addannouncement', [AnnouncementsController::class, 'addannouncement'])->name('addannouncement');
     Route::post('updatannouncement', [AnnouncementsController::class, 'updatannouncement'])->name('updatannouncement');
     Route::post('deleteannouncementimg', [AnnouncementsController::class, 'deleteannouncementimg'])->name('deleteannouncementimg');
     Route::post('deleteannouncement', [AnnouncementsController::class, 'deleteannouncement'])->name('deleteannouncement');
     Route::post('getannouncementid', [AnnouncementsController::class, 'getannouncementid'])->name('getannouncementid');
-
-    
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('/sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');

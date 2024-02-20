@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class AnnouncementsController extends Controller
 {
-    
     public function announcements(Request $request)
     {
         return view('ajans.announcements');
@@ -19,7 +18,6 @@ class AnnouncementsController extends Controller
     {
         return view('ajans.announcementsdetail');
     }
-    
     public function addannouncement(Request $request)
     {
         try {
@@ -167,15 +165,12 @@ class AnnouncementsController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-
         return response()->json($responseData);
     }
     public function getannouncementid(Request $request)
     {
         try {
-            $announcementid = Announcement::where('announcement_id', $request->announcement_id)
-                ->get();
-
+            $announcementid = Announcement::where('announcement_id', $request->announcement_id)->get();
             if (!$announcementid->isEmpty()) {
                 $responseData = [
                     "success" => 1,
