@@ -35,6 +35,11 @@ if (dropzonePreviewNode) {
         }
     });
 }
+function getFileNameFromUrl(url) {
+    let parts = url.split('/');
+    return parts[parts.length - 1];
+}
+
 var id = getIdFromUrl();
 if (id != "" && id != null) getdetail(id);
 else add();
