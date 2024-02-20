@@ -37,7 +37,6 @@ class AnnouncementsController extends Controller
             } else {
                 $announcementPath = "";
             }
-         
             $result = Announcement::create([
                 'announcement_title' => $announcement_title,
                 'announcement_description' => $announcement_description,
