@@ -62,7 +62,8 @@ function getIdFromUrl() {
     }
 }
 $("#addannouncement").click(function () {
-
+    console.log(announcement_img_url);
+/*
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
     formData.append('announcement_id', $("#announcement_id").val());
@@ -90,5 +91,5 @@ $("#addannouncement").click(function () {
         error: function (error) {
             console.error(error);
         }
-    });
+    });*/
 });
