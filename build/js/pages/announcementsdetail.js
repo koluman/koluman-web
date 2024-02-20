@@ -96,7 +96,7 @@ function add() {
 
 function getIdFromUrl() {
     var url = window.location.href;
-    var match = url.match(/\/showroomdetail\/(\d+)/);
+    var match = url.match(/\/announcementsdetail\/(\d+)/);
 
     if (match && match[1]) {
         return parseInt(match[1], 10);
