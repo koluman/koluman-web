@@ -60,7 +60,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('deleteshowroom', [ShoowroomController::class, 'deleteshowroom'])->name('deleteshowroom');
     Route::post('deletegallery', [ShoowroomController::class, 'deletegallery'])->name('deletegallery');
     Route::post('addgallery', [ShoowroomController::class, 'addgallery'])->name('addgallery');
-    Route::get('announcements', [AnnouncementsController::class, 'announcements'])->name('ajans.announcements');
+    Route::get('announcements', [AnnouncementsController::class, 'announcements'])->name('announcements');
     Route::get('announcementsdetail/{id?}', [AnnouncementsController::class, 'announcementsdetail'])->name('announcementsdetail');
     Route::post('addannouncement', [AnnouncementsController::class, 'addannouncement'])->name('addannouncement');
     Route::post('updateannouncement', [AnnouncementsController::class, 'updateannouncement'])->name('updateannouncement');
