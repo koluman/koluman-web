@@ -103,7 +103,7 @@
                         <div class="collapse menu-dropdown" id="sidebarUsers">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="adminusers" class="nav-link">@lang('translation.userlist')</a>
+                                    <a href="{{ route('adminusers') }}" class="nav-link">@lang('translation.userlist')</a>
                                 </li>
                             </ul>
                         </div>
@@ -116,7 +116,7 @@
                         <div class="collapse menu-dropdown" id="sidebarTestDrive">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="admintestdrive" class="nav-link">@lang('translation.testdrivelist')</a>
+                                    <a href="{{ route('admintestdrive') }}" class="nav-link">@lang('translation.testdrivelist')</a>
                                 </li>
                             </ul>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="collapse menu-dropdown" id="sidebarSigorta">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="sigortalist" class="nav-link">@lang('translation.sigortalist')</a>
+                                    <a href="{{ route('sigortalist') }}" class="nav-link">@lang('translation.sigortalist')</a>
                                 </li>
                             </ul>
                         </div>
