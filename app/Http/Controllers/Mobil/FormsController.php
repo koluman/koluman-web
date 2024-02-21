@@ -20,7 +20,7 @@ class FormsController extends Controller
                 $email = $request->email;
                 $city = ($request->city != "") ? $request->city : "";
                 $message = $request->message;
-                $insurance_type = empty($insurance_type) ? "" : $insurance_type;
+                $insurance_type = ($request->insurance_type != "") ? $request->insurance_type : "";
 
                 $affectedRows = Forms::insert([
                     'type' => $type,
