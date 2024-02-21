@@ -2,6 +2,7 @@
 use App\Http\Controllers\Mobil\AnnouncementController;
 use App\Http\Controllers\Mobil\CompaniesController;
 use App\Http\Controllers\Mobil\DealerShipsController;
+use App\Http\Controllers\Mobil\FormsController;
 use App\Http\Controllers\Mobil\InsuranceController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
@@ -44,6 +45,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::get('/getcompanies', [CompaniesController::class, 'getcompanies'])->name('getcompanies');
     Route::post('/sendcode', [LoginController::class, 'sendcode'])->name('sendcode');
     Route::get('/getshowroomdetail', [ShoowroomController::class, 'getshowroomdetail'])->name('getshowroomdetail');
+    Route::post('/addforms', [FormsController::class, 'addforms'])->name('addforms');
 
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
