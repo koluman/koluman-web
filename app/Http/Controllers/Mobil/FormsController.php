@@ -18,7 +18,7 @@ class FormsController extends Controller
                 $lastname = $request->lastname;
                 $phone = $request->phone;
                 $email = $request->email;
-                $city = empty($city) ? "" : $city;
+                $city = ($request->city != "") ? $request->city : "";
                 $message = $request->message;
                 $insurance_type = empty($insurance_type) ? "" : $insurance_type;
 
