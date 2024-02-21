@@ -31,7 +31,7 @@ Route::get('getBasicToken', [HomeController::class, 'getBasicToken'])->name('get
 Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function () {
     Route::get('admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('adminusers', [HomeController::class, 'users'])->name('adminusers');
-    Route::get('admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
+    Route::get('admintestdrive', [HomeController::class, 'testdrive'])->name('admintestdrive');
     Route::post('getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
     Route::post('adduser', [BackUsersController::class, 'adduser'])->name('adduser');
     Route::post('updateuser', [BackUsersController::class, 'updateuser'])->name('updateuser');
