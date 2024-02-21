@@ -18,9 +18,9 @@ class FormsController extends Controller
                 $lastname = $request->lastname;
                 $phone = $request->phone;
                 $email = $request->email;
-                $city = empty($city) ? null : $city;
+                $city = empty($city) ? "" : $city;
                 $message = $request->message;
-                $insurance_type = empty($insurance_type) ? null : $insurance_type;
+                $insurance_type = empty($insurance_type) ? "" : $insurance_type;
 
                 $affectedRows = Forms::insert([
                     'type' => $type,
