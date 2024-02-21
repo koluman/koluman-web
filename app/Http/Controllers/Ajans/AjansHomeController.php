@@ -23,6 +23,6 @@ class AjansHomeController extends Controller
             ->where('showroom.car_id', $request->id)
             ->get();
 
-        return view('gallery', compact('shoowroomdetail'));
+        return view('ajans.gallery', compact('shoowroomdetail'));
     }
 }
