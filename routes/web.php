@@ -23,13 +23,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'signin'])->name('signin');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
-Route::get('/getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
-Route::get('/getBasicToken', [HomeController::class, 'getBasicToken'])->name('getBasicToken');
+Route::get('getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
+Route::get('getBasicToken', [HomeController::class, 'getBasicToken'])->name('getBasicToken');
 Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function () {
-    Route::get('/admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('adminusers', [HomeController::class, 'users'])->name('admin.users');
     Route::get('admintestdrive', [HomeController::class, 'testdrive'])->name('admin.testdrive');
     Route::post('getallusers', [BackUsersController::class, 'getallusers'])->name('getallusers');
