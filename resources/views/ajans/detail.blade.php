@@ -217,7 +217,6 @@
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
-        <script src="{{ URL::asset('build/js/panel/dene.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone2-min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
