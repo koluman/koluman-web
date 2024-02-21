@@ -13,12 +13,13 @@ ClassicEditor
     });
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 var car_img_url;
+var dropzone;
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
     dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-    var dropzone = new Dropzone(".dropzone", {
+    dropzone = new Dropzone(".dropzone", {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
