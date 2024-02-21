@@ -146,7 +146,7 @@
                         <div class="collapse menu-dropdown" id="sidebarShoowroom">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="shoowroomlist" class="nav-link">@lang('translation.shoowroomlist')</a>
+                                    <a href="{{ route('shoowroomlist') }}" class="nav-link">@lang('translation.shoowroomlist')</a>
                                 </li>
                             </ul>
                         </div>
