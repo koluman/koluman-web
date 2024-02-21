@@ -11,7 +11,6 @@ ClassicEditor
     .catch(function (error) {
         console.error(error);
     });
-var dropzone;
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 var car_img_url;
 if (dropzonePreviewNode) {
@@ -19,7 +18,7 @@ if (dropzonePreviewNode) {
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
     dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-     dropzone = new Dropzone(".dropzone", {
+    var dropzone = new Dropzone(".dropzone", {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
@@ -37,10 +36,12 @@ let uniqueValues = [];
 let company2 = new Choices("#company_id", {
     searchEnabled: false
 });
-getcompany();
-var id = getIdFromUrl();
-if (id != "" && id != null) getdetail(id);
-else add();
+$( document ).ready(function() {
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+});
 
 function getcompany() {
     $.ajax({
