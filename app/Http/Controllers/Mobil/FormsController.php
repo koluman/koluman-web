@@ -18,6 +18,8 @@ class FormsController extends Controller
                 $lastname = $request->lastname;
                 $phone = $request->phone;
                 $email = $request->email;
+                $dealership_id = $request->dealership_id;
+
                 $city = ($request->city != "") ? $request->city : "";
                 $message = $request->message;
                 $insurance_type = ($request->insurance_type != "") ? $request->insurance_type : "";
@@ -27,6 +29,7 @@ class FormsController extends Controller
                     'firstname' => $firstname,
                     'lastname' => $lastname,
                     'phone' => $phone,
+                    'dealership_id'=>$dealership_id,
                     'email' => $email,
                     'city' => $city,
                     'message' => $message,
