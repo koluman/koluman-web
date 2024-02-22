@@ -11,9 +11,8 @@ class CompaniesController extends Controller
     public function getcompanies(Request $request)
     {
         try {
-            $companies = Companies::select('company_id', 'company_name', 'company_image_url', 'company_logo_url', 'state')
-                ->orderby('priority', 'asc')
-                ->get();
+            $companies = Companies::select('company_id', 'company_name', 'company_image_url', 'company_logo_url')
+            ->where('state',1)->orderby('priority', 'asc')->get();
             if (!$companies->isEmpty()) {
                 $responseData = [
                     "success" => 1,
