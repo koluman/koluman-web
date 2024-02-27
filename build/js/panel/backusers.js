@@ -163,19 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     Swal.fire({
                         title: "Başarısız",
                         text: data.message,
-                        icon: "danger",
-                        showCancelButton: true,
+                        icon: "warning",
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs me-2 mt-2',
                             cancelButton: 'btn btn-danger w-xs mt-2',
                         },
                         confirmButtonText: "Tamam!",
                         buttonsStyling: false,
-                        showCloseButton: true
-                    }).then(function (result) {
-                        if (result.value) {
-                            $('#showModal').modal('hide');
-                        }
+                        showCloseButton: false
                     });
                 }
             },
