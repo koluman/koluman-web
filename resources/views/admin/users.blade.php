@@ -183,7 +183,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="customername-field" class="form-label">Kullanıcı Telefon</label>
-                                            <input type="number" id="userphone" pattern="[0-9]{10}name="userphone"
+                                            <input type="number" id="userphone" pattern="[0-9]{10}" name="userphone"
                                                 class="form-control" placeholder="Örn:5369824356" required />
                                         </div>
                                         <div class="mb-3">
