@@ -18,7 +18,7 @@ function initializeCKEditor() {
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function () {
     initializeCKEditor();
-    company2 = new Choices("#company_id", {
+    company2 = new Choices("#companyid", {
         searchEnabled: false
     });
 });
