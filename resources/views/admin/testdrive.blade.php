@@ -2,6 +2,9 @@
 @section('title')
     @lang('translation.calendar')
 @endsection
+@section('css')
+    <link href="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
