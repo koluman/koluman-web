@@ -279,7 +279,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
                     }
                 });
             }
-            if (data.success == 2) {
+            else if (data.success == 2) {
                 Swal.fire({
                     title: "Başarısız",
                     html: data.message.join('<br>'),
