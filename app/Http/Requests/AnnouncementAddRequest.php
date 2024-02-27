@@ -24,7 +24,6 @@ class AnnouncementAddRequest extends FormRequest
         return [
             'announcement_title' => 'required',
             'announcement_state' => 'required',
-            'ckeditor-classic' => 'required',
 
         ];
     }
@@ -34,7 +33,6 @@ class AnnouncementAddRequest extends FormRequest
         return [
             'announcement_title.required' => 'Başlık girişi zorunludur.',
             'announcement_state.required' => 'Tür seçimi zorunludur.',
-            'ckeditor-classic.required' => 'Açıklama yazmak zorundasnız.',
 
         ];
     }
