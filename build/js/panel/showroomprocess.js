@@ -4,6 +4,7 @@ var company2;
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
+getcompany();
 
 // Function to initialize CKEditor
 function initializeCKEditor() {
@@ -28,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     /*company2 = new Choices("#companyid", {
         searchEnabled: false
     });*/
-    getcompany();
     initializeCKEditor();
   
 });
