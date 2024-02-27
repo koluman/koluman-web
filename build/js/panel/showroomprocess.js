@@ -4,6 +4,7 @@ let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
+var dropzone ;
 var car_img_url;
 
 function getFileNameFromUrl(url) {
@@ -54,7 +55,6 @@ function getcompany() {
                             $("#company_id").html('');
                             $("#company_id").html(a);
                             initializeCKEditor();
-                            var dropzone ;
                             if (dropzonePreviewNode) {
                                 dropzonePreviewNode.id = "";
                                 var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
