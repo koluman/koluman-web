@@ -15,16 +15,14 @@ function initializeCKEditor() {
         .catch(function (error) {
             console.error(error);
         });
-        var id = getIdFromUrl();
-        if (id != "" && id != null) getdetail(id);
-        else add();
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     getcompany();
     initializeCKEditor();
-  
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
 });
 
 
