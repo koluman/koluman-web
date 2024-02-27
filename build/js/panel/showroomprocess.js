@@ -72,18 +72,12 @@ function getcompany() {
                     success: function (data) {
                         if (data.success == 1) {
                             var ch = [];
-                            var v = "";
-                            var t = "Lütfen Seçiniz";
-                            var c = {
-                                value: v,
-                                label: t,
-                            };
-                            ch.push(c);
+                        
                             for (var i = 0; i < data.companies.length; i++) {
-                                v = data.companies[i]["company_id"];
-                                t = data.companies[i]["company_name"];
+                                var v = data.companies[i]["company_id"];
+                                var t = data.companies[i]["company_name"];
 
-                                c = {
+                                var c = {
                                     value: v,
                                     label: t,
                                 };
