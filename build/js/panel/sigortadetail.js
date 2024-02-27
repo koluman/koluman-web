@@ -278,7 +278,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
                     }
                 });
             }
-            /*if (data.success == 2) {
+            if (data.success == 2) {
                 if (data.message.insurance_type) {
                     Swal.fire({
                         title: "Başarısız",
@@ -323,7 +323,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
                         showCloseButton: false
                     });
                 }
-            } */
+            } 
             else {
                 Swal.fire({
                     title: "Başarısız",
