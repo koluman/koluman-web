@@ -211,6 +211,7 @@
     </div> <!-- end row-->
 @endsection
 @section('script')
+    <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ URL::asset('build/libs/fullcalendar/index.global.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/testdrive.js') }}"></script>
