@@ -331,9 +331,34 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
-                                            window.location.reload();
+                                            Swal.fire({
+                                                title: "Başarılı",
+                                                text: data.message,
+                                                icon: "success",
+                                                customClass: {
+                                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                                },
+                                                confirmButtonText: "Tamam!",
+                                                buttonsStyling: false,
+                                                showCloseButton: false
+                                            }).then(function (result) {
+                                                if (result.value) {
+                                                    window.location.reload();
+                                                }
+                                            });
                                         } else {
-                                            alert(data.message);
+                                            Swal.fire({
+                                                title: "Başarısız",
+                                                text: data.message,
+                                                icon: "warning",
+                                                customClass: {
+                                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                                },
+                                                confirmButtonText: "Tamam!",
+                                                buttonsStyling: false,
+                                                showCloseButton: false
+                                            });
                                         }
                                     }
                                 });
@@ -352,32 +377,57 @@ document.addEventListener("DOMContentLoaded", function () {
                                     dataType: 'json',
                                     success: function (data) {
                                         if (data.success == 1) {
-                                            var newEvent = {
-                                                id: data.sonuc,
-                                                title: updatedAppointment,
-                                                start: updateStartDate,
-                                                allDay: all_day,
-                                                className: updatedCategory,
-                                                description: {
-                                                    user_id: updatedUser,
-                                                    user_name: $("#user_id").text()
+                                            Swal.fire({
+                                                title: "Başarılı",
+                                                text: data.message,
+                                                icon: "success",
+                                                customClass: {
+                                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
                                                 },
-                                                extendedProps: {
-                                                    department: updatedAppointment,
-                                                    state: updatedState
-                                                },
-                                                location: {
-                                                    car_id: $("#car_id").val(),
-                                                    car_name: $("#car_id").text()
-                                                },
-                                            };
-                                            calendar.addEvent(newEvent);
-                                            defaultlastEvents.push(newEvent);
+                                                confirmButtonText: "Tamam!",
+                                                buttonsStyling: false,
+                                                showCloseButton: false
+                                            }).then(function (result) {
+                                                if (result.value) {
+                                                    var newEvent = {
+                                                        id: data.sonuc,
+                                                        title: updatedAppointment,
+                                                        start: updateStartDate,
+                                                        allDay: all_day,
+                                                        className: updatedCategory,
+                                                        description: {
+                                                            user_id: updatedUser,
+                                                            user_name: $("#user_id").text()
+                                                        },
+                                                        extendedProps: {
+                                                            department: updatedAppointment,
+                                                            state: updatedState
+                                                        },
+                                                        location: {
+                                                            car_id: $("#car_id").val(),
+                                                            car_name: $("#car_id").text()
+                                                        },
+                                                    };
+                                                    calendar.addEvent(newEvent);
+                                                    defaultlastEvents.push(newEvent);
 
-                                            addEvent.hide();
-                                            upcomingEvent(defaultlastEvents);
+                                                    addEvent.hide();
+                                                    upcomingEvent(defaultlastEvents);
+                                                }
+                                            });
                                         } else {
-                                            alert(data.message);
+                                            Swal.fire({
+                                                title: "Başarısız",
+                                                text: data.message,
+                                                icon: "warning",
+                                                customClass: {
+                                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                                },
+                                                confirmButtonText: "Tamam!",
+                                                buttonsStyling: false,
+                                                showCloseButton: false
+                                            });
                                         }
                                     }
                                 });
@@ -675,7 +725,7 @@ function getstep() {
         success: function (data) {
             if (data.success == 1) {
                 var tt = [];
-                var v ="";
+                var v = "";
                 var t = "Lütfen Seçiniz";
                 var choice = {
                     value: v,
@@ -713,13 +763,13 @@ function getstep1() {
             label: value,
         };
     });
-    step2.clearChoices(); 
+    step2.clearChoices();
     var pleaseSelectOption = {
         value: "",
         label: "Lütfen Seçiniz",
     };
-    step2Choices.unshift(pleaseSelectOption); 
-    step2.setChoices(step2Choices, 'value', 'label', true); 
+    step2Choices.unshift(pleaseSelectOption);
+    step2.setChoices(step2Choices, 'value', 'label', true);
 }
 
 function getshowroom() {
@@ -745,9 +795,10 @@ function getshowroom() {
         value: "",
         label: "Lütfen Seçiniz",
     };
-    combinedChoices.unshift(pleaseSelectOption); 
+    combinedChoices.unshift(pleaseSelectOption);
     eventCategoryChoice4.setChoices(combinedChoices, 'value', 'label', true);
 }
+
 function flatPickrInit() {
     var config = {
         enableTime: true,
