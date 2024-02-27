@@ -204,8 +204,7 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     formData.append('car_description', ckeditorClassic.getData());
-    console.log(ckeditorClassic.getData());
-    /*if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
+    if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
     else url = "https://mobiloby.app/koluman/web/addshowroom"
     $.ajax({
         url: url,
@@ -224,7 +223,7 @@ $("#addcar").click(function () {
         error: function (error) {
             console.error(error);
         }
-    });*/
+    });
 });
 
 function getstep() {
