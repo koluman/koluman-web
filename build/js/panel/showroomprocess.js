@@ -1,6 +1,10 @@
 itemid = 13;
 var ckeditorClassic = null;
 var company2;
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
+let steps = [];
+let uniqueValues = [];
+
 // Function to initialize CKEditor
 function initializeCKEditor() {
     ClassicEditor
@@ -17,6 +21,10 @@ function initializeCKEditor() {
 
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function () {
+    getcompany();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
     initializeCKEditor();
     company2 = new Choices("#companyid", {
         searchEnabled: false
@@ -44,16 +52,7 @@ if (dropzonePreviewNode) {
         }
     });
 }
-let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let steps = [];
-let uniqueValues = [];
 
-$(document).ready(function () {
-    getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
-});
 
 function getcompany() {
     $.ajax({
