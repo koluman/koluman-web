@@ -157,12 +157,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="customername-field" class="form-label">Kullanıcı E-posta</label>
-                                            <input type="text" id="usermail" name="usermail" class="form-control"
+                                            <input type="mail" id="usermail" name="usermail" class="form-control"
                                                 placeholder="E-posta" required />
                                         </div>
                                         <div class="mb-3">
                                             <label for="customername-field" class="form-label">Kullanıcı Telefon</label>
-                                            <input type="text" id="userphone" name="userphone" class="form-control"
+                                            <input type="number" id="userphone" name="userphone" class="form-control"
                                                 placeholder="Telefon" required />
                                         </div>
 
