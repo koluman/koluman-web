@@ -140,8 +140,25 @@ document.addEventListener("DOMContentLoaded", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    $('#showModal').modal('hide');
-                    users();
+                    Swal.fire({
+                        title: "Başarılı",
+                        text: data.message,
+                        icon: "success",
+                        showCancelButton: true,
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    }).then(function (result) {
+                        if (result.value) {
+                            $('#showModal').modal('hide');
+                            users();
+                        }
+                    });
+                   
                 } else {
                     alert(data.message);
                 }
