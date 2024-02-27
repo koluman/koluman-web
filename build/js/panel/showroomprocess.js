@@ -1,6 +1,6 @@
 itemid = 13;
 var ckeditorClassic = null;
-
+var company2;
 // Function to initialize CKEditor
 function initializeCKEditor() {
     ClassicEditor
@@ -18,7 +18,7 @@ function initializeCKEditor() {
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function() {
     initializeCKEditor();
-    let company2 = new Choices("#company_id", {
+    company2 = new Choices("#company_id", {
         searchEnabled: false
     });
 });
