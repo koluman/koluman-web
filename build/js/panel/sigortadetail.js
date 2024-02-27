@@ -281,7 +281,7 @@ document.getElementById("newbutton").addEventListener("click", function () {
             if (data.success == 2) {
                 Swal.fire({
                     title: "Başarısız",
-                    text: data.message.join('<br>'),
+                    html: data.message.join('<br>'),
                     icon: "warning",
                     customClass: {
                         confirmButton: 'btn btn-primary w-xs me-2 mt-2',
