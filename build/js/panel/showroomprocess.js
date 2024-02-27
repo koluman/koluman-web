@@ -19,10 +19,6 @@ function initializeCKEditor() {
 
 document.addEventListener('DOMContentLoaded', function () {
     getcompany();
-    initializeCKEditor();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
 });
 
 
@@ -70,6 +66,10 @@ function getcompany() {
                             }
                             $("#company_id").html('');
                             $("#company_id").html(a);
+                            initializeCKEditor();
+                            var id = getIdFromUrl();
+                            if (id != "" && id != null) getdetail(id);
+                            else add();
                         }
                     }
                 });
