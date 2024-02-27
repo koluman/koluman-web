@@ -14,7 +14,7 @@ if (dropzonePreviewNode) {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
-        previewsContainer: "#dropzone-preview2",
+        previewsContainer: "#dropzone-preview3",
         init: function () {
             this.on("addedfile", function (file) {
                 car_img_url = file;
