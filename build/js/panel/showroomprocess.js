@@ -12,11 +12,11 @@ function initializeCKEditor() {
         .catch(function (error) {
             console.error(error);
         });
-       
+
 }
 
 // Call initializeCKEditor when the document is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeCKEditor();
     company2 = new Choices("#company_id", {
         searchEnabled: false
@@ -48,7 +48,7 @@ let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
 
-$( document ).ready(function() {
+$(document).ready(function () {
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
@@ -112,6 +112,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
+            company2.setChoices(ch, 'value', 'label', true); // Set new choices
             company2.setChoiceByValue(data.showroomcarid[0].company_id);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);
