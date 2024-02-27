@@ -3,7 +3,13 @@ var ckeditorClassic = null;
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
+var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
+var car_img_url;
 
+function getFileNameFromUrl(url) {
+    let parts = url.split('/');
+    return parts[parts.length - 1];
+}
 // Function to initialize CKEditor
 function initializeCKEditor() {
     ClassicEditor
@@ -22,26 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
-var car_img_url;
-var dropzone;
-if (dropzonePreviewNode) {
-    dropzonePreviewNode.id = "";
-    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
-    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-    dropzone = new Dropzone(".dropzone", {
-        url: 'https://httpbin.org/post',
-        method: "post",
-        previewTemplate: previewTemplate,
-        previewsContainer: "#dropzone-preview2",
-        init: function () {
-            this.on("addedfile", function (file) {
-                car_img_url = file;
-            });
-        }
-    });
-}
 
 
 function getcompany() {
@@ -59,14 +46,31 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a='<option value="0">Lütfen Seçiniz</option>';
+                        let a = '<option value="0">Lütfen Seçiniz</option>';
                         if (data.success == 1) {
                             for (var i = 0; i < data.companies.length; i++) {
-                                a+='<option value="'+data.companies[i]["company_id"]+'">'+data.companies[i]["company_name"]+'</option>';
+                                a += '<option value="' + data.companies[i]["company_id"] + '">' + data.companies[i]["company_name"] + '</option>';
                             }
                             $("#company_id").html('');
                             $("#company_id").html(a);
                             initializeCKEditor();
+                            if (dropzonePreviewNode) {
+                                dropzonePreviewNode.id = "";
+                                var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
+                                dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
+
+                                dropzone = new Dropzone(".dropzone", {
+                                    url: 'https://httpbin.org/post',
+                                    method: "post",
+                                    previewTemplate: previewTemplate,
+                                    previewsContainer: "#dropzone-preview2",
+                                    init: function () {
+                                        this.on("addedfile", function (file) {
+                                            car_img_url = file;
+                                        });
+                                    }
+                                });
+                            }
                             var id = getIdFromUrl();
                             if (id != "" && id != null) getdetail(id);
                             else add();
@@ -98,17 +102,15 @@ function getdetail(id) {
             } else {
                 console.error('CKEditor not properly initialized.');
             }
-            //$("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
             document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
-            //$("#car_description").val(data.showroomcarid[0].car_description);
             if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
-            /*if (data.showroomcarid[0].car_image_url) {
+            if (data.showroomcarid[0].car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
                 document.querySelector("#shdiv").style.display = "none";
@@ -122,7 +124,7 @@ function getdetail(id) {
                 dropzone.files.push(mockFile);
             } else {
                 dropzone.removeAllFiles();
-            }*/
+            }
             $("#addcar").text("Güncelle");
 
             $.ajax({
@@ -186,10 +188,6 @@ function getIdFromUrl() {
     }
 }
 
-function getFileNameFromUrl(url) {
-    let parts = url.split('/');
-    return parts[parts.length - 1];
-}
 
 
 $("#company_id").change(function () {
