@@ -48,7 +48,7 @@ class BackUsersController extends Controller
             if ($existingUser) {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Bu kullanıcı daha önce kayıt edilmiş, lütfen giriş yapınız",
+                    "message" => "Bu kullanıcı daha önce kayıt edilmiş!",
                 ];
             } else {
                 $user = BackUser::create([

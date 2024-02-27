@@ -14,13 +14,13 @@ function users() {
         },
         dataType: 'json',
         success: function (data) {
-            if(data.success==1){
+            if (data.success == 1) {
                 userdata = data.usersall;
                 let son = orderslist(userdata);
                 $("#userlist").html('');
                 $("#userlist").html(son);
             }
-         
+
         }
     });
 }
@@ -158,17 +158,18 @@ document.addEventListener("DOMContentLoaded", function () {
                             users();
                         }
                     });
-                   
+
                 } else {
                     Swal.fire({
-                        title: data.message,
-                        icon: "danger",
+                        title: "Başarısız",
+                        text: data.message,
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs mt-2'
                         },
                         buttonsStyling: false,
                         showCloseButton: true
-                    })                }
+                    })
+                }
             },
             error: function (xhr, status, error) {
                 alert("AJAX request failed:", status, error);
@@ -470,5 +471,3 @@ function updatePageWithFilteredData(filteredData) {
     $("#userlist").html('');
     $("#userlist").html(son);
 }
-
-
