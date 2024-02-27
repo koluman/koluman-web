@@ -164,12 +164,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         title: "Başarısız",
                         text: data.message,
                         icon: "danger",
+                        showCancelButton: true,
                         customClass: {
-                            confirmButton: 'btn btn-primary w-xs mt-2'
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
                         },
+                        confirmButtonText: "Tamam!",
                         buttonsStyling: false,
                         showCloseButton: true
-                    })
+                    }).then(function (result) {
+                        if (result.value) {
+                            $('#showModal').modal('hide');
+                        }
+                    });
                 }
             },
             error: function (xhr, status, error) {
