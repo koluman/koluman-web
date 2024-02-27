@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*company2 = new Choices("#companyid", {
         searchEnabled: false
     });*/
+    getcompany();
     initializeCKEditor();
   
 });
