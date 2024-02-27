@@ -262,22 +262,81 @@ document.getElementById("newbutton").addEventListener("click", function () {
         contentType: false,
         success: function (data) {
             if (data.success == 1) {
-                window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
+                Swal.fire({
+                    title: "Başarılı",
+                    text: data.message,
+                    icon: "success",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                }).then(function (result) {
+                    if (result.value) {
+                        window.location.href = "https://mobiloby.app/koluman/web/sigortalist";
+                    }
+                });
             }
-            if (data.success == 2) {
+            /*if (data.success == 2) {
                 if (data.message.insurance_type) {
-                    alert(data.message.insurance_type[0]);
+                    Swal.fire({
+                        title: "Başarısız",
+                        text: data.message.insurance_type[0],
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
                 }
 
                 if (data.message.insurance_state) {
-                    alert(data.message.insurance_state[0]);
+                    Swal.fire({
+                        title: "Başarısız",
+                        text: data.message.insurance_state[0],
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
                 }
 
                 if (data.message.user_id) {
-                    alert(data.message.user_id[0]);
+                    Swal.fire({
+                        title: "Başarısız",
+                        text: data.message.user_id[0],
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
                 }
-            } else {
-                alert(data.message);
+            } */
+            else {
+                Swal.fire({
+                    title: "Başarısız",
+                    text: data.message,
+                    icon: "warning",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        cancelButton: 'btn btn-danger w-xs mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                });
             }
         },
         error: function (error) {
