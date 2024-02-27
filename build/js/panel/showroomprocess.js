@@ -5,7 +5,6 @@ let steps = [];
 let uniqueValues = [];
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 var car_img_url;
-var dropzone; // Burada dropzone değişkenini tanımladık.
 
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
@@ -60,7 +59,7 @@ function getcompany() {
                                 var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
                                 dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-                                dropzone = new Dropzone(".dropzone", {
+                                var dropzone  = new Dropzone(".dropzone", {
                                     url: 'https://httpbin.org/post',
                                     method: "post",
                                     previewTemplate: previewTemplate,
