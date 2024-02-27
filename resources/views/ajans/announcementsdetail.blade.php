@@ -4,6 +4,7 @@
 @endsection
 @section('css')
     <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('components.breadcrumb')
@@ -137,6 +138,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone4-min.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/announcementsdetail.js') }}"></script>

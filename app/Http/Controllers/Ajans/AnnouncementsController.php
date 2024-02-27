@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajans;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AnnouncementAddRequest;
 use App\Models\Announcement;
 use App\Models\Companies;
 use Carbon\Carbon;
@@ -18,7 +19,7 @@ class AnnouncementsController extends Controller
     {
         return view('ajans.announcementsdetail');
     }
-    public function addannouncement(Request $request)
+    public function addannouncement(AnnouncementAddRequest $request)
     {
         try {
             $announcement_id = $request->announcement_id;
@@ -62,7 +63,7 @@ class AnnouncementsController extends Controller
         }
         return response()->json($responseData);
     }
-    public function updateannouncement(Request $request)
+    public function updateannouncement(AnnouncementAddRequest $request)
     {
         try {
             $announcement_id = $request->announcement_id;
