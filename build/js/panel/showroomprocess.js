@@ -60,17 +60,20 @@ function getcompany() {
                                 var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
                                 dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-                                dropzone  = new Dropzone(".dropzone", {
-                                    url: 'https://httpbin.org/post',
-                                    method: "post",
-                                    previewTemplate: previewTemplate,
-                                    previewsContainer: "#dropzone-preview2",
-                                    init: function () {
-                                        this.on("addedfile", function (file) {
-                                            car_img_url = file;
-                                        });
-                                    }
-                                });
+                                if (!dropzone) {
+                                    dropzone = new Dropzone(".dropzone", {
+                                        url: 'https://httpbin.org/post',
+                                        method: "post",
+                                        previewTemplate: previewTemplate,
+                                        previewsContainer: "#dropzone-preview2",
+                                        init: function () {
+                                            this.on("addedfile", function (file) {
+                                                car_img_url = file;
+                                            });
+                                        }
+                                    });
+                                }
+                                
                             }
                             var id = getIdFromUrl();
                             if (id != "" && id != null) getdetail(id);
