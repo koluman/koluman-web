@@ -186,10 +186,6 @@
                                             <input type="number" id="userphone" pattern="[0-9]{10}name="userphone"
                                                 class="form-control" placeholder="Örn:5369824356" required />
                                         </div>
-                                        <div class="invalid-feedback">
-                                            Lütfen geçerli bir telefon numarası girin (10 karakter).
-                                        </div>
-
                                         <div class="mb-3">
                                             <label for="productname-field" class="form-label">Kullanıcı Yetki</label>
                                             <select class="form-control" data-trigger id="userrole" name="userrole"
