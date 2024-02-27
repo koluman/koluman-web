@@ -90,9 +90,7 @@ function add() {
     $("#announcement_state").val("");
     dropzone.removeAllFiles();
     $("#addannouncement").text("Ekle");
-    if (ckeditorClassic) {
-        ckeditorClassic.setData(0);
-    }
+   
 }
 
 function getIdFromUrl() {
