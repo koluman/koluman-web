@@ -144,14 +144,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         title: "Başarılı",
                         text: data.message,
                         icon: "success",
-                        showCancelButton: true,
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
                         },
                         confirmButtonText: "Tamam!",
                         buttonsStyling: false,
-                        showCloseButton: true
+                        showCloseButton: false
                     }).then(function (result) {
                         if (result.value) {
                             $('#showModal').modal('hide');
@@ -166,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         icon: "warning",
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
                         },
                         confirmButtonText: "Tamam!",
                         buttonsStyling: false,
@@ -199,14 +196,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         title: "Başarılı",
                         text: data.message,
                         icon: "success",
-                        showCancelButton: true,
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
                         },
                         confirmButtonText: "Tamam!",
                         buttonsStyling: false,
-                        showCloseButton: true
+                        showCloseButton: false
                     }).then(function (result) {
                         if (result.value) {
                             $('#showModal').modal('hide');
