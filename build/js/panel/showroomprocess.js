@@ -25,9 +25,9 @@ function initializeCKEditor() {
 
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function () {
-    company2 = new Choices("#companyid", {
+    /*company2 = new Choices("#companyid", {
         searchEnabled: false
-    });
+    });*/
     getcompany();
     initializeCKEditor();
   
@@ -71,21 +71,25 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
+                        let a="";
                         if (data.success == 1) {
-                            var ch = [];
+                           // var ch = [];
                     
                             for (var i = 0; i < data.companies.length; i++) {
-                                var v = data.companies[i]["company_id"];
+                                a+='<option value="'+data.companies[i]["company_id"]+'">'+data.companies[i]["company_name"]+'</option>';
+
+                               /* var v = data.companies[i]["company_id"];
                                 var t = data.companies[i]["company_name"];
 
                                 var c = {
                                     value: v,
                                     label: t,
                                 };
-                                ch.push(c);
+                                ch.push(c);*/
                             }
-                            company2.clearChoices();
-                            company2.setChoices(ch, 'value', 'label', true); // Set new choices
+                            //company2.clearChoices();
+                            //company2.setChoices(ch, 'value', 'label', true); // Set new choices
+                            $("companyid").html(a);
                         }
                     }
                 });
