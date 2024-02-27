@@ -261,7 +261,6 @@ document.getElementById("newbutton").addEventListener("click", function () {
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
             if (data.success == 1) {
                 Swal.fire({
                     title: "Başarılı",

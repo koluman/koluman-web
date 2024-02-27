@@ -215,10 +215,49 @@ $("#addcar").click(function () {
         contentType: false,
         success: function (data) {
             if (data.success == 1) {
-                window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
-            } else {
-                alert(data.message);
+                Swal.fire({
+                    title: "Başarılı",
+                    text: data.message,
+                    icon: "success",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                }).then(function (result) {
+                    if (result.value) {
+                        window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                    }
+                });
             }
+            else if (data.success == 2) {
+                Swal.fire({
+                    title: "Başarısız",
+                    html: data.message.join('<br>'),
+                    icon: "warning",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        cancelButton: 'btn btn-danger w-xs mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                });
+            } 
+            else {
+                Swal.fire({
+                    title: "Başarısız",
+                    text: data.message,
+                    icon: "warning",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        cancelButton: 'btn btn-danger w-xs mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                });            }
         },
         error: function (error) {
             console.error(error);
