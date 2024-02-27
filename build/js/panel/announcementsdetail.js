@@ -1,8 +1,5 @@
 var ckeditorClassic = document.querySelector('#ckeditor-classic');
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
-let announcement_state = new Choices("#announcement_state", {
-    searchEnabled: false
-});
 
 function initializeCKEditor() {
     ClassicEditor
