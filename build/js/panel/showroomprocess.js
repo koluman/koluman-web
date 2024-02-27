@@ -106,7 +106,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            company2.setChoiceByValue(data.showroomcarid[0].company_id);
+            company2.setChoiceByValue([data.showroomcarid[0].company_id]);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);
             } else {
