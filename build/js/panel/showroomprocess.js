@@ -1,5 +1,5 @@
 itemid = 13;
-ClassicEditor
+/*ClassicEditor
     .create(document.querySelector('#ckeditor-classic'))
     .then(function (editor) {
         editor.ui.view.editable.element.style.height = '200px';
@@ -10,7 +10,28 @@ ClassicEditor
     })
     .catch(function (error) {
         console.error(error);
-    });
+    });*/
+var ckeditorClassic = null;
+
+// Function to initialize CKEditor
+function initializeCKEditor() {
+    ClassicEditor
+        .create(document.querySelector('#ckeditor-classic'))
+        .then(function (editor) {
+            ckeditorClassic = editor;
+            editor.ui.view.editable.element.style.height = '200px';
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+// Call initializeCKEditor when the document is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeCKEditor();
+});
+
+
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 var car_img_url;
 var dropzone;
@@ -102,14 +123,19 @@ function getdetail(id) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
             company2.setChoiceByValue([data.showroomcarid[0].company_id]);
-            $("#ckeditor-classic").val(data.showroomcarid[0].car_description);
+            if (ckeditorClassic) {
+                ckeditorClassic.setData(data.showroomcarid[0].car_description);
+            } else {
+                console.error('CKEditor not properly initialized.');
+            }
+            //$("#ckeditor-classic").val(data.showroomcarid[0].car_description);
             $("#step1text").val(data.showroomcarid[0].step1);
             $("#step2text").val(data.showroomcarid[0].step2);
             $("#step3text").val(data.showroomcarid[0].step3);
             $("#step4text").val(data.showroomcarid[0].step4);
             $("#step5text").val(data.showroomcarid[0].step5);
             document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
-            $("#car_description").val(data.showroomcarid[0].car_description);
+            //$("#car_description").val(data.showroomcarid[0].car_description);
             if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
             if (data.showroomcarid[0].car_image_url) {
@@ -214,7 +240,7 @@ $("#addcar").click(function () {
     formData.append('car_img_url', car_img_url);
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
-    formData.append('car_description', document.querySelector("#car_description").value);
+    formData.append('car_description', ckeditorClassic.getData());
     if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
     else url = "https://mobiloby.app/koluman/web/addshowroom"
     $.ajax({
