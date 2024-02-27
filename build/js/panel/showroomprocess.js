@@ -1,18 +1,6 @@
 itemid = 13;
-/*ClassicEditor
-    .create(document.querySelector('#ckeditor-classic'))
-    .then(function (editor) {
-        editor.ui.view.editable.element.style.height = '200px';
-        editor.model.document.on('change:data', function () {
-            var editorContent = editor.getData();
-            document.querySelector("#car_description").value = editorContent;
-        });
-    })
-    .catch(function (error) {
-        console.error(error);
-    });*/
 var ckeditorClassic = null;
-let company2= null ;
+
 // Function to initialize CKEditor
 function initializeCKEditor() {
     ClassicEditor
@@ -24,14 +12,15 @@ function initializeCKEditor() {
         .catch(function (error) {
             console.error(error);
         });
-        company2 = new Choices("#company_id", {
-            searchEnabled: false
-        });
+       
 }
 
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function() {
     initializeCKEditor();
+    let company2 = new Choices("#company_id", {
+        searchEnabled: false
+    });
 });
 
 
@@ -123,7 +112,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            company2.setChoiceByValue([data.showroomcarid[0].company_id]);
+            company2.setChoiceByValue(data.showroomcarid[0].company_id);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);
             } else {
