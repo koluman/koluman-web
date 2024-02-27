@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Swal.fire({
                         title: "Başarısız",
                         text: data.message,
+                        icon: "danger",
                         customClass: {
                             confirmButton: 'btn btn-primary w-xs mt-2'
                         },
