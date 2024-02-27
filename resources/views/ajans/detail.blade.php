@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-lg-6 mb-3">
                               <label class="form-label">Firma</label>
-                                <select class="form-select d-none" name="company_id" id="company_id">
+                                <select class="form-select d-none" name="company_id" id="company_id" required>
                                 </select>
                             </div>
                         </div>
