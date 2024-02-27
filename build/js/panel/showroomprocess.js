@@ -3,7 +3,7 @@ var ckeditorClassic = null;
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
-var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
+var dropzonePreviewNode = document.querySelector("#dropzone-preview3-list");
 var car_img_url;
 if (dropzonePreviewNode) {
     dropzonePreviewNode.id = "";
