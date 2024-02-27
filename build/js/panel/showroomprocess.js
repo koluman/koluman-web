@@ -4,7 +4,6 @@ var company2;
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
-getcompany();
 
 // Function to initialize CKEditor
 function initializeCKEditor() {
@@ -29,34 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     /*company2 = new Choices("#companyid", {
         searchEnabled: false
     });*/
-    initializeCKEditor();
-  
-});
-
-
-var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
-var car_img_url;
-var dropzone;
-if (dropzonePreviewNode) {
-    dropzonePreviewNode.id = "";
-    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
-    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
-
-    dropzone = new Dropzone(".dropzone", {
-        url: 'https://httpbin.org/post',
-        method: "post",
-        previewTemplate: previewTemplate,
-        previewsContainer: "#dropzone-preview2",
-        init: function () {
-            this.on("addedfile", function (file) {
-                car_img_url = file;
-            });
-        }
-    });
-}
-
-
-function getcompany() {
     $.ajax({
         type: 'GET',
         url: 'https://mobiloby.app/koluman/web/getApiToken',
@@ -99,7 +70,34 @@ function getcompany() {
             }
         }
     });
+    initializeCKEditor();
+  
+});
+
+
+var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
+var car_img_url;
+var dropzone;
+if (dropzonePreviewNode) {
+    dropzonePreviewNode.id = "";
+    var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
+    dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
+
+    dropzone = new Dropzone(".dropzone", {
+        url: 'https://httpbin.org/post',
+        method: "post",
+        previewTemplate: previewTemplate,
+        previewsContainer: "#dropzone-preview2",
+        init: function () {
+            this.on("addedfile", function (file) {
+                car_img_url = file;
+            });
+        }
+    });
 }
+
+
+
 
 function getdetail(id) {
 
