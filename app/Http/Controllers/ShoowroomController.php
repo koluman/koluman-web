@@ -212,6 +212,7 @@ class ShoowroomController extends Controller
                         'step4' => $step4,
                         'step5' => $step5,
                         'isTestDrive' => $state,
+                        'car_description' => $car_description,
                     ]);
             }
             if ($affectedRows > 0) {
