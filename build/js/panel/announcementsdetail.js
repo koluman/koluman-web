@@ -91,7 +91,7 @@ function add() {
     dropzone.removeAllFiles();
     $("#addannouncement").text("Ekle");
     if (ckeditorClassic) {
-        ckeditorClassic.setData("0");
+        ckeditorClassic.setData(0);
     }
 }
 
