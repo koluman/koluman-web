@@ -63,7 +63,7 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a='<option value="">Lütfen Seçiniz</option>';
+                        let a='<option value="0">Lütfen Seçiniz</option>';
                         if (data.success == 1) {
                             for (var i = 0; i < data.companies.length; i++) {
                                 a+='<option value="'+data.companies[i]["company_id"]+'">'+data.companies[i]["company_name"]+'</option>';
