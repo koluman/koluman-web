@@ -11,7 +11,7 @@ class InsuranceAddWebRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'success' => 2,
-            'message' => $validator->errors(),
+            'message' => $validator->errors()->all(), // Tüm hata mesajlarını al
         ]));
     }
     public function authorize()

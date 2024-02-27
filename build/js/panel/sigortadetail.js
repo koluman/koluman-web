@@ -279,50 +279,18 @@ document.getElementById("newbutton").addEventListener("click", function () {
                 });
             }
             if (data.success == 2) {
-                if (data.message.insurance_type) {
-                    Swal.fire({
-                        title: "Başarısız",
-                        text: data.message.insurance_type[0],
-                        icon: "warning",
-                        customClass: {
-                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
-                        },
-                        confirmButtonText: "Tamam!",
-                        buttonsStyling: false,
-                        showCloseButton: false
-                    });
-                }
-
-                if (data.message.insurance_state) {
-                    Swal.fire({
-                        title: "Başarısız",
-                        text: data.message.insurance_state[0],
-                        icon: "warning",
-                        customClass: {
-                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
-                        },
-                        confirmButtonText: "Tamam!",
-                        buttonsStyling: false,
-                        showCloseButton: false
-                    });
-                }
-
-                if (data.message.user_id) {
-                    Swal.fire({
-                        title: "Başarısız",
-                        text: data.message.user_id[0],
-                        icon: "warning",
-                        customClass: {
-                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                            cancelButton: 'btn btn-danger w-xs mt-2',
-                        },
-                        confirmButtonText: "Tamam!",
-                        buttonsStyling: false,
-                        showCloseButton: false
-                    });
-                }
+                Swal.fire({
+                    title: "Başarısız",
+                    text: data.message.join('<br>'),
+                    icon: "warning",
+                    customClass: {
+                        confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        cancelButton: 'btn btn-danger w-xs mt-2',
+                    },
+                    confirmButtonText: "Tamam!",
+                    buttonsStyling: false,
+                    showCloseButton: false
+                });
             } 
             else {
                 Swal.fire({
