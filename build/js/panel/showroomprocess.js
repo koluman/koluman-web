@@ -17,6 +17,10 @@ function initializeCKEditor() {
             console.error(error);
         });
 
+        var id = getIdFromUrl();
+        if (id != "" && id != null) getdetail(id);
+        else add();
+
 }
 
 // Call initializeCKEditor when the document is ready
@@ -25,9 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         searchEnabled: false
     });
     getcompany();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
     initializeCKEditor();
   
 });
