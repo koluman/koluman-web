@@ -320,12 +320,12 @@ class SigortaHomeController extends Controller
             if ($affectedRows > 0) {
                 $responseData = [
                     "success" => 1,
-                    "message" => "İncelendi durumu güncellendi",
+                    "message" => "Sigorta talebi güncellendi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "İncelendi durumu güncellenemedi , lütfen tekrar deneyiniz",
+                    "message" => "Sigorta talebi güncellenemedi , lütfen tekrar deneyiniz",
                 ];
             }
         } catch (\Exception $e) {
