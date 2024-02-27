@@ -122,7 +122,7 @@ function getdetail(id) {
             //$("#car_description").val(data.showroomcarid[0].car_description);
             if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
-            if (data.showroomcarid[0].car_image_url) {
+            /*if (data.showroomcarid[0].car_image_url) {
                 let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
                 $("#shid").text(FileName);
                 document.querySelector("#shdiv").style.display = "none";
@@ -136,7 +136,7 @@ function getdetail(id) {
                 dropzone.files.push(mockFile);
             } else {
                 dropzone.removeAllFiles();
-            }
+            }*/
             $("#addcar").text("Güncelle");
 
             $.ajax({
