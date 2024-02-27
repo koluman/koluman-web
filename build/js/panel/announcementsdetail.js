@@ -3,15 +3,13 @@ let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let announcement_state = new Choices("#announcement_state", {
     searchEnabled: false
 });
-if (ckeditorClassic) {
+
+function initializeCKEditor() {
     ClassicEditor
         .create(document.querySelector('#ckeditor-classic'))
         .then(function (editor) {
+            ckeditorClassic = editor;
             editor.ui.view.editable.element.style.height = '200px';
-            editor.model.document.on('change:data', function () {
-                var editorContent = editor.getData();
-                document.querySelector("#announcement_description").value = editorContent;
-            });
         })
         .catch(function (error) {
             console.error(error);
@@ -35,14 +33,20 @@ if (dropzonePreviewNode) {
         }
     });
 }
+
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
 }
 
-var id = getIdFromUrl();
-if (id != "" && id != null) getdetail(id);
-else add();
+document.addEventListener('DOMContentLoaded', function () {
+    initializeCKEditor();
+    var id = getIdFromUrl();
+    if (id != "" && id != null) getdetail(id);
+    else add();
+});
+
+
 function getdetail(id) {
     $.ajax({
         type: 'POST',
@@ -55,8 +59,11 @@ function getdetail(id) {
         success: function (data) {
             $("#announcement_id").val(data.announcementid[0].announcement_id);
             $("#announcement_title").val(data.announcementid[0].announcement_title);
-            $("#ckeditor-classic").val(data.announcementid[0].announcement_description);
-            $("#announcement_description").val(data.announcementid[0].announcement_description);
+            if (ckeditorClassic) {
+                ckeditorClassic.setData(data.announcementid[0].announcement_description);
+            } else {
+                console.error('CKEditor not properly initialized.');
+            }
             announcement_state.setChoiceByValue([data.announcementid[0].announcement_state]);
             if (data.announcementid[0].announcement_image_url) {
                 let FileName = getFileNameFromUrl(data.announcementid[0].announcement_image_url);
@@ -77,15 +84,19 @@ function getdetail(id) {
         }
     });
 }
+
 function add() {
     $("#announcement_id").val("");
-    $("#announcement_description").val("");
     $("#announcement_title").val("");
     $("#ckeditor-classic").val("");
     $("#announcement_state").val("");
     dropzone.removeAllFiles();
     $("#addannouncement").text("Ekle");
+    if (ckeditorClassic) {
+        ckeditorClassic.setData("");
+    }
 }
+
 function getIdFromUrl() {
     var url = window.location.href;
     var match = url.match(/\/announcementsdetail\/(\d+)/);
@@ -99,10 +110,10 @@ $("#addannouncement").click(function () {
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
     formData.append('announcement_id', $("#announcement_id").val());
-    formData.append('announcement_description', document.querySelector("#announcement_description").value);
+    formData.append('announcement_description', ckeditorClassic.getData());
     formData.append('announcement_state', document.querySelector("#announcement_state").value);
     formData.append('announcement_title', $("#announcement_title").val());
-    formData.append('announcement_img_url',announcement_img_url);
+    formData.append('announcement_img_url', announcement_img_url);
     if ($("#announcement_id").val() != "") url = "https://mobiloby.app/koluman/web/updateannouncement";
     else url = "https://mobiloby.app/koluman/web/addannouncement"
     $.ajax({

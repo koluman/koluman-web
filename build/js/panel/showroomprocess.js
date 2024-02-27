@@ -43,10 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
     getcompany();
 });
 
-
-
-
-
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -95,7 +91,6 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            console.log(data.showroomcarid[0].company_id);
             $("#company_id").val(data.showroomcarid[0].company_id);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);

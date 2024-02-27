@@ -22,8 +22,7 @@
                     <div class="card-body">
                         <div class="row">
                             <input class="form-control" name="announcement_id" id="announcement_id" type="hidden" required>
-                            <input class="form-control" name="announcement_description" id="announcement_description"
-                                type="hidden" required>
+                          
 
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
@@ -32,8 +31,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label for="choices-publish-status-input" class="form-label">Tür</label>
-
+                                <label class="form-label">Tür</label>
                                 <select class="form-select" name="announcement_state" id="announcement_state">
                                     <option value="0" selected>Lütfen Seçiniz</option>
                                     <option value="1">Duyuru</option>
