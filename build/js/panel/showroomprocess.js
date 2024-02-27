@@ -72,7 +72,7 @@ function getcompany() {
                     success: function (data) {
                         if (data.success == 1) {
                             var ch = [];
-                        
+                    
                             for (var i = 0; i < data.companies.length; i++) {
                                 var v = data.companies[i]["company_id"];
                                 var t = data.companies[i]["company_name"];
@@ -106,7 +106,6 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            company2.setChoices(ch, 'value', 'label', true); // Set new choices
             company2.setChoiceByValue(data.showroomcarid[0].company_id);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);
