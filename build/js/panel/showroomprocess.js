@@ -10,7 +10,7 @@ if (dropzonePreviewNode) {
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
     dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-    var dropzone  = new Dropzone(".dropzone", {
+    var dropzone = new Dropzone(".dropzone", {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
@@ -22,6 +22,7 @@ if (dropzonePreviewNode) {
         }
     });
 }
+
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
@@ -66,7 +67,7 @@ function getcompany() {
                             $("#company_id").html('');
                             $("#company_id").html(a);
                             initializeCKEditor();
-                          
+
                             var id = getIdFromUrl();
                             if (id != "" && id != null) getdetail(id);
                             else add();
@@ -230,8 +231,7 @@ $("#addcar").click(function () {
                         window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
                     }
                 });
-            }
-            else if (data.success == 2) {
+            } else if (data.success == 2) {
                 Swal.fire({
                     title: "Başarısız",
                     html: data.message.join('<br>'),
@@ -244,8 +244,7 @@ $("#addcar").click(function () {
                     buttonsStyling: false,
                     showCloseButton: false
                 });
-            } 
-            else {
+            } else {
                 Swal.fire({
                     title: "Başarısız",
                     text: data.message,
@@ -257,7 +256,8 @@ $("#addcar").click(function () {
                     confirmButtonText: "Tamam!",
                     buttonsStyling: false,
                     showCloseButton: false
-                });            }
+                });
+            }
         },
         error: function (error) {
             console.error(error);
@@ -374,9 +374,34 @@ document.getElementById("delete-record").addEventListener("click", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                    Swal.fire({
+                        title: "Başarılı",
+                        text: data.message,
+                        icon: "success",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    }).then(function (result) {
+                        if (result.value) {
+                            window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                        }
+                    });
                 } else {
-                    alert(data.message);
+                    Swal.fire({
+                        title: "Başarısız",
+                        text: data.message,
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
                 }
             },
             error: function (xhr, status, error) {

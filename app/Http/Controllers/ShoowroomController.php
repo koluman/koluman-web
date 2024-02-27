@@ -218,12 +218,12 @@ class ShoowroomController extends Controller
             if ($affectedRows > 0) {
                 $responseData = [
                     "success" => 1,
-                    "message" => "İncelendi durumu güncellendi",
+                    "message" => "Araba detayları güncellendi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "İncelendi durumu güncellenemedi , lütfen tekrar deneyiniz",
+                    "message" => "Araba detayları güncellenemedi , lütfen tekrar deneyiniz",
                 ];
             }
         } catch (\Exception $e) {
