@@ -1,6 +1,5 @@
 itemid = 13;
 var ckeditorClassic = null;
-var company2;
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
@@ -16,18 +15,13 @@ function initializeCKEditor() {
         .catch(function (error) {
             console.error(error);
         });
-
         var id = getIdFromUrl();
         if (id != "" && id != null) getdetail(id);
         else add();
 
 }
 
-// Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function () {
-    /*company2 = new Choices("#companyid", {
-        searchEnabled: false
-    });*/
     getcompany();
     initializeCKEditor();
   
@@ -71,28 +65,13 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a='';
+                        let a='<option value="">Lütfen Seçiniz</option>';
                         if (data.success == 1) {
-                           // var ch = [];
-                    
                             for (var i = 0; i < data.companies.length; i++) {
                                 a+='<option value="'+data.companies[i]["company_id"]+'">'+data.companies[i]["company_name"]+'</option>';
-
-                               /* var v = data.companies[i]["company_id"];
-                                var t = data.companies[i]["company_name"];
-
-                                var c = {
-                                    value: v,
-                                    label: t,
-                                };
-                                ch.push(c);*/
                             }
-                            //company2.clearChoices();
-                            //company2.setChoices(ch, 'value', 'label', true); // Set new choices
-                            console.log(a);
-                            $("#companyid").html('');
-
-                            $("#companyid").html(a);
+                            $("#company_id").html('');
+                            $("#company_id").html(a);
                         }
                     }
                 });
@@ -114,7 +93,7 @@ function getdetail(id) {
         success: function (data) {
             $("#car_id").val(data.showroomcarid[0].car_id);
             $("#car_name").val(data.showroomcarid[0].car_name);
-            //company2.setChoiceByValue(data.showroomcarid[0].company_id);
+            $("#company_id").val(data.showroomcarid[0].company_id);
             if (ckeditorClassic) {
                 ckeditorClassic.setData(data.showroomcarid[0].car_description);
             } else {
