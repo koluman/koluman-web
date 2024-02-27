@@ -21,14 +21,15 @@ function initializeCKEditor() {
 
 // Call initializeCKEditor when the document is ready
 document.addEventListener('DOMContentLoaded', function () {
+    company2 = new Choices("#companyid", {
+        searchEnabled: false
+    });
     getcompany();
     var id = getIdFromUrl();
     if (id != "" && id != null) getdetail(id);
     else add();
     initializeCKEditor();
-    company2 = new Choices("#companyid", {
-        searchEnabled: false
-    });
+  
 });
 
 
