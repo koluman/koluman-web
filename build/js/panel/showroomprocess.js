@@ -54,12 +54,13 @@ function getcompany() {
                             $("#company_id").html('');
                             $("#company_id").html(a);
                             initializeCKEditor();
+                            var dropzone ;
                             if (dropzonePreviewNode) {
                                 dropzonePreviewNode.id = "";
                                 var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
                                 dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-                                var dropzone  = new Dropzone(".dropzone", {
+                                dropzone  = new Dropzone(".dropzone", {
                                     url: 'https://httpbin.org/post',
                                     method: "post",
                                     previewTemplate: previewTemplate,
