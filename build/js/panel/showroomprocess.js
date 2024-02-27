@@ -5,6 +5,7 @@ let steps = [];
 let uniqueValues = [];
 var dropzonePreviewNode = document.querySelector("#dropzone-preview2-list");
 var car_img_url;
+var dropzone; // Burada dropzone değişkenini tanımladık.
 
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
