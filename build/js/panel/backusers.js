@@ -160,8 +160,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                    
                 } else {
-                    alert(data.message);
-                }
+                    Swal.fire({
+                        title: data.message,
+                        icon: "danger",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs mt-2'
+                        },
+                        buttonsStyling: false,
+                        showCloseButton: true
+                    })                }
             },
             error: function (xhr, status, error) {
                 alert("AJAX request failed:", status, error);
