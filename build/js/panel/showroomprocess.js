@@ -71,7 +71,7 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a="";
+                        let a='';
                         if (data.success == 1) {
                            // var ch = [];
                     
@@ -90,6 +90,8 @@ function getcompany() {
                             //company2.clearChoices();
                             //company2.setChoices(ch, 'value', 'label', true); // Set new choices
                             console.log(a);
+                            $("companyid").html('');
+
                             $("companyid").html(a);
                         }
                     }
