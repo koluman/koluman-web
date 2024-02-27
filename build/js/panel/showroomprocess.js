@@ -12,7 +12,7 @@ itemid = 13;
         console.error(error);
     });*/
 var ckeditorClassic = null;
-
+let company2= null ;
 // Function to initialize CKEditor
 function initializeCKEditor() {
     ClassicEditor
@@ -23,6 +23,9 @@ function initializeCKEditor() {
         })
         .catch(function (error) {
             console.error(error);
+        });
+        company2 = new Choices("#company_id", {
+            searchEnabled: false
         });
 }
 
@@ -55,9 +58,7 @@ if (dropzonePreviewNode) {
 let csrfToken = $('meta[name="csrf-token"]').attr('content');
 let steps = [];
 let uniqueValues = [];
-let company2 = new Choices("#company_id", {
-    searchEnabled: false
-});
+
 $( document ).ready(function() {
     getcompany();
     var id = getIdFromUrl();
