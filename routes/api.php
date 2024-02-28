@@ -6,6 +6,7 @@ use App\Http\Controllers\Mobil\FormsController;
 use App\Http\Controllers\Mobil\InsuranceController;
 use App\Http\Controllers\Mobil\LoginController;
 use App\Http\Controllers\Mobil\ShoowroomController;
+use App\Http\Controllers\Mobil\StoriesController;
 use App\Http\Controllers\Mobil\TestDriveController;
 use App\Http\Controllers\Mobil\TokenController;
 use Illuminate\Http\Request;
@@ -46,6 +47,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/sendcode', [LoginController::class, 'sendcode'])->name('sendcode');
     Route::get('/getshowroomdetail', [ShoowroomController::class, 'getshowroomdetail'])->name('getshowroomdetail');
     Route::post('/addforms', [FormsController::class, 'addforms'])->name('addforms');
+    Route::get('/getstories', [StoriesController::class, 'getstories'])->name('getstories');
 
 });
 Route::post('/refresh', [TokenController::class, 'refresh'])->name('refresh');
