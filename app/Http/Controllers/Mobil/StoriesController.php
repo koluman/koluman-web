@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StoriesController extends Controller
 {
-    public function getshowroomcars(Request $request)
+    public function getstories(Request $request)
     {
         try {
             $story = Stories::where('story_state', 1)
