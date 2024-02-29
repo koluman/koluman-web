@@ -54,7 +54,7 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
-            console.log(data);
+            console.log(data.announcementid[0].isActive);
             $("#announcement_id").val(data.announcementid[0].announcement_id);
             $("#announcement_title").val(data.announcementid[0].announcement_title);
             if (ckeditorClassic) {
