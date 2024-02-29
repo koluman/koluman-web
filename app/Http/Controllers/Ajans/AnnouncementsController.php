@@ -96,6 +96,8 @@ class AnnouncementsController extends Controller
                         'announcement_description' => $announcement_description,
                         'announcement_state' => $announcement_state,
                         'announcement_date' => Carbon::now('Europe/Istanbul'),
+                        'isActive'=>$state
+
                     ]);
             }
             if ($affectedRows > 0) {
