@@ -62,7 +62,9 @@ function getdetail(id) {
                 console.error('CKEditor not properly initialized.');
             }
             $("#announcement_state").val(data.announcementid[0].announcement_state);
-
+            if (data.announcementid[0].isActive == 1) document.querySelector("#state").checked = true;
+            else document.querySelector("#state").checked = false;
+          
             if (data.announcementid[0].announcement_image_url) {
                 let FileName = getFileNameFromUrl(data.announcementid[0].announcement_image_url);
                 $("#anid").text(FileName);
