@@ -26,7 +26,8 @@ class AnnouncementsController extends Controller
             $announcement_title = $request->announcement_title;
             $announcement_state = $request->announcement_state;
             $announcement_description = $request->announcement_description;
-          
+            $state = $request->state;
+
             $announcementPath = "";
             if ($request->hasFile('announcement_img_url')) {
                 $announcement = $request->file('announcement_img_url');
@@ -42,6 +43,7 @@ class AnnouncementsController extends Controller
                 'announcement_state' => $announcement_state,
                 'announcement_date' => Carbon::now('Europe/Istanbul'),
                 'announcement_image_url' => $announcementPath, // Dosyanın URL'sini kaydet
+                'isActive'=>$state
             ]);
             if ($result) {
                 $responseData = [
@@ -71,6 +73,7 @@ class AnnouncementsController extends Controller
             $announcement_state = $request->announcement_state;
             $announcement_description = $request->announcement_description;
             $announcementPath = "";
+            $state = $request->state;
 
             if ($request->hasFile('announcement_img_url')) {
                 $announcement = $request->file('announcement_img_url');
@@ -84,6 +87,7 @@ class AnnouncementsController extends Controller
                         'announcement_state' => $announcement_state,
                         'announcement_date' => Carbon::now('Europe/Istanbul'),
                         'announcement_image_url' => $announcementPath, 
+                        'isActive'=>$state
                     ]);
             } else {
                 $affectedRows = announcement::where('announcement_id', $announcement_id)
