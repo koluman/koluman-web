@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div class="row">
                             <input class="form-control" name="announcement_id" id="announcement_id" type="hidden" required>
-                          
+
 
                             <div class="col-lg-6 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
@@ -35,8 +35,8 @@
                                 <label class="form-label">Tür</label>
                                 <select class="form-select" name="announcement_state" id="announcement_state">
                                     <option value="0" selected>Lütfen Seçiniz</option>
-                                    <option value="1">Duyuru</option>
-                                    <option value="2">Haber</option>
+                                    <option value="1">Haber</option>
+                                    <option value="2">Duyuru</option>
                                     <option value="3">Kampanya</option>
                                 </select>
                             </div>
@@ -57,8 +57,7 @@
                         <div class="flex-shrink-0">
                             <div class="form-check form-switch form-switch-right form-switch-md">
                                 <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                                <input class="form-check-input code-switcher" type="checkbox"
-                                    id="state" name="state">
+                                <input class="form-check-input code-switcher" type="checkbox" id="state" name="state">
                             </div>
                         </div>
                     </div>
@@ -138,8 +137,9 @@
                         <p class="text-muted fs-15 mb-4">Bu veriyi sildiğiniz taktirde işlemleri geri
                             getiremezsiniz.</p>
                         <div class="hstack gap-2 justify-content-center remove">
-                            <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"
-                                id="deleteRecord-close"><i class="ri-close-line me-1 align-middle"></i>
+                            <button class="btn btn-link link-success fw-medium text-decoration-none"
+                                data-bs-dismiss="modal" id="deleteRecord-close"><i
+                                    class="ri-close-line me-1 align-middle"></i>
                                 Kapat</button>
                             <button class="btn btn-danger" id="delete-record">Eminim, Sil</button>
                         </div>

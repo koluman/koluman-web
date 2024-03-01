@@ -45,8 +45,8 @@
                                             <option value="">Lütfen seçim yapınız</option>
                                             <option value="all" selected>Hepsi</option>
                                             <option value="1">Haber</option>
-                                            <option value="2">Kampanya</option>
-                                            <option value="3">Sigorta</option>
+                                            <option value="2">Duyuru</option>
+                                            <option value="3">Kampanya</option>
                                         </select>
                                     </div>
                                 </div>
