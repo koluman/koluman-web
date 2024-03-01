@@ -146,7 +146,6 @@ var productListAll = new gridjs.Grid({
                     '<i class="ri-more-fill"></i>' +
                     '</button>' +
                     '<ul class="dropdown-menu dropdown-menu-end">' +
-                    '<li><a class="dropdown-item"  href="javascript:void(0);" onclick="javascript:redirectToGaleri(' + x+ ')"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> Detay</a></li>' +
                     '<li><a class="dropdown-item edit-list" data-edit-id=' + x + ' href="javascript:detay(' + x+ ')"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Güncelle</a></li>' +
                     '</ul>' +
                     '</div>');
@@ -163,10 +162,7 @@ var productListAll = new gridjs.Grid({
     data: announcementListAllData
 }).render(document.getElementById("table-product-list-all"));
 
-function redirectToGaleri(id) {
-    var yeniSayfaURL = "https://mobiloby.app/koluman/web/gallery/"+id;
-    window.location.href = yeniSayfaURL;
-}
+
 // Search product list
 var searchProductList = document.getElementById("searchProductList");
 searchProductList.addEventListener("keyup", function () {
