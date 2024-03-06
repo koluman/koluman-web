@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobil;
 
 use App\Http\Controllers\Controller;
 use App\Models\Showroom;
+use App\Models\ShowroomCategories;
 use Illuminate\Http\Request;
 
 class ShoowroomController extends Controller
@@ -14,8 +15,12 @@ class ShoowroomController extends Controller
             $shoowroom = Showroom::where('company_id', $request->company_id)
                 ->select('car_id', 'company_id', 'step1', 'step2', 'step3', 'step4', 'step5', 'car_name', 'car_description', 'car_image_url', 'isTestdrive')->get();
             if (!$shoowroom->isEmpty()) {
+                $shoowroomcategories = ShowroomCategories::where('company_id', $request->company_id)
+                ->select('id', 'company_id', 'category_name','category_img_url')->get();
+
                 $responseData = [
                     "success" => 1,
+                    "shoowroomcategories"=>$shoowroomcategories,
                     "showroomcars" => $shoowroom,
                     "message" => "Arabalar listesi getirildi",
                 ];
