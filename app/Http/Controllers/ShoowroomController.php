@@ -356,6 +356,6 @@ class ShoowroomController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($car_img_type);
+        return response()->json($responseData);
     }
 }

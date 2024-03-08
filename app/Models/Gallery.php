@@ -14,6 +14,7 @@ class Gallery extends Model
         'gallery_id',
         'car_id',
         'car_img_url',
+        'car_img_type',
         'created_at',
         'updated_at'
     ];
