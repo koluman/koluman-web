@@ -23,7 +23,7 @@
                         <div class="row gallery-wrapper">
                             @foreach ($shoowroomdetail as $galleryItem)
                                     @php
-                                        $class = $galleryItem->car_img_type == 1 ? "gallery-box card" : "gallery-box card border card-border-success";
+                                        $class = $galleryItem->car_img_type == 0 ? "gallery-box card" : "gallery-box card border card-border-success";
                                     @endphp                                
                                     <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                     data-category="designing development">
