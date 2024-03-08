@@ -328,9 +328,10 @@ class ShoowroomController extends Controller
            if ($request->hasFile('car_img_url')) {
                 $im = $request->file('car_img_url');
                 $imName = time() . '.' . $im->getClientOriginalExtension();
-                return response()->json($imName);
 
-                //$im->move(public_path('upload/gallery'), $imName);
+                $im->move(public_path('upload/gallery'), $imName);
+                return response()->json($im);
+
                 //$path = 'https://mobiloby.app/koluman/web/public/upload/gallery/' . $imName;
             } else {
                 $path = "";
