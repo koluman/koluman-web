@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             id= parseInt(match[1], 10);
         } 
         var formData = new FormData();
+        formData.append('car_img_type', document.querySelector("#car_img_type").checked == false ? 0 : 1);
         formData.append('_token', csrfToken);
         formData.append('car_id', id);
         formData.append('car_img_url', car_img_url);

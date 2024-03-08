@@ -126,8 +126,8 @@
                             <div class="flex-shrink-0">
                                 <div class="form-check form-switch form-switch-right form-switch-md">
                                     <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                                    <input class="form-check-input code-switcher" type="checkbox" id="state"
-                                        name="state">
+                                    <input class="form-check-input code-switcher" type="checkbox" id="car_img_type"
+                                        name="car_img_type">
                                 </div>
                             </div>
                         </div><br>

@@ -323,6 +323,7 @@ class ShoowroomController extends Controller
     {
         try {
             $car_id = $request->input('car_id');
+            $car_img_type = $request->input('car_img_type');
             $path = "";
             if ($request->hasFile('car_img_url')) {
                 $im = $request->file('car_img_url');
@@ -334,6 +335,7 @@ class ShoowroomController extends Controller
             }
             $result = Gallery::create([
                 'car_id' => $car_id,
+                'car_img_type' => $car_img_type,
                 'car_img_url' => $path, 
             ]);
             if ($result) {
