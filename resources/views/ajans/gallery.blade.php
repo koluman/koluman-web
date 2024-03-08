@@ -22,9 +22,12 @@
                     <div class="card-body">
                         <div class="row gallery-wrapper">
                             @foreach ($shoowroomdetail as $galleryItem)
-                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
+                                    @php
+                                        $class = $galleryItem->car_img_type == 1 ? "gallery-box card" : "gallery-box card border card-border-success";
+                                    @endphp                                
+                                    <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                     data-category="designing development">
-                                    <div class="gallery-box card border card-border-success">
+                                    <div class="{{ $class }}">
                                         @if ($galleryItem->car_img_url != '')
                                             <div class="gallery-container">
                                                 <a class="image-popup" href="{{ $galleryItem->car_img_url }}"
