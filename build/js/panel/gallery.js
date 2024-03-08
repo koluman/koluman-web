@@ -79,8 +79,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
             event.target.classList.add('active');
         });
     }
+    function getIdFromUrl() {
+        var url = window.location.href;
+        var match = url.match(/\/announcementsdetail\/(\d+)/);
+        if (match && match[1]) {
+            return parseInt(match[1], 10);
+        } else {
+            return null;
+        }
+    }
+    var id = getIdFromUrl();
 
-    
     document.querySelectorAll('.delete-btn').forEach(function(button) {
         button.addEventListener('click', function() {
             var galleryId = this.getAttribute('data-id');
@@ -106,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     $("#imadd").click(function () {
         var formData = new FormData();
         formData.append('_token', csrfToken);
-        formData.append('car_id', $("#car_id").val());
+        formData.append('car_id', id);
         formData.append('car_img_url', car_img_url);
         $.ajax({
             url: "https://mobiloby.app/koluman/web/addgallery",
