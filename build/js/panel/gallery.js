@@ -30,6 +30,7 @@ if (dropzonePreviewNode) {
         }
     });
 }
+console.log(car_img_url);
 document.addEventListener("DOMContentLoaded", function (event) {
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
