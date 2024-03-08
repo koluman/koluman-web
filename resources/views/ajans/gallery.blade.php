@@ -25,7 +25,7 @@
                                 <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                     data-category="designing development">
                                     <div class="gallery-box card">
-                                        @if ($galleryItem->car_img_url !="")
+                                        @if ($galleryItem->car_img_url != '')
                                             <div class="gallery-container">
                                                 <a class="image-popup" href="{{ $galleryItem->car_img_url }}"
                                                     title="">
@@ -36,7 +36,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                            
+
                                             <div class="box-content">
                                                 <div class="d-flex align-items-center mt-1">
                                                     <div class="flex-grow-1 text-muted"><a href=""
@@ -120,6 +120,16 @@
                                 </li>
                             </ul>
                             <!-- end dropzon-preview -->
+                        </div>
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Araç İçi Fotoğraf</h4>
+                            <div class="flex-shrink-0">
+                                <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="input-group-custom-showcode" class="form-label text-muted"></label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="state"
+                                        name="state">
+                                </div>
+                            </div>
                         </div>
                         <div class="text-end mb-3">
                             <button type="button" class="btn btn-success w-sm" id="imadd">Ekle</button>
