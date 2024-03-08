@@ -55,6 +55,7 @@ class ShoowroomController extends Controller
                 'showroom.isTestdrive',
                 'companies.company_name',
                 'showroom_gallery.gallery_id',
+                'showroom_gallery.car_img_type',
                 'showroom_gallery.created_at',
                 'showroom_gallery.updated_at',
                 'showroom_gallery.car_img_url'
