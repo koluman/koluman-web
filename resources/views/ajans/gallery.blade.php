@@ -130,7 +130,7 @@
                                         name="state">
                                 </div>
                             </div>
-                        </div>
+                        </div><br>
                         <div class="text-end mb-3">
                             <button type="button" class="btn btn-success w-sm" id="imadd">Ekle</button>
                         </div>
