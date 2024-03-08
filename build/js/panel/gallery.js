@@ -30,7 +30,6 @@ if (dropzonePreviewNode) {
         }
     });
 }
-console.log(car_img_url);
 document.addEventListener("DOMContentLoaded", function (event) {
     let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -116,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         formData.append('_token', csrfToken);
         formData.append('car_id', id);
         formData.append('car_img_url', car_img_url);
-        $.ajax({
+        /*$.ajax({
             url: "https://mobiloby.app/koluman/web/addgallery",
             method: 'POST',
             dataType: "json",
@@ -134,7 +133,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             error: function (error) {
                 console.error(error);
             }
-        });
+        });*/
+        console.log(car_img_url);
     });
 });
 
