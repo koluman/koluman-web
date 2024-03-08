@@ -24,7 +24,7 @@
                             @foreach ($shoowroomdetail as $galleryItem)
                                 <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development"
                                     data-category="designing development">
-                                    <div class="gallery-box card">
+                                    <div class="gallery-box card border card-border-success">
                                         @if ($galleryItem->car_img_url != '')
                                             <div class="gallery-container">
                                                 <a class="image-popup" href="{{ $galleryItem->car_img_url }}"
