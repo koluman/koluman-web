@@ -115,8 +115,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         formData.append('_token', csrfToken);
         formData.append('car_id', id);
         formData.append('car_img_url', car_img_url);
-        console.log(document.querySelector("#car_img_type").checked);
-        /*$.ajax({
+        $.ajax({
             url: "https://mobiloby.app/koluman/web/addgallery",
             method: 'POST',
             dataType: "json",
@@ -124,17 +123,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
             processData: false,
             contentType: false,
             success: function (data) {
-                if (data.success == 1) {
+                console.log(data);
+
+                /*if (data.success == 1) {
                     window.location.reload();
                 } 
                 else {
                     alert(data.message);
-                }
+                }*/
             },
             error: function (error) {
                 console.error(error);
             }
-        });*/
+        });
     });
 });
 

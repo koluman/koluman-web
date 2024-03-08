@@ -325,7 +325,7 @@ class ShoowroomController extends Controller
             $car_id = $request->input('car_id');
             $car_img_type = $request->input('car_img_type');
             $path = "";
-            if ($request->hasFile('car_img_url')) {
+            /*if ($request->hasFile('car_img_url')) {
                 $im = $request->file('car_img_url');
                 $imName = time() . '.' . $im->getClientOriginalExtension();
                 $im->move(public_path('upload/gallery'), $imName);
@@ -349,13 +349,13 @@ class ShoowroomController extends Controller
                     "success" => 0,
                     "message" => "Galeriye resim eklenemedi, lütfen tekrar deneyiniz",
                 ];
-            }
+            }*/
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($responseData);
+        return response()->json($car_img_type);
     }
 }
