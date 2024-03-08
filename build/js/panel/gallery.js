@@ -79,16 +79,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             event.target.classList.add('active');
         });
     }
-    function getIdFromUrl() {
-        var url = window.location.href;
-        var match = url.match(/\/announcementsdetail\/(\d+)/);
-        if (match && match[1]) {
-            return parseInt(match[1], 10);
-        } else {
-            return null;
-        }
-    }
-    var id = getIdFromUrl();
+    
 
     document.querySelectorAll('.delete-btn').forEach(function(button) {
         button.addEventListener('click', function() {
@@ -113,6 +104,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 
     $("#imadd").click(function () {
+        var url = window.location.href;
+        let id;
+        var match = url.match(/\/gallery\/(\d+)/);
+        if (match && match[1]) {
+            id= parseInt(match[1], 10);
+        } 
         var formData = new FormData();
         formData.append('_token', csrfToken);
         formData.append('car_id', id);
