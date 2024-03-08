@@ -83,8 +83,11 @@ class ShoowroomController extends Controller
                     'company_name' => $shoowroomdetail[0]->company_name,
                     'gallery' => $shoowroomdetail->map(function ($item) {
                         return [
+                        
                             'gallery_id' => $item->gallery_id,
                             'car_img_url' => $item->car_img_url,
+                            'car_img_type' => $item->car_img_type,
+
                         ];
                     })->toArray(),
                 ];
