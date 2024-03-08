@@ -18,7 +18,8 @@ class AjansHomeController extends Controller
             'showroom.car_name',
             'showroom.car_id',
             'showroom_gallery.gallery_id',
-            'showroom_gallery.car_img_url'
+            'showroom_gallery.car_img_url',
+            'showroom_gallery.car_img_type'
         )->leftJoin('showroom_gallery', 'showroom.car_id', '=', 'showroom_gallery.car_id')
             ->where('showroom.car_id', $request->id)
             ->get();
