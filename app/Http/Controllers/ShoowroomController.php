@@ -325,15 +325,17 @@ class ShoowroomController extends Controller
             $car_id = $request->input('car_id');
             $car_img_type = $request->input('car_img_type');
             $path = "";
-           /* if ($request->hasFile('car_img_url')) {
+           if ($request->hasFile('car_img_url')) {
                 $im = $request->file('car_img_url');
                 $imName = time() . '.' . $im->getClientOriginalExtension();
-                $im->move(public_path('upload/gallery'), $imName);
-                $path = 'https://mobiloby.app/koluman/web/public/upload/gallery/' . $imName;
+                return response()->json($imName);
+
+                //$im->move(public_path('upload/gallery'), $imName);
+                //$path = 'https://mobiloby.app/koluman/web/public/upload/gallery/' . $imName;
             } else {
                 $path = "";
             }
-            $result = Gallery::create([
+            /*$result = Gallery::create([
                 'car_id' => $car_id,
                 'car_img_type' => $car_img_type,
                 'car_img_url' => $path, 
@@ -356,6 +358,5 @@ class ShoowroomController extends Controller
                 "message" => $e->getMessage(),
             ];
         }
-        return response()->json($request->file('car_img_url'));
     }
 }
