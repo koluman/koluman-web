@@ -123,14 +123,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
             processData: false,
             contentType: false,
             success: function (data) {
-                console.log(data);
-
-                /*if (data.success == 1) {
+                if (data.success == 1) {
                     window.location.reload();
                 } 
                 else {
                     alert(data.message);
-                }*/
+                }
             },
             error: function (error) {
                 console.error(error);
