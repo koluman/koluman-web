@@ -36,7 +36,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                            <input type="hidden" id="car_id" name="car_id"
+                                            <input type="text" id="car_id" name="car_id"
                                                 value="{{ $galleryItem->car_id }}">
                                             <div class="box-content">
                                                 <div class="d-flex align-items-center mt-1">
