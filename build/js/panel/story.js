@@ -78,34 +78,16 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'Küçük Resim',
+            name: 'Araba Bilgileri',
             width: '360px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-shrink-0 me-3">' +
                     '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_small_image + '" alt="" class="img-fluid d-block"></div>' +
                     '</div>' +
-                    '</div>');
-            })
-        },
-        {
-            name: 'Büyük Resim',
-            width: '360px',
-            data: (function (row) {
-                return gridjs.html('<div class="d-flex align-items-center">' +
-                    '<div class="flex-shrink-0 me-3">' +
-                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_big_image + '" alt="" class="img-fluid d-block"></div>' +
-                    '</div>' +
-                    '</div>');
-            })
-        },
-        {
-            name: 'Başlık',
-            width: '360px',
-            data: (function (row) {
-                return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
                     '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.story_title + '</a></h5>' +
+                    '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.company_name + '</span></p>' +
                     '</div>' +
                     '</div>');
             })
