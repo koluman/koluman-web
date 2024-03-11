@@ -136,9 +136,12 @@ var productListAll = new gridjs.Grid({
             name: 'Durum',
             width: '100px',
             data: (function (row) {
+                var statusText = row.story_state == 1 ? 'Aktif' : 'Pasif';
+                var status = row.story_state == 1 ? 'badge bg-success-subtle text-success text-uppercase' : 'badge bg-danger-subtle text-danger text-uppercase';
+
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
-                    '<p class="text-muted mb-0"><span class="fw-medium">' + row.story_state + '</span></p>' +
+                    '<p class="text-muted mb-0"><span class="'+status+'">'+statusText+'</span></p>' +
                     '</div>' +
                     '</div>');
             })
