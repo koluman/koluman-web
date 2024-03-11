@@ -37,12 +37,43 @@ function getFileNameFromUrl(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    initializeCKEditor();
-    var id = getIdFromUrl();
-    if (id != "" && id != null) getdetail(id);
-    else add();
+    getcompany();
 });
 
+function getcompany() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    success: function (data) {
+                        let a = '<option value="0">Lütfen Seçiniz</option>';
+                        if (data.success == 1) {
+                            for (var i = 0; i < data.companies.length; i++) {
+                                a += '<option value="' + data.companies[i]["company_id"] + '">' + data.companies[i]["company_name"] + '</option>';
+                            }
+                            $("#company_id").html('');
+                            $("#company_id").html(a);
+
+                            initializeCKEditor();
+                            var id = getIdFromUrl();
+                            if (id != "" && id != null) getdetail(id);
+                            else add();
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
 
 function getdetail(id) {
     $.ajax({

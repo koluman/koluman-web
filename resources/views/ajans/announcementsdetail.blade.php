@@ -25,13 +25,13 @@
                             <input class="form-control" name="announcement_id" id="announcement_id" type="hidden" required>
 
 
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
                                 <input class="form-control" name="announcement_title" id="announcement_title" type="text"
                                     required>
                                 </select>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <label class="form-label">Tür</label>
                                 <select class="form-select" name="announcement_state" id="announcement_state">
                                     <option value="0" selected>Lütfen Seçiniz</option>
@@ -40,6 +40,11 @@
                                     <option value="3">Kampanya</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                              <label class="form-label">Firma</label>
+                                <select class="form-select" name="company_id" id="company_id" required>
+                                </select>
                         </div>
                         <div>
                             <label>Açıklama</label>
