@@ -79,7 +79,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Araba Bilgileri',
-            width: '360px',
+            width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-shrink-0 me-3">' +
@@ -90,7 +90,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Başlık',
-            width: '360px',
+            width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
@@ -101,7 +101,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Firma',
-            width: '360px',
+            width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
@@ -112,7 +112,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Öncelik Sırası',
-            width: '360px',
+            width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
@@ -123,7 +123,7 @@ var productListAll = new gridjs.Grid({
         },
         {
             name: 'Durum',
-            width: '360px',
+            width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
