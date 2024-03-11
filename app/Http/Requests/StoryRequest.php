@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+
 class StoryRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
@@ -20,14 +21,26 @@ class StoryRequest extends FormRequest
     }
 
     public function rules()
-{
-    return [
-        'story_title' => 'required',
-        'company_id' => 'required',
-        'story_big_image' => 'sometimes|required|file', // Eğer giriş yapılırsa zorunlu kıl
-        'story_small_image' => 'sometimes|required|file', // Eğer giriş yapılırsa zorunlu kıl
-    ];
-}
+    {
+       
+        $rules = [
+            'story_title' => 'required',
+            'company_id' => 'required',
+            'story_priority' => 'required',
+        ];
+    
+        // Eğer güncelleme yapıyorsanız ve story_big_image veya story_small_image varsa zorunlu olmasın
+        if ($this->isMethod('patch') && ($this->has('story_big_image') || $this->has('story_small_image'))) {
+            $rules['story_big_image'] = 'sometimes|nullable';
+            $rules['story_small_image'] = 'sometimes|nullable';
+        } else {
+            // Eğer yeni bir kayıt ekleniyorsa, resimler zorunlu olsun
+            $rules['story_big_image'] = 'required|file';
+            $rules['story_small_image'] = 'required|file';
+        }
+    
+        return $rules;
+    }
 
 
     public function messages()
