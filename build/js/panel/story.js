@@ -78,12 +78,22 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'Resim',
+            name: 'Küçük Resim',
             width: '100px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-shrink-0 me-3">' +
-                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_small_image + '" alt="" class="img-fluid d-block"></div>' +
+                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_big_image + '" alt="" class="img-fluid d-block"></div>' +
+                    '</div>' +
+                    '</div>');
+            })
+        },
+        {
+            name: 'Büyük Resim',
+            width: '100px',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-shrink-0 me-6">' +
                     '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_big_image + '" alt="" class="img-fluid d-block"></div>' +
                     '</div>' +
                     '</div>');
