@@ -193,7 +193,7 @@
                     <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
                         colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
                     <div class="mt-4 text-center">
-                        <h4>Arabayı silmek istediğinize emin misiniz?</h4>
+                        <h4>Hikayeyi silmek istediğinize emin misiniz?</h4>
                         <p class="text-muted fs-15 mb-4">Bu hikayeyi sildiğiniz taktirde işlemleri geri
                             getiremezsiniz.</p>
                         <div class="hstack gap-2 justify-content-center remove">
@@ -216,7 +216,7 @@
 
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
-    <script src="{{ URL::asset('build/libs/dropzone/dropzone3-min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/dropzone/dropzone5-min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/prismjs/prism.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/storyprocess.js') }}"></script>
