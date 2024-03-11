@@ -33,7 +33,7 @@ class StoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'story_title.required' => 'Lütfen hikaye başlığını',
+            'story_title.required' => 'Hikaye başlığı zorunludur',
             'company_id.required' => 'Firma seçimi zorunludur.',
             'story_priority.required' => 'Sıra seçimi zorunludur.',
             'story_big_image.required' => 'Hikaye büyük resmi seçimi zorunludur.',
