@@ -16,7 +16,19 @@ class AnnouncementController extends Controller
             if (!$announcement->isEmpty()) {
                 $responseData = [
                     "success" => 1,
-                    "announcement" => $announcement,
+                    "announcement" => $announcement->map(function ($item) {
+                        return [
+                            "announcement_id" => $item->announcement_id,
+                            "company_id" => $item->company_id,
+                            "announcement_title" => $item->announcement_title,
+                            "announcement_description" => $item->announcement_description,
+                            "announcement_image_url" => $item->announcement_image_url,
+                            "announcement_state" => $item->announcement_state,
+                            "announcement_date" => $item->announcement_date,
+                            "isActive" => $item->isActive,
+                            "company_name" => $item->company->company_name,
+                        ];
+                    }),                    
                     "message" => "Duyuru, haber ve kampanya listesi getirildi",
                 ];
             } else {
