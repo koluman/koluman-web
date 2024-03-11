@@ -97,6 +97,7 @@ function getdetail(id) {
             _token: csrfToken, 
         },
         success: function (data) {
+            console.log(data.storyid[0].story_id);
             $("#story_id").val(data.storyid[0].story_id);
             $("#story_title").val(data.storyid[0].story_title);
             $("#company_id").val(data.storyid[0].company_id);
