@@ -138,9 +138,8 @@ function getdetail(id) {
 function add() {
     $("#story_id").val("");
     $("#story_title").val("");
-    $("#story_priority").val("");
+    $("#story_priority").val(0);
     $("#company_id").val("");
-    $("#story_state").val(0);
     dropzone2.removeAllFiles();
     dropzone.removeAllFiles();
     $("#addcar").text("Ekle");
