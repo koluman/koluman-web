@@ -17,7 +17,7 @@
         @endslot
     @endcomponent
     <div class="row">
-        <div class="col-xl-12 col-lg-8">
+        <div class="col-xl-12 col-lg-12">
             <div>
                 <div class="card">
                     <div class="card-header border-0">
