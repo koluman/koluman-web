@@ -20,9 +20,27 @@ if (dropzonePreviewNode) {
                 story_small_image = file;
             });
             this.on("removedfile", function (file) {
-                // İlk Dropzone'dan bir dosya kaldırıldığında yapılacak işlemler
-                console.log("İlk Dropzone'dan bir dosya kaldırıldı:", file.name);
-                // Gerekirse, silinen dosyanın adını ve diğer bilgilerini kullanarak işlemler yapabilirsiniz.
+                  $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/deletestoryimage',
+                    data: {
+                        story_id:  $("#story_id").val(),
+                        image: "story_small_image",
+                        _token: csrfToken,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == 1) {
+                            document.querySelector("#shdiv").style.display = "block";
+                            $("#shid").text("");
+                        } else {
+                            alert(data.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("AJAX request failed:", status, error);
+                    }
+                });
             });
         }
     });
@@ -46,9 +64,27 @@ if (dropzonePreviewNode2) {
             });
             
             this.on("removedfile", function (file) {
-                // İlk Dropzone'dan bir dosya kaldırıldığında yapılacak işlemler
-                console.log("İkinci Dropzone'dan bir dosya kaldırıldı:", file.name);
-                // Gerekirse, silinen dosyanın adını ve diğer bilgilerini kullanarak işlemler yapabilirsiniz.
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/deletestoryimage',
+                    data: {
+                        story_id:  $("#story_id").val(),
+                        image: "story_big_image",
+                        _token: csrfToken,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == 1) {
+                            document.querySelector("#sh2div").style.display = "block";
+                            $("#sh2id").text("");
+                        } else {
+                            alert(data.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("AJAX request failed:", status, error);
+                    }
+                });
             });
         }
     });

@@ -205,4 +205,34 @@ class StoryController extends Controller
 
         return response()->json($responseData);
     }
+    public function deletestoryimage(Request $request)
+    {
+        try {
+            $story_id = $request->story_id;
+            $image=$request->image;
+            
+            $affectedRows = Stories::where('story_id', $story_id)
+                ->update([
+                    $image => "",
+                ]);
+            if ($affectedRows > 0) {
+                $responseData = [
+                    "story" => $affectedRows,
+                    "success" => 1,
+                    "message" => "Resim silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Resim silinemedi",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }

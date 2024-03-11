@@ -73,7 +73,7 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <p class="text-muted" id="shid">Araba kapak resmi ekleme formu.</p>
+                                    <p class="text-muted" id="shid">Hikaye  resmi ekleme formu.</p>
 
                                     <div class="dropzone" id="shdiv">
                                         <div class="fallback">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <p class="text-muted" id="sh2id">Araba kapak resmi ekleme formu.</p>
+                                    <p class="text-muted" id="sh2id">Hikaye kapak resmi ekleme formu.</p>
 
                                     <div class="dropzone" id="sh2div">
                                         <div class="fallback">

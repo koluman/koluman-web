@@ -75,6 +75,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('getstoryid', [StoryController::class, 'getstoryid'])->name('getstoryid');
     Route::post('storyprocess', [StoryController::class, 'storyprocess'])->name('storyprocess');
     Route::post('deletestory', [StoryController::class, 'deletestory'])->name('deletestory');
+    Route::post('deletestoryimage', [StoryController::class, 'deletestoryimage'])->name('deletestoryimage');
 
     
 });
