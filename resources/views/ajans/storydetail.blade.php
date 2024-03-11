@@ -44,25 +44,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
-
-                              <h4 class="card-title mb-0 flex-grow-1">Aktif/Pasif</h4>
-                                <div class="flex-shrink-0">
-                                    <div class="form-check form-switch form-switch-right form-switch-md">
-                                        <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                                        <input class="form-check-input code-switcher" type="checkbox"
-                                            id="story_state" name="story_state">
-                                    </div>
-                                </div>
-                        </div>
-
-                          
                         </div>
 
                     </div>
 
                 </div>
                 <!-- end card -->
+                <div class="card">
+                    <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Aktif/Pasif</h4>
+                        <div class="flex-shrink-0">
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                <label for="input-group-custom-showcode" class="form-label text-muted"></label>
+                                <input class="form-check-input code-switcher" type="checkbox"
+                                    id="story_state" name="story_state">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card body -->
+                </div>
 
                 <div class="card">
                     <div class="card-header">
