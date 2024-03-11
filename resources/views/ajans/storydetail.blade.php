@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <input class="form-control" name="story_id" id="story_id" type="hidden" required>
+                            <input class="form-control" name="story_id" id="story_id" type="text">
 
                             <div class="col-lg-4 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
