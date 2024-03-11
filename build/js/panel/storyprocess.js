@@ -10,7 +10,7 @@ if (dropzonePreviewNode) {
     var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
     dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
-    var dropzone = new Dropzone(".dropzone", {
+    var dropzone = new Dropzone("#shdiv", {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
@@ -30,7 +30,7 @@ if (dropzonePreviewNode2) {
     var previewTemplate = dropzonePreviewNode2.parentNode.innerHTML;
     dropzonePreviewNode2.parentNode.removeChild(dropzonePreviewNode2);
 
-    var dropzone2 = new Dropzone(".dropzone", {
+    var dropzone2 = new Dropzone("#sh2div", {
         url: 'https://httpbin.org/post',
         method: "post",
         previewTemplate: previewTemplate,
