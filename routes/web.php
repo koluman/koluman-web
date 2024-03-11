@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BackUsersController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Ajans\AjansHomeController;
 use App\Http\Controllers\Ajans\AnnouncementsController;
+use App\Http\Controllers\Ajans\StoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShoowroomController;
@@ -67,6 +68,9 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('deleteannouncementimg', [AnnouncementsController::class, 'deleteannouncementimg'])->name('deleteannouncementimg');
     Route::post('deleteannouncement', [AnnouncementsController::class, 'deleteannouncement'])->name('deleteannouncement');
     Route::post('getannouncementid', [AnnouncementsController::class, 'getannouncementid'])->name('getannouncementid');
+
+    Route::get('storylist', [StoryController::class, 'storylist'])->name('storylist');
+
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
