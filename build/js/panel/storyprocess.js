@@ -88,7 +88,6 @@ function getcompany() {
 }
 
 function getdetail(id) {
-    console.log(id);
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getstoryid',
@@ -140,8 +139,8 @@ function add() {
     $("#story_id").val("");
     $("#story_title").val("");
     $("#story_priority").val("");
-    $("#company_id").text("");
-    $("#story_state").val("");
+    $("#company_id").val("");
+    $("#story_state").val(0);
     dropzone2.removeAllFiles();
     dropzone.removeAllFiles();
     $("#addcar").text("Ekle");
