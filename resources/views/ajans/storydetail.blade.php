@@ -40,7 +40,7 @@
                                     <div class="input-step full-width">
                                         <button type="button" class="minus material-shadow">–</button>
                                         <input type="number" name="story_priority" id="story_priority"
-                                            class="product-quantity" value="0" min="0" max="100" readonly>
+                                            class="product-quantity" value="0" min="0" max="100" readonly required >
                                         <button type="button" class="plus material-shadow">+</button>
                                     </div>
                                 </div>

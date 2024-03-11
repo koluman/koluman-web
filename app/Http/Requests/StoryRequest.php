@@ -20,15 +20,16 @@ class StoryRequest extends FormRequest
     }
 
     public function rules()
-    {
-        return [
-            'story_title' => 'required',
-            'company_id' => 'required',
-            'story_priority' => 'required',
-            'story_big_image' => 'required',
-            'story_small_image' => 'required',
-        ];
-    }
+{
+    return [
+        'story_title' => 'required',
+        'company_id' => 'required',
+        'story_priority' => 'sometimes|required', // Eğer giriş yapılırsa zorunlu kıl
+        'story_big_image' => 'sometimes|required', // Eğer giriş yapılırsa zorunlu kıl
+        'story_small_image' => 'sometimes|required', // Eğer giriş yapılırsa zorunlu kıl
+    ];
+}
+
 
     public function messages()
     {
