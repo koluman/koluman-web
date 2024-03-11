@@ -97,7 +97,7 @@ function getdetail(id) {
             _token: csrfToken, 
         },
         success: function (data) {
-            $("#story_id").val(data.storyid[0].car_id);
+           /* $("#story_id").val(data.storyid[0].car_id);
             $("#story_title").val(data.storyid[0].story_title);
             $("#company_id").val(data.storyid[0].company_id);
             $("#story_priority").val(data.storyid[0].story_priority);
@@ -133,7 +133,8 @@ function getdetail(id) {
                 dropzone.removeAllFiles();
                 dropzone2.removeAllFiles();
             }
-            $("#addcar").text("Güncelle");
+            $("#addcar").text("Güncelle");*/
+            console.log(data);
         }
 
     });
