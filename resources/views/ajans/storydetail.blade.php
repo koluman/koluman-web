@@ -34,12 +34,17 @@
                                 <select class="form-select" name="company_id" id="company_id" required>
                                 </select>
                             </div>
-
                             <div class="col-lg-6 mb-3">
-                                <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
-                                <input class="form-control" name="story_priority" id="story_priority" type="number" required>
-                                </select>
+                                <div>
+                                    <h5 class="fs-13 fw-medium text-muted">Sıra</h5>
+                                    <div class="input-step full-width">
+                                        <button type="button" class="minus material-shadow">–</button>
+                                        <input type="number"  name="story_priority" id="story_priority" class="product-quantity" value="0" min="0" max="100" readonly>
+                                        <button type="button" class="plus material-shadow">+</button>
+                                    </div>
+                                </div>
                             </div>
+                          
                         </div>
 
                     </div>
@@ -150,6 +155,11 @@
     </div>
 @endsection
 @section('script')
+<script src="{{ URL::asset('build/libs/multi.js/multi.min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/@tarekraafat/autocomplete.js/autoComplete.min.js') }}"></script>
+    <script src="{{ URL::asset('build/js/pages/form-advanced.init.js') }}"></script>
+    <script src="{{ URL::asset('build/js/pages/form-input-spin.init.js') }}"></script>
+
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone2-min.js') }}"></script>
