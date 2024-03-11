@@ -24,7 +24,7 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="#" class="btn btn-success" id="addproduct-btn"><i
+                                    <a href="{{route('storydetail')}}" class="btn btn-success" id="addproduct-btn"><i
                                             class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
                                 </div>
                             </div>

@@ -12,6 +12,10 @@ class StoryController extends Controller
     {
         return view('ajans.story');
     }
+    public function storydetail(Request $request)
+    {
+        return view('ajans.storydetail');
+    }
     public function getstories(Request $request)
     {
         try {
