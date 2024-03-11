@@ -104,7 +104,7 @@ function getdetail(id) {
             $("#story_priority").val(data.storyid[0].story_priority);
             if (data.storyid[0].story_state == 1) document.querySelector("#story_state").checked = true;
             else document.querySelector("#story_state").checked = false;
-            if (data.storyid[0].story_small_image!="" && data.storyid[0].story_big_image=="") {
+            if (data.storyid[0].story_small_image) {
                 let FileName = getFileNameFromUrl(data.storyid[0].story_big_image);
                 $("#shid").text(FileName);
                 document.querySelector("#shdiv").style.display = "none";
@@ -117,7 +117,7 @@ function getdetail(id) {
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
             } 
-            else if(data.storyid[0].story_big_image && data.storyid[0].story_small_image=="") {
+            if(data.storyid[0].story_big_image) {
                 let FileName = getFileNameFromUrl(data.storyid[0].story_big_image);
                 $("#sh2id").text(FileName);
                 document.querySelector("#sh2div").style.display = "none";
@@ -129,10 +129,6 @@ function getdetail(id) {
                 dropzone2.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone2.emit("complete", mockFile);
                 dropzone2.files.push(mockFile);
-            }
-            else {
-                dropzone.removeAllFiles();
-                dropzone2.removeAllFiles();
             }
             $("#addcar").text("Güncelle");
         }
