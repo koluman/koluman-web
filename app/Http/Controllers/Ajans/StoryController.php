@@ -21,6 +21,7 @@ class StoryController extends Controller
             'stories.story_big_image','stories.story_priority',
             'stories.story_state')
             ->join('companies', 'stories.company_id', '=', 'companies.company_id')
+            ->orderBy('stories.story_id', 'asc')
             ->get();
 
             if (!$stories->isEmpty()) {
