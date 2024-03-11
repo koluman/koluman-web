@@ -167,7 +167,7 @@
                      <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarStory" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarStory">
-                            <i class="ri-taxi-wifi-line"></i> <span>@lang('translation.story')</span>
+                            <i class="ri-camera-lens-fill"></i> <span>@lang('translation.story')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarStory">
                             <ul class="nav nav-sm flex-column">
