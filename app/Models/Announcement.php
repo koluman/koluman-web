@@ -12,6 +12,7 @@ class Announcement extends Model
     protected $primaryKey = 'announcement_id';
     protected $fillable = [
         'announcement_id',
+        'company_id',
         'announcement_title',
         'announcement_description',
         'announcement_image_url',
