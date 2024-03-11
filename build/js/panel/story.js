@@ -10,7 +10,6 @@ xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
-            // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
             productListAllData = responseData.stories; // productListAllData dizisini güncelle
             updateTable(productListAllData);
         } else {
@@ -18,14 +17,13 @@ xhr.onreadystatechange = function () {
         }
     }
 };
-
 xhr.send();
-
 function updateTable(data) {
     var tableData = data.map(function (item) {
         return {
             id: item.story_id,
             story_small_image: item.story_small_image,
+            story_big_image: item.story_big_image,
             story_title: item.story_title,
             company_name: item.company_name,
             story_state: item.story_state,
@@ -80,15 +78,44 @@ var productListAll = new gridjs.Grid({
             })
         },
         {
-            name: 'Araba Bilgileri',
+            name: 'Küçük Resim',
             width: '360px',
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-shrink-0 me-3">' +
                     '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_small_image + '" alt="" class="img-fluid d-block"></div>' +
                     '</div>' +
+                    '</div>');
+            })
+        },
+        {
+            name: 'Büyük Resim',
+            width: '360px',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-shrink-0 me-3">' +
+                    '<div class="avatar-sm bg-light rounded p-1"><img src="' + row.story_big_image + '" alt="" class="img-fluid d-block"></div>' +
+                    '</div>' +
+                    '</div>');
+            })
+        },
+        {
+            name: 'Başlık',
+            width: '360px',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
                     '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.story_title + '</a></h5>' +
+                    '</div>' +
+                    '</div>');
+            })
+        },
+        {
+            name: 'Firma',
+            width: '360px',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-grow-1">' +
                     '<p class="text-muted mb-0">Firma : <span class="fw-medium">' + row.company_name + '</span></p>' +
                     '</div>' +
                     '</div>');
