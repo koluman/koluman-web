@@ -187,6 +187,7 @@ function getIdFromUrl() {
 
 
 $("#company_id").change(function () {
+ 
     getstep();
 });
 $("#addcar").click(function () {
@@ -282,6 +283,7 @@ function getstep() {
         },
         dataType: 'json',
         success: function (data) {
+            console.log(data);
             if (data.success == 1) {
                 steps = data.showroomcars;
                 let a = "";
