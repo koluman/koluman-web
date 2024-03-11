@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    @lang('translation.products')
+    @lang('translation.story')
 @endsection
 @section('css')
     <link href="{{ URL::asset('build/libs/nouislider/nouislider.min.css') }}" rel="stylesheet">
@@ -10,10 +10,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Shoowroom
+            @lang('translation.story')
         @endslot
         @slot('title')
-            Shoowroom
+            @lang('translation.story')
         @endslot
     @endcomponent
     <div class="row">
@@ -24,14 +24,15 @@
                         <div class="row g-4">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('shoowroomdetail') }}" class="btn btn-success" id="addproduct-btn"><i
-                                            class="ri-add-line align-bottom me-1"></i>Araba Ekle</a>
+                                    <a href="{{ route('storydetail') }}" class="btn btn-success" id="addproduct-btn"><i
+                                            class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
-                                        <input type="text" class="form-control" id="searchProductList" placeholder="Ara...">
+                                        <input type="text" class="form-control" id="searchProductList"
+                                            placeholder="Ara...">
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
@@ -41,11 +42,14 @@
 
                     <div class="card-header">
                         <div class="row align-items-center">
-                           
+
                             <div class="col-auto">
                                 <div id="selection-element">
                                     <div class="my-n1 d-flex align-items-center text-muted">
-                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3 material-shadow-none" data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
+                                        Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result
+                                        <button type="button"
+                                            class="btn btn-link link-danger p-0 ms-3 material-shadow-none"
+                                            data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
                                     </div>
                                 </div>
                             </div>
@@ -72,9 +76,6 @@
         <!-- end col -->
     </div>
     <!-- end row -->
-
-
- 
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
