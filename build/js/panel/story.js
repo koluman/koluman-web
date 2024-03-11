@@ -11,7 +11,7 @@ xhr.onreadystatechange = function () {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
             // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
+            productListAllData = responseData.stories; // productListAllData dizisini güncelle
             updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
