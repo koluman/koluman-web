@@ -74,7 +74,7 @@ class ShoowroomController extends Controller
                 ];
             } else {
                 $responseData = [
-                    "success" => 0,
+                    "success" => 1,
                     "message" => "Arabalar listesi bulunamadı",
                 ];
             }
