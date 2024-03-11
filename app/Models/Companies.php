@@ -14,6 +14,7 @@ class Companies extends Model
         'company_id',
         'company_name',
         'company_image_url',
+        'company_phone',
         'created_at',
         'updated_at'
     ];
