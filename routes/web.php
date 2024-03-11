@@ -72,6 +72,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::get('story', [StoryController::class, 'story'])->name('story');
     Route::get('getstories', [StoryController::class, 'getstories'])->name('getstories');
     Route::get('storydetail/{id?}', [StoryController::class, 'storydetail'])->name('storydetail');
+    Route::post('getstoryid', [StoryController::class, 'getstoryid'])->name('getstoryid');
 
     
     

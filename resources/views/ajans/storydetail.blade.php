@@ -125,9 +125,9 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <p class="text-muted" id="shid">Araba kapak resmi ekleme formu.</p>
+                                    <p class="text-muted" id="sh2id">Araba kapak resmi ekleme formu.</p>
 
-                                    <div class="dropzone" id="shdiv">
+                                    <div class="dropzone" id="sh2div">
                                         <div class="fallback">
                                             <input name="file" type="file">
                                         </div>
@@ -140,8 +140,8 @@
                                         </div>
                                     </div>
 
-                                    <ul class="list-unstyled mb-0" id="dropzone-preview3">
-                                        <li class="mt-2" id="dropzone-preview3-list">
+                                    <ul class="list-unstyled mb-0" id="dropzone-preview33">
+                                        <li class="mt-2" id="dropzone-preview33-list">
                                             <div class="border rounded">
                                                 <div class="d-flex p-2">
                                                     <div class="flex-shrink-0 me-3">

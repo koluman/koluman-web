@@ -23,6 +23,26 @@ if (dropzonePreviewNode) {
     });
 }
 
+var dropzonePreviewNode2 = document.querySelector("#dropzone-preview33-list");
+var story_big_image;
+if (dropzonePreviewNode2) {
+    dropzonePreviewNode2.id = "";
+    var previewTemplate = dropzonePreviewNode2.parentNode.innerHTML;
+    dropzonePreviewNode2.parentNode.removeChild(dropzonePreviewNode2);
+
+    var dropzone2 = new Dropzone(".dropzone", {
+        url: 'https://httpbin.org/post',
+        method: "post",
+        previewTemplate: previewTemplate,
+        previewsContainer: "#dropzone-preview33",
+        init: function () {
+            this.on("addedfile", function (file) {
+                story_big_image = file;
+            });
+        }
+    });
+}
+
 function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
@@ -68,34 +88,23 @@ function getcompany() {
 }
 
 function getdetail(id) {
-console.log(productListAllData);
-    /*$.ajax({
+    $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getstoryid',
         dataType: 'json',
         data: {
-            car_id: id,
-            _token: csrfToken, // CSRF token'ını gönder
+            story_id: id,
+            _token: csrfToken, 
         },
         success: function (data) {
-            $("#car_id").val(data.showroomcarid[0].car_id);
-            $("#car_name").val(data.showroomcarid[0].car_name);
-            $("#company_id").val(data.showroomcarid[0].company_id);
-            if (ckeditorClassic) {
-                ckeditorClassic.setData(data.showroomcarid[0].car_description);
-            } else {
-                console.error('CKEditor not properly initialized.');
-            }
-            $("#step1text").val(data.showroomcarid[0].step1);
-            $("#step2text").val(data.showroomcarid[0].step2);
-            $("#step3text").val(data.showroomcarid[0].step3);
-            $("#step4text").val(data.showroomcarid[0].step4);
-            $("#step5text").val(data.showroomcarid[0].step5);
-            document.querySelector("#createproduct-form > div > div.col-lg-8 > div:nth-child(1) > div > div:nth-child(2) > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div").childNodes[0].textContent = data.showroomcarid[0].car_description;
-            if (data.showroomcarid[0].isTestdrive == 1) document.querySelector("#state").checked = true;
-            else document.querySelector("#state").checked = false;
-            if (data.showroomcarid[0].car_image_url) {
-                let FileName = getFileNameFromUrl(data.showroomcarid[0].car_image_url);
+            $("#story_id").val(data.storyid[0].car_id);
+            $("#story_title").val(data.storyid[0].story_title);
+            $("#company_id").val(data.storyid[0].company_id);
+            $("#story_priority").val(data.storyid[0].story_priority);
+            if (data.storyid[0].story_state == 1) document.querySelector("#story_state").checked = true;
+            else document.querySelector("#story_state").checked = false;
+            if (data.storyid[0].story_small_image!="" && data.storyid[0].story_big_image=="") {
+                let FileName = getFileNameFromUrl(data.storyid[0].story_big_image);
                 $("#shid").text(FileName);
                 document.querySelector("#shdiv").style.display = "none";
                 var mockFile = {
@@ -106,35 +115,39 @@ console.log(productListAllData);
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
-            } else {
+            } 
+            else if(data.storyid[0].story_big_image && data.storyid[0].story_small_image=="") {
+                let FileName = getFileNameFromUrl(data.storyid[0].story_big_image);
+                $("#sh2id").text(FileName);
+                document.querySelector("#sh2div").style.display = "none";
+                var mockFile = {
+                    name: FileName,
+                };
+                dropzone2.emit("addedfile", mockFile);
+                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                dropzone2.emit("thumbnail", mockFile, pdfIconPath);
+                dropzone2.emit("complete", mockFile);
+                dropzone2.files.push(mockFile);
+            }
+            else {
                 dropzone.removeAllFiles();
+                dropzone2.removeAllFiles();
             }
             $("#addcar").text("Güncelle");
-
-           
         }
 
-    });*/
+    });
 }
 
 function add() {
-    /*$("#car_id").val("");
-    $("#car_name").val("");
-    $("#company_id").val("");
-    $("#ckeditor-classic").val("");
-    $("#step1").text("");
-    $("#step2").val("");
-    $("#step3").val("");
-    $("#step4").val("");
-    $("#step5").val("");
+    $("#story_id").val("");
+    $("#story_title").val("");
+    $("#story_priority").val("");
+    $("#company_id").text("");
+    $("#story_state").val("");
+    dropzone2.removeAllFiles();
     dropzone.removeAllFiles();
     $("#addcar").text("Ekle");
-    document.querySelector("#step1text").disabled = true;
-    document.querySelector("#step2text").disabled = true;
-    document.querySelector("#step3text").disabled = true;
-    document.querySelector("#step4text").disabled = true;
-    document.querySelector("#step5text").disabled = true;*/
-
 }
 
 function getIdFromUrl() {

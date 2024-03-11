@@ -48,4 +48,29 @@ class StoryController extends Controller
         }
         return response()->json($responseData);
     }
+    public function getstoryid(Request $request)
+    {
+        try {
+            $storyid = Stories::where('story_id', $request->story_id)->get();
+            if (!$storyid->isEmpty()) {
+                $responseData = [
+                    "success" => 1,
+                    "storyid" => $storyid,
+                    "message" => "Liste getirildi",
+                ];
+            } else {
+                $responseData = [
+                    "storyid" =>"",
+                    "success" => 1,
+                    "message" => "Liste bulunamadı",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }
