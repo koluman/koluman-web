@@ -187,7 +187,7 @@ function getIdFromUrl() {
 
 
 $("#company_id").change(function () {
- 
+
     getstep();
 });
 $("#addcar").click(function () {
@@ -287,18 +287,27 @@ function getstep() {
             if (data.success == 1) {
                 steps = data.showroomcars;
                 let a = "";
-                for (var i = 0; i < steps.length; i++) {
-                    if (!uniqueValues.includes(steps[i]["step1"])) {
-                        tt.push(steps[i]["step1"]);
-                        uniqueValues.push(steps[i]["step1"]);
+                if (steps.length > 0) {
+                    for (var i = 0; i < steps.length; i++) {
+                        if (!uniqueValues.includes(steps[i]["step1"])) {
+                            tt.push(steps[i]["step1"]);
+                            uniqueValues.push(steps[i]["step1"]);
+                        }
                     }
+                    for (var i = 0; i < tt.length; i++) {
+                        a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
+                    }
+                    document.querySelector("#step1text").disabled = false;
+                    $("#step1").html('');
+                    $("#step1").html(a);
+                } else {
+
+                    document.querySelector("#step1text").disabled = false;
+                    document.querySelector("#step2text").disabled = false;
+                    document.querySelector("#step3text").disabled = false;
+                    document.querySelector("#step4text").disabled = false;
+                    document.querySelector("#step5text").disabled = false;
                 }
-                for (var i = 0; i < tt.length; i++) {
-                    a += '<li><a class="dropdown-item" href="javascript:getstep1(\'' + tt[i] + '\')">' + tt[i] + '</a></li>';
-                }
-                document.querySelector("#step1text").disabled = false;
-                $("#step1").html('');
-                $("#step1").html(a);
             } else {
                 $("#step1").html('');
             }
