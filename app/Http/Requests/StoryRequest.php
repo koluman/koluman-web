@@ -29,8 +29,7 @@ class StoryRequest extends FormRequest
             'story_priority' => 'required',
         ];
     
-        // Eğer güncelleme yapıyorsanız ve story_big_image veya story_small_image varsa zorunlu olmasın
-        if ($this->isMethod('patch') && ($this->has('story_big_image') || $this->has('story_small_image'))) {
+        if ($this->has('story_id')) {
             $rules['story_big_image'] = 'sometimes|nullable';
             $rules['story_small_image'] = 'sometimes|nullable';
         } else {
