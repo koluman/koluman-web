@@ -13,7 +13,7 @@ return [
     "announcementslist"=>"Announcements List",
     "announcement"=>"Announcements",
     "story" => "Stories",
-
+    "storydetail"=>"Story Detail",
     "analytics" => "Analytics",
     "crm" => "CRM",
     "ecommerce" => "E-commerce",

@@ -18,7 +18,7 @@ return [
     "create-announcement"=>"Duyuru|Haber|Kampanya",
     "announcement"=>"Duyurular",
     "story" => "Hikayeler",
-
+    "storydetail"=>"Hikaye Detayı",
     "analytics" => "Analiz",
     "crm" => "CRM",
     "ecommerce" => "E-ticaret",

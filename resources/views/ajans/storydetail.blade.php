@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    @lang('translation.create-product')
+    @lang('translation.storydetail')
 @endsection
 @section('css')
     <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet">
@@ -9,10 +9,10 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')
-            Shoowroom İşlemleri
+    @lang('translation.storydetail')
         @endslot
         @slot('title')
-            Shoowroom Detay
+    @lang('translation.storydetail')
         @endslot
     @endcomponent
 
