@@ -245,10 +245,6 @@ Array.from(document.querySelectorAll('.filter-list a')).forEach(function (filter
 });
 
 
-
-
-
-
 var minCostInput = document.getElementById('minCost'),
     maxCostInput = document.getElementById('maxCost');
 
@@ -256,24 +252,6 @@ var filterDataAll = '';
 var filterDataPublished = '';
 
 
-
-
-
-
-
-// Search Brands Options
-var searchBrandsOptions = document.getElementById("searchBrandsList");
-searchBrandsOptions.addEventListener("keyup", function () {
-    var inputVal = searchBrandsOptions.value.toLowerCase();
-    var searchItem = document.querySelectorAll("#flush-collapseBrands .form-check");
-    Array.from(searchItem).forEach(function (elem) {
-        var searchBrandsTxt = elem.getElementsByClassName("form-check-label")[0].innerText.toLowerCase();
-        elem.style.display = searchBrandsTxt.includes(inputVal) ? "block" : "none";
-    })
-});
-
-// table select to remove
-// checkbox-wrapper
 var isSelected = 0;
 
 function checkRemoveItem() {
