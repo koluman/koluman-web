@@ -179,4 +179,30 @@ class StoryController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deletestory(Request $request)
+    {
+        try {
+            $story_id = $request->story_id;
+            $s = Stories::where('story_id', $story_id)->first();
+            if ($s) {
+                $s->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Hikaye başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Hikaye başarıyla silinemedi!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }

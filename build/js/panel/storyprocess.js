@@ -229,13 +229,13 @@ $("#addstory").click(function () {
 });
 
 document.getElementById("delete-record").addEventListener("click", function () {
-    let id = $("#car_id").val();
+    let id = $("#story_id").val();
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/deleteshowroom',
+            url: 'https://mobiloby.app/koluman/web/deletestory',
             data: {
-                car_id: id,
+                story_id: id,
                 _token: csrfToken,
             },
             dataType: 'json',
@@ -253,7 +253,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
                         showCloseButton: false
                     }).then(function (result) {
                         if (result.value) {
-                            window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                            window.location.href = "https://mobiloby.app/koluman/web/story";
                         }
                     });
                 } else {
