@@ -75,6 +75,7 @@ class ShoowroomController extends Controller
             } else {
                 $responseData = [
                     "success" => 1,
+                    "showroomcars" => "",
                     "message" => "Arabalar listesi bulunamadı",
                 ];
             }
