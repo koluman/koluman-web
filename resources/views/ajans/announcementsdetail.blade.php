@@ -40,12 +40,13 @@
                                     <option value="3">Kampanya</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                              <label class="form-label">Firma</label>
+                            <div class="col-lg-4 mb-3">
+                                <label class="form-label">Firma</label>
                                 <select class="form-select" name="company_id" id="company_id" required>
                                 </select>
+                            </div>
                         </div>
+
                         <div>
                             <label>Açıklama</label>
                             <div id="ckeditor-classic" name="ckeditor-classic">
