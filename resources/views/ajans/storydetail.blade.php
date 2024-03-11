@@ -22,11 +22,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <input class="form-control" name="car_id" id="car_id" type="hidden" required>
+                            <input class="form-control" name="story_id" id="story_id" type="hidden" required>
 
                             <div class="col-lg-6 mb-3">
-                                <label for="choices-publish-visibility-input" class="form-label">Araç Adı</label>
-                                <input class="form-control" name="car_name" id="car_name" type="text" required>
+                                <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
+                                <input class="form-control" name="story_title" id="story_title" type="text" required>
                                 </select>
                             </div>
                             <div class="col-lg-6 mb-3">
@@ -34,10 +34,11 @@
                                 <select class="form-select" name="company_id" id="company_id" required>
                                 </select>
                             </div>
-                        </div>
-                        <div>
-                            <label>Araba Açıklaması</label>
-                            <div id="ckeditor-classic" name="ckeditor-classic">
+
+                            <div class="col-lg-6 mb-3">
+                                <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
+                                <input class="form-control" name="story_priority" id="story_priority" type="number" required>
+                                </select>
                             </div>
                         </div>
 
@@ -48,7 +49,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Araba Kapak Resmi</h5>
+                        <h5 class="card-title mb-0">Küçük Resim</h5>
                     </div>
                     <div class="card-body">
                         <div>
@@ -106,80 +107,15 @@
             <!-- end col -->
 
             <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Detay</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="live-preview">
-                            <div>
-                                <p class="text-muted">Açıklama yazılabilir</p>
-                                <div class="row g-3">
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="step1text" name="step1text"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end" id="step1">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="step2text" name="step2text"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end" id="step2">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="step3text" name="step3text"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end" id="step3">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="step4text" name="step4text"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end" id="step4">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-group"> 
-                                            <input type="text" class="form-control" id="step5text" name="step5text"
-                                                aria-label="Text input with dropdown button">
-                                            <button class="btn btn-success dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Seçiniz</button>
-                                            <ul class="dropdown-menu dropdown-menu-end" id="step5">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end card body -->
-                </div>
-                <!-- end card -->
+              
                 <div class="card">
                     <div class="card-header align-items-center d-flex">
-                        <h4 class="card-title mb-0 flex-grow-1">Test Sürüş Arabası</h4>
+                        <h4 class="card-title mb-0 flex-grow-1">Aktif/Pasif</h4>
                         <div class="flex-shrink-0">
                             <div class="form-check form-switch form-switch-right form-switch-md">
                                 <label for="input-group-custom-showcode" class="form-label text-muted"></label>
                                 <input class="form-check-input code-switcher" type="checkbox"
-                                    id="state" name="state">
+                                    id="story_state" name="story_state">
                             </div>
                         </div>
                     </div>

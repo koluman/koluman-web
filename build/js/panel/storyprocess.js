@@ -27,18 +27,7 @@ function getFileNameFromUrl(url) {
     let parts = url.split('/');
     return parts[parts.length - 1];
 }
-// Function to initialize CKEditor
-function initializeCKEditor() {
-    ClassicEditor
-        .create(document.querySelector('#ckeditor-classic'))
-        .then(function (editor) {
-            ckeditorClassic = editor;
-            editor.ui.view.editable.element.style.height = '200px';
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     getcompany();
@@ -66,7 +55,6 @@ function getcompany() {
                             }
                             $("#company_id").html('');
                             $("#company_id").html(a);
-                            initializeCKEditor();
 
                             var id = getIdFromUrl();
                             if (id != "" && id != null) getdetail(id);
