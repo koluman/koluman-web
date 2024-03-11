@@ -29,7 +29,7 @@ class StoryRequest extends FormRequest
             'story_priority' => 'required',
         ];
     
-        if ($this->has('story_id')) {
+        if ($this->has('story_id')!="") {
             $rules['story_big_image'] = 'sometimes|nullable';
             $rules['story_small_image'] = 'sometimes|nullable';
         } else {
