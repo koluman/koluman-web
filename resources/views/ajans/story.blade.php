@@ -83,6 +83,6 @@
     <script src="{{ URL::asset('build/libs/wnumb/wNumb.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/gridjs/gridjs.umd.js') }}"></script>
     <script src="https://unpkg.com/gridjs/plugins/selection/dist/selection.umd.js"></script>
-    <script src="{{ URL::asset('build/js/panel/showroomlist.js') }}"></script>
+    <script src="{{ URL::asset('build/js/panel/story.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection

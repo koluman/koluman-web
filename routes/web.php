@@ -70,7 +70,9 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('getannouncementid', [AnnouncementsController::class, 'getannouncementid'])->name('getannouncementid');
 
     Route::get('story', [StoryController::class, 'story'])->name('story');
+    Route::get('getstories', [StoryController::class, 'getstories'])->name('getstories');
 
+    
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
     Route::get('sigortadashboard', [SigortaHomeController::class, 'dashboard'])->name('sigorta.dashboard');
