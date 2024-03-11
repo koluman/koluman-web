@@ -17,6 +17,8 @@ return [
     "announcementslist"=>"Listeler",
     "create-announcement"=>"Duyuru|Haber|Kampanya",
     "announcement"=>"Duyurular",
+    "story" => "Hikayeler",
+
     "analytics" => "Analiz",
     "crm" => "CRM",
     "ecommerce" => "E-ticaret",

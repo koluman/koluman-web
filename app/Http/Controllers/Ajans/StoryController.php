@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StoryController extends Controller
 {
-    public function storylist(Request $request)
+    public function story(Request $request)
     {
         return view('ajans.story');
     }

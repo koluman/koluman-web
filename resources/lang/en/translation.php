@@ -12,6 +12,8 @@ return [
     "announcements"=>"Announcements",
     "announcementslist"=>"Announcements List",
     "announcement"=>"Announcements",
+    "story" => "Stories",
+
     "analytics" => "Analytics",
     "crm" => "CRM",
     "ecommerce" => "E-commerce",

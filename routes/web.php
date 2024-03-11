@@ -69,7 +69,7 @@ Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function (
     Route::post('deleteannouncement', [AnnouncementsController::class, 'deleteannouncement'])->name('deleteannouncement');
     Route::post('getannouncementid', [AnnouncementsController::class, 'getannouncementid'])->name('getannouncementid');
 
-    Route::get('storylist', [StoryController::class, 'storylist'])->name('storylist');
+    Route::get('story', [StoryController::class, 'story'])->name('story');
 
 });
 Route::middleware(['prevent-back-history', 'checkRole:sigorta'])->group(function () {
