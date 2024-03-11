@@ -30,8 +30,12 @@ class StoryRequest extends FormRequest
         ];
     
         if ($this->has('story_id')) {
-            $rules['story_big_image'] = 'sometimes|nullable';
-            $rules['story_small_image'] = 'sometimes|nullable';
+            if ($this->hasFile('story_big_image')) {
+                $rules['story_big_image'] = 'image|mimes:jpeg,png,jpg,gif,webp';
+            }
+            if ($this->hasFile('story_small_image')) {
+                $rules['story_small_image'] = 'image|mimes:jpeg,png,jpg,gif,webp';
+            }
         } else {
             // Eğer yeni bir kayıt ekleniyorsa, resimler zorunlu olsun
             $rules['story_big_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
