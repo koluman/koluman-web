@@ -177,7 +177,7 @@
                 <div class="text-end mb-4">
                     <button type="button" id="deleteallbutton" data-bs-toggle="modal" href="#deleteAll"
                         class="btn btn-danger w-sm">Sil</button>
-                    <button type="button" id="addcar" class="btn btn-success w-sm">Ekle</button>
+                    <button type="button" id="addstory" class="btn btn-success w-sm">Ekle</button>
                 </div>
             </div>
             <!-- end col -->

@@ -129,7 +129,7 @@ function getdetail(id) {
                 dropzone2.emit("complete", mockFile);
                 dropzone2.files.push(mockFile);
             }
-            $("#addcar").text("Güncelle");
+            $("#addstory").text("Güncelle");
         }
 
     });
@@ -142,7 +142,7 @@ function add() {
     $("#company_id").val("");
     dropzone2.removeAllFiles();
     dropzone.removeAllFiles();
-    $("#addcar").text("Ekle");
+    $("#addstory").text("Ekle");
 }
 
 function getIdFromUrl() {
@@ -158,26 +158,19 @@ function getIdFromUrl() {
 
 
 
-$("#addcar").click(function () {
+$("#addstory").click(function () {
 
     var formData = new FormData();
     formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-    formData.append('car_id', $("#car_id").val());
-    formData.append('car_name', document.querySelector("#car_name").value);
+    formData.append('story_id', $("#story_id").val());
+    formData.append('story_title', document.querySelector("#story_title").value);
     formData.append('company_id', document.querySelector("#company_id").value);
-    formData.append('step1', $("#step1text").val());
-    formData.append('step2', $("#step2text").val());
-
-    formData.append('step3', $("#step3text").val());
-    formData.append('step4', $("#step4text").val());
+    formData.append('story_priority', $("#story_priority").val());
+    formData.append('story_big_image', story_big_image);
     formData.append('story_small_image', story_small_image);
-    formData.append('step5', $("#step5text").val());
-    formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
-    formData.append('car_description', ckeditorClassic.getData());
-    if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
-    else url = "https://mobiloby.app/koluman/web/addshowroom"
+    formData.append('story_state', document.querySelector("#story_state").checked == false ? 0 : 1);
     $.ajax({
-        url: url,
+        url: "https://mobiloby.app/koluman/web/storyprocess",
         method: 'POST',
         dataType: "json",
         data: formData,
@@ -197,7 +190,7 @@ $("#addcar").click(function () {
                     showCloseButton: false
                 }).then(function (result) {
                     if (result.value) {
-                        window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                        window.location.href = "https://mobiloby.app/koluman/web/story";
                     }
                 });
             } else if (data.success == 2) {
