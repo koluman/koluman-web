@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
 class StoryRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
@@ -21,29 +20,12 @@ class StoryRequest extends FormRequest
     }
 
     public function rules()
-    {
-       
-        $rules = [
-            'story_title' => 'required',
-            'company_id' => 'required',
-            'story_priority' => 'required',
-        ];
-    
-        if ($this->has('story_id')) {
-            if ($this->hasFile('story_big_image')) {
-                $rules['story_big_image'] = 'image|mimes:jpeg,png,jpg,gif,webp';
-            }
-            if ($this->hasFile('story_small_image')) {
-                $rules['story_small_image'] = 'image|mimes:jpeg,png,jpg,gif,webp';
-            }
-        } else {
-            // Eğer yeni bir kayıt ekleniyorsa, resimler zorunlu olsun
-            $rules['story_big_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
-            $rules['story_small_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
-        }
-    
-        return $rules;
-    }
+{
+    return [
+        'story_title' => 'required',
+        'company_id' => 'required',
+    ];
+}
 
 
     public function messages()
@@ -51,11 +33,6 @@ class StoryRequest extends FormRequest
         return [
             'story_title.required' => 'Hikaye başlığı zorunludur',
             'company_id.required' => 'Firma seçimi zorunludur.',
-            'story_small_image.image' => 'Hikaye küçük resmi zorunlu alandır.',
-            'story_big_image.image' => 'Hikaye büyük resmi zorunlu alandır.',
-            'story_small_image.mimes' => 'Hikaye küçük resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
-            'story_big_image.mimes' => 'Hikaye büyük resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
-
         ];
     }
 }
