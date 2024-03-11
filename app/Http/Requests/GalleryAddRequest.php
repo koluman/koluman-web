@@ -22,16 +22,24 @@ class GalleryAddRequest extends FormRequest
     {
         return [
             'car_id' => 'required',
-            'car_img_url' => 'required|file|mimes:jpeg,jpg,png,gif,webp', // Dosya kontrolü ekledik
+            'car_img_url' => 'required|file|mimes:jpeg,jpg,png,gif,webp',
         ];
     }
 
     public function messages()
     {
         return [
-            'car_id.required' => 'Araba numarası gelmedi.',
+            'car_id.required' => 'Araba numarası gerekli.',
             'car_img_url.required' => 'Resim seçmelisiniz.',
+            'car_img_url.file' => 'Araba resmi bir dosya olmalıdır.',
+            'car_img_url.mimes' => 'Araba resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
+        ];
+    }
 
+    public function attributes()
+    {
+        return [
+            'car_img_url' => 'Araç Resmi', 
         ];
     }
 }
