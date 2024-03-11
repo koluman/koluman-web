@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajans;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoryRequest;
 use App\Models\Stories;
 use Illuminate\Http\Request;
 
@@ -79,7 +80,7 @@ class StoryController extends Controller
         return response()->json($responseData);
     }
 
-    public function storyprocess(Request $request)
+    public function storyprocess(StoryRequest $request)
     {
         try {
            
