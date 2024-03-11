@@ -30,8 +30,8 @@ class StoryRequest extends FormRequest
         ];
     
         if ($this->has('story_id')) {
-            $rules['story_big_image'] = 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,webp';
-            $rules['story_small_image'] = 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,webp';
+            $rules['story_big_image'] = 'sometimes|nullable';
+            $rules['story_small_image'] = 'sometimes|nullable';
         } else {
             // Eğer yeni bir kayıt ekleniyorsa, resimler zorunlu olsun
             $rules['story_big_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
