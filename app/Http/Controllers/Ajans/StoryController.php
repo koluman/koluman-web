@@ -124,12 +124,12 @@ class StoryController extends Controller
                 if ($affectedRows > 0) {
                     $responseData = [
                         "success" => 1,
-                        "message" => "Araba detayları güncellendi",
+                        "message" => "Hikaye detayları güncellendi",
                     ];
                 } else {
                     $responseData = [
                         "success" => 0,
-                        "message" => "Araba detayları güncellenemedi , lütfen tekrar deneyiniz",
+                        "message" => "Hikaye detayları güncellenemedi , lütfen tekrar deneyiniz",
                     ];
                 }
             } else {
