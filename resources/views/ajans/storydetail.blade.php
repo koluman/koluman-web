@@ -212,7 +212,6 @@
 @section('script')
     <script src="{{ URL::asset('build/libs/multi.js/multi.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/@tarekraafat/autocomplete.js/autoComplete.min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/pages/form-advanced.init.js') }}"></script>
     <script src="{{ URL::asset('build/js/pages/form-input-spin.init.js') }}"></script>
 
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
