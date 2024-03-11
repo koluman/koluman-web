@@ -26,6 +26,8 @@ class AnnouncementsController extends Controller
             $announcement_title = $request->announcement_title;
             $announcement_state = $request->announcement_state;
             $announcement_description = $request->announcement_description;
+            $company_id = $request->company_id;
+
             $state = $request->state;
 
             $announcementPath = "";
@@ -43,6 +45,7 @@ class AnnouncementsController extends Controller
                 'announcement_state' => $announcement_state,
                 'announcement_date' => Carbon::now('Europe/Istanbul'),
                 'announcement_image_url' => $announcementPath, // Dosyanın URL'sini kaydet
+                'company_id'=>$company_id,
                 'isActive'=>$state
             ]);
             if ($result) {
@@ -73,6 +76,7 @@ class AnnouncementsController extends Controller
             $announcement_state = $request->announcement_state;
             $announcement_description = $request->announcement_description;
             $announcementPath = "";
+            $company_id = $request->company_id;
             $state = $request->state;
 
             if ($request->hasFile('announcement_img_url')) {
@@ -87,6 +91,7 @@ class AnnouncementsController extends Controller
                         'announcement_state' => $announcement_state,
                         'announcement_date' => Carbon::now('Europe/Istanbul'),
                         'announcement_image_url' => $announcementPath, 
+                        'company_id'=>$company_id,
                         'isActive'=>$state
                     ]);
             } else {

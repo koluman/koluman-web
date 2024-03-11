@@ -24,6 +24,7 @@ class AnnouncementAddRequest extends FormRequest
         return [
             'announcement_title' => 'required',
             'announcement_state' => 'required',
+            'company_id'=>'required',
 
         ];
     }
@@ -33,7 +34,9 @@ class AnnouncementAddRequest extends FormRequest
         return [
             'announcement_title.required' => 'Başlık girişi zorunludur.',
             'announcement_state.required' => 'Tür seçimi zorunludur.',
+            'company_id.required' => 'Firma seçimi zorunludur.',
 
+            
         ];
     }
 }

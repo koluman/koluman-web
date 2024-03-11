@@ -85,7 +85,6 @@ function getdetail(id) {
             _token: csrfToken, // CSRF token'ını gönder
         },
         success: function (data) {
-            console.log(data.announcementid[0].isActive);
             $("#announcement_id").val(data.announcementid[0].announcement_id);
             $("#announcement_title").val(data.announcementid[0].announcement_title);
             if (ckeditorClassic) {
@@ -93,6 +92,7 @@ function getdetail(id) {
             } else {
                 console.error('CKEditor not properly initialized.');
             }
+            $("#company_id").val(data.announcementid[0].company_id);
             $("#announcement_state").val(data.announcementid[0].announcement_state);
             if (data.announcementid[0].isActive == 1) document.querySelector("#state").checked = true;
             else document.querySelector("#state").checked = false;
@@ -124,7 +124,7 @@ function add() {
     $("#announcement_state").val("");
     dropzone.removeAllFiles();
     $("#addannouncement").text("Ekle");
-
+    $("#company_id").val("");
 }
 
 function getIdFromUrl() {
@@ -144,6 +144,7 @@ $("#addannouncement").click(function () {
     formData.append('announcement_state', document.querySelector("#announcement_state").value);
     formData.append('announcement_title', $("#announcement_title").val());
     formData.append('announcement_img_url', announcement_img_url);
+    formData.append('company_id', document.querySelector("#company_id").value);
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     if ($("#announcement_id").val() != "") url = "https://mobiloby.app/koluman/web/updateannouncement";
     else url = "https://mobiloby.app/koluman/web/addannouncement"
