@@ -79,27 +79,41 @@ document.addEventListener("DOMContentLoaded", function (event) {
             event.target.classList.add('active');
         });
     }
-    
 
-    document.querySelectorAll('.delete-btn').forEach(function(button) {
-        button.addEventListener('click', function() {
+
+    document.querySelectorAll('.delete-btn').forEach(function (button) {
+        button.addEventListener('click', function () {
             var galleryId = this.getAttribute('data-id');
-            $.ajax({
-              type: 'POST',
-              url: 'https://mobiloby.app/koluman/web/deletegallery',
-              data: {
-                id: galleryId,
-                _token: csrfToken, // CSRF token'ını gönder
-              },
-              dataType: 'json',
-              success: function (data) {
-                if (data.success == 1) {
-                  window.location.reload(); 
-                } else {
-                    alert(data.message); 
-                }
-              }
-          });
+            Swal.fire({
+                title: "Emin misiniz?",
+                text: "Bu resmi sildiğiniz taktirde geri alamazsınız!",
+                icon: "warning",
+                customClass: {
+                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                },
+                confirmButtonText: "Sil!",
+                buttonsStyling: false,
+                showCloseButton: false
+            }).then(function (result) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://mobiloby.app/koluman/web/deletegallery',
+                    data: {
+                        id: galleryId,
+                        _token: csrfToken, // CSRF token'ını gönder
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.success == 1) {
+                            window.location.reload();
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+
+            
         });
     });
 
@@ -108,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let id;
         var match = url.match(/\/gallery\/(\d+)/);
         if (match && match[1]) {
-            id= parseInt(match[1], 10);
-        } 
+            id = parseInt(match[1], 10);
+        }
         var formData = new FormData();
         formData.append('car_img_type', document.querySelector("#car_img_type").checked == false ? 0 : 1);
         formData.append('_token', csrfToken);
@@ -124,10 +138,45 @@ document.addEventListener("DOMContentLoaded", function (event) {
             contentType: false,
             success: function (data) {
                 if (data.success == 1) {
-                    window.location.reload();
-                } 
-                else {
-                    alert(data.message);
+                    Swal.fire({
+                        title: "Başarılı",
+                        text: data.message,
+                        icon: "success",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    }).then(function (result) {
+                        window.location.reload();
+                    });
+                } else if (data.success == 2) {
+                    Swal.fire({
+                        title: "Başarısız",
+                        html: data.message.join('<br>'),
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Başarısız",
+                        text: data.message,
+                        icon: "warning",
+                        customClass: {
+                            confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                            cancelButton: 'btn btn-danger w-xs mt-2',
+                        },
+                        confirmButtonText: "Tamam!",
+                        buttonsStyling: false,
+                        showCloseButton: false
+                    });
                 }
             },
             error: function (error) {
