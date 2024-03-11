@@ -121,7 +121,7 @@ var productListAll = new gridjs.Grid({
             data: (function (row) {
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
-                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.company.company_name + '</a></h5>' +
+                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.company_name + '</a></h5>' +
                     '</div>' +
                     '</div>');
             })
