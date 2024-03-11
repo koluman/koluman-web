@@ -47,8 +47,10 @@ class StoryRequest extends FormRequest
         return [
             'story_title.required' => 'Hikaye başlığı zorunludur',
             'company_id.required' => 'Firma seçimi zorunludur.',
+            'story_small_image.image' => 'Hikaye küçük resmi zorunlu alandır.',
+            'story_big_image.image' => 'Hikaye büyük resmi zorunlu alandır.',
             'story_small_image.mimes' => 'Hikaye küçük resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
-            'story_big_image.mimes' => 'hikaye küçük  resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
+            'story_big_image.mimes' => 'Hikaye büyük resmi dosya türü jpeg, jpg, png, gif, webp olmalıdır.',
 
         ];
     }
