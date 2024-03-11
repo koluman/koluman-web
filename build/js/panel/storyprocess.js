@@ -19,6 +19,11 @@ if (dropzonePreviewNode) {
             this.on("addedfile", function (file) {
                 story_small_image = file;
             });
+            this.on("removedfile", function (file) {
+                // İlk Dropzone'dan bir dosya kaldırıldığında yapılacak işlemler
+                console.log("İlk Dropzone'dan bir dosya kaldırıldı:", file.name);
+                // Gerekirse, silinen dosyanın adını ve diğer bilgilerini kullanarak işlemler yapabilirsiniz.
+            });
         }
     });
 }
@@ -38,6 +43,12 @@ if (dropzonePreviewNode2) {
         init: function () {
             this.on("addedfile", function (file) {
                 story_big_image = file;
+            });
+            
+            this.on("removedfile", function (file) {
+                // İlk Dropzone'dan bir dosya kaldırıldığında yapılacak işlemler
+                console.log("İkinci Dropzone'dan bir dosya kaldırıldı:", file.name);
+                // Gerekirse, silinen dosyanın adını ve diğer bilgilerini kullanarak işlemler yapabilirsiniz.
             });
         }
     });
