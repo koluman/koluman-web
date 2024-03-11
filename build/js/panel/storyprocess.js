@@ -88,6 +88,7 @@ function getcompany() {
 }
 
 function getdetail(id) {
+    console.log(id);
     $.ajax({
         type: 'POST',
         url: 'https://mobiloby.app/koluman/web/getstoryid',
