@@ -12,7 +12,7 @@ class AnnouncementController extends Controller
     {
         try {
 
-            $announcement = Announcement::get();
+            $announcement = Announcement::with('company')->get();
             if (!$announcement->isEmpty()) {
                 $responseData = [
                     "success" => 1,

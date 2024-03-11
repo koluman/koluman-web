@@ -42,6 +42,8 @@ function updateTable(data) {
             announcement_image_url: item.announcement_image_url,
             announcement_title: item.announcement_title,
             announcement_description: item.announcement_description,
+            company_name: item.company_name,
+
         };
     });
 
@@ -109,6 +111,17 @@ var productListAll = new gridjs.Grid({
                 return gridjs.html('<div class="d-flex align-items-center">' +
                     '<div class="flex-grow-1">' +
                     '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.announcement_title + '</a></h5>' +
+                    '</div>' +
+                    '</div>');
+            })
+        },
+        {
+            name: 'Firma',
+            width: '84',
+            data: (function (row) {
+                return gridjs.html('<div class="d-flex align-items-center">' +
+                    '<div class="flex-grow-1">' +
+                    '<h5 class="fs-14 mb-1"><a href="javascript:detay(' + row.id+ ')" class="text-body">' + row.company_name + '</a></h5>' +
                     '</div>' +
                     '</div>');
             })

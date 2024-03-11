@@ -20,4 +20,8 @@ class Announcement extends Model
         'announcement_date',
         'isActive',
     ];
+    public function company()
+    {
+        return $this->belongsTo(Companies::class, 'company_id', 'company_id');
+    }
 }
