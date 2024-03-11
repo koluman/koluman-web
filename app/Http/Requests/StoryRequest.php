@@ -29,13 +29,13 @@ class StoryRequest extends FormRequest
             'story_priority' => 'required',
         ];
     
-        if ($this->has('story_id')!="") {
-            $rules['story_big_image'] = 'sometimes|nullable';
-            $rules['story_small_image'] = 'sometimes|nullable';
+        if ($this->has('story_id')) {
+            $rules['story_big_image'] = 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,webp';
+            $rules['story_small_image'] = 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,webp';
         } else {
             // Eğer yeni bir kayıt ekleniyorsa, resimler zorunlu olsun
-            $rules['story_big_image'] = 'required|file';
-            $rules['story_small_image'] = 'required|file';
+            $rules['story_big_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
+            $rules['story_small_image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp';
         }
     
         return $rules;
@@ -47,8 +47,8 @@ class StoryRequest extends FormRequest
         return [
             'story_title.required' => 'Hikaye başlığı zorunludur',
             'company_id.required' => 'Firma seçimi zorunludur.',
-            'story_small_image.file' => 'Hikaye küçük resmi zorunlu alandır.',
-            'story_big_image.file' => 'Hikaye büyük resmi zorunlu alandır.',
+            'story_small_image.image' => 'Hikaye küçük resmi zorunlu alandır.',
+            'story_big_image.image' => 'Hikaye büyük resmi zorunlu alandır.',
 
         ];
     }
