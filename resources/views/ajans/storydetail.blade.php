@@ -18,23 +18,23 @@
 
     <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <input class="form-control" name="story_id" id="story_id" type="hidden" required>
 
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <label for="choices-publish-visibility-input" class="form-label">Başlık</label>
                                 <input class="form-control" name="story_title" id="story_title" type="text" required>
                                 </select>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-4 mb-3">
                               <label class="form-label">Firma</label>
                                 <select class="form-select" name="company_id" id="company_id" required>
                                 </select>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <div>
                                     <h5 class="fs-13 fw-medium text-muted">Sıra</h5>
                                     <div class="input-step full-width">
@@ -122,23 +122,7 @@
             </div>
             </div>
             <!-- end col -->
-
-            <div class="col-lg-4">
-              
-                <div class="card">
-                    <div class="card-header align-items-center d-flex">
-                        <h4 class="card-title mb-0 flex-grow-1">Aktif/Pasif</h4>
-                        <div class="flex-shrink-0">
-                            <div class="form-check form-switch form-switch-right form-switch-md">
-                                <label for="input-group-custom-showcode" class="form-label text-muted"></label>
-                                <input class="form-check-input code-switcher" type="checkbox"
-                                    id="story_state" name="story_state">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end card body -->
-                </div>
-            </div>
+           
         </div>
         <!-- end row -->
     </form>
