@@ -148,7 +148,7 @@ function dealerships() {
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.company.company_id,
+                        website: raw.company.company_name,
                         contact_email: raw.dealership_address,
                         image_src: raw.dealership_image_url
                     });
@@ -475,6 +475,7 @@ function refreshCallbacks() {
                 Array.from(itemValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
+                    console.log(selectedid);
                     if (selectedid == itemId) {
                         editlist = true;
                         idField.value = selectedid;
