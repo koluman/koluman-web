@@ -29,17 +29,6 @@
                             <div class="hstack text-nowrap gap-2">
                                 <button class="btn btn-soft-danger material-shadow-none" id="remove-actions" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
-                                <button class="btn btn-danger material-shadow-none"><i
-                                        class="ri-filter-2-line me-1 align-bottom"></i> Filters</button>
-                                <button class="btn btn-soft-success material-shadow-none">Import</button>
-                                <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
-                                    aria-expanded="false" class="btn btn-soft-info"><i class="ri-more-2-fill"></i></button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                    <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="#">Last Week</a></li>
-                                    <li><a class="dropdown-item" href="#">Last Month</a></li>
-                                    <li><a class="dropdown-item" href="#">Last Year</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -55,17 +44,6 @@
                             <div class="search-box">
                                 <input type="text" class="form-control search" placeholder="Şube ara...">
                                 <i class="ri-search-line search-icon"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-auto ms-auto">
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="text-muted">Sırala </span>
-                                <select class="form-control mb-0" data-choices data-choices-search-false
-                                    id="choices-single-default">
-                                    <option value="Owner">Şehre Göre</option>
-                                    <option value="Company">Firmaya Göre</option>
-                                    <option value="location">Telefona Göre</option>
-                                </select>
                             </div>
                         </div>
                     </div>
