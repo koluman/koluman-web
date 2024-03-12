@@ -336,6 +336,8 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 Array.from(editValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
+                    console.log(selectedid);
+
                     if (selectedid == itemId) {
                         x.values({
                             id: `<a href="javascript:void(0);" class="fw-medium link-primary">${idField.value}</a>`,
@@ -363,7 +365,6 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
                 formData.append('dealership_iid', idField.value);
-                console.log(editValues);
                 /*$.ajax({
                     url: "https://mobiloby.app/koluman/web/updatedealership",
                     method: 'POST',
