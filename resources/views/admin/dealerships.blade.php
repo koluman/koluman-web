@@ -192,11 +192,12 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label for="industry_type-field" class="form-label">Lat</label>
-                                                    <input type="text" id="industry_type-field" class="form-control"
-                                                        placeholder="Enter owner name" required />
+                                                    <label for="location-field" class="form-label">Telefon</label>
+                                                    <input type="text" id="location-field" class="form-control"
+                                                        placeholder="Enter location" required />
                                                 </div>
                                             </div>
+                                            
                                             <div class="col-lg-6">
                                                 <div>
                                                     <label for="owner-field" class="form-label">Şehir</label>
@@ -224,9 +225,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label for="location-field" class="form-label">Telefon</label>
-                                                    <input type="text" id="location-field" class="form-control"
-                                                        placeholder="Enter location" required />
+                                                    <label for="industry_type-field" class="form-label">Lat</label>
+                                                    <input type="text" id="industry_type-field" class="form-control"
+                                                        placeholder="Enter owner name" required />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
