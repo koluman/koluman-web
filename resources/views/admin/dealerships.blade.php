@@ -108,7 +108,7 @@
                                                         alt=""
                                                         class="avatar-xxs rounded-circle image_src object-fit-cover">
                                                 </div>
-                                                <div class="flex-grow-1 ms-2 name">Nesta Technologies
+                                                <div class="flex-grow-1 ms-2 name">
                                                 </div>
                                             </div>
                                         </td>
