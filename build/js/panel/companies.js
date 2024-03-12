@@ -475,7 +475,7 @@ function refreshCallbacks() {
                 Array.from(itemValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
-                    console.log(selectedid);
+                    console.log(x._values);
                     if (selectedid == itemId) {
                         editlist = true;
                         idField.value = selectedid;
