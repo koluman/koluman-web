@@ -98,7 +98,7 @@ function dealerships() {
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.company_id,
+                        website: raw.company.company_name,
                         contact_email: raw.dealership_address,
                         since: raw.dealership_image_url,
                         image_src: raw.dealership_image_url
