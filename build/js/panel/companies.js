@@ -453,10 +453,49 @@ function refreshCallbacks() {
                     var isdeleteid = deleteid.body.firstElementChild.innerHTML;
                     if (isdeleteid == itemId) {
                         document.getElementById("delete-record").addEventListener("click", function () {
-                            console.log(isdeleteid);
-
-                            companyList.remove("id", isElem.outerHTML);
-                            $("#deleteRecordModal").modal('hide');
+                            $.ajax({
+                                url: "https://mobiloby.app/koluman/web/deletedealership",
+                                method: 'POST',
+                                dataType: "json",
+                                data: {id:isdeleteid},
+                                success: function (data) {
+                                    if (data.success == 1) {
+                                        Swal.fire({
+                                            title: "Başarılı",
+                                            text: data.message,
+                                            icon: "success",
+                                            customClass: {
+                                                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                            },
+                                            confirmButtonText: "Tamam!",
+                                            buttonsStyling: false,
+                                            showCloseButton: false
+                                        }).then(function (result) {
+                                            if (result.value) {
+                                                $("#showModal").modal('hide');
+                                                dealerships();
+                                            }
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            title: "Başarısız",
+                                            text: data.message,
+                                            icon: "warning",
+                                            customClass: {
+                                                confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                                cancelButton: 'btn btn-danger w-xs mt-2',
+                                            },
+                                            confirmButtonText: "Tamam!",
+                                            buttonsStyling: false,
+                                            showCloseButton: false
+                                        });
+                                    }
+                                },
+                                error: function (error) {
+                                    console.error(error);
+                                }
+                            });
+                           
                         });
                     }
                 });

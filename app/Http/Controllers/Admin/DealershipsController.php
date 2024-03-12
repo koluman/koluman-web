@@ -153,4 +153,30 @@ class DealershipsController extends Controller
         }
         return response()->json($responseData);
     }
+    public function deletedealership(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $h = DealerShips::where('dealership_id', $id)->first();
+            if ($h) {
+                $h->delete();
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Şube başarıyla silindi",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Şube başarıyla silinemedi!",
+                ];
+            }
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+
+        return response()->json($responseData);
+    }
 }

@@ -55,6 +55,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::get('getdealerships', [AdminDealershipsController::class, 'getdealerships'])->name('getdealerships');
     Route::post('adddealership', [AdminDealershipsController::class, 'adddealership'])->name('adddealership');
     Route::post('updatedealership', [AdminDealershipsController::class, 'updatedealership'])->name('updatedealership');
+    Route::post('deletedealership', [AdminDealershipsController::class, 'deletedealership'])->name('deletedealership');
 
     
 });
