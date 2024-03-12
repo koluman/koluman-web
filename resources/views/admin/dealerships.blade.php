@@ -187,7 +187,7 @@
                                                 <div>
                                                     <label for="companyname-field" class="form-label">Şube Adı</label>
                                                     <input type="text" id="companyname-field" class="form-control"
-                                                        placeholder="Enter company name" required />
+                                                        placeholder="Şube Adı" required />
                                                 </div>
                                             </div>
                                         
@@ -195,7 +195,7 @@
                                                 <div>
                                                     <label for="website-field" class="form-label">Firma</label>
                                                     <select class="form-select" id="website-field">
-                                                        <option value="">Select industry type</option>
+                                                        <option value="">Lütfen Seçiniz</option>
                                                         <option value="Computer Industry">Computer
                                                             Industry</option>
                                                         <option value="Chemical Industries">Chemical
@@ -213,7 +213,7 @@
                                                 <div>
                                                     <label for="owner-field" class="form-label">Şehir</label>
                                                     <select class="form-select" id="owner-field">
-                                                        <option value="">Select industry type</option>
+                                                        <option value="">Lütfen Seçiniz</option>
                                                         <option value="Computer Industry">Computer
                                                             Industry</option>
                                                         <option value="Chemical Industries">Chemical
@@ -231,21 +231,21 @@
                                                 <div>
                                                     <label for="location-field" class="form-label">Telefon</label>
                                                     <input type="text" id="location-field" class="form-control"
-                                                        placeholder="Enter location" required />
+                                                        placeholder="Telefon numarası" required />
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="star_value-field" class="form-label">Long</label>
                                                     <input type="text" id="star_value-field" class="form-control"
-                                                        placeholder="Enter rating" required />
+                                                        placeholder="Long bilgisini giriniz" required />
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="industry_type-field" class="form-label">Lat</label>
                                                     <input type="text" id="industry_type-field" class="form-control"
-                                                        placeholder="Enter owner name" required />
+                                                        placeholder="Lat bilgisiniz giriniz" required />
                                                 </div>
                                             </div>
                                          
@@ -254,14 +254,14 @@
                                                 <div>
                                                     <label for="employee-field" class="form-label">Açıklama</label>
                                                     <textarea type="text" id="employee-field" class="form-control"
-                                                        placeholder="Enter employee" required row="3"></textarea>
+                                                        placeholder="Açıklama yazınız" required row="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div>
                                                     <label for="contact_email-field" class="form-label">Adres</label>
                                                     <textarea type="text" id="contact_email-field" class="form-control"
-                                                        placeholder="Enter contact email" required row="3"></textarea>
+                                                        placeholder="Adres giriniz" required row="3"></textarea>
                                                 </div>
                                             </div>
                                             
