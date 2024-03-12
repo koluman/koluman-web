@@ -413,34 +413,34 @@ function refreshCallbacks() {
                                 <table class="table table-borderless mb-0">
                                     <tbody>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Industry Type</td>
+                                            <td class="fw-medium" scope="row">Lat</td>
                                             <td>${x._values.industry_type}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Location</td>
+                                            <td class="fw-medium" scope="row">Telefon</td>
                                             <td>${x._values.location}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Employee</td>
+                                            <td class="fw-medium" scope="row">Açıklama</td>
                                             <td>${x._values.employee}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Rating</td>
-                                            <td>${x._values.star_value} <i class="ri-star-fill text-warning align-bottom"></i></td>
+                                            <td class="fw-medium" scope="row">Long</td>
+                                            <td>${x._values.star_value}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Website</td>
+                                            <td class="fw-medium" scope="row">Company</td>
                                             <td>
                                                 <a href="javascript:void(0);"
                                                     class="link-primary text-decoration-underline">${x._values.website}</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Contact Email</td>
+                                            <td class="fw-medium" scope="row">Adres</td>
                                             <td>${x._values.contact_email}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Since</td>
+                                            <td class="fw-medium" scope="row">Resim</td>
                                             <td>${x._values.since}</td>
                                         </tr>
                                     </tbody>
