@@ -26,6 +26,6 @@ class DealerShips extends Model
     ];
     public function company()
     {
-        return $this->belongsTo(Companies::class, 'company_id', 'id');
+        return $this->belongsTo(Companies::class, 'company_id', 'company_id');
     }
 }
