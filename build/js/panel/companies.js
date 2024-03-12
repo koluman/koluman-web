@@ -77,7 +77,9 @@ var companyList = new List("companyList", options).on("updated", function (list)
 document.addEventListener("DOMContentLoaded", function () {
     dealerships();
     getcompany();
+    getcity();
 });
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -107,6 +109,27 @@ function getcompany() {
         }
     });
 }
+
+function getcity() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getcity',
+        dataType: 'json',
+        success: function (data) {
+            let a = '<option value="0">Lütfen Seçiniz</option>';
+            if (data.success == 1) {
+                for (var i = 0; i < data.city.length; i++) {
+                    a += '<option value="' + data.city[i]["il_no"] + '">' + data.city[i]["isim"] + '</option>';
+                }
+                $("#owner-field").html('');
+                $("#owner-field").html(a);
+            }
+        }
+    });
+
+
+}
+
 function dealerships() {
     $.ajax({
         type: 'GET',

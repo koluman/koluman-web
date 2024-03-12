@@ -31,6 +31,9 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 Route::get('getApiToken', [HomeController::class, 'getApiToken'])->name('getApiToken');
 Route::get('getBasicToken', [HomeController::class, 'getBasicToken'])->name('getBasicToken');
+Route::get('getcity', [HomeController::class, 'getcity'])->name('getcity');
+
+
 Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function () {
     Route::get('admindashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('adminusers', [HomeController::class, 'users'])->name('adminusers');
@@ -50,8 +53,6 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('getstepsall', [TestDriveController::class, 'getstepsall'])->name('getstepsall');
     Route::get('dealerships', [AdminDealershipsController::class, 'dealerships'])->name('dealerships');
     Route::get('getdealerships', [AdminDealershipsController::class, 'getdealerships'])->name('getdealerships');
-
-    
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
