@@ -124,7 +124,7 @@ $.ajax({
                     "Authorization": 'Bearer ' + data.token
                 },
                 success: function (data) {
-                    let a = '<option value="0">Lütfen Seçiniz</option>';
+                    console.log(data);
                     if (data.success == 1) {
                         $.each(data.dealerships, function (index, raw) {
                             companyList.add({
