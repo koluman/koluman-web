@@ -56,8 +56,8 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('adddealership', [AdminDealershipsController::class, 'adddealership'])->name('adddealership');
     Route::post('updatedealership', [AdminDealershipsController::class, 'updatedealership'])->name('updatedealership');
     Route::post('deletedealership', [AdminDealershipsController::class, 'deletedealership'])->name('deletedealership');
+    Route::post('deletealldealership', [AdminDealershipsController::class, 'deletealldealership'])->name('deletealldealership');
 
-    
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');

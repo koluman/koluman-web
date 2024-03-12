@@ -638,33 +638,69 @@ function deleteMultiple() {
     }
     if (typeof ids_array !== 'undefined' && ids_array.length > 0) {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Emin misin?",
+            text: "Seçilen şubeleri sildiğiniz takdirde işlemler geri alınmaz!",
             icon: "warning",
             showCancelButton: true,
             customClass: {
                 confirmButton: 'btn btn-primary w-xs me-2 mt-2',
                 cancelButton: 'btn btn-danger w-xs mt-2',
             },
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Evet, Sil!",
             buttonsStyling: false,
             showCloseButton: true
         }).then(function (result) {
             if (result.value) {
-                for (i = 0; i < ids_array.length; i++) {
-                    companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">${ids_array[i]}</a>`);
-                }
-                document.getElementById("remove-actions").style.display = 'none';
-                document.getElementById("checkAll").checked = false;
-                Swal.fire({
-                    title: 'Deleted!',
-                    text: 'Your data has been deleted.',
-                    icon: 'success',
-                    customClass: {
-                        confirmButton: 'btn btn-info w-xs mt-2',
+                $.ajax({
+                    url: "https://mobiloby.app/koluman/web/deletealldealership",
+                    method: 'POST',
+                    dataType: "json",
+                    data: {ids_array:ids_array,_token:$('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        console.log(data);
+                        /*if (data.success == 1) {
+                            Swal.fire({
+                                title: "Başarılı",
+                                text: data.message,
+                                icon: "success",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            }).then(function (result) {
+                                if (result.value) {
+                                    dealerships();
+                                    for (i = 0; i < ids_array.length; i++) {
+                                        companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">${ids_array[i]}</a>`);
+                                    }
+                                    document.getElementById("remove-actions").style.display = 'none';
+                                    document.getElementById("checkAll").checked = false;
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Başarısız",
+                                text: data.message,
+                                icon: "warning",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            });
+                        }*/
                     },
-                    buttonsStyling: false
+                    error: function (error) {
+                        console.error(error);
+                    }
                 });
+
+             
+              
             }
         });
     } else {
