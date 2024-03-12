@@ -413,8 +413,8 @@ function refreshCallbacks() {
                             </ul>
                         </div>
                         <div class="card-body">
-                            <h6 class="text-muted text-uppercase fw-semibold mb-3">Information</h6>
-                            <p class="text-muted mb-4">${x._values.desc}</p>
+                            <h6 class="text-muted text-uppercase fw-semibold mb-3">Şube Detayı</h6>
+                            <p class="text-muted mb-4">${x._values.contact_email}</p>
                             <div class="table-responsive table-card">
                                 <table class="table table-borderless mb-0">
                                     <tbody>
