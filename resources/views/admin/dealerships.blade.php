@@ -134,11 +134,11 @@
                         <div class="d-flex justify-content-end mt-3">
                             <div class="pagination-wrap hstack gap-2">
                                 <a class="page-item pagination-prev disabled" href="#">
-                                    Previous
+                                    Geri
                                 </a>
                                 <ul class="pagination listjs-pagination mb-0"></ul>
                                 <a class="page-item pagination-next" href="#">
-                                    Next
+                                    İleri
                                 </a>
                             </div>
                         </div>

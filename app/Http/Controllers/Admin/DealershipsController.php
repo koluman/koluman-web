@@ -15,7 +15,7 @@ class DealershipsController extends Controller
     public function getdealerships(Request $request)
     {
         try {
-            $dealerships = DealerShips::get();
+            $dealerships = DealerShips::with('company')->get();
             if (!$dealerships->isEmpty()) {
                 $responseData = [
                     "success" => 1,
