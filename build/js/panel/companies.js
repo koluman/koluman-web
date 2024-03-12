@@ -148,7 +148,7 @@ function dealerships() {
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.company.company_name,
+                        website: raw.company.company_id,
                         contact_email: raw.dealership_address,
                         image_src: raw.dealership_image_url
                     });
@@ -557,11 +557,7 @@ function refreshCallbacks() {
                                             <td class="fw-medium" scope="row">Long</td>
                                             <td>${x._values.star_value}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="fw-medium" scope="row">Firma</td>
-                                            <td>${x._values.website}
-                                            </td>
-                                        </tr>
+                                       
                                         <tr>
                                             <td class="fw-medium" scope="row">Adres</td>
                                             <td>${x._values.contact_email}</td>

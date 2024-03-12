@@ -61,7 +61,6 @@
                                             </div>
                                         </th>
                                         <th class="sort" data-sort="name" scope="col">Şube Adı</th>
-                                        <th class="sort" data-sort="website" scope="col">Firma</th>
                                         <th class="sort" data-sort="owner" scope="col">Şehir</th>
                                         <th class="sort" data-sort="industry_type" scope="col">Lat</th>
                                         <th class="sort" data-sort="star_value" scope="col">Long</th>
@@ -90,7 +89,6 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="website"></td>
                                         <td class="owner"></td>
                                         <td class="industry_type"></td>
                                         <td><span class="star_value"></span></td>
