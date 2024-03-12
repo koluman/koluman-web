@@ -9,6 +9,6 @@ class DealershipsController extends Controller
 {
     public function dealerships(Request $request)
     {
-        return view('dealerships');
+        return view('admin.dealerships');
     }
 }
