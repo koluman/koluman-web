@@ -170,11 +170,11 @@ document.getElementById("showModal").addEventListener("show.bs.modal", function 
     if (e.relatedTarget.classList.contains("edit-item-btn")) {
         document.getElementById("exampleModalLabel").innerHTML = "Şube Güncelle";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "block";
-        document.getElementById("add-btn").innerHTML = "Update";
+        document.getElementById("add-btn").innerHTML = "Güncelle";
     } else if (e.relatedTarget.classList.contains("add-btn")) {
         document.getElementById("exampleModalLabel").innerHTML = "Şube Ekle";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "block";
-        document.getElementById("add-btn").innerHTML = "Add Company";
+        document.getElementById("add-btn").innerHTML = "Ekle";
     } else {
         document.getElementById("exampleModalLabel").innerHTML = "Şube Listele";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "none";
