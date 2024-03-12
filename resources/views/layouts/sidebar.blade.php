@@ -124,7 +124,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebardealerships" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebardealerships">
-                            <i class="ri-apps-2-line"></i> <span>@lang('translation.dealerships')</span>
+                            <i class="ri-building-2-fill"></i> <span>@lang('translation.dealerships')</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebardealerships">
                             <ul class="nav nav-sm flex-column">
