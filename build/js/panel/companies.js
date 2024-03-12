@@ -472,7 +472,7 @@ function refreshCallbacks() {
                                             showCloseButton: false
                                         }).then(function (result) {
                                             if (result.value) {
-                                                $("#showModal").modal('hide');
+                                                $("#deleteRecordModal").modal('hide');
                                                 dealerships();
                                             }
                                         });
