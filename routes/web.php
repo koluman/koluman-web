@@ -49,7 +49,7 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('getsteps', [TestDriveController::class, 'getsteps'])->name('getsteps');
     Route::post('getstepsall', [TestDriveController::class, 'getstepsall'])->name('getstepsall');
     Route::get('dealerships', [AdminDealershipsController::class, 'dealerships'])->name('dealerships');
-
+    Route::get('getdealerships', [AdminDealershipsController::class, 'getdealerships'])->name('getdealerships');
 
     
 });

@@ -110,58 +110,48 @@ xhttp.onload = function () {
 }
 xhttp.open("GET", "build/json/company-list.json");
 xhttp.send();*/
+dealerships();
+function dealerships(){
 $.ajax({
-    url: "https://mobiloby.app/koluman/web/getApiToken",
     type: 'GET',
+    url: 'https://mobiloby.app/koluman/web/getdealerships',
     dataType: 'json',
     success: function (data) {
+        console.log(data);
         if (data.success == 1) {
-            $.ajax({
-                type: 'GET',
-                url: 'https://mobiloby.app/koluman/web/api/getdealerships',
-                dataType: 'json',
-                headers: {
-                    "Authorization": 'Bearer ' + data.token
-                },
-                success: function (data) {
-                    console.log(data);
-                    if (data.success == 1) {
-                        $.each(data.dealerships, function (index, raw) {
-                            companyList.add({
-                                id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
-                                name: raw.dealership_name,
-                                owner: raw.dealership_city,
-                                desc: raw.dealership_id,
-                                industry_type: raw.dealership_latitude,
-                                star_value: raw.dealership_longitude,
-                                location: raw.dealership_phone,
-                                employee: raw.dealership_description,
-                                website: raw.dealership_image_url,
-                                contact_email: raw.dealership_address,
-                                since: raw.dealership_image_url,
-                                image_src: raw.dealership_image_url
-                            });
-            
-                            // Şirket listesini 'id' özelliğine göre azalan sırayla sıralayın
-                            companyList.sort('id', {
-                                order: "desc"
-                            });
-            
-                            // Geri çağrı fonksiyonlarını güncelleyin
-                            refreshCallbacks();
-                        });
-                    }
-                }
-            });
-           
+            $.each(data.dealerships, function (index, raw) {
+                companyList.add({
+                    id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
+                    name: raw.dealership_name,
+                    owner: raw.dealership_city,
+                    desc: raw.dealership_id,
+                    industry_type: raw.dealership_latitude,
+                    star_value: raw.dealership_longitude,
+                    location: raw.dealership_phone,
+                    employee: raw.dealership_description,
+                    website: raw.dealership_image_url,
+                    contact_email: raw.dealership_address,
+                    since: raw.dealership_image_url,
+                    image_src: raw.dealership_image_url
+                });
 
-            companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
+                // Şirket listesini 'id' özelliğine göre azalan sırayla sıralayın
+                companyList.sort('id', {
+                    order: "desc"
+                });
+
+                // Geri çağrı fonksiyonlarını güncelleyin
+                refreshCallbacks();
+            });
         }
     },
     error: function (xhr, status, error) {
         console.error("Ajax hatası:", status, error);
     }
 });
+companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
+}
+
 
 isCount = new DOMParser().parseFromString(
     companyList.items.slice(-1)[0]._values.id,
