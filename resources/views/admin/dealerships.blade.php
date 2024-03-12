@@ -341,15 +341,15 @@
                     <div class="position-relative d-inline-block">
                         <div class="avatar-md">
                             <div class="avatar-title bg-light rounded-circle material-shadow">
-                                <img src="{{ URL::asset('build/images/brands/mail_chimp.png') }}" alt=""
+                                <img src="" alt=""
                                     class="avatar-sm rounded-circle object-fit-cover">
                             </div>
                         </div>
                     </div>
-                    <h5 class="mt-3 mb-1">Syntyce Solution</h5>
-                    <p class="text-muted">Michael Morris</p>
+                    <h5 class="mt-3 mb-1"></h5>
+                    <p class="text-muted"></p>
 
-                    <ul class="list-inline mb-0">
+                    {{--<ul class="list-inline mb-0">
                         <li class="list-inline-item avatar-xs">
                             <a href="javascript:void(0);"
                                 class="avatar-title bg-success-subtle text-success fs-15 rounded">
@@ -367,47 +367,44 @@
                                 <i class="ri-question-answer-line"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul>--}}
                 </div>
                 <div class="card-body">
-                    <h6 class="text-muted text-uppercase fw-semibold mb-3">Information</h6>
-                    <p class="text-muted mb-4">A company incurs fixed and variable costs such as the
-                        purchase of raw materials, salaries and overhead, as explained by
-                        AccountingTools, Inc. Business owners have the discretion to determine the
-                        actions.</p>
+                    <h6 class="text-muted text-uppercase fw-semibold mb-3">Şube Detayı</h6>
+                    <p class="text-muted mb-4"></p>
                     <div class="table-responsive table-card">
                         <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Industry Type</td>
-                                    <td>Chemical Industries</td>
+                                    <td class="fw-medium" scope="row">Lat</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Location</td>
-                                    <td>Damascus, Syria</td>
+                                    <td class="fw-medium" scope="row">Telefon</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Employee</td>
-                                    <td>10-50</td>
+                                    <td class="fw-medium" scope="row">Açıklama</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Rating</td>
-                                    <td>4.0 <i class="ri-star-fill text-warning align-bottom"></i></td>
+                                    <td class="fw-medium" scope="row">Long</td>
+                                    <td> <i class="ri-star-fill text-warning align-bottom"></i></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Website</td>
+                                    <td class="fw-medium" scope="row">Firma</td>
                                     <td>
                                         <a href="javascript:void(0);"
-                                            class="link-primary text-decoration-underline">www.syntycesolution.com</a>
+                                            class="link-primary text-decoration-underline"></a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Contact Email</td>
-                                    <td>info@syntycesolution.com</td>
+                                    <td class="fw-medium" scope="row">Adres</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Since</td>
-                                    <td>1995</td>
+                                    <td class="fw-medium" scope="row">Resim</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
