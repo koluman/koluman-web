@@ -77,8 +77,9 @@ var companyList = new List("companyList", options).on("updated", function (list)
 document.addEventListener("DOMContentLoaded", function () {
     dealerships();
 
-    
+
 });
+
 function dealerships() {
     $.ajax({
         type: 'GET',
@@ -106,7 +107,7 @@ function dealerships() {
                     companyList.sort('id', {
                         order: "desc"
                     });
-                   
+
                     // Geri çağrı fonksiyonlarını güncelleyin
                     refreshCallbacks();
                     if (viewBtns.length > 0) {
@@ -419,14 +420,13 @@ function refreshCallbacks() {
                                 <table class="table table-borderless mb-0">
                                     <tbody>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Lat</td>
-                                            <td>${x._values.industry_type}</td>
-                                        </tr>
-                                        <tr>
                                             <td class="fw-medium" scope="row">Telefon</td>
                                             <td>${x._values.location}</td>
                                         </tr>
-                                  
+                                        <tr>
+                                            <td class="fw-medium" scope="row">Lat</td>
+                                            <td>${x._values.industry_type}</td>
+                                        </tr>
                                         <tr>
                                             <td class="fw-medium" scope="row">Long</td>
                                             <td>${x._values.star_value}</td>

@@ -376,16 +376,16 @@
                         <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Lat</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td class="fw-medium" scope="row">Telefon</td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Long</td>
                                     <td> <i class="ri-star-fill text-warning align-bottom"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-medium" scope="row">Lat</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Firma</td>
