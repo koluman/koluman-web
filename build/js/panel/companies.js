@@ -414,7 +414,7 @@ function refreshCallbacks() {
                         </div>
                         <div class="card-body">
                             <h6 class="text-muted text-uppercase fw-semibold mb-3">Şube Detayı</h6>
-                            <p class="text-muted mb-4">${x._values.contact_email}</p>
+                            <p class="text-muted mb-4">${x._values.employee}</p>
                             <div class="table-responsive table-card">
                                 <table class="table table-borderless mb-0">
                                     <tbody>
@@ -426,10 +426,7 @@ function refreshCallbacks() {
                                             <td class="fw-medium" scope="row">Telefon</td>
                                             <td>${x._values.location}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="fw-medium" scope="row">Açıklama</td>
-                                            <td>${x._values.employee}</td>
-                                        </tr>
+                                  
                                         <tr>
                                             <td class="fw-medium" scope="row">Long</td>
                                             <td>${x._values.star_value}</td>
@@ -444,10 +441,6 @@ function refreshCallbacks() {
                                         <tr>
                                             <td class="fw-medium" scope="row">Adres</td>
                                             <td>${x._values.contact_email}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-medium" scope="row">Resim</td>
-                                            <td>${x._values.since}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -384,10 +384,6 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-medium" scope="row">Açıklama</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td class="fw-medium" scope="row">Long</td>
                                     <td> <i class="ri-star-fill text-warning align-bottom"></i></td>
                                 </tr>
@@ -400,10 +396,6 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Adres</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-medium" scope="row">Resim</td>
                                     <td></td>
                                 </tr>
                             </tbody>
