@@ -215,28 +215,28 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label for="star_value-field" class="form-label">Long</label>
                                                     <input type="text" id="star_value-field" class="form-control"
                                                         placeholder="Enter rating" required />
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label for="location-field" class="form-label">Telefon</label>
                                                     <input type="text" id="location-field" class="form-control"
                                                         placeholder="Enter location" required />
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label for="employee-field" class="form-label">Açıklama</label>
                                                     <input type="text" id="employee-field" class="form-control"
                                                         placeholder="Enter employee" required />
                                                 </div>
                                             </div>
-                                             <div class="col-lg-6">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label for="website-field" class="form-label">Firma</label>
                                                     <select class="form-select" id="website-field">
