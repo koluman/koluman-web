@@ -296,6 +296,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                                 showCloseButton: false
                             }).then(function (result) {
                                 if (result.value) {
+                                    $("#showModal").modal('hide');
                                     dealerships();
                                 }
                             });
