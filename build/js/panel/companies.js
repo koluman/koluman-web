@@ -263,19 +263,19 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
                 !editlist) {
-               
+
                 var formData = new FormData();
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-                formData.append('dealership_name',companyNameField.value);
+                formData.append('dealership_name', companyNameField.value);
                 formData.append('company_id', websiteField.value);
                 formData.append('dealership_city', ownerField.value);
-                formData.append('dealership_phone',locationField.value);
+                formData.append('dealership_phone', locationField.value);
                 formData.append('dealership_latitude', star_valueField.value);
                 formData.append('dealership_longitude', industry_typeField.value);
                 formData.append('dealership_description', employeeField.value);
                 formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
-                $.ajax({    
+                $.ajax({
                     url: "https://mobiloby.app/koluman/web/adddealership",
                     method: 'POST',
                     dataType: "json",
@@ -351,16 +351,65 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                         });
                     }
                 });
-                document.getElementById("close-modal").click();
-                clearFields();
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Company updated Successfully!',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    showCloseButton: true
+                var formData = new FormData();
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                formData.append('dealership_name', companyNameField.value);
+                formData.append('company_id', websiteField.value);
+                formData.append('dealership_city', ownerField.value);
+                formData.append('dealership_phone', locationField.value);
+                formData.append('dealership_latitude', star_valueField.value);
+                formData.append('dealership_longitude', industry_typeField.value);
+                formData.append('dealership_description', employeeField.value);
+                formData.append('dealership_address', contact_emailField.value);
+                formData.append('dealership_image_url', globalFile);
+                formData.append('dealership_iid', idField.value);
+                $.ajax({
+                    url: "https://mobiloby.app/koluman/web/updatedealership",
+                    method: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.success == 1) {
+                            Swal.fire({
+                                title: "Başarılı",
+                                text: data.message,
+                                icon: "success",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            }).then(function (result) {
+                                if (result.value) {
+                                    document.getElementById("close-modal").click();
+                                    clearFields();
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Başarısız",
+                                text: data.message,
+                                icon: "warning",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
                 });
+
+
+
             }
         }
     }, false)
