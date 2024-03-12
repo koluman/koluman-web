@@ -472,8 +472,7 @@ function refreshCallbacks() {
                                             showCloseButton: false
                                         }).then(function (result) {
                                             if (result.value) {
-                                                $("#deleteRecordModal").modal('hide');
-                                                dealerships();
+                                                window.location.reload();
                                             }
                                         });
                                     } else {
