@@ -206,7 +206,7 @@
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="location-field" class="form-label">Telefon</label>
-                                                    <input type="text" id="location-field" name="location-field" class="form-control"
+                                                    <input type="number" id="location-field" name="location-field" class="form-control"
                                                         placeholder="Telefon numarası" pattern="\d{11}" required />
                                                 </div>
                                             </div>
