@@ -266,14 +266,14 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                
                 var formData = new FormData();
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-                formData.append('dealership_name',companyNameField);
-                formData.append('company_id', websiteField);
-                formData.append('dealership_city', ownerField);
-                formData.append('dealership_phone',locationField);
-                formData.append('dealership_latitude', star_valueField);
-                formData.append('dealership_longitude', industry_typeField);
-                formData.append('dealership_description', employeeField);
-                formData.append('dealership_address', contact_emailField);
+                formData.append('dealership_name',companyNameField.value);
+                formData.append('company_id', websiteField.value);
+                formData.append('dealership_city', ownerField.value);
+                formData.append('dealership_phone',locationField.value);
+                formData.append('dealership_latitude', star_valueField.value);
+                formData.append('dealership_longitude', industry_typeField.value);
+                formData.append('dealership_description', employeeField.value);
+                formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
                 $.ajax({    
                     url: "https://mobiloby.app/koluman/web/adddealership",
