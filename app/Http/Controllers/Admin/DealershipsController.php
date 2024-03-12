@@ -58,7 +58,7 @@ class DealershipsController extends Controller
             } else {
                 $sPath = "";
             }
-           
+
             $sonuc = DealerShips::create([
                 'dealership_name' => $dealership_name,
                 'company_id' => $company_id,
@@ -82,7 +82,6 @@ class DealershipsController extends Controller
                     "message" => "Şube eklenemedi lütfen tekrar deneyiniz.",
                 ];
             }
-            
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -183,19 +182,24 @@ class DealershipsController extends Controller
     {
         try {
             $ids_array = $request->ids_array;
-            /*$h = DealerShips::where('dealership_id', $id)->first();
-            if ($h) {
-                $h->delete();
+
+            $cleaned_ids = array_map(function ($id) {
+                return ltrim($id, '#VZ');
+            }, $ids_array);
+
+            $deleted_count = DealerShips::whereIn('dealership_id', $cleaned_ids)->delete();
+
+            if ($deleted_count > 0) {
                 $responseData = [
                     "success" => 1,
-                    "message" => "Şube başarıyla silindi",
+                    "message" => "$deleted_count şube başarıyla silindi",
                 ];
             } else {
                 $responseData = [
                     "success" => 0,
-                    "message" => "Şube başarıyla silinemedi!",
+                    "message" => "Şubeler silinemedi!",
                 ];
-            }*/
+            }
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -203,6 +207,6 @@ class DealershipsController extends Controller
             ];
         }
 
-        return response()->json($ids_array);
+        return response()->json($responseData);
     }
 }

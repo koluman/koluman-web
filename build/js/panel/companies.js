@@ -657,8 +657,7 @@ function deleteMultiple() {
                     dataType: "json",
                     data: {ids_array:ids_array,_token:$('meta[name="csrf-token"]').attr('content')},
                     success: function (data) {
-                        console.log(data);
-                        /*if (data.success == 1) {
+                        if (data.success == 1) {
                             Swal.fire({
                                 title: "Başarılı",
                                 text: data.message,
@@ -692,7 +691,7 @@ function deleteMultiple() {
                                 buttonsStyling: false,
                                 showCloseButton: false
                             });
-                        }*/
+                        }
                     },
                     error: function (error) {
                         console.error(error);
