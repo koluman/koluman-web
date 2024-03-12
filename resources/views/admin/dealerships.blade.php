@@ -115,8 +115,7 @@
                                         <td class="website"></td>
                                         <td class="owner"></td>
                                         <td class="industry_type"></td>
-                                        <td><span class="star_value"></span> <i
-                                                class="ri-star-fill text-warning align-bottom"></i></td>
+                                        <td><span class="star_value"></span></td>
                                         <td class="location"></td>
                                         <td>
                                             <ul class="list-inline hstack gap-2 mb-0">
