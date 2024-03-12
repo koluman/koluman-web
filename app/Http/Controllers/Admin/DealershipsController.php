@@ -38,4 +38,57 @@ class DealershipsController extends Controller
         }
         return response()->json($responseData);
     }
+    public function adddealership(Request $request)
+    {
+        try {
+            $dealership_name = $request->dealership_name;
+            $company_id = $request->company_id;
+            $dealership_city = $request->dealership_city;
+            $dealership_phone = $request->dealership_phone;
+            $dealership_latitude = $request->dealership_latitude;
+            $dealership_longitude = $request->dealership_longitude;
+            $dealership_description = $request->dealership_description;
+            $dealership_address = $request->dealership_address;
+            $sPath = "";
+            if ($request->hasFile('dealership_image_url')) {
+                $s = $request->file('dealership_image_url');
+                $sName = time() . '.' . $s->getClientOriginalExtension();
+                $s->move(public_path('upload/dealerships'), $sName);
+                $sPath = 'https://mobiloby.app/koluman/web/public/upload/dealerships/' . $sName;
+            } else {
+                $sPath = "";
+            }
+           
+            $sonuc = DealerShips::create([
+                'dealership_name' => $dealership_name,
+                'company_id' => $company_id,
+                'dealership_city' => $dealership_city,
+                'dealership_phone' => $dealership_phone,
+                'dealership_latitude' => $dealership_latitude,
+                'dealership_longitude' => $dealership_longitude,
+                'dealership_description' => $dealership_description,
+                'dealership_address' => $dealership_address,
+                'dealership_image_url' => $sPath,
+
+            ]);
+            if ($sonuc) {
+                $responseData = [
+                    "success" => 1,
+                    "message" => "Şube başarılı bir şekilde kayıt edilmiştir.",
+                ];
+            } else {
+                $responseData = [
+                    "success" => 0,
+                    "message" => "Şube eklenemedi lütfen tekrar deneyiniz.",
+                ];
+            }
+            
+        } catch (\Exception $e) {
+            $responseData = [
+                "success" => 0,
+                "message" => $e->getMessage(),
+            ];
+        }
+        return response()->json($responseData);
+    }
 }

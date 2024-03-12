@@ -276,7 +276,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_address', contact_emailField);
                 formData.append('dealership_image_url', globalFile);
                 $.ajax({    
-                    url: "https://mobiloby.app/koluman/web/addprocess",
+                    url: "https://mobiloby.app/koluman/web/adddealership",
                     method: 'POST',
                     dataType: "json",
                     data: formData,

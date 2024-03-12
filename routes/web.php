@@ -53,6 +53,9 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('getstepsall', [TestDriveController::class, 'getstepsall'])->name('getstepsall');
     Route::get('dealerships', [AdminDealershipsController::class, 'dealerships'])->name('dealerships');
     Route::get('getdealerships', [AdminDealershipsController::class, 'getdealerships'])->name('getdealerships');
+    Route::post('adddealership', [AdminDealershipsController::class, 'adddealership'])->name('adddealership');
+
+    
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');
