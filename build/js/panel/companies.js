@@ -248,6 +248,8 @@ var count = 11;
 var forms = document.querySelectorAll('.tablelist-form')
 Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener('submit', function (event) {
+        console.log(editlist);
+
         if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
@@ -322,6 +324,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 });
 
             } else if (
+
                 companyNameField.value !== "" &&
                 ownerField.value !== "" &&
                 industry_typeField.value !== "" &&
@@ -337,7 +340,6 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 Array.from(editValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
-                    console.log(selectedid);
 
                     if (selectedid == itemId) {
                         x.values({
