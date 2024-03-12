@@ -83,6 +83,7 @@
                                             </div>
                                         </th>
                                         <th class="sort" data-sort="name" scope="col">Şube Adı</th>
+                                        <th class="sort" data-sort="website" scope="col">Firma</th>
                                         <th class="sort" data-sort="owner" scope="col">Şehir</th>
                                         <th class="sort" data-sort="industry_type" scope="col">Lat</th>
                                         <th class="sort" data-sort="star_value" scope="col">Long</th>
@@ -99,7 +100,7 @@
                                             </div>
                                         </th>
                                         <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                                class="fw-medium link-primary"></a></td>
+                                                class="fw-medium link-primary">#VZ001</a></td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
@@ -107,10 +108,11 @@
                                                         alt=""
                                                         class="avatar-xxs rounded-circle image_src object-fit-cover">
                                                 </div>
-                                                <div class="flex-grow-1 ms-2 name">
+                                                <div class="flex-grow-1 ms-2 name">Nesta Technologies
                                                 </div>
                                             </div>
                                         </td>
+                                        <td class="website"></td>
                                         <td class="owner"></td>
                                         <td class="industry_type"></td>
                                         <td><span class="star_value"></span> <i
@@ -118,7 +120,18 @@
                                         <td class="location"></td>
                                         <td>
                                             <ul class="list-inline hstack gap-2 mb-0">
-                                              
+                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                    data-bs-trigger="hover" data-bs-placement="top" title="Call">
+                                                    <a href="javascript:void(0);" class="text-muted d-inline-block">
+                                                        <i class="ri-phone-line fs-16"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                                    data-bs-trigger="hover" data-bs-placement="top" title="Message">
+                                                    <a href="javascript:void(0);" class="text-muted d-inline-block">
+                                                        <i class="ri-question-answer-line fs-16"></i>
+                                                    </a>
+                                                </li>
                                                 <li class="list-inline-item" data-bs-toggle="tooltip"
                                                     data-bs-trigger="hover" data-bs-placement="top" title="View">
                                                     <a href="javascript:void(0);" class="view-item-btn"><i
