@@ -194,18 +194,7 @@
                                             <div class="col-lg-6">
                                                 <div>
                                                     <label for="website-field" class="form-label">Firma</label>
-                                                    <select class="form-select" id="website-field">
-                                                        <option value="">Lütfen Seçiniz</option>
-                                                        <option value="Computer Industry">Computer
-                                                            Industry</option>
-                                                        <option value="Chemical Industries">Chemical
-                                                            Industries</option>
-                                                        <option value="Health Services">Health Services
-                                                        </option>
-                                                        <option value="Telecommunications Services">
-                                                            Telecommunications Services</option>
-                                                        <option value="Textiles: Clothing, Footwear">
-                                                            Textiles: Clothing, Footwear</option>
+                                                    <select class="form-select" id="website-field" name="website-field">
                                                     </select>
                                                 </div>
                                             </div>
