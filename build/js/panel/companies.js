@@ -457,10 +457,9 @@ function refreshCallbacks() {
                                 url: "https://mobiloby.app/koluman/web/deletedealership",
                                 method: 'POST',
                                 dataType: "json",
-                                data: {id:isdeleteid,_token:$('meta[name="csrf-token"]').attr('content')},
+                                data: {id:isdeleteid.replace("#VZ", ""),_token:$('meta[name="csrf-token"]').attr('content')},
                                 success: function (data) {
-                                    console.log(data);
-                                    /*if (data.success == 1) {
+                                    if (data.success == 1) {
                                         Swal.fire({
                                             title: "Başarılı",
                                             text: data.message,
@@ -490,7 +489,7 @@ function refreshCallbacks() {
                                             buttonsStyling: false,
                                             showCloseButton: false
                                         });
-                                    }*/
+                                    }
                                 },
                                 error: function (error) {
                                     console.error(error);
