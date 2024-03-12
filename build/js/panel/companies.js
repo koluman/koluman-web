@@ -275,8 +275,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_description', employeeField);
                 formData.append('dealership_address', contact_emailField);
                 formData.append('dealership_image_url', globalFile);
-                console.log(globalFile);
-                /*$.ajax({    
+                $.ajax({    
                     url: "https://mobiloby.app/koluman/web/addprocess",
                     method: 'POST',
                     dataType: "json",
@@ -297,40 +296,8 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                                 showCloseButton: false
                             }).then(function (result) {
                                 if (result.value) {
-                                    companyList.add({
-                                        id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + count + "</a>",
-                                        image_src: companyLogoImg.src,
-                                        name: companyNameField.value,
-                                        owner: ownerField.value,
-                                        industry_type: industry_typeField.value,
-                                        star_value: star_valueField.value,
-                                        location: locationField.value,
-                                        employee: employeeField.value,
-                                        website: websiteField.value,
-                                        contact_email: contact_emailField.value
-                    
-                                    });
-                                    companyList.sort('id', {
-                                        order: "desc"
-                                    });
-                                    document.getElementById("close-modal").click();
-                                    clearFields();
-                                    refreshCallbacks();
-                                    count++;
+                                    dealerships();
                                 }
-                            });
-                        } else if (data.success == 2) {
-                            Swal.fire({
-                                title: "Başarısız",
-                                html: data.message.join('<br>'),
-                                icon: "warning",
-                                customClass: {
-                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
-                                    cancelButton: 'btn btn-danger w-xs mt-2',
-                                },
-                                confirmButtonText: "Tamam!",
-                                buttonsStyling: false,
-                                showCloseButton: false
                             });
                         } else {
                             Swal.fire({
@@ -350,7 +317,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                     error: function (error) {
                         console.error(error);
                     }
-                });*/
+                });
 
             } else if (
                 companyNameField.value !== "" &&
