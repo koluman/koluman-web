@@ -96,17 +96,17 @@
                                         <td>
                                             <ul class="list-inline hstack gap-2 mb-0">
                                                 <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" data-bs-placement="top" title="View">
+                                                    data-bs-trigger="hover" data-bs-placement="top" title="Görüntüle">
                                                     <a href="javascript:void(0);" class="view-item-btn"><i
                                                             class="ri-eye-fill align-bottom text-muted"></i></a>
                                                 </li>
                                                 <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" data-bs-placement="top" title="Edit">
+                                                    data-bs-trigger="hover" data-bs-placement="top" title="Güncelle">
                                                     <a class="edit-item-btn" href="#showModal" data-bs-toggle="modal"><i
                                                             class="ri-pencil-fill align-bottom text-muted"></i></a>
                                                 </li>
                                                 <li class="list-inline-item" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" data-bs-placement="top" title="Delete">
+                                                    data-bs-trigger="hover" data-bs-placement="top" title="Sil">
                                                     <a class="remove-item-btn" data-bs-toggle="modal"
                                                         href="#deleteRecordModal">
                                                         <i class="ri-delete-bin-fill align-bottom text-muted"></i>
@@ -270,15 +270,14 @@
                                         colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px">
                                     </lord-icon>
                                     <div class="mt-4 text-center">
-                                        <h4 class="fs-semibold">You are about to delete a company ?</h4>
-                                        <p class="text-muted fs-14 mb-4 pt-1">Deleting your company will
-                                            remove all of your information from our database.</p>
+                                        <h4 class="fs-semibold">Emin misin?</h4>
+                                        <p class="text-muted fs-14 mb-4 pt-1">Şubeyi sildiğiniz takdirde geriye alınmaz.</p>
                                         <div class="hstack gap-2 justify-content-center remove">
                                             <button class="btn btn-link link-success fw-medium text-decoration-none material-shadow-none"
                                                 data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i>
-                                                Close</button>
-                                            <button class="btn btn-danger" id="delete-record">Yes,
-                                                Delete It!!</button>
+                                                Kapat</button>
+                                            <button class="btn btn-danger" id="delete-record">Evet,
+                                                Sil!!</button>
                                         </div>
                                     </div>
                                 </div>

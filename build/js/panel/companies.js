@@ -451,7 +451,7 @@ function refreshCallbacks() {
 
                     var isElem = deleteid.body.firstElementChild;
                     var isdeleteid = deleteid.body.firstElementChild.innerHTML;
-
+                    console.log(isdeleteid);
                     if (isdeleteid == itemId) {
                         document.getElementById("delete-record").addEventListener("click", function () {
                             companyList.remove("id", isElem.outerHTML);
