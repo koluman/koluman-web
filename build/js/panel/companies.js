@@ -459,7 +459,8 @@ function refreshCallbacks() {
                                 dataType: "json",
                                 data: {id:isdeleteid,_token:$('meta[name="csrf-token"]').attr('content')},
                                 success: function (data) {
-                                    if (data.success == 1) {
+                                    console.log(data);
+                                    /*if (data.success == 1) {
                                         Swal.fire({
                                             title: "Başarılı",
                                             text: data.message,
@@ -489,7 +490,7 @@ function refreshCallbacks() {
                                             buttonsStyling: false,
                                             showCloseButton: false
                                         });
-                                    }
+                                    }*/
                                 },
                                 error: function (error) {
                                     console.error(error);

@@ -157,7 +157,7 @@ class DealershipsController extends Controller
     {
         try {
             $id = $request->id;
-            $h = DealerShips::where('dealership_id', $id)->first();
+            /*$h = DealerShips::where('dealership_id', $id)->first();
             if ($h) {
                 $h->delete();
                 $responseData = [
@@ -169,7 +169,7 @@ class DealershipsController extends Controller
                     "success" => 0,
                     "message" => "Şube başarıyla silinemedi!",
                 ];
-            }
+            }*/
         } catch (\Exception $e) {
             $responseData = [
                 "success" => 0,
@@ -177,6 +177,6 @@ class DealershipsController extends Controller
             ];
         }
 
-        return response()->json($responseData);
+        return response()->json($id);
     }
 }
