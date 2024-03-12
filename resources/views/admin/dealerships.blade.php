@@ -177,7 +177,7 @@
                                                         <div class="avatar-lg p-1">
                                                             <div class="avatar-title bg-light rounded-circle">
                                                                 <img src="{{ URL::asset('build/images/users/multi-user.jpg') }}"
-                                                                    alt="" id="companylogo-img"
+                                                                    alt="" id="companylogo-img"  name="companylogo-img"
                                                                     class="avatar-md rounded-circle object-fit-cover">
                                                             </div>
                                                         </div>
@@ -186,7 +186,7 @@
                                                 </div>
                                                 <div>
                                                     <label for="companyname-field" class="form-label">Şube Adı</label>
-                                                    <input type="text" id="companyname-field" class="form-control"
+                                                    <input type="text" id="companyname-field" name="companyname-field" class="form-control"
                                                         placeholder="Şube Adı" required />
                                                 </div>
                                             </div>
@@ -208,21 +208,21 @@
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="location-field" class="form-label">Telefon</label>
-                                                    <input type="text" id="location-field" class="form-control"
+                                                    <input type="text" id="location-field" name="location-field" class="form-control"
                                                         placeholder="Telefon numarası" required />
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="star_value-field" class="form-label">Long</label>
-                                                    <input type="text" id="star_value-field" class="form-control"
+                                                    <input type="text" id="star_value-field"  name="star_value-field" class="form-control"
                                                         placeholder="Long bilgisini giriniz" required />
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
                                                     <label for="industry_type-field" class="form-label">Lat</label>
-                                                    <input type="text" id="industry_type-field" class="form-control"
+                                                    <input type="text" id="industry_type-field" name="industry_type-field" class="form-control"
                                                         placeholder="Lat bilgisiniz giriniz" required />
                                                 </div>
                                             </div>
@@ -231,14 +231,14 @@
                                             <div class="col-lg-12">
                                                 <div>
                                                     <label for="employee-field" class="form-label">Açıklama</label>
-                                                    <textarea type="text" id="employee-field" class="form-control"
+                                                    <textarea type="text" id="employee-field" name="employee-field" class="form-control"
                                                         placeholder="Açıklama yazınız" required row="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div>
                                                     <label for="contact_email-field" class="form-label">Adres</label>
-                                                    <textarea type="text" id="contact_email-field" class="form-control"
+                                                    <textarea type="text" id="contact_email-field" name="contact_email-field"  class="form-control"
                                                         placeholder="Adres giriniz" required row="3"></textarea>
                                                 </div>
                                             </div>

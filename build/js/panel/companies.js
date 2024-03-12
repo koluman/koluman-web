@@ -175,24 +175,25 @@ function dealerships() {
     });
 }
 
+var globalFile;
 
 isCount = new DOMParser().parseFromString(
     companyList.items.slice(-1)[0]._values.id,
     "text/html"
 );
 
-// customer image
 document.querySelector("#company-logo-input").addEventListener("change", function () {
     var preview = document.querySelector("#companylogo-img");
-    var file = document.querySelector("#company-logo-input").files[0];
+    globalFile = document.querySelector("#company-logo-input").files[0];
     var reader = new FileReader();
     reader.addEventListener("load", function () {
         preview.src = reader.result;
     }, false);
-    if (file) {
-        reader.readAsDataURL(file);
+    if (globalFile) {
+        reader.readAsDataURL(globalFile);
     }
 });
+
 
 var isValue = isCount.body.firstElementChild.innerHTML;
 
@@ -262,34 +263,95 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
                 !editlist) {
-                companyList.add({
-                    id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + count + "</a>",
-                    image_src: companyLogoImg.src,
-                    name: companyNameField.value,
-                    owner: ownerField.value,
-                    industry_type: industry_typeField.value,
-                    star_value: star_valueField.value,
-                    location: locationField.value,
-                    employee: employeeField.value,
-                    website: websiteField.value,
-                    contact_email: contact_emailField.value
+               
+                var formData = new FormData();
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                formData.append('dealership_name',companyNameField);
+                formData.append('company_id', websiteField);
+                formData.append('dealership_city', ownerField);
+                formData.append('dealership_phone',locationField);
+                formData.append('dealership_latitude', star_valueField);
+                formData.append('dealership_longitude', industry_typeField);
+                formData.append('dealership_description', employeeField);
+                formData.append('dealership_address', contact_emailField);
+                formData.append('dealership_image_url', globalFile);
+                console.log(globalFile);
+                /*$.ajax({    
+                    url: "https://mobiloby.app/koluman/web/addprocess",
+                    method: 'POST',
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.success == 1) {
+                            Swal.fire({
+                                title: "Başarılı",
+                                text: data.message,
+                                icon: "success",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            }).then(function (result) {
+                                if (result.value) {
+                                    companyList.add({
+                                        id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + count + "</a>",
+                                        image_src: companyLogoImg.src,
+                                        name: companyNameField.value,
+                                        owner: ownerField.value,
+                                        industry_type: industry_typeField.value,
+                                        star_value: star_valueField.value,
+                                        location: locationField.value,
+                                        employee: employeeField.value,
+                                        website: websiteField.value,
+                                        contact_email: contact_emailField.value
+                    
+                                    });
+                                    companyList.sort('id', {
+                                        order: "desc"
+                                    });
+                                    document.getElementById("close-modal").click();
+                                    clearFields();
+                                    refreshCallbacks();
+                                    count++;
+                                }
+                            });
+                        } else if (data.success == 2) {
+                            Swal.fire({
+                                title: "Başarısız",
+                                html: data.message.join('<br>'),
+                                icon: "warning",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Başarısız",
+                                text: data.message,
+                                icon: "warning",
+                                customClass: {
+                                    confirmButton: 'btn btn-primary w-xs me-2 mt-2',
+                                    cancelButton: 'btn btn-danger w-xs mt-2',
+                                },
+                                confirmButtonText: "Tamam!",
+                                buttonsStyling: false,
+                                showCloseButton: false
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });*/
 
-                });
-                companyList.sort('id', {
-                    order: "desc"
-                });
-                document.getElementById("close-modal").click();
-                clearFields();
-                refreshCallbacks();
-                count++;
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Company inserted successfully!',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    showCloseButton: true
-                });
             } else if (
                 companyNameField.value !== "" &&
                 ownerField.value !== "" &&
