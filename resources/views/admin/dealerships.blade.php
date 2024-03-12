@@ -270,9 +270,8 @@
                                     <div class="modal-footer">
                                         <div class="hstack gap-2 justify-content-end">
                                             <button type="button" class="btn btn-light"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success" id="add-btn">Add
-                                                Company</button>
+                                                data-bs-dismiss="modal">Kapat</button>
+                                            <button type="submit" class="btn btn-success" id="add-btn">Ekle</button>
                                             {{-- <button type="button" class="btn btn-success" id="edit-btn">Update</button> --}}
                                         </div>
                                     </div>

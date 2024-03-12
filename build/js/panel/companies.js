@@ -168,15 +168,15 @@ refreshCallbacks();
 
 document.getElementById("showModal").addEventListener("show.bs.modal", function (e) {
     if (e.relatedTarget.classList.contains("edit-item-btn")) {
-        document.getElementById("exampleModalLabel").innerHTML = "Edit Company";
+        document.getElementById("exampleModalLabel").innerHTML = "Şube Güncelle";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "block";
         document.getElementById("add-btn").innerHTML = "Update";
     } else if (e.relatedTarget.classList.contains("add-btn")) {
-        document.getElementById("exampleModalLabel").innerHTML = "Add Company";
+        document.getElementById("exampleModalLabel").innerHTML = "Şube Ekle";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "block";
         document.getElementById("add-btn").innerHTML = "Add Company";
     } else {
-        document.getElementById("exampleModalLabel").innerHTML = "List Company";
+        document.getElementById("exampleModalLabel").innerHTML = "Şube Listele";
         document.getElementById("showModal").querySelector(".modal-footer").style.display = "none";
     }
 });
