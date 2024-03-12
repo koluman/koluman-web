@@ -457,7 +457,7 @@ function refreshCallbacks() {
                                 url: "https://mobiloby.app/koluman/web/deletedealership",
                                 method: 'POST',
                                 dataType: "json",
-                                data: {id:isdeleteid},
+                                data: {id:isdeleteid,_token:$('meta[name="csrf-token"]').attr('content')},
                                 success: function (data) {
                                     if (data.success == 1) {
                                         Swal.fire({
