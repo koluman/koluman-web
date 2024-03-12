@@ -53,18 +53,18 @@
                     <div class="row g-2">
                         <div class="col-md-3">
                             <div class="search-box">
-                                <input type="text" class="form-control search" placeholder="Search for company...">
+                                <input type="text" class="form-control search" placeholder="Şube ara...">
                                 <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
                         <div class="col-md-auto ms-auto">
                             <div class="d-flex align-items-center gap-2">
-                                <span class="text-muted">Sort by: </span>
+                                <span class="text-muted">Sırala </span>
                                 <select class="form-control mb-0" data-choices data-choices-search-false
                                     id="choices-single-default">
-                                    <option value="Owner">Owner</option>
-                                    <option value="Company">Company</option>
-                                    <option value="location">Location</option>
+                                    <option value="Owner">Şehre Göre</option>
+                                    <option value="Company">Firmaya Göre</option>
+                                    <option value="location">Telefona Göre</option>
                                 </select>
                             </div>
                         </div>
@@ -147,10 +147,9 @@
                                     <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
                                         colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                     </lord-icon>
-                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                    <p class="text-muted mb-0">We've searched more than 150+ companies
-                                        We did not find any
-                                        companies for you search.</p>
+                                    <h5 class="mt-2">Üzgünüz! Arama sonucu bulunamadı</h5>
+                                    <p class="text-muted mb-0">Tüm şubeler içerisinde aradık,
+                                        fakat hiçbir şey bulamadık</p>
                                 </div>
                             </div>
                         </div>
