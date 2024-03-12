@@ -123,13 +123,13 @@ function dealerships() {
                     companyList.add({
                         id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
                         name: raw.dealership_name,
+                        website: raw.company_id,
                         owner: raw.dealership_city,
                         desc: raw.dealership_id,
                         industry_type: raw.dealership_latitude,
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.company_id,
                         contact_email: raw.dealership_address,
                         since: raw.dealership_image_url,
                         image_src: raw.dealership_image_url
