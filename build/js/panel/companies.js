@@ -106,11 +106,12 @@ function dealerships() {
                     companyList.sort('id', {
                         order: "desc"
                     });
+                   
+                    // Geri çağrı fonksiyonlarını güncelleyin
+                    refreshCallbacks();
                     if (viewBtns.length > 0) {
                         viewBtns[0].click(); // İlk view butonunu tıkla
                     }
-                    // Geri çağrı fonksiyonlarını güncelleyin
-                    refreshCallbacks();
                 });
 
                 // Örneğin, belirli bir şirket girişini yükledikten sonra kaldırmak istiyorsanız
