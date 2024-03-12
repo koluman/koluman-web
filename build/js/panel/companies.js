@@ -148,7 +148,7 @@ function dealerships() {
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.company.company_name,
+                        website: raw.company.company_id,
                         contact_email: raw.dealership_address,
                         image_src: raw.dealership_image_url
                     });
@@ -352,7 +352,6 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                         });
                     }
                 });
-                console.log(idField.value);
 
                 var formData = new FormData();
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
@@ -365,8 +364,8 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_description', employeeField.value);
                 formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
-                formData.append('dealership_iid', idField.value);
-                /*$.ajax({
+                formData.append('dealership_iid',idField.value.replace("#VZ", ""));
+                $.ajax({
                     url: "https://mobiloby.app/koluman/web/updatedealership",
                     method: 'POST',
                     dataType: "json",
@@ -409,7 +408,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                     error: function (error) {
                         console.error(error);
                     }
-                });*/
+                });
 
             }
         }
