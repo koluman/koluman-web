@@ -121,6 +121,19 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebardealerships" data-bs-toggle="collapse"
+                            role="button" aria-expanded="false" aria-controls="sidebardealerships">
+                            <i class="ri-apps-2-line"></i> <span>@lang('translation.dealerships')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebardealerships">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('dealerships') }}" class="nav-link">@lang('translation.dealershipslist')</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 @endif
                 @if (Auth::guard('web')->user()->backuser_role == 'sigorta' || Auth::guard('web')->user()->backuser_role == 'admin')
                     <li class="nav-item">

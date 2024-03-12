@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\BackUsersController;
+use App\Http\Controllers\Admin\DealershipsController as AdminDealershipsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Ajans\AjansHomeController;
 use App\Http\Controllers\Ajans\AnnouncementsController;
 use App\Http\Controllers\Ajans\StoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Mobil\DealerShipsController;
 use App\Http\Controllers\ShoowroomController;
 use App\Http\Controllers\Sigorta\SigortaHomeController;
 use App\Http\Controllers\TestDriveController;
@@ -46,6 +48,10 @@ Route::middleware(['prevent-back-history', 'checkRole:admin'])->group(function (
     Route::post('testdriveschedules', [TestDriveController::class, 'testdriveschedules'])->name('testdriveschedules');
     Route::post('getsteps', [TestDriveController::class, 'getsteps'])->name('getsteps');
     Route::post('getstepsall', [TestDriveController::class, 'getstepsall'])->name('getstepsall');
+    Route::get('dealerships', [AdminDealershipsController::class, 'dealerships'])->name('dealerships');
+
+
+    
 });
 Route::middleware(['prevent-back-history', 'checkRole:ajans'])->group(function () {
     Route::get('ajansdashboard', [AjansHomeController::class, 'dashboard'])->name('ajans.dashboard');

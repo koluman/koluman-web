@@ -15,6 +15,8 @@ return [
     "story" => "Stories",
     "storydetail"=>"Story Detail",
     "analytics" => "Analytics",
+    "dealerships"=>"Dealerships",
+    "dealershipslist"=>"Dealerships List",
     "crm" => "CRM",
     "ecommerce" => "E-commerce",
     "crypto" => "Crypto",
