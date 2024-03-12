@@ -451,11 +451,12 @@ function refreshCallbacks() {
 
                     var isElem = deleteid.body.firstElementChild;
                     var isdeleteid = deleteid.body.firstElementChild.innerHTML;
-                    console.log(isdeleteid);
                     if (isdeleteid == itemId) {
                         document.getElementById("delete-record").addEventListener("click", function () {
+                            console.log(isdeleteid);
+
                             companyList.remove("id", isElem.outerHTML);
-                            document.getElementById("deleteRecord-close").click();
+                            $("#deleteRecordModal").modal('hide');
                         });
                     }
                 });
