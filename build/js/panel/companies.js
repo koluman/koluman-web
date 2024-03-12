@@ -118,7 +118,6 @@ function dealerships() {
         url: 'https://mobiloby.app/koluman/web/getdealerships',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             if (data.success == 1) {
                 $.each(data.dealerships, function (index, raw) {
                     companyList.add({
@@ -130,7 +129,7 @@ function dealerships() {
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
-                        website: raw.dealership_image_url,
+                        website: raw.company_id,
                         contact_email: raw.dealership_address,
                         since: raw.dealership_image_url,
                         image_src: raw.dealership_image_url

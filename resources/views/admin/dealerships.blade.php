@@ -82,13 +82,15 @@
                                                     value="option">
                                             </div>
                                         </th>
-                                        <th class="sort" data-sort="name" scope="col">Company Name</th>
-                                        <th class="sort" data-sort="owner" scope="col">Owner</th>
-                                        <th class="sort" data-sort="industry_type" scope="col">Industry
-                                            Type</th>
-                                        <th class="sort" data-sort="star_value" scope="col">Rating</th>
-                                        <th class="sort" data-sort="location" scope="col">Location</th>
-                                        <th scope="col">Action</th>
+                                        <th class="sort" data-sort="name" scope="col">Şube Adı</th>
+                                        <th class="sort" data-sort="website" scope="col">Firma</th>
+                                        <th class="sort" data-sort="owner" scope="col">Şehir</th>
+                                        <th class="sort" data-sort="industry_type" scope="col">Lat</th>
+                                        <th class="sort" data-sort="star_value" scope="col">Long</th>
+                                        <th class="sort" data-sort="employee" scope="col">Açıklama</th>
+                                        <th class="sort" data-sort="contact_email" scope="col">Adres</th
+                                        <th class="sort" data-sort="location" scope="col">Telefon Numarası</th>
+                                        <th scope="col">İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
