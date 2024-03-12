@@ -119,7 +119,7 @@ function getcity() {
             let a = '<option value="0">Lütfen Seçiniz</option>';
             if (data.success == 1) {
                 for (var i = 0; i < data.city.length; i++) {
-                    a += '<option value="' + data.city[i]["il_no"] + '">' + data.city[i]["isim"] + '</option>';
+                    a += '<option value="' + data.city[i]["isim"] + '">' + data.city[i]["isim"] + '</option>';
                 }
                 $("#owner-field").html('');
                 $("#owner-field").html(a);
@@ -150,7 +150,6 @@ function dealerships() {
                         employee: raw.dealership_description,
                         website: raw.company.company_name,
                         contact_email: raw.dealership_address,
-                        since: raw.dealership_image_url,
                         image_src: raw.dealership_image_url
                     });
 
@@ -207,7 +206,6 @@ var idField = document.getElementById("id-field"),
     employeeField = document.getElementById("employee-field"),
     websiteField = document.getElementById("website-field"),
     contact_emailField = document.getElementById("contact_email-field"),
-    sinceField = document.getElementById("since-field"),
 
     addBtn = document.getElementById("add-btn"),
     editBtn = document.getElementById("edit-btn"),
@@ -263,7 +261,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 employeeField.value !== "" &&
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
-                sinceField.value !== "" && !editlist) {
+                !editlist) {
                 companyList.add({
                     id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + count + "</a>",
                     image_src: companyLogoImg.src,
@@ -274,8 +272,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                     location: locationField.value,
                     employee: employeeField.value,
                     website: websiteField.value,
-                    contact_email: contact_emailField.value,
-                    since: sinceField.value
+                    contact_email: contact_emailField.value
 
                 });
                 companyList.sort('id', {
@@ -302,7 +299,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 employeeField.value !== "" &&
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
-                sinceField.value !== "" && editlist) {
+                editlist) {
                 var editValues = companyList.get({
                     id: idField.value,
                 });
@@ -320,8 +317,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                             location: locationField.value,
                             employee: employeeField.value,
                             website: websiteField.value,
-                            contact_email: contact_emailField.value,
-                            since: sinceField.value
+                            contact_email: contact_emailField.value
                         });
                     }
                 });
@@ -411,8 +407,7 @@ function refreshCallbacks() {
                         locationField.value = x._values.location;
                         employeeField.value = x._values.employee;
                         websiteField.value = x._values.website;
-                        contact_emailField.value = x._values.contact_email;
-                        sinceField.value = x._values.since;
+                        contact_emailField.value = x._values.contact_email
                     }
                 });
             });
@@ -513,7 +508,6 @@ function clearFields() {
     employeeField.value = "";
     websiteField.value = "";
     contact_emailField.value = "";
-    sinceField.value = "";
 }
 
 // Delete Multiple Records
