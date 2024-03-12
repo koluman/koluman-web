@@ -1,13 +1,3 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: CRM-companies Js File
-*/
-
-
-// list js
 var checkAll = document.getElementById("checkAll");
 if (checkAll) {
     checkAll.onclick = function () {
@@ -85,33 +75,7 @@ var companyList = new List("companyList", options).on("updated", function (list)
     }
 });
 
-/*const xhttp = new XMLHttpRequest();
-xhttp.onload = function () {
-    var json_records = JSON.parse(this.responseText);
-    Array.from(json_records).forEach(function (raw){
-        companyList.add({
-            id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.id + "</a>",
-            name: raw.name,
-            owner: raw.owner,
-            desc: raw.desc,
-            industry_type: raw.industry_type,
-            star_value: raw.star_value,
-            location: raw.location,
-            employee: raw.employee,
-            website: raw.website,
-            contact_email: raw.contact_email,
-            since: raw.since,
-            image_src: raw.image_src
-        });
-        companyList.sort('id', { order: "desc" });
-        refreshCallbacks();
-    });
-    companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
-}
-xhttp.open("GET", "build/json/company-list.json");
-xhttp.send();*/
 dealerships();
-
 function dealerships() {
     $.ajax({
         type: 'GET',
