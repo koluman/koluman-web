@@ -99,37 +99,26 @@
                                             </div>
                                         </th>
                                         <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                                class="fw-medium link-primary">#VZ001</a></td>
+                                                class="fw-medium link-primary"></a></td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{ URL::asset('build/images/brands/dribbble.png') }}"
+                                                    <img src=""
                                                         alt=""
                                                         class="avatar-xxs rounded-circle image_src object-fit-cover">
                                                 </div>
-                                                <div class="flex-grow-1 ms-2 name">Nesta Technologies
+                                                <div class="flex-grow-1 ms-2 name">
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="owner">Tonya Noble</td>
-                                        <td class="industry_type">Computer Industry</td>
-                                        <td><span class="star_value">4.5</span> <i
+                                        <td class="owner"></td>
+                                        <td class="industry_type"></td>
+                                        <td><span class="star_value"></span> <i
                                                 class="ri-star-fill text-warning align-bottom"></i></td>
-                                        <td class="location">Los Angeles, USA</td>
+                                        <td class="location"></td>
                                         <td>
                                             <ul class="list-inline hstack gap-2 mb-0">
-                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" data-bs-placement="top" title="Call">
-                                                    <a href="javascript:void(0);" class="text-muted d-inline-block">
-                                                        <i class="ri-phone-line fs-16"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                    data-bs-trigger="hover" data-bs-placement="top" title="Message">
-                                                    <a href="javascript:void(0);" class="text-muted d-inline-block">
-                                                        <i class="ri-question-answer-line fs-16"></i>
-                                                    </a>
-                                                </li>
+                                              
                                                 <li class="list-inline-item" data-bs-toggle="tooltip"
                                                     data-bs-trigger="hover" data-bs-placement="top" title="View">
                                                     <a href="javascript:void(0);" class="view-item-btn"><i
