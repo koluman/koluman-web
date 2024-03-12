@@ -10,20 +10,20 @@ File: CRM-companies Js File
 // list js
 var checkAll = document.getElementById("checkAll");
 if (checkAll) {
-  checkAll.onclick = function () {
-    var checkboxes = document.querySelectorAll('.form-check-all input[type="checkbox"]');
-    var checkedCount = document.querySelectorAll('.form-check-all input[type="checkbox"]:checked').length;
-    for (var i = 0; i < checkboxes.length; i++) {
-      checkboxes[i].checked = this.checked;
-      if (checkboxes[i].checked) {
-          checkboxes[i].closest("tr").classList.add("table-active");
-      } else {
-          checkboxes[i].closest("tr").classList.remove("table-active");
-      }
-    }
+    checkAll.onclick = function () {
+        var checkboxes = document.querySelectorAll('.form-check-all input[type="checkbox"]');
+        var checkedCount = document.querySelectorAll('.form-check-all input[type="checkbox"]:checked').length;
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = this.checked;
+            if (checkboxes[i].checked) {
+                checkboxes[i].closest("tr").classList.add("table-active");
+            } else {
+                checkboxes[i].closest("tr").classList.remove("table-active");
+            }
+        }
 
-    (checkedCount > 0) ? document.getElementById("remove-actions").style.display = 'none' : document.getElementById("remove-actions").style.display = 'block';
-  };
+        (checkedCount > 0) ? document.getElementById("remove-actions").style.display = 'none': document.getElementById("remove-actions").style.display = 'block';
+    };
 }
 
 var perPage = 8;
@@ -42,7 +42,10 @@ var options = {
         "website",
         "contact_email",
         "since",
-        { attr: "src", name: "image_src" }
+        {
+            attr: "src",
+            name: "image_src"
+        }
     ],
     page: perPage,
     pagination: true,
@@ -82,7 +85,7 @@ var companyList = new List("companyList", options).on("updated", function (list)
     }
 });
 
-const xhttp = new XMLHttpRequest();
+/*const xhttp = new XMLHttpRequest();
 xhttp.onload = function () {
     var json_records = JSON.parse(this.responseText);
     Array.from(json_records).forEach(function (raw){
@@ -106,7 +109,59 @@ xhttp.onload = function () {
     companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
 }
 xhttp.open("GET", "build/json/company-list.json");
-xhttp.send();
+xhttp.send();*/
+$.ajax({
+    url: "https://mobiloby.app/koluman/web/getApiToken",
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+        if (data.success == 1) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://mobiloby.app/koluman/web/api/getdealerships',
+                dataType: 'json',
+                headers: {
+                    "Authorization": 'Bearer ' + data.token
+                },
+                success: function (data) {
+                    let a = '<option value="0">Lütfen Seçiniz</option>';
+                    if (data.success == 1) {
+                        $.each(data.dealerships, function (index, raw) {
+                            companyList.add({
+                                id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
+                                name: raw.dealership_name,
+                                owner: raw.dealership_city,
+                                desc: raw.dealership_id,
+                                industry_type: raw.dealership_latitude,
+                                star_value: raw.dealership_longitude,
+                                location: raw.dealership_phone,
+                                employee: raw.dealership_description,
+                                website: raw.dealership_image_url,
+                                contact_email: raw.dealership_address,
+                                since: raw.dealership_image_url,
+                                image_src: raw.dealership_image_url
+                            });
+            
+                            // Şirket listesini 'id' özelliğine göre azalan sırayla sıralayın
+                            companyList.sort('id', {
+                                order: "desc"
+                            });
+            
+                            // Geri çağrı fonksiyonlarını güncelleyin
+                            refreshCallbacks();
+                        });
+                    }
+                }
+            });
+           
+
+            companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
+        }
+    },
+    error: function (xhr, status, error) {
+        console.error("Ajax hatası:", status, error);
+    }
+});
 
 isCount = new DOMParser().parseFromString(
     companyList.items.slice(-1)[0]._values.id,
@@ -118,9 +173,9 @@ document.querySelector("#company-logo-input").addEventListener("change", functio
     var preview = document.querySelector("#companylogo-img");
     var file = document.querySelector("#company-logo-input").files[0];
     var reader = new FileReader();
-    reader.addEventListener("load",function () {
+    reader.addEventListener("load", function () {
         preview.src = reader.result;
-    },false);
+    }, false);
     if (file) {
         reader.readAsDataURL(file);
     }
@@ -144,7 +199,7 @@ var idField = document.getElementById("id-field"),
     editBtn = document.getElementById("edit-btn"),
     removeBtns = document.getElementsByClassName("remove-item-btn"),
     editBtns = document.getElementsByClassName("edit-item-btn");
-    viewBtns = document.getElementsByClassName("view-item-btn");
+viewBtns = document.getElementsByClassName("view-item-btn");
 refreshCallbacks();
 
 document.getElementById("showModal").addEventListener("show.bs.modal", function (e) {
@@ -207,9 +262,11 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                     website: websiteField.value,
                     contact_email: contact_emailField.value,
                     since: sinceField.value
-                    
+
                 });
-                companyList.sort('id', { order: "desc" });
+                companyList.sort('id', {
+                    order: "desc"
+                });
                 document.getElementById("close-modal").click();
                 clearFields();
                 refreshCallbacks();
@@ -222,7 +279,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                     timer: 2000,
                     showCloseButton: true
                 });
-            }else if(
+            } else if (
                 companyNameField.value !== "" &&
                 ownerField.value !== "" &&
                 industry_typeField.value !== "" &&
@@ -232,39 +289,39 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
                 sinceField.value !== "" && editlist) {
-                    var editValues = companyList.get({
-                        id: idField.value,
-                    });
-                    Array.from(editValues).forEach(function (x) {
-                        isid = new DOMParser().parseFromString(x._values.id, "text/html");
-                        var selectedid = isid.body.firstElementChild.innerHTML;
-                        if (selectedid == itemId) {
-                            x.values({
-                                id: `<a href="javascript:void(0);" class="fw-medium link-primary">${idField.value}</a>`,
-                                image_src: companyLogoImg.src,
-                                name: companyNameField.value,
-                                owner: ownerField.value,
-                                industry_type: industry_typeField.value,
-                                star_value: star_valueField.value,
-                                location: locationField.value,
-                                employee: employeeField.value,
-                                website: websiteField.value,
-                                contact_email: contact_emailField.value,
-                                since: sinceField.value
-                            });
-                        }
-                    });
-                    document.getElementById("close-modal").click();
-                    clearFields();
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Company updated Successfully!',
-                        showConfirmButton: false,
-                        timer: 2000,
-                        showCloseButton: true
-                    });
-                }
+                var editValues = companyList.get({
+                    id: idField.value,
+                });
+                Array.from(editValues).forEach(function (x) {
+                    isid = new DOMParser().parseFromString(x._values.id, "text/html");
+                    var selectedid = isid.body.firstElementChild.innerHTML;
+                    if (selectedid == itemId) {
+                        x.values({
+                            id: `<a href="javascript:void(0);" class="fw-medium link-primary">${idField.value}</a>`,
+                            image_src: companyLogoImg.src,
+                            name: companyNameField.value,
+                            owner: ownerField.value,
+                            industry_type: industry_typeField.value,
+                            star_value: star_valueField.value,
+                            location: locationField.value,
+                            employee: employeeField.value,
+                            website: websiteField.value,
+                            contact_email: contact_emailField.value,
+                            since: sinceField.value
+                        });
+                    }
+                });
+                document.getElementById("close-modal").click();
+                clearFields();
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Company updated Successfully!',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    showCloseButton: true
+                });
+            }
         }
     }, false)
 })
@@ -278,7 +335,7 @@ function ischeckboxcheck() {
             } else {
                 e.target.closest("tr").classList.remove("table-active");
             }
-  
+
             var checkedCount = document.querySelectorAll('[name="chk_child"]:checked').length;
             if (e.target.closest("tr").classList.contains("table-active")) {
                 (checkedCount > 0) ? document.getElementById("remove-actions").style.display = 'block': document.getElementById("remove-actions").style.display = 'none';
@@ -291,7 +348,7 @@ function ischeckboxcheck() {
 
 
 function refreshCallbacks() {
-    if(removeBtns){
+    if (removeBtns) {
         Array.from(removeBtns).forEach(function (btn) {
             btn.addEventListener("click", function (e) {
                 e.target.closest("tr").children[1].innerText;
@@ -299,13 +356,13 @@ function refreshCallbacks() {
                 var itemValues = companyList.get({
                     id: itemId,
                 });
-    
+
                 Array.from(itemValues).forEach(function (x) {
                     deleteid = new DOMParser().parseFromString(x._values.id, "text/html");
-    
+
                     var isElem = deleteid.body.firstElementChild;
                     var isdeleteid = deleteid.body.firstElementChild.innerHTML;
-    
+
                     if (isdeleteid == itemId) {
                         document.getElementById("delete-record").addEventListener("click", function () {
                             companyList.remove("id", isElem.outerHTML);
@@ -317,7 +374,7 @@ function refreshCallbacks() {
         });
     }
 
-    if(editBtns){
+    if (editBtns) {
         Array.from(editBtns).forEach(function (btn) {
             btn.addEventListener("click", function (e) {
                 e.target.closest("tr").children[1].innerText;
@@ -325,7 +382,7 @@ function refreshCallbacks() {
                 var itemValues = companyList.get({
                     id: itemId,
                 });
-    
+
                 Array.from(itemValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
@@ -456,7 +513,7 @@ function clearFields() {
 }
 
 // Delete Multiple Records
-function deleteMultiple(){
+function deleteMultiple() {
     ids_array = [];
     var items = document.getElementsByName('chk_child');
     for (i = 0; i < items.length; i++) {
