@@ -123,13 +123,13 @@ function dealerships() {
                     companyList.add({
                         id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
                         name: raw.dealership_name,
-                        website: raw.company_id,
                         owner: raw.dealership_city,
                         desc: raw.dealership_id,
                         industry_type: raw.dealership_latitude,
                         star_value: raw.dealership_longitude,
                         location: raw.dealership_phone,
                         employee: raw.dealership_description,
+                        website: raw.company_id,
                         contact_email: raw.dealership_address,
                         since: raw.dealership_image_url,
                         image_src: raw.dealership_image_url
@@ -449,13 +449,6 @@ function refreshCallbacks() {
                                 <table class="table table-borderless mb-0">
                                     <tbody>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Website</td>
-                                            <td>
-                                                <a href="javascript:void(0);"
-                                                    class="link-primary text-decoration-underline">${x._values.website}</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td class="fw-medium" scope="row">Industry Type</td>
                                             <td>${x._values.industry_type}</td>
                                         </tr>
@@ -471,7 +464,13 @@ function refreshCallbacks() {
                                             <td class="fw-medium" scope="row">Rating</td>
                                             <td>${x._values.star_value} <i class="ri-star-fill text-warning align-bottom"></i></td>
                                         </tr>
-                                       
+                                        <tr>
+                                            <td class="fw-medium" scope="row">Website</td>
+                                            <td>
+                                                <a href="javascript:void(0);"
+                                                    class="link-primary text-decoration-underline">${x._values.website}</a>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td class="fw-medium" scope="row">Contact Email</td>
                                             <td>${x._values.contact_email}</td>
