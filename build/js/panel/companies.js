@@ -263,6 +263,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 websiteField.value !== "" &&
                 contact_emailField.value !== "" &&
                 !editlist) {
+                console.log(companyNameField);
 
                 var formData = new FormData();
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
