@@ -230,13 +230,7 @@
                                                         placeholder="Enter owner name" required />
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label for="employee-field" class="form-label">Açıklama</label>
-                                                    <input type="text" id="employee-field" class="form-control"
-                                                        placeholder="Enter employee" required />
-                                                </div>
-                                            </div>
+                                         
                                             <div class="col-lg-6">
                                                 <div>
                                                     <label for="website-field" class="form-label">Firma</label>
@@ -253,6 +247,13 @@
                                                         <option value="Textiles: Clothing, Footwear">
                                                             Textiles: Clothing, Footwear</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label for="employee-field" class="form-label">Açıklama</label>
+                                                    <textarea type="text" id="employee-field" class="form-control"
+                                                        placeholder="Enter employee" required row="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
