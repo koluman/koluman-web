@@ -433,10 +433,8 @@ function refreshCallbacks() {
                                             <td>${x._values.star_value}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-medium" scope="row">Company</td>
-                                            <td>
-                                                <a href="javascript:void(0);"
-                                                    class="link-primary text-decoration-underline">${x._values.website}</a>
+                                            <td class="fw-medium" scope="row">Firma</td>
+                                            <td>${x._values.website}
                                             </td>
                                         </tr>
                                         <tr>
