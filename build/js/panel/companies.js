@@ -333,7 +333,6 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 var editValues = companyList.get({
                     id: idField.value,
                 });
-                console.log(editValues);
                 Array.from(editValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
@@ -353,6 +352,8 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                         });
                     }
                 });
+                console.log(idField.value);
+
                 var formData = new FormData();
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
                 formData.append('dealership_name', companyNameField.value);
