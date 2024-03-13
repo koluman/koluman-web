@@ -37,6 +37,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm">
+                                <div class="d-flex justify-content-sm-end">
+                                   <select class="form-control" name="idCompany" id="idCompany">
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
