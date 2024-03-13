@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     getcity();
 });
 
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -102,6 +103,8 @@ function getcompany() {
                             }
                             $("#website-field").html('');
                             $("#website-field").html(a);
+                            $("#sort").html('');
+                            $("#sort").html(a);
                         }
                     }
                 });

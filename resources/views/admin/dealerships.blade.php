@@ -46,6 +46,14 @@
                                 <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
+                        <div class="col-md-auto ms-auto">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-muted">Fitrele: </span>
+                                <select class="form-select" id="sort" name="sort">
+                                   
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
