@@ -116,7 +116,7 @@ function getcompany() {
                     },
                     success: function (data) {
                         let a = '<option value="0">Lütfen Seçiniz</option>';
-                        a+= '<option value="-1">Hepsi</option>';
+                        a+= '<option value="-1">Genel</option>';
                         if (data.success == 1) {
                             for (var i = 0; i < data.companies.length; i++) {
                                 a += '<option value="' + data.companies[i]["company_id"] + '">' + data.companies[i]["company_name"] + '</option>';
