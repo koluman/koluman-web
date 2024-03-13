@@ -184,13 +184,15 @@ function dealerships() {
 
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
-    console.log(datam);
     var filteredItems = datam.filter(function (item) {
+        console.log(items);
+        console.log(item.company.company_id);
+
         if (selectedValue === "0") {
             return true; // Filtre yoksa tüm öğeleri göster
         } else {
             // Seçilen değere göre filtreleme
-            return item.company.company_id === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
+            return item.company.company_id == selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
  
