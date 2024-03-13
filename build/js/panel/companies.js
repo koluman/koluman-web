@@ -85,19 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function filterCompanies(selectedValue) {
-    console.log(selectedValue);
-    // Tüm şirketleri gizle
-    var companies = document.querySelectorAll('.company');
+    var companies = document.querySelectorAll('.company'); // Tüm şirketleri seç
     companies.forEach(function (company) {
-        company.style.display = 'none';
-    });
-
-    // Seçilen değere göre filtreleme
-    var filteredCompanies = document.querySelectorAll('.company[data-company-id="' + selectedValue + '"]');
-    filteredCompanies.forEach(function (company) {
-        company.style.display = 'block';
+        var companyWebsite = company.getAttribute('data-website'); // Şirketin websitesini al
+        if (selectedValue === "0" || companyWebsite === selectedValue) { // Eğer "Tümü" seçildiyse veya şirketin websitesi seçilen değere eşitse
+            company.style.display = 'table-row'; // Şirketi göster
+        } else {
+            company.style.display = 'none'; // Aksi halde şirketi gizle
+        }
     });
 }
+
 function getcompany() {
     $.ajax({
         type: 'GET',
@@ -533,7 +531,6 @@ function refreshCallbacks() {
                 Array.from(itemValues).forEach(function (x) {
                     isid = new DOMParser().parseFromString(x._values.id, "text/html");
                     var selectedid = isid.body.firstElementChild.innerHTML;
-                    console.log(x._values);
                     if (selectedid == itemId) {
                         editlist = true;
                         idField.value = selectedid;
