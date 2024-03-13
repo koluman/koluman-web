@@ -85,19 +85,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function filterCompanies(selectedValue) {
-    companyList.filter(function (item) {
+    // Filtreleme işlemini gerçekleştir
+    var filteredItems = companyList.filter(function (item) {
         if (selectedValue === "0") { 
-            return item; 
+            return true; // Filtre yoksa tüm öğeleri göster
         } else {
-            console.log(item.values().website);
-            return item.values().website === selectedValue; 
+            // Seçilen değere göre filtreleme
+            return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
-    companyList.sort('id', {
-        order: "desc"
-    });
 
-    console.log(companyList);
+    // Filtrelenmiş öğeleri tabloya ekle
+    companyList.clear();
+    companyList.add(filteredItems);
+
+    // Tabloyu yeniden düzenle (sıralama, sayfalama vb.)
+    companyList.sort('id', { order: "desc" });
     refreshCallbacks();
 }
 
