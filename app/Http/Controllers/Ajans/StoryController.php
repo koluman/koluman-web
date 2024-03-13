@@ -24,7 +24,7 @@ class StoryController extends Controller
             $stories = Stories::select(
                 'stories.story_id',
                 'stories.company_id',
-                DB::raw("IF(stories.company_id = -1, 'Tüm Firmalar', companies.company_name) as company_name"),
+                DB::raw("IF(stories.company_id = -1, 'Genel', companies.company_name) as company_name"),
                 'stories.story_title',
                 'stories.story_small_image',
                 'stories.story_big_image',
