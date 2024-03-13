@@ -78,9 +78,26 @@ document.addEventListener("DOMContentLoaded", function () {
     dealerships();
     getcompany();
     getcity();
+    document.getElementById('sort').addEventListener('change', function () {
+        var selectedValue = this.value; // Seçilen değeri al
+        filterCompanies(selectedValue); // Şirketleri bu değere göre filtrele
+    });
 });
 
+function filterCompanies(selectedValue) {
+    console.log(selectedValue);
+    // Tüm şirketleri gizle
+    var companies = document.querySelectorAll('.company');
+    companies.forEach(function (company) {
+        company.style.display = 'none';
+    });
 
+    // Seçilen değere göre filtreleme
+    var filteredCompanies = document.querySelectorAll('.company[data-company-id="' + selectedValue + '"]');
+    filteredCompanies.forEach(function (company) {
+        company.style.display = 'block';
+    });
+}
 function getcompany() {
     $.ajax({
         type: 'GET',
