@@ -79,22 +79,23 @@ document.addEventListener("DOMContentLoaded", function () {
     getcompany();
     getcity();
     document.getElementById('sort').addEventListener('change', function () {
-        var selectedValue = this.value; // Seçilen değeri al
-        filterCompanies(selectedValue); // Şirketleri bu değere göre filtrele
+        var selectedValue = this.value; 
+        filterCompanies(selectedValue); 
     });
 });
 
 function filterCompanies(selectedValue) {
-    var companies = document.querySelectorAll('.company'); // Tüm şirketleri seç
-    companies.forEach(function (company) {
-        var companyWebsite = company.getAttribute('data-website'); // Şirketin websitesini al
-        if (selectedValue === "0" || companyWebsite === selectedValue) { // Eğer "Tümü" seçildiyse veya şirketin websitesi seçilen değere eşitse
-            company.style.display = 'table-row'; // Şirketi göster
+    companyList.filter(function (item) {
+        if (selectedValue === "0") { 
+            return true; 
         } else {
-            company.style.display = 'none'; // Aksi halde şirketi gizle
+            return item.values().website === selectedValue; 
         }
     });
+    
 }
+
+
 
 function getcompany() {
     $.ajax({
@@ -381,7 +382,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_description', employeeField.value);
                 formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
-                formData.append('dealership_id',idField.value.replace("#VZ", ""));
+                formData.append('dealership_id', idField.value.replace("#VZ", ""));
                 $.ajax({
                     url: "https://mobiloby.app/koluman/web/updatedealership",
                     method: 'POST',
@@ -474,7 +475,10 @@ function refreshCallbacks() {
                                 url: "https://mobiloby.app/koluman/web/deletedealership",
                                 method: 'POST',
                                 dataType: "json",
-                                data: {id:isdeleteid.replace("#VZ", ""),_token:$('meta[name="csrf-token"]').attr('content')},
+                                data: {
+                                    id: isdeleteid.replace("#VZ", ""),
+                                    _token: $('meta[name="csrf-token"]').attr('content')
+                                },
                                 success: function (data) {
                                     if (data.success == 1) {
                                         Swal.fire({
@@ -511,7 +515,7 @@ function refreshCallbacks() {
                                     console.error(error);
                                 }
                             });
-                           
+
                         });
                     }
                 });
@@ -671,7 +675,10 @@ function deleteMultiple() {
                     url: "https://mobiloby.app/koluman/web/deletealldealership",
                     method: 'POST',
                     dataType: "json",
-                    data: {ids_array:ids_array,_token:$('meta[name="csrf-token"]').attr('content')},
+                    data: {
+                        ids_array: ids_array,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
                     success: function (data) {
                         if (data.success == 1) {
                             Swal.fire({
@@ -714,8 +721,8 @@ function deleteMultiple() {
                     }
                 });
 
-             
-              
+
+
             }
         });
     } else {
