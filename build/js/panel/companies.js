@@ -93,6 +93,10 @@ function filterCompanies(selectedValue) {
             return item.values().website === selectedValue; 
         }
     });
+    companyList.sort('id', {
+        order: "desc"
+    });
+
     console.log(companyList);
     refreshCallbacks();
 }
