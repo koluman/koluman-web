@@ -293,11 +293,14 @@ function SearchData() {
     }
       
     if (selectedCompany && selectedCompany !== "-1") {
-
         filteredData = filteredData.filter(function (b) {
             return b.company_id == selectedCompany;
         });
+    } else if (selectedCompany === "-1") {
+        // Tüm şirketleri göstermek için filtrelemeyi kaldır
+        filteredData = announcementListAllData;
     }
+
 
     // Arama filtresi
     if (searchText) {
