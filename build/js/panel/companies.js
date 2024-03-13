@@ -87,12 +87,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function filterCompanies(selectedValue) {
     companyList.filter(function (item) {
         if (selectedValue === "0") { 
-            return true; 
+            return item; 
         } else {
             return item.values().website === selectedValue; 
         }
     });
-    console.log(companyList);
     refreshCallbacks();
 }
 
