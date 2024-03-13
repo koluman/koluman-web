@@ -38,6 +38,7 @@
                                     <option value="1">Haber</option>
                                     <option value="2">Duyuru</option>
                                     <option value="3">Kampanya</option>
+                                    <option value="-1">Hepsi</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 mb-3">
