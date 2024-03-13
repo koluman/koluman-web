@@ -43,11 +43,11 @@ function getcompany() {
                             $("#idCompany").html(a);
                             $("#idCompany").change(function () {
                                 var selectedCompanyId = $(this).val();
-                                if (selectedCompanyId === "0") {
+                                if (selectedCompanyId == "0") {
                                     updateTable(productListAllData);
                                 } else {
                                     var filteredData = productListAllData.filter(function (item) {
-                                        return item.company_id === selectedCompanyId;
+                                        return item.company_id == selectedCompanyId;
                                     });
                                     updateTable(filteredData);
                                 }
