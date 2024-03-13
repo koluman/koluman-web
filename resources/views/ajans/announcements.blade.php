@@ -30,8 +30,8 @@
                                             class="ri-add-line align-bottom me-1"></i>Duyuru/Haber/Kampanya Ekle</a>
                                 </div>
                             </div>
-                    <div class="row g-3">
-                                <div class="col-xxl-6 col-sm-6">
+                            <div class="row g-3">
+                                <div class="col-xxl-5 col-sm-6">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control" id="searchProductList"
                                             placeholder="Ara...">
@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="col-xxl-3 col-sm-6">
                                     <div>
-                                        <select class="form-control"  name="idCompany" id="idCompany">
-                                          
+                                        <select class="form-control" name="idCompany" id="idCompany">
+
                                         </select>
                                     </div>
                                 </div>
@@ -108,8 +108,6 @@
         <!-- end col -->
     </div>
     <!-- end row -->
-
-
 @endsection
 @section('script')
     <script src="{{ URL::asset('build/libs/nouislider/nouislider.min.js') }}"></script>
