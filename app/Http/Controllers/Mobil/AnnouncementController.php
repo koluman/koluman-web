@@ -12,7 +12,10 @@ class AnnouncementController extends Controller
     {
         try {
 
-            $announcement = Announcement::with('company:company_id,company_name')->get();
+            $announcement = Announcement::with('company:company_id,company_name')
+                ->where('company_id', -1)
+                ->orWhereDoesntHave('company')
+                ->get();
             if (!$announcement->isEmpty()) {
                 $responseData = [
                     "success" => 1,
@@ -28,7 +31,7 @@ class AnnouncementController extends Controller
                             "isActive" => $item->isActive,
                             "company_name" => $item->company->company_name,
                         ];
-                    }),                    
+                    }),
                     "message" => "Duyuru, haber ve kampanya listesi getirildi",
                 ];
             } else {
