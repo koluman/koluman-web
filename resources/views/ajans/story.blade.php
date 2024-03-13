@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
-                                    <div>
+                                    <div class="d-flex align-items-center gap-2 ms-2">
                                         <select class="form-control" name="idCompany" id="idCompany">
                                         </select>
                                     </div>
