@@ -33,7 +33,7 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a = '<option value="0">Lütfen Seçiniz</option>';
+                        let a = '<option value="0">Hepsi</option>';
                         a+= '<option value="-1">Genel</option>';
                         if (data.success == 1) {
                             for (var i = 0; i < data.companies.length; i++) {
@@ -41,6 +41,17 @@ function getcompany() {
                             }
                             $("#idCompany").html('');
                             $("#idCompany").html(a);
+                            $("#idCompany").change(function () {
+                                var selectedCompanyId = $(this).val();
+                                if (selectedCompanyId === "0") {
+                                    updateTable(productListAllData);
+                                } else {
+                                    var filteredData = productListAllData.filter(function (item) {
+                                        return item.company_id === selectedCompanyId;
+                                    });
+                                    updateTable(filteredData);
+                                }
+                            });
                         }
                     }
                 });
