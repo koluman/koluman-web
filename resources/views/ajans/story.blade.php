@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
+                                    <div class="ms-2">
                                         <select class="form-control" name="idCompany" id="idCompany">
                                         </select>
                                     </div>
