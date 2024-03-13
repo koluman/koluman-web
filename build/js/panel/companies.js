@@ -189,7 +189,7 @@ function filterCompanies(selectedValue) {
             return true; // Filtre yoksa tüm öğeleri göster
         } else {
             // Seçilen değere göre filtreleme
-            return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
+            return item.company.company_id === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
     console.log(companyList);
