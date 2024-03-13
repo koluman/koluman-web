@@ -31,14 +31,21 @@
                                 </div>
                             </div>
                     <div class="row g-3">
-                                <div class="col-xxl-7 col-sm-6">
+                                <div class="col-xxl-6 col-sm-6">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control" id="searchProductList"
                                             placeholder="Ara...">
                                         <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
-                                <div class="col-xxl-4 col-sm-6">
+                                <div class="col-xxl-3 col-sm-6">
+                                    <div>
+                                        <select class="form-control"  name="idCompany" id="idCompany">
+                                          
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-sm-6">
                                     <div>
                                         <select class="form-control" data-choices data-choices-search-false
                                             name="choices-single-default" id="idStatus">

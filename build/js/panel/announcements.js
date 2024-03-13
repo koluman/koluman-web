@@ -7,7 +7,41 @@ File: Ecommerce product list Js File
 */
 
 var announcementListAllData = [];
-announcements();
+document.addEventListener('DOMContentLoaded', function () {
+    announcements();
+    getcompany();
+});
+
+function getcompany() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success == 1) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": 'Bearer ' + data.token
+                    },
+                    success: function (data) {
+                        let a = '<option value="0">Lütfen Seçiniz</option>';
+                        a+= '<option value="-1">Genel</option>';
+                        if (data.success == 1) {
+                            for (var i = 0; i < data.companies.length; i++) {
+                                a += '<option value="' + data.companies[i]["company_id"] + '">' + data.companies[i]["company_name"] + '</option>';
+                            }
+                            $("#idCompany").html('');
+                            $("#idCompany").html(a);
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
 function announcements() {
     $.ajax({
             type: 'GET',
