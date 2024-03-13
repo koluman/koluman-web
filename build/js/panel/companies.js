@@ -92,6 +92,7 @@ function filterCompanies(selectedValue) {
             return item.values().website === selectedValue; 
         }
     });
+    console.log(companyList);
     
 }
 
