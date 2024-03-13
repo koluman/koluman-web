@@ -94,6 +94,9 @@ function filterCompanies(selectedValue) {
             return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
+    console.log(companyList);
+    console.log(selectedValue);
+
     console.log(filteredItems);
     // Filtrelenmiş öğeleri tabloya ekle
     companyList.clear();
