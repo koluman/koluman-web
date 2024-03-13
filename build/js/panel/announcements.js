@@ -27,7 +27,7 @@ function getcompany() {
                         "Authorization": 'Bearer ' + data.token
                     },
                     success: function (data) {
-                        let a = '<option value="0">Lütfen Seçiniz</option>';
+                        let a = '<option value="0">Hepsi</option>';
                         a+= '<option value="-1">Genel</option>';
                         if (data.success == 1) {
                             for (var i = 0; i < data.companies.length; i++) {
@@ -296,7 +296,11 @@ function SearchData() {
         filteredData = filteredData.filter(function (b) {
             return b.company_id == "-1";
         });
-    } else {
+    } 
+    else if (selectedCompany == "0") {
+
+       
+    }else {
         filteredData = filteredData.filter(function (b) {
             return b.company_id == selectedCompany || b.company_id == "-1";
         });
