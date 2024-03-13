@@ -93,7 +93,7 @@ function filterCompanies(selectedValue) {
         }
     });
     console.log(companyList);
-    
+    refreshCallbacks();
 }
 
 
