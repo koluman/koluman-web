@@ -31,9 +31,8 @@
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
-                                        <input type="text" class="form-control" id="searchProductList"
-                                            placeholder="Ara...">
-                                        <i class="ri-search-line search-icon"></i>
+                                        <select class="form-control" name="idCompany" id="idCompany">
+                                        </select>
                                     </div>
                                 </div>
                             </div>
