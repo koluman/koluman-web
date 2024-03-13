@@ -89,6 +89,7 @@ function filterCompanies(selectedValue) {
         if (selectedValue === "0") { 
             return item; 
         } else {
+            console.log(item.values().website);
             return item.values().website === selectedValue; 
         }
     });
