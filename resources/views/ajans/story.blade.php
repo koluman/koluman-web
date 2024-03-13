@@ -23,7 +23,13 @@
                     <div class="card-header border-0">
                         <div class="row g-4">
                             <div class="col-sm-auto">
-                               <div class="d-flex justify-content-sm-end">
+                                <div>
+                                    <a href="{{route('storydetail')}}" class="btn btn-success" id="addproduct-btn"><i
+                                            class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
                                         <input type="text" class="form-control" id="searchProductList"
                                             placeholder="Ara...">
@@ -31,21 +37,12 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
+                            <div class="col-sm-auto">
+                                <div>
                                    <select class="form-control" name="idCompany" id="idCompany">
-
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                              <div>
-                                    <a href="{{route('storydetail')}}" class="btn btn-success" id="addproduct-btn"><i
-                                            class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
-                                </div>
-                                
-                            </div>
-                           
                         </div>
                     </div>
 

@@ -1,11 +1,7 @@
-
 var apiEndpoint = 'https://mobiloby.app/koluman/web/getstories';
-
-// AJAX isteği
 var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
-
 xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
@@ -30,16 +26,11 @@ function updateTable(data) {
             story_priority: item.story_priority,
         };
     });
-
-    // Tabloyu güncelle
     productListAll.updateConfig({
         data: tableData
     }).forceRender();
 }
 
-
-
-// table-product-list-all 
 
 var inputValueJson = sessionStorage.getItem('inputValue');
 if (inputValueJson) {
