@@ -277,6 +277,8 @@ function detay(id) {
 }
 function SearchData() {
     var selectedStatus = $("#idStatus").val();
+    var selectedCompany = $("#idCompany").val();
+
     var searchText = $('#searchProductList').val().toLowerCase();
 
     // Filtreleme ve arama işlemleri
@@ -289,7 +291,13 @@ function SearchData() {
             return b.announcement_state == selectedStatus;
         });
     }
-    console.log(filteredData);
+      
+    if (selectedCompany && selectedCompany !== "-1") {
+
+        filteredData = filteredData.filter(function (b) {
+            return b.company_id == selectedCompany;
+        });
+    }
 
     // Arama filtresi
     if (searchText) {
