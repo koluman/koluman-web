@@ -28,6 +28,13 @@
                                             class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
                                 </div>
                             </div>
+                             <div class="col-sm">
+                                <div class="d-flex justify-content-sm-end">
+                                   <select class="form-control" name="idCompany" id="idCompany">
+
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm">
                                 <div class="d-flex justify-content-sm-end">
                                     <div class="search-box ms-2">
@@ -37,13 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
-                                   <select class="form-control" name="idCompany" id="idCompany">
-
-                                    </select>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
 
