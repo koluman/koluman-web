@@ -292,15 +292,16 @@ function SearchData() {
         });
     }
       
-    if (selectedCompany && selectedCompany !== "-1") {
+    if (selectedCompany === "-1") {
         filteredData = filteredData.filter(function (b) {
-            return b.company_id == selectedCompany;
+            return b.company_id == "-1";
         });
-    } else if (selectedCompany === "-1") {
-        // Tüm şirketleri göstermek için filtrelemeyi kaldır
-        filteredData = announcementListAllData;
+    } else {
+        filteredData = filteredData.filter(function (b) {
+            return b.company_id == selectedCompany || b.company_id == "-1";
+        });
     }
-
+    
 
     // Arama filtresi
     if (searchText) {
