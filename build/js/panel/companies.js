@@ -184,6 +184,7 @@ function dealerships() {
 
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
+    console.log(datam);
     var filteredItems = datam.filter(function (item) {
         if (selectedValue === "0") {
             return true; // Filtre yoksa tüm öğeleri göster
@@ -192,10 +193,7 @@ function filterCompanies(selectedValue) {
             return item.company.company_id === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
-    console.log(companyList);
-    console.log(selectedValue);
-
-    console.log(filteredItems);
+ 
     $.each(filteredItems, function (index, raw) {
         companyList.add({
             id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
