@@ -46,9 +46,9 @@ var options = {
         })
     ]
 };
-var companyList;
+let datam=[];
 // Init list
-companyList = new List("companyList", options).on("updated", function (list) {
+var companyList = new List("companyList", options).on("updated", function (list) {
     list.matchingItems.length == 0 ?
         (document.getElementsByClassName("noresult")[0].style.display = "block") :
         (document.getElementsByClassName("noresult")[0].style.display = "none");
@@ -144,6 +144,7 @@ function dealerships() {
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
+                datam=data.dealerships;
                 $.each(data.dealerships, function (index, raw) {
                     companyList.add({
                         id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
@@ -183,7 +184,7 @@ function dealerships() {
 
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
-    var filteredItems = companyList.filter(function (item) {
+    var filteredItems = datam.filter(function (item) {
         if (selectedValue === "0") {
             return true; // Filtre yoksa tüm öğeleri göster
         } else {
@@ -195,15 +196,35 @@ function filterCompanies(selectedValue) {
     console.log(selectedValue);
 
     console.log(filteredItems);
-    // Filtrelenmiş öğeleri tabloya ekle
-    companyList.clear();
-    companyList.add(filteredItems);
+    $.each(filteredItems, function (index, raw) {
+        companyList.add({
+            id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
+            name: raw.dealership_name,
+            owner: raw.dealership_city,
+            desc: raw.dealership_id,
+            industry_type: raw.dealership_latitude,
+            star_value: raw.dealership_longitude,
+            location: raw.dealership_phone,
+            employee: raw.dealership_description,
+            website: raw.company.company_id,
+            contact_email: raw.dealership_address,
+            image_src: raw.dealership_image_url
+        });
 
-    // Tabloyu yeniden düzenle (sıralama, sayfalama vb.)
-    companyList.sort('id', {
-        order: "desc"
+        // Şirket listesini 'id' özelliğine göre azalan sırayla sıralayın
+        companyList.sort('id', {
+            order: "desc"
+        });
+
+        // Geri çağrı fonksiyonlarını güncelleyin
+        refreshCallbacks();
+        if (viewBtns.length > 0) {
+            viewBtns[0].click(); // İlk view butonunu tıkla
+        }
     });
-    refreshCallbacks();
+
+    // Örneğin, belirli bir şirket girişini yükledikten sonra kaldırmak istiyorsanız
+    companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
 }
 
 
