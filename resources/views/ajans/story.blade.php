@@ -23,9 +23,12 @@
                     <div class="card-header border-0">
                         <div class="row g-4">
                             <div class="col-sm-auto">
-                                <div>
-                                    <a href="{{route('storydetail')}}" class="btn btn-success" id="addproduct-btn"><i
-                                            class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
+                               <div class="d-flex justify-content-sm-end">
+                                    <div class="search-box ms-2">
+                                        <input type="text" class="form-control" id="searchProductList"
+                                            placeholder="Ara...">
+                                        <i class="ri-search-line search-icon"></i>
+                                    </div>
                                 </div>
                             </div>
                              <div class="col-sm">
@@ -36,13 +39,11 @@
                                 </div>
                             </div>
                             <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
-                                        <input type="text" class="form-control" id="searchProductList"
-                                            placeholder="Ara...">
-                                        <i class="ri-search-line search-icon"></i>
-                                    </div>
+                              <div>
+                                    <a href="{{route('storydetail')}}" class="btn btn-success" id="addproduct-btn"><i
+                                            class="ri-add-line align-bottom me-1"></i>Hikaye Ekle</a>
                                 </div>
+                                
                             </div>
                            
                         </div>
