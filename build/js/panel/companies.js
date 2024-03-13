@@ -46,8 +46,9 @@ var options = {
         })
     ]
 };
+var companyList;
 // Init list
-var companyList = new List("companyList", options).on("updated", function (list) {
+companyList = new List("companyList", options).on("updated", function (list) {
     list.matchingItems.length == 0 ?
         (document.getElementsByClassName("noresult")[0].style.display = "block") :
         (document.getElementsByClassName("noresult")[0].style.display = "none");
@@ -83,32 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
         filterCompanies(selectedValue);
     });
 });
-
-function filterCompanies(selectedValue) {
-    // Filtreleme işlemini gerçekleştir
-    var filteredItems = companyList.filter(function (item) {
-        if (selectedValue === "0") {
-            return true; // Filtre yoksa tüm öğeleri göster
-        } else {
-            // Seçilen değere göre filtreleme
-            return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
-        }
-    });
-    console.log(companyList);
-    console.log(selectedValue);
-
-    console.log(filteredItems);
-    // Filtrelenmiş öğeleri tabloya ekle
-    companyList.clear();
-    companyList.add(filteredItems);
-
-    // Tabloyu yeniden düzenle (sıralama, sayfalama vb.)
-    companyList.sort('id', {
-        order: "desc"
-    });
-    refreshCallbacks();
-}
-
 
 function getcompany() {
     $.ajax({
@@ -205,6 +180,32 @@ function dealerships() {
         }
     });
 }
+
+function filterCompanies(selectedValue) {
+    // Filtreleme işlemini gerçekleştir
+    var filteredItems = companyList.filter(function (item) {
+        if (selectedValue === "0") {
+            return true; // Filtre yoksa tüm öğeleri göster
+        } else {
+            // Seçilen değere göre filtreleme
+            return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
+        }
+    });
+    console.log(companyList);
+    console.log(selectedValue);
+
+    console.log(filteredItems);
+    // Filtrelenmiş öğeleri tabloya ekle
+    companyList.clear();
+    companyList.add(filteredItems);
+
+    // Tabloyu yeniden düzenle (sıralama, sayfalama vb.)
+    companyList.sort('id', {
+        order: "desc"
+    });
+    refreshCallbacks();
+}
+
 
 var globalFile;
 
