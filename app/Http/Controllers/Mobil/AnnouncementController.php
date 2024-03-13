@@ -26,7 +26,7 @@ class AnnouncementController extends Controller
                             "announcement_state" => $item->announcement_state,
                             "announcement_date" => $item->announcement_date,
                             "isActive" => $item->isActive,
-                            "company_name" => "Placeholder",
+                            "company_name" => "Tüm Firmalar",
                         ];
                     } else {
                         // Handle announcements with associated companies
