@@ -195,7 +195,8 @@ function filterCompanies(selectedValue) {
             return item.company.company_id == selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
- 
+    companyList.remove();
+
     $.each(filteredItems, function (index, raw) {
         companyList.add({
             id: '<a href="javascript:void(0);" class="fw-medium link-primary">#VZ' + raw.dealership_id + "</a>",
@@ -224,7 +225,6 @@ function filterCompanies(selectedValue) {
     });
 
     // Örneğin, belirli bir şirket girişini yükledikten sonra kaldırmak istiyorsanız
-    companyList.remove("id", `<a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a>`);
 }
 
 
