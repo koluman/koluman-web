@@ -78,31 +78,35 @@ document.addEventListener("DOMContentLoaded", function () {
     dealerships();
     getcompany();
     getcity();
-   
+    document.getElementById('sort').addEventListener('change', function () {
+        var selectedValue = this.value;
+        filterCompanies(selectedValue);
+    });
 });
+
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
     var filteredItems = companyList.filter(function (item) {
-        if (selectedValue === "0") { 
+        if (selectedValue === "0") {
             return true; // Filtre yoksa tüm öğeleri göster
         } else {
             // Seçilen değere göre filtreleme
             return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
-console.log(filteredItems);
+    console.log(filteredItems);
     // Filtrelenmiş öğeleri tabloya ekle
     companyList.clear();
     companyList.add(filteredItems);
 
     // Tabloyu yeniden düzenle (sıralama, sayfalama vb.)
-    companyList.sort('id', { order: "desc" });
+    companyList.sort('id', {
+        order: "desc"
+    });
     refreshCallbacks();
 }
-document.getElementById('sort').addEventListener('change', function () {
-    var selectedValue = this.value; 
-    filterCompanies(selectedValue); 
-});
+
+
 function getcompany() {
     $.ajax({
         type: 'GET',
