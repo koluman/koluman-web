@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoryRequest;
 use App\Models\Stories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StoryController extends Controller
 {
@@ -22,18 +23,15 @@ class StoryController extends Controller
         try {
             $stories = Stories::select(
                 'stories.story_id',
-                'companies.company_id',
-                'companies.company_name',
+                'stories.company_id',
+                DB::raw("IF(stories.company_id = -1, 'Tüm Firmalar', companies.company_name) as company_name"),
                 'stories.story_title',
                 'stories.story_small_image',
                 'stories.story_big_image',
                 'stories.story_priority',
                 'stories.story_state'
             )
-                ->leftJoin('companies', function($join) {
-                    $join->on('stories.company_id', '=', 'companies.company_id')
-                         ->where('stories.company_id', '<>', -1);
-                })
+                ->leftJoin('companies', 'stories.company_id', '=', 'companies.company_id')
                 ->orderBy('stories.story_id', 'asc')
                 ->get();
     
@@ -57,6 +55,7 @@ class StoryController extends Controller
         }
         return response()->json($responseData);
     }
+    
     
     public function getstoryid(Request $request)
     {
