@@ -30,10 +30,13 @@ class StoryController extends Controller
                 'stories.story_priority',
                 'stories.story_state'
             )
-                ->join('companies', 'stories.company_id', '=', 'companies.company_id')
+                ->leftJoin('companies', function($join) {
+                    $join->on('stories.company_id', '=', 'companies.company_id')
+                         ->where('stories.company_id', '<>', -1);
+                })
                 ->orderBy('stories.story_id', 'asc')
                 ->get();
-
+    
             if (!$stories->isEmpty()) {
                 $responseData = [
                     "success" => 1,
@@ -54,6 +57,7 @@ class StoryController extends Controller
         }
         return response()->json($responseData);
     }
+    
     public function getstoryid(Request $request)
     {
         try {
