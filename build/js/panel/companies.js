@@ -78,12 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
     dealerships();
     getcompany();
     getcity();
-    document.getElementById('sort').addEventListener('change', function () {
-        var selectedValue = this.value; 
-        filterCompanies(selectedValue); 
-    });
+   
 });
-
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
     var filteredItems = companyList.filter(function (item) {
@@ -94,7 +90,7 @@ function filterCompanies(selectedValue) {
             return item.values().website === selectedValue; // Değiştirmeniz gereken kısım burası olabilir
         }
     });
-
+console.log(filteredItems);
     // Filtrelenmiş öğeleri tabloya ekle
     companyList.clear();
     companyList.add(filteredItems);
@@ -103,9 +99,10 @@ function filterCompanies(selectedValue) {
     companyList.sort('id', { order: "desc" });
     refreshCallbacks();
 }
-
-
-
+document.getElementById('sort').addEventListener('change', function () {
+    var selectedValue = this.value; 
+    filterCompanies(selectedValue); 
+});
 function getcompany() {
     $.ajax({
         type: 'GET',
