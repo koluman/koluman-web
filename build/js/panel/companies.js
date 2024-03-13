@@ -185,7 +185,7 @@ function dealerships() {
 function filterCompanies(selectedValue) {
     // Filtreleme işlemini gerçekleştir
     var filteredItems = datam.filter(function (item) {
-        console.log(items);
+        console.log(item);
         console.log(item.company.company_id);
 
         if (selectedValue === "0") {
