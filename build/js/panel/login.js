@@ -4,7 +4,7 @@ $( "#loginbutton" ).click(function() {
         var password = $("#password-input").val();
         $.ajax({
           type: 'POST',
-          url: 'https://mobiloby.app/koluman/web/login',
+          url: '/login',
           data: {
             email: email,
             password: password,
@@ -14,7 +14,7 @@ $( "#loginbutton" ).click(function() {
           success: function (data) {
             console.log(data);
             if (data.success == 1) {
-              window.location.href = "https://mobiloby.app/koluman/web/"+data.redirectRoute; 
+              window.location.href = "/"+data.redirectRoute; 
             } else {
                 alert(data.message); 
             }
