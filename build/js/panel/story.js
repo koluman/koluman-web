@@ -17,7 +17,6 @@ xhr.send();
 document.addEventListener('DOMContentLoaded', function () {
     getcompany();
 });
-
 function getcompany() {
     $.ajax({
         type: 'GET',
