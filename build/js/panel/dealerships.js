@@ -88,13 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -123,7 +123,7 @@ function getcompany() {
 function getcity() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getcity',
+        url: 'getcity',
         dataType: 'json',
         success: function (data) {
             let a = '<option value="0">Lütfen Seçiniz</option>';
@@ -143,7 +143,7 @@ function getcity() {
 function dealerships() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getdealerships',
+        url: 'getdealerships',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
@@ -318,7 +318,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_address', contact_emailField.value);
                 formData.append('dealership_image_url', globalFile);
                 $.ajax({
-                    url: "https://mobiloby.app/koluman/web/adddealership",
+                    url: "adddealership",
                     method: 'POST',
                     dataType: "json",
                     data: formData,
@@ -409,7 +409,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
                 formData.append('dealership_image_url', globalFile);
                 formData.append('dealership_id', idField.value.replace("#VZ", ""));
                 $.ajax({
-                    url: "https://mobiloby.app/koluman/web/updatedealership",
+                    url: "updatedealership",
                     method: 'POST',
                     dataType: "json",
                     data: formData,
@@ -497,7 +497,7 @@ function refreshCallbacks() {
                     if (isdeleteid == itemId) {
                         document.getElementById("delete-record").addEventListener("click", function () {
                             $.ajax({
-                                url: "https://mobiloby.app/koluman/web/deletedealership",
+                                url: "deletedealership",
                                 method: 'POST',
                                 dataType: "json",
                                 data: {
@@ -697,7 +697,7 @@ function deleteMultiple() {
         }).then(function (result) {
             if (result.value) {
                 $.ajax({
-                    url: "https://mobiloby.app/koluman/web/deletealldealership",
+                    url: "deletealldealership",
                     method: 'POST',
                     dataType: "json",
                     data: {
