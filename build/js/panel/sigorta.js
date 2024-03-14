@@ -8,9 +8,9 @@ let sayi;
 function sigorta() {
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getallsigorta',
+        url: 'getallsigorta',
         data: {
-            _token: csrfToken, // CSRF token'ını gönder
+            _token: csrfToken, 
         },
         dataType: 'json',
         success: function (data) {
@@ -84,7 +84,7 @@ function sigortalist(data) {
 }
 
 function detay(id) {
-    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail/" + id;
+    window.location.href = "sigortadetail/" + id;
 
 }
 
@@ -217,5 +217,5 @@ function updatePageWithFilteredData(filteredData) {
 }
 
 document.getElementById("createsigorta").addEventListener("click", function () {
-    window.location.href = "https://mobiloby.app/koluman/web/sigortadetail";
+    window.location.href = "sigortadetail";
 });

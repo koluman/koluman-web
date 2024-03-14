@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -79,7 +79,7 @@ function getcompany() {
 function getdetail(id) {
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getannouncementid',
+        url: 'getannouncementid',
         dataType: 'json',
         data: {
             announcement_id: id,
@@ -106,7 +106,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
-                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                var pdfIconPath = "public/upload/pdf.png";
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
@@ -147,8 +147,8 @@ $("#addannouncement").click(function () {
     formData.append('announcement_img_url', announcement_img_url);
     formData.append('company_id', document.querySelector("#company_id").value);
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
-    if ($("#announcement_id").val() != "") url = "https://mobiloby.app/koluman/web/updateannouncement";
-    else url = "https://mobiloby.app/koluman/web/addannouncement"
+    if ($("#announcement_id").val() != "") url = "updateannouncement";
+    else url = "addannouncement"
     $.ajax({
         url: url,
         method: 'POST',
@@ -170,7 +170,7 @@ $("#addannouncement").click(function () {
                     showCloseButton: false
                 }).then(function (result) {
                     if (result.value) {
-                        window.location.href = "https://mobiloby.app/koluman/web/announcements";
+                        window.location.href = "announcements";
                     }
                 });
             } else if (data.success == 2) {
@@ -211,7 +211,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/deleteannouncement',
+            url: 'deleteannouncement',
             data: {
                 announcement_id: id,
                 _token: csrfToken,
@@ -219,7 +219,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
-                    window.location.href = "https://mobiloby.app/koluman/web/announcements";
+                    window.location.href = "announcements";
                 } else {
                     alert(data.message);
                 }

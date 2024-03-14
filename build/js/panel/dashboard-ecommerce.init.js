@@ -1,12 +1,3 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Ecommerce Dashboard init js
-*/
-
-// get colors array from the string
 function getChartColorsArray(chartId) {
     if (document.getElementById(chartId) !== null) {
         const colorAttr = "data-colors" + ("-" + document.documentElement.getAttribute("data-theme") ?? "");

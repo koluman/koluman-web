@@ -1,11 +1,3 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Ecommerce product list Js File
-*/
-
 var announcementListAllData = [];
 document.addEventListener('DOMContentLoaded', function () {
     announcements();

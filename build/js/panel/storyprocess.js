@@ -22,7 +22,7 @@ if (dropzonePreviewNode) {
             this.on("removedfile", function (file) {
                   $.ajax({
                     type: 'POST',
-                    url: 'https://mobiloby.app/koluman/web/deletestoryimage',
+                    url: 'deletestoryimage',
                     data: {
                         story_id:  $("#story_id").val(),
                         image: "story_small_image",
@@ -66,7 +66,7 @@ if (dropzonePreviewNode2) {
             this.on("removedfile", function (file) {
                 $.ajax({
                     type: 'POST',
-                    url: 'https://mobiloby.app/koluman/web/deletestoryimage',
+                    url: 'deletestoryimage',
                     data: {
                         story_id:  $("#story_id").val(),
                         image: "story_big_image",
@@ -103,13 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -138,7 +138,7 @@ function getcompany() {
 function getdetail(id) {
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getstoryid',
+        url: 'getstoryid',
         dataType: 'json',
         data: {
             story_id: id,
@@ -160,7 +160,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
-                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                var pdfIconPath = "public/upload/pdf.png";
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
@@ -173,7 +173,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone2.emit("addedfile", mockFile);
-                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                var pdfIconPath = "public/upload/pdf.png";
                 dropzone2.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone2.emit("complete", mockFile);
                 dropzone2.files.push(mockFile);
@@ -219,7 +219,7 @@ $("#addstory").click(function () {
     formData.append('story_small_image', story_small_image);
     formData.append('story_state', document.querySelector("#story_state").checked == false ? 0 : 1);
     $.ajax({
-        url: "https://mobiloby.app/koluman/web/storyprocess",
+        url: "storyprocess",
         method: 'POST',
         dataType: "json",
         data: formData,
@@ -239,7 +239,7 @@ $("#addstory").click(function () {
                     showCloseButton: false
                 }).then(function (result) {
                     if (result.value) {
-                        window.location.href = "https://mobiloby.app/koluman/web/story";
+                        window.location.href = "story";
                     }
                 });
             } else if (data.success == 2) {
@@ -281,7 +281,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/deletestory',
+            url: 'deletestory',
             data: {
                 story_id: id,
                 _token: csrfToken,
@@ -301,7 +301,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
                         showCloseButton: false
                     }).then(function (result) {
                         if (result.value) {
-                            window.location.href = "https://mobiloby.app/koluman/web/story";
+                            window.location.href = "story";
                         }
                     });
                 } else {

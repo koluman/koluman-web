@@ -1,4 +1,4 @@
-var apiEndpoint = 'https://mobiloby.app/koluman/web/getstories';
+var apiEndpoint = 'getstories';
 var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
@@ -6,7 +6,7 @@ xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
-            productListAllData = responseData.stories; // productListAllData dizisini güncelle
+            productListAllData = responseData.stories;
             updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -389,6 +389,6 @@ function removeSingleItem() {
     });
 }
 function detay(id) {
-    window.location.href = "https://mobiloby.app/koluman/web/storydetail/" + id;
+    window.location.href = "storydetail/" + id;
 
 }

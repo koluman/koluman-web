@@ -1,15 +1,4 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Ecommerce product list Js File
-*/
-
-// API endpoint'i (örnek URL, kendi API URL'nizi kullanmalısınız)
-var apiEndpoint = 'https://mobiloby.app/koluman/web/getshowroomcars';
-
-// AJAX isteği
+var apiEndpoint = 'getshowroomcars';
 var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
@@ -18,8 +7,7 @@ xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
         if (xhr.status == 200) {
             var responseData = JSON.parse(xhr.responseText);
-            // Sunucudan gelen veriyi kullanarak tabloyu güncelleyebilirsiniz
-            productListAllData = responseData.showroomcars; // productListAllData dizisini güncelle
+            productListAllData = responseData.showroomcars; 
             updateTable(productListAllData);
         } else {
             console.error('Sunucu hatası:', xhr.status);
@@ -28,54 +16,6 @@ xhr.onreadystatechange = function () {
 };
 
 xhr.send();
-/*kategori();
-function kategori() {
-    $.ajax({
-            type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/getApiToken',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == 1) {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/getcompanies',
-						headers: {
-							"Authorization": "Bearer " + data.token, // Boşluk ekleyin
-						},
-                        dataType: 'json',
-                        success: function (data) {
-							let l="";
-							if (data.success == 1) {
-								for (let i = 0; i < data.companies.length; i++) {
-									const companyName = data.companies[i].company_name;
-									const companyId = data.companies[i].company_id;
-									const productItem = productListAllData.find(item => item.company_id == companyId);
-									let propertyCount = productItem ? Object.keys(productItem).length : 0;
-									l += '<li>';
-									l += '<a href="#" class="d-flex py-1 align-items-center">';
-									l += '	<div class="flex-grow-1">';
-									l += '		<h5 class="fs-13 mb-0 listname">' + companyName + '</h5>';
-									l += '	</div>';
-									l += '	<div class="flex-shrink-0 ms-2">';
-									l += '		<span class="badge bg-light text-muted">' + propertyCount + '</span>';
-									l += '	</div>';
-									l += '</a>';
-									l += '</li>';
-
-								}
-								$("#cat").html('');
-								$("#cat").html(l);
-
-							}
-							
-
-                        }
-                    });
-                }
-            }
-        }) 
-}*/
-
 function updateTable(data) {
     // Tabloyu güncelleme işlemleri burada yapılır
     // Veriyi tablo veri yapısına uygun hale getirin (eğer gerekirse)
@@ -211,7 +151,7 @@ var productListAll = new gridjs.Grid({
 }).render(document.getElementById("table-product-list-all"));
 
 function redirectToGaleri(id) {
-    var yeniSayfaURL = "https://mobiloby.app/koluman/web/gallery/"+id;
+    var yeniSayfaURL = "gallery/"+id;
     window.location.href = yeniSayfaURL;
 }
 // Search product list
@@ -414,6 +354,6 @@ function removeSingleItem() {
     });
 }
 function detay(id) {
-    window.location.href = "https://mobiloby.app/koluman/web/showroomdetail/" + id;
+    window.location.href = "showroomdetail/" + id;
 
 }

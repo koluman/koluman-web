@@ -8,7 +8,7 @@ $( "#loginbutton" ).click(function() {
           data: {
             email: email,
             password: password,
-              _token: csrfToken, // CSRF token'ını gönder
+              _token: csrfToken,
           },
           dataType: 'json',
           success: function (data) {

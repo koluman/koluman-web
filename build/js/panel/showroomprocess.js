@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -83,7 +83,7 @@ function getdetail(id) {
 
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcarid',
+        url: 'getshowroomcarid',
         dataType: 'json',
         data: {
             car_id: id,
@@ -114,7 +114,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
-                var pdfIconPath = "https://mobiloby.app/koluman/web/public/upload/pdf.png";
+                var pdfIconPath = "public/upload/pdf.png";
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
@@ -125,7 +125,7 @@ function getdetail(id) {
 
             $.ajax({
                 type: 'GET',
-                url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
+                url: 'getshowroomcarcompany',
                 data: {
                     company_id: data.showroomcarid[0].company_id,
                 },
@@ -206,8 +206,8 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     formData.append('car_description', ckeditorClassic.getData());
-    if ($("#car_id").val() != "") url = "https://mobiloby.app/koluman/web/updateshowroom";
-    else url = "https://mobiloby.app/koluman/web/addshowroom"
+    if ($("#car_id").val() != "") url = "updateshowroom";
+    else url = "addshowroom"
     $.ajax({
         url: url,
         method: 'POST',
@@ -229,7 +229,7 @@ $("#addcar").click(function () {
                     showCloseButton: false
                 }).then(function (result) {
                     if (result.value) {
-                        window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                        window.location.href = "shoowroomlist";
                     }
                 });
             } else if (data.success == 2) {
@@ -277,7 +277,7 @@ function getstep() {
     document.querySelector("#step5text").value = "";
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getshowroomcarcompany',
+        url: 'getshowroomcarcompany',
         data: {
             company_id: $("#company_id").val(),
         },
@@ -378,7 +378,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/deleteshowroom',
+            url: 'deleteshowroom',
             data: {
                 car_id: id,
                 _token: csrfToken,
@@ -398,7 +398,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
                         showCloseButton: false
                     }).then(function (result) {
                         if (result.value) {
-                            window.location.href = "https://mobiloby.app/koluman/web/shoowroomlist";
+                            window.location.href = "shoowroomlist";
                         }
                     });
                 } else {
