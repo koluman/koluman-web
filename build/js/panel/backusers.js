@@ -8,7 +8,7 @@ function users() {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getallusers',
+        url: 'getallusers',
         data: {
             _token: csrfToken, // CSRF token'ını gönder
         },
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addUser(userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/adduser',
+            url: 'adduser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateUser(userId, userName, userMail, userPhone, userRole) {
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/updateuser',
+            url: 'updateuser',
             data: {
                 userName: userName,
                 userMail: userMail,
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userId) {
             $.ajax({
                 type: 'POST',
-                url: 'https://mobiloby.app/koluman/web/deleteuser',
+                url: 'deleteuser',
                 data: {
                     userId: userId,
                     _token: csrfToken,
@@ -314,7 +314,7 @@ function deleteMultiple() {
             if (result.value) {
                 $.ajax({
                     type: 'POST',
-                    url: 'https://mobiloby.app/koluman/web/deleteusers',
+                    url: 'deleteusers',
                     data: {
                         userIds: ids_array,
                         _token: csrfToken,
