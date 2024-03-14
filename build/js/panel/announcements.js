@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -45,13 +45,13 @@ function getcompany() {
 function announcements() {
     $.ajax({
             type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/getApiToken',
+            url: 'getApiToken',
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
                     $.ajax({
                         type: 'GET',
-                        url: 'https://mobiloby.app/koluman/web/api/getannouncement',
+                        url: 'api/getannouncement',
 						headers: {
 							"Authorization": "Bearer " + data.token, // Boşluk ekleyin
 						},
@@ -272,7 +272,7 @@ function removeSingleItem() {
     });
 }
 function detay(id) {
-    window.location.href = "https://mobiloby.app/koluman/web/announcementsdetail/" + id;
+    window.location.href = "announcementsdetail/" + id;
 
 }
 function SearchData() {
