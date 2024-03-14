@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         $.ajax({
             type: 'GET',
-            url: 'https://mobiloby.app/koluman/web/testdrivegetall',
+            url: 'testdrivegetall',
             dataType: 'json',
             success: function (data) {
                 if (data.success == 1) {
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             if (appointment_id) {
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'https://mobiloby.app/koluman/web/updatetestdriveappointment',
+                                    url: 'updatetestdriveappointment',
                                     data: {
                                         car_id: $("#car_id").val(),
                                         user_id: $("#user_id").val(),
@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             } else {
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'https://mobiloby.app/koluman/web/addtestdriveappointment',
+                                    url: 'addtestdriveappointment',
                                     data: {
                                         car_id: $("#car_id").val(),
                                         user_id: $("#user_id").val(),
@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (selectedEvent) {
                             $.ajax({
                                 type: 'POST',
-                                url: 'https://mobiloby.app/koluman/web/deletetestdriveappointment',
+                                url: 'deletetestdriveappointment',
                                 data: {
                                     appointment_id: selectedEvent.id,
                                     _token: csrfToken,
@@ -503,7 +503,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         $.ajax({
             type: 'POST',
-            url: 'https://mobiloby.app/koluman/web/getstepsall',
+            url: 'getstepsall',
             data: {
                 _token: csrfToken, // CSRF token'ını gönder
             },
@@ -598,7 +598,7 @@ function getdate() {
     var selectedCar = $("#car_id").val();
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/testdriveschedules',
+        url: 'testdriveschedules',
         data: {
             selectedDate: selectedDate,
             selectedCar,
@@ -633,14 +633,14 @@ function getdate() {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'https://mobiloby.app/koluman/web/getApiToken',
+        url: 'getApiToken',
         dataType: 'json',
         success: function (data) {
 
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://mobiloby.app/koluman/web/api/getcompanies',
+                    url: 'api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -678,7 +678,7 @@ function getcompany() {
 function getapiusers() {
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getapiusers',
+        url: 'getapiusers',
         data: {
             _token: csrfToken, // CSRF token'ını gönder
         },
@@ -716,7 +716,7 @@ let uniqueValues = []; // Array to store unique values
 function getstep() {
     $.ajax({
         type: 'POST',
-        url: 'https://mobiloby.app/koluman/web/getsteps',
+        url: 'getsteps',
         data: {
             company_id: $("#company_id").val(),
             _token: csrfToken, // CSRF token'ını gönder
