@@ -20,7 +20,7 @@ $( "#loginbutton" ).click(function() {
             }
           },
           error: function (xhr, status, error) {
-            alert("AJAX request failed:",error);
+            alert("AJAX request failed:"+error);
         }
       });
   });
