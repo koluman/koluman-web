@@ -53,7 +53,7 @@ function getIdFromUrl() {
 function getdetail(id) {
     $.ajax({
         type: 'POST',
-        url: 'getbyIdSigorta',
+        url: '/getbyIdSigorta',
         dataType: 'json',
         data: {
             id: id,
@@ -126,7 +126,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'deletesigorta',
+            url: '/deletesigorta',
             data: {
                 insurance_id: id,
                 _token: csrfToken,
@@ -173,7 +173,7 @@ document.getElementById("updinc").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'updatesigortareview',
+            url: '/updatesigortareview',
             data: {
                 insurance_id: id,
                 _token: csrfToken,
@@ -204,7 +204,7 @@ document.getElementById("updsnc").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'updatesigortaresult',
+            url: '/updatesigortaresult',
             data: {
                 insurance_id: id,
                 _token: csrfToken,
@@ -251,8 +251,8 @@ document.getElementById("newbutton").addEventListener("click", function () {
     formData.append('insurance_policy_url', insurance_policy_url);
     formData.append('insurance_type', insurance_type);
     formData.append('insurance_id', insuranceId);
-    if (insuranceId != "") $url = "updatesigorta";
-    else $url = "addsigorta"
+    if (insuranceId != "") $url = "/updatesigorta";
+    else $url = "/addsigorta"
     $.ajax({
         url: $url,
         method: 'POST',
