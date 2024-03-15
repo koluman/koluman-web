@@ -53,7 +53,7 @@ function getcompany() {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'api/getcompanies',
+                    url: '/api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -83,7 +83,7 @@ function getdetail(id) {
 
     $.ajax({
         type: 'POST',
-        url: 'getshowroomcarid',
+        url: '/getshowroomcarid',
         dataType: 'json',
         data: {
             car_id: id,
@@ -125,7 +125,7 @@ function getdetail(id) {
 
             $.ajax({
                 type: 'GET',
-                url: 'getshowroomcarcompany',
+                url: '/getshowroomcarcompany',
                 data: {
                     company_id: data.showroomcarid[0].company_id,
                 },
@@ -206,8 +206,8 @@ $("#addcar").click(function () {
     formData.append('step5', $("#step5text").val());
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
     formData.append('car_description', ckeditorClassic.getData());
-    if ($("#car_id").val() != "") url = "updateshowroom";
-    else url = "addshowroom"
+    if ($("#car_id").val() != "") url = "/updateshowroom";
+    else url = "/addshowroom"
     $.ajax({
         url: url,
         method: 'POST',
@@ -277,7 +277,7 @@ function getstep() {
     document.querySelector("#step5text").value = "";
     $.ajax({
         type: 'GET',
-        url: 'getshowroomcarcompany',
+        url: '/getshowroomcarcompany',
         data: {
             company_id: $("#company_id").val(),
         },
@@ -378,7 +378,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'deleteshowroom',
+            url: '/deleteshowroom',
             data: {
                 car_id: id,
                 _token: csrfToken,
