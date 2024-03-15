@@ -183,10 +183,10 @@
                                         <div class="mb-3">
                                             <label class="form-label">Randevu Durumu</label>
                                             <select class="form-select" name="state" id="state" required>
-                                            <option value="">Lütfen Seçiniz</option>
-                                            <option value="0">Beklemede</option>
-                                            <option value="1">Onayla</option>
-                                            <option value="2">İptal Et</option>
+                                                <option value="">Lütfen Seçiniz</option>
+                                                <option value="0">Beklemede</option>
+                                                <option value="1">Onayla</option>
+                                                <option value="2">İptal Et</option>
                                             </select>
                                         </div>
                                     </div>
@@ -214,6 +214,6 @@
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ URL::asset('build/libs/fullcalendar/index.global.min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/app.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/testdrive.js') }}"></script>
+    <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection
