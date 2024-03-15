@@ -59,7 +59,7 @@ class LoginController extends Controller
         } catch (\Exception $e) {
             $responseData = [
                 'success' => 0,
-                'message' => $e->getMessage(),
+                'message' => "hataa",
                 'user' => "",
                 'redirectRoute' => "",
             ];
