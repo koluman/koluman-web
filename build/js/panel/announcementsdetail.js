@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'getApiToken',
+        url: '/getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'api/getcompanies',
+                    url: '/api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -79,7 +79,7 @@ function getcompany() {
 function getdetail(id) {
     $.ajax({
         type: 'POST',
-        url: 'getannouncementid',
+        url: '/getannouncementid',
         dataType: 'json',
         data: {
             announcement_id: id,
@@ -147,8 +147,8 @@ $("#addannouncement").click(function () {
     formData.append('announcement_img_url', announcement_img_url);
     formData.append('company_id', document.querySelector("#company_id").value);
     formData.append('state', document.querySelector("#state").checked == false ? 0 : 1);
-    if ($("#announcement_id").val() != "") url = "updateannouncement";
-    else url = "addannouncement"
+    if ($("#announcement_id").val() != "") url = "/updateannouncement";
+    else url = "/addannouncement"
     $.ajax({
         url: url,
         method: 'POST',
@@ -211,7 +211,7 @@ document.getElementById("delete-record").addEventListener("click", function () {
     if (id) {
         $.ajax({
             type: 'POST',
-            url: 'deleteannouncement',
+            url: '/deleteannouncement',
             data: {
                 announcement_id: id,
                 _token: csrfToken,
