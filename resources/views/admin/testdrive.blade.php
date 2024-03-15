@@ -211,6 +211,7 @@
     </div> <!-- end row-->
 @endsection
 @section('script')
+    <script src="{{ URL::asset('build/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/fullcalendar/index.global.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/testdrive.js') }}"></script>
