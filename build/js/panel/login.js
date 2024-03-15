@@ -4,7 +4,7 @@ $( "#loginbutton" ).click(function() {
         var password = $("#password-input").val();
         $.ajax({
           type: 'POST',
-          url: 'login',
+          url: '/login',
           data: {
             email: email,
             password: password,
