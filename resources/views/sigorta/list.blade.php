@@ -175,12 +175,12 @@
     <!--end row-->
 @endsection
 @section('script')
+
+    <script src="{{ URL::asset('build/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/list.js/list.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/list.pagination.js/list.pagination.min.js') }}"></script>
-
-    <!--ecommerce-customer init js -->
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="{{ URL::asset('build/js/app.js') }}"></script>
     <script src="{{ URL::asset('build/js/panel/sigorta.js') }}"></script>
+    <script src="{{ URL::asset('build/js/app.js') }}"></script>
 @endsection
