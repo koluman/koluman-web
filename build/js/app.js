@@ -136,7 +136,7 @@ File: Main Js File
 		/**
 		 * Choices Select plugin
 		 */
-	/*	var choicesExamples = document.querySelectorAll("[data-choices]");
+		var choicesExamples = document.querySelectorAll("[data-choices]");
 		Array.from(choicesExamples).forEach(function (item) {
 			var choiceData = {};
 			var isChoicesVal = item.attributes;
@@ -276,7 +276,6 @@ File: Main Js File
 				flatpickr(item, timeData);
 			}
 		});
-*/
 		// Dropdown
 		Array.from(document.querySelectorAll('.dropdown-menu a[data-bs-toggle="tab"]')).forEach(function (element) {
 			element.addEventListener("click", function (e) {
