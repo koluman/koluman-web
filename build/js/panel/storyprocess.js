@@ -22,7 +22,7 @@ if (dropzonePreviewNode) {
             this.on("removedfile", function (file) {
                   $.ajax({
                     type: 'POST',
-                    url: 'deletestoryimage',
+                    url: '/deletestoryimage',
                     data: {
                         story_id:  $("#story_id").val(),
                         image: "story_small_image",
@@ -66,7 +66,7 @@ if (dropzonePreviewNode2) {
             this.on("removedfile", function (file) {
                 $.ajax({
                     type: 'POST',
-                    url: 'deletestoryimage',
+                    url: '/deletestoryimage',
                     data: {
                         story_id:  $("#story_id").val(),
                         image: "story_big_image",
@@ -160,7 +160,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
-                var pdfIconPath = "public/upload/pdf.png";
+                var pdfIconPath = "/public/upload/pdf.png";
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
@@ -173,7 +173,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone2.emit("addedfile", mockFile);
-                var pdfIconPath = "public/upload/pdf.png";
+                var pdfIconPath = "/public/upload/pdf.png";
                 dropzone2.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone2.emit("complete", mockFile);
                 dropzone2.files.push(mockFile);
@@ -219,7 +219,7 @@ $("#addstory").click(function () {
     formData.append('story_small_image', story_small_image);
     formData.append('story_state', document.querySelector("#story_state").checked == false ? 0 : 1);
     $.ajax({
-        url: "storyprocess",
+        url: "/storyprocess",
         method: 'POST',
         dataType: "json",
         data: formData,
