@@ -226,6 +226,9 @@
     </div>
 @endsection
 @section('script')
+
+    <script src="{{ URL::asset('build/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
     <script src="{{ URL::asset('build/js/app.js') }}"></script>
