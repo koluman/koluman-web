@@ -18,6 +18,9 @@ $( "#loginbutton" ).click(function() {
             } else {
                 alert(data.message); 
             }
-          }
+          },
+          error: function (xhr, status, error) {
+            alert("AJAX request failed:", status, error);
+        }
       });
   });
