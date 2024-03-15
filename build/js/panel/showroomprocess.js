@@ -114,7 +114,7 @@ function getdetail(id) {
                     name: FileName,
                 };
                 dropzone.emit("addedfile", mockFile);
-                var pdfIconPath = "public/upload/pdf.png";
+                var pdfIconPath = "/public/upload/pdf.png";
                 dropzone.emit("thumbnail", mockFile, pdfIconPath);
                 dropzone.emit("complete", mockFile);
                 dropzone.files.push(mockFile);
