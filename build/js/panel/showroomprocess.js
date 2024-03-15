@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'getApiToken',
+        url: '/getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {

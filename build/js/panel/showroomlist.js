@@ -1,4 +1,4 @@
-var apiEndpoint = 'getshowroomcars';
+var apiEndpoint = '/getshowroomcars';
 var productListAllData = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', apiEndpoint, true);
