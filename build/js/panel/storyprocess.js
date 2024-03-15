@@ -103,13 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
 function getcompany() {
     $.ajax({
         type: 'GET',
-        url: 'getApiToken',
+        url: '/getApiToken',
         dataType: 'json',
         success: function (data) {
             if (data.success == 1) {
                 $.ajax({
                     type: 'GET',
-                    url: 'api/getcompanies',
+                    url: '/api/getcompanies',
                     dataType: 'json',
                     headers: {
                         "Authorization": 'Bearer ' + data.token
@@ -138,7 +138,7 @@ function getcompany() {
 function getdetail(id) {
     $.ajax({
         type: 'POST',
-        url: 'getstoryid',
+        url: '/getstoryid',
         dataType: 'json',
         data: {
             story_id: id,
